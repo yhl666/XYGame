@@ -3,15 +3,15 @@ branches: {
   }
 fileChange:
   /BattleServer:
-    newFile: !uuid '1c6623de5f929b34f1c901ad80c06c1836f340dc'
-    oldFile: !uuid '947df7d37f161ee7ffe37318ff0dd8af081620bf'
+    newFile: !uuid '1d15c6c88cc815a6756d1bbea7042ae4b68bcbdb'
+    oldFile: !uuid '1c6623de5f929b34f1c901ad80c06c1836f340dc'
   /BattleServer/Debug:
-    newFile: !uuid '602e07989ab508bcab47305352530fb6a9aec59c'
+    newFile: !uuid '04ef1305bbbab6f498a20983d628c2de662f51bb'
+    oldFile: !uuid '602e07989ab508bcab47305352530fb6a9aec59c'
+  /BattleServer/Debug/config.ini:
+    newFile: !uuid '5d8e451f0133c50bc396418c67f11dbb881e2752'
     oldFile: null
-  /BattleServer/Debug/BattleServer.exe:
-    newFile: !uuid '7384b70ec6bbb6b5c35362ea46905eccee0487f6'
-    oldFile: null
-gitCommitId: !uuid '4904f28f75d95ace3159dc9e6f6a3e026b337e04'
+gitCommitId: !uuid '0be1ddd35c1d0464a878ac16cbec81bf3b5e65ae'
 renames: {
   }
-revisionId: 10
+revisionId: 11
