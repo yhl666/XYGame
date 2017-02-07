@@ -3,78 +3,426 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'd76bf5409e3bed2b7a1b9c5dd21b610456167d68'
+    newFile: !uuid 'e94ff52af7fc7f96fa30d0f464ebdc3402d807a0'
+    oldFile: !uuid 'd76bf5409e3bed2b7a1b9c5dd21b610456167d68'
+  /UnityClient/Assets:
+    newFile: !uuid '669a8f66bbbf8d32d95aa61381de8ea6fb1903d7'
     oldFile: null
-  /UnityClient/Assembly-CSharp-Editor-firstpass.csproj:
-    newFile: !uuid 'efe6b3c17be789bf53128b6315224a20e281dcea'
+  /UnityClient/Assets/3rd.meta:
+    newFile: !uuid 'bfb07a10463c9399c5eaef3821531c2b4a89685c'
     oldFile: null
-  /UnityClient/Assembly-CSharp-Editor.csproj:
-    newFile: !uuid '23fe5dee3a99d5966cba70a1b47d9c0da0ae6f94'
+  /UnityClient/Assets/Editor:
+    newFile: !uuid 'c3f8f2dd523179725747a653514a286f46e122ea'
     oldFile: null
-  /UnityClient/Assembly-CSharp-firstpass.csproj:
-    newFile: !uuid '99c3c2cb9dbca62ab171d4b2b4a4a6c80fcaa394'
+  /UnityClient/Assets/Editor.meta:
+    newFile: !uuid '1b4854e1cbfc10476abb9b8089ac71a0bef98710'
     oldFile: null
-  /UnityClient/Assembly-CSharp.csproj:
-    newFile: !uuid '79531795a3df721fa395d9364c4e96c2aaf2705d'
+  /UnityClient/Assets/Editor/TerrainEdit.cs:
+    newFile: !uuid 'e1a6814beb2f064d950673a6cc31af96324fd006'
     oldFile: null
-  /UnityClient/ProjectSettings:
-    newFile: !uuid '65d14fb0a4e3198701d6b28e4939ee79d90cbdfb'
+  /UnityClient/Assets/Monsters01-hd.plist:
+    newFile: !uuid '7e0c1e9e8102eec9769b1e844979778232905abf'
     oldFile: null
-  /UnityClient/ProjectSettings/AudioManager.asset:
-    newFile: !uuid 'fe6cc1df2727d6927eb6b00f413f35e5873481cf'
+  /UnityClient/Assets/Monsters01-hd.plist.meta:
+    newFile: !uuid 'ef3152b117d3a81a78a91fd6e3c99e016b53d9a8'
     oldFile: null
-  /UnityClient/ProjectSettings/ClusterInputManager.asset:
-    newFile: !uuid '60e3abb77ac8aa2637282579c4cff0ff06c7f609'
+  /UnityClient/Assets/New Animation.anim:
+    newFile: !uuid '3a075cc1bfadccd42dbedad55292aa3c6906ed37'
     oldFile: null
-  /UnityClient/ProjectSettings/DynamicsManager.asset:
-    newFile: !uuid '4fed4b8012efa9b2ca01c22d1994c5b5125f9016'
+  /UnityClient/Assets/New Animation.anim.meta:
+    newFile: !uuid '948ac5900d35165a0695cee4a54b96ec5050e757'
     oldFile: null
-  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
-    newFile: !uuid '5d88f5a7082fd566d373ca59ceed29d1d9dac80f'
+  /UnityClient/Assets/New Sprite.controller:
+    newFile: !uuid '529b54ead0c7a83d32ed4797e2b8cabfffaf3345'
     oldFile: null
-  /UnityClient/ProjectSettings/EditorSettings.asset:
-    newFile: !uuid '94a980caec037bb1863afbef1a88f42e6a3ba50c'
+  /UnityClient/Assets/New Sprite.controller.meta:
+    newFile: !uuid 'ed30615a789f92fdfbae3e8bbb595e3f2501b83c'
     oldFile: null
-  /UnityClient/ProjectSettings/GraphicsSettings.asset:
-    newFile: !uuid '8c694b01fe04776b2ceeed77e61b5aa0c0f8d4d7'
+  /UnityClient/Assets/NewBehaviourScript.cs:
+    newFile: !uuid 'e47a89acc43674525e3a9735d623fa232072a25b'
     oldFile: null
-  /UnityClient/ProjectSettings/InputManager.asset:
-    newFile: !uuid '37897785149b805be4d8e6b002643137634e8bc3'
+  /UnityClient/Assets/NewBehaviourScript.cs.meta:
+    newFile: !uuid 'ea81ca26205e5f40e0771be4b90ad505189e5c8e'
     oldFile: null
-  /UnityClient/ProjectSettings/NavMeshAreas.asset:
-    newFile: !uuid '6f1628304d8a7c5639fd8a9b7b8aba06ea46ed69'
+  /UnityClient/Assets/Plugins.meta:
+    newFile: !uuid '82109d24da3da986506b6a87b3f10c1a73ae645e'
     oldFile: null
-  /UnityClient/ProjectSettings/NetworkManager.asset:
-    newFile: !uuid '6b7e77fba08fe2a23adf89ce03230b3c0a7a2d11'
+  /UnityClient/Assets/Resources.meta:
+    newFile: !uuid '53bced6ec87eac0230350498452c40ec1523c2fe'
     oldFile: null
-  /UnityClient/ProjectSettings/Physics2DSettings.asset:
-    newFile: !uuid '9d64e141f7c314403c121ac323c9d9955e5d7990'
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid '0a99b038788a4f1202356b21f5dab4ef8d2fd2e7'
     oldFile: null
-  /UnityClient/ProjectSettings/ProjectSettings.asset:
-    newFile: !uuid '76c8f416dab41626368af10f9d7502b2ff6f7972'
+  /UnityClient/Assets/Scenes.meta:
+    newFile: !uuid '893599f4b6b441b50c3b7bed66233971f4400f0a'
     oldFile: null
-  /UnityClient/ProjectSettings/ProjectVersion.txt:
-    newFile: !uuid '96b25e7ca99d09513d0a1a425a1306567236dade'
+  /UnityClient/Assets/Scenes/Battle.unity:
+    newFile: !uuid 'ce22f9f0fdb793e3ee51819c7f0004ba693e58cb'
     oldFile: null
-  /UnityClient/ProjectSettings/QualitySettings.asset:
-    newFile: !uuid '232019852e3f2d15c5ebd5d87d2117dae8723271'
+  /UnityClient/Assets/Scenes/Battle.unity.meta:
+    newFile: !uuid '0f1d8fe834d166a213f2c0bdb1f26f79508e1614'
     oldFile: null
-  /UnityClient/ProjectSettings/TagManager.asset:
-    newFile: !uuid '315f23594c2be54e77c71627f8463ff6f3d2a3f1'
+  /UnityClient/Assets/Scenes/BattleEnemy.unity:
+    newFile: !uuid '6a74bec58f386a589d3a0c36adf53c31b965d5f5'
     oldFile: null
-  /UnityClient/ProjectSettings/TimeManager.asset:
-    newFile: !uuid 'b7b21cb5d6a9d9e6c1d295c864879ff4160d0aa6'
+  /UnityClient/Assets/Scenes/BattleEnemy.unity.meta:
+    newFile: !uuid '7738ad37cf79d29b45e1669dbf7c861c9304308b'
     oldFile: null
-  /UnityClient/ProjectSettings/UnityAdsSettings.asset:
-    newFile: !uuid 'd9a4f062cadd3314602171bfce8a7291b63e0604'
+  /UnityClient/Assets/Scenes/SpineTest.unity:
+    newFile: !uuid '1c8169c1d04216fd62df116580dc728cb6b5d57f'
     oldFile: null
-  /UnityClient/ProjectSettings/UnityConnectSettings.asset:
-    newFile: !uuid 'bd9e618ad7c9660cf128bc55917c959a6a05aeba'
+  /UnityClient/Assets/Scenes/SpineTest.unity.meta:
+    newFile: !uuid 'bfaf0790b012ff6e9ae509270165e064eee3db5b'
     oldFile: null
-  /UnityClient/UnityClient.sln:
-    newFile: !uuid '71c3f31bfac8891c489fceebdb90d282b1494a84'
+  /UnityClient/Assets/Scenes/test.unity:
+    newFile: !uuid 'ce22f9f0fdb793e3ee51819c7f0004ba693e58cb'
     oldFile: null
-gitCommitId: !uuid 'dcf0db335dc32dc806991c35577c7b5222c530d5'
+  /UnityClient/Assets/Scenes/test.unity.meta:
+    newFile: !uuid '5c894c81b62ff039f57a0f395fcbc7f3733d5729'
+    oldFile: null
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'a222f490f6eabc6b302bdcd790e56b55404d2c8e'
+    oldFile: null
+  /UnityClient/Assets/Scripts.meta:
+    newFile: !uuid '9bc7ada038575783c68e279f50ca244b47d5ed5c'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d:
+    newFile: !uuid 'f780c14b168d345b458b26f9215edf7ada6cc25b'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d.meta:
+    newFile: !uuid '4aa1d3876a749f91963ae3781dec5ac3d748498b'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/Animations.cs:
+    newFile: !uuid '035cf1004d964652b55621ebe7cf393660f6ef9d'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/Animations.cs.meta:
+    newFile: !uuid '339806a29076163bec8d95e54a87d214ae107691'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/AnimationsCache.cs:
+    newFile: !uuid '9404b1eabc8401c4d2517dec15e50873afa28791'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/AnimationsCache.cs.meta:
+    newFile: !uuid '9180fb11b4824a3775c151da0b21780e7f7385c7'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/Animationstor.cs:
+    newFile: !uuid '362fc090859213ab85f5ae701387cd6ac0afc0ed'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/Animationstor.cs.meta:
+    newFile: !uuid '9ab296d281813218c0d8b0a12b211b50de437127'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/PlistSuport.cs:
+    newFile: !uuid '87838bdb4f5a460869fb381b931b213430279ac7'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/PlistSuport.cs.meta:
+    newFile: !uuid '055997ff0c5dc728e8c710a3d6297c6a0b749fde'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/SpriteFrame.cs:
+    newFile: !uuid '15b6e15e9f0051ab87803c5aef2723a0752c18b1'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/SpriteFrame.cs.meta:
+    newFile: !uuid '79b59c7c1c337c3da47c2116c3e3fc548970a8bf'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/SpriteFrameCache.cs:
+    newFile: !uuid '558db843d205c7e337b4843d25d58e218683716d'
+    oldFile: null
+  /UnityClient/Assets/Scripts/2d/SpriteFrameCache.cs.meta:
+    newFile: !uuid '258643bdfa2f6d884b4744654e636225197f0411'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base:
+    newFile: !uuid '746372c3f23feacdd9976eb5c6326d48cfe4c45e'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base.meta:
+    newFile: !uuid '6e4eaba2aa5e3f4d60c663d3cd6d84f6de8e0c96'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/AutoReleasePool.cs:
+    newFile: !uuid 'd94249e4e78624af58ed9e6b2bcc1f54728f5daf'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/AutoReleasePool.cs.meta:
+    newFile: !uuid 'dc1a068de3989dadddb8fec62905af99abd64eba'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/EventDispatcher.cs:
+    newFile: !uuid '5281361136afc88a4996db712da1af89dcf4e9c9'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/EventDispatcher.cs.meta:
+    newFile: !uuid '818118be4d76b7bda225520fdd6d3bbd693933b2'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/EventSystem.cs:
+    newFile: !uuid 'd9aa4f391d65a75a3109ff028cb13fff2a048560'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/EventSystem.cs.meta:
+    newFile: !uuid '5c3a822c27c66a43446302ca7f07ff18c587ea2e'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/Events.cs:
+    newFile: !uuid 'b6118147ec32a80e6edae4fc0ba26b957a3ccd8a'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/Events.cs.meta:
+    newFile: !uuid '5edfaaa745ea6180b0ea0f4629dc0999b98029ce'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/FrameData.cs:
+    newFile: !uuid '9c903f966018880756b44fb65e5da0626f29653e'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/FrameData.cs.meta:
+    newFile: !uuid 'f712d819a2c5af7a713a3bd9b9ebcafbd88104ae'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/GAObject.cs:
+    newFile: !uuid 'd1700961f88abafead8b4039fa8971d6b34479a4'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/GAObject.cs.meta:
+    newFile: !uuid '3af19f42eb05d9ae38dabb25b7294b7c3f27f225'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/ThreadSafeQueue.cs:
+    newFile: !uuid '38be0167c1cc7325a1c6fd19e1d6befe9fc42ab0'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/ThreadSafeQueue.cs.meta:
+    newFile: !uuid '405b809cec240c9fd6289a379fbfb5999e1d1d56'
+    oldFile: null
+  /UnityClient/Assets/Scripts/CameraFollow.cs:
+    newFile: !uuid 'ab03e06f6e2fc9ad7f7ba12d62f6d208acbc8564'
+    oldFile: null
+  /UnityClient/Assets/Scripts/CameraFollow.cs.meta:
+    newFile: !uuid 'f5e47d38fd61988132635864189393b2d11a71ab'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common:
+    newFile: !uuid 'ead56b2828a3bb56f5147ac94d250bea20e7d46d'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common.meta:
+    newFile: !uuid '8a41b6e0c1cd50624258558e6b798d879a3f3a3b'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common/Common.cs:
+    newFile: !uuid '4860edd9118299dabc79fdc3d40989b84463c042'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common/Common.cs.meta:
+    newFile: !uuid '6711fc3afaf2a940428c9e5b258bafc620335bf1'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common/Config.cs:
+    newFile: !uuid 'c946ef2ad0b8b05b75254f445aa9f9a2fc382492'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common/Config.cs.meta:
+    newFile: !uuid '2db086f03ee2e389809d6b8dcb9018fdc6577f47'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common/Delegates.cs:
+    newFile: !uuid 'cefb5c20dc9efd8df07afa8d26b2f84b9474c4ae'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common/Delegates.cs.meta:
+    newFile: !uuid 'bd7e270edd2f6326ce6339c5977893448317eae7'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common/PrefabsMgr.cs:
+    newFile: !uuid '9bacae468101450feef5dee67d22559c0191da09'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common/PrefabsMgr.cs.meta:
+    newFile: !uuid '64398fb4f2d9bfc2ce09d62fa004c475aff2a5ec'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common/Utils.cs:
+    newFile: !uuid '0e0a4e85c8fe748a2c95202f146e2473eee9d44f'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Common/Utils.cs.meta:
+    newFile: !uuid '093a9a6df9e5cc5881a541edaea8bd15b86d6da6'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid '38e81f8a6eeb89752cd3f93cbef9733a0b7d231d'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data.meta:
+    newFile: !uuid 'f5dfdc2d4ea72f190903fbea41b0ba3ff92a4fbc'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/DATA.cs:
+    newFile: !uuid '87755ed4d98dbfba4b3f008b8e163efbf65c42f5'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/DATA.cs.meta:
+    newFile: !uuid '97275418707853d154928a0ff691e13642cec06a'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/PublicData.cs:
+    newFile: !uuid '06a4cc471be4f0cc79a7643f27f304abe0f3b1d1'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/PublicData.cs.meta:
+    newFile: !uuid '486ee3b320ebb972e49a6a96f4a221d6c83ef200'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Extensions:
+    newFile: !uuid '2ad98ded38a961d56ba1fea34daf1c27d6972dc8'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Extensions.meta:
+    newFile: !uuid '13d6018f9c20357c98c07573c742d4cb5356e4d2'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Extensions/GAButton.cs:
+    newFile: !uuid 'b54410c5b0089e69a81a5c723e7c23bfb0b751a6'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Extensions/GAButton.cs.meta:
+    newFile: !uuid '0d378555cadec28039a02a46d5843d5779ae39d3'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Extensions/GameBoxExtension.cs:
+    newFile: !uuid '20a2815cc6320e50bb0bb7812d001f5b4dd57cd4'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Extensions/GameBoxExtension.cs.meta:
+    newFile: !uuid 'c94451c72ba41b7f250d3e968464036738d26c15'
+    oldFile: null
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid '14f57e0ed2b716460cbb32b9c8b1403323a5563b'
+    oldFile: null
+  /UnityClient/Assets/Scripts/GameApp.meta:
+    newFile: !uuid 'eafca6f87577f05fa1f26929c9d831c99b4ef8c1'
+    oldFile: null
+  /UnityClient/Assets/Scripts/GameApp/AppBase.cs:
+    newFile: !uuid 'aea626ac0ef053f9166ee0de795420e275ca4a2c'
+    oldFile: null
+  /UnityClient/Assets/Scripts/GameApp/AppBase.cs.meta:
+    newFile: !uuid '84a19130797d497606db2a0aebb33a06b1dfa9b7'
+    oldFile: null
+  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
+    newFile: !uuid 'd9d61c5b4af58d346e6b281f34eba076ac5504ba'
+    oldFile: null
+  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs.meta:
+    newFile: !uuid 'd653447ad52c59895eb2270d4e15be94680d4fcf'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '17a5b8d10bff98a59f36f01782f6d63c796d84f7'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model.meta:
+    newFile: !uuid '70df3a9163b855f0ba30b698db1bd625e1e58373'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Buffer.cs:
+    newFile: !uuid '68a8ad3a8060d5f0b381537628a8207a39e0204d'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Buffer.cs.meta:
+    newFile: !uuid '6eaac044fe8f6a96117d5f52c7f7e2cab9ed80d8'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/BufferMgr.cs:
+    newFile: !uuid '9466d594cce90aec63fac84a071ee3db4d119e12'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/BufferMgr.cs.meta:
+    newFile: !uuid '31e658f810978220ebe1460113834957c732eec1'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Bullet.cs:
+    newFile: !uuid '4369e018a2ac616da3b1ac709bfb3e11d0ba3f00'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Bullet.cs.meta:
+    newFile: !uuid 'c29c3b920a4a88b5e3a4f755510cfea2b6b75bf6'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/BulletMgr.cs:
+    newFile: !uuid '1a8e133a99b74a85b862e05135fabb20f78e8d20'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/BulletMgr.cs.meta:
+    newFile: !uuid 'a6ce9727b01bfbaebe796aa0c85bd1038e76cf29'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Enemy.cs:
+    newFile: !uuid '610f2a49f8cccc1d246a57e91b657a1afa5bf557'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Enemy.cs.meta:
+    newFile: !uuid '357c18b5792af152e917f422fb979c0ecd16dc45'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/EnemyMgr.cs:
+    newFile: !uuid '7a4cfdc53c5f76521088d4898e13437fe27a1e59'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/EnemyMgr.cs.meta:
+    newFile: !uuid 'd3feedd8f723ac5ca88ccbbb4292108ab9808030'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Entity.cs:
+    newFile: !uuid '91263729aa4707c688c16751969dcffe056fa800'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Entity.cs.meta:
+    newFile: !uuid 'f087299f0a734c5518547d59e3031841d80edd05'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Hero.cs:
+    newFile: !uuid '423ba704413c259f413926bd411aff0a914ba906'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Hero.cs.meta:
+    newFile: !uuid 'c211fd5932b88abeb4a39b1fe88350a7f35ac495'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/HeroMgr.cs:
+    newFile: !uuid '28cc3bcb907555d7d8380e0961466a03de2c145a'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/HeroMgr.cs.meta:
+    newFile: !uuid 'bdaf9d31bc4d0ada727346d45f6ae7c2caae3e65'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Model.cs:
+    newFile: !uuid 'ad51bfa601196ded5b51298b2ca047382ba8c6e0'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Model.cs.meta:
+    newFile: !uuid '474acf3c34cbb9228d65e6db58608e59e522029f'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/ModelMgr.cs:
+    newFile: !uuid 'a8c3827e140f1104fd15b6c5f13e51bca2773875'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/ModelMgr.cs.meta:
+    newFile: !uuid 'd5ea68a3055e0ed495a87f7a4d8236e49b56c116'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid 'ba253a2657ebf902e6d46fdcf66ae01c9fc4dceb'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Skill.cs.meta:
+    newFile: !uuid '3220afc54f9dbf1b572f47611388cbd16e9a8d24'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/StateBase.cs:
+    newFile: !uuid '119b851b10202de8d52f2e6dcc3c572a3861a523'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/StateBase.cs.meta:
+    newFile: !uuid '0ac8bad791f976a687d699cca6714746fba580ad'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/StateMachine.cs:
+    newFile: !uuid 'dbd97afce4c046c6a998b242cbf8e4d808689b0e'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/StateMachine.cs.meta:
+    newFile: !uuid '406cc9407703850b75c8a6dfe08c969823aa050b'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Net:
+    newFile: !uuid '853831e81ff374b112be2f8989e0dac52555920b'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Net.meta:
+    newFile: !uuid 'beb74cfdc0c961f81e614adae113e443487f5d2a'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Net/SocketClient.cs:
+    newFile: !uuid '349c8a318b0147e6ea8fa191ad32ad86e5d1c845'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Net/SocketClient.cs.meta:
+    newFile: !uuid 'b5e79f586f09328eba55f009d793ce5f3273622e'
+    oldFile: null
+  /UnityClient/Assets/Scripts/SceneMgr.cs:
+    newFile: !uuid 'ca0e0ca44cca66f899ccd8c142337472496ec716'
+    oldFile: null
+  /UnityClient/Assets/Scripts/SceneMgr.cs.meta:
+    newFile: !uuid '6c79aab44b05d7bc3be21e3c4fbe85e9183b0354'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'e726d257c7664887f55f293f087ccbf7d4f23c42'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View.meta:
+    newFile: !uuid '7e939c5fdb4fe85c0f1df7ee095cbd1b181286dd'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View/UIBattle.cs:
+    newFile: !uuid 'd9dcf413f894f378f4b09a12bfcdf51c9da45c7c'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View/UIBattle.cs.meta:
+    newFile: !uuid '41a5e236d78287a6e458de627ceef068d29422b8'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View/UIPublic.cs:
+    newFile: !uuid 'dd2b89868ef2a8f0bfbf75a59db8bc2c45576366'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View/UIPublic.cs.meta:
+    newFile: !uuid '8fe398da9a8b69f474f3369079d5306f733b6259'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View/View.cs:
+    newFile: !uuid '4bbdeb397638a78ed6303f0dc8187ae6191cf569'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View/View.cs.meta:
+    newFile: !uuid '0d892e47021d4562d946436b68d62b4b59620df3'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View/ViewMgr.cs:
+    newFile: !uuid 'b3df31276d95c8923bf52c8127115aa741742e08'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View/ViewMgr.cs.meta:
+    newFile: !uuid 'f143a1fd8d68af43ba3a9c8f91a98377985f86a4'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View/ViewUI.cs:
+    newFile: !uuid '3447a29288e79446965b7b52e8a6200e9d051f21'
+    oldFile: null
+  /UnityClient/Assets/Scripts/View/ViewUI.cs.meta:
+    newFile: !uuid 'e0f3dfd7521f146c453cf298ce3dbabc3f8b22e6'
+    oldFile: null
+  /UnityClient/Assets/TerrainMeta.cs:
+    newFile: !uuid '4ae8efb90132407a583e7efee3a30148f9f40481'
+    oldFile: null
+  /UnityClient/Assets/TerrainMeta.cs.meta:
+    newFile: !uuid 'b7dccddda1c3b4c87f16c41a8bc3085839c45159'
+    oldFile: null
+gitCommitId: !uuid 'a7a569286daa1a7472846107440d7b5608e4e65a'
 renames: {
   }
-revisionId: 3
+revisionId: 4
