@@ -1,14 +1,9 @@
 !revision
 branches: {
   }
-fileChange:
-  /UnityClient:
-    newFile: !uuid '40a974af5eb38ce75b6efce03ba69e0406e84cde'
-    oldFile: !uuid '58dc72ddd20fa01a7d7df1feaff1c32ebf55eff2'
-  /UnityClient/Assembly-CSharp-Editor.csproj:
-    newFile: !uuid '23f4536412fa338f64f47e742c6a059d12f9341c'
-    oldFile: !uuid '23fe5dee3a99d5966cba70a1b47d9c0da0ae6f94'
-gitCommitId: !uuid '930b4e8b7faef4c9cdfcfa6672bd6464181d2270'
+fileChange: {
+  }
+gitCommitId: !uuid '9257ac30362d01c0d92480e0ea0ab7fd0e42d1b2'
 renames: {
   }
-revisionId: 12
+revisionId: 13
