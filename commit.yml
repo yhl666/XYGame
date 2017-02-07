@@ -1,0 +1,17 @@
+!revision
+branches: {
+  }
+fileChange:
+  /ISSUE_TEMPLATE.zh-CN.md:
+    newFile: !uuid '1a52d8378745e852f01a19c43fa232136c9beac0'
+    oldFile: null
+  /PULL_REQUEST_TEMPLATE.zh-CN.md:
+    newFile: !uuid '636c20f0f4531030e05f6a3bb9869f2412c134f5'
+    oldFile: null
+  /README.md:
+    newFile: !uuid '91a08b920114e2f69045e385b32f588c22c81c9a'
+    oldFile: null
+gitCommitId: !uuid '5bd5d4d18ca1563743659c8c42cb9f4c1eadfeb0'
+renames: {
+  }
+revisionId: 1
