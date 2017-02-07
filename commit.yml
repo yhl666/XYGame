@@ -2,16 +2,163 @@
 branches: {
   }
 fileChange:
-  /ISSUE_TEMPLATE.zh-CN.md:
-    newFile: !uuid '1a52d8378745e852f01a19c43fa232136c9beac0'
+  /BattleServer:
+    newFile: !uuid '947df7d37f161ee7ffe37318ff0dd8af081620bf'
     oldFile: null
-  /PULL_REQUEST_TEMPLATE.zh-CN.md:
-    newFile: !uuid '636c20f0f4531030e05f6a3bb9869f2412c134f5'
+  /BattleServer/.gitattributes:
+    newFile: !uuid '1ff0c423042b46cb1d617b81efb715defbe8054d'
     oldFile: null
-  /README.md:
-    newFile: !uuid '91a08b920114e2f69045e385b32f588c22c81c9a'
+  /BattleServer/.gitignore:
+    newFile: !uuid 'f252a3151beedae02d490d9336f24e406723b042'
     oldFile: null
-gitCommitId: !uuid '5bd5d4d18ca1563743659c8c42cb9f4c1eadfeb0'
+  /BattleServer/BattleServer.sln:
+    newFile: !uuid '39646789b2af0bdc6ff10ac01ffec25373fb1de3'
+    oldFile: null
+  /BattleServer/cpp:
+    newFile: !uuid '796ad24821dcac22e3a452fc39b1d9339d494202'
+    oldFile: null
+  /BattleServer/cpp/Buffer.cpp:
+    newFile: !uuid 'edd37151b86471874d1e8e8c904b93112c92c42f'
+    oldFile: null
+  /BattleServer/cpp/Buffer.h:
+    newFile: !uuid '639115b9c510a69d1ad75652e385ef108dbb92d4'
+    oldFile: null
+  /BattleServer/cpp/ClientEventHandler.cpp:
+    newFile: !uuid 'cce8148c8035b72f091afd3e235205e6c34e4456'
+    oldFile: null
+  /BattleServer/cpp/ClientEventHandler.h:
+    newFile: !uuid '1e8b72b9a12d1a4c5f9a440b96b435bffad01040'
+    oldFile: null
+  /BattleServer/cpp/Config.cpp:
+    newFile: !uuid 'b59ce0021163a9167406d45c3137c45ee92c0972'
+    oldFile: null
+  /BattleServer/cpp/Config.h:
+    newFile: !uuid 'cf3b589088fb3b8ee64c5ba4ab63c54dd29fd5bb'
+    oldFile: null
+  /BattleServer/cpp/Defs.cpp:
+    newFile: !uuid '987a52f036939766a6dc552120fac438c4e8fed0'
+    oldFile: null
+  /BattleServer/cpp/Defs.h:
+    newFile: !uuid '40d8ccad123e2ede41744df21d07047218641bde'
+    oldFile: null
+  /BattleServer/cpp/FrameData.cpp:
+    newFile: !uuid '418bb792007a7c39b81a53c0844daa9c11514910'
+    oldFile: null
+  /BattleServer/cpp/FrameData.h:
+    newFile: !uuid '639e314f8705350308733e2b2b2e128df3a4b8e7'
+    oldFile: null
+  /BattleServer/cpp/Memory.cpp:
+    newFile: !uuid 'b66956c706d23f50c1968e9ae1ea5fedd467e4b8'
+    oldFile: null
+  /BattleServer/cpp/Memory.h:
+    newFile: !uuid '7207197c951c70701e8f7bf081fceb2927a651fc'
+    oldFile: null
+  /BattleServer/cpp/Player.cpp:
+    newFile: !uuid '8d297359dd19b540eeb25787527cdec779e4ef6c'
+    oldFile: null
+  /BattleServer/cpp/Player.h:
+    newFile: !uuid 'd26bc856f6693fcad69cbad6b98761b172b8baec'
+    oldFile: null
+  /BattleServer/cpp/Room.cpp:
+    newFile: !uuid '82c68e3d8985992ea35144b80e13d9c87e79b1f2'
+    oldFile: null
+  /BattleServer/cpp/Room.h:
+    newFile: !uuid '8fe4381c357581a55d763a54287a74640ebf8993'
+    oldFile: null
+  /BattleServer/cpp/ServerApp.cpp:
+    newFile: !uuid 'fffc385f833ffe78a6f893961f94507723967d02'
+    oldFile: null
+  /BattleServer/cpp/ServerApp.h:
+    newFile: !uuid '145406f1831b0a47e20a65350e7dacfc357938a6'
+    oldFile: null
+  /BattleServer/cpp/Socket.cpp:
+    newFile: !uuid 'ddf480f8f4458448bfa574c65e81551bc09f54fe'
+    oldFile: null
+  /BattleServer/cpp/Socket.h:
+    newFile: !uuid '18c88bdced865046158478b8cd1110e908fcc7d6'
+    oldFile: null
+  /BattleServer/cpp/SocketClient.cpp:
+    newFile: !uuid '711c91965f7d7398f4ccdc8cdfd310d06b9ea2e0'
+    oldFile: null
+  /BattleServer/cpp/SocketClient.h:
+    newFile: !uuid '75f82da8cf4ab619544cc5be40316936f06c385c'
+    oldFile: null
+  /BattleServer/cpp/SocketServer.cpp:
+    newFile: !uuid '6ae5424cacb4d962fd2dbf5eeebaa47b10ea55f2'
+    oldFile: null
+  /BattleServer/cpp/SocketServer.h:
+    newFile: !uuid '243132c8427045a6c0d2ed39f831bd458831259d'
+    oldFile: null
+  /BattleServer/cpp/Utils - 副本.cpp:
+    newFile: !uuid 'ada3ff1fca6ae51ed67815f535f8f000992b5b48'
+    oldFile: null
+  /BattleServer/cpp/Utils - 副本.h:
+    newFile: !uuid '06607f143ca735c8e9e536bae14f68e7f9067c2b'
+    oldFile: null
+  /BattleServer/cpp/Utils.cpp:
+    newFile: !uuid 'fccb09437ef94892fa02ab0404acfca1074c2ec3'
+    oldFile: null
+  /BattleServer/cpp/Utils.h:
+    newFile: !uuid '02882376882a6ace1f3464b27c20373ab6b07ab1'
+    oldFile: null
+  /BattleServer/cpp/config.ini:
+    newFile: !uuid 'bea83096571b1d6e8164059ee04e1ca7c4ff15e9'
+    oldFile: null
+  /BattleServer/cpp/cpp.vcxproj:
+    newFile: !uuid '2e2a77cfac17ae80043e8ecaebb52b9d498e16f1'
+    oldFile: null
+  /BattleServer/cpp/cpp.vcxproj.filters:
+    newFile: !uuid 'ac784a5cc1fc2d14e6bf834ce7adb9d9f2decaf8'
+    oldFile: null
+  /BattleServer/cpp/main.cpp:
+    newFile: !uuid 'b6b9b9bb3199b25e45aae7a86b2ea0359f920ad9'
+    oldFile: null
+  /BattleServer/main.cpp:
+    newFile: !uuid '39e05a88034e7a069eca9e664f1bac458688faa5'
+    oldFile: null
+  /BattleServer/战斗服务器帧同步.txt:
+    newFile: !uuid 'e69de29bb2d1d6434b8b29ae775ad8c2e48c5391'
+    oldFile: null
+  /LogicServer:
+    newFile: !uuid 'ed51851932592bb8d7a42e0ce5b9617df0c3fd2e'
+    oldFile: null
+  /LogicServer/逻辑服务器RPC.txt:
+    newFile: !uuid 'e69de29bb2d1d6434b8b29ae775ad8c2e48c5391'
+    oldFile: null
+  /设计文档:
+    newFile: !uuid '5e7e0a3af5ada35bf4357a2c2558698488cf9787'
+    oldFile: null
+  /设计文档/IMG_0739.jpg:
+    newFile: !uuid 'f4ec41456a781be87f9b2b8f9d74477c4412083f'
+    oldFile: null
+  /设计文档/IMG_0740.jpg:
+    newFile: !uuid 'fb1f4dd73237b58f5f539d12f888e131b755d078'
+    oldFile: null
+  /设计文档/IMG_0741.jpg:
+    newFile: !uuid 'b7e460b9bc6229cef5132a7dea653ea2ebece2d1'
+    oldFile: null
+  /设计文档/IMG_0742.jpg:
+    newFile: !uuid 'a9ce02efb637ca1f79378fcc03a5c44de13dc1d8'
+    oldFile: null
+  /设计文档/战斗客户端主流程.xmind:
+    newFile: !uuid '857cc787c9200e18a1ee36f92eefa1b8baeac941'
+    oldFile: null
+  /设计文档/战斗客户端帧同步流程.xmind:
+    newFile: !uuid '383a26a9d6dabdb83ea71dcbde4b5543e681c402'
+    oldFile: null
+  /设计文档/战斗服务器流程.xmind:
+    newFile: !uuid '2805818bad2cc80186f3f9f43742ae46635bd528'
+    oldFile: null
+  /设计文档/游戏系统.xmind:
+    newFile: !uuid '1556af4bb3d8174b0ee10f0ecb1be32fafd09e4b'
+    oldFile: null
+  /设计文档/状态机关系类图.vsd:
+    newFile: !uuid '8b19b4d20aad4ae6d57caa25901e974775ae6f43'
+    oldFile: null
+  /设计文档/超类.xmind:
+    newFile: !uuid '57142764b68aeb04c7be1fd6ccfc4934d28f9935'
+    oldFile: null
+gitCommitId: !uuid 'c1b98057fe675f68811f0890713d9794f52d3f47'
 renames: {
   }
-revisionId: 1
+revisionId: 2
