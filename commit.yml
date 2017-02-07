@@ -1,9 +1,80 @@
 !revision
 branches: {
   }
-fileChange: {
-  }
-gitCommitId: !uuid '32d7c20d946ba69368ecf9a4f35b827597dfae58'
+fileChange:
+  /UnityClient:
+    newFile: !uuid '58dc72ddd20fa01a7d7df1feaff1c32ebf55eff2'
+    oldFile: !uuid 'e94ff52af7fc7f96fa30d0f464ebdc3402d807a0'
+  /UnityClient/Assets:
+    newFile: !uuid '89c15dbec5b4ae2123b59bd6b9cdf6e74774f46c'
+    oldFile: !uuid '669a8f66bbbf8d32d95aa61381de8ea6fb1903d7'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '8a2a15688a91fa5041359f942466cd3ed2b17de2'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'ce314400d75ab9ab693b3db6cbe6863a27586e26'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/Animations.prefab:
+    newFile: !uuid 'bbd0a9f0420e70a105ed0f005452dc55fa479f33'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/Animations.prefab.meta:
+    newFile: !uuid 'f4c4bc004bb28ca7d3d2ec107eb781d5766493d3'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/Enemy444.prefab:
+    newFile: !uuid '17276d522db7869fa2accaa3541392cf667a41a1'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/Enemy444.prefab.meta:
+    newFile: !uuid '5211c7f48b8669d5a0f61d4a7313a67b28599eed'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/Entity.prefab:
+    newFile: !uuid '361707d01baf0ed08fd65fd1e1e214b6a4cc67ec'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/Entity.prefab.meta:
+    newFile: !uuid '12449a2480ad3727d24a766f7e27f9b3da4e0713'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/Hero2.prefab:
+    newFile: !uuid 'b5da3418888390ac7cd1e01275fd7061248fd8ed'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/Hero2.prefab.meta:
+    newFile: !uuid '6b29bebf097d9fd3ab2f25ef0351b8dc3e263a63'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/map:
+    newFile: !uuid 'e9043cafe88a58e4f58ed0974f01470112ca482d'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/map.meta:
+    newFile: !uuid '162cbbb36e2b15e39fc35f4ba31d6f0dff99c34b'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/map/Point.prefab:
+    newFile: !uuid '0e490fe26d3b95c5e2cf5924992548d87e821685'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/map/Point.prefab.meta:
+    newFile: !uuid '21aae5f84fa7e8dcd87c9582e8a2eb39f8e30b4c'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid '657116123675f942c41e57db330c5ee6f0c93d82'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui.meta:
+    newFile: !uuid '2041a1d23717c435726a1559962a2a3785ae746f'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/Battle.prefab:
+    newFile: !uuid 'fb4d7010159b43945d5d69b0306c3a5c916b3f24'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/Battle.prefab.meta:
+    newFile: !uuid 'ae1379f3fc2c6f24c0a343b424f6dafd0487d8c5'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/PanelHero.prefab:
+    newFile: !uuid 'dd01eb72553d00ee78ce7c20df8dbc767293cb3e'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/PanelHero.prefab.meta:
+    newFile: !uuid '718aad2efb25c1e46d935826ac0aff9881d8a6b4'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/Public.prefab:
+    newFile: !uuid '1ebb117e1c20a1d914a996896bf48d723a12806f'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/Public.prefab.meta:
+    newFile: !uuid '64bfcff4a57ef7fa25cbf7c37b5d304bd1ac7b4d'
+    oldFile: null
+gitCommitId: !uuid '05bb93fbd74d49d7f3413567e9d31504e2b1e742'
 renames: {
   }
-revisionId: 5
+revisionId: 6
