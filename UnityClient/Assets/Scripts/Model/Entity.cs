@@ -135,11 +135,11 @@ public class Entity : Model
     //-------------------------------------------------member
 
     // base property
-    public float x = 0.0f;
+    public float x = 1.0f;
     public float y = 0.0f;
     public int no = 0;//临时识别编号 比如战斗
     public string id = ""; // 唯一id
-    public float flipX = 1.0f;
+    public float flipX = -1.0f;//默认面向右边
 
     public bool attackAble = true;
 
