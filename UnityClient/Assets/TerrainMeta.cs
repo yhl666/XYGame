@@ -17,6 +17,6 @@ public class TerrainMeta : MonoBehaviour
     }
 
 
-    [SerializeField]
-   public TerrainBlock[] blocks;
+ 
+     TerrainBlock[] blocks;
 }

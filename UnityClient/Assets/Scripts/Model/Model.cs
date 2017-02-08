@@ -24,11 +24,11 @@ public class Model : GAObject
 
 
 
-public class MapBase : Model
+public class WorldMapBase : Model
 {
     public void AddEntity(Entity obj)
     {
-
+        objs.Add(obj);
     }
 
     /// <summary>
@@ -36,30 +36,9 @@ public class MapBase : Model
     /// </summary>
     public override void UpdateMS()
     {
-        this.UpdateX();
-        this.UpdateY();
+
 
     }
-    private void UpdateX()
-    {
-
-    }
-    private void UpdateY()
-    {
-
-    }
-    /// <summary>
-    /// 返回当前x坐标的高度
-    /// </summary>
-    /// <param name="x"></param>
-    /// <returns></returns>
-
-    public float GetHeight(float x)
-    {
-        int xx = (int)x;
-        return 0.0f;
-    }
-
     /// <summary>
     /// 将Entity 坐标 转换为 unity世界坐标
     /// </summary>
@@ -67,10 +46,6 @@ public class MapBase : Model
     /// <returns></returns>
     public Vector2 ConvertToWorldSpace(Entity obj)
     {
-
-
-
-
         return new Vector2(0, 0);
     }
 
@@ -78,8 +53,17 @@ public class MapBase : Model
 
     protected ArrayList heights = new ArrayList();
     protected ArrayList objs = new ArrayList();
+    protected Terrain terrain = null;
 }
 
+
+public sealed class BattleWorldMap : WorldMapBase
+{
+    public override void UpdateMS()
+    {
+
+    }
+}
 
 
 [System.Serializable]
@@ -128,13 +112,12 @@ public class Terrain : Model
     public override bool Init()
     {
         base.Init();
-        // 1米为单位
         Debug.Log("Terrain Init");
 
-        Transform[] objs = GameObject.Find("Terrain").transform.FindChild("Points").GetComponentsInChildren<Transform>();
+        Transform[] objs = GameObject.Find("Terrain").transform.FindChild("WalkAble").GetComponentsInChildren<Transform>();
+        if (objs.Length < 2) return false;
 
         Transform last = objs[1] as Transform;
-        ;
 
         for (int i = 2; i < objs.Length; i++)
         {
@@ -144,13 +127,9 @@ public class Terrain : Model
             last = t;
         }
 
-
         //   blocks.Add(TerrainBlock.Create(0f, 2.2f, 0f));
         // blocks.Add(TerrainBlock.Create(2.2f, 4.7f, 0.64f));
         //  blocks.Add(TerrainBlock.Create(4.7f, 7.335f, 1.255f));
-
-
-
         return true;
     }
 
