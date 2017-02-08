@@ -3,6 +3,11 @@ using System.Collections;
 
 public class WorldMapBase : Model
 {
+
+    public Terrain GetTerrain()
+    {
+        return terrain;
+    }
     public void AddEntity(Entity obj)
     {
         objs.Add(obj);

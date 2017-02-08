@@ -5,9 +5,9 @@ using System.Collections;
 [System.Serializable]
 public class TerrainBlock
 {
-    public float x_left;
-    public float x_right;
-    public float height;
+    public float x_left;//地形块 左边界
+    public float x_right;// 地形块右边界
+    public float height; // 当前块 的海拔高度  单位米
 
     public static TerrainBlock Create(float x_left, float x_right, float height)
     {
@@ -50,7 +50,8 @@ public class Terrain : Model
         base.Init();
         Debug.Log("Terrain Init");
 
-        Transform[] objs = GameObject.Find("Terrain").transform.FindChild("WalkAble").GetComponentsInChildren<Transform>();
+        GameObject obj_terrain = GameObject.Find("Terrain");
+        Transform[] objs = obj_terrain.transform.FindChild("WalkAble").GetComponentsInChildren<Transform>();
         if (objs.Length < 2) return false;
 
         Transform last = objs[1] as Transform;
@@ -63,11 +64,24 @@ public class Terrain : Model
             last = t;
         }
 
-        //   blocks.Add(TerrainBlock.Create(0f, 2.2f, 0f));
-        // blocks.Add(TerrainBlock.Create(2.2f, 4.7f, 0.64f));
-        //  blocks.Add(TerrainBlock.Create(4.7f, 7.335f, 1.255f));
+
+        GameObject map_range = obj_terrain.transform.FindChild("MapRange").gameObject;
+
+        limit_x_left = map_range.transform.FindChild("Point_limit_x_left").transform.position.x;
+        limit_x_right = map_range.transform.FindChild("Point_limit_x_right").transform.position.x;
+
+        limit_y_down = map_range.transform.FindChild("Point_limit_y_down").transform.position.y;
+        limit_y_up = map_range.transform.FindChild("Point_limit_y_up").transform.position.y;
+
         return true;
     }
+
+
+    public float limit_x_left = 0.0f; //地图左边界
+    public float limit_x_right = 0.0f;//地图右边界
+    public float limit_y_up = 0.0f;// 地图上边界
+    public float limit_y_down = 0.0f;//地图下边界
+
 
     [SerializeField]
     public ArrayList blocks = new ArrayList();

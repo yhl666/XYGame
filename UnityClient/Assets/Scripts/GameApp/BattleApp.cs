@@ -99,7 +99,7 @@ public class BattleApp111 : AppBase
 public sealed class BattleApp : AppBase
 {
 
-    public BattleWorldMap  GetCurrentWorldMap()
+    public BattleWorldMap GetCurrentWorldMap()
     {
         return this.worldMap;
     }
@@ -116,18 +116,7 @@ public sealed class BattleApp : AppBase
         this.worldMap = ModelMgr.Create<BattleWorldMap>();
 
         ViewUI.Create<UIPubblicRoot>();
-
-        //  Hero h1 = HeroMgr.Create<Hero>();
-        //    h1.team = 1;
-
-
-
-        Debug.Log("11111111111111111111111111");
-
-
-
         ViewUI.Create<UIBattleRoot>();
-
 
         for (int i = 0; i < 100; i++)
         {
@@ -691,7 +680,7 @@ public sealed class BattleApp : AppBase
     System.Random randObj;
 
     private int current_max_fps = 0;
-    public BattleWorldMap worldMap = null;
+    private BattleWorldMap worldMap = null;
 
     public static BattleApp ins
     {

@@ -37,7 +37,10 @@ public sealed class Utils
 
 
     }
-
+    public static Vector3 Vector3To2DVector3(Vector3 v,Vector3 vv )
+    {
+        return new Vector3(v.x, v.y, vv.z);
+    }
 
 
     public static string GetFileName(string file)
