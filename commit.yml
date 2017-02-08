@@ -3,18 +3,12 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'eb543c6ed0e180e00f0b57bb13b0a5df8070fd05'
-    oldFile: !uuid '3eed02e72b5019416043ab0e296d797cb01f3a7d'
-  /UnityClient/Assets:
-    newFile: !uuid 'c31d3ab866ac1fd542e1f48da45ab4f6ee278caf'
-    oldFile: !uuid '8c3c058958a4d87c309154e7f67f90abb1817c61'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '14256196e8432ac081c2baf2e5388f1fc4e92d4d'
-    oldFile: !uuid '579b006bedb89d0d0372ec0bda4be98e14e624d4'
-  /UnityClient/Assets/Scripts/CameraFollow.cs:
-    newFile: !uuid '0cc4465466edc7249569c1aeb633d68f6bbadb00'
-    oldFile: !uuid '357b993ded151677256bab21c907c30383c80e93'
-gitCommitId: !uuid 'a334f392ef680bfaa740f79d98c97a689d456080'
+    newFile: !uuid '22667b34bdc576dd265c7f8a0da7ea2743714567'
+    oldFile: !uuid 'eb543c6ed0e180e00f0b57bb13b0a5df8070fd05'
+  /UnityClient/UnityClient.v12.suo:
+    newFile: !uuid 'b4a0938e7f7ea92e3d5ad17de836eb041c90fafc'
+    oldFile: !uuid 'c6b2e0edea7e6166ef0f1f32a7f0f06059e54904'
+gitCommitId: !uuid '94f378a77ce743ece82c8e0364e34c45c43e4715'
 renames: {
   }
-revisionId: 24
+revisionId: 25
