@@ -13,6 +13,7 @@ public class CameraFollow : MonoBehaviour
         GameObject obj = GameObject.Find(hero.no.ToString());
         if (obj == null) return;
 
+        //跟随 地形滚动
         float x = obj.transform.position.x;
         float y = obj.transform.position.y;
 
@@ -47,52 +48,35 @@ public class CameraFollow : MonoBehaviour
         }
 
         this.transform.position = new Vector3(x, y, this.transform.position.z);
-        /* this.transform.position = new Vector3(x, y, this.transform.position.z);
-
-      var bg1 = GameObject.Find("bg_static");
-      bg1.transform.position = Utils.Vector3To2DVector3(this.transform.position, bg1.transform.position);
-      return;
-      */
-        //   queue.Enqueue(new Vector3(x, y, this.transform.position.z));
-
-        /*   if (queue.Count > 40)
-           {
-               t = 0;
-               last =   this.transform.position;
-               while (queue.Count > 0)
-               {
-                   next = (Vector3)queue.Dequeue();
-               }
-
-               queue.Clear();
-
-           }
-           t += 0.01f;
-           if (t >= 1.0f) t = 1.0f;
-           */
-
-
-
-
-        //  else if(hero.isStand  && hero.isRunning==false)
-        {
-
-            //  this.transform.position = new Vector3(Mathf.Lerp(last.x, next.x, t),Mathf.Lerp(last.y, next.y, t), -900);
-            //  this.transform.position = new Vector3(Mathf.SmoothStep(last.x, next.x, t), Mathf.SmoothStep(last.y, next.y, t), -900);
-            /*  this.transform.position = new Vector3(
-      
-               
-                 Mathf.SmoothDamp(transform.position.x, next.x, ref speed, 0.1f, 5.0f),
-                //  Mathf.SmoothDamp(transform.position.y, next.y, ref speed, Time.deltaTime, 3.0f)
-                y
-                //y  Mathf.Lerp(last.y, next.y, t)
-
-                  , -900);
-              */
-        }
+     
 
         var bg = GameObject.Find("bg_static");
-        bg.transform.position = Utils.Vector3To2DVector3(this.transform.position, bg.transform.position);
+
+
+
+
+
+        //静态 背景 图 滚动
+        var sp = bg.GetComponent<SpriteRenderer>().sprite;
+
+
+        float HALF = (sp.texture.width - Screen.width) / 100.0f / 2.0f;
+
+        float MAX = HALF * 2.0f;
+        float percent = 0.5f;
+
+        //计算相机百分比
+
+        //相机坐标最大值
+        float max_camera = (terrain.limit_x_right - Screen.width / 100.0f / 2.0f - Screen.width / 100.0f / 2.0f);
+
+        percent = (this.transform.position.x - Screen.width / 100.0f / 2.0f) / max_camera;
+
+
+        bg.transform.position = new Vector3(
+          this.transform.position.x + HALF - percent * MAX,//起始位置加上起始偏移量，  减去比例大小
+         this.transform.position.y
+         , bg.transform.position.z);
 
 
 
