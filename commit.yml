@@ -3,18 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'b0750562d577524f3f6ed6224c13974db5b3d421'
-    oldFile: !uuid '295615cb5383b6fccd1c73ef77c7274269a1b2bc'
+    newFile: !uuid '5c2bd694ee5734af41065587e792eaf042388f32'
+    oldFile: !uuid 'b0750562d577524f3f6ed6224c13974db5b3d421'
   /UnityClient/Assets:
-    newFile: !uuid 'a8e6a3deed11e5d6462dd37610c7bff9cb6f57ca'
-    oldFile: !uuid '5819a7bd7103712dee44998f30f11bd5b33b0edd'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '1fcaaa918040ee333a46851adf764a5ed0b6486d'
-    oldFile: !uuid 'a952ecb62fab80c1c454d8fec82a053b048f238e'
-  /UnityClient/Assets/Scripts/CameraFollow.cs:
-    newFile: !uuid '5c5c92390e5766c74d8ea0453512ab4fc6ff483a'
-    oldFile: !uuid 'cc277af02cd371a33f5f573e5b64f50208b34876'
-gitCommitId: !uuid 'b2b17c0a1d36c66b871e75ec263ae6a3d376c968'
+    newFile: !uuid 'fb047a05770070d865a2eb41cd1b75c7c07b2086'
+    oldFile: !uuid 'a8e6a3deed11e5d6462dd37610c7bff9cb6f57ca'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '6f414a7b7d6a538d52e89aa0f00b0eab8ac28b40'
+    oldFile: !uuid '29af5d24439c3ea7da8cc1bb9d4c94719792d0d2'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'c66a49b67065b81c8ca72613a09887f546d84730'
+    oldFile: !uuid 'abd5a2aa14d48dca21d9348fe6e706c3519cc901'
+  /UnityClient/Assets/Resources/Prefabs/map:
+    newFile: !uuid 'a689f82d8df402509c086f3bb7d2ab2831e81745'
+    oldFile: !uuid '2bd92b85ca01bdb0ab8a273df011fff53da0149f'
+  /UnityClient/Assets/Resources/Prefabs/map/Terrain1.prefab:
+    newFile: !uuid '0ce0518ddb0529eab2cd0f2c1aef89fd1389bbc3'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/map/Terrain1.prefab.meta:
+    newFile: !uuid 'd7c23d9e484b2a2754df1d3df2a361dc27fcb4fc'
+    oldFile: null
+gitCommitId: !uuid 'aabb8e92b004c61534afa0da2f46ace4cdebd995'
 renames: {
   }
-revisionId: 21
+revisionId: 22
