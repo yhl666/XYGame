@@ -20,11 +20,11 @@ public sealed class UIPubblicRoot : ViewUI
 
         this._ui_child.Add(ViewUI.Create<UI_loading>(this));
 
-        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<int>(() =>
+        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
             {
                 this._ui_child.Add(ViewUI.Create<UI_wait>(this));
                 this._ui_child.Add(ViewUI.Create<UI_push_msg>(this));
-                return 0;
+                return DATA.EMPTY_STRING;
             }));
 
 
@@ -77,14 +77,28 @@ public sealed class UI_loading : ViewUI
             case Events.ID_LOADING_OK:
                 {
                     this._enable = false;
-                    this._ui.SetActive(_enable);
+                    if(shouldHideWhenComplete) {this._ui.SetActive(_enable);}
                 } break;
 
             case Events.ID_ADD_ASYNC:
                 {
                     funcs.Enqueue(userData);
                 } break;
+            case Events.ID_LOADING_SHOW:
+                {
+                    this.shouldHideWhenComplete = false;
+                    this._ui.SetActive(true);
+                }break;
+            case Events.ID_LOADING_HIDE:
+                {
+                    this.shouldHideWhenComplete = true;
+                    this._ui.SetActive(false);
+                }break;
 
+            case Events.ID_LOADING_SYNC_STRING:
+                {
+                    this.txt.text = userData as string;
+                }break;
         }
 
 
@@ -107,21 +121,28 @@ public sealed class UI_loading : ViewUI
             this._enable = true;
             this._ui.SetActive(_enable);
 
-            Func<int> SyncFunc = funcs.Dequeue() as Func<int>;
-            int ret = (MAX_COUNT - funcs.Count) * 100 / MAX_COUNT;
+            Func<string> SyncFunc = funcs.Dequeue() as Func<string>;
+            int percent = (MAX_COUNT - funcs.Count) * 100 / MAX_COUNT;
 
             //TODO here can invoke work in other thead
             // will consider some func can only run in  UnityEngine main thread ?
-            SyncFunc();
+            string ret= SyncFunc();
             ii++;
-            this.txt.text = string.Format(DATA.UI_LOADING, ret.ToString(), ii.ToString());
-            this.img.transform.localScale = new Vector3(1.0f, ret / 100.0f, 1.0f);
+            if (ret == DATA.EMPTY_STRING)
+            {
+                this.txt.text = string.Format(DATA.UI_LOADING, percent.ToString(), ii.ToString());
+            }
+            else
+            {
+                this.txt.text = ret;
+            }
+            this.img.transform.localScale = new Vector3(1.0f, percent / 100.0f, 1.0f);
 
 
             if (funcs.Count <= 0)
             {
                 this._enable = false;
-                this._ui.SetActive(_enable);
+                if (shouldHideWhenComplete) { this._ui.SetActive(_enable); }
 
             }
         }
@@ -145,6 +166,10 @@ public sealed class UI_loading : ViewUI
         EventDispatcher.ins.AddEventListener(this, Events.ID_ADD_ASYNC);
         EventDispatcher.ins.AddEventListener(this, Events.ID_LOADING_NOW);
         EventDispatcher.ins.AddEventListener(this, Events.ID_LOADING_OK);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_LOADING_SHOW);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_LOADING_HIDE);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_LOADING_SYNC_STRING);
+
 
         this._ui.SetActive(_enable);
         return true;
@@ -155,6 +180,7 @@ public sealed class UI_loading : ViewUI
     private Text txt;
     private Image img;
     private int ii = 0;
+    private bool shouldHideWhenComplete = true;
     private int MAX_COUNT = 0;
 
 }

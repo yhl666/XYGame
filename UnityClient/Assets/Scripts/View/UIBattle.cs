@@ -20,48 +20,48 @@ public sealed class UIBattleRoot : ViewUI
         this._ui_root = GameObject.Find("UI_Battle");
 
 
-        EventDispatcher.ins.PostEvent("addAsync", new Func<int>(() =>
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
             {
                 this._ui_child.Add(ViewUI.Create<UI_joystick>(this));
-                return 0;
+                return DATA.EMPTY_STRING;
             }));
 
 
 
-        EventDispatcher.ins.PostEvent("addAsync", new Func<int>(() =>
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_skills>(this));
-            return 0;
+            return DATA.EMPTY_STRING;
         }));
 
 
 
-        EventDispatcher.ins.PostEvent("addAsync", new Func<int>(() =>
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_heroInfo>(this));
-            return 0;
+            return DATA.EMPTY_STRING;
         }));
 
-        EventDispatcher.ins.PostEvent("addAsync", new Func<int>(() =>
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_xy>(this));
-            return 0;
+            return DATA.EMPTY_STRING;
         }));
 
 
 
-        EventDispatcher.ins.PostEvent("addAsync", new Func<int>(() =>
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_frame>(this));
-            return 0;
+            return DATA.EMPTY_STRING;
         }));
 
 
 
-        EventDispatcher.ins.PostEvent("addAsync", new Func<int>(() =>
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_fpsms>(this));
-            return 0;
+            return DATA.EMPTY_STRING;
         }));
         return true;
     }

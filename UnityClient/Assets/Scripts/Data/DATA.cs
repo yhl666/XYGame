@@ -25,6 +25,8 @@ public class DATA
     public const string UI_INFO_XY = "X:{0} Y:{1}";
     public const string UI_FPSMS = "FPS:{0} {1}ms";
     public const string UI_FRAME = "Frame:{0}";
+
+    public const string EMPTY_STRING = "";
 }
 
  

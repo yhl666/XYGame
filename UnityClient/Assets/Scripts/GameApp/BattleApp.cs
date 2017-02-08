@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Threading;
 
 public class BattleApp111 : AppBase
 {
@@ -23,7 +24,7 @@ public class BattleApp111 : AppBase
 
         /*  for (int i = 0; i < 100; i++)
           {
-              EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<int>(() =>
+              EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
             {
 
                 return 10;
@@ -108,6 +109,9 @@ public sealed class BattleApp : AppBase
         EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
         isOver = false;
         _ins = this;
+
+
+
         for (int i = 0; i < Config.MAX_FRAME_COUNT; i++)
         {
             this.framedatas.Add(null);
@@ -118,23 +122,28 @@ public sealed class BattleApp : AppBase
         ViewUI.Create<UIPubblicRoot>();
         ViewUI.Create<UIBattleRoot>();
 
-        for (int i = 0; i < 100; i++)
+      /*  for (int i = 0; i < 100; i++)
         {
-            EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<int>(() =>
+            EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
             {
-                return 10;
+                return DATA.EMPTY_STRING;
             }));
-
         }
 
-        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<int>(() =>
+        */
+        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
         {
-            BattleApp.ins.InitNet(false);
-
-            return 10;
+            EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
+            return "本地资源加载完成，初始化网络资源";
         }));
 
+        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+        {
+         //   Thread.Sleep(1000);
+            BattleApp.ins.InitNet(false);
 
+            return "初始化网络资源，等待服务器响应";
+        }));
 
         //   BattleApp.ins.InitNet(false);
 
@@ -490,6 +499,8 @@ public sealed class BattleApp : AppBase
             HeroMgr.ins.self = h2;
 
             PublicData.GetInstance()._on_enter_max_fps = on_enter_max_fps;
+
+            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
         }
 
         else if (cmd == "Over")
