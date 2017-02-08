@@ -85,6 +85,8 @@
      <Compile Include="Assets\Scripts\Model\Skill.cs" />
      <Compile Include="Assets\Scripts\Model\StateBase.cs" />
      <Compile Include="Assets\Scripts\Model\StateMachine.cs" />
+     <Compile Include="Assets\Scripts\Model\Terrain.cs" />
+     <Compile Include="Assets\Scripts\Model\WorldMap.cs" />
      <Compile Include="Assets\Scripts\Net\SocketClient.cs" />
      <Compile Include="Assets\Scripts\SceneMgr.cs" />
      <Compile Include="Assets\Scripts\View\UIBattle.cs" />
