@@ -3,15 +3,36 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'd7429eb95a9240b8be7ae3f5a92454c5d8925dbf'
-    oldFile: !uuid '7483cc787b666fd1b7a83edeb9b439f9702c2542'
-  /UnityClient/Assembly-CSharp.csproj:
-    newFile: !uuid 'ad6b432df693b132de19ab50e9393e037f66ad67'
-    oldFile: !uuid '79531795a3df721fa395d9364c4e96c2aaf2705d'
-  /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid '6f4bee657073f82d42ed920ac0a6ffe415bd79e9'
-    oldFile: !uuid '1032c2663cb5b1511e34a0b041e33d9710274bd6'
-gitCommitId: !uuid 'd963a46491bd3a6780de4ca2d5de918938512a13'
+    newFile: !uuid '21791e9076e1cde771fd90e865297416d6098993'
+    oldFile: !uuid 'd7429eb95a9240b8be7ae3f5a92454c5d8925dbf'
+  /UnityClient/Assets:
+    newFile: !uuid '6c5dc78feb2a85cad7e46e7bcdb1673ec7664c91'
+    oldFile: !uuid '692efede4168edf1c8f672dd8cf7b4a779144161'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '90f9d031f1da670808cf51fa891581c6edb67fe0'
+    oldFile: !uuid 'd7b5ac8fc5173f641887cbe3db68a11be0a062b2'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'ab4922710be8810b75f81174d5c3c7385d82fe51'
+    oldFile: !uuid '49cff3251aa5d490d360e9691e3994c5a5344ebb'
+  /UnityClient/Assets/Resources/Prefabs/Hero2.prefab:
+    newFile: !uuid 'cf9753835a7094d5798b5a63fde18f48e501fed3'
+    oldFile: !uuid 'b5da3418888390ac7cd1e01275fd7061248fd8ed'
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid '497238423bcc2be50f20b269b4dd327dfe98d42a'
+    oldFile: !uuid '39d0464c5888f6c846fe1e79918797b5cf781142'
+  /UnityClient/Assets/Scenes/BattleEnemy.unity:
+    newFile: !uuid 'd5b3f5417c874f7f6704f5fc427fb23502e5a5cf'
+    oldFile: !uuid 'e2cea22d9d5de41c9c7f080cae556a8e390e21ae'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '3cd176d66220122dd666382b39b408b805b054bc'
+    oldFile: !uuid '65de20683aa35d1a9fd199b3f9d668335ce4da51'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'ce59c31cd8d88a2612090260139220ac8d275e17'
+    oldFile: !uuid 'ad5a20cb90504986116bc0315fd83f63ec0a88ff'
+  /UnityClient/Assets/Scripts/Model/Entity.cs:
+    newFile: !uuid '947b4a3e935fe432c6b0e6bb4e4592f87c877a68'
+    oldFile: !uuid '1506babb49126d52089cb24e2d88239928b198a3'
+gitCommitId: !uuid '426f3e3be4ecbe05d1c27dc165c9edb88d1c3508'
 renames: {
   }
-revisionId: 17
+revisionId: 18
