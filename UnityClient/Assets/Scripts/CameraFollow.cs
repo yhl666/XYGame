@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour
         if (y < y_min) y = y_min;
         if (y > y_max) y = y_max;
      
-        float delta = Screen.width / 100.0f / 4.0f;
+        float delta = Screen.width / 100.0f / 4.0f;//推动滚动 的宽度值
         if (Mathf.Abs(this.transform.position.x - x) > delta)
         {
             if (this.transform.position.x - x < 0)
@@ -100,15 +100,4 @@ public class CameraFollow : MonoBehaviour
 
 
     }
-
-    void Start()
-    {
-
-    }
-
-    float speed = 0f;
-    float t = 0.0f;
-    Vector3 next;
-    Vector3 last;
-    Queue queue = new Queue();
 }

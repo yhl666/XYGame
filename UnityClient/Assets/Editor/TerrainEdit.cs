@@ -27,18 +27,9 @@ public class TerrainMetaEditor : Editor
         SerializedProperty pros = serializedObject.FindProperty("blocks");
 
 
-        if (GUILayout.Button("add point"))
+        if (GUILayout.Button("Save to file"))
         {
-            int size = pros.arraySize;
-
-            pros.arraySize = size + 1;
-            SerializedProperty block = pros.GetArrayElementAtIndex(0);
-
-           // TerrainMeta meta = block.serializedObject.targetObject as TerrainMeta;
-    
-            //pros.floatValue = 5;
-            block.serializedObject.ApplyModifiedProperties();
-
+            Debug.Log("save to XX.xml");
         }
 
         serializedObject.ApplyModifiedProperties();
