@@ -36,18 +36,3 @@ public class TerrainMetaEditor : Editor
     }
  
 }
-public class TerrainEdit : Editor
-{
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-}
