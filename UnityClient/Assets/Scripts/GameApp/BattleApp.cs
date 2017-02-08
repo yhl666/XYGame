@@ -98,6 +98,11 @@ public class BattleApp111 : AppBase
 
 public sealed class BattleApp : AppBase
 {
+
+    public BattleWorldMap  GetCurrentWorldMap()
+    {
+        return this.worldMap;
+    }
     public override bool Init()
     {
         EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
@@ -107,6 +112,8 @@ public sealed class BattleApp : AppBase
         {
             this.framedatas.Add(null);
         }
+
+        this.worldMap = ModelMgr.Create<BattleWorldMap>();
 
         ViewUI.Create<UIPubblicRoot>();
 
@@ -684,7 +691,7 @@ public sealed class BattleApp : AppBase
     System.Random randObj;
 
     private int current_max_fps = 0;
-
+    public BattleWorldMap worldMap = null;
 
     public static BattleApp ins
     {

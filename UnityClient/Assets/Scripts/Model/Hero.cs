@@ -6,9 +6,7 @@ public class Hero : Entity
     public override bool Init()
     {
         base.Init();
-
-        terrain = ModelMgr.Create<Terrain>() as Terrain;
-
+ 
         // config
         this.skin = "#1";
         this.prefabsName = "Prefabs/Hero2";
@@ -92,28 +90,7 @@ public class Hero : Entity
     public override void UpdateMS()
     {
         //process terrain
-        float x = this.x;
-        float y = this.height;
-        TerrainBlock block = terrain.GetBlock(x);
-        if (block != null)
-        {
-            y = block.height;
-            if (y == height)
-            {
-                if ((block.x_right + block.x_left) / 2.0f < x)
-                {
-                    isInOneTerrainRight = true;
-                }
-                else
-                {
-                    isInOneTerrainRight = false;
-                }
-            }
-
-            this.height = y;
-
-          //  Debug.Log(y + "  real " + height + "  " + isInOneTerrainRight + "   left:" + left + "   right:" + right);
-        }
+        BattleApp.ins.GetCurrentWorldMap().UpdateEntity(this);
 
         //process  input status
         if (atk)

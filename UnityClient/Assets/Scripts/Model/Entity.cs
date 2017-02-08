@@ -155,7 +155,7 @@ public class Entity : Model
 
 
     private float _height = 0.0f;//海拔
-    protected bool isInOneTerrainRight = false;
+    public bool isInOneTerrainRight = false;
     public float height
     {
         set
@@ -321,12 +321,6 @@ public class Entity : Model
     }
 
     //-----------------------end of setter getter if hp mp exp
-
-
-
-    public Terrain terrain = null;
-
-
 
 
     public int level = 0;//等级

@@ -6,12 +6,13 @@ using System.Collections;
 /// </summary>
 public sealed class ModelMgr : GAObject
 {
-    public static Model Create<T>() where T : new()
+    public static T Create<T>() where T : new()
     {
-        Model ret = new T() as Model;
-        ret.Init();
-        ins.Add(ret);
-        return ret;
+        T t = new T();
+        Model m =t as Model;
+        m.Init();
+        ins.Add(m);
+        return t;
     }
 
     public void Add(Model b)
@@ -52,7 +53,7 @@ public sealed class ModelMgr : GAObject
             }
         }
     }
-
+  
 
     ArrayList lists = new ArrayList();
 
