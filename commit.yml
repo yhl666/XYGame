@@ -3,21 +3,33 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'a9007933d059ceb52b4716e8a1c4327b0b39ff85'
-    oldFile: !uuid '21791e9076e1cde771fd90e865297416d6098993'
+    newFile: !uuid '295615cb5383b6fccd1c73ef77c7274269a1b2bc'
+    oldFile: !uuid 'a9007933d059ceb52b4716e8a1c4327b0b39ff85'
   /UnityClient/Assets:
-    newFile: !uuid '57388cc0c91fb2b1639ca0f6132e74f51be89adf'
-    oldFile: !uuid '6c5dc78feb2a85cad7e46e7bcdb1673ec7664c91'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'a952ecb62fab80c1c454d8fec82a053b048f238e'
-    oldFile: !uuid '3cd176d66220122dd666382b39b408b805b054bc'
-  /UnityClient/Assets/Scripts/CameraFollow.cs:
-    newFile: !uuid 'cc277af02cd371a33f5f573e5b64f50208b34876'
-    oldFile: !uuid '6c0390f472248461d5f482ccc8748a570bcc7064'
-  /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid 'c6b2e0edea7e6166ef0f1f32a7f0f06059e54904'
-    oldFile: !uuid '6f4bee657073f82d42ed920ac0a6ffe415bd79e9'
-gitCommitId: !uuid 'c7f4d21e8ccc723d537104907244b202f9eb947c'
+    newFile: !uuid '5819a7bd7103712dee44998f30f11bd5b33b0edd'
+    oldFile: !uuid '57388cc0c91fb2b1639ca0f6132e74f51be89adf'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '29af5d24439c3ea7da8cc1bb9d4c94719792d0d2'
+    oldFile: !uuid '90f9d031f1da670808cf51fa891581c6edb67fe0'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'abd5a2aa14d48dca21d9348fe6e706c3519cc901'
+    oldFile: !uuid 'ab4922710be8810b75f81174d5c3c7385d82fe51'
+  /UnityClient/Assets/Resources/Prefabs/map:
+    newFile: !uuid '2bd92b85ca01bdb0ab8a273df011fff53da0149f'
+    oldFile: !uuid '111ba31af7b2bd44f4de7df205f181d5c1378d9d'
+  /UnityClient/Assets/Resources/Prefabs/map/PointLimit.prefab:
+    newFile: !uuid '79d89a0f57273d9a19e135b8923b335e17951af1'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/map/PointLimit.prefab.meta:
+    newFile: !uuid 'b862001bb5d1950fb34542fe120cedbd7a7aaf86'
+    oldFile: null
+  /UnityClient/Assets/Resources/b1.png:
+    newFile: !uuid 'cf727ba4200d8bd15a43bf0033e47cd7a46d9766'
+    oldFile: null
+  /UnityClient/Assets/Resources/b1.png.meta:
+    newFile: !uuid 'fb7e970adb8cc73161f4f83559a31e70b3798b53'
+    oldFile: null
+gitCommitId: !uuid 'b8e8f0bf7757831049c36d35ba6e1e0c7db0c863'
 renames: {
   }
-revisionId: 19
+revisionId: 20
