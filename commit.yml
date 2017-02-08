@@ -3,42 +3,48 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '79afe66e6a50a24677aaaf440c0026c3ee102c10'
-    oldFile: !uuid '40a974af5eb38ce75b6efce03ba69e0406e84cde'
+    newFile: !uuid '187f616346de6184189b9a3d66793fc334803400'
+    oldFile: !uuid '79afe66e6a50a24677aaaf440c0026c3ee102c10'
   /UnityClient/Assets:
-    newFile: !uuid '01043c58285827710cad001dd6f8a043dad92ec1'
-    oldFile: !uuid '89c15dbec5b4ae2123b59bd6b9cdf6e74774f46c'
-  /UnityClient/Assets/3rd.meta:
-    newFile: null
-    oldFile: !uuid 'bfb07a10463c9399c5eaef3821531c2b4a89685c'
-  /UnityClient/Assets/Editor:
-    newFile: !uuid '0d318571df6595977b92ab6d0ade81107f044ac1'
-    oldFile: !uuid 'c3f8f2dd523179725747a653514a286f46e122ea'
-  /UnityClient/Assets/Editor/TerrainEdit.cs:
-    newFile: !uuid '1a2c662e200ad75fa13e8a368620d11461c5ed1e'
-    oldFile: !uuid 'e1a6814beb2f064d950673a6cc31af96324fd006'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid 'ba5c8e44c78e99114bdf0affa2db3d55a1baf935'
-    oldFile: !uuid '0a99b038788a4f1202356b21f5dab4ef8d2fd2e7'
-  /UnityClient/Assets/Scenes/BattleEnemy.unity:
-    newFile: !uuid '48a2f82271a35ef1e6826bcccaf44a86924a2885'
-    oldFile: !uuid '6a74bec58f386a589d3a0c36adf53c31b965d5f5'
+    newFile: !uuid '93c228f0397919965039ae0f2f7ee31688b339f4'
+    oldFile: !uuid '01043c58285827710cad001dd6f8a043dad92ec1'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '089dff26d0c3b6f485cfab1cb1ad623b56b4e2f9'
-    oldFile: !uuid 'a222f490f6eabc6b302bdcd790e56b55404d2c8e'
+    newFile: !uuid '51bd0e21a57a7b8d2c06947adbbd2e6b25c201c4'
+    oldFile: !uuid '089dff26d0c3b6f485cfab1cb1ad623b56b4e2f9'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid '30600119d853a7f45bfc1e4d1dc4f90545d5ddc4'
+    oldFile: !uuid '14f57e0ed2b716460cbb32b9c8b1403323a5563b'
+  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
+    newFile: !uuid '9648de35b56fcf8a03d761f868e710e5ea3fdb60'
+    oldFile: !uuid 'd9d61c5b4af58d346e6b281f34eba076ac5504ba'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '286a69d2a4992b6415649e1f943864da714f9467'
-    oldFile: !uuid '17a5b8d10bff98a59f36f01782f6d63c796d84f7'
+    newFile: !uuid '733e2564c8225d7124a301904db0d5502e9c7df8'
+    oldFile: !uuid '286a69d2a4992b6415649e1f943864da714f9467'
+  /UnityClient/Assets/Scripts/Model/Entity.cs:
+    newFile: !uuid '1506babb49126d52089cb24e2d88239928b198a3'
+    oldFile: !uuid '91263729aa4707c688c16751969dcffe056fa800'
+  /UnityClient/Assets/Scripts/Model/Hero.cs:
+    newFile: !uuid '22fa953ff3f69de490fd0d980b379a0e2ad424f5'
+    oldFile: !uuid '423ba704413c259f413926bd411aff0a914ba906'
   /UnityClient/Assets/Scripts/Model/Model.cs:
-    newFile: !uuid '42475c15af8a7e95b89cf361017a80bae6a03e5f'
-    oldFile: !uuid 'ad51bfa601196ded5b51298b2ca047382ba8c6e0'
-  /UnityClient/Assets/TerrainMeta.cs:
-    newFile: !uuid 'a369449b64460d7e72b8259d5c7ccb38a81fee7f'
-    oldFile: !uuid '4ae8efb90132407a583e7efee3a30148f9f40481'
-  /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid '1032c2663cb5b1511e34a0b041e33d9710274bd6'
+    newFile: !uuid '6b10935d76f900d8dd44ea6ef7adc868e5b51ff1'
+    oldFile: !uuid '42475c15af8a7e95b89cf361017a80bae6a03e5f'
+  /UnityClient/Assets/Scripts/Model/ModelMgr.cs:
+    newFile: !uuid 'c9ce467bc2dc5a03145d8b802e5928538982b8a5'
+    oldFile: !uuid 'a8c3827e140f1104fd15b6c5f13e51bca2773875'
+  /UnityClient/Assets/Scripts/Model/Terrain.cs:
+    newFile: !uuid '1cb54aab0b450cbccdafb0edacfbd35148a37043'
     oldFile: null
-gitCommitId: !uuid 'd4760fa2de732a678be4fdc67c7df0df421c2b89'
+  /UnityClient/Assets/Scripts/Model/Terrain.cs.meta:
+    newFile: !uuid 'add72096ab14bd5efc6578dfb882afff99fe3caa'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/WorldMap.cs:
+    newFile: !uuid '5a8243becf7f6547c06c20b58cf4205baa70c532'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/WorldMap.cs.meta:
+    newFile: !uuid '97aa7fb84e9820d8192acdc3bd4ab35077e41d02'
+    oldFile: null
+gitCommitId: !uuid '8fe4af2580cf0d9e39da90f00963b2e338291530'
 renames: {
   }
-revisionId: 14
+revisionId: 15
