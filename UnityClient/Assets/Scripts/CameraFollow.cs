@@ -13,22 +13,29 @@ public class CameraFollow : MonoBehaviour
         GameObject obj = GameObject.Find(hero.no.ToString());
         if (obj == null) return;
 
+
+        //design  camera 's width and height  not  Screen wieth and height
+        float WIDTH = 1136.0f;// Screen.width;
+        float HEIGHT = 640.0f;// Screen.height;
+
+
+
         //跟随 地形滚动
         float x = obj.transform.position.x;
         float y = obj.transform.position.y;
 
         Terrain terrain = BattleApp.ins.GetCurrentWorldMap().GetTerrain();
 
-        float x_min = Screen.width / 100.0f / 2.0f + terrain.limit_x_left;//
-        float x_max = -Screen.width / 100.0f / 2.0f + terrain.limit_x_right;
+        float x_min = WIDTH / 100.0f / 2.0f + terrain.limit_x_left;//
+        float x_max = -WIDTH / 100.0f / 2.0f + terrain.limit_x_right;
 
-        float y_min = Screen.height / 100.0f / 2.0f + terrain.limit_y_down;//
-        float y_max = -Screen.height / 100.0f / 2.0f + terrain.limit_y_up;
+        float y_min = HEIGHT / 100.0f / 2.0f + terrain.limit_y_down;//
+        float y_max = -HEIGHT / 100.0f / 2.0f + terrain.limit_y_up;
 
         if (y < y_min) y = y_min;
         if (y > y_max) y = y_max;
 
-        float delta = Screen.width / 100.0f / 4.0f;//推动滚动 的宽度值
+        float delta = WIDTH / 100.0f / 4.0f;//推动滚动 的宽度值
         if (Mathf.Abs(this.transform.position.x - x) > delta)
         {
             if (this.transform.position.x < x)
@@ -48,7 +55,7 @@ public class CameraFollow : MonoBehaviour
         }
 
         this.transform.position = new Vector3(x, y, this.transform.position.z);
-     
+
 
         var bg = GameObject.Find("bg_static");
 
@@ -60,7 +67,7 @@ public class CameraFollow : MonoBehaviour
         var sp = bg.GetComponent<SpriteRenderer>().sprite;
 
 
-        float HALF = (sp.texture.width - Screen.width) / 100.0f / 2.0f;
+        float HALF = (sp.texture.width - WIDTH) / 100.0f / 2.0f;
 
         float MAX = HALF * 2.0f;
         float percent = 0.5f;
@@ -68,9 +75,9 @@ public class CameraFollow : MonoBehaviour
         //计算相机百分比
 
         //相机坐标最大值
-        float max_camera = (terrain.limit_x_right - Screen.width / 100.0f / 2.0f - Screen.width / 100.0f / 2.0f);
+        float max_camera = (terrain.limit_x_right - WIDTH / 100.0f / 2.0f - WIDTH / 100.0f / 2.0f);
 
-        percent = (this.transform.position.x - Screen.width / 100.0f / 2.0f) / max_camera;
+        percent = (this.transform.position.x - WIDTH / 100.0f / 2.0f) / max_camera;
 
 
         bg.transform.position = new Vector3(

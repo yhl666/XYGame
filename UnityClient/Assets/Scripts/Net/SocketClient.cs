@@ -112,7 +112,7 @@ public class SocketClient : object
                 string msg = (string)_sendQueue.Dequeue() + "^";
 
                 byte[] buffer = System.Text.Encoding.Default.GetBytes(msg);
-             //   Debug.Log("send:" +msg);
+                //   Debug.Log("send:" +msg);
                 if (buffer.Length > Config.MAX_NETSOCKET_BUFFER_SIZE)
                 {
                     Debug.LogError("buffer out of range");
@@ -176,18 +176,18 @@ public class SocketClient : object
                     string_last = string_last.Substring(last);
 
                     //sync cache to main thread
-                    BattleApp.GetInstance()._recvQueue.Lock();
+                    BattleApp.GetInstance().LockAdRecvMsg();
                     for (int i = 0; i < recv_cache.Count; i++)
                     {
 
-                     //   BattleApp.GetInstance()._recvQueue.UnSafeEnqueue(recv_cache[i] as string);
+                        //   BattleApp.GetInstance()._recvQueue.UnSafeEnqueue(recv_cache[i] as string);
 
                         BattleApp.GetInstance().AddRecvMsgUnSafe(recv_cache[i] as string);
                         _recv_list.Add(recv_cache[i] as string);
                         PublicData.GetInstance()._recv_last_game = _recv_list;
 
                     }
-                    BattleApp.GetInstance()._recvQueue.UnLock();
+                    BattleApp.GetInstance().UnLockAdRecvMsg();
 
                 }
                 else
@@ -285,14 +285,14 @@ public class SockClientWithVideoMode : SocketClient
 
 
         //sync cache to main thread
-        BattleApp.GetInstance()._recvQueue.Lock();
+        BattleApp.GetInstance().LockAdRecvMsg();
 
         while (_recv_list_index < onenter_max_fps)
         {
-            BattleApp.GetInstance()._recvQueue.UnSafeEnqueue(_recv_list[_recv_list_index] as string);
+            BattleApp.GetInstance().AddRecvMsgUnSafe(_recv_list[_recv_list_index] as string);
             _recv_list_index++;
         }
-        BattleApp.GetInstance()._recvQueue.UnLock();
+        BattleApp.GetInstance().UnLockAdRecvMsg();
 
         while (true)
         {

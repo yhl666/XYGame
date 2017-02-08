@@ -88,174 +88,14 @@ public class BattleApp111 : AppBase
 
 }
 
-
-
-
-
-
-
-
-
-
-public sealed class BattleApp : AppBase
+/// <summary>
+/// 处理玩家键盘 输入信息
+/// </summary>
+sealed class BattleKeyboardInputHandler
 {
 
-    public BattleWorldMap GetCurrentWorldMap()
+    public void Update()
     {
-        return this.worldMap;
-    }
-    public override bool Init()
-    {
-        EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
-        isOver = false;
-        _ins = this;
-
-
-
-        for (int i = 0; i < Config.MAX_FRAME_COUNT; i++)
-        {
-            this.framedatas.Add(null);
-        }
-
-        this.worldMap = ModelMgr.Create<BattleWorldMap>();
-
-        ViewUI.Create<UIPubblicRoot>();
-        ViewUI.Create<UIBattleRoot>();
-
-      /*  for (int i = 0; i < 100; i++)
-        {
-            EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
-            {
-                return DATA.EMPTY_STRING;
-            }));
-        }
-
-        */
-        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
-        {
-            EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
-            return "本地资源加载完成，初始化网络资源";
-        }));
-
-        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
-        {
-         //   Thread.Sleep(1000);
-            BattleApp.ins.InitNet(false);
-
-            return "初始化网络资源，等待服务器响应";
-        }));
-
-        //   BattleApp.ins.InitNet(false);
-
-
-        ///   EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
-        return true;
-
-    }
-    bool isStart = false;
-    int on_enter_max_fps = 0;//加入游戏时最大帧数
-    public void Startup()
-    {
-
-        ///  this.InitSocket();
-        ///  
-
-
-    }
-    public override void OnEvent(string type, object userData)
-    {
-
-        /*  if (type == "DisConnect")
-          {
-              Debug.LogError("DisConnect");
-              this.socket.Terminal();
-              EventDispatcher.ins.RemoveEventListener(this, "DisConnect");
-
-              //  this.SetGameOver();
-              this.ReConnect();
-          }
-          else if (type == "Exit")
-          {
-              this.Dispose();
-
-          }*/
-    }
-
-
-    public override void OnEvent(int type, object userData)
-    {
-        if (type == Events.ID_EXIT)
-        {
-            this.Dispose();
-
-        }
-
-        /*   if (type == Events.ID_NET_DISCONNECT)
-           {
-               Debug.LogError("DisConnect");
-               this.socket.Terminal();
-               EventDispatcher.ins.RemoveEventListener(this, Events.ID_NET_DISCONNECT);
-
-               //  this.SetGameOver();
-               this.ReConnect();
-           }
-           else if (type == Events.ID_EXIT)
-           {
-               this.Dispose();
-
-           }*/
-    }
-
-
-    private void ReConnect()
-    {
-        this.InitNet(true);
-        EventDispatcher.ins.PostEvent(Events.ID_UI_WAIT, DATA.UI_RECONNECTING);
-        string info = "cmd:reconnect:" + this.current_fps + ":" + HeroMgr.ins.GetSelfHero().no;
-        Debug.Log(info);
-        this.socket.AddSendMsg(info);
-
-
-    }
-    public void InitNet(bool isReConnect = false)
-    {
-
-        if (PublicData.GetInstance().isVideoMode)
-        {
-            socket = new SockClientWithVideoMode();
-        }
-        else
-        {
-            socket = new SocketClient();
-        }
-
-        if (this.socket.Startup())
-        {
-            //  EventDispatcher.ins.PostEvent(Events.ID_UI_WAIT, DATA.UI_WAIT_INFO_OTHERS);
-            //  EventDispatcher.ins.AddEventListener(this, Events.ID_NET_DISCONNECT);
-
-        }
-        else
-        {// connect server error
-            // this.Dispose();
-
-            //  SceneMgr.Load(DATA.RES_SCENE_MAIN);
-
-        }
-
-        if (!isReConnect)
-        {
-            this.socket.AddSendMsg("cmd:new:" + PublicData.GetInstance().player_name);
-
-        }
-
-
-    }
-
-
-    public override void Update()
-    {
-
         if (Input.GetKey(KeyCode.A))
         {
             PublicData.ins.IS_left = true;
@@ -275,16 +115,11 @@ public sealed class BattleApp : AppBase
             PublicData.ins.IS_stand = true;
             PublicData.ins.IS_right = false;// fix 
         }
-
-
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
 
             PublicData.ins.IS_atk = true;
         }
-
-
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -292,200 +127,172 @@ public sealed class BattleApp : AppBase
             PublicData.ins.IS_jump = true;
 
         }
+    }
+}
 
 
 
+/// <summary>
+/// 帧同步相关处理
+/// </summary>
+sealed class BattleSyncHandler
+{
+    public BattleSyncHandler()
+    {
+        for (int i = 0; i < Config.MAX_FRAME_COUNT; i++)
+        {
+            this.framedatas.Add(null);
+        }
+    }
 
+    public void AddRecvMsg(string msg)
+    {
+        _recvQueue.Enqueue(msg);
+        //     Debug.Log("[LOG]:Recv:  " + msg);
+    }
 
-
-
-
-
-
-
-
-
-
-
-        this.Process();
-        AutoReleasePool.ins.Clear(); // 没帧数结束 清理一次， 逻辑帧 Process内部已处理
+    public void AddRecvMsgUnSafe(string msg)
+    {
+        _recvQueue.UnSafeEnqueue(msg);
+        //   Debug.Log("[LOG]:Recv:  " + msg);
     }
 
 
 
-    private void ProcessWithGameOver()
+    private int current_max_fps = 0;
+    public int GetCurrentFrame() { return this.current_fps; }
+    public ThreadSafeQueue _recvQueue = new ThreadSafeQueue();
+
+    ArrayList framedatas = new ArrayList();
+
+    private int current_fps = 0;
+
+    int on_enter_max_fps = 0;//加入游戏时最大帧数
+    public BattleApp app = null;
+    public void UpdateMS()
     {
-        if (this.isVideoMode() == false)
+
+
+        if (on_enter_max_fps > current_fps && app.isStart == true)
         {
+            EventDispatcher.ins.PostEvent(Events.ID_UI_WAIT, DATA.UI_WAIT_ENTER + "   " + current_fps * 100 / on_enter_max_fps + " %");
+            app.isStart = true;
+        }
+        else if (app.isStart == true && on_enter_max_fps < current_fps)
+        {
+            app.isStart = false;
+            EventDispatcher.ins.PostEvent(Events.ID_UI_NOWAIT);
+        }
+        else if (on_enter_max_fps < current_fps && app.isStart == false)
+        {
+            app.isStart = false;
+        }
+
+
+
+
+        bool _need_send = false;
+        //  _recvQueue.Lock();
+        //处理帧
+        int i = 0;
+        while (_recvQueue.Empty() == false)
+        {
+            i++;
+
+            if (i > 80) break;//连续计算80帧强制刷新UI
+            _need_send = true;
+            //     if (_recvQueue.Count() % 50 == 0) return;
+            string xx = _recvQueue.Dequeue() as string;
+
+            TranslateDataPack decode = TranslateDataPack.Decode(xx);
+            //    Debug.Log(xx);
+            if (decode == null) { continue; }
+
+            if (decode.isCustomData)
+            {
+                _need_send = false;
+                ///   
+                this.ProcessWithCustomData(decode);
+            }
+            else
+            {
+
+                ArrayList data = FrameData.CreateWithMultiJson(decode.data);
+
+                int fps = (data[0] as FrameData).fps;
+                if (fps > current_max_fps)
+                {
+                    current_max_fps = fps;
+                }
+
+                if (framedatas[fps - 1] != null)
+                {
+                    Debug.LogError("has exist  " + fps);
+                    break;
+                }
+                framedatas[fps - 1] = data;
+                this.ProcessWithFrameData();
+            }
 
         }
 
-        this.Dispose();
+        if (app.isOver) return;
+        if (_need_send == false) return;//如果没有收到帧信息 那么跳过下面步骤
 
-    }
+        // 处理玩家输入信息，（当前在帧里）
+        //   _recvQueue.UnLock();
 
-    public void SetGameOver()
-    {
-        Debug.LogError("Over");
-        /*  if (this.socket != null)
-          {
-              EventDispatcher.ins.RemoveEventListener(this, "DisConnect");
+        FrameData dd = FrameData.Create();
+        dd.no = HeroMgr.ins.me_no;
+        //分析玩家操作
 
-              this.socket.Terminal();
-              this.socket = null;
-          }*/
-        isOver = true;
-    }
-
-    public void SetPlayerModeSpeed(int sp)
-    {
-        if (this.isVideoMode() == true)
+        if (PublicData.ins.IS_left)
         {
-            (this.socket as SockClientWithVideoMode).SetPlayeSpeed(sp);
+            dd.left = 1;
+            PublicData.ins.IS_left = false;
         }
+
+        if (PublicData.ins.IS_right)
+        {
+            dd.right = 1;
+            PublicData.ins.IS_right = false;
+        }
+
+        if (PublicData.ins.IS_atk)
+        {
+            dd.atk = 1;
+            PublicData.ins.IS_atk = false;
+        }
+        if (PublicData.ins.IS_jump)
+        {
+            dd.jump = 1;
+            PublicData.ins.IS_jump = false;
+        }
+
+        if (PublicData.ins.IS_stand)
+        {
+            dd.stand = 1;
+            PublicData.ins.IS_stand = false;
+        }
+        if (PublicData.ins.IS_s1)
+        {
+            dd.s1 = 1;
+            PublicData.ins.IS_s1 = false;
+        }
+
+        app.Send(dd.toUploadJson());
+        //   Debug.Log("upload " + dd.toUploadJson());
     }
-    public void Process()
-    {
-        ModelMgr.ins.Update();
-        ViewMgr.ins.Update();
-
-        do
-        { // do while 流程
-            if (isOver)
-            {
-                this.ProcessWithGameOver();
-
-                break;
-
-            }
-
-
-
-            if (on_enter_max_fps > current_fps && isStart == true)
-            {
-                EventDispatcher.ins.PostEvent(Events.ID_UI_WAIT, DATA.UI_WAIT_ENTER + "   " + current_fps * 100 / on_enter_max_fps + " %");
-                isStart = true;
-            }
-            else if (isStart == true && on_enter_max_fps < current_fps)
-            {
-                isStart = false;
-                EventDispatcher.ins.PostEvent(Events.ID_UI_NOWAIT);
-            }
-            else if (on_enter_max_fps < current_fps && isStart == false)
-            {
-                isStart = false;
-            }
-
-            // process to the lastest frame (if current frame less than max frame(from server )  this will block until current frame
-
-
-            bool _need_send = false;
-            //  _recvQueue.Lock();
-            //处理帧
-            int i = 0;
-            while (_recvQueue.Empty() == false)
-            {
-                i++;
-
-                if (i > 80) break;//连续计算80帧强制刷新UI
-                _need_send = true;
-                //     if (_recvQueue.Count() % 50 == 0) return;
-                string xx = _recvQueue.Dequeue() as string;
-
-                TranslateDataPack decode = TranslateDataPack.Decode(xx);
-                //    Debug.Log(xx);
-                if (decode == null) { continue; }
-
-                if (decode.isCustomData)
-                {
-                    _need_send = false;
-                    ///   
-                    this.ProcessWithCustomData(decode);
-                }
-                else
-                {
-
-                    ArrayList data = FrameData.CreateWithMultiJson(decode.data);
-
-                    int fps = (data[0] as FrameData).fps;
-                    if (fps > current_max_fps)
-                    {
-                        current_max_fps = fps;
-                    }
-
-                    if (framedatas[fps - 1] != null)
-                    {
-                        Debug.LogError("has exist  " + fps);
-                        break;
-                    }
-                    framedatas[fps - 1] = data;
-                    this.ProcessWithFrameData();
-                }
-
-            }
-
-            if (isOver) break;
-            if (_need_send == false) break;//如果没有收到帧信息 那么跳过下面步骤
-
-            // 处理玩家输入信息，（当前在帧里）
-            //   _recvQueue.UnLock();
-
-            FrameData dd = FrameData.Create();
-            dd.no = HeroMgr.ins.me_no;
-            //分析玩家操作
-
-            if (PublicData.ins.IS_left)
-            {
-                dd.left = 1;
-                PublicData.ins.IS_left = false;
-            }
-
-            if (PublicData.ins.IS_right)
-            {
-                dd.right = 1;
-                PublicData.ins.IS_right = false;
-            }
-
-            if (PublicData.ins.IS_atk)
-            {
-                dd.atk = 1;
-                PublicData.ins.IS_atk = false;
-            }
-            if (PublicData.ins.IS_jump)
-            {
-                dd.jump = 1;
-                PublicData.ins.IS_jump = false;
-            }
-
-            if (PublicData.ins.IS_stand)
-            {
-                dd.stand = 1;
-                PublicData.ins.IS_stand = false;
-            }
-            if (PublicData.ins.IS_s1)
-            {
-                dd.s1 = 1;
-                PublicData.ins.IS_s1 = false;
-            }
-
-            this.Send(dd.toUploadJson());
-            //   Debug.Log("upload " + dd.toUploadJson());
-        } while (false);
-
-
-
-    }
-
     public void ProcessWithCustomData(TranslateDataPack decode)
     {
         string cmd = decode.customs[0] as string;
         if (cmd == "Start")
         {//开始游戏
             int seed = int.Parse(decode.customs[1] as string);
-            isStart = true;
+            app.isStart = true;
             // FoodsMgr.ins.SetRandomSeed(seed);
 
-            this.randObj = new System.Random(seed);
+            app.randObj = new System.Random(seed);
             //    FoodsMgr.ins.Init();
             HeroMgr.ins.me_no = int.Parse(decode.customs[2] as string);
 
@@ -505,7 +312,7 @@ public sealed class BattleApp : AppBase
 
         else if (cmd == "Over")
         {//游戏结束
-            this.SetGameOver();
+            app.SetGameOver();
         }
         else if (cmd == "ReConnect")
         {//重新连接
@@ -626,16 +433,238 @@ public sealed class BattleApp : AppBase
 
     }
 
+
+
+
+}
+
+
+
+public sealed class BattleApp : AppBase
+{
+
+    private BattleKeyboardInputHandler inputHandler = null;
+
+    BattleSyncHandler syncHandler = null;
+    public BattleWorldMap GetCurrentWorldMap()
+    {
+        return this.worldMap;
+    }
+    public override bool Init()
+    {
+        EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
+        isOver = false;
+        _ins = this;
+
+        syncHandler = new BattleSyncHandler();
+        syncHandler.app = this;
+
+        inputHandler = new BattleKeyboardInputHandler();
+
+
+        this.worldMap = ModelMgr.Create<BattleWorldMap>();
+
+        ViewUI.Create<UIPubblicRoot>();
+        ViewUI.Create<UIBattleRoot>();
+
+        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
+            return "本地资源加载完成，初始化网络资源";
+        }));
+
+        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+        {
+            //   Thread.Sleep(1000);
+            BattleApp.ins.InitNet(false);
+
+            return "初始化网络资源，等待服务器响应";
+        }));
+
+        //   BattleApp.ins.InitNet(false);
+
+
+        ///   EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
+        return true;
+
+    }
+    public bool isStart = false;
+
+    public void Startup()
+    {
+
+        ///  this.InitSocket();
+        ///  
+
+    }
+    public override void OnEvent(string type, object userData)
+    {
+
+        /*  if (type == "DisConnect")
+          {
+              Debug.LogError("DisConnect");
+              this.socket.Terminal();
+              EventDispatcher.ins.RemoveEventListener(this, "DisConnect");
+
+              //  this.SetGameOver();
+              this.ReConnect();
+          }
+          else if (type == "Exit")
+          {
+              this.Dispose();
+
+          }*/
+    }
+
+
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_EXIT)
+        {
+            this.Dispose();
+
+        }
+
+        /*   if (type == Events.ID_NET_DISCONNECT)
+           {
+               Debug.LogError("DisConnect");
+               this.socket.Terminal();
+               EventDispatcher.ins.RemoveEventListener(this, Events.ID_NET_DISCONNECT);
+
+               //  this.SetGameOver();
+               this.ReConnect();
+           }
+           else if (type == Events.ID_EXIT)
+           {
+               this.Dispose();
+
+           }*/
+    }
+
+
+    private void ReConnect()
+    {
+        /* this.InitNet(true);
+         EventDispatcher.ins.PostEvent(Events.ID_UI_WAIT, DATA.UI_RECONNECTING);
+         string info = "cmd:reconnect:" + this.current_fps + ":" + HeroMgr.ins.GetSelfHero().no;
+         Debug.Log(info);
+         this.socket.AddSendMsg(info);*/
+
+
+    }
+    public void InitNet(bool isReConnect = false)
+    {
+
+        if (PublicData.GetInstance().isVideoMode)
+        {
+            socket = new SockClientWithVideoMode();
+        }
+        else
+        {
+            socket = new SocketClient();
+        }
+
+        if (this.socket.Startup())
+        {
+            //  EventDispatcher.ins.PostEvent(Events.ID_UI_WAIT, DATA.UI_WAIT_INFO_OTHERS);
+            //  EventDispatcher.ins.AddEventListener(this, Events.ID_NET_DISCONNECT);
+
+        }
+        else
+        {// connect server error
+            // this.Dispose();
+
+            //  SceneMgr.Load(DATA.RES_SCENE_MAIN);
+
+        }
+
+        if (!isReConnect)
+        {
+            this.socket.AddSendMsg("cmd:new:" + PublicData.GetInstance().player_name);
+
+        }
+
+
+    }
+
+
+    public override void Update()
+    {
+        this.Process();
+        AutoReleasePool.ins.Clear(); // 没帧数结束 清理一次， 逻辑帧 Process内部已处理
+    }
+
+
+
+    private void ProcessWithGameOver()
+    {
+        if (this.isVideoMode() == false)
+        {
+
+        }
+
+        this.Dispose();
+
+    }
+
+    public void SetGameOver()
+    {
+        Debug.LogError("Over");
+        /*  if (this.socket != null)
+          {
+              EventDispatcher.ins.RemoveEventListener(this, "DisConnect");
+
+              this.socket.Terminal();
+              this.socket = null;
+          }*/
+        isOver = true;
+    }
+
+    public void SetPlayerModeSpeed(int sp)
+    {
+        if (this.isVideoMode() == true)
+        {
+            (this.socket as SockClientWithVideoMode).SetPlayeSpeed(sp);
+        }
+    }
+    public void Process()
+    {
+        inputHandler.Update();
+        ModelMgr.ins.Update();
+        ViewMgr.ins.Update();
+
+        do
+        { // do while 流程
+            if (isOver)
+            {
+                this.ProcessWithGameOver();
+                break;
+            }
+
+            // process to the lastest frame (if current frame less than max frame(from server )  this will block until current frame
+            syncHandler.UpdateMS();
+
+        } while (false);
+
+    }
+
+    public void LockAdRecvMsg()
+    {
+        syncHandler._recvQueue.Lock();
+    }
+    public void UnLockAdRecvMsg()
+    {
+        syncHandler._recvQueue.UnLock();
+    }
+
     public void AddRecvMsg(string msg)
     {
-        _recvQueue.Enqueue(msg);
-        //     Debug.Log("[LOG]:Recv:  " + msg);
+        syncHandler.AddRecvMsg(msg);
     }
 
     public void AddRecvMsgUnSafe(string msg)
     {
-        _recvQueue.UnSafeEnqueue(msg);
-        //   Debug.Log("[LOG]:Recv:  " + msg);
+        syncHandler.AddRecvMsgUnSafe(msg);
     }
 
     public void AddSendMsg(string msg)
@@ -653,10 +682,7 @@ public sealed class BattleApp : AppBase
         }
     }
 
-    private string PickOneRecvMsg()
-    {
-        return (string)_recvQueue.Dequeue();
-    }
+
 
 
 
@@ -674,23 +700,19 @@ public sealed class BattleApp : AppBase
     public bool isVideoMode() { return PublicData.GetInstance().isVideoMode; }
 
 
-    public int GetCurrentFrame() { return this.current_fps; }
+    public int GetCurrentFrame() { return syncHandler.GetCurrentFrame(); }
 
 
-    private int current_fps = 0;
-
-    bool isOver = false;
-    ArrayList framedatas = new ArrayList();
+    public bool isOver = false;
 
 
-    public ThreadSafeQueue _recvQueue = new ThreadSafeQueue();
 
     private SocketClient socket;
 
 
-    System.Random randObj;
+    public System.Random randObj;
 
-    private int current_max_fps = 0;
+
     private BattleWorldMap worldMap = null;
 
     public static BattleApp ins
