@@ -109,6 +109,7 @@ public class Terrain : TerrainBase
       
         GameObject obj_terrain = GameObject.Find("Terrain");
         Transform[] objs = obj_terrain.transform.FindChild("WalkAble").GetComponentsInChildren<Transform>(); 
+        
         if (objs.Length < 2) return false;
 
         Transform last = objs[1] as Transform;
@@ -121,7 +122,7 @@ public class Terrain : TerrainBase
             last = t;
         }
 
-        Debug.Log("Terrain Init " + objs.Length);
+        Debug.Log("Terrain Init Point Count=" +( objs.Length-1));
 
         GameObject map_range = obj_terrain.transform.FindChild("MapRange").gameObject;
 
@@ -170,7 +171,7 @@ public class TerrainPlatform : TerrainBase
             blocks.Add(TerrainBlock.Create(p1.position.x, p2.position.x, p1.position.y, blocks.Count));
 
         }
-        Debug.Log("TerrainPlatform Init  " + objs.Length);
+        Debug.Log("TerrainPlatform Init  Point Count=" + (objs.Length-1));
 
         return true;
     }
