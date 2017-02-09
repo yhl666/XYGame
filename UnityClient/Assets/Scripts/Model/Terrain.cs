@@ -123,7 +123,7 @@ public class TerrainBase : Model
     protected ArrayList AutoSort(Transform[] objs)
     {
         ArrayList blocks = new ArrayList();
-
+        //按照左往右顺序读取配置点
         //因为Editor里面标记点顺序 和 点X坐标的顺序不一定一致 所以要以下处理
 
         //先取出x点 和高度

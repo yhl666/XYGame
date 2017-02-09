@@ -109,6 +109,11 @@ public class Entity : Model
     {
         return Utils.ClaculateDistance(new Vector2(this.x, this.y), new Vector2(x, y));
     }
+
+    public float GetRealY()
+    {
+        return this.y + height;
+    }
     //------------------------------------------------------some event 
     /// <summary>
     /// 血量为0 时触发
@@ -156,6 +161,21 @@ public class Entity : Model
 
     private float _height = 0.0f;//海拔
     public bool isInOneTerrainRight = false;
+
+    /// <summary>
+    /// 设置x坐标，自动处理 地形撞墙等
+    /// </summary>
+    public float x_auto
+    {
+        set
+        {
+            BattleApp.ins.GetCurrentWorldMap().ClipPositionX(this, value);
+        }
+        get
+        {
+            return this.x;
+        }
+    }
     public float height
     {
         set
@@ -200,7 +220,7 @@ public class Entity : Model
                 }
                 return;
             }
-     
+
             _height = value;
         }
         get
@@ -225,34 +245,16 @@ public class Entity : Model
                 else
                 {
                     stand = true;
-                    if (isInOneTerrainRight)
-                    {//当前位置位于地图块右边
-                      //  right = false; //限制右走
-                    }
-                    else
-                    {//限制左走
-                      //  left = false;
-                    }
                     return;
                 }
-            }
-            else if (value < _height)
-            {//高度变低
-             //   this.y = y + _height - value;
-
             }
             else if (value > _height)
             {// 高度变高
                 stand = true;
-       
+
                 return;
             }
-
             _height = value;
-        }
-        get
-        {
-            return _height;
         }
     }
     //---------------setter   getter for mp  hp exp

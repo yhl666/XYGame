@@ -179,14 +179,14 @@ public class Buffer2_1 : Buffer
         if (IsComplete() == false)
         {
             target.current_hp += 1;
-            target.x += 1;
+
         }
     }
     public override void OnEnter()
     {
         base.OnEnter();
         this.SetLastTime(5);
-
+        target.x_auto -= 1 * target.flipX;
     }
 
 
@@ -199,12 +199,33 @@ public class Buffer2_1 : Buffer
     {
         base.Init();
 
-      //  ViewMgr.Create<ViewBuffer2_1>(this);
+        //  ViewMgr.Create<ViewBuffer2_1>(this);
         this.target = this.owner;
         return true;
     }
 }
 
+
+
+public class BufferFlashMove : Buffer
+{//闪现一段距离
+
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        //移动 1 米
+        target.x_auto -= 1 * target.flipX;
+        this.SetInValid();
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        //  ViewMgr.Create<ViewBuffer2_1>(this);
+        this.target = this.owner;
+        return true;
+    }
+}
 
 /// <summary>
 ///  lua buffer wrapper
