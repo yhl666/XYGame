@@ -56,8 +56,7 @@ public sealed class BattleWorldMap : WorldMapBase
     public void ClipPositionX(Entity who, float target)
     {
         var block = terrain.GetBlock(target);
-        var block1 = platform.GetBlock(target);
-
+   
         if (block != null)
         {
             if (who.height >= block.height)
@@ -90,12 +89,19 @@ public sealed class BattleWorldMap : WorldMapBase
                 }
             }
         }
+        var block1 = platform.GetBlock(who.x);
+        var block2 = platform.GetBlock(target);
 
-        if (block1 != null)
+        if (block1 != null || block2 !=null)
         {
             if (who.GetRealY() >= block.height)
             {// 有平台 那么覆盖撞墙
+                Debug.Log("  11111111");
                 who.x = target; ;
+            }
+            else
+            {
+                Debug.Log("222222222");
             }
         }
     }

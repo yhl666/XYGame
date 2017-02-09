@@ -476,6 +476,8 @@ public class AttackState_1 : StateBase
             Target.attackingAnimationName = Target.ani_atk; // this.GetAnimationName();
             //    BulletMgr.Create<Bullet2_0>(this.Target);
             cd_attack = 40;//2s cd
+
+            this.Target.AddBuffer<BufferFlashMove>();
             BulletMgr.Create(this.Target, Target.bulleClassName_atk1, Target.bullet_atk1_info);
 
         }
