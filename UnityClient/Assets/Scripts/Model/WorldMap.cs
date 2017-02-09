@@ -47,6 +47,9 @@ public sealed class BattleWorldMap : WorldMapBase
     /// <summary>
     ///   自动切割 Entity 到 合法的X坐标
     /// Entity的x值 和target 的x值 做切割
+    /// 
+    /// 如果target位于地形块内，那么会设置成一个合法的坐标X点
+    /// 比如实现闪现机制 会撞墙
     /// </summary>
     /// <param name="who">需要设置x坐标的Entity</param>
     /// <param name="target">目标x点</param>
