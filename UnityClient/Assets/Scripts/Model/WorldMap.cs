@@ -33,6 +33,7 @@ public class WorldMapBase : Model
 
     protected ArrayList objs = new ArrayList();
     protected Terrain terrain = null;
+    protected TerrainPlatform platform = null;
 }
 
 
@@ -44,7 +45,11 @@ public sealed class BattleWorldMap : WorldMapBase
     /// <param name="what"></param>
     public void UpdateEntity(Entity what)
     {
-        this.UpdateWithTerrain(what);
+     //   
+      if(false==  this.UpdateWithPlaform(what))
+      {
+          this.UpdateWithTerrain(what);
+      }
     }
 
 
@@ -74,12 +79,47 @@ public sealed class BattleWorldMap : WorldMapBase
             what.height = y;
         }
     }
+    private bool UpdateWithPlaform(Entity what)
+    {
 
+      //  return false;
+
+        float x = what.x;
+        float y = 0.0f;
+ 
+        TerrainBlock block = platform.GetBlock(x);
+
+
+        if (block != null)
+        {
+            y = block.height;
+       
+            if (y == what.height)
+            {
+                return true;
+                 
+            }
+
+            Debug.Log(what.height + what.y  + "       "  +  y );
+               if (what.height + what.y >= y)
+            {
+                what.height_platform = y;
+                return true;
+            }
+        }
+        else
+        {
+            Debug.Log(0);
+        }
+        return false;
+
+    }
     public override bool Init()
     {
         base.Init();
 
         terrain = ModelMgr.Create<Terrain>();
+        platform = ModelMgr.Create<TerrainPlatform>();
         return true;
     }
 }

@@ -208,6 +208,53 @@ public class Entity : Model
             return _height;
         }
     }
+
+
+    public float height_platform
+    {
+        set
+        {
+            if (value == _height) return;
+
+            if (isStand == false)
+            {
+                if (this.height + y > value)
+                {
+                    this.y = y + _height - value;
+                }
+                else
+                {
+                    stand = true;
+                    if (isInOneTerrainRight)
+                    {//当前位置位于地图块右边
+                      //  right = false; //限制右走
+                    }
+                    else
+                    {//限制左走
+                      //  left = false;
+                    }
+                    return;
+                }
+            }
+            else if (value < _height)
+            {//高度变低
+             //   this.y = y + _height - value;
+
+            }
+            else if (value > _height)
+            {// 高度变高
+                stand = true;
+       
+                return;
+            }
+
+            _height = value;
+        }
+        get
+        {
+            return _height;
+        }
+    }
     //---------------setter   getter for mp  hp exp
     public int hp
     {

@@ -87,3 +87,50 @@ public class Terrain : Model
     public ArrayList blocks = new ArrayList();
 }
 
+
+
+
+/// <summary>
+/// 地图上的 平台，
+/// </summary>
+public class TerrainPlatform : Model
+{
+   
+
+    public TerrainBlock GetBlock(float x)
+    {
+        foreach (TerrainBlock block in blocks)
+        {
+            if (block.x_left <= x && block.x_right >= x)
+            {
+                return block;
+            }
+        }
+        return null;
+    }
+    public override bool Init()
+    {
+        base.Init();
+    
+        GameObject obj_terrain = GameObject.Find("Terrain");
+        Transform[] objs = obj_terrain.transform.FindChild("Platform").GetComponentsInChildren<Transform>();
+        if (objs.Length < 2) return false;
+
+ 
+        for (int i = 1; i < objs.Length; i+=2)
+        {
+            Transform p1 = objs[i] as Transform;
+            Transform p2 = objs[i+1] as Transform;
+
+            blocks.Add(TerrainBlock.Create(p1.position.x, p2.position.x, p1.position.y));
+    
+        }
+        Debug.Log("TerrainPlatform Init  " +  objs.Length);
+
+        return true;
+    }
+
+ 
+    [SerializeField]
+    public ArrayList blocks = new ArrayList();
+}

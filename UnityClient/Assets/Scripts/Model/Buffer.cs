@@ -179,6 +179,7 @@ public class Buffer2_1 : Buffer
         if (IsComplete() == false)
         {
             target.current_hp += 1;
+            target.x += 1;
         }
     }
     public override void OnEnter()
