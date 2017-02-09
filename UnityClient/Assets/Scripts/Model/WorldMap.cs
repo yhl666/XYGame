@@ -100,7 +100,7 @@ public sealed class BattleWorldMap : WorldMapBase
                  
             }
 
-            Debug.Log(what.height + what.y  + "       "  +  y );
+      //      Debug.Log(what.height + what.y  + "       "  +  y );
                if (what.height + what.y >= y)
             {
                 what.height_platform = y;
@@ -109,7 +109,7 @@ public sealed class BattleWorldMap : WorldMapBase
         }
         else
         {
-            Debug.Log(0);
+ 
         }
         return false;
 

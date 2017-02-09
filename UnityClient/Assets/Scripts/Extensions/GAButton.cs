@@ -39,7 +39,7 @@ public sealed class GAButton : Selectable, IPointerDownHandler, IPointerExitHand
     public override void OnPointerEnter(PointerEventData eventData)
     {
         base.OnPointerExit(eventData);
-        Debug.Log("enter");
+     //   Debug.Log("enter");
         if (onEnter != null) onEnter();
         this.img.color = new Color32(193, 193, 193, 255);
         isEnter = true;
@@ -49,7 +49,7 @@ public sealed class GAButton : Selectable, IPointerDownHandler, IPointerExitHand
     public override void OnPointerExit(PointerEventData eventData)
     {
         base.OnPointerExit(eventData);
-        Debug.Log("exit");
+      //  Debug.Log("exit");
         if (onExit != null) onExit();
         this.img.color = new Color32(255, 255, 255, 255);
         isEnter = false;
