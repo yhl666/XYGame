@@ -2,46 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '863d9261e374ed94aa8f24df7ac094436ce58df5'
-    oldFile: !uuid '17e224140fefbb27967395932cb6fb38834641af'
-  /UnityClient/Assets:
-    newFile: !uuid 'dd8b2821f3cf9e33065f7ccad644e9ac9e648946'
-    oldFile: !uuid '96d4b63bbcbb897f050ad4965e8ecb1dd986c3ae'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'dfc80273983f1f9ac95f75930693d5c220675321'
-    oldFile: !uuid 'eef5116fcb15a25b0ed59ef644ef749dea6ee15e'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '10e5d17ff8aa8d37c4144c4e0d6272f71645672a'
-    oldFile: !uuid '75e0181aced396672994e5ea809afdc48a0c0c15'
-  /UnityClient/Assets/Resources/Prefabs/map:
-    newFile: !uuid '7b364df77e556b86b898808ed1a52a4545066015'
-    oldFile: !uuid '9613cb650fb1cf55dd215e55f45abca201a6ff30'
-  /UnityClient/Assets/Resources/Prefabs/map/PointPlatform.prefab:
-    newFile: !uuid '0170d3e8bc955a858122801d0a34825c7bdfaf00'
+  /Tools:
+    newFile: !uuid '2914be8ee72c4b912858999511382760387f3589'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/map/PointPlatform.prefab.meta:
-    newFile: !uuid 'dbee99aa9facf00f6464f0d5f81139dd77830e80'
+  /Tools/工具目录.txt:
+    newFile: !uuid 'db42b33812784e0cf73c84000b3edfba9006d921'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/map/Terrain1.prefab:
-    newFile: !uuid '8272377b1b9f23629cfbdc051f4ac798a2c254b6'
-    oldFile: !uuid '5d8ae53cca84885f4c67a170602d88b72b94f675'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '71ae0b2932d8f5419e66a9623c5c1edc7c3cf784'
-    oldFile: !uuid 'ef17c11f0538e4e7c920ac1af4e75958fc201119'
-  /UnityClient/Assets/Scenes/BattleEnemy.unity:
-    newFile: !uuid '36cd8dadfcd0b0f0afba34b42bca9a52cf6b26cf'
-    oldFile: !uuid 'bffa90827dc9f07512ca0d0740eb16fa445ff4d6'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '3448a900585cb04db7824704b60f00c0f701de0a'
-    oldFile: !uuid '6defdb6bb13d6b85cafcf6fb56410ee1ed206832'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '9064f59bf8f64762429c6e530f53534b318b6fa9'
-    oldFile: !uuid 'b849762bb8487463982d1f78866f443c9b067899'
-  /UnityClient/Assets/Scripts/Model/Terrain.cs:
-    newFile: !uuid '54da96edd0b36a1264bec69eae0d226716461eb2'
-    oldFile: !uuid '64e533e92e3ef6fd1ebe40ff4dd3e15d4cdba5f3'
-gitCommitId: !uuid 'e4d3376e1057b310927c1ef147f2c66ea975ca61'
+gitCommitId: !uuid '0a0af5c596128791df4c3d5621f2d0a676efbcb2'
 renames: {
   }
-revisionId: 34
+revisionId: 35
