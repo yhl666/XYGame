@@ -5,7 +5,7 @@ using System.Collections;
 /// <summary>
 /// 地形块
 /// </summary>
-public class TerrainBlock
+public class TerrainBlock : IComparer
 {
     public float x_left;//地形块 左边界 单位米
     public float x_right;// 地形块右边界 单位米
@@ -21,7 +21,33 @@ public class TerrainBlock
         return ret;
     }
 
+    // 摘要: 
+    //     比较两个对象并返回一个值，指示一个对象是小于、等于还是大于另一个对象。
+    //
+    // 参数: 
+    //   x:
+    //     要比较的第一个对象。
+    //
+    //   y:
+    //     要比较的第二个对象。
+    //
+    // 返回结果: 
+    //     值 条件 小于零 x 小于 y。 零 x 等于 y。 大于零 x 大于 y。
+    //
+    // 异常: 
+    //   System.ArgumentException:
+    //     x 和 y 都不实现 System.IComparable 接口。- 或 - x 和 y 的类型不同，它们都无法处理与另一个进行的比较。
+    public int Compare(object x, object y)
+    {
+        TerrainBlock a = (TerrainBlock)x;
+        TerrainBlock b = (TerrainBlock)y;
+        if (a.x_left == b.x_left) return 0;
+        if (a.x_left > b.x_left) return 1;
+        if (a.x_left < b.x_left) return -1;
 
+        return 0;
+
+    }
     private TerrainBlock()
     { }
 }
@@ -93,6 +119,24 @@ public class TerrainBase : Model
 
 
     protected ArrayList blocks = new ArrayList();
+
+    protected ArrayList AutoSort(Transform[] objs)
+    {
+        ArrayList blocks = new ArrayList();
+
+        //因为Editor里面标记点顺序 和 点X坐标的顺序不一定一致 所以要以下处理
+
+        //先取出x点 和高度
+        for (int i = 1; i < objs.Length; i++)
+        {
+            Transform t = objs[i] as Transform;
+            blocks.Add(TerrainBlock.Create(t.position.x, 0, t.position.y, 0));
+        }
+        //排序   按照X大小 来排序
+        blocks.Sort(blocks[0] as IComparer);
+        //返回信息是 点 和海拔 并不是真正的TerrainBlock
+        return blocks;
+    }
 }
 
 
@@ -106,23 +150,24 @@ public class Terrain : TerrainBase
     public override bool Init()
     {
         base.Init();
-      
+
         GameObject obj_terrain = GameObject.Find("Terrain");
-        Transform[] objs = obj_terrain.transform.FindChild("WalkAble").GetComponentsInChildren<Transform>(); 
-        
-        if (objs.Length < 2) return false;
+        Transform[] objs = obj_terrain.transform.FindChild("WalkAble").GetComponentsInChildren<Transform>();
+        if (objs.Length < 3) return false;
 
-        Transform last = objs[1] as Transform;
+        ArrayList blocks = this.AutoSort(objs);
 
-        for (int i = 2; i < objs.Length; i++)
+        TerrainBlock last = blocks[0] as TerrainBlock;
+
+        for (int i = 1; i < blocks.Count; i++)
         {
-            Transform t = objs[i] as Transform;
-
-            blocks.Add(TerrainBlock.Create(last.position.x, t.position.x, t.position.y, blocks.Count));
+            TerrainBlock t = blocks[i] as TerrainBlock;
+            //2个点确定一个地形块，海拔由第一个点的 海拔决定
+            this.blocks.Add(TerrainBlock.Create(last.x_left, t.x_left, t.height, this.blocks.Count));
             last = t;
         }
 
-        Debug.Log("Terrain Init Point Count=" +( objs.Length-1));
+        Debug.Log("Terrain Init Point Count=" + (objs.Length - 1));
 
         GameObject map_range = obj_terrain.transform.FindChild("MapRange").gameObject;
 
@@ -146,8 +191,6 @@ public class Terrain : TerrainBase
 }
 
 
-
-
 /// <summary>
 /// 地图上的 平台 地形，
 /// </summary>
@@ -160,18 +203,24 @@ public class TerrainPlatform : TerrainBase
 
         GameObject obj_terrain = GameObject.Find("Terrain");
         Transform[] objs = obj_terrain.transform.FindChild("Platform").GetComponentsInChildren<Transform>();
-        if (objs.Length < 2) return false;
-
-
-        for (int i = 1; i < objs.Length; i += 2)
+        if (objs.Length < 3) return false;
+        if (objs.Length % 2 == 0)
+        {//必须是奇数
+            Debug.LogError("Terrain Platform Count error");
+            return false;
+        }
+        ArrayList blocks = this.AutoSort(objs);
+        //初始化地形
+        for (int i = 0; i < blocks.Count; i += 2)
         {
-            Transform p1 = objs[i] as Transform;
-            Transform p2 = objs[i + 1] as Transform;
+            TerrainBlock p1 = blocks[i] as TerrainBlock;
+            TerrainBlock p2 = blocks[i + 1] as TerrainBlock;
 
-            blocks.Add(TerrainBlock.Create(p1.position.x, p2.position.x, p1.position.y, blocks.Count));
+            this.blocks.Add(TerrainBlock.Create(p1.x_left, p2.x_left, p1.height, this.blocks.Count));
 
         }
-        Debug.Log("TerrainPlatform Init  Point Count=" + (objs.Length-1));
+
+        Debug.Log("TerrainPlatform Init  Point Count=" + (objs.Length - 1));
 
         return true;
     }
