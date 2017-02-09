@@ -455,6 +455,7 @@ public class AttackState_1 : StateBase
     {
         if (type == "attack")
         {
+            this.Target.AddBuffer<BufferFlashMove>();
             this.OnEvent(Events.ID_BTN_ATTACK, userData);
         }
         else if ("SpineComplete" == type)
@@ -469,6 +470,7 @@ public class AttackState_1 : StateBase
 
         if (type == Events.ID_BTN_ATTACK && this.Enable == false)
         {
+            this.Target.AddBuffer<BufferFlashMove>();
             if (cd_attack > 0) return;
 
             this.Enable = true;
@@ -477,7 +479,6 @@ public class AttackState_1 : StateBase
             //    BulletMgr.Create<Bullet2_0>(this.Target);
             cd_attack = 40;//2s cd
 
-            this.Target.AddBuffer<BufferFlashMove>();
             BulletMgr.Create(this.Target, Target.bulleClassName_atk1, Target.bullet_atk1_info);
 
         }

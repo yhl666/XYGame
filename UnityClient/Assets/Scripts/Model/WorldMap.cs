@@ -56,17 +56,17 @@ public sealed class BattleWorldMap : WorldMapBase
     public void ClipPositionX(Entity who, float target)
     {
         var block = terrain.GetBlock(target);
-   
+
         if (block != null)
         {
-            if (who.height >= block.height)
-            {
+            if (who.GetRealY() >= block.height)
+            {//往低处走 
                 who.x = target; ;
             }
             else
-            {//撞墙，
+            {//撞墙，处理 目标点的海拔更高，因此要处理为撞墙
                 if (who.x > target)
-                {//左走
+                {//左撞墙
                     if (block.x_right >= terrain.limit_x_left)
                     {
                         who.x = block.x_right;
@@ -77,7 +77,7 @@ public sealed class BattleWorldMap : WorldMapBase
                     }
                 }
                 else
-                {
+                {//右撞墙
                     if (block.x_left >= terrain.limit_x_left)
                     {
                         who.x = block.x_left;
@@ -87,21 +87,6 @@ public sealed class BattleWorldMap : WorldMapBase
                         who.x = terrain.limit_x_left;
                     }
                 }
-            }
-        }
-        var block1 = platform.GetBlock(who.x);
-        var block2 = platform.GetBlock(target);
-
-        if (block1 != null || block2 !=null)
-        {
-            if (who.GetRealY() >= block.height)
-            {// 有平台 那么覆盖撞墙
-                Debug.Log("  11111111");
-                who.x = target; ;
-            }
-            else
-            {
-                Debug.Log("222222222");
             }
         }
     }
