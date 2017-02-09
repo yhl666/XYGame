@@ -18,8 +18,18 @@ public class CameraFollow : MonoBehaviour
         float WIDTH = 1136.0f;// Screen.width;
         float HEIGHT = 640.0f;// Screen.height;
 
+        if ((float)Screen.width / (float)Screen.height - 1.5 <= 0.01)
+        {
+            WIDTH = 960.0f;
+            HEIGHT = 640.0f;
+        }
 
 
+       /* WIDTH = Screen.width;
+        HEIGHT = Screen.height;
+
+        this.GetComponent<Camera>().orthographicSize = Screen.height / 100.0f / 2.0f;
+        */
         //跟随 地形滚动
         float x = obj.transform.position.x;
         float y = obj.transform.position.y;

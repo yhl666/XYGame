@@ -53,7 +53,9 @@ public class ViewBullet : View
         view_bullet.GetComponent<Animationstor>().file = m.plist;
         ani = view_bullet.GetComponent<Animationstor>();
         ani.Init();
-        ani.gameObject.transform.localScale = new Vector3(-m.flipX, ani.gameObject.transform.localScale.y,
+
+        float factor = 0.7f;
+        ani.gameObject.transform.localScale = new Vector3(-m.flipX*factor,factor* ani.gameObject.transform.localScale.y,
 
              ani.gameObject.transform.localScale.z);
 
@@ -91,6 +93,10 @@ public class ViewBullet : View
           else*/
         {
             ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
+
+            float factor = 0.8f;
+
+        
         }
 
     }
@@ -115,7 +121,7 @@ public class ViewEntity : View
         spine.initialSkinName = m.skin;
         spine.skeleton.SetSkin(m.skin);
         this.transform = obj.GetComponent<Transform>();
-
+   
   
         //init event
 
@@ -143,9 +149,9 @@ public class ViewEntity : View
 
     public override void UpdateMS()
     {
-        float factor = 1f;
         this.obj.name = m.no.ToString();
         transform.position = new Vector3(m.x, m.y + m.height, transform.position.z);
+        float factor = 0.8f;
         transform.localScale = new Vector3(m.flipX * factor, factor, factor);
 
         string name = "";
