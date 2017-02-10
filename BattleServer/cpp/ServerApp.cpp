@@ -12,7 +12,7 @@
 using namespace  std;
 
 
-#define  CHECK_LEACKS
+#define  CHECK_LEACKS111
 
 int ServerApp::Run()
 {
