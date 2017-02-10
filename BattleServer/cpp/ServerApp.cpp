@@ -192,7 +192,18 @@ int ServerAppDynamic::Run()
 
 							cli->Send("cmd:Start:" + seeds + ":" + Utils::itos(player->GetNo()) + ":" + Utils::itos(room->GetCurrentFps()));
 							room->AddPlayerDynamic(player);
-							room->BroadcastCustomData("cmd:new:" + pack->customs[1] + ":" + Utils::itos(player->GetNo()));
+
+							string noo = Utils::itos(player->GetNo());
+							cout <<"       .." <<noo<<"." << endl;
+							string name = "name";
+
+							room->BroadcastCustomData("cmd:new:" +  name +":"+ noo);
+
+
+					
+						//	room->BroadcastCustomData("cmd:new:" + pack->customs[1] + ":9");// +Utils::itos(player->GetNo()));
+						
+							
 							cout << "Room id=" << room->GetID() << " Add Player id=" << player->GetNo() << " name=" << pack->customs[1] << endl;;
 
 						}

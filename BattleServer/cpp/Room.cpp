@@ -79,6 +79,7 @@ void Room:: BroadcastCustomData(const std::string & msg, bool isAddToCache)
 {
 	if (players.size() <= 0)return;
 	string str =  msg;
+	str += NET_MSG_ENG_LINE;
 
 	for (auto p : players)
 	{
@@ -88,6 +89,7 @@ void Room:: BroadcastCustomData(const std::string & msg, bool isAddToCache)
 	{
 		this->_brocastDatas.push_back(str);
 	}
+	Utils::log("Broadcast:%s", msg.c_str());
 }
 
 void Room::BroadcastFrameData()
@@ -101,8 +103,10 @@ void Room::BroadcastFrameData()
 		FrameData *f = p->GetFrameDataByFps(current_fps);
 		jsondata += f->toJson();
 		jsondata += "+";
+	
 		i++;
 	}
+	jsondata += NET_MSG_ENG_LINE;
 
 	for (auto p : players)
 	{

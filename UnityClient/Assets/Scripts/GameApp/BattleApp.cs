@@ -148,13 +148,13 @@ sealed class BattleSyncHandler
     public void AddRecvMsg(string msg)
     {
         _recvQueue.Enqueue(msg);
-        //     Debug.Log("[LOG]:Recv:  " + msg);
+       ///  Debug.Log("[LOG]:Recv:  " + msg);
     }
 
     public void AddRecvMsgUnSafe(string msg)
     {
         _recvQueue.UnSafeEnqueue(msg);
-        //   Debug.Log("[LOG]:Recv:  " + msg);
+    //  Debug.Log("[LOG]:Recv:  " + msg);
     }
 
 
@@ -169,6 +169,8 @@ sealed class BattleSyncHandler
 
     int on_enter_max_fps = 0;//加入游戏时最大帧数
     public BattleApp app = null;
+    private int _FRAMEDATA_EMPTY_ERROR_COUNTER = 0;
+
     public void UpdateMS()
     {
 
@@ -205,7 +207,7 @@ sealed class BattleSyncHandler
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-            //    Debug.Log(xx);
+          ///   Debug.Log(xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -320,9 +322,14 @@ sealed class BattleSyncHandler
         }
         else if (cmd == "new")
         {//新玩家
-
             string name = decode.customs[1] as string;
             int no = int.Parse(decode.customs[2] as string);
+            if (no == HeroMgr.ins.me_no) return;
+
+            Hero h2 = HeroMgr.Create<Hero>();
+            h2.team = 3;
+            h2.no = no;
+            h2.name = name;
 
         }
         else if (cmd == "chat")
@@ -434,7 +441,6 @@ sealed class BattleSyncHandler
     }
 
 
-    private int _FRAMEDATA_EMPTY_ERROR_COUNTER = 0;
 
 }
 
