@@ -94,7 +94,7 @@ public sealed class BattleWorldMap : WorldMapBase
     /// 用这个地图 更新Entity世界信息
     /// </summary>
     /// <param name="what"></param>
-    public void UpdateEntity(Entity what)
+    private void UpdateEntity(Entity what)
     {
         //   
         if (false == this.UpdateWithPlaform(what))

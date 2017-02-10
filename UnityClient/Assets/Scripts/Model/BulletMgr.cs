@@ -4,9 +4,9 @@ using System;
 
 public sealed class BulletMgr : GAObject
 {
-    public static Bullet Create<T>(Entity owner , BulletConfigInfo info=null) where T : new()
+    public static Bullet Create<T>(Entity owner, BulletConfigInfo info = null) where T : new()
     {
-        return InitHelper(new T() as Bullet, owner ,info);
+        return InitHelper(new T() as Bullet, owner, info);
     }
 
     /// <summary>
@@ -15,7 +15,7 @@ public sealed class BulletMgr : GAObject
     /// <param name="owner"></param>
     /// <param name="_class"> the class name</param>
     /// <returns></returns>
-    public static Bullet Create(Entity owner, string _class , BulletConfigInfo info =null)
+    public static Bullet Create(Entity owner, string _class, BulletConfigInfo info = null)
     {
         Type t = Type.GetType(_class);
         if (t == null)
@@ -23,9 +23,9 @@ public sealed class BulletMgr : GAObject
             Debug.LogError("UnKnown type:" + _class);
             return null;
         }
-        return InitHelper(Activator.CreateInstance(t) as Bullet, owner,info);
+        return InitHelper(Activator.CreateInstance(t) as Bullet, owner, info);
     }
-    private static Bullet InitHelper(Bullet ret, Entity owner , BulletConfigInfo info)
+    private static Bullet InitHelper(Bullet ret, Entity owner, BulletConfigInfo info)
     {
         if (ret == null) return null;
 
@@ -56,9 +56,15 @@ public sealed class BulletMgr : GAObject
 
     public override void UpdateMS()
     {
+        EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLBULLET_UPDATEMS);
         foreach (Bullet b in lists)
         {
-            if (b.IsValid()) b.UpdateMS();
+            if (b.IsValid())
+            {
+                EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ONEBULLET_UPDATEMS, b);
+                b.UpdateMS();
+                EventDispatcher.ins.PostEvent(Events.ID_AFTER_ONEBULLET_UPDATEMS, b);
+            }
         }
         // clear all complete buffer
         for (int i = 0; i < lists.Count; )
@@ -73,6 +79,7 @@ public sealed class BulletMgr : GAObject
                 ++i;
             }
         }
+        EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLBULLET_UPDATEMS);
     }
 
 

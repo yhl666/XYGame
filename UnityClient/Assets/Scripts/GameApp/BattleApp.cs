@@ -335,7 +335,7 @@ sealed class BattleSyncHandler
         }
 
     }
-    private int _FRAMEDATA_EMPTY_ERROR_COUNTER = 0;
+
     public void ProcessWithFrameData()
     {
         AutoReleasePool.ins.Clear();//更新前 先清理一次 使每帧 都有效清理
@@ -424,9 +424,7 @@ sealed class BattleSyncHandler
               }*/
         }
         //process update
-        EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLMODEL_UPDATEMS);
         ModelMgr.ins.UpdateMS();
-        EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
         ViewMgr.ins.UpdateMS();
         if (current_fps < current_max_fps)
         {
@@ -436,7 +434,7 @@ sealed class BattleSyncHandler
     }
 
 
-
+    private int _FRAMEDATA_EMPTY_ERROR_COUNTER = 0;
 
 }
 

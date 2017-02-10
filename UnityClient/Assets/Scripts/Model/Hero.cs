@@ -89,9 +89,6 @@ public class Hero : Entity
     }
     public override void UpdateMS()
     {
-        //process terrain
-        EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ONEENTITY_UPDATEMS,this);
-
         //process  input status
         if (atk)
         {
@@ -133,7 +130,6 @@ public class Hero : Entity
         {//test
             eventDispatcher.PostEvent(Events.ID_BTN_ATTACK);
         }
-        EventDispatcher.ins.PostEvent(Events.ID_AFTER_ONEENTITY_UPDATEMS, this);
 
     }
 }

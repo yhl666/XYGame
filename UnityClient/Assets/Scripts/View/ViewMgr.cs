@@ -40,6 +40,7 @@ public sealed class ViewMgr : GAObject
 
     public override void UpdateMS()
     {
+        EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLVIEW_UPDATEMS);
         for (int i = 0; i < _views.Count; i++)
         {
             //   if ((_views[i] as View).IsInValid()) continue;
@@ -58,10 +59,11 @@ public sealed class ViewMgr : GAObject
                 ++i;
             }
         }
-
+        EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLVIEW_UPDATEMS);
     }
     public override void Update()
     {
+        EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLVIEW_UPDATE);
         for (int i = 0; i < _views.Count; i++)
         {
             (_views[i] as View).Update();
@@ -79,6 +81,7 @@ public sealed class ViewMgr : GAObject
                 ++i;
             }
         }
+        EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLVIEW_UPDATE);
     }
 
 

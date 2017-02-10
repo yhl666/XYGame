@@ -23,7 +23,12 @@ public sealed class BufferMgr : GAObject
     {
         foreach (Buffer b in lists)
         {
-            if (b.IsValid()) b.UpdateMS();
+            if (b.IsValid())
+            {
+                EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ONEBUFFER_UPDATEMS, b);
+                b.UpdateMS();
+                EventDispatcher.ins.PostEvent(Events.ID_AFTER_ONEBUFFER_UPDATEMS, b);
+            }
         }
         // clear all complete buffer
         for (int i = 0; i < lists.Count; )
@@ -91,7 +96,7 @@ public sealed class BufferMgr : GAObject
     /// <param name="owner"></param>
     /// <param name="_class"> the class name</param>
     /// <returns></returns>
-    public   Buffer Create(string _class)
+    public Buffer Create(string _class)
     {
         System.Type t = System.Type.GetType(_class);
         if (t == null)
@@ -101,7 +106,7 @@ public sealed class BufferMgr : GAObject
         }
         return InitHelper(System.Activator.CreateInstance(t) as Buffer);
     }
-    private Buffer InitHelper(Buffer ret )
+    private Buffer InitHelper(Buffer ret)
     {
         if (ret == null) return null;
         ret.owner = owner;

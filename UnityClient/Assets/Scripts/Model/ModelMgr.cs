@@ -9,7 +9,7 @@ public sealed class ModelMgr : GAObject
     public static T Create<T>() where T : new()
     {
         T t = new T();
-        Model m =t as Model;
+        Model m = t as Model;
         m.Init();
         ins.Add(m);
         return t;
@@ -29,6 +29,7 @@ public sealed class ModelMgr : GAObject
 
     public override void UpdateMS()
     {
+        EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLMODEL_UPDATEMS);
 
         BulletMgr.ins.UpdateMS();
         HeroMgr.ins.UpdateMS();
@@ -37,7 +38,7 @@ public sealed class ModelMgr : GAObject
         foreach (Model b in lists)
         {
             // if (b.IsValid()) 
-      
+
             { b.UpdateMS(); }
         }
 
@@ -53,8 +54,9 @@ public sealed class ModelMgr : GAObject
                 ++i;
             }
         }
+        EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
     }
-  
+
 
     ArrayList lists = new ArrayList();
 

@@ -37,8 +37,10 @@ public sealed class HeroMgr : GAObject
     {
         foreach (Hero b in lists)
         {
-            // if (b.IsValid()) 
-            { b.UpdateMS(); }
+            EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ONEENTITY_UPDATEMS, b);
+            b.UpdateMS();
+            EventDispatcher.ins.PostEvent(Events.ID_AFTER_ONEENTITY_UPDATEMS, b);
+
         }
 
         //clear

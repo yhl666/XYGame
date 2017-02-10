@@ -49,12 +49,27 @@ public sealed class Events : object
 
 
 
-    public const int ID_BEFORE_ALLMODEL_UPDATEMS = 32;//在所有Model 帧同步运算前 (已设置来自服务器状态数据，但未处理)
-    public const int ID_AFTER_ALLMODEL_UPDATEMS = 33;//在所有Model 帧同步运算后(已设置来自服务器状态数据，已处理)
+    public const int ID_BEFORE_ALLMODEL_UPDATEMS = 32;//在所有Model 帧同步运算前 在ModelMgr 里面触发
+    public const int ID_AFTER_ALLMODEL_UPDATEMS = 33;//在所有Model 帧同步运算后
 
-    public const int ID_BEFORE_ONEENTITY_UPDATEMS = 34;//在Y一个Entity 帧同步运算前 (已设置来自服务器状态数据，但未处理)
+    public const int ID_BEFORE_ONEENTITY_UPDATEMS = 34;//在一个Entity 帧同步运算前 (已设置来自服务器状态数据，但未处理)在HeroMgr 和 EnemyMgr 里面触发
     public const int ID_AFTER_ONEENTITY_UPDATEMS = 35;//在一个Entity 帧同步运算后(已设置来自服务器状态数据，已处理)
 
+    public const int ID_BEFORE_ONEBULLET_UPDATEMS = 36;  //在一个子弹 帧同步更新前
+    public const int ID_AFTER_ONEBULLET_UPDATEMS = 37; //  // 在一个子弹帧同步更新后 BulletMgr触发
+
+    public const int ID_BEFORE_ALLBULLET_UPDATEMS = 38;  //在所有子弹 帧同步更新前
+    public const int ID_AFTER_ALLBULLET_UPDATEMS = 39; //  // 在所有子弹帧同步更新后 BulletMgr触发
+
+
+    public const int ID_BEFORE_ONEBUFFER_UPDATEMS = 40;  //在一个Buffer 帧同步更新前
+    public const int ID_AFTER_ONEBUFFER_UPDATEMS = 41; //  // 在一个buffer 帧同步更新后 BufferMgr触发
+
+    public const int ID_BEFORE_ALLVIEW_UPDATEMS = 42;//在所有View 帧同步运算前 在ViewMgr 里面触发
+    public const int ID_AFTER_ALLVIEW_UPDATEMS = 43;//在所有View 帧同步运算后
+
+    public const int ID_BEFORE_ALLVIEW_UPDATE = 44;//在所有View Unity 更新后 在ViewMgr 里面触发
+    public const int ID_AFTER_ALLVIEW_UPDATE = 45;//在所有View Unity 更新后
 
 
 
