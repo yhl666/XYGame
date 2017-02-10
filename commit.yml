@@ -2,37 +2,28 @@
 branches: {
   }
 fileChange:
-  /BattleServer:
-    newFile: !uuid 'a6c81e5ae130580a0621a1756cca198f56b66001'
-    oldFile: !uuid '9143241801fb71098f520189e5f6f54d0ba31041'
-  /BattleServer/Debug:
-    newFile: !uuid '561c211ce96fb0df6895d30266e38fdfd08df45f'
-    oldFile: !uuid '196f9c1eac845d7756a0678b0ab904e7369862a1'
-  /BattleServer/Debug/config.ini:
-    newFile: !uuid 'ef53b4c73e868ac349140ffc8b11f439381a93cf'
-    oldFile: !uuid '0042eae16d2e82ea93e57f270d62a87a9cd40c3c'
   /UnityClient:
-    newFile: !uuid '5e1acd1e30c9f81c216c952af71dd88f80fe138d'
-    oldFile: !uuid 'c206d84d559b04d821a36c54803cdb6d1763d3ea'
+    newFile: !uuid '1004ad41da39cbb26bb912462677563eb3c9391e'
+    oldFile: !uuid '5e1acd1e30c9f81c216c952af71dd88f80fe138d'
+  /UnityClient/Assembly-CSharp-Editor-firstpass.csproj:
+    newFile: !uuid 'efe6b3c17be789bf53128b6315224a20e281dcea'
+    oldFile: !uuid '52679f8b08e60c25e42f63bcee210daefdfd243d'
+  /UnityClient/Assembly-CSharp-Editor.csproj:
+    newFile: !uuid '23f4536412fa338f64f47e742c6a059d12f9341c'
+    oldFile: !uuid '881516ab57675182dca0fca870eab99efd3dc977'
   /UnityClient/Assets:
-    newFile: !uuid '057adaaaafba6c7e297b27eb5dfae115886d09b3'
-    oldFile: !uuid 'a91c9266c70e19da41f8158c45cc3fbefc3c45d3'
+    newFile: !uuid 'ea91f982f68ca7ddb0acefffa411a4cb25deab98'
+    oldFile: !uuid '057adaaaafba6c7e297b27eb5dfae115886d09b3'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid 'aa54f2c5c695c9c78d09d6b7fd2a79b3adcb03c2'
-    oldFile: !uuid '89b7dfe8bc956d2777e2b0d6e0515aa84028a0e6'
+    newFile: !uuid '3ba9e047b0d80405f7475d36c08a645ca082cade'
+    oldFile: !uuid 'aa54f2c5c695c9c78d09d6b7fd2a79b3adcb03c2'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '827b216e01de42418b2a4e92d8a739fe4b4cd1ba'
-    oldFile: !uuid '7d5f0ef8ec4743f4bf5c6457b7c7bf0456037e5d'
-  /UnityClient/Assets/Scripts/Model/StateBase.cs:
-    newFile: !uuid '8a3f8714fe383bebf6cd196750130bd5ed6ff159'
-    oldFile: !uuid '217068676df8a413cd6f30a125c23c6c11dc69ed'
+    newFile: !uuid '39a8f70e29bdb9b0dbdcc778dcabd0b19eb59ced'
+    oldFile: !uuid '827b216e01de42418b2a4e92d8a739fe4b4cd1ba'
   /UnityClient/Assets/Scripts/Model/WorldMap.cs:
-    newFile: !uuid 'e44cff8c59a78400dea807082258536bd9b5d348'
-    oldFile: !uuid '4dc004d61271e94b70fad2abebf86ab8e3f6b4c0'
-  /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid 'b0ed5ae89ef4a15b64dd0800399694034154752e'
-    oldFile: !uuid 'd6abc94a048394f4afd51b14e2db1d218f38d708'
-gitCommitId: !uuid '073e840940b5c3a3059a08e42ceea18bf2124612'
+    newFile: !uuid '4dc004d61271e94b70fad2abebf86ab8e3f6b4c0'
+    oldFile: !uuid 'e44cff8c59a78400dea807082258536bd9b5d348'
+gitCommitId: !uuid '56448803ee860b722cd56207f4c9043111fd48d5'
 renames: {
   }
-revisionId: 53
+revisionId: 54
