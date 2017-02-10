@@ -59,8 +59,6 @@ public sealed class BattleWorldMap : WorldMapBase
 
         if (block != null)
         {
-
-            Debug.Log(who.GetRealY() + "   " + block.height);
             if (who.GetRealY() >= block.height)
             {//往低处走 
                 who.x = target; ;
