@@ -87,12 +87,14 @@ private:
 		if (connect(sock, (SOCKADDR*)&server_ipaddr, len) == 0)
 		{
 			this->socket = sock;
-			//cout << "Connect OK" << endl;
+			cout << "Connect OK" << endl;
 		}
 		else
 		{
 			//	exit(0);
 			cout << "Connect Error" << endl;
+			Sleep(1000);
+			exit(0);
 		}
 	}
 
@@ -142,7 +144,7 @@ int main()
 	{
 		Client *client = Client::Create();
 		std::thread t(std::bind(ThreadFunc, client));
-		t.detach();
+		t.join();
 	}
 
 
