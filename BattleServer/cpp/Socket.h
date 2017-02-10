@@ -6,7 +6,7 @@
 
 
 //this is socket wrapper for server
-class Socket
+class Socket :Memory
 {
 public:
 

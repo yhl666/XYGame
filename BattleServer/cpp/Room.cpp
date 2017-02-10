@@ -28,7 +28,7 @@ Room::Room()
 Room::Room(int id)
 {
 	this->SetID(id);
-	this->log = new LogFile(Utils::itos(id));
+	//this->log = new LogFile(Utils::itos(id));
 }
 
 bool Room::isEmptyRoom()
@@ -80,8 +80,6 @@ void Room:: BroadcastCustomData(const std::string & msg, bool isAddToCache)
 	if (players.size() <= 0)return;
 	string str =  msg;
 
-	str += "^";
-
 	for (auto p : players)
 	{
 		p->SendJsonData(str);
@@ -106,15 +104,12 @@ void Room::BroadcastFrameData()
 		i++;
 	}
 
-	jsondata += '^';//this a flag for one frame data end
-
-
 	for (auto p : players)
 	{
 		p->SendJsonData(jsondata);
 	}
 	//Utils::log("Broadcast:%s", jsondata.c_str());
-	Utils::log("%s", jsondata.c_str());
+///	Utils::log("%s", jsondata.c_str());
 
 
 	//this->log->log("Broadcast:%s", jsondata.c_str());
@@ -168,7 +163,6 @@ void Room::IncreaseFps()
 	if (isOver)
 	{
 		//check all client recv
-
 		for (Player * p : players)
 		{
 			if (p->isReadyForGameOver() == false)return;
@@ -180,10 +174,13 @@ void Room::IncreaseFps()
 
 	if (this->isGameOver())
 	{
+	
 		this->BroadcastCustomData("cmd:Over");
 		this->isOver = true;
 		return;
 	}
+
+
 
 	this->CheckEmptyFrameTick();
 	// process
@@ -246,9 +243,8 @@ Room::~Room()
 	{
 		p->Release();
 	}
-	this->log->Release();
-	Utils::log("Room id=%d  Destory", id);
-	Memory::PrintTrace();
+	//this->log->Release();
+	Utils::log("~Room id=%d  Destory", id);
 }
 
 

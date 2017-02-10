@@ -18,7 +18,7 @@ void   Utils::log(const char *str, ...)
 {
 	//	return;
 	//this is thread safe
-	char log_buffer[1024];// 1kb   buffer size
+	char log_buffer[10240];// 1kb   buffer size
 
 
 	va_list l;

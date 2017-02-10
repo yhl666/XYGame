@@ -12,6 +12,8 @@
 using namespace  std;
 
 
+#define  CHECK_LEACKS
+
 int ServerApp::Run()
 {
 	while (this->isTerminal == false)
@@ -98,6 +100,9 @@ void ServerApp::Startup()
 }
 
 
+#ifndef  CHECK_LEACKS
+
+
 
 void ServerAppDynamic::Startup()
 {
@@ -117,38 +122,6 @@ int ServerAppDynamic::Run()
 		int count = 0;
 
 		SocketClient * cli;
-		/*	while (true)
-			{
-			//accept first player
-			cli = srv.AcceptLoop();
-			if (cli)
-			{
-			break;;
-			}
-			else
-			{
-			}
-			};
-			if (cli)
-			{
-			while (true)
-			{
-			string str = cli->Recv().GetString();
-			if (str != "")
-			{
-
-			break;
-			}
-			}
-			Player*player = Player::Create(cli);
-			player->SetNo(++count);
-			cli->SetAsync();
-
-			//	cli->Send("cmd:Start:" + seeds + ":" + Utils::itos(player->GetNo()));
-			cli->Send("cmd:Start:" + seeds + ":" + Utils::itos(player->GetNo()) + ":" + Utils::itos(room->GetCurrentFps()));
-			room->Add(player);
-			cout << "Room id=" << room->GetID() << " Add Player id=" << player->GetNo() << endl;;
-			}*/
 
 		std::thread t(std::bind(ServerAppDynamic::RoomThreadFunc, room));
 		t.detach();
@@ -163,9 +136,16 @@ int ServerAppDynamic::Run()
 			while (joinAble && !cli)
 			{
 				cli = srv.AcceptLoop();
-				Sleep(100);
+				//	Sleep(100);
 				room->Lock();
+
+				if ((room->GetPlayerCounts() > 0 && room->isEmptyRoom()))
+				{
+					room->UnLock();
+					break;;
+				}
 				joinAble = room->JoinAble();
+
 				room->UnLock();
 			}
 			if (!cli)
@@ -176,18 +156,18 @@ int ServerAppDynamic::Run()
 
 			if (cli)
 			{
+
 				string str;
 				while (true)
 				{
 					str = cli->Recv().GetString();
 
-					if (str != "" && str.size()>0)
+					if (str != "" && str.size() > 0)
 					{
 						str[str.size() - 1] = '\0';
 						break;
 					}
 				}
-
 
 				cli->SetAsync();
 
@@ -205,7 +185,7 @@ int ServerAppDynamic::Run()
 							int no = Utils::stoi(pack->customs[2]);
 							room->ReConnect(cli, no, fps);
 						}
-						else if (cmd == "new")
+						else if ((cmd == "new"))
 						{
 							Player*player = Player::Create(cli, room);
 							player->SetNo(++count);
@@ -216,11 +196,20 @@ int ServerAppDynamic::Run()
 							cout << "Room id=" << room->GetID() << " Add Player id=" << player->GetNo() << " name=" << pack->customs[1] << endl;;
 
 						}
+						else
+						{
+							//Utils::log("unknow:%s1", cmd.c_str());
+						}
 
+					}
+					else
+					{
+						//Utils::log("Accept noscene connected %s", str.c_str());
 					}
 				}
 				else
 				{
+					//Utils::log("Accept noscene connected %s", str.c_str());
 					//cli->Release();
 				}
 
@@ -266,11 +255,15 @@ void   ServerAppDynamic::RoomThreadFunc(void *arg1)
 			nLast.QuadPart = nNow.QuadPart;
 
 			room->IncreaseFps();
-			if (room->CanDestory() ||  ( room->GetPlayerCounts()>0 && room->isEmptyRoom()))
+			if (room->CanDestory() || (room->GetPlayerCounts() > 0 && room->isEmptyRoom()))
 			{
-				Utils::log("over");
+				Sleep(100);
 				room->UnLock();
 				room->Release();
+
+				Memory::PrintTrace();
+				system("pause");
+				exit(0);
 				return;
 			}
 			//check new player
@@ -279,9 +272,225 @@ void   ServerAppDynamic::RoomThreadFunc(void *arg1)
 		{//loop for all recv send tick
 			room->RecvTick();
 			room->SendTick();
-			std::this_thread::sleep_for(std::chrono::microseconds(10));//Sleep(0);
+			std::this_thread::sleep_for(std::chrono::microseconds(1));//Sleep(0);
 		}
 
 		room->UnLock();
 	}
 }
+
+
+
+
+
+#else
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////  single thread for  leacks check
+
+
+
+void ServerAppDynamic::Startup()
+{
+	srv.Init();
+}
+
+int ServerAppDynamic::Run()
+{
+	//while (this->isTerminal == false)
+	{
+		int  seed = time(0);
+		string seeds = Utils::itos(seed);
+
+		Room*room = Room::Create(seed);
+
+		Utils::log("Create New Room seed = %d", seed);
+		int count = 0;
+
+		SocketClient * cli;
+
+
+		//	std::thread t(std::bind(ServerAppDynamic::RoomThreadFunc, room));
+		//	t.detach();
+		while (true) // loop for accept Player Connecr
+		{
+			SocketClient * cli = nullptr;
+
+			bool joinAble;
+			room->Lock();
+			joinAble = room->JoinAble();
+			room->UnLock();
+			while (joinAble && !cli)
+			{
+				cli = srv.AcceptLoop();
+				//	Sleep(100);
+				room->Lock();
+
+				if ((room->GetPlayerCounts() > 0 && room->isEmptyRoom()))
+				{
+					room->UnLock();
+					break;;
+				}
+				joinAble = room->JoinAble();
+
+				room->UnLock();
+				RoomThreadFunc(room);
+			}
+			if (!cli)
+			{
+				Utils::log("Room id=%d UnJoinAble", room->GetID());
+				break;
+			}
+
+			if (cli)
+			{
+
+				string str;
+				while (true)
+				{
+					str = cli->Recv().GetString();
+
+					if (str != "" && str.size() > 0)
+					{
+						str[str.size() - 1] = '\0';
+						break;
+					}
+				}
+
+				cli->SetAsync();
+
+
+				room->Lock();
+				TranslateDataPack * pack = TranslateDataPack::Decode(str);
+				if (pack)
+				{
+					if (pack->isCustomData)
+					{
+						string cmd = pack->customs[0];
+						if (cmd == "reconnect")
+						{
+							int fps = Utils::stoi(pack->customs[1]);
+							int no = Utils::stoi(pack->customs[2]);
+							room->ReConnect(cli, no, fps);
+						}
+						else if ((cmd == "new"))
+						{
+							Player*player = Player::Create(cli, room);
+							player->SetNo(++count);
+
+							cli->Send("cmd:Start:" + seeds + ":" + Utils::itos(player->GetNo()) + ":" + Utils::itos(room->GetCurrentFps()));
+							room->AddPlayerDynamic(player);
+							room->BroadcastCustomData("cmd:new:" + pack->customs[1] + ":" + Utils::itos(player->GetNo()));
+							cout << "Room id=" << room->GetID() << " Add Player id=" << player->GetNo() << " name=" << pack->customs[1] << endl;;
+
+						}
+						else
+						{
+							//Utils::log("unknow:%s1", cmd.c_str());
+						}
+
+					}
+					else
+					{
+						//Utils::log("Accept noscene connected %s", str.c_str());
+					}
+				}
+				else
+				{
+					//Utils::log("Accept noscene connected %s", str.c_str());
+					//cli->Release();
+				}
+
+				pack->Release();
+				room->UnLock();
+			}
+
+		}
+
+		while (true)
+		{
+			RoomThreadFunc(room);
+
+		}
+
+
+		Sleep(1111111);
+		return 0;
+	}
+}
+
+LARGE_INTEGER nFreq;
+LARGE_INTEGER nLast;
+LARGE_INTEGER nNow;
+LARGE_INTEGER perFrame;
+
+
+void   ServerAppDynamic::RoomThreadFunc(void *arg1)
+{
+
+	Room *room = (Room*)arg1;
+
+	QueryPerformanceFrequency(&nFreq);
+	perFrame.QuadPart = (LONGLONG)(1.0 / 40.0 * nFreq.QuadPart);//25MS
+
+
+
+	///	while (true)
+	{
+		QueryPerformanceCounter(&nNow);
+		//room->LockWithRAII();
+
+		room->Lock();
+		if (true || nNow.QuadPart - nLast.QuadPart > perFrame.QuadPart)
+		{// time to increase fps
+			nLast.QuadPart = nNow.QuadPart;
+
+			room->IncreaseFps();
+			if (room->CanDestory() || (room->GetPlayerCounts() > 0 && room->isEmptyRoom()))
+			{
+				Sleep(100);
+				room->UnLock();
+				room->Release();
+
+
+				Memory::PrintTrace();
+
+				Memory::Clear();
+				_CrtDumpMemoryLeaks();
+				system("pause");
+				exit(0);
+
+
+			}
+			//check new player
+		}
+		else
+		{//loop for all recv send tick
+			room->RecvTick();
+			room->SendTick();
+			std::this_thread::sleep_for(std::chrono::microseconds(1));//Sleep(0);
+		}
+
+		room->UnLock();
+	}
+
+	QueryPerformanceCounter(&nLast);
+	return;
+}
+
+
+#endif

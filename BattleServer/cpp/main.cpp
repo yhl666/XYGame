@@ -26,10 +26,7 @@ int main()
 	{
 		cout << "config.ini  is missing or error" << endl;
 	}
-
-
-	system("pause");
-
+ 
 	return 0;
 }
 

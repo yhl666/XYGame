@@ -12,17 +12,17 @@ class FrameData : public Memory
 {
 
 public:
-	 int fps = 0;//帧数信息
-	 int no = 0;//该房间的玩家编号
+	int fps = 0;//帧数信息
+	int no = 0;//该房间的玩家编号
 
 	// 按钮状态，可用int的位 来表示，暂时不优化
 
-	 int left = 0;//left
-	 int right = 0;//right
-	 int jump = 0;//jump
-	 int atk = 0;//atk
-	 int s1 = 0;//skill 1
-	 int stand = 0;//stand
+	int left = 0;//left
+	int right = 0;//right
+	int jump = 0;//jump
+	int atk = 0;//atk
+	int s1 = 0;//skill 1
+	int stand = 0;//stand
 
 
 public:
@@ -44,7 +44,7 @@ public:
 	* @brief convert Frame to json
 	* @return  string,a json
 	*/
-	std::string toJson(bool skip=true);
+	std::string toJson(bool skip = true);
 
 	/**
 	 * @brief  init this with json
@@ -82,8 +82,16 @@ public:
 	{
 		TranslateDataPack *ret = new TranslateDataPack;
 
-		if (msg == "") return nullptr;
-		if (msg.size() < 4) return nullptr;// illegal 
+		if (msg == "")
+		{ 
+			ret->Release(); 
+			return nullptr; 
+		}
+		if (msg.size() < 4) 
+		{
+			ret->Release(); 
+			return nullptr;
+		}// illegal 
 
 		if (msg.substr(0, 3) == "cmd")
 		{

@@ -1,10 +1,12 @@
 
 #include "Utils.h"
 #include <list>
-/*
-#if  MEMORY_TRACE==TRUE && ENABLE_MULTI_THREAD ==FALSE11
+#include <mutex>
+using namespace  std;
+#ifdef  MEMORY_TRACE
 
-
+static mutex locker;
+#define  LOCK(what) std::lock_guard<mutex> lock(what);
 static std::list<Memory*> objs;
 
 
@@ -15,11 +17,13 @@ void Memory::Release()
 
 Memory:: ~Memory()
 {
+	LOCK(locker);
 	objs.remove(this);
 }
 
 Memory::Memory()
 {
+	LOCK(locker);
 	objs.push_back(this);
 
 }
@@ -27,25 +31,40 @@ Memory::Memory()
 void Memory::PrintTrace()
 {
 
+	LOCK(locker);
+
 	if (objs.size() == 0)
 	{
 		("[Memeory]: all objects are delete");
 		return;
 	}
-	Utils::log("[Memeory]:..................................");
-
+	Utils::log("[Memeory]:...............start...................");
+	unsigned int total = 0;
+	unsigned int objsize = 0;
 	for (const auto &obj : objs)
 	{
-		Utils::log("[Memeory]:%s object still in memeory address 0x%x", typeid(*obj).name(), obj);
+		objsize = obj->GetHeapSize();
+		if (objsize == 0)
+		{
+			objsize = sizeof(((*obj)));
+		}
+		Utils::log("[Memeory]:Heap: %d Bytes in 0x%x %s", objsize, obj, typeid(*obj).name());
+		total += objsize;
 	}
 
-	Utils::log("[Memeory Track]: %d objects are alive", objs.size());
-	Utils::log("[Memeory]:..................................");
+	Utils::log("[Memeory]:Heap: %d Bytes with %d objects alive.", total, objs.size());
+	Utils::log("[Memeory]:................end....................");
 
 }
 
 
-
+void Memory::Clear()
+{
+	/*for (const auto &obj : objs)
+	{
+	obj->Release();
+	}*/
+	objs.clear();
+}
 
 #endif // RELEASE
-*/

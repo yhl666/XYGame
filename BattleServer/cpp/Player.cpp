@@ -10,14 +10,15 @@ using namespace std;
 void  Player::AddFrameData(FrameData*data)
 {
 	//PTR_PARAM_CHECK_RETURN(data);
-
-	if (data->fps - 1 == this->frames.size())
+	//由于客户端并不携带FPS 信息
+	if (data->fps-1 == frames.size())
 	{
 		this->frames.push_back(data);
 	}
 	else
 	{
-		//error of recv data
+	///	cout << "Error data" << endl;
+		data->Release();
 	}
 }
 
@@ -138,7 +139,7 @@ void  Player::OnSendMessage(SocketClient *client, string what)
 
 void  Player::OnRecvMessage(SocketClient *client, string what)
 {
-		//cout << "recv:" << what << endl;
+	//cout << "recv:" << what << endl;
 	TranslateDataPack *pack = TranslateDataPack::Decode(what);
 
 	if (pack->isCustomData)
@@ -148,17 +149,17 @@ void  Player::OnRecvMessage(SocketClient *client, string what)
 		{
 			room->BroadcastCustomData(what, false);
 		}
-
+		pack->Release();
 		///	cout << __FUNCTION__ << what << endl;
 		return;
 	}
 
-
+	pack->Release();
 	FrameData *frame = FrameData::CreateWithJson(what);
 	frame->no = this->no; // fix no
 	frame->fps = current_fps + 1;
 
-//	cout << __FUNCTION__ << " FrameData " << frame->toJson() << endl;
+	//	cout << __FUNCTION__ << " FrameData " << frame->toJson() << endl;
 	this->AddFrameData(frame);
 }
 
@@ -169,7 +170,7 @@ void   Player::OnRecvEmptyMessage(SocketClient *client)
 	frame->no = this->no;
 	this->AddFrameData(frame);
 
-//	LOG_FUNC_NAME;
+	//	LOG_FUNC_NAME;
 }
 
 
@@ -200,7 +201,8 @@ Player::~Player()
 	{
 		p->Release();
 	}
-	//	LOG_FUNC_NAME;
+	this->UnBindSocketClient(socket);
+	Utils::log("~Player FrameData Count = %d", frames.size());
 }
 
 void Player::Recv()
@@ -215,21 +217,15 @@ void Player::RecvTick()
 {
 	if (this->frames.size() == current_fps + 1)
 	{
-
 	}
 	else if (this->frames.size() == current_fps)
 	{
 		this->Recv();
-
 	}
 	else
 	{
 		//ZT_ASSERT(false, "  this player frame dates Error");
-
-
-
-
-
+	//	cout<<"this player frame dates Error   " <<current_fps<<"   "<<frames.size()<<endl;;
 		//	for (int i = this->frames.size() - 1;i<;i++)
 	}
 }
@@ -281,9 +277,8 @@ bool  Player::isReadyForGameOver()
 	if (isConnected() == false)return true;
 	if (current_send_ok_fps == current_fps + 2)return true;// 2 is cmd(custom) counts
 
-	if (current_fps + 1 == this->frames.size())return true;//因为客户端是被动发送帧数信息，因此结束时 多了1，
-	//这个多出来的一帧 是第三帧发送给客户端 客户端处理后 返回的第四帧数据，但是服务器不处理了，因为游戏结束
-	//
+	if (current_fps + 1 == this->frames.size())return true;
+	if (current_fps == this->frames.size())return true;
 
 	return false;
 }

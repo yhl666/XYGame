@@ -6,8 +6,8 @@ using namespace std;
 int Config::MAX_PLAYER_COUNT=5;//每个房间最大玩家数
 int Config::SERVER_PORT=0; // 服务器端口
 int Config::MAX_BUFFERS11=4096;	//socket 一次通信 最大缓冲大小
-int Config::GAME_OVER_FRAME_COUNT=10240;	//大于多少帧时 游戏结束  5分钟
-int Config::ROOM_UNABLE_FRAME_COUNT=1024;	//大于多少帧时 房间不允许玩家加入  1分钟
+int Config::GAME_OVER_FRAME_COUNT=10;	//大于多少帧时 游戏结束  5分钟
+int Config::ROOM_UNABLE_FRAME_COUNT=1;	//大于多少帧时 房间不允许玩家加入  1分钟
 
 
 bool Config::InitWithFile(std::string file)

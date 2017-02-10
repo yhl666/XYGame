@@ -9,7 +9,7 @@ class SocketClient;
 /**
  * @brief  windows socket wrapper  for server
  */
-class SocketServer
+class SocketServer :Memory
 {
 
 private:
