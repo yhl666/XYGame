@@ -40,15 +40,26 @@ public sealed class Events : object
     public const int ID_BTN_RIGHT = 22;
     public const int ID_BTN_JUMP = 23;
     public const int ID_BTN_ATTACK = 24;
-    public const int  ID_SPINE_COMPLETE=25;
+    public const int ID_SPINE_COMPLETE = 25;
     public const int ID_STAND = 26;
     public const int ID_HURT = 28;
     public const int ID_LOADING_SHOW = 29;// 显示加载界面
     public const int ID_LOADING_HIDE = 30;// 隐藏加载界面，tip: 界面加载完成会自动关闭  可用此消息手动打开关闭界面显示
     public const int ID_LOADING_SYNC_STRING = 31;// 更新 loading界面的提示信息，默认显示加载中xxxxx
 
+
+
+    public const int ID_BEFORE_ALLMODEL_UPDATEMS = 32;//在所有Model 帧同步运算前 (已设置来自服务器状态数据，但未处理)
+    public const int ID_AFTER_ALLMODEL_UPDATEMS = 33;//在所有Model 帧同步运算后(已设置来自服务器状态数据，已处理)
+
+    public const int ID_BEFORE_ONEENTITY_UPDATEMS = 34;//在Y一个Entity 帧同步运算前 (已设置来自服务器状态数据，但未处理)
+    public const int ID_AFTER_ONEENTITY_UPDATEMS = 35;//在一个Entity 帧同步运算后(已设置来自服务器状态数据，已处理)
+
+
+
+
     public const int ID_LAUNCH_SKILL1 = 100;//释放技能1
- 
+
     //------------------------------local event-----------------------------------------------------------
 
     /* public const int ID_DISABLE_RUN = 100;//禁止run 状态

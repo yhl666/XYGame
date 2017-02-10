@@ -429,6 +429,7 @@ public class Entity : Model
     {
         machine.UpdateMS();
         bufferMgr.UpdateMS();//self buffer mgr update
+
     }
     public override void OnDispose()
     {

@@ -37,6 +37,7 @@ public sealed class ModelMgr : GAObject
         foreach (Model b in lists)
         {
             // if (b.IsValid()) 
+      
             { b.UpdateMS(); }
         }
 

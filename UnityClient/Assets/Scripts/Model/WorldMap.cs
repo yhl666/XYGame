@@ -171,6 +171,17 @@ public sealed class BattleWorldMap : WorldMapBase
 
         terrain = ModelMgr.Create<Terrain>();
         platform = ModelMgr.Create<TerrainPlatform>();
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
         return true;
+    }
+
+    public override void OnEvent(int type, object userData)
+    {
+        if (Events.ID_BEFORE_ONEENTITY_UPDATEMS == type)
+        {
+            this.UpdateEntity(userData as Entity);
+        }
+   
     }
 }
