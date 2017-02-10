@@ -2,28 +2,61 @@
 branches: {
   }
 fileChange:
-  /BattleServer:
-    newFile: !uuid '9143241801fb71098f520189e5f6f54d0ba31041'
-    oldFile: !uuid 'fbdaf39444227cec6eae03839210b269100b2e03'
-  /BattleServer/Debug:
-    newFile: !uuid '196f9c1eac845d7756a0678b0ab904e7369862a1'
-    oldFile: !uuid '04ef1305bbbab6f498a20983d628c2de662f51bb'
-  /BattleServer/Debug/BattleServer.exe:
-    newFile: !uuid '3a4331d3d3b3241978d92e4e088e7aa32d8d7dc2'
-    oldFile: !uuid '7384b70ec6bbb6b5c35362ea46905eccee0487f6'
-  /BattleServer/Debug/config.ini:
-    newFile: !uuid '0042eae16d2e82ea93e57f270d62a87a9cd40c3c'
-    oldFile: !uuid '5d8e451f0133c50bc396418c67f11dbb881e2752'
-  /BattleServer/cpp:
-    newFile: !uuid '8c2f46431ccc3705e2d6fb34c9d3a00ce4777745'
-    oldFile: !uuid '2a259503a76ef59338b91a68013b0872fff2d665'
-  /BattleServer/cpp/ServerApp.cpp:
-    newFile: !uuid 'a6fdab7cc77efe239fb470d04e078d931fc518d4'
-    oldFile: !uuid '07f9744130e3553919925698e0241a0943ed6194'
-  /BattleServer/cpp/config.ini:
-    newFile: !uuid '0042eae16d2e82ea93e57f270d62a87a9cd40c3c'
-    oldFile: !uuid 'bea83096571b1d6e8164059ee04e1ca7c4ff15e9'
-gitCommitId: !uuid '052330705bc976a4f0294fd0498b1168e8c65944'
+  /UnityClient:
+    newFile: !uuid 'c206d84d559b04d821a36c54803cdb6d1763d3ea'
+    oldFile: !uuid 'b8875cdef70a2300540f907c855917c34dde6a15'
+  /UnityClient/Assets:
+    newFile: !uuid 'a91c9266c70e19da41f8158c45cc3fbefc3c45d3'
+    oldFile: !uuid '6b57325be4f132d04fdd64e9c1aa0f14dd7a7342'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '89b7dfe8bc956d2777e2b0d6e0515aa84028a0e6'
+    oldFile: !uuid '6e7da38c1acf9f2b75a906354b2204f1163d11d5'
+  /UnityClient/Assets/Scripts/Base:
+    newFile: !uuid '7e6e22c86551ccbd7ad7e417f8bbce687f683159'
+    oldFile: !uuid 'a4db84d0b7c97efdf2a0d58f887f65973a9b0280'
+  /UnityClient/Assets/Scripts/Base/Events.cs:
+    newFile: !uuid 'ce7074a26a20ea9e44214f78169dc43002ab3037'
+    oldFile: !uuid 'd1eefbf507884e269bd3a3339c3156e7d2a7cf2a'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid 'ac972c0c2d877306d31de482ba2281135f3334fd'
+    oldFile: !uuid '9370867d2fe673bb4bc63adacdaae296042bfd25'
+  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
+    newFile: !uuid '6c370dbdd166459f8ce6f271ca1a60f49175619f'
+    oldFile: !uuid 'bc488f896514a905e31686e7d9be6d16e237add1'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '7d5f0ef8ec4743f4bf5c6457b7c7bf0456037e5d'
+    oldFile: !uuid 'e5aebba2f57553afaaf926a095388d0d3c625a72'
+  /UnityClient/Assets/Scripts/Model/BufferMgr.cs:
+    newFile: !uuid '2d7d597f9e92485116097c42d1a21006f439baaf'
+    oldFile: !uuid '9466d594cce90aec63fac84a071ee3db4d119e12'
+  /UnityClient/Assets/Scripts/Model/BulletMgr.cs:
+    newFile: !uuid '07710198d5a0233d941b12dca08824e6d82d0714'
+    oldFile: !uuid '1a8e133a99b74a85b862e05135fabb20f78e8d20'
+  /UnityClient/Assets/Scripts/Model/EnemyMgr.cs:
+    newFile: !uuid '266ff7dac8460b0c1de420d169534da8c1a2bc97'
+    oldFile: !uuid '7a4cfdc53c5f76521088d4898e13437fe27a1e59'
+  /UnityClient/Assets/Scripts/Model/Hero.cs:
+    newFile: !uuid 'bdfc5f013620ca6ac665789bdfad49017f7609e2'
+    oldFile: !uuid '3574d6316ad441946daae4e6562e1304a005ac9f'
+  /UnityClient/Assets/Scripts/Model/HeroMgr.cs:
+    newFile: !uuid '7044fb69154448916c6442fa879b0dd392d9b6bb'
+    oldFile: !uuid '28cc3bcb907555d7d8380e0961466a03de2c145a'
+  /UnityClient/Assets/Scripts/Model/ModelMgr.cs:
+    newFile: !uuid 'e4ddbb383e194112316531e796f991f282ac0050'
+    oldFile: !uuid '94bdea83ab885f5d11622a063e964ac861041066'
+  /UnityClient/Assets/Scripts/Model/WorldMap.cs:
+    newFile: !uuid '4dc004d61271e94b70fad2abebf86ab8e3f6b4c0'
+    oldFile: !uuid 'e075043a3ccf8813b0152e945c178eb1e3837c03'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'e3e11e6d7ee55db8fcde1808124ae6d684754751'
+    oldFile: !uuid '400c244c66c0541a7a54e039993449aae6165aee'
+  /UnityClient/Assets/Scripts/View/ViewMgr.cs:
+    newFile: !uuid '514d782499b3314f4e831479454135103f23bf28'
+    oldFile: !uuid 'b3df31276d95c8923bf52c8127115aa741742e08'
+  /UnityClient/UnityClient.v12.suo:
+    newFile: !uuid 'd6abc94a048394f4afd51b14e2db1d218f38d708'
+    oldFile: !uuid '846748e8e6ca437ea773e0acfd40fdedccbacf4c'
+gitCommitId: !uuid '807a6785c36bafd3589a789718f49fcc5f8f033b'
 renames: {
   }
-revisionId: 51
+revisionId: 52
