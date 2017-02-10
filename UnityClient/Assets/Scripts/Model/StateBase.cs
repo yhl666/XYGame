@@ -206,6 +206,7 @@ public class FallState : StateBase
         if (Target.isStand == false)
         {
             this.Target.y -= 0.1f;
+            if (Target.y <= 0.0f) Target.y = 0.0f;
             Target.isFalling = true;
         }
 
@@ -254,7 +255,7 @@ public class RunState : StateBase
     {
         if (Target.isAttacking && Target.isStand) return;
         if (Target.isHurt) return;
-        this.Target.x -=( 0.05f * this.Target.flipX);
+        this.Target.x -= (0.05f * this.Target.flipX);
 
         Target.isRunning = true;
 
@@ -285,7 +286,7 @@ public class RunState : StateBase
             Target.flipX = 1.0f; this.Enable = true;
 
         }
-         else if (type == Events.ID_BTN_RIGHT)
+        else if (type == Events.ID_BTN_RIGHT)
         {
             Target.flipX = -1.0f; this.Enable = true;
 
@@ -334,6 +335,7 @@ public class StandState : StateBase
     {
         if (Target.y <= 0.0f)
         {//or other terrain ground
+            Target.y = 0.0f;
             Target.isStand = true;
         }
         else
