@@ -262,8 +262,6 @@ void   ServerAppDynamic::RoomThreadFunc(void *arg1)
 				room->Release();
 
 				Memory::PrintTrace();
-				system("pause");
-				exit(0);
 				return;
 			}
 			//check new player
@@ -284,15 +282,6 @@ void   ServerAppDynamic::RoomThreadFunc(void *arg1)
 
 
 #else
-
-
-
-
-
-
-
-
-
 
 
 
