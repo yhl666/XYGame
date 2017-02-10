@@ -60,7 +60,7 @@ public sealed class BattleWorldMap : WorldMapBase
         if (block != null)
         {
             if (who.GetRealY() >= block.height)
-            {//往低处走 
+            {//没有往更高处走，不会撞墙 直接设置
                 who.x = target; ;
             }
             else
