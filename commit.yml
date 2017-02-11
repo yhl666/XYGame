@@ -3,84 +3,24 @@ branches: {
   }
 fileChange:
   /LogicServer:
-    newFile: !uuid 'e6c10070a93410b28787de7ed572b44b963b0016'
-    oldFile: !uuid 'ed51851932592bb8d7a42e0ce5b9617df0c3fd2e'
+    newFile: !uuid '4f75b2ab84cf03bbe0f15223f09afdcafbbecc27'
+    oldFile: !uuid 'e6c10070a93410b28787de7ed572b44b963b0016'
   /LogicServer/server:
-    newFile: !uuid '00d9c15a0694007af9fa2b2dbf8b594ee00986e3'
-    oldFile: null
+    newFile: !uuid '1f7e2eedc43004c0290d24584192f2dc53128e80'
+    oldFile: !uuid '00d9c15a0694007af9fa2b2dbf8b594ee00986e3'
   /LogicServer/server/scripts:
-    newFile: !uuid '0a836d30da5bee265b598502f120cc2cef10d09e'
-    oldFile: null
-  /LogicServer/server/scripts/base:
-    newFile: !uuid '41d25b7cf2f6419a0d6aefc4cdc42f60d58a0420'
-    oldFile: null
-  /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid 'c3d9d1d2923e4c50b0f6f563168f109f84943603'
-    oldFile: null
-  /LogicServer/server/scripts/base/xygame/README.txt:
-    newFile: !uuid '700b44a90e27e4ed103ac8ebae44297fb0d5a298'
-    oldFile: null
-  /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid '8dafee1a249f2c147dc2ec1945f7bfdff43e7b68'
-    oldFile: null
-  /LogicServer/server/scripts/base/xygame/services/login.lua:
-    newFile: !uuid 'eab50b7a0585c8b5bef843a6ff4662941be8f208'
-    oldFile: null
-  /LogicServer/server/scripts/base/xygame/services/login1.lua:
-    newFile: !uuid 'e49ed3b156b665119bcd436c66a4d8de5e22abf3'
-    oldFile: null
-  /LogicServer/server/scripts/cell:
-    newFile: !uuid 'a5aec4ca53fbb6eb50a128b0735e97bf97159770'
-    oldFile: null
-  /LogicServer/server/scripts/cell/xygame:
-    newFile: !uuid '5e99257b239595b3b2101b0b11f28eb2583cc6ac'
-    oldFile: null
-  /LogicServer/server/scripts/cell/xygame/README.txt:
-    newFile: !uuid '289d589fa1314e431577ecf09e325b8cd6201dae'
-    oldFile: null
-  /LogicServer/server/scripts/cell/xygame/services:
-    newFile: !uuid '409b1ddb7a1bacd5ef4ad6ea3115f4d973fb835f'
-    oldFile: null
-  /LogicServer/server/scripts/cell/xygame/services/redis.lua:
-    newFile: !uuid 'e74ac7a8e86b0f1e2ddb2463ed6448f612990c86'
-    oldFile: null
+    newFile: !uuid '159b971cc2ebeb9d3a89667e5f5bd8117d7361ef'
+    oldFile: !uuid '0a836d30da5bee265b598502f120cc2cef10d09e'
   /LogicServer/server/scripts/common:
-    newFile: !uuid '1a87d0590f4567f95ea60d402686f21df8447406'
-    oldFile: null
+    newFile: !uuid 'c51464f58915f0770f31a1e0b064ef10c98959ed'
+    oldFile: !uuid '1a87d0590f4567f95ea60d402686f21df8447406'
   /LogicServer/server/scripts/common/xygame:
-    newFile: !uuid '9abd26985004055f7163ba7bbf52dde878020741'
-    oldFile: null
+    newFile: !uuid '0708bdb661501997d61e3c961a5c120b8184ecb2'
+    oldFile: !uuid '9abd26985004055f7163ba7bbf52dde878020741'
   /LogicServer/server/scripts/common/xygame/README.txt:
-    newFile: !uuid 'c90a760968a4e15d8896a8a1f67cdc3ae5587461'
-    oldFile: null
-  /LogicServer/server/scripts/common/xygame/base:
-    newFile: !uuid '910aa508ed54ef6eadb0c6f94114cd12619bf90a'
-    oldFile: null
-  /LogicServer/server/scripts/common/xygame/base/remote.lua:
-    newFile: !uuid '7fb7d7fc3a147698f6ef64a8a30b6eea55fbb460'
-    oldFile: null
-  /LogicServer/server/scripts/common/xygame/base/services_handler.lua:
-    newFile: !uuid '22b644ce0817edde923a8a65f0e2ad18d3b17169'
-    oldFile: null
-  /LogicServer/server/scripts/common/xygame/lib:
-    newFile: !uuid '8119186c6f4232e79b33a597375e980159e86c35'
-    oldFile: null
-  /LogicServer/server/scripts/common/xygame/lib/extern.lua:
-    newFile: !uuid '0d1c596a306c85bd6f407f46f1bc653ee106b592'
-    oldFile: null
-  /LogicServer/server/scripts/common/xygame/lib/init.lua:
-    newFile: !uuid '95db7c1abf8266b7552be42b5b446c45f38be60f'
-    oldFile: null
-  /LogicServer/server/scripts/common/xygame/lib/json.lua:
-    newFile: !uuid '64fcfc09e737a7d7463b39dbb29129dd3c513bfe'
-    oldFile: null
-  /LogicServer/server/scripts/common/xygame/main.lua:
-    newFile: !uuid '56a58fcbeda4a83f67b6eb7f1b93176c06ec24d2'
-    oldFile: null
-  /LogicServer/server/根目录.txt:
-    newFile: !uuid '2c2973263a602d98142f326a2e035a1ab8256190'
-    oldFile: null
-gitCommitId: !uuid 'dbadda12a46fa22891019730e5334cce15b9997f'
+    newFile: !uuid '0043e1959519a4cddc8a560eaf5169fc6278b905'
+    oldFile: !uuid 'c90a760968a4e15d8896a8a1f67cdc3ae5587461'
+gitCommitId: !uuid '819b2f7b5ef50712e9fbab4fad64004563922d55'
 renames: {
   }
-revisionId: 58
+revisionId: 59
