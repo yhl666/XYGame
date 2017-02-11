@@ -3,21 +3,12 @@ branches: {
   }
 fileChange:
   /LogicServer:
-    newFile: !uuid '21cd794f5a6091459858d8dcd71ccd6b44a72f8d'
-    oldFile: !uuid '6a5310fd9c20dadcd578840fbf715446e99122b8'
-  /LogicServer/server:
-    newFile: !uuid '41ae0e2515618eb41b363da7124c1573c95202f3'
-    oldFile: !uuid '532f451ba5ac3ff35b84e6218612bda3590e45ed'
-  /LogicServer/server/scripts:
-    newFile: !uuid 'd56c76e6d5c778108a0fa454b484b7774e69e662'
-    oldFile: !uuid '3a7a0a10fb539cca0c040112e2ce02847c68c3c3'
-  /LogicServer/server/scripts/common:
-    newFile: !uuid 'cdb1f2abe672c6d8519edb5cec0ed616fafd1519'
-    oldFile: !uuid 'cdc735df9d055a26893d6c7d51e9e8c3634bd382'
-  /LogicServer/server/scripts/common/rpc_request_handler.lua:
-    newFile: !uuid '3cd788e4e6382beafaee60a8f2c73e56078d9008'
-    oldFile: !uuid '2fcc76211dc41affeb768a5081e6f6b16db4fac2'
-gitCommitId: !uuid 'cd0a0cb71a0e6505c1b542c1d75fe5a734ea5078'
+    newFile: !uuid '4f4b31f8166092177a431abae6ccd0ddd1498e83'
+    oldFile: !uuid '21cd794f5a6091459858d8dcd71ccd6b44a72f8d'
+  /LogicServer/README.txt:
+    newFile: !uuid '04f204e8a4dce749e12679b7a15589d50e3b00b2'
+    oldFile: !uuid '10b5b8c7eea5b447a46c3d4592569fa9aca2770f'
+gitCommitId: !uuid '85c77971a86fd4c2cca7838b967068adaad1e05e'
 renames: {
   }
-revisionId: 67
+revisionId: 68
