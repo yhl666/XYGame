@@ -1,0 +1,1 @@
+xygame 的入口在scrpits.common.xygame.main.lua
