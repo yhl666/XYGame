@@ -1,14 +1,9 @@
 !revision
 branches: {
   }
-fileChange:
-  /LogicServer:
-    newFile: !uuid '4f4b31f8166092177a431abae6ccd0ddd1498e83'
-    oldFile: !uuid '21cd794f5a6091459858d8dcd71ccd6b44a72f8d'
-  /LogicServer/README.txt:
-    newFile: !uuid '04f204e8a4dce749e12679b7a15589d50e3b00b2'
-    oldFile: !uuid '10b5b8c7eea5b447a46c3d4592569fa9aca2770f'
-gitCommitId: !uuid '85c77971a86fd4c2cca7838b967068adaad1e05e'
+fileChange: {
+  }
+gitCommitId: !uuid '299581e2fa4fe9753024874e4ea07e47e2c46db4'
 renames: {
   }
-revisionId: 68
+revisionId: 69
