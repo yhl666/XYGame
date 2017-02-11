@@ -2,46 +2,106 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid '9fab238e6e15bed845785107cf104c743b8aedf6'
-    oldFile: !uuid '4f4b31f8166092177a431abae6ccd0ddd1498e83'
-  /LogicServer/server:
-    newFile: !uuid 'edb6050e8629e93db616d2ea4731817df04ae0e0'
-    oldFile: !uuid '41ae0e2515618eb41b363da7124c1573c95202f3'
-  /LogicServer/server/scripts:
-    newFile: !uuid '30af0569c04022121bfa123dddc9a604883ac2bd'
-    oldFile: !uuid 'd56c76e6d5c778108a0fa454b484b7774e69e662'
-  /LogicServer/server/scripts/base:
-    newFile: !uuid 'b4e42fa50bcf77292e9a8a74fff96a6e758c8370'
-    oldFile: !uuid '54af3335cc4787c4ea4db12ee81e4d6aea1172c3'
-  /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid '4c01c61e6abb116a7d4b8e2592bc8ab06787e25a'
-    oldFile: !uuid '5d920572033f5f112fdc4475acc31de9f00a9958'
-  /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid '684242da0d50197fccc706b948bab0409933ca96'
-    oldFile: !uuid '5b7b671b189891118e724902ce26d08b5a10d499'
-  /LogicServer/server/scripts/base/xygame/services/login.lua:
-    newFile: !uuid 'cb4bd307677279d30d256d4c98ff07c60323cf83'
-    oldFile: !uuid 'b6284dd45c9beaa3a62415034899859c40bff84b'
-  /LogicServer/server/scripts/common:
-    newFile: !uuid '95e13ccfc82bc87730b0359443c458bf4cfac893'
-    oldFile: !uuid 'cdb1f2abe672c6d8519edb5cec0ed616fafd1519'
-  /LogicServer/server/scripts/common/xygame:
-    newFile: !uuid '4095146aabf7395fd578242b7638b3ee87c41b15'
-    oldFile: !uuid '67d7d203d9c90f34d87fbdfaeb0b17e2719946f3'
-  /LogicServer/server/scripts/common/xygame/base:
-    newFile: !uuid '04fc8a622ad301a39b1308e0f5a23a67dd5d747e'
-    oldFile: !uuid '3b04f9e6136ec6c4bb6c1dec78b90c68ae683d29'
-  /LogicServer/server/scripts/common/xygame/base/remote.lua:
-    newFile: !uuid 'e53ebf4089d4a08be15f160ad19934050bf3e1cd'
-    oldFile: !uuid 'aea024f68052b879d0412bad2b6387ae915ca9d8'
-  /LogicServer/server/scripts/common/xygame/lib:
-    newFile: !uuid 'f2486746130cfc8f5a2e641bc4e44218703fafe2'
-    oldFile: !uuid '46fcfc6e6ec30fb96b5988f730b585e0690b3529'
-  /LogicServer/server/scripts/common/xygame/lib/init.lua:
-    newFile: !uuid '52a0ed817617a7d4fea67d320aae98c1eedffdfd'
-    oldFile: !uuid '309eccb52e31949c5cdc566b5e13eabaae406489'
-gitCommitId: !uuid 'b6d9db3001cf30f1517f08998f68e295d6d297bc'
+  /UnityClient:
+    newFile: !uuid '5e525d2eefb20402420a9b52fc6b90cac1bad71f'
+    oldFile: !uuid '3fd113894dc9bc20daef245b4ac03fbd762a8b7e'
+  /UnityClient/Assets:
+    newFile: !uuid '4e9bb077a9c5a4b00b19e17172f93b3b57f628ad'
+    oldFile: !uuid 'e58fbd91b676712b7b01d2acdcb50c7aeb60329f'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid '35120a07848c531ba19e65bdf70c8c9994378b5e'
+    oldFile: !uuid 'd2fbee39bf45174fc8928e61b1a833b705cea1f8'
+  /UnityClient/Assets/Logic/LogicAppScene.unity:
+    newFile: !uuid '7ecb3053e89ef495111bd3559b223e7548731eea'
+    oldFile: null
+  /UnityClient/Assets/Logic/LogicAppScene.unity.meta:
+    newFile: !uuid '9d90b1c6138bbf5b8c000b2276c4db194d9132e0'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts:
+    newFile: !uuid 'a1be196e339db6ba3599f6041bee0c6878a77bde'
+    oldFile: !uuid '3cb1c30dcb56ca2152857fcd40685c1691053b35'
+  /UnityClient/Assets/Logic/Scripts/GameApp:
+    newFile: !uuid '94d649f62ec4b2b4305023298b0dba5399f2b4cd'
+    oldFile: !uuid '721a34b8f3b763f88045cd939fdbba4bfdec42eb'
+  /UnityClient/Assets/Logic/Scripts/GameApp/LogicApp.cs:
+    newFile: !uuid '80d2c9b4182a51af67697dd1f77f35a68f0c6cde'
+    oldFile: !uuid 'd498936b4c399adf3355be3206cfed6a1051c67c'
+  /UnityClient/Assets/Logic/Scripts/LogicScene.cs:
+    newFile: !uuid 'b496fe28d6123bbf5674e8c9f259ebbb6778a6dc'
+    oldFile: !uuid '6816edb5ef634cf46235aebe36e6795a071b6236'
+  /UnityClient/Assets/Logic/Scripts/Model:
+    newFile: !uuid 'eecba3e86a161f676df3a038c5401c201a080e0e'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/Model.meta:
+    newFile: !uuid '99873333b7c00fb1d2a145f54e8f730cfb7dbfbc'
+    oldFile: !uuid '44e72fbe1819c208f9cd48ad72870475be21162b'
+  /UnityClient/Assets/Logic/Scripts/Model/BaseHero.cs:
+    newFile: !uuid '0db1eadb3b8d25a404eb6f900d1978ca2a535f0f'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/Model/BaseHero.cs.meta:
+    newFile: !uuid 'b5f6cbec8970b71be3eb1e198bdffaf42d93ebbd'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/Model/BaseHeroMgr.cs:
+    newFile: !uuid '3a558848a53edca9013747a7a204a95adb3d3949'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/Model/BaseHeroMgr.cs.meta:
+    newFile: !uuid '3b5522696a1a087ba12ea1521fc8d7f94283cdd2'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/Services:
+    newFile: !uuid '80337dcbe97a9f73e357657b01fffd0eb21e2fda'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/Services.meta:
+    newFile: !uuid '329e266998e35ad804eb54b96735dce04166e5c7'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/Services/Room.cs:
+    newFile: !uuid 'a7cc0895d92f15e827e4364772b3a119bed8905d'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/Services/Room.cs.meta:
+    newFile: !uuid '7ba0702fd2131cfcdfe8b7aa11c06c4b668c3a5b'
+    oldFile: null
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '961adbf8588cc641ea5bd0c42dcb86da58ea62fa'
+    oldFile: !uuid '54b810031bdf92c92e6f1fa00469652d9b94f73d'
+  /UnityClient/Assets/Scripts/Base:
+    newFile: !uuid '88f64469565836e25cea37172f405ff260459c4b'
+    oldFile: !uuid 'c4c5ba9bc5da31cbf97046361722f8c52d6ed7cf'
+  /UnityClient/Assets/Scripts/Base/Events.cs:
+    newFile: !uuid '9c8fd0602f4aa6dff34aa2904973916c50c38910'
+    oldFile: !uuid 'ce7074a26a20ea9e44214f78169dc43002ab3037'
+  /UnityClient/Assets/Scripts/Common:
+    newFile: !uuid '4eaadadf64d7405c57a47c8665279e6307de004f'
+    oldFile: !uuid '696e7b00ea22a309dad7cca039d91514b7437275'
+  /UnityClient/Assets/Scripts/Common/Utils.cs:
+    newFile: !uuid '8aab5d40c7b6f78ab062f8b837fe1779724e28f3'
+    oldFile: !uuid '0003413f9c596dda1d4cd766ec5b4e2a544a54e4'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid '169b0e1f747edd4224e064a5b514c46dbfcbb3b2'
+    oldFile: !uuid 'cf5073e3a2cfeca72120058c06e834dc35b4c2a6'
+  /UnityClient/Assets/Scripts/Data/DATA.cs:
+    newFile: !uuid 'f2252b955f81bb364d8205b5e9bafd03aba0be37'
+    oldFile: !uuid 'd0161241b4d382598c3c1ad265fb502778a994e1'
+  /UnityClient/Assets/Scripts/Extensions:
+    newFile: !uuid '4ffe411805cc6ccee238820c34f6e49472f04b37'
+    oldFile: !uuid '3f6854a62524423f15d0d3cfa6d60d06fbe014e1'
+  /UnityClient/Assets/Scripts/Extensions/GameBoxExtension.cs:
+    newFile: !uuid 'ec845cf26a3a0b94b8c7f0f171e0334ac859aacf'
+    oldFile: !uuid '5d67cee24ed0bbd3a862104abc462230c735979d'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid 'f29fac62bd8e1661af352e8261f9bc8904d28831'
+    oldFile: !uuid 'caea550839ff01fa35b3e352011ebef0f34735ad'
+  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
+    newFile: !uuid '30fc14d417e046e0cf2460648d961787905bba64'
+    oldFile: !uuid '6e089875cb9b00258dae1989af430c82574058e2'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '00e83049f0292057aef4b44db40f202505a787d6'
+    oldFile: !uuid '8aa183e7919764663ea8d0b991c76c6f821f6324'
+  /UnityClient/Assets/Scripts/Model/ModelMgr.cs:
+    newFile: !uuid 'e5bf363234036c1f26bee05ba16e93fbefe4181f'
+    oldFile: !uuid 'e4ddbb383e194112316531e796f991f282ac0050'
+  /UnityClient/Assets/Scripts/Model/StateBase.cs:
+    newFile: !uuid 'b7e6dcaec7fb63f929480a2d07fe72ab4df89907'
+    oldFile: !uuid '8a3f8714fe383bebf6cd196750130bd5ed6ff159'
+gitCommitId: !uuid 'b7dae8839fec573e8c3f680083d288541638b7f1'
 renames: {
   }
-revisionId: 71
+revisionId: 72
