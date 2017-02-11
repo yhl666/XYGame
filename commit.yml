@@ -3,30 +3,45 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '90eb2bd7630b814a65f20c8b806299d996697815'
-    oldFile: !uuid '0d13d985bb17f1cd368e4614bbeede1748dbe77e'
+    newFile: !uuid '127052d989f1833f4c1ee1d4f8413ce4d31ea655'
+    oldFile: !uuid '90eb2bd7630b814a65f20c8b806299d996697815'
   /UnityClient/Assets:
-    newFile: !uuid 'a21e0aea555bc31d750ad45f47c1cbc5b1561fa9'
-    oldFile: !uuid 'ecc9850221065988ad75a78f22ddd7e39de5311f'
+    newFile: !uuid 'ba597958c23b56ef5291668309bfb12aa17641d9'
+    oldFile: !uuid 'a21e0aea555bc31d750ad45f47c1cbc5b1561fa9'
+  /UnityClient/Assets/Editor:
+    newFile: !uuid 'fbb587b20270352ddc4049c749f9f83796f3ff30'
+    oldFile: !uuid '7b22cf73486976ddca31956c5738f5aaebab2770'
+  /UnityClient/Assets/Editor/TerrainEdit.cs:
+    newFile: !uuid 'cbbe59ce2feee4c5b8b66070b5068c6f8b6ab199'
+    oldFile: !uuid 'b91019803dfb685e8ca7937445704baadf18d869'
   /UnityClient/Assets/Logic:
-    newFile: !uuid '915c1bec2b42e0677cc607d5679fe39d80c88414'
-    oldFile: !uuid '0481b885098dc14cfe29a3cb610a277c09d46279'
+    newFile: !uuid 'f931ec0b4f13b2600255473211a0d113b7a56a4e'
+    oldFile: !uuid '915c1bec2b42e0677cc607d5679fe39d80c88414'
   /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid 'b71d263155a1305101c2bc492dd329430939cd74'
-    oldFile: !uuid 'c69c01a5a1f8263e6a2273e3c37358526579bd79'
-  /UnityClient/Assets/Logic/Scripts/Model:
-    newFile: !uuid '02fe5d8a37dd65ed94cc52817b72463488969ff5'
-    oldFile: !uuid 'd2fa9e3b4796121999aa7bd3425f6c0692091adf'
-  /UnityClient/Assets/Logic/Scripts/Model/BaseHeroMgr.cs:
-    newFile: null
-    oldFile: !uuid '3a558848a53edca9013747a7a204a95adb3d3949'
-  /UnityClient/Assets/Logic/Scripts/Model/BaseHeroMgr.cs.meta:
-    newFile: null
-    oldFile: !uuid '3b5522696a1a087ba12ea1521fc8d7f94283cdd2'
-  /UnityClient/Assets/Logic/Scripts/View.meta:
-    newFile: null
-    oldFile: !uuid 'b00b00a3f3d0c0d3dd6845584bc066bbb5c2b591'
-gitCommitId: !uuid 'f310bc91350afd209022fc21b022ccb81378a7e2'
+    newFile: !uuid 'b7ac4f1bb16e51a6e4cc4c52a17ea8fe196cbea3'
+    oldFile: !uuid 'b71d263155a1305101c2bc492dd329430939cd74'
+  /UnityClient/Assets/Logic/Scripts/GameApp:
+    newFile: !uuid 'c00f08c2de4d8d36e6fa13cde5fd29ac6f63ace0'
+    oldFile: !uuid '6905acd5e552a4bbaeeeb47b93c7bbc017d686ac'
+  /UnityClient/Assets/Logic/Scripts/GameApp/LogicApp.cs:
+    newFile: !uuid '7199a5660c929b93086cfcd8268d3019d1da417f'
+    oldFile: !uuid '578bfeb399ba3e4df385f0e710ffdeb3a4428f3f'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'cdde5f39baff52ef8264d08c5196f4bebb53ab99'
+    oldFile: !uuid '705c780f2fbbb2f40e0dbb7859ee0dcc24bb793e'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '450c8284227a9957e9c350e6c0d9807cafcb79ed'
+    oldFile: !uuid '5ecf38ce8d9827474ce1ae393b5e60cf164bbf3a'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid '4d6f0fdbef40c1c5c05d68e1ad692600478b7824'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs.meta:
+    newFile: !uuid 'ac4672186bf9cc77fa4fc354bbdbc03aadc827df'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Hero.cs:
+    newFile: !uuid 'c5e9ace698adae92e49e38e26025630202e487a9'
+    oldFile: !uuid '24b2577df17195b802d830ccac43fa3709b1df20'
+gitCommitId: !uuid 'fceaf946f599fcbcad0a595c534d66ace3453a64'
 renames: {
   }
-revisionId: 76
+revisionId: 77
