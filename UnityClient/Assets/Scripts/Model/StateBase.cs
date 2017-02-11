@@ -823,10 +823,12 @@ public class RunXYState : StateBase
 
         float y_delta = Mathf.Sin(dd);
         float x_delta = Mathf.Cos(dd);
-
         Target.y = Target.y + speed * y_delta;
         Target.x = Target.x + speed * x_delta;
-
+        if (Target.y >= 2.4f)
+        {
+            Target.y = 2.4f;
+        }
     }
 
 

@@ -5,8 +5,19 @@ using System.Collections;
 /// 主界面的模型
 /// 接受位移事件
 /// </summary>
-public class BaseHero : Entity
+public class BaseHero : Hero
 {
+    public override void InitStateMachine()
+    {
+        //init state machine
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<RunXYState>(this));
+
+        }
+    }
 
     public override bool Init()
     {
@@ -17,19 +28,6 @@ public class BaseHero : Entity
         this.prefabsName = "Prefabs/Hero2";
         ani_run = "run";
         ani_stand = "stand";
-
-
-        //init state machine
-
-        {
-            StateStack s = StateStack.Create();
-            this.machine.AddParallelState(s);
-            s.PushSingleState(StateBase.Create<RunXYState>(this));
-
-        }
-
- 
-
 
         ViewMgr.Create<ViewEntity>(this);
 

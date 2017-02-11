@@ -10,7 +10,7 @@ namespace Services
         public void EnterRoom(string msg, VoidFuncString cb)
         {
             HashTable hash = Json.Decode(msg);
-            BaseHero hero = BaseHeroMgr.Create<BaseHero>();
+            Hero hero = HeroMgr.Create<BaseHero>();
             hero.no = int.Parse(hash["no"]);
 
             cb("ret:ok,");
@@ -20,9 +20,9 @@ namespace Services
         {
             Debug.Log("self enter room");
             HashTable hash = Json.Decode(msg);
-            BaseHero hero = BaseHeroMgr.Create<BaseHero>();
+            Hero hero = HeroMgr.Create<BaseHero>();
             hero.no = int.Parse(hash["no"]);
-            BaseHeroMgr.ins.self = hero;
+            HeroMgr.ins.self = hero;
             cb("ret:ok,");
         }
 
@@ -33,12 +33,12 @@ namespace Services
             float y = float.Parse(hash["y"]);
             int no = int.Parse(hash["no"]);
 
-            BaseHero hero = BaseHeroMgr.ins.GetBaseHero(no);
+            Hero hero = HeroMgr.ins.GetHero(no);
 
             if (hero == null)
             {
 
-                hero = BaseHeroMgr.Create<BaseHero>();
+                hero = HeroMgr.Create<BaseHero>();
                 hero.no = int.Parse(hash["no"]);
 
             }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WorldMapBase : Model
+public class WorldMap : Model
 {
 
     public Terrain GetTerrain()
@@ -41,7 +41,7 @@ public class WorldMapBase : Model
 }
 
 
-public sealed class BattleWorldMap : WorldMapBase
+public sealed class BattleWorldMap : WorldMap
 {
 
     /// <summary>

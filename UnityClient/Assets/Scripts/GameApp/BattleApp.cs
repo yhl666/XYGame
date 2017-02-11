@@ -12,10 +12,10 @@ public class BattleApp111 : AppBase
         Application.targetFrameRate = 0xffffff;
         ViewUI.Create<UIPubblicRoot>();
 
-        Hero h1 = HeroMgr.Create<Hero>();
+        Hero h1 = HeroMgr.Create<BattleHero>();
         h1.team = 1;
 
-        Hero h2 = HeroMgr.Create<Hero>();
+        Hero h2 = HeroMgr.Create<BattleHero>();
         h2.team = 2;
 
 
@@ -302,7 +302,7 @@ sealed class BattleSyncHandler
             Debug.Log("Current max fps=" + on_enter_max_fps);
 
 
-            Hero h2 = HeroMgr.Create<Hero>();
+            Hero h2 = HeroMgr.Create<BattleHero>();
             h2.team = 2;
             h2.no = HeroMgr.ins.me_no;
             HeroMgr.ins.self = h2;
@@ -326,7 +326,7 @@ sealed class BattleSyncHandler
             int no = int.Parse(decode.customs[2] as string);
             if (no == HeroMgr.ins.me_no) return;
 
-            Hero h2 = HeroMgr.Create<Hero>();
+            Hero h2 = HeroMgr.Create<BattleHero>();
             h2.team = 3;
             h2.no = no;
             h2.name = name;
@@ -458,6 +458,7 @@ public sealed class BattleApp : AppBase
     }
     public override bool Init()
     {
+        current_app = this;
         EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
         isOver = false;
         _ins = this;
@@ -725,7 +726,7 @@ public sealed class BattleApp : AppBase
     {
         get
         {
-            return BattleApp.GetInstance();
+            return _ins;
         }
     }
 
@@ -739,6 +740,7 @@ public sealed class BattleApp : AppBase
 
     public override void OnDispose()
     {
+        current_app = null;
         ViewMgr.ins.Dispose();
         //   BallsMgr.ins.Dispose();
         //   FoodsMgr.ins.Dispose();

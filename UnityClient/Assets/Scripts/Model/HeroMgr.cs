@@ -9,11 +9,11 @@ public sealed class HeroMgr : GAObject
 {
     public Hero self = null;
     public int me_no = 0;
-    public static Hero Create<T>() where T : new()
+    public static T Create<T>() where T : new()
     {
-        Hero ret = new T() as Hero;
-        ret.Init();
-        ins.Add(ret);
+        T ret = new T();
+        (ret as Hero).Init();
+        ins.Add(ret as Hero);
         return ret;
     }
 

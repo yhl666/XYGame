@@ -7,6 +7,8 @@ public class CameraFollow : MonoBehaviour
 {
     void LateUpdate()
     {
+        if (AppBase.GetCurrentApp() == null) return;
+
         Hero hero = HeroMgr.ins.GetSelfHero();
         if (hero == null) return;
 
@@ -25,16 +27,17 @@ public class CameraFollow : MonoBehaviour
         }
 
 
-       /* WIDTH = Screen.width;
-        HEIGHT = Screen.height;
+        /* WIDTH = Screen.width;
+         HEIGHT = Screen.height;
 
-        this.GetComponent<Camera>().orthographicSize = Screen.height / 100.0f / 2.0f;
-        */
+         this.GetComponent<Camera>().orthographicSize = Screen.height / 100.0f / 2.0f;
+         */
         //跟随 地形滚动
         float x = obj.transform.position.x;
         float y = obj.transform.position.y;
 
-        Terrain terrain = BattleApp.ins.GetCurrentWorldMap().GetTerrain();
+
+        Terrain terrain = AppBase.GetCurrentApp().GetCurrentWorldMap().GetTerrain();
 
         float x_min = WIDTH / 100.0f / 2.0f + terrain.limit_x_left;//
         float x_max = -WIDTH / 100.0f / 2.0f + terrain.limit_x_right;

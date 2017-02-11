@@ -34,7 +34,7 @@ public sealed class ModelMgr : GAObject
         BulletMgr.ins.UpdateMS();
         HeroMgr.ins.UpdateMS();
         EnemyMgr.ins.UpdateMS();
-        BaseHeroMgr.ins.UpdateMS();
+ 
         foreach (Model b in lists)
         {
             // if (b.IsValid()) 

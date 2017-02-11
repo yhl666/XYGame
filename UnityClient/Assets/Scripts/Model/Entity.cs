@@ -457,10 +457,13 @@ public class Entity : Model
         machine = StateMachine.Create(this);
         eventDispatcher = EventDispatcher.Create("Entity");
         bufferMgr = BufferMgr.Create(this);
-
+        this.InitStateMachine();
         return true;
     }
+    public virtual void  InitStateMachine()
+    {
 
+    }
     public StateMachine machine = null;
     public EventDispatcher eventDispatcher = null;
     public BufferMgr bufferMgr = null;

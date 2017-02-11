@@ -6,22 +6,26 @@ public class Hero : Entity
     public override bool Init()
     {
         base.Init();
- 
-        // config
-        this.skin = "#1";
-        this.prefabsName = "Prefabs/Hero2";
 
-        ani_hurt = "hurt";
-        ani_jumpTwice = "doubleJump";
-        ani_jump = "jump";
-        ani_fall = "fall";
-        ani_run = "run";
-        ani_stand = "stand";
+        return true;
+    }
 
-        bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
-        bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
+    public override void UpdateMS()
+    {
 
-        bullet_atk1_info = BulletConfigInfo.Create();
+        base.UpdateMS();
+    }
+}
+
+
+
+
+public class BattleHero : Hero
+{
+
+    public override void InitStateMachine()
+    {
+        base.InitStateMachine();
 
         //init state machine
 
@@ -66,6 +70,28 @@ public class Hero : Entity
             this.machine.AddParallelState(s);
             s.PushSingleState(StateBase.Create<HurtState>(this));
         }
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        // config
+        this.skin = "#1";
+        this.prefabsName = "Prefabs/Hero2";
+
+        ani_hurt = "hurt";
+        ani_jumpTwice = "doubleJump";
+        ani_jump = "jump";
+        ani_fall = "fall";
+        ani_run = "run";
+        ani_stand = "stand";
+
+        bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
+        bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
+
+        bullet_atk1_info = BulletConfigInfo.Create();
+
+
 
         ViewMgr.Create<ViewEntity>(this);
 
@@ -132,5 +158,5 @@ public class Hero : Entity
         }
 
     }
-}
 
+}
