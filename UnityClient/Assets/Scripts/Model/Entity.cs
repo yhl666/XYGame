@@ -169,7 +169,8 @@ public class Entity : Model
     {
         set
         {
-            BattleApp.ins.GetCurrentWorldMap().ClipPositionX(this, value);
+            AppBase.GetCurrentApp().GetCurrentWorldMap().ClipPositionX(this, value);
+    
         }
         get
         {

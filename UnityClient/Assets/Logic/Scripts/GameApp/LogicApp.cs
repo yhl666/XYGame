@@ -23,7 +23,7 @@ public class LogicApp : AppBase
         init = true;
         Debug.Log("new App");
 
-        this.worldMap = ModelMgr.Create<BattleWorldMap>();
+        this.worldMap = ModelMgr.Create<LogicWorldMap>();
 
 
         string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(9999).ToString();

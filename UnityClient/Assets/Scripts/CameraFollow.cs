@@ -8,7 +8,6 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         if (AppBase.GetCurrentApp() == null) return;
-
         Hero hero = HeroMgr.ins.GetSelfHero();
         if (hero == null) return;
 

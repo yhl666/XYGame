@@ -12,37 +12,6 @@ public class WorldMap : Model
     {
         return platform;
     }
-    public void AddEntity(Entity obj)
-    {
-        objs.Add(obj);
-    }
-
-    /// <summary>
-    ///  this will 
-    /// </summary>
-    public override void UpdateMS()
-    {
-
-
-    }
-    /// <summary>
-    /// 将Entity 坐标 转换为 unity世界坐标
-    /// </summary>
-    /// <param name="obj"></param>
-    /// <returns></returns>
-    public Vector2 ConvertToWorldSpace(Entity obj)
-    {
-        return new Vector2(0, 0);
-    }
-
-    protected ArrayList objs = new ArrayList();
-    protected Terrain terrain = null;
-    protected TerrainPlatform platform = null;
-}
-
-
-public sealed class BattleWorldMap : WorldMap
-{
 
     /// <summary>
     ///   自动切割 Entity 到 合法的X坐标
@@ -90,6 +59,32 @@ public sealed class BattleWorldMap : WorldMap
             }
         }
     }
+    /// <summary>
+    ///  this will 
+    /// </summary>
+    public override void UpdateMS()
+    {
+
+
+    }
+    /// <summary>
+    /// 将Entity 坐标 转换为 unity世界坐标
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
+    public Vector2 ConvertToWorldSpace(Entity obj)
+    {
+        return new Vector2(0, 0);
+    }
+
+    protected ArrayList objs = new ArrayList();
+    protected Terrain terrain = null;
+    protected TerrainPlatform platform = null;
+}
+
+
+public sealed class BattleWorldMap : WorldMap
+{
     /// <summary>
     /// 用这个地图 更新Entity世界信息
     /// </summary>
@@ -183,5 +178,40 @@ public sealed class BattleWorldMap : WorldMap
             this.UpdateEntity(userData as Entity);
         }
    
+    }
+}
+
+
+
+
+
+
+
+public sealed class LogicWorldMap : WorldMap
+{
+    /// <summary>
+    /// 用这个地图 更新Entity世界信息
+    /// </summary>
+    /// <param name="what"></param>
+    private void UpdateEntity(Entity what)
+    {
+      
+    }
+
+
+ 
+    public override bool Init()
+    {
+        base.Init();
+
+        terrain = ModelMgr.Create<Terrain>();
+        platform = ModelMgr.Create<TerrainPlatform>();
+        return true;
+    }
+
+    public override void OnEvent(int type, object userData)
+    {
+
+
     }
 }

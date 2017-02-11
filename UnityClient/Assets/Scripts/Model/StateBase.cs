@@ -792,32 +792,25 @@ public class RunXYState : StateBase
     private bool isYok = false;
     public override void UpdateMS()
     {
+
         float distance = Target.ClaculateDistance(x, y);
+
         //  Debug.Log(" distance : " + distance);
-        if (distance < 0.06f)
+        if (distance < 0.06f || (x == Target.x && y == Target.y))
         {
             this.Enable = false;
             Target.isStand = true;
             Target.isRunning = false;
+
             return;
         }
         else
         {
             Target.isStand = false;
             Target.isRunning = true;
-
-        }
-        if (Mathf.Abs(y - Target.y) < 0.06f)
-        {
-            Target.y = y;
-        }
-        if (Mathf.Abs(x - Target.x) < 0.06f)
-        {
-            Target.x = x;
         }
 
-        float speed = 0.05f;
-
+        float speed = 0.05f * Target.speed;
 
         float dd = degree * DATA.ONE_DEGREE;//一度的弧度
 
@@ -825,10 +818,7 @@ public class RunXYState : StateBase
         float x_delta = Mathf.Cos(dd);
         Target.y = Target.y + speed * y_delta;
         Target.x = Target.x + speed * x_delta;
-        if (Target.y >= 2.4f)
-        {
-            Target.y = 2.4f;
-        }
+
     }
 
 
@@ -849,16 +839,9 @@ public class RunXYState : StateBase
             Target.flipX = 1.0f;
         }
 
-
-        float dx = this.x - Target.x;
-        float dy = this.y - Target.y;
-
-
-        degree = Vector2.Angle(new Vector2(Target.x, Target.y), pos);
-        
-        degree = Utils.GetDegree(new Vector2(Target.x, Target.y), pos );
-
-        Debug.Log(degree + " degree");
+        if (this.y >= 2.4f) this.y = 2.4f;
+      
+        degree = Utils.GetDegree(new Vector2(Target.x, Target.y), new Vector2(x,y) );
 
     }
 

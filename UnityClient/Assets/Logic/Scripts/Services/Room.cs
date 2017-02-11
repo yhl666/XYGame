@@ -23,11 +23,15 @@ namespace Services
             Hero hero = HeroMgr.Create<BaseHero>();
             hero.no = int.Parse(hash["no"]);
             HeroMgr.ins.self = hero;
+            hero.x = 5f;
+            hero.y = 1.5f;
+
             cb("ret:ok,");
         }
 
         public void NewPosition(string msg, VoidFuncString cb)
         {
+ 
             HashTable hash = Json.Decode(msg);
             float x = float.Parse(hash["x"]);
             float y = float.Parse(hash["y"]);

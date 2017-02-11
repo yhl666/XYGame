@@ -11,7 +11,7 @@ public class AppBase : GAObject
         ret.OnEnter();
         return ret;
     }
-    protected WorldMap worldMap = null;
+  
     public WorldMap GetCurrentWorldMap()
     {
         return this.worldMap;
@@ -25,6 +25,6 @@ public class AppBase : GAObject
         return (T)current_app;
     }
 
-
-    protected static AppBase current_app;
+    protected WorldMap worldMap = null;
+    protected static AppBase current_app=null;
 }

@@ -148,13 +148,13 @@ sealed class BattleSyncHandler
     public void AddRecvMsg(string msg)
     {
         _recvQueue.Enqueue(msg);
-       ///  Debug.Log("[LOG]:Recv:  " + msg);
+        ///  Debug.Log("[LOG]:Recv:  " + msg);
     }
 
     public void AddRecvMsgUnSafe(string msg)
     {
         _recvQueue.UnSafeEnqueue(msg);
-    //  Debug.Log("[LOG]:Recv:  " + msg);
+        //  Debug.Log("[LOG]:Recv:  " + msg);
     }
 
 
@@ -207,7 +207,7 @@ sealed class BattleSyncHandler
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-          ///   Debug.Log(xx);
+            ///   Debug.Log(xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -452,16 +452,13 @@ public sealed class BattleApp : AppBase
     private BattleKeyboardInputHandler inputHandler = null;
 
     BattleSyncHandler syncHandler = null;
-    public BattleWorldMap GetCurrentWorldMap()
-    {
-        return this.worldMap;
-    }
+ 
+ 
     public override bool Init()
     {
         current_app = this;
         EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
         isOver = false;
-        _ins = this;
 
         syncHandler = new BattleSyncHandler();
         syncHandler.app = this;
@@ -469,7 +466,7 @@ public sealed class BattleApp : AppBase
         inputHandler = new BattleKeyboardInputHandler();
 
 
-        this.worldMap = ModelMgr.Create<BattleWorldMap>();
+        this.worldMap = ModelMgr.Create<BattleWorldMap>() as BattleWorldMap;
 
         ViewUI.Create<UIPubblicRoot>();
         ViewUI.Create<UIBattleRoot>();
@@ -483,7 +480,7 @@ public sealed class BattleApp : AppBase
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
         {
             //   Thread.Sleep(1000);
-            BattleApp.ins.InitNet(false);
+            AppBase.GetCurrentApp<BattleApp>().InitNet(false);
 
             return "初始化网络资源，等待服务器响应";
         }));
@@ -720,24 +717,6 @@ public sealed class BattleApp : AppBase
     public System.Random randObj;
 
 
-    private BattleWorldMap worldMap = null;
-
-    public static BattleApp ins
-    {
-        get
-        {
-            return _ins;
-        }
-    }
-
-    public static BattleApp _ins = null;
-
-    public static BattleApp GetInstance()
-    {
-        return _ins;
-    }
-
-
     public override void OnDispose()
     {
         current_app = null;
@@ -747,7 +726,6 @@ public sealed class BattleApp : AppBase
         ModelMgr.ins.Dispose();
         EventDispatcher.DestroyInstance();
         AutoReleasePool.DestroyInstance();
-        _ins = null;
         if (this.socket != null)
         {
             //   EventDispatcher.ins.RemoveEventListener(this, Event.ID_NET_DISCONNECT);
