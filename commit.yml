@@ -3,24 +3,24 @@ branches: {
   }
 fileChange:
   /LogicServer:
-    newFile: !uuid '4f75b2ab84cf03bbe0f15223f09afdcafbbecc27'
-    oldFile: !uuid 'e6c10070a93410b28787de7ed572b44b963b0016'
+    newFile: !uuid 'fc29ee8c99fec814164eb95d5e6c840c73b3277f'
+    oldFile: !uuid '4f75b2ab84cf03bbe0f15223f09afdcafbbecc27'
   /LogicServer/server:
-    newFile: !uuid '1f7e2eedc43004c0290d24584192f2dc53128e80'
-    oldFile: !uuid '00d9c15a0694007af9fa2b2dbf8b594ee00986e3'
+    newFile: !uuid 'abea18cbe99fb5013eb7b5586b55476f8233bc9f'
+    oldFile: !uuid '1f7e2eedc43004c0290d24584192f2dc53128e80'
   /LogicServer/server/scripts:
-    newFile: !uuid '159b971cc2ebeb9d3a89667e5f5bd8117d7361ef'
-    oldFile: !uuid '0a836d30da5bee265b598502f120cc2cef10d09e'
+    newFile: !uuid 'b759b93c5020655cac51f2dad42765cc199208c7'
+    oldFile: !uuid '159b971cc2ebeb9d3a89667e5f5bd8117d7361ef'
   /LogicServer/server/scripts/common:
-    newFile: !uuid 'c51464f58915f0770f31a1e0b064ef10c98959ed'
-    oldFile: !uuid '1a87d0590f4567f95ea60d402686f21df8447406'
+    newFile: !uuid 'a87d816a3aef370b23d6e5181c8f8b8e7037a777'
+    oldFile: !uuid 'c51464f58915f0770f31a1e0b064ef10c98959ed'
   /LogicServer/server/scripts/common/xygame:
-    newFile: !uuid '0708bdb661501997d61e3c961a5c120b8184ecb2'
-    oldFile: !uuid '9abd26985004055f7163ba7bbf52dde878020741'
+    newFile: !uuid '1df2c1feaa99c0fb379f9200523a96a35aa14123'
+    oldFile: !uuid '0708bdb661501997d61e3c961a5c120b8184ecb2'
   /LogicServer/server/scripts/common/xygame/README.txt:
-    newFile: !uuid '0043e1959519a4cddc8a560eaf5169fc6278b905'
-    oldFile: !uuid 'c90a760968a4e15d8896a8a1f67cdc3ae5587461'
-gitCommitId: !uuid '819b2f7b5ef50712e9fbab4fad64004563922d55'
+    newFile: !uuid 'f8c2768d7721896d76f4bfc310d5df27e7dcd5bf'
+    oldFile: !uuid '0043e1959519a4cddc8a560eaf5169fc6278b905'
+gitCommitId: !uuid 'f5081a504371063a8b13f3ec9b3e13a5c63eac7e'
 renames: {
   }
-revisionId: 59
+revisionId: 60
