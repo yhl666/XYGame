@@ -14,21 +14,7 @@ APIËµÃ÷£º
 
 require("xygame.lib.extern");
 require("xygame.lib.json");
-
-local pb = require("protobuf")
-
-pack = { }
--- json string to pb
-function pack.encode(msg)
-    return pb.encode("rpc.EnterRoomMsg", { peer_name = msg });
-end
-
--- pb to json string
-function pack.decode(content)
-    return(pb.decode("rpc.EnterRoomMsg", content))["peer_name"];
-end
-
-
+require("xygame.lib.common")
 
 
 print("lib init ok");

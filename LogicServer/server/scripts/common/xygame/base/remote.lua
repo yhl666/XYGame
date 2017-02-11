@@ -18,10 +18,10 @@
 
 
 local log = require("log"):new("remote")
-local timer = c_timer_queue.CTimerQueue();
+
 local t = { }
 
--- [Comment]
+--[Comment]
 -- 向cell服务器发起RPC请求
 -- services #string 服务类型
 -- method #string 函数名字
@@ -36,7 +36,7 @@ function t.request(services, method, json, cb)
         cb(pack.decode(msg));
     end );
 
-    timer:insert_single_from_now(2, function()
+    setTimeout(2, function()
         -- 2秒超时
         if called == false then
             cb("timeout");
@@ -50,7 +50,7 @@ function t.request(services, method, json, cb)
 end
 
 
--- [Comment]
+--[Comment]
 -- 向游戏客户端发起RPC请求
 function t.request_client(ctx, services, method, json, cb)
     log:debug("send a client services request to cell server");
@@ -61,7 +61,7 @@ function t.request_client(ctx, services, method, json, cb)
         cb(msg);
     end );
 
-    timer:insert_single_from_now(5, function()
+    setTimeout(5, function()
         -- 5秒超时
         if called == false then
             cb("timeout");
