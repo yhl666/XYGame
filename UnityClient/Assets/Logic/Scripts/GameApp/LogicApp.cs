@@ -47,15 +47,33 @@ public class LogicApp : AppBase
 
 
     }
-    // Update is called once per frame
+
+
+    int tick = 0;
     public override void Update()
     {
+        tick++;
         ModelMgr.ins.UpdateMS();
         ViewMgr.ins.UpdateMS();
         if (HeroMgr.ins.self == null) return;
 
+        var random =new  System.Random();
+
+        /*if(random.Next(40)==10)
+        {
+            RpcClient.ins.SendRequest("services.room", "new_position", "no:" + HeroMgr.ins.self.no + ",x:" + random.NextDouble()*24 +
+              ",y:" + random.NextDouble() * 2.5 + ",", (string msg) =>
+              {
+                  if (msg != "")
+                  {
 
 
+                      Debug.Log(" new postion ok ");
+                  }
+
+
+              });
+        }*/
         Vector3 pos = Input.mousePosition;
 
         if (Input.GetMouseButtonDown(0))

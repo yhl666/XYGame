@@ -55,7 +55,7 @@ public class BattleHero : Hero
     public override bool Init()
     {
         base.Init();
-
+        scale = 0.8f;
         // config
         this.skin = "#1";
         this.prefabsName = "Prefabs/Hero2";

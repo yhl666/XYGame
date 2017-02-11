@@ -151,7 +151,7 @@ public class ViewEntity : View
     {
         this.obj.name = m.no.ToString();
         transform.position = new Vector3(m.x, m.y + m.height, transform.position.z);
-        float factor = 0.8f;
+        float factor   = m.scale;
         transform.localScale = new Vector3(m.flipX * factor, factor, factor);
 
         string name = "";
