@@ -1,2 +1,3 @@
-�߼�����������Ӧ�ò�RPC������
-ֻ�нű����롣runtime Ϊ˽��
+逻辑服务器采用应用层RPC来交互
+只有脚本代码。runtime 为私有
+拉取代码直接覆盖runtime的文件就能直接运行xygame服务器
