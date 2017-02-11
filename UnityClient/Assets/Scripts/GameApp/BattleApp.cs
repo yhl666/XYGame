@@ -456,7 +456,6 @@ public sealed class BattleApp : AppBase
  
     public override bool Init()
     {
-        current_app = this;
         EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
         isOver = false;
 
@@ -480,7 +479,7 @@ public sealed class BattleApp : AppBase
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
         {
             //   Thread.Sleep(1000);
-            AppBase.GetCurrentApp<BattleApp>().InitNet(false);
+            AppMgr.GetCurrentApp<BattleApp>().InitNet(false);
 
             return "初始化网络资源，等待服务器响应";
         }));
@@ -719,7 +718,6 @@ public sealed class BattleApp : AppBase
 
     public override void OnDispose()
     {
-        current_app = null;
         ViewMgr.ins.Dispose();
         //   BallsMgr.ins.Dispose();
         //   FoodsMgr.ins.Dispose();

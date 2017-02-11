@@ -162,7 +162,7 @@ public class Entity : Model
     private float _height = 0.0f;//海拔
     public bool isInOneTerrainRight = false;
 
-    public  float scale=1.0f;//view scale
+    public float scale = 1.0f;//view scale
     /// <summary>
     /// 设置x坐标，自动处理 地形撞墙等
     /// </summary>
@@ -170,8 +170,8 @@ public class Entity : Model
     {
         set
         {
-            AppBase.GetCurrentApp().GetCurrentWorldMap().ClipPositionX(this, value);
-    
+            AppMgr.GetCurrentApp().GetCurrentWorldMap().ClipPositionX(this, value);
+
         }
         get
         {
@@ -462,7 +462,7 @@ public class Entity : Model
         this.InitStateMachine();
         return true;
     }
-    public virtual void  InitStateMachine()
+    public virtual void InitStateMachine()
     {
 
     }

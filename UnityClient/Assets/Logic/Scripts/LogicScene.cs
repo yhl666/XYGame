@@ -11,28 +11,24 @@ public class LogicScene : GiantLightSceneExtension
     public override void Enter(IGiantGame game)
     {
         base.Enter(game);
-        app = AppBase.Create<LogicApp>();
-        app.Init();
-        app.OnEnter();
-        AutoReleasePool.ins.Clear();
+        AppMgr.ins.OnEnter();
+        AppMgr.ins.LoadApp<TownApp>();
     }
-
 
     public override void Update(float delta)
     {
         base.Update(delta);
-        app.Update();
+        AppMgr.ins.Update();
+        AppMgr.ins.UpdateMS();
     }
 
 
     public override void Exit(IGiantGame game)
     {
         base.Exit(game);
-        app.OnExit();
-        app.Dispose();
+        AppMgr.ins.OnExit();
     }
 
-    AppBase app = null;
 
 
 }

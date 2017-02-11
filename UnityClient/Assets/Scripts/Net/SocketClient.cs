@@ -176,18 +176,18 @@ public class SocketClient : object
                     string_last = string_last.Substring(last);
 
                     //sync cache to main thread
-                    AppBase.GetCurrentApp<BattleApp>().LockAdRecvMsg();
+                    AppMgr.GetCurrentApp<BattleApp>().LockAdRecvMsg();
                     for (int i = 0; i < recv_cache.Count; i++)
                     {
 
                         //   BattleApp.GetInstance()._recvQueue.UnSafeEnqueue(recv_cache[i] as string);
 
-                        AppBase.GetCurrentApp<BattleApp>().AddRecvMsgUnSafe(recv_cache[i] as string);
+                        AppMgr.GetCurrentApp<BattleApp>().AddRecvMsgUnSafe(recv_cache[i] as string);
                         _recv_list.Add(recv_cache[i] as string);
                         PublicData.GetInstance()._recv_last_game = _recv_list;
 
                     }
-                    AppBase.GetCurrentApp<BattleApp>().UnLockAdRecvMsg();
+                    AppMgr.GetCurrentApp<BattleApp>().UnLockAdRecvMsg();
 
                 }
                 else
@@ -285,19 +285,19 @@ public class SockClientWithVideoMode : SocketClient
 
 
         //sync cache to main thread
-        AppBase.GetCurrentApp<BattleApp>().LockAdRecvMsg();
+        AppMgr.GetCurrentApp<BattleApp>().LockAdRecvMsg();
 
         while (_recv_list_index < onenter_max_fps)
         {
-            AppBase.GetCurrentApp<BattleApp>().AddRecvMsgUnSafe(_recv_list[_recv_list_index] as string);
+            AppMgr.GetCurrentApp<BattleApp>().AddRecvMsgUnSafe(_recv_list[_recv_list_index] as string);
             _recv_list_index++;
         }
-        AppBase.GetCurrentApp<BattleApp>().UnLockAdRecvMsg();
+        AppMgr.GetCurrentApp<BattleApp>().UnLockAdRecvMsg();
 
         while (true)
         {
             Thread.Sleep(this._thread_delte);
-            AppBase.GetCurrentApp<BattleApp>().AddRecvMsg(_recv_list[_recv_list_index] as string);
+            AppMgr.GetCurrentApp<BattleApp>().AddRecvMsg(_recv_list[_recv_list_index] as string);
             _recv_list_index++;
         }
     }

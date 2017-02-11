@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
 {
     void LateUpdate()
     {
-        if (AppBase.GetCurrentApp() == null) return;
+        if (AppMgr.GetCurrentApp() == null) return;
         Hero hero = HeroMgr.ins.GetSelfHero();
         if (hero == null) return;
 
@@ -36,7 +36,7 @@ public class CameraFollow : MonoBehaviour
         float y = obj.transform.position.y;
 
 
-        Terrain terrain = AppBase.GetCurrentApp().GetCurrentWorldMap().GetTerrain();
+        Terrain terrain = AppMgr.GetCurrentApp().GetCurrentWorldMap().GetTerrain();
 
         float x_min = WIDTH / 100.0f / 2.0f + terrain.limit_x_left;//
         float x_max = -WIDTH / 100.0f / 2.0f + terrain.limit_x_right;

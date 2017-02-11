@@ -16,15 +16,14 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
 
-        app = AppBase.Create<BattleApp>();
-        
+        AppMgr.ins.LoadApp<BattleApp>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        app.Update();
+        AppMgr.ins.Update();
     }
 
 }

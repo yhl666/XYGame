@@ -480,7 +480,7 @@ public sealed class UI_frame : ViewUI
     public override void Update()
     {
         base.Update();
-        int cur = AppBase.GetCurrentApp<BattleApp>().GetCurrentFrame();
+        int cur = AppMgr.GetCurrentApp<BattleApp>().GetCurrentFrame();
 
 
         int sec_total = cur / 40;
