@@ -766,6 +766,122 @@ public class SkillState : StateBase
 
 }
 
+
+
+
+
+/// <summary>
+/// 主场景点击操作 状态
+/// </summary>
+public class RunXYState : StateBase
+{
+    public override StateBase GetState<T>()
+    {
+        if (typeof(T) == typeof(RunState))
+        {
+            return this;
+        }
+        return null;
+    }
+
+    public RunXYState()
+    {
+
+    }
+    private bool isXok = false;
+    private bool isYok = false;
+    public override void UpdateMS()
+    {
+        float distance = Target.ClaculateDistance(x, y);
+        //  Debug.Log(" distance : " + distance);
+        if (distance < 0.06f)
+        {
+            this.Enable = false;
+            Target.isStand = true;
+            Target.isRunning = false;
+            return;
+        }
+        else
+        {
+            Target.isStand = false;
+            Target.isRunning = true;
+
+        }
+        if (Mathf.Abs(y - Target.y) < 0.06f)
+        {
+            Target.y = y;
+        }
+        if (Mathf.Abs(x - Target.x) < 0.06f)
+        {
+            Target.x = x;
+        }
+
+        float speed = 0.05f;
+
+
+        float dd = degree * DATA.ONE_DEGREE;//一度的弧度
+
+        float y_delta = Mathf.Sin(dd);
+        float x_delta = Mathf.Cos(dd);
+
+        Target.y = Target.y + speed * y_delta;
+        Target.x = Target.x + speed * x_delta;
+
+    }
+
+
+    public override void OnEvent(int type, object userData)
+    {
+
+        this.Enable = true;
+        Vector2 pos = (Vector2)userData;
+
+        this.x = pos.x;
+        this.y = pos.y;
+        if (x > Target.x)
+        {//面向右边
+            Target.flipX = -1.0f;
+        }
+        else
+        {//面向左边
+            Target.flipX = 1.0f;
+        }
+
+
+        float dx = this.x - Target.x;
+        float dy = this.y - Target.y;
+
+
+        degree = Vector2.Angle(new Vector2(Target.x, Target.y), pos);
+        
+        degree = Utils.GetDegree(new Vector2(Target.x, Target.y), pos );
+
+        Debug.Log(degree + " degree");
+
+    }
+
+
+    public override void OnEnter()
+    {
+        this.stack.AddLocalEventListener(Events.ID_LOGIC_NEW_POSITION);
+        Target.isRunning = false;
+        Target.isStand = true;
+
+    }
+    public override void OnExit()
+    {
+
+    }
+    float x;
+    float y;
+    float degree;
+}
+
+
+
+
+
+
 public class LuaInterfaceState : StateBase
 {
     // lua 超类 状态接口，每个接口函数 配置对应的函数

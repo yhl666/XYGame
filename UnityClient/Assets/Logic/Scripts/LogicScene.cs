@@ -11,7 +11,7 @@ public class LogicScene : GiantLightSceneExtension
     public override void Enter(IGiantGame game)
     {
         base.Enter(game);
-        app = AppBase.Create<SampleApp>();
+        app = AppBase.Create<LogicApp>();
         app.Init();
         app.OnEnter();
         AutoReleasePool.ins.Clear();

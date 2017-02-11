@@ -27,6 +27,12 @@ public class DATA
     public const string UI_FRAME = "Frame:{0}";
 
     public const string EMPTY_STRING = "";
+
+
+    public const float ONE_DEGREE = 0.0174533f;//一度的弧度
+
+
+
 }
 
  

@@ -9,7 +9,7 @@ public class BattleApp111 : AppBase
     public override bool Init()
     {
         base.Init();
-
+        Application.targetFrameRate = 0xffffff;
         ViewUI.Create<UIPubblicRoot>();
 
         Hero h1 = HeroMgr.Create<Hero>();

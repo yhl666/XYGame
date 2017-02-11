@@ -37,7 +37,68 @@ public sealed class Utils
 
 
     }
-    public static Vector3 Vector3To2DVector3(Vector3 v,Vector3 vv )
+
+
+    /// <summary>
+    ///   0-360
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="to"></param>
+    /// <returns></returns>
+    public static float GetDegree(Vector2 from, Vector2 to)
+    {
+        const float ONE_DEGREE = DATA.ONE_DEGREE;//一度的弧度
+
+        float dx = to.x - (from.x);
+        float dy = to.y - (from.y);
+        float dposx = 0.0f, dposy = 0.0f;
+
+
+        float degree = Mathf.Atan(dy / dx) * 57.29578f;
+
+        if (float.IsNaN(degree)) return 0.0f;
+        float degree_total = 0.0f;
+
+        if (dx == 0.0f || dy == 0.0f)
+        {
+            return 0.0f;
+        }
+
+
+        if (dx >= 0.0f && dy >= 0.0f)// 0 1 2 //1
+        {
+            dposy = 1 * Mathf.Sin(degree * ONE_DEGREE);
+            dposx = 1 * Mathf.Cos(degree * ONE_DEGREE);
+            degree_total = degree;
+        }
+        else if (dx >= 0.0f && dy <= 0.0f)// 0 7 6 //4
+        {
+            degree = -degree;
+            dposy = -1 * Mathf.Sin(degree * ONE_DEGREE);
+            dposx = 1 * Mathf.Cos(degree * ONE_DEGREE);
+
+            degree_total = 360.0f - degree;
+        }
+        else if (dx <= 0.0f && dy >= 0.0f)// 2 3 4 //2
+        {
+            degree = -degree;
+            dposy = 1 * Mathf.Sin(degree * ONE_DEGREE);
+            dposx = -1 * Mathf.Cos(degree * ONE_DEGREE);
+            degree_total = 180.0f - degree;
+        }
+        else//4 5 6 // 3
+        {
+            dposy = -1 * Mathf.Sin(degree * ONE_DEGREE);
+            dposx = -1 * Mathf.Cos(degree * ONE_DEGREE);
+            // degree_total = 180 + degree;
+            degree_total = 180.0f + degree;
+        }
+
+
+        return degree_total;
+
+    }
+    public static Vector3 Vector3To2DVector3(Vector3 v, Vector3 vv)
     {
         return new Vector3(v.x, v.y, vv.z);
     }
@@ -74,7 +135,7 @@ public sealed class Utils
     {
         get
         {
-            return  40.0f;
+            return 40.0f;
         }
     }
 
@@ -100,7 +161,7 @@ public sealed class Utils
 
     public Vector2 ConvertToPixelPosition(Vector2 p)
     {
-        return p *100.0f;
+        return p * 100.0f;
     }
     public Vector2 ConvertToUnityPosition(Vector2 p)
     {
@@ -108,7 +169,7 @@ public sealed class Utils
     }
     public Vector3 ConvertToPixelPosition(Vector3 p)
     {
-        return new Vector3(p.x * 100.0f, p.y * 100.0f, p.z );
+        return new Vector3(p.x * 100.0f, p.y * 100.0f, p.z);
     }
     public Vector3 ConvertToUnityPosition(Vector3 p)
     {

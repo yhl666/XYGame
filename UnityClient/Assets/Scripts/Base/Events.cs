@@ -71,7 +71,7 @@ public sealed class Events : object
     public const int ID_BEFORE_ALLVIEW_UPDATE = 44;//在所有View Unity 更新后 在ViewMgr 里面触发
     public const int ID_AFTER_ALLVIEW_UPDATE = 45;//在所有View Unity 更新后
 
-
+    public const int ID_LOGIC_NEW_POSITION = 46;//主场景 新目标点事件
 
     public const int ID_LAUNCH_SKILL1 = 100;//释放技能1
 

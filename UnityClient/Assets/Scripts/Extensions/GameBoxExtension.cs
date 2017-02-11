@@ -173,6 +173,7 @@ public class RpcService : GAObject
         else
         {
             func.Invoke(this, _params);
+    
         }
 
 
@@ -338,6 +339,8 @@ namespace inner
         public bool PushRequest(uint id, string service, string method, byte[] content)
         {
             RpcService rpc;
+            service = "Services." + service;
+ 
             if (this.services.Contains(service))
             {
                 rpc = this.services[service] as RpcService;
@@ -350,11 +353,11 @@ namespace inner
                     RpcClient.ins.SendResponse(id, "");//return error
                     Debug.LogWarning("UnKnown services:" + service);
                     return true;
-                }
+                }//TODO 缓存对象
                 rpc = Activator.CreateInstance(t) as RpcService;
-
+              ///  services.Add(service.GetServiceName(), service);
             }
-
+                    Debug.Log("[Rpc Call]:"+ service + "." + method);
             rpc.Invoke(id, method, content);
             return true;
         }
