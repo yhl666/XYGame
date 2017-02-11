@@ -3,12 +3,39 @@ branches: {
   }
 fileChange:
   /LogicServer:
-    newFile: !uuid '132c6342bb66cf4e427dd7a8be196ffae6e653da'
-    oldFile: !uuid 'fc29ee8c99fec814164eb95d5e6c840c73b3277f'
-  /LogicServer/README.txt:
-    newFile: !uuid '10b5b8c7eea5b447a46c3d4592569fa9aca2770f'
+    newFile: !uuid 'e2c68580b4416cadc454e27ed7964670aac448bf'
+    oldFile: !uuid '132c6342bb66cf4e427dd7a8be196ffae6e653da'
+  /LogicServer/server:
+    newFile: !uuid '2f09f18cc035813cb22f39482955f239d05aeef3'
+    oldFile: !uuid 'abea18cbe99fb5013eb7b5586b55476f8233bc9f'
+  /LogicServer/server/scripts:
+    newFile: !uuid '3e65b08dd9150f4d7a4f42d72af4ac411d69ce64'
+    oldFile: !uuid 'b759b93c5020655cac51f2dad42765cc199208c7'
+  /LogicServer/server/scripts/base:
+    newFile: !uuid '3a0e4c255f79aef77ba87d84ed20238742d68841'
+    oldFile: !uuid '41d25b7cf2f6419a0d6aefc4cdc42f60d58a0420'
+  /LogicServer/server/scripts/base/xygame:
+    newFile: !uuid 'e44b5e7d14cc93569f3afb9d428c72a868e71c1d'
+    oldFile: !uuid 'c3d9d1d2923e4c50b0f6f563168f109f84943603'
+  /LogicServer/server/scripts/base/xygame/services:
+    newFile: !uuid 'e5aa53e3e32ddfac9df4a8a567af9b8e3468c041'
+    oldFile: !uuid '8dafee1a249f2c147dc2ec1945f7bfdff43e7b68'
+  /LogicServer/server/scripts/base/xygame/services/example.lua:
+    newFile: !uuid '584d1e64fb80fd084f1ba9f3687c5ca181955964'
     oldFile: null
-gitCommitId: !uuid '4d6dd14f2d2e3d3e3d2361e45445acebd0ac5e18'
+  /LogicServer/server/scripts/cell:
+    newFile: !uuid 'c0da1a057384628cc9a6cffade34993611ce265d'
+    oldFile: !uuid 'a5aec4ca53fbb6eb50a128b0735e97bf97159770'
+  /LogicServer/server/scripts/cell/xygame:
+    newFile: !uuid 'f786e84a6c65297014319673caf56947163ef477'
+    oldFile: !uuid '5e99257b239595b3b2101b0b11f28eb2583cc6ac'
+  /LogicServer/server/scripts/cell/xygame/services:
+    newFile: !uuid '0b9cd6ff31982395d94ff98039bdd961b478e22a'
+    oldFile: !uuid '409b1ddb7a1bacd5ef4ad6ea3115f4d973fb835f'
+  /LogicServer/server/scripts/cell/xygame/services/example.lua:
+    newFile: !uuid '9902cdf5c0fbb9946f5c24f69d892ce1ec656843'
+    oldFile: null
+gitCommitId: !uuid '74d78b13524b1deae430e1016958af3230544829'
 renames: {
   }
-revisionId: 61
+revisionId: 62
