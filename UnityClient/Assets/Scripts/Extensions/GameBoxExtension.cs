@@ -1,8 +1,4 @@
 ﻿
-/*
-
-
- 
 
 using System.Collections;
 using GameBox.Service.GiantLightFramework;
@@ -12,19 +8,19 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-using GameBox.Service.GiantLightFramework.Extension;
-
-
-
 // GameBox的 一个 RPC扩展
 
 // 每个RPC请求(id自动增长)对应一个 匿名函数用于处理服务器响应
 //可以向RpcMgr注册服务 为服务端 提供rpc 本地化调用
 // 添加超时处理 
- 
 
-
-
+//在逻辑 部分 请使用
+/*
+ * 
+ * RpcClient的接口使用 闭包 和简单数据类型，示例SampleApp.cs
+ * RpcMgr 的接口 使用原始框架的低级封装
+ * RpcClient.cs 也有说明
+*/
 
 
 //
@@ -37,15 +33,16 @@ using GameBox.Service.GiantLightFramework.Extension;
 /// 该服务类型是rpc.test3  提供了 func方法
 /// 注意提供服务的方法 必须是public
 /// </summary>
-public class RpcTest3 : RpcService
+public class rpctest4 : RpcService
 {
     public override string GetServiceName()
     {
         return "rpc.test3";
     }
-    public void func(uint id, byte[] content)
+    public void func(string msg, VoidFuncString cb)
     {
-        Debug.Log("rpc.func");
+        Debug.Log("rpc.func  " + msg);
+        cb("res:okkk,");
     }
 }
 
@@ -58,26 +55,23 @@ public class GiantLightSceneExtensionTest : GiantLightSceneExtension
     public override void Enter(IGiantGame game)
     {
         base.Enter(game);
-        RpcMgr.ins.RegisterService(new RpcTest3());  //注册该服务
+        inner.RpcMgr.ins.RegisterService(new RpcService());  //注册该服务
         var t = new mtanks.Test();//protobuf
 
         //发送RPC请求
-        RpcMgr.ins.SendRequest("rpc.test1", "test1", ByteConverter.ProtoBufToBytes(t), new Func<ResponseWrapper, bool>((ResponseWrapper resp) =>
+        inner.RpcMgr.ins.SendRequest("rpc.test1", "test1", ByteConverter.ProtoBufToBytes(t), new Func<inner.ResponseWrapper, bool>((inner.ResponseWrapper resp) =>
         {//RPC 回调
-            if (resp.code.ok)
+            if (resp.ok)
             {// 处理成功
-                Debug.Log("resp " + resp.id);
-                var tt = ByteConverter.BytesToProtoBuf<mtanks.Test>(resp.content, 0, resp.content.Length);
-                Debug.Log(tt.id);
+                Debug.Log("resp " + resp.json);
+
             }
-            else if (resp.code.code == ResponseCode.ID_TIMEOUT)
+            else if (resp.timeout)
             {//响应超时
                 Debug.Log("time out");
             }
             return true;
         }));
-
-
 
     }
 
@@ -106,45 +100,96 @@ public class GiantLightSceneExtensionTest : GiantLightSceneExtension
 
 
 
-namespace GameBox.Service.GiantLightFramework.Extension
+
+/// <summary>
+/// 该场景接管了 GiantLightScene，想用该扩展，请把场景继承自 GiantLightSceneExtension
+/// </summary>
+public class GiantLightSceneExtension : GiantLightScene
+{
+    public override void Enter(IGiantGame game)
+    {
+        base.Enter(game);
+        inner.RpcMgr.ins.OnChangeScene(this);
+
+    }
+
+
+    public override void Update(float delta)
+    {
+        base.Update(delta);
+        inner.RpcMgr.ins.Tick();
+    }
+
+
+    public override void Exit(IGiantGame game)
+    {
+        base.Exit(game);
+
+    }
+
+
+    public override sealed bool PushResponse(uint id, byte[] content)
+    {
+        return inner.RpcMgr.ins.PushResponse(id, content);
+    }
+    public override sealed bool PushRequest(uint id, string service, string method, byte[] content)
+    {
+        return inner.RpcMgr.ins.PushRequest(id, service, method, content);
+    }
+}
+
+
+
+
+
+
+/// <summary>
+/// RPC 服务，提供给服务端
+/// 服务器可以控制GAObject的事件 
+/// </summary>
+public class RpcService : GAObject
+{
+    public virtual string GetServiceName() { return ""; }
+    public void Invoke(uint id, string method, byte[] content)
+    {
+        if ("Invoke" == method) return;
+
+        Type type = this.GetType();
+        object[] _params = new object[2];
+        _params[0] = ByteConverter.BytesToProtoBuf<rpc.EnterRoomMsg>(content, 0, content.Length).peer_name;
+        _params[1] = new VoidFuncString((string kv_json) =>
+        {
+            var t = new rpc.EnterRoomMsg();//protobuf
+            t.peer_name = kv_json;
+            inner.RpcMgr.ins.SendResponse(id, ByteConverter.ProtoBufToBytes(t));
+        });
+
+        var func = type.GetMethod(method);
+        if (func == null)
+        {
+            Debug.LogWarning("Unknown method " + method);
+            RpcClient.ins.SendResponse(id, "");
+        }
+        else
+        {
+            func.Invoke(this, _params);
+        }
+
+
+    }
+}
+
+
+
+/*
+ * 
+ 
+ -+---------------------尽量不要使用以下接口
+ */
+
+namespace inner
 {
 
-    /// <summary>
-    /// 该场景接管了 GiantLightScene，想用该扩展，请把场景继承自 GiantLightSceneExtension
-    /// </summary>
-    public class GiantLightSceneExtension : GiantLightScene
-    {
-        public override void Enter(IGiantGame game)
-        {
-            base.Enter(game);
-            RpcMgr.ins.OnChangeScene(this);
-
-        }
-
-
-        public override void Update(float delta)
-        {
-            base.Update(delta);
-            RpcMgr.ins.Tick();
-        }
-
-
-        public override void Exit(IGiantGame game)
-        {
-            base.Exit(game);
-
-        }
-
-
-        public override sealed bool PushResponse(uint id, byte[] content)
-        {
-            return RpcMgr.ins.PushResponse(id, content);
-        }
-        public override sealed bool PushRequest(uint id, string service, string method, byte[] content)
-        {
-            return RpcMgr.ins.PushRequest(id, service, method, content);
-        }
-    }
 
     /// <summary>
     /// RPC 请求
@@ -156,7 +201,7 @@ namespace GameBox.Service.GiantLightFramework.Extension
         public string service;
         public byte[] content = null;
 
-        private const uint TIMEOUT_TICK = 60;//超时的帧数
+        private uint TIMEOUT_TICK = (uint)(3.0f * (1.0f / Time.deltaTime));//超时的帧数 3秒超时
         private uint _tick = 0;
         private Func<ResponseWrapper, bool> cb;
         public bool isInVoke = false;
@@ -189,48 +234,31 @@ namespace GameBox.Service.GiantLightFramework.Extension
 
         private static uint idx = 0;//global request id
     }
-
-
-    /// <summary>
-    /// RPC 响应代码
-    /// </summary>
-    public class ResponseCode
-    {
-        public const uint ID_OK = 0;
-        public const uint ID_TIMEOUT = 1;
-        public uint code = ID_OK;
-        public bool ok = true;
-    }
     /// <summary>
     /// RPC 响应
     /// </summary>
     public class ResponseWrapper
     {
         public uint id;
-        public byte[] content;
-        RequestWrapper request;
-        public ResponseCode code = new ResponseCode();
+        //   private  byte[] content;
+        //    private   RequestWrapper request;
+        public string json; // fast way to decode
+        public bool ok = true; // is respone ok ?
+        public bool timeout = false; // time out
         public ResponseWrapper(RequestWrapper request, byte[] content)
         {
             if (content == null)
             {
-                code.code = ResponseCode.ID_TIMEOUT;
-                code.ok = false;
+                timeout = true;
+                ok = false;
             }
-            this.request = request;
-            this.id = request.id;
-            this.content = content;
+            else
+            {
+                this.id = request.id;
+                this.json = ByteConverter.BytesToProtoBuf<rpc.EnterRoomMsg>(content, 0, content.Length).peer_name;
+            }
         }
         public uint ID_STATE = 0;
-    }
-
-    /// <summary>
-    /// RPC 服务，提供给服务端
-    /// </summary>
-    public class RpcService : object
-    {
-        public virtual string GetServiceName() { return ""; }
-
     }
 
 
@@ -281,6 +309,7 @@ namespace GameBox.Service.GiantLightFramework.Extension
         }
         /// <summary>
         /// 接管代码， 在GiantLightScene里面转发到该函数，其他时刻请勿调用
+        /// 处理客户端发起的rpc的 服务器响应
         /// </summary>
         /// <param name="id"></param>
         /// <param name="content"></param>
@@ -299,6 +328,7 @@ namespace GameBox.Service.GiantLightFramework.Extension
         }
         /// <summary>
         /// 接管代码， 在GiantLightScene里面转发到该函数，其他时刻请勿调用
+        /// 处理来自服务器的rpc调用
         /// </summary>
         /// <param name="id"></param>
         /// <param name="service"></param>
@@ -307,29 +337,37 @@ namespace GameBox.Service.GiantLightFramework.Extension
         /// <returns></returns>
         public bool PushRequest(uint id, string service, string method, byte[] content)
         {
+            RpcService rpc;
             if (this.services.Contains(service))
             {
-                RpcService rpc = this.services[service] as RpcService;
-
-                Type type = rpc.GetType();
-                object[] _params = new object[2];
-                _params[0] = id;
-                _params[1] = content;
-                var func = type.GetMethod(method);
-                if (func == null)
-                {
-                    Debug.LogWarning("Unknown method " + method);
-                }
-                else
-                {
-                    func.Invoke(rpc, _params);
-                }
+                rpc = this.services[service] as RpcService;
             }
             else
             {
-                Debug.LogWarning("Unknown service " + service);
+                Type t = Type.GetType(service);
+                if (t == null)
+                {
+                    RpcClient.ins.SendResponse(id, "");//return error
+                    Debug.LogWarning("UnKnown services:" + service);
+                    return true;
+                }
+                rpc = Activator.CreateInstance(t) as RpcService;
+
             }
+
+            rpc.Invoke(id, method, content);
             return true;
+        }
+
+        /// <summary>
+        /// 发出服务器发起的rpc请求 的响应
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="content"></param>
+        public void SendResponse(uint id, byte[] content)
+        {
+
+            scene.SendResponse(id, content);
         }
         /// <summary>
         /// 发送RPC请求接口
@@ -381,5 +419,4 @@ namespace GameBox.Service.GiantLightFramework.Extension
         private GiantLightScene scene = null;
 
     }
-};
-*/
+}

@@ -1,0 +1,126 @@
+version: 1.0.0.0
+date: 2016-07-21T08:19:39.9448818Z
+packs:
+  fonts.ab:
+    path: fonts.ab
+    type: BUNDLE
+    loadType: STREAMINGASSETS
+    checkCode: 66dc31fcf835cba4b9380eded4b50396
+    size: 230622
+  pfb_mod.ab:
+    path: pfb_mod.ab
+    type: BUNDLE
+    loadType: STREAMINGASSETS
+    dependencies:
+    - textures.ab
+    checkCode: a8981f67ee248f30837235535e7db7b1
+    size: 210830
+  pfb_ui.ab:
+    path: pfb_ui.ab
+    type: BUNDLE
+    loadType: STREAMINGASSETS
+    dependencies:
+    - fonts.ab
+    - textures.ab
+    checkCode: a72f9a81cc2d7425adc0c616bd11e2c8
+    size: 17553
+  textures.ab:
+    path: textures.ab
+    type: BUNDLE
+    loadType: STREAMINGASSETS
+    checkCode: cb6e77abfdf7b67e96c17beff1bb966d
+    size: 360326
+assets:
+  fonts/from cartoon blocks.ttf:
+    path: fonts/from cartoon blocks.ttf
+    packPath: fonts.ab
+  fonts/going rogue.otf:
+    path: fonts/going rogue.otf
+    packPath: fonts.ab
+  model/sailcharacterpack/prefabs/character.prefab:
+    path: model/sailcharacterpack/prefabs/character.prefab
+    packPath: pfb_mod.ab
+  model/sailcharacterpack/prefabs/character2.prefab:
+    path: model/sailcharacterpack/prefabs/character2.prefab
+    packPath: pfb_mod.ab
+  model/sailcharacterpack/prefabs/character3.prefab:
+    path: model/sailcharacterpack/prefabs/character3.prefab
+    packPath: pfb_mod.ab
+  model/sailcharacterpack/prefabs/ocean.prefab:
+    path: model/sailcharacterpack/prefabs/ocean.prefab
+    packPath: pfb_mod.ab
+  model/sailcharacterpack/prefabs/seagull.prefab:
+    path: model/sailcharacterpack/prefabs/seagull.prefab
+    packPath: pfb_mod.ab
+  model/sailcharacterpack/prefabs/smallfish.prefab:
+    path: model/sailcharacterpack/prefabs/smallfish.prefab
+    packPath: pfb_mod.ab
+  model/sailcharacterpack/prefabs/squid.prefab:
+    path: model/sailcharacterpack/prefabs/squid.prefab
+    packPath: pfb_mod.ab
+  ui/clock.prefab:
+    path: ui/clock.prefab
+    packPath: pfb_ui.ab
+  ui/loadwindow.prefab:
+    path: ui/loadwindow.prefab
+    packPath: pfb_ui.ab
+  ui/lobbywindow.prefab:
+    path: ui/lobbywindow.prefab
+    packPath: pfb_ui.ab
+  ui/loginwindow.prefab:
+    path: ui/loginwindow.prefab
+    packPath: pfb_ui.ab
+  ui/lostserverwindow.prefab:
+    path: ui/lostserverwindow.prefab
+    packPath: pfb_ui.ab
+  ui/namelabel.prefab:
+    path: ui/namelabel.prefab
+    packPath: pfb_ui.ab
+  ui/powerup.prefab:
+    path: ui/powerup.prefab
+    packPath: pfb_ui.ab
+  ui/resultwindow.prefab:
+    path: ui/resultwindow.prefab
+    packPath: pfb_ui.ab
+  ui/searchingwindow.prefab:
+    path: ui/searchingwindow.prefab
+    packPath: pfb_ui.ab
+  ui/splashwindow.prefab:
+    path: ui/splashwindow.prefab
+    packPath: pfb_ui.ab
+  model/sailcharacterpack/models/textures/character.png:
+    path: model/sailcharacterpack/models/textures/character.png
+    packPath: textures.ab
+  model/sailcharacterpack/models/textures/character2.png:
+    path: model/sailcharacterpack/models/textures/character2.png
+    packPath: textures.ab
+  model/sailcharacterpack/models/textures/character3.png:
+    path: model/sailcharacterpack/models/textures/character3.png
+    packPath: textures.ab
+  model/sailcharacterpack/models/textures/seagull.png:
+    path: model/sailcharacterpack/models/textures/seagull.png
+    packPath: textures.ab
+  model/sailcharacterpack/models/textures/smallfish.png:
+    path: model/sailcharacterpack/models/textures/smallfish.png
+    packPath: textures.ab
+  model/sailcharacterpack/models/textures/squid.png:
+    path: model/sailcharacterpack/models/textures/squid.png
+    packPath: textures.ab
+  model/sailcharacterpack/textures/environment/grass.png:
+    path: model/sailcharacterpack/textures/environment/grass.png
+    packPath: textures.ab
+  model/sailcharacterpack/textures/environment/rock.png:
+    path: model/sailcharacterpack/textures/environment/rock.png
+    packPath: textures.ab
+  model/sailcharacterpack/textures/environment/water.png:
+    path: model/sailcharacterpack/textures/environment/water.png
+    packPath: textures.ab
+  model/sailcharacterpack/textures/skybox/sunnysky_side.png:
+    path: model/sailcharacterpack/textures/skybox/sunnysky_side.png
+    packPath: textures.ab
+  model/sailcharacterpack/textures/skybox/sunnysky_top.png:
+    path: model/sailcharacterpack/textures/skybox/sunnysky_top.png
+    packPath: textures.ab
+  ui/sunnysky.png:
+    path: ui/sunnysky.png
+    packPath: textures.ab

@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;UNITY_64;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -244,6 +244,7 @@
      <None Include="Assets\Resources\hd\enemies\enemy_372\bullet\enemy_372_bul_372001\enemy_372_bul_372001.plist.xml" />
      <None Include="Assets\Resources\hd\skeleton\6701.atlas.txt" />
      <None Include="Assets\Resources\hd\interface\scenes\scene_login\scene_login_ani_dragonfly\scene_login_ani_dragonfly.plist.xml" />
+     <None Include="Assets\Logic\StreamingAssets\com.giant.service.assetmanager.txt" />
      <None Include="Assets\Resources\hd\enemies\enemy_520\bullet\enemy_520_bul_520005\enemy_520_bul_520005.plist.xml" />
      <None Include="Assets\Resources\hd\enemies\enemy_512\bullet\enemy_512_bul_512024\enemy_512_bul_512024.plist.xml" />
      <None Include="Assets\Plugins\Spine\spine-unity\Modules\Shaders\Sprite\SpritePixelLighting.cginc" />
@@ -1677,11 +1678,35 @@
  <Reference Include="UnityEditor.TreeEditor">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
+ <Reference Include="AssetManager">
+ <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/AssetManager.dll</HintPath>
+ </Reference>
+ <Reference Include="AssetUpdater">
+ <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/AssetUpdater.dll</HintPath>
+ </Reference>
+ <Reference Include="ByteStorage">
+ <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ByteStorage.dll</HintPath>
+ </Reference>
+ <Reference Include="ByteStorage.Utility">
+ <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ByteStorage.Utility.dll</HintPath>
+ </Reference>
+ <Reference Include="GiantLightFramework">
+ <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/GiantLightFramework.dll</HintPath>
+ </Reference>
+ <Reference Include="GiantLightServer">
+ <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/GiantLightServer.dll</HintPath>
+ </Reference>
+ <Reference Include="NetworkManager">
+ <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/NetworkManager.dll</HintPath>
+ </Reference>
+ <Reference Include="ServiceCenter">
+ <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ServiceCenter.dll</HintPath>
+ </Reference>
+ <Reference Include="AssetManager.Editor">
+ <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/Editor/AssetManager.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.Android.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
