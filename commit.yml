@@ -2,25 +2,13 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid '6a5310fd9c20dadcd578840fbf715446e99122b8'
-    oldFile: !uuid '580ad1104b3f54bb47f8aada968a77255c7e23d4'
-  /LogicServer/server:
-    newFile: !uuid '532f451ba5ac3ff35b84e6218612bda3590e45ed'
-    oldFile: !uuid '4258fcb363f0d202d2647e1f12449feba5bef406'
-  /LogicServer/server/scripts:
-    newFile: !uuid '3a7a0a10fb539cca0c040112e2ce02847c68c3c3'
-    oldFile: !uuid '54250b7d75427f644a283e5c827496e89e3966bc'
-  /LogicServer/server/scripts/common:
-    newFile: !uuid 'cdc735df9d055a26893d6c7d51e9e8c3634bd382'
-    oldFile: !uuid '2ad168e3ecfd0dd5d2c4ebcfabae364fd14339fd'
-  /LogicServer/server/scripts/common/init_common_services.lua:
-    newFile: !uuid '84ad656e422544dc1c90b6413dfcfe3b3b5a34a6'
-    oldFile: null
-  /LogicServer/server/scripts/common/rpc_request_handler.lua:
-    newFile: !uuid '2fcc76211dc41affeb768a5081e6f6b16db4fac2'
-    oldFile: null
-gitCommitId: !uuid '82f1a66fe92381b3cadc23b243052e9f01eae2fd'
+  /UnityClient:
+    newFile: !uuid 'e1c2c1446de9f0fd40c45d5daace87be30c830d1'
+    oldFile: !uuid '5987451d7e543f80ac07ab7d71efc4650e424081'
+  /UnityClient/UnityClient.v12.suo:
+    newFile: !uuid '2c43d3b8f236a5ab0fc3ce1d1b78a277e2cb7e27'
+    oldFile: !uuid 'c86b2db495347f8f5d8f062fea7893f03c8e38a6'
+gitCommitId: !uuid 'b76223fc75d17147ee59da358f2cb01821fbf79f'
 renames: {
   }
-revisionId: 65
+revisionId: 66
