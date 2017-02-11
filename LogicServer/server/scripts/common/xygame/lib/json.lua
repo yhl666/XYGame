@@ -1,3 +1,18 @@
+
+--[[
+xygame传输数据协议的 简单json
+
+* Author: caoshanshan
+* Email: me@dreamyouxi.com
+------------------------------------------------------
+全部是以key value 存在的 键值对
+示例 "name:css,pwd:123,"  注意有几个kv 就有几个逗号
+note：因为没有{}不能递归包含，所有key 都是平行关系
+
+]]
+
+
+
 require("string");
 
 json = { }
@@ -30,7 +45,7 @@ function json.decode(str)
 end
 
 --[Comment]
---吧table 解析为 json
+-- 吧table 解析为 json
 function json.encode(t)
     local ret = "";
     for k, v in pairs(t) do

@@ -1,3 +1,13 @@
+
+--[[
+µÇÂ¼·þÎñ
+* Author: caoshanshan
+* Email: me@dreamyouxi.com
+
+]]
+
+
+
 local t = { }
 
 local log = require("log"):new("login")
@@ -21,7 +31,7 @@ function t.login(ctx, msg, cb)
     end );
 
 
-    remote.request_client(ctx, "rpctest41", "func", "name:3,", function(msg)
+    remote.request_client(ctx, "rpctest4", "func", "name:3,", function(msg)
         print(msg .. "  recv respone");
 
     end );

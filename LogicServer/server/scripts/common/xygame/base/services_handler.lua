@@ -1,18 +1,37 @@
--- region *.lua
--- Date
--- 此文件由[BabeLua]插件自动生成
 
+--[[
+派发rpc服务
+* Author: caoshanshan
+* Email: me@dreamyouxi.com
 
+-----------------------------------------------------------------------------
+在  rpc_request_handler.lua 的handle函数改为以下代码
 
--- endregion
-require("string");
+function M.handle(ctx, service_name, method_name, req_content)
+    require("xygame.base.services_handler").handle(ctx, service_name, method_name, req_content);
+end  -- handle()
 
+达到接管handle的目的
+------------------------------------------------------------------------------
+功能：
+1.自动找到服务目录并且加载，首次加载会自动添加到热更新模块
+2.自动识别是base服务还是cell服务（来自客户端 或者base服务器）
+3.将传输协议从protobuf改为 类型为string 的简单json
+4.将应答等交互方式优化为 闭包处理 .使用示例在各个服务下的example.lua
+5.转换base 和cell服务器的概念 详见remote.lua
+------------------------------------------------------------------------------
+
+]]
+
+ 
+ 
 local t = { };
 
 local service_map = { }
 local log = require("log"):new("services_handler")
 
-
+-- [Comment]
+-- C++调用，无需修改 访问 此文件内容 
 function t.handle(ctx, service_name, method_name, req_content)
 
     local isRemote = string.find(service_name, "remote.") ~= nil;
@@ -24,7 +43,6 @@ function t.handle(ctx, service_name, method_name, req_content)
     else
         service_name = "base.xygame." .. service_name;
         -- 游戏客户端服务
-
     end
 
 
@@ -72,7 +90,5 @@ function t.handle(ctx, service_name, method_name, req_content)
     end
 
 end
-
-log:debug("load");
 
 return t;
