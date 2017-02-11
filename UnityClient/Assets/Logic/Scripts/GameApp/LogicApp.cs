@@ -3,15 +3,8 @@ using System.Collections;
 using System;
 public class LogicApp : AppBase
 {
-    public static LogicApp ins = null;
     private bool init = false;
     // Use this for initialization
-
-    public LogicApp()
-    {
-        ins = this;
-    }
-
 
     public override bool Init()
     {

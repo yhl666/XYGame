@@ -24,9 +24,6 @@ public class TerrainMetaEditor : Editor
         DrawDefaultInspector();
 
 
-        SerializedProperty pros = serializedObject.FindProperty("blocks");
-
-
         if (GUILayout.Button("Save to file"))
         {
             Debug.Log("save to XX.xml");
