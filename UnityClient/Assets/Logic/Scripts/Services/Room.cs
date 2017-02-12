@@ -38,20 +38,17 @@ namespace Services
             float y = float.Parse(hash["y"]);
             int no = int.Parse(hash["no"]);
 
-            Hero hero = HeroMgr.ins.GetHero(no);
+            BaseHero hero = HeroMgr.ins.GetHero(no) as BaseHero;
 
             if (hero == null)
             {
-                return;
+                /// return;
                 hero = HeroMgr.Create<BaseHero>();
                 hero.no = int.Parse(hash["no"]);
 
             }
             hero.eventDispatcher.PostEvent(Events.ID_LOGIC_NEW_POSITION, new Vector2(x, y));
 
-
-
-       
 
         }
 

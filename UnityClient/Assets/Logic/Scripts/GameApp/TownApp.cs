@@ -51,6 +51,7 @@ public class TownApp : AppBase
     int tick = 0;
     public override void UpdateMS()
     {
+        AutoReleasePool.ins.Clear();
         tick++;
         ModelMgr.ins.UpdateMS();
         ViewMgr.ins.UpdateMS();

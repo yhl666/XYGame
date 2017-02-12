@@ -47,10 +47,29 @@ public class BaseHero : Hero
         }
     }
 
-    public override void Update()
+
+    public void ResetTick()
     {
-        base.Update();
-        this.UpdateMS();
+
+    }
+    public void Tick()
+    {
+        tick++;
+        if (tick > alive_tick)
+        {
+            Debug.Log("timeout hero base");
+            this.SetInValid();
+        }
+    }
+    public override void UpdateMS()
+    {
+        base.UpdateMS();
+        if (this == HeroMgr.ins.self) return;
+
+        Tick();
     }
 
+    int alive_tick = 80;//2秒未移动直接判定离开Town
+
+    int tick = 0;
 }

@@ -111,6 +111,13 @@ public class ViewBullet : View
 public class ViewEntity : View
 {
 
+    public override void OnDispose()
+    {
+        GameObject.DestroyImmediate(obj);
+    }
+
+
+
     public override bool Init()
     {
         base.Init();
@@ -149,6 +156,13 @@ public class ViewEntity : View
 
     public override void UpdateMS()
     {
+        if (m.IsInValid())
+        {
+            this.SetInValid();
+            return;
+        }
+
+
         this.obj.name = m.no.ToString();
         transform.position = new Vector3(m.x, m.y + m.height, transform.position.z);
         float factor   = m.scale;
