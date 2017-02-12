@@ -96,6 +96,11 @@ public class TownApp : AppBase
 
                     Debug.Log(" new postion ok ");
                 }
+                else
+                {
+
+                    Debug.Log("  time out ");
+                }
 
 
             });
