@@ -3,24 +3,12 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'd466cae4155fc8dfc4460c0edd3f9a9dd6bc5bcf'
-    oldFile: !uuid 'ad87e3cdbd5aa9de9eab41641b0c18bb99277df6'
-  /UnityClient/Assets:
-    newFile: !uuid '34a7720c486c5a5dcd25354794016ce92323ed92'
-    oldFile: !uuid '7899b0821c841ad865c6191479a6e353c67911bc'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid 'd4bb70f92a91f5dd5223db1066206b8327af50ac'
-    oldFile: !uuid '0a6d40f35c06405730403df4ad6ad673ef7316e0'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid '19b88b93bc2cc3d3176c597b41aee9328f97bb8e'
-    oldFile: !uuid 'c93149f7d08490aa1a67521fc115407da0c150e8'
-  /UnityClient/Assets/Logic/Scripts/GameApp:
-    newFile: !uuid 'd3fc068c4131216d791a294b8fc5a808040af59d'
-    oldFile: !uuid 'dfa7756cb65e7babf6a48303cc5cb17935776e77'
-  /UnityClient/Assets/Logic/Scripts/GameApp/TownApp.cs:
-    newFile: !uuid '05d9287eaf79964f6fbf902ef9ce26d7b5f56935'
-    oldFile: !uuid 'f6fa6edb243467497f287837f58a0a272b6061f8'
-gitCommitId: !uuid '43ab3150c481b5076e87afa929c33d2840cd96a4'
+    newFile: !uuid '117ab506e243027fe1318105a5c1b62b5c050568'
+    oldFile: !uuid 'd466cae4155fc8dfc4460c0edd3f9a9dd6bc5bcf'
+  /UnityClient/VSevent.txt:
+    newFile: !uuid 'fb361fde7685b1ac21fe9bdaa3f4966d517f62bf'
+    oldFile: !uuid 'cf91d0eb85e57397cf2a5c51965d828bf3c661ab'
+gitCommitId: !uuid '7f49d172f1c4f2c390bfe76d0fd0515a1924636d'
 renames: {
   }
-revisionId: 91
+revisionId: 92
