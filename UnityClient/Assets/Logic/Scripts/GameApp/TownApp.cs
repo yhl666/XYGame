@@ -71,7 +71,6 @@ public class TownApp : AppBase
 
         return true;
     }
-    BaseHero self = null;
     public override void OnEnter()
     {
         base.OnEnter();
@@ -80,8 +79,6 @@ public class TownApp : AppBase
 
     }
 
-
-    int tick = 0;
     public override void UpdateMS()
     {
         AutoReleasePool.ins.Clear();
@@ -91,59 +88,47 @@ public class TownApp : AppBase
         ViewMgr.ins.UpdateMS();
 
 
-        tick++;
         if (HeroMgr.ins.self == null) return;
 
-        var random = new System.Random();
-
-        /*if(random.Next(40)==10)
-        {
-            RpcClient.ins.SendRequest("services.room", "new_position", "no:" + HeroMgr.ins.self.no + ",x:" + random.NextDouble()*24 +
-              ",y:" + random.NextDouble() * 2.5 + ",", (string msg) =>
-              {
-                  if (msg != "")
-                  {
-
-
-                      Debug.Log(" new postion ok ");
-                  }
-
-
-              });
-        }*/
-        Vector3 pos = Input.mousePosition;
 
         if (Input.GetMouseButtonDown(0))
         {
-            //   Debug.Log(pos.x + "          " + pos.y);
-            Vector3 pos_world = Camera.main.ScreenToWorldPoint(pos);
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            this.PostSelfNewPosition(pos);
 
-
-            //    Debug.Log(pos_world.x + "          " + pos_world.y);
             ///本地直接生效 不需要服务器验证
-            HeroMgr.ins.self.eventDispatcher.PostEvent(Events.ID_LOGIC_NEW_POSITION, new Vector2(pos_world.x, pos_world.y));
-
-
-            RpcClient.ins.SendRequest("services.room", "new_position", "no:" + HeroMgr.ins.self.no + ",x:" + pos_world.x.ToString() +
-                 ",y:" + pos_world.y.ToString() + ",", (string msg) =>
-            {
-                if (msg == "timeout")
-                {
-                    // Debug.Log("  time out ");
-                }
-                else
-                {
-                    //Debug.Log(" new postion ok ");
-                }
-
-
-            });
+            HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent(Events.ID_LOGIC_NEW_POSITION, new Vector2(pos.x, pos.y));
 
         }
-
-
-
+        if (tick.Tick() == false)
+        {
+            this.PostAlive();
+        }
     }
 
+    private void PostSelfNewPosition(Vector3 pos_world)
+    {
+        RpcClient.ins.SendRequest("services.room", "new_position", "no:" + HeroMgr.ins.self.no + ",x:" + pos_world.x.ToString() +
+             ",y:" + pos_world.y.ToString() + ",", (string msg) =>
+             {
+                 if (msg == "timeout")
+                 {
+                     // Debug.Log("  time out ");
+                 }
+                 else
+                 {
+                     //Debug.Log(" new postion ok ");
+                 }
+             });
+    }
 
+    private void PostAlive()
+    {
+        RpcClient.ins.SendRequest("services.room", "ckeck_alive", "no:" + HeroMgr.ins.self.no + ",");
+    }
+    public void ResetTick()
+    {
+        this.tick.Reset();
+    }
+      Counter tick = Counter.Create(400);//tick for alive  10s
 }

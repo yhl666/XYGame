@@ -80,6 +80,16 @@ public class RpcClient
         inner.RpcMgr.ins.SendRequest(service, method, ByteConverter.ProtoBufToBytes(t), wrapper);
     }
 
+    /// <summary>
+    /// 不关心成功与否
+    /// </summary>
+    /// <param name="service"></param>
+    /// <param name="method"></param>
+    /// <param name="kv_json"></param>
+    public void SendRequest(string service, string method, string kv_json)
+    {
+        SendRequest(service, method, kv_json, (string msg) => { });
+    }
 
     public void SendResponse(uint id, string kv_json)
     {

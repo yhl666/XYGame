@@ -26,24 +26,17 @@ local function check_alive_player()
 end
 
 
-
-function t.new_position(ctx, msg, cb)
-    cb("");
-    print("new position " .. msg);
-    local kv = json.decode(msg);
+local function notify_other(ctx, service, method, msg, cb)
 
     for k, v in pairs(global_players_ctx) do
 
         if ctx:get_game_clt_id() ~= v:get_game_clt_id() then
             -- 广播给其他玩家
-            remote.request_client(v, "Room", "NewPosition", msg, function(msg)
+            remote.request_client(v, service, method, msg, function(msg)
                 if msg == "timeout" then
                     -- 通知失败
-                    print("notifu other faild");
+                    print("notify other failed");
                     table.insert(global_players_timeout_ctx, ctx);
-
-                else
-                    -- 该玩家通知成功
 
                 end
 
@@ -51,11 +44,26 @@ function t.new_position(ctx, msg, cb)
         end
     end
 
-
     setTimeout(1, check_alive_player);
+end
+
+
+function t.new_position(ctx, msg, cb)
+    cb("");
+    print("new position " .. msg);
+
+    notify_other(ctx,"Room", "NewPosition", msg);
 end
  
 
+ 
 
+function t.ckeck_alive(ctx, msg, cb)
+    cb("");
+    print("check alive   " .. msg);
+
+    notify_other(ctx,"Room", "CheckAlive", msg);
+end
+ 
 
 return t;

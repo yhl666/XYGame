@@ -38,7 +38,7 @@ namespace Services
             int no = int.Parse(hash["no"]);
 
             BaseHero hero = HeroMgr.ins.GetHero(no) as BaseHero;
-
+            if (hero == HeroMgr.ins.GetSelfHero()) return;
             if (hero == null)
             {
                 /// return;
@@ -46,11 +46,27 @@ namespace Services
                 hero.no = int.Parse(hash["no"]);
 
             }
+            hero.ResetTick();
             hero.eventDispatcher.PostEvent(Events.ID_LOGIC_NEW_POSITION, new Vector2(x, y));
-
-
         }
+        public void CheckAlive(string msg, VoidFuncString cb)
+        {
+            cb("ret:ok,");
 
+            HashTable hash = Json.Decode(msg);
+            int no = int.Parse(hash["no"]);
+
+            BaseHero hero = HeroMgr.ins.GetHero(no) as BaseHero;
+            if (hero == HeroMgr.ins.GetSelfHero())
+            {
+                AppMgr.GetCurrentApp<TownApp>().ResetTick();
+            }
+            if (hero == null)
+            {
+                return;
+            }
+            hero.ResetTick();
+        }
         public void LeaveRoom(string msg, VoidFuncString cb)
         {
             HashTable hash = Json.Decode(msg);

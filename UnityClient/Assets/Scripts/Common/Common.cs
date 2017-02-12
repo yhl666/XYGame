@@ -86,7 +86,10 @@ public class StableSort
 
 public class Counter
 {
- 
+    /// <summary>
+    /// 返回true时 直接return出你的函数即可
+    /// </summary>
+    /// <returns></returns>
     public bool Tick()
     {
         tick++;
@@ -95,11 +98,19 @@ public class Counter
         return false;
     }
 
-    public static Counter Create(int max=40)
+    public static Counter Create(int max = 40)
     {
         Counter ret = new Counter();
         ret.max = max;
         return ret;
+    }
+    public void Reset()
+    {
+        this.tick = 0;
+    }
+    public void SetMax(int max)
+    {
+        this.max = max;
     }
     private Counter() { }
     private int tick;

@@ -41,7 +41,7 @@ function t.request(services, method, json, cb)
         -- 2秒超时
         if called == false then
             cb("timeout");
-            log:error("call cell rpc timeout " .. services .. " " .. method);
+            log:error("call cell rpc timeout " .. services .. "." .. method);
             -- timeout
         else
             cb("");
@@ -69,7 +69,7 @@ function t.request_client(ctx, services, method, json, cb)
         -- 5秒超时
         if called == false then
             cb("timeout");
-            log:error("call gameclient rpc timeout " .. services .. " " .. method);
+            log:error("call game client rpc timeout " .. services .. "." .. method);
         end
     end )
 
