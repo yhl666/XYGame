@@ -47,12 +47,12 @@ public class McmpBalls : IComparer
     public int Compare(object x, object y)
     {
 
-      /*  Ball a1 = (x as Ball);
-        Ball b1 = (y as Ball);
+        /*  Ball a1 = (x as Ball);
+          Ball b1 = (y as Ball);
 
-        if (a1.value > b1.value) return 1;
-        if (a1.value == b1.value) return 0;
-        */
+          if (a1.value > b1.value) return 1;
+          if (a1.value == b1.value) return 0;
+          */
         return -1;
     }
 
@@ -86,17 +86,22 @@ public class StableSort
 
 public class Counter
 {
-    public int counter;
-    public void Reset()
-    {
-        counter = 0;
-    }
-
+ 
     public bool Tick()
     {
-        counter++;
+        tick++;
+        if (tick < max) return true;
+        tick = 0;
         return false;
     }
 
+    public static Counter Create(int max=40)
+    {
+        Counter ret = new Counter();
+        ret.max = max;
+        return ret;
+    }
+    private Counter() { }
+    private int tick;
+    private int max;
 };
- 

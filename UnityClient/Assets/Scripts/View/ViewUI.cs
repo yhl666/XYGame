@@ -35,7 +35,7 @@ public class ViewUI : View
         return ret;
     }
     protected ViewUI _root = null;
-    protected GameObject _ui_root = null;
+    public GameObject _ui_root = null;
     protected GameObject _ui = null;
     protected bool _enable = false;
 }

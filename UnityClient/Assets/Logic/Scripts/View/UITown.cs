@@ -40,6 +40,14 @@ public sealed class UITownRoot : ViewUI
             return DATA.EMPTY_STRING;
         }));
 
+
+
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_names>(this));
+            return DATA.EMPTY_STRING;
+        }));
+
         return true;
     }
 
@@ -90,16 +98,12 @@ public sealed class UI_Townxy : ViewUI
 
 public sealed class UI_time : ViewUI
 {
-    int tick = 0;
+    private Counter tick = Counter.Create();
 
     public override void Update()
     {
-        tick++;
-        if (tick < 40)
-        {
-            return;
-        }
-        tick = 0;
+        if (tick.Tick()) return;
+
         base.Update();
 
         var time = System.DateTime.Now;
@@ -150,5 +154,57 @@ public sealed class UI_time : ViewUI
 
     private Text txt;
 
+}
+
+
+
+public sealed class UI_names : ViewUI
+{
+    public override void Update()
+    {//TODO 优化性能
+
+        ArrayList heros = HeroMgr.ins.GetHeros();
+
+        if (heros.Count == 0) return;
+
+        while (heros.Count > texts.Count)
+        {
+            texts.Add((GameObject.Instantiate(txt_template, _panel.transform) as GameObject).
+                GetComponent<Text>());
+        }
+
+        int i = 0;
+
+        for (i = 0; i < heros.Count; i++)
+        {
+            Text txt = texts[i] as Text;
+            Hero hero = heros[i] as Hero;
+
+            txt.text = "玩家id:" + hero.no.ToString();
+
+            txt.gameObject.transform.position = Camera.main.WorldToScreenPoint(
+                new Vector3(hero.x, hero.y + 1.2f, 0));
+        }
+        for (; i < texts.Count; i++)
+        {
+            (texts[i] as Text).text = "";
+        }
+
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+
+        this._panel = this._root._ui_root.transform.FindChild("ui_panel_hero_names").gameObject;
+        this.txt_template = _panel.transform.FindChild("NameTemplate").gameObject;
+
+        return true;
+    }
+
+
+    private ArrayList texts = new ArrayList();
+    GameObject _panel;
+    GameObject txt_template;
 }
 

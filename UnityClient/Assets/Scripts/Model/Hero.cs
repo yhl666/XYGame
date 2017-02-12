@@ -15,6 +15,8 @@ public class Hero : Entity
 
         base.UpdateMS();
     }
+
+    public string name_head;
 }
 
 

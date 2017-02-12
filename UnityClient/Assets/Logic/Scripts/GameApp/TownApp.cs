@@ -41,7 +41,7 @@ public class TownApp : AppBase
             this.worldMap = ModelMgr.Create<LogicWorldMap>();
 
 
-            string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(0xfffffff).ToString();
+            string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(500).ToString();
 
 
             RpcClient.ins.SendRequest("services.login", "login", "name:" + seed + ",", (string msg) =>
