@@ -82,8 +82,8 @@ public class TownApp : AppBase
 
 
             //    Debug.Log(pos_world.x + "          " + pos_world.y);
-
-            //     ---  BaseHeroMgr.ins.self.eventDispatcher.PostEvent(Events.ID_LOGIC_NEW_POSITION, new Vector2(pos_world.x, pos_world.y));
+            ///本地直接生效 不需要服务器验证
+            HeroMgr.ins.self.eventDispatcher.PostEvent(Events.ID_LOGIC_NEW_POSITION, new Vector2(pos_world.x, pos_world.y));
 
 
             RpcClient.ins.SendRequest("services.room", "new_position", "no:" + HeroMgr.ins.self.no + ",x:" + pos_world.x.ToString() +

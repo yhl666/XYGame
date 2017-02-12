@@ -31,7 +31,8 @@ namespace Services
 
         public void NewPosition(string msg, VoidFuncString cb)
         {
- 
+            cb("ret:ok,");
+
             HashTable hash = Json.Decode(msg);
             float x = float.Parse(hash["x"]);
             float y = float.Parse(hash["y"]);
@@ -41,7 +42,7 @@ namespace Services
 
             if (hero == null)
             {
-
+                return;
                 hero = HeroMgr.Create<BaseHero>();
                 hero.no = int.Parse(hash["no"]);
 
@@ -50,10 +51,16 @@ namespace Services
 
 
 
-            cb("ret:ok,");
+       
 
         }
 
-
+        public void LeaveRoom(string msg, VoidFuncString cb)
+        {
+            HashTable hash = Json.Decode(msg);
+            int no = int.Parse(hash["no"]);
+            HeroMgr.ins.Remove(no);
+            cb("ret:ok,");
+        }
     }
 }

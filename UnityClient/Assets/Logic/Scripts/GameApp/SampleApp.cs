@@ -52,26 +52,29 @@ public class SampleApp : AppBase
 /// 
 /// 另外一种是RpcMgr.ins.RegistorServices
 /// </summary>
-
-public class SampleServices : RpcService
+namespace Services
 {
-
-    public void method(string msg, VoidFuncString cb)
+    public class SampleServices : RpcService
     {
 
-        Json.Decode(msg);
+        public void method(string msg, VoidFuncString cb)
+        {
 
-        Debug.Log(msg);
-        if (true)
-        {//处理成功 返回json给服务端
-            cb("res:ok,");
+            Json.Decode(msg);
 
-        }
-        else
-        {//空串表示 失败，如果不调用cb 那么服务器会判定超时
-            cb("");
+            Debug.Log(msg);
+            if (true)
+            {//处理成功 返回json给服务端
+                string ret = "ret:ok,";
+                cb(ret);
+
+            }
+            else
+            {//空串表示 失败，如果不调用cb 那么服务器会判定超时
+                cb("");
+            }
         }
     }
+
+
 }
-
-

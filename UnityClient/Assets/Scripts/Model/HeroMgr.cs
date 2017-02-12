@@ -28,6 +28,17 @@ public sealed class HeroMgr : GAObject
         b.OnExit();
         b.LazyDispose();
     }
+
+
+   
+    public void Remove(int b)
+    {
+        Hero hero = this.GetHero(b);
+        if (hero == null) return;
+        this.Remove(hero);
+    }
+
+
     public Hero GetSelfHero()
     {
         return self;
