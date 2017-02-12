@@ -37,7 +37,7 @@ function t.request(services, method, json, cb)
         cb(pack.decode(msg));
     end );
 
-    setTimeout(1, function()
+    setTimeout(3, function()
         -- 2秒超时
         if called == false then
             cb("timeout");
@@ -65,7 +65,7 @@ function t.request_client(ctx, services, method, json, cb)
         cb(pack.decode(msg));
     end );
 
-    setTimeout(1, function()
+    setTimeout(3, function()
         -- 5秒超时
         if called == false then
             cb("timeout");

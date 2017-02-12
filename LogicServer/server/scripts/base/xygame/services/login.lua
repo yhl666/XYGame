@@ -10,9 +10,9 @@
 local t = { }
 
 local log = require("log"):new("login")
-local remote = require("xygame.base.remote");
-
-global_players_ctx = { };
+local remote = require("base.remote");
+local hero = require("model.base_hero")
+global_base_heros = { };
 
 
 function t.login(ctx, msg, cb)
@@ -21,19 +21,17 @@ function t.login(ctx, msg, cb)
     -- 新连接请求
     remote.request_client(ctx, "Room", "SelfEnterRoom", "no:" .. kv["name"] .. ",", function(msg)
 
-
         if msg == "timeout" then return end;
         --- 响应失败 忽略
 
-        print("Enself room " .. kv["name"] .. "  recv respone: " .. msg);
+        print("hero join game no=" .. kv["name"]);
 
         -- 响应成功后 添加到table里面
-        table.insert(global_players_ctx, ctx);
+        table.insert(global_base_heros, hero.create(ctx, kv["name"]));
 
     end );
     cb("ret:ok,");
 end
-
 
 
 return t;
