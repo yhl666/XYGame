@@ -130,5 +130,5 @@ public class TownApp : AppBase
     {
         this.tick.Reset();
     }
-      Counter tick = Counter.Create(400);//tick for alive  10s
+    Counter tick = Counter.Create(DATA.HERO_ALIVE_TICK);//tick for alive  30s
 }

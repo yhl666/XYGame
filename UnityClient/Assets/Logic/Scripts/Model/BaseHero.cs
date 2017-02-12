@@ -63,5 +63,5 @@ public class BaseHero : Hero
         tick.Reset();
     }
 
-     Counter tick = Counter.Create(400);// 10 秒
+    Counter tick = Counter.Create(DATA.HERO_ALIVE_TICK);// 30 秒
 }
