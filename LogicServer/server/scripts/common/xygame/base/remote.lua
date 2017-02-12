@@ -21,7 +21,7 @@ local log = require("log"):new("remote")
 
 local t = { }
 
---[Comment]
+-- [Comment]
 -- 向cell服务器发起RPC请求
 -- services #string 服务类型
 -- method #string 函数名字
@@ -32,16 +32,19 @@ function t.request(services, method, json, cb)
 
     local called = false;
     c_rpc.request_svr("3", "remote." .. services, method, pack.encode(json), function(msg)
+        if called == true then return end
         called = true
         cb(pack.decode(msg));
     end );
 
-    setTimeout(2, function()
+    setTimeout(1, function()
         -- 2秒超时
         if called == false then
             cb("timeout");
             log:error("call cell rpc timeout " .. services .. " " .. method);
             -- timeout
+        else
+            cb("");
         end
     end )
 
@@ -50,18 +53,19 @@ function t.request(services, method, json, cb)
 end
 
 
---[Comment]
+-- [Comment]
 -- 向游戏客户端发起RPC请求
 function t.request_client(ctx, services, method, json, cb)
     log:debug("send a client services request to cell server");
 
     local called = false;
     c_rpc.request(ctx:get_rpc_clt_id(), services, method, pack.encode(json), function(msg)
+        if called == true then return end
         called = true
-        cb( pack.decode(msg));
+        cb(pack.decode(msg));
     end );
 
-    setTimeout(5, function()
+    setTimeout(1, function()
         -- 5秒超时
         if called == false then
             cb("timeout");

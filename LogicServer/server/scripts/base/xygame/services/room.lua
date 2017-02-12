@@ -12,6 +12,18 @@ local t = { }
 
 room_global_table = { };
 
+global_players_timeout_ctx = { };
+
+local function check_alive_player()
+
+    for k, v in pairs(global_players_timeout_ctx) do
+        table.remove(global_players_ctx, k);
+
+    end
+    ---  print("clear all disconnect play ok");
+    global_players_timeout_ctx = { };
+
+end
 
 
 
@@ -24,25 +36,22 @@ function t.new_position(ctx, msg, cb)
         if ctx:get_rpc_clt_id() ~= v:get_rpc_clt_id() then
             -- 广播给其他玩家
             remote.request_client(v, "Room", "NewPosition", msg, function(msg)
-                if msg == "" then
-                    -- 该玩家已离开房间 移除列表
+                if msg == "timeout" then
+                    -- 通知失败
+                    print("notifu other faild");
+                    table.insert(global_players_timeout_ctx, ctx);
 
+                else
+                    -- 该玩家通知成功
 
-                    remote.request_client(v, "Room", "LeaveRoom", "no:" .. kv["no"] .. ",", function(msg)
-                        if msg == "" then
-                            --  通知失败
-
-                            return;
-                        end
-                    end )
-
-
-                    return;
                 end
+
             end )
         end
     end
 
+
+    setTimeout(1, check_alive_player);
 end
  
 
