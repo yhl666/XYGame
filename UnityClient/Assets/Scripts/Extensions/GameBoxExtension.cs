@@ -141,8 +141,6 @@ public class GiantLightSceneExtension : GiantLightScene
 
 
 
-
-
 /// <summary>
 /// RPC 服务，提供给服务端
 /// 服务器可以控制GAObject的事件 
@@ -150,34 +148,60 @@ public class GiantLightSceneExtension : GiantLightScene
 public class RpcService : GAObject
 {
     public virtual string GetServiceName() { return ""; }
-    public void Invoke(uint id, string method, byte[] content)
+    public void _Inner_Invoke__(uint id, string method, byte[] content)
     {
-        if ("Invoke" == method) return;
+        if ("_Inner_Invoke__" == method) return;
+        if ("GetServiceName" == method) return;
 
-        Type type = this.GetType();
-        object[] _params = new object[2];
-        _params[0] = ByteConverter.BytesToProtoBuf<rpc.EnterRoomMsg>(content, 0, content.Length).peer_name;
-        _params[1] = new VoidFuncString((string kv_json) =>
+
+        string msg = ByteConverter.BytesToProtoBuf<rpc.EnterRoomMsg>(content, 0, content.Length).peer_name;
+        VoidFuncString cb = new VoidFuncString((string kv_json) =>
         {
             var t = new rpc.EnterRoomMsg();//protobuf
             t.peer_name = kv_json;
             inner.RpcMgr.ins.SendResponse(id, ByteConverter.ProtoBufToBytes(t));
         });
 
-        var func = type.GetMethod(method);
-        if (func == null)
+
+        VoidFuncRpc func = null;
+        if (methods.Contains(method))
         {
-            Debug.LogWarning("Unknown method " + method);
-            RpcClient.ins.SendResponse(id, "");
+            func = methods[method] as VoidFuncRpc;
+            Debug.Log("call func in cache");
+
         }
         else
-        {
-            func.Invoke(this, _params);
-    
+        {// create wrapper and add to cache
+            Type type = this.GetType();
+
+            var method_func = type.GetMethod(method);
+            if (method_func == null)
+            {
+                Debug.LogWarning("Unknown method " + method);
+                RpcClient.ins.SendResponse(id, "");
+                return;
+            }
+       
+            func = (string msgg, VoidFuncString cbb) =>
+            {
+                object[] _params = new object[2];
+                _params[0] = msgg as string;
+                _params[1] = cbb as VoidFuncString;
+                method_func.Invoke(this, _params);
+            };
+            methods.Add(method, func);
+
+            Debug.Log("call func in new");
         }
 
 
+        func(msg, cb);
+
     }
+
+
+
+    private Hashtable methods = new Hashtable();
 }
 
 
@@ -285,6 +309,22 @@ namespace inner
             services.Add(service.GetServiceName(), service);
         }
 
+
+        /// <summary>
+        /// 注册一个服务
+        /// </summary>
+        /// <param name="service"></param>
+        private void AddService(string name, RpcService service)
+        {
+            if (this.services.Contains(service.GetServiceName()))
+            {
+                Debug.LogWarning("Service has been register :" + service.GetServiceName());
+                return;
+            }
+            services.Add(name, service);
+        }
+
+
         /// <summary>
         /// 本地超时心跳
         /// </summary>
@@ -340,7 +380,7 @@ namespace inner
         {
             RpcService rpc;
             service = "Services." + service;
- 
+
             if (this.services.Contains(service))
             {
                 rpc = this.services[service] as RpcService;
@@ -353,12 +393,13 @@ namespace inner
                     RpcClient.ins.SendResponse(id, "");//return error
                     Debug.LogWarning("UnKnown services:" + service);
                     return true;
-                }//TODO 缓存对象
+                }
+                Debug.Log("[Server Rpc Call]:" + service + " add to cache");
                 rpc = Activator.CreateInstance(t) as RpcService;
-              ///  services.Add(service.GetServiceName(), service);
+                services.Add(service, rpc);
             }
             Debug.LogWarning("[Server Rpc Call]:" + service + "." + method);
-            rpc.Invoke(id, method, content);
+            rpc._Inner_Invoke__(id, method, content);
             return true;
         }
 
