@@ -2,46 +2,43 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid 'c6afbed91c643eba3ba2e29eb0d2bec3313653d8'
-    oldFile: !uuid '971d88ab42371e1ea76178cffe7b47d6c205965c'
-  /LogicServer/server:
-    newFile: !uuid '27985e115721326d0337a29d6fdc45c30c342ccc'
-    oldFile: !uuid '9240fa751bbb6d46cfcffa2d7eb5c97c5df62cd9'
-  /LogicServer/server/scripts:
-    newFile: !uuid '80329984c336aef2ee1f87f07913fc28ba07a785'
-    oldFile: !uuid 'ea71f3a7ada10e6076a207cf5b20866cb607c158'
-  /LogicServer/server/scripts/base:
-    newFile: !uuid '4882bf9f13e6adf22f4e462560979b9607f81154'
-    oldFile: !uuid 'b4e42fa50bcf77292e9a8a74fff96a6e758c8370'
-  /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid '49b84f88d4615702d454cb540af76928078e2625'
-    oldFile: !uuid '4c01c61e6abb116a7d4b8e2592bc8ab06787e25a'
-  /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid '53a3bbb970c79b2f492b57a1dfde19e137985a2d'
-    oldFile: !uuid '684242da0d50197fccc706b948bab0409933ca96'
-  /LogicServer/server/scripts/base/xygame/services/login.lua:
-    newFile: !uuid 'efbb778cf5f8152c7f4dad38e8de51973b03a551'
-    oldFile: !uuid 'cb4bd307677279d30d256d4c98ff07c60323cf83'
-  /LogicServer/server/scripts/base/xygame/services/room.lua:
-    newFile: !uuid '77e7f28b9e1a12a9048e0e96bb8036f836a72282'
-    oldFile: null
-  /LogicServer/server/scripts/common:
-    newFile: !uuid '90eadc16942eb50bcca8a5ef89205ac7b10e26d0'
-    oldFile: !uuid '8787ff26285aaf0f19fddf53aaf82e1a3c46fbeb'
-  /LogicServer/server/scripts/common/xygame:
-    newFile: !uuid '5936866d6d870002427436627dfbdbdc95963fc2'
-    oldFile: !uuid '3ede9a76de60df0004e86f3cff9a89ccce465f4f'
-  /LogicServer/server/scripts/common/xygame/base:
-    newFile: !uuid 'fe00266371bbd7b22fed415e1b55dedfcd13649b'
-    oldFile: !uuid '04fc8a622ad301a39b1308e0f5a23a67dd5d747e'
-  /LogicServer/server/scripts/common/xygame/base/remote.lua:
-    newFile: !uuid 'f062c5f9683e1352bd394e2ea404a8b4b3d41f53'
-    oldFile: !uuid 'e53ebf4089d4a08be15f160ad19934050bf3e1cd'
-  /LogicServer/server/scripts/scripts.luaproj.user:
-    newFile: !uuid '5bef86de7865d49ec9f6f7aba2515ca5c244ddf4'
-    oldFile: null
-gitCommitId: !uuid '0599edae529457ed09ff920603dad6ff206abf87'
+  /UnityClient:
+    newFile: !uuid '62fb60c07babf06ec54c2354c1aa5181d653f9fa'
+    oldFile: !uuid '995107c3da1df4e48767cf9c300426cf49f63eab'
+  /UnityClient/Assets:
+    newFile: !uuid '84c05bbcc2baca57700c1dea59a2feb142d2fed6'
+    oldFile: !uuid '95d91550afe10e32b7b7f01b8e5861e16350d570'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid 'd7a5f73e282b4495a0cc76240606d0458c3a7431'
+    oldFile: !uuid '63ab3139d7fbfa9d17a945f005426bbc2f327e2b'
+  /UnityClient/Assets/Logic/Scripts:
+    newFile: !uuid 'ba049519864f3524da1a35bcde82db16521df292'
+    oldFile: !uuid '9f2691fac13077c22a841850b8fe980291298f93'
+  /UnityClient/Assets/Logic/Scripts/GameApp:
+    newFile: !uuid '8c8026836516ed93c0e8079648ee82a91b8caa73'
+    oldFile: !uuid '598496b9b259e680fdbc405f2b6bcfa0dc03314d'
+  /UnityClient/Assets/Logic/Scripts/GameApp/SampleApp.cs:
+    newFile: !uuid '1558f597e0d54bf3ef0c3f60260be05476c2e78a'
+    oldFile: !uuid '93ae0757df9af7e9db3ef0c7cbbf1124ed765faa'
+  /UnityClient/Assets/Logic/Scripts/GameApp/TownApp.cs:
+    newFile: !uuid 'f9817fa9248fece23f3142555715657f0406bd76'
+    oldFile: !uuid '72b344dcefe6be60581f172035d32fc46acb5d48'
+  /UnityClient/Assets/Logic/Scripts/Services:
+    newFile: !uuid '27e18e22d433bcae9e5e26a7caed11648d345e41'
+    oldFile: !uuid '10db57523da55eea5d03957418adff08a6f43b15'
+  /UnityClient/Assets/Logic/Scripts/Services/Room.cs:
+    newFile: !uuid '31096474f8a53dc63177dc4e3aac8dfb7af76bb7'
+    oldFile: !uuid '564204b70b80d4cfe3a74b104ef384357f3e97af'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'e58999f18d7681f0ee5c9ca9d513eced1a7dad6a'
+    oldFile: !uuid 'ee146fd550f7049665aa2063fdff737137ea25e1'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '97759f7134f56f49677e78f2c4117253e91d1a78'
+    oldFile: !uuid '00d1c91048eb20a2138e2532a3b9d882ebaf323c'
+  /UnityClient/Assets/Scripts/Model/HeroMgr.cs:
+    newFile: !uuid '30f673c3aaaa3ff5e004d3b62203a70cdb607807'
+    oldFile: !uuid '72daf9c710c494a51d514a8b2f29bdc59e8c4614'
+gitCommitId: !uuid '821651076f09ed347b203e6ccb353df4b290b2c4'
 renames: {
   }
-revisionId: 82
+revisionId: 83
