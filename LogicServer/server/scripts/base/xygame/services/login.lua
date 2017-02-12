@@ -21,7 +21,7 @@ function t.login(ctx, msg, cb)
 
     -- 新连接请求
     remote.request_client(ctx, "Room", "SelfEnterRoom", "no:" .. kv["name"] .. ",", function(msg)
-        print("Enself room " .. kv["name"] .. "  recv respone");
+        print("Enself room " .. kv["name"] ..msg.. "  recv respone: " .. msg);
 
 
         if msg == "" then return end;
@@ -35,7 +35,7 @@ function t.login(ctx, msg, cb)
             remote.request_client(v, "Room", "EnterRoom", "no:" .. kv["name"] .. ",", function(msg)
                 if msg == "" then
                     -- 该玩家已离开房间 移除列表
-
+                    print("通知其他玩家失败");
                     return;
                 end
             end )

@@ -58,7 +58,7 @@ function t.request_client(ctx, services, method, json, cb)
     local called = false;
     c_rpc.request(ctx:get_rpc_clt_id(), services, method, pack.encode(json), function(msg)
         called = true
-        cb(msg);
+        cb( pack.decode(msg));
     end );
 
     setTimeout(5, function()
