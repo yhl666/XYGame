@@ -309,22 +309,10 @@ namespace inner
             services.Add(service.GetServiceName(), service);
         }
 
-
-        /// <summary>
-        /// 注册一个服务
-        /// </summary>
-        /// <param name="service"></param>
-        private void AddService(string name, RpcService service)
+        public void ClearCache()
         {
-            if (this.services.Contains(service.GetServiceName()))
-            {
-                Debug.LogWarning("Service has been register :" + service.GetServiceName());
-                return;
-            }
-            services.Add(name, service);
+            this.services.Clear();
         }
-
-
         /// <summary>
         /// 本地超时心跳
         /// </summary>
