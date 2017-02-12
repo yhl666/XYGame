@@ -28,6 +28,7 @@ end
 
 
 function t.new_position(ctx, msg, cb)
+    cb("");
     print("new position " .. msg);
     local kv = json.decode(msg);
 
