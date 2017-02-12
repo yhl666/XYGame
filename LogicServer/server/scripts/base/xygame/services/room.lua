@@ -33,7 +33,7 @@ function t.new_position(ctx, msg, cb)
 
     for k, v in pairs(global_players_ctx) do
 
-        if ctx:get_rpc_clt_id() ~= v:get_rpc_clt_id() then
+        if ctx:get_game_clt_id() ~= v:get_game_clt_id() then
             -- 广播给其他玩家
             remote.request_client(v, "Room", "NewPosition", msg, function(msg)
                 if msg == "timeout" then
