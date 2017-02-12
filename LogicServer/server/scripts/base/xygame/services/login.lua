@@ -21,7 +21,7 @@ function t.login(ctx, msg, cb)
 
     -- 新连接请求
     remote.request_client(ctx, "Room", "SelfEnterRoom", "no:" .. kv["name"] .. ",", function(msg)
-        print("Enself room " .. kv["name"] ..msg.. "  recv respone: " .. msg);
+        print("Enself room " .. kv["name"] ..  "  recv respone: " .. msg);
 
 
         if msg == "" then return end;
