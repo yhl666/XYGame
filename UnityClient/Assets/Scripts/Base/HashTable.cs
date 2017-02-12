@@ -17,6 +17,20 @@ public sealed class HashTable
     private HashTable() { }
     private Hashtable kv = new Hashtable();
 
+    public int GetInt(string key)
+    {
+        return int.Parse(this.Get(key));
+    }
+
+    public float GetFloat(string key)
+    {
+        return float.Parse(this.Get(key));
+    }
+
+
+
+
+
     public void Set(string key, string value)
     {
         if (kv.Contains(key))

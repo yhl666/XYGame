@@ -11,7 +11,7 @@ namespace Services
         {
             HashTable hash = Json.Decode(msg);
             Hero hero = HeroMgr.Create<BaseHero>();
-            hero.no = int.Parse(hash["no"]);
+            hero.no = hash.GetInt("no");
 
             cb("ret:ok,");
         }
@@ -20,10 +20,10 @@ namespace Services
         {
             HashTable hash = Json.Decode(msg);
             Hero hero = HeroMgr.Create<BaseHero>();
-            hero.no = int.Parse(hash["no"]);
+            hero.no = hash.GetInt("no");
             HeroMgr.ins.self = hero;
             hero.x = 5f;
-            hero.y = 1.5f;
+            hero.y = 1f;
 
             cb("ret:ok,");
         }
@@ -33,7 +33,7 @@ namespace Services
             cb("ret:ok,");
 
             HashTable hash = Json.Decode(msg);
-            float x = float.Parse(hash["x"]);
+            float x = hash.GetFloat("x");
             float y = float.Parse(hash["y"]);
             int no = int.Parse(hash["no"]);
 
@@ -44,7 +44,8 @@ namespace Services
                 /// return;
                 hero = HeroMgr.Create<BaseHero>();
                 hero.no = int.Parse(hash["no"]);
-
+                hero.x = 5f;
+                hero.y = 1f;
             }
             hero.ResetTick();
             hero.eventDispatcher.PostEvent(Events.ID_LOGIC_NEW_POSITION, new Vector2(x, y));
@@ -54,7 +55,7 @@ namespace Services
             cb("ret:ok,");
 
             HashTable hash = Json.Decode(msg);
-            int no = int.Parse(hash["no"]);
+            int no = hash.GetInt("no");
 
             BaseHero hero = HeroMgr.ins.GetHero(no) as BaseHero;
             if (hero == HeroMgr.ins.GetSelfHero())
