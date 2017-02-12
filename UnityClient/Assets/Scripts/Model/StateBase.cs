@@ -788,8 +788,6 @@ public class RunXYState : StateBase
     {
 
     }
-    private bool isXok = false;
-    private bool isYok = false;
     public override void UpdateMS()
     {
 

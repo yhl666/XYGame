@@ -3,38 +3,71 @@ using System.Collections;
 using System;
 public class TownApp : AppBase
 {
+    public override string GetAppName()
+    {
+        return "TownApp";
+    }
+
     private bool init = false;
     // Use this for initialization
 
     public override bool Init()
     {
         if (init) return true;
-
-        base.Init();
-        Application.targetFrameRate = 40;
         init = true;
-        Debug.Log("new App");
-
-        this.worldMap = ModelMgr.Create<LogicWorldMap>();
+        base.Init();
 
 
-        string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(9999).ToString();
+        ViewUI.Create<UIPublicRoot>();
 
-
-        RpcClient.ins.SendRequest("services.login", "login", "name:" + seed + ",", (string msg) =>
+        for (int i = 0; i < 10; i++)
         {
-            if (msg == "")
+            EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
             {
-                Debug.Log("error");
-            }
-            else
-            {
-                HashTable kv = Json.Decode(msg);
-                Debug.Log(" login " + kv["res"]);
-            }
+                return "";
+            }));
+
+        }
+
+        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+        {
+            ViewUI.Create<UITownRoot>();
+
+            EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
+            Application.targetFrameRate = 40;
 
 
-        });
+
+            this.worldMap = ModelMgr.Create<LogicWorldMap>();
+
+
+            string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(0xfffffff).ToString();
+
+
+            RpcClient.ins.SendRequest("services.login", "login", "name:" + seed + ",", (string msg) =>
+            {
+                if (msg == "")
+                {
+                    Debug.Log("login error");
+                }
+                else
+                {
+                    EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
+
+                }
+            });
+
+
+
+            return "本地资源加载完成，连接服务器...";
+        }));
+
+
+
+
+
+
+
 
         return true;
     }
@@ -52,12 +85,16 @@ public class TownApp : AppBase
     public override void UpdateMS()
     {
         AutoReleasePool.ins.Clear();
-        tick++;
+
         ModelMgr.ins.UpdateMS();
+        ViewMgr.ins.Update();
         ViewMgr.ins.UpdateMS();
+
+
+        tick++;
         if (HeroMgr.ins.self == null) return;
 
-        var random =new  System.Random();
+        var random = new System.Random();
 
         /*if(random.Next(40)==10)
         {
@@ -90,16 +127,13 @@ public class TownApp : AppBase
             RpcClient.ins.SendRequest("services.room", "new_position", "no:" + HeroMgr.ins.self.no + ",x:" + pos_world.x.ToString() +
                  ",y:" + pos_world.y.ToString() + ",", (string msg) =>
             {
-                if (msg != "")
+                if (msg == "timeout")
                 {
-
-
-                    Debug.Log(" new postion ok ");
+                    // Debug.Log("  time out ");
                 }
                 else
                 {
-
-                    Debug.Log("  time out ");
+                    //Debug.Log(" new postion ok ");
                 }
 
 

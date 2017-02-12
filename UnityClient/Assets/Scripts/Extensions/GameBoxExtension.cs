@@ -357,7 +357,7 @@ namespace inner
                 rpc = Activator.CreateInstance(t) as RpcService;
               ///  services.Add(service.GetServiceName(), service);
             }
-                    Debug.Log("[Server Rpc Call]:"+ service + "." + method);
+            Debug.LogWarning("[Server Rpc Call]:" + service + "." + method);
             rpc.Invoke(id, method, content);
             return true;
         }
@@ -381,7 +381,7 @@ namespace inner
         /// <param name="cb"> 回调，参数是ResponseWrapper 该请求响应后会自动调用回调</param>
         public void SendRequest(string service, string method, byte[] content, Func<ResponseWrapper, bool> cb)
         {
-            Debug.Log("[Client Rpc Call]:" + service + "." + method);
+            Debug.LogWarning("[Client Rpc Call]:" + service + "." + method);
             var wrapper = new RequestWrapper(service, method, content, cb);
             requests.Add(wrapper);
             scene.SendRequest(wrapper.id, service, method, content);

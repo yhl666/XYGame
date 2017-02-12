@@ -18,7 +18,6 @@ namespace Services
 
         public void SelfEnterRoom(string msg, VoidFuncString cb)
         {
-            Debug.Log("self enter room");
             HashTable hash = Json.Decode(msg);
             Hero hero = HeroMgr.Create<BaseHero>();
             hero.no = int.Parse(hash["no"]);

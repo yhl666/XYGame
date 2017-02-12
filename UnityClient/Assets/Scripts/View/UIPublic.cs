@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System;
 using System.Threading;
 
-public sealed class UIPubblicRoot : ViewUI
+public sealed class UIPublicRoot : ViewUI
 {
 
     public override void Update()

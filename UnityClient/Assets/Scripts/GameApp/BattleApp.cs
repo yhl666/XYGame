@@ -3,90 +3,6 @@ using System.Collections;
 using System;
 using System.Threading;
 
-public class BattleApp111 : AppBase
-{
-
-    public override bool Init()
-    {
-        base.Init();
-        Application.targetFrameRate = 0xffffff;
-        ViewUI.Create<UIPubblicRoot>();
-
-        Hero h1 = HeroMgr.Create<BattleHero>();
-        h1.team = 1;
-
-        Hero h2 = HeroMgr.Create<BattleHero>();
-        h2.team = 2;
-
-
-
-        ViewUI.Create<UIBattleRoot>();
-
-        /*  for (int i = 0; i < 100; i++)
-          {
-              EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
-            {
-
-                return 10;
-            }));
-
-          }
-          */
-        return true;
-    }
-
-
-    public override void UpdateMS()
-    {
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent("attack");
-
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-
-
-            HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent("run_left");
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent("stand");
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-
-
-            HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent("run_right");
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent("stand");
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent("jump");
-
-        }
-
-        //  EventDispatcher.ins.PostEvent("attack");
-
-
-        ModelMgr.ins.UpdateMS();
-        ViewMgr.ins.UpdateMS();
-
-
-
-        AutoReleasePool.ins.Clear();
-    }
-
-
-
-}
 
 /// <summary>
 /// 处理玩家键盘 输入信息
@@ -452,8 +368,11 @@ public sealed class BattleApp : AppBase
     private BattleKeyboardInputHandler inputHandler = null;
 
     BattleSyncHandler syncHandler = null;
- 
- 
+
+    public override string GetAppName()
+    {
+        return "BattleApp";
+    }
     public override bool Init()
     {
         EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
@@ -467,7 +386,7 @@ public sealed class BattleApp : AppBase
 
         this.worldMap = ModelMgr.Create<BattleWorldMap>() as BattleWorldMap;
 
-        ViewUI.Create<UIPubblicRoot>();
+        ViewUI.Create<UIPublicRoot>();
         ViewUI.Create<UIBattleRoot>();
 
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>

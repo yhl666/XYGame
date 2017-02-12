@@ -89,6 +89,15 @@ public class AppMgr : GAObject
     {
         this.Pop();
     }
+    public void AddParallelApp()
+    {
+
+
+    }
+    public void RemoveParallelApp()
+    {
+
+    }
 
     public static AppBase Create<T>() where T : new()
     {
@@ -135,5 +144,5 @@ public class AppMgr : GAObject
 
     private static AppBase current_app = null;
     private Stack stack = new Stack();
-
+    private ArrayList paralles = new ArrayList();
 }
