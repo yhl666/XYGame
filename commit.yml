@@ -3,48 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'ad87e3cdbd5aa9de9eab41641b0c18bb99277df6'
-    oldFile: !uuid '9ab3cacf6cc3bb501bbf273de2a1188de1620685'
+    newFile: !uuid 'd466cae4155fc8dfc4460c0edd3f9a9dd6bc5bcf'
+    oldFile: !uuid 'ad87e3cdbd5aa9de9eab41641b0c18bb99277df6'
   /UnityClient/Assets:
-    newFile: !uuid '7899b0821c841ad865c6191479a6e353c67911bc'
-    oldFile: !uuid '63251f3e05069fd7120d990801b3fdc8b48a2d98'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '0fbf953f2257dbe8c6865d2bdcaa3341eb1fb255'
-    oldFile: !uuid '382419d191c7be50de1bc3b8ed0cccdf01655fcb'
-  /UnityClient/Assets/Resources/level:
-    newFile: !uuid '3d23b33e387fae53c08c3291a89743170223736d'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_0.png:
-    newFile: !uuid '4f877d1a94abb8a72bba4e105926ebf2098a2775'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_0.png.meta:
-    newFile: !uuid '6fab8e6de5e7d7beddf48c5bf4f8362b82a132c1'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_0_static.png:
-    newFile: !uuid 'ea4707ebcd47530ad58d08cc191c81ad6aa969c2'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_0_static.png.meta:
-    newFile: !uuid 'daac94d2ef47ea008601a59cd5c637c6f2b3ac8a'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_1.png:
-    newFile: !uuid 'c192a9ebe089ec1aa953912ba622259133dfe550'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_1.png.meta:
-    newFile: !uuid '1d448ed6f7d09ca47feb8353b904062a275d20f9'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_static_1_bg.png:
-    newFile: !uuid '7187a49c613b9d86b19ee7ab9e7ab8d3190e711d'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_static_1_bg.png.meta:
-    newFile: !uuid '86f62a245eb8e24c2fddc20bd115d2740d87fb71'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_static_2_bg.png:
-    newFile: !uuid 'baa6b34a43911e48d36aa90f3142b2ab2487c9c8'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_static_2_bg.png.meta:
-    newFile: !uuid 'bdcc2a6eff6d62ed781beaae862d476335c907e2'
-    oldFile: null
-gitCommitId: !uuid '0fcba61476da9ec4561b02ca1ce9080b8492379e'
+    newFile: !uuid '34a7720c486c5a5dcd25354794016ce92323ed92'
+    oldFile: !uuid '7899b0821c841ad865c6191479a6e353c67911bc'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid 'd4bb70f92a91f5dd5223db1066206b8327af50ac'
+    oldFile: !uuid '0a6d40f35c06405730403df4ad6ad673ef7316e0'
+  /UnityClient/Assets/Logic/Scripts:
+    newFile: !uuid '19b88b93bc2cc3d3176c597b41aee9328f97bb8e'
+    oldFile: !uuid 'c93149f7d08490aa1a67521fc115407da0c150e8'
+  /UnityClient/Assets/Logic/Scripts/GameApp:
+    newFile: !uuid 'd3fc068c4131216d791a294b8fc5a808040af59d'
+    oldFile: !uuid 'dfa7756cb65e7babf6a48303cc5cb17935776e77'
+  /UnityClient/Assets/Logic/Scripts/GameApp/TownApp.cs:
+    newFile: !uuid '05d9287eaf79964f6fbf902ef9ce26d7b5f56935'
+    oldFile: !uuid 'f6fa6edb243467497f287837f58a0a272b6061f8'
+gitCommitId: !uuid '43ab3150c481b5076e87afa929c33d2840cd96a4'
 renames: {
   }
-revisionId: 90
+revisionId: 91
