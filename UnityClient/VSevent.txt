@@ -1,2 +1,2 @@
-del $(ProjectDir)111_Data\Managed\Assembly-CSharp.dll
-copy  $(ProjectDir)Library\ScriptAssemblies\Assembly-CSharp.dll  $(ProjectDir)111_Data\Managed  /Y
+del $(ProjectDir)Client_Data\Managed\Assembly-CSharp.dll
+copy  $(ProjectDir)Library\ScriptAssemblies\Assembly-CSharp.dll  $(ProjectDir)Client_Data\Managed  /Y
