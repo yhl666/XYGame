@@ -1,2 +1,2 @@
+del $(ProjectDir)111_Data\Managed\Assembly-CSharp.dll
 copy  $(ProjectDir)Library\ScriptAssemblies\Assembly-CSharp.dll  $(ProjectDir)111_Data\Managed  /Y
-copy  $(ProjectDir)Library\ScriptAssemblies\Assembly-CSharp-Editor  $(ProjectDir)111_Data\Managed  /Y
