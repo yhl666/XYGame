@@ -2,16 +2,28 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '8c2daad1f435ad83602584b25fec8f4ffc6cc661'
-    oldFile: !uuid '117ab506e243027fe1318105a5c1b62b5c050568'
-  /UnityClient/ProjectSettings:
-    newFile: !uuid 'cf88573384a3831e08e5546eba10c50bba37bb82'
-    oldFile: !uuid '65d14fb0a4e3198701d6b28e4939ee79d90cbdfb'
-  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
-    newFile: !uuid '3ddbe629311df1bd4010eef13f724a1f28ae2c85'
-    oldFile: !uuid '5d88f5a7082fd566d373ca59ceed29d1d9dac80f'
-gitCommitId: !uuid 'f4423fda7e3e4973fb026cba048959d47b69baa7'
+  /LogicServer:
+    newFile: !uuid 'beb0d45bd02f58175f9221025ed35dd7209230c4'
+    oldFile: !uuid '0f99587c3e94060bc5e6375c199ddf3c12895156'
+  /LogicServer/server:
+    newFile: !uuid 'c20675844b99233207268ea26b1653475ea4bc6d'
+    oldFile: !uuid '44b1b0ad95c381c35e1c4bb1673b3b58258d5fa6'
+  /LogicServer/server/scripts:
+    newFile: !uuid 'b4162ee659e21d324c992687177774fb99821fe7'
+    oldFile: !uuid 'f9fdcd0e2027882629c69b98565088dd01646577'
+  /LogicServer/server/scripts/base:
+    newFile: !uuid 'c3ed449c197d3b9bc7793e047c26eccc06eb30bc'
+    oldFile: !uuid '1c120dc0f1ba9c740436e04eab5fff4fa202fad1'
+  /LogicServer/server/scripts/base/xygame:
+    newFile: !uuid 'd22172376170438094bfda0e6f974e8bf1ef4131'
+    oldFile: !uuid '69dcf22c5af0413d8641405ced45a78da7d47b96'
+  /LogicServer/server/scripts/base/xygame/services:
+    newFile: !uuid 'bbc0b7b8fcdf414942d78b48ebaee5b515ae8bd0'
+    oldFile: !uuid 'd7b9cfea0fb35842253e54be45155e74047b275d'
+  /LogicServer/server/scripts/base/xygame/services/room.lua:
+    newFile: !uuid 'ffb6449e83e86e37054f5a7f7754916e5df34523'
+    oldFile: !uuid '6b1fd34ee084a17d2dd2170f75fc8f7532b6075b'
+gitCommitId: !uuid '489e1472f2b6029ce5baeb2c544e334d1897a4f0'
 renames: {
   }
-revisionId: 93
+revisionId: 94
