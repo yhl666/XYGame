@@ -12,6 +12,7 @@ local t = { }
 function t.create(ctx, no)
     local ret = { };
     ret.ctx = ctx;
+    ret.is_dirty=false;
     ret.no = no;
     return ret;
 end

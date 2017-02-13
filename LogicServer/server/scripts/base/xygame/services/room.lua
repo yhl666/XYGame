@@ -9,11 +9,12 @@
 local log = require("log"):new("room")
 local remote = require("base.remote");
 local hero = require("model.base_hero")
+local hero_list = require("model.hero_list")
 local t = { }
 
 
-global_base_heros = { };
 
+global_hero_list = hero_list:new();
 
 local function notify_other(ctx, service, method, msg)
 
@@ -87,9 +88,9 @@ function t.enter_room(ctx, msg, cb)
 
         -- 响应成功后 添加到table里面
 
-       
+
         notify_all(ctx, "Room", "EnterRoom", msg);
-         table.insert(global_base_heros, hero.create(ctx, kv["no"]));
+        table.insert(global_base_heros, hero.create(ctx, kv["no"]));
 
 
     end );
