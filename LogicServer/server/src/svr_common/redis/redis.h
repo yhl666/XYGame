@@ -10,10 +10,13 @@
 #include <string>
 #include "../../../deps/hiredis-for-windows_490671/hiredis/hiredis.h";
 #include <iostream>
+#include <functional>
 namespace RedisCluster {
 	class BoostAsioAdapter;
 }
 
+class redisBoostClient;
+class redisAsyncContext;
 // Async redis operations.
 class CRedis
 {
@@ -27,14 +30,15 @@ public:
 	bool Init(io_service& rIos, const std::string& sHost, uint16_t uPort);
 
 
-	bool Set(const  std::string & key, const std::string & value);
-	std::string  Get(const  std::string & key);
+	void Set(const  std::string & key, const std::string & value, std::function<void(std::string msg)>);
+	void Get(const  std::string & key, std::function<void(std::string msg)>);
 
 private:
 	using Adapter = RedisCluster::BoostAsioAdapter;
 	std::unique_ptr<Adapter> m_pAdapter;
 	redisContext  *redis = nullptr;
-
+	redisAsyncContext *ctx = nullptr;
+	redisBoostClient *client = nullptr;
 };
 
 #endif  // SVR_COMMON_REDIS_H

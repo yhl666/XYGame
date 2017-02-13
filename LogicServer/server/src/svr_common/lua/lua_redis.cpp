@@ -17,38 +17,22 @@ namespace {
 	void Set(const string& key, const string& value, const LuaIntf::LuaRef& luaCallback)
 	{
 
-		bool ret = GetRedis().Set(key, value);
-		LuaIntf::LuaRef cb = luaCallback;  // no const
-		try
+		LuaIntf::LuaRef *cb = new LuaIntf::LuaRef(luaCallback);  // no const
+		GetRedis().Set(key,value, [=](string msg)
 		{
-			if (ret)
-			{
-				cb("ok");
-			}
-			else
-			{
-				cb("");
-			}
-		}
-		catch (const LuaIntf::LuaException& e)
-		{
-
-		}
+			(*cb)(msg);
+			delete cb;
+		});
 	}
 
 	void Get(const string& key, const LuaIntf::LuaRef& luaCallback)
 	{
-
-		string ret = GetRedis().Get(key);
-		LuaIntf::LuaRef cb = luaCallback;  // no const
-		try
+		LuaIntf::LuaRef *cb = new LuaIntf::LuaRef(luaCallback);  // no const
+		GetRedis().Get(key, [=](string msg)
 		{
-			cb(ret);
-		}
-		catch (const LuaIntf::LuaException& e)
-		{
-
-		}
+			(*cb)(msg);
+			delete cb;
+		});
 
 	}  // namespace
 }

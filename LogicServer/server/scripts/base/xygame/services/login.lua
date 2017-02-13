@@ -30,6 +30,19 @@ function t.login(ctx, msg, cb)
         table.insert(global_base_heros, hero.create(ctx, kv["name"]));
 
     end );
+
+
+    
+   c_redis.get("ssss"  ,function (msg)
+       print(msg);
+    end);
+
+       
+   c_redis.set("ssss"  ,"ewgewewghewewhew",function (msg)
+       print(msg);
+    end);
+
+
     cb("ret:ok,");
 end
 
