@@ -2,25 +2,43 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '917151d3bb51269819359799840f11114779b2f5'
-    oldFile: !uuid '40ea6273facb690da6a2bfc5812f96c41c9d3fb4'
-  /UnityClient/Assets:
-    newFile: !uuid '9e1bed2af4e985f6c40394a0e76c192baa5aeba6'
-    oldFile: !uuid '4222f537ddcc3fde0fc4f276c1f1cdf23c32657b'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'aede4ae4e3b0396722a3058e2808510f10722f77'
-    oldFile: !uuid '27392ba38a6435471e5a4276db44eda47772dcfa'
-  /UnityClient/Assets/Scripts/Extensions:
-    newFile: !uuid 'dc8556905c35fa58fb49ce3e26111b46660e6f2b'
-    oldFile: !uuid '0df96170f633c7dee147a085e8b3c77c6c1ed538'
-  /UnityClient/Assets/Scripts/Extensions/GameBoxExtension.cs:
-    newFile: !uuid 'ea12d56bde0377a0353dd99d71fd637a1b3e95c4'
-    oldFile: !uuid '78c6dc8a76a409f4abeb50078d8c573418f9d5fb'
-  /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid '782fe1a2fa926880bc77a7c5424f200606b7c655'
-    oldFile: !uuid 'f4d4f93673473222297cb771d9047e3c9d44e975'
-gitCommitId: !uuid '3e2bcc37083b2d5068f725991c642460aed15219'
+  /LogicServer:
+    newFile: !uuid '87b501a05ea27b8a7ce4ad4bd763b708ca79a2f7'
+    oldFile: !uuid 'e78433f2742b01ee3433a87c162973cbbec03e7a'
+  /LogicServer/server:
+    newFile: !uuid '177f6fe1f75427934098d1a8635e0566d219b80a'
+    oldFile: !uuid '21c7fe19192af097aed3cf1c52d0c4c66e3f6e80'
+  /LogicServer/server/src:
+    newFile: !uuid '3b3bca26348a53b3c6c0a64ceec8b4d35364815c'
+    oldFile: null
+  /LogicServer/server/src/svr_common:
+    newFile: !uuid 'a6b8e478d0fb73d92a87acd342e331c4f9ac74f7'
+    oldFile: null
+  /LogicServer/server/src/svr_common/lua:
+    newFile: !uuid 'c48e24bb49f58730b0da7faea85ec09a7aa59fa1'
+    oldFile: null
+  /LogicServer/server/src/svr_common/lua/lua_redis.cpp:
+    newFile: !uuid 'fb24a2f964536089d527cf7ac24eb7c2b9f5f183'
+    oldFile: null
+  /LogicServer/server/src/svr_common/lua/lua_redis.h:
+    newFile: !uuid 'e865b36519cb75439cdfe4975eb07dca0911d361'
+    oldFile: null
+  /LogicServer/server/src/svr_common/redis:
+    newFile: !uuid '95025bff942fbe1cb502be40c3c0aaa6120ca922'
+    oldFile: null
+  /LogicServer/server/src/svr_common/redis/redis.cpp:
+    newFile: !uuid '917b477a04c68aee3a3e87f8ce69fcfb5fe7ab26'
+    oldFile: null
+  /LogicServer/server/src/svr_common/redis/redis.h:
+    newFile: !uuid 'a41aed20828fca4dabdbdcfa2bf7b2072413b3ae'
+    oldFile: null
+  /LogicServer/server/src/svr_common/util.cpp:
+    newFile: !uuid '52703b685db76f2ee25b3b29c18e0bf4f0219f37'
+    oldFile: null
+  /LogicServer/server/src/svr_common/util.h:
+    newFile: !uuid 'f8d2b7434b89da9f3dabed85ab0751a99ed53ddb'
+    oldFile: null
+gitCommitId: !uuid 'ecbece9f1c7526235cef0058c95a1272d57cc362'
 renames: {
   }
-revisionId: 102
+revisionId: 103
