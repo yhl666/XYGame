@@ -12,6 +12,8 @@ local t = { }
 local log = require("log"):new("login")
 local remote = require("base.remote");
 local hero = require("model.base_hero")
+local redis = require("base.redis");
+
 global_base_heros = { };
 
 
@@ -33,12 +35,12 @@ function t.login(ctx, msg, cb)
 
 
     
-   c_redis.get("ssss"  ,function (msg)
+   redis.get("ssqgqwegss"  ,function (msg)
        print(msg);
     end);
 
        
-   c_redis.set("ssss"  ,"ewgewewghewewhew",function (msg)
+   redis.set("ssss"  ,"ewgewewghewewhew",function (msg)
        print(msg);
     end);
 
