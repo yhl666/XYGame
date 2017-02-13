@@ -44,6 +44,7 @@ public class AppMgr : GAObject
     public override void OnDispose()
     {
         base.OnDispose();
+        _ins = null;
     }
     public override void OnEvent(int type, object userData)
     {
@@ -142,6 +143,7 @@ public class AppMgr : GAObject
         current_app = null;
     }
 
+ 
     private static AppBase current_app = null;
     private Stack stack = new Stack();
     private ArrayList paralles = new ArrayList();

@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using System.Collections;
+using GameBox.Service.GiantLightFramework;
+using GameBox.Framework;
+using GameBox.Service.ByteStorage;
 
 public class PublicData : object
 {
@@ -40,7 +45,7 @@ public class PublicData : object
 
     public string player_name = "Default";
 
-
+    public string selfName = "";
 
 
      // for frame sync  input status
@@ -51,5 +56,7 @@ public class PublicData : object
     public bool IS_s1 = false;//skill 1
     public bool IS_stand = false;//stand
 
+
+    public IGiantGame game = null;
 
 }

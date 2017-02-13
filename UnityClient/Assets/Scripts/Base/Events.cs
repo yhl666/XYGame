@@ -73,6 +73,12 @@ public sealed class Events : object
 
     public const int ID_LOGIC_NEW_POSITION = 46;//主场景 新目标点事件
 
+
+
+    public const int ID_BTN_LOGIN = 47;
+    public const int ID_BTN_REGISTER = 48;
+    public const int ID_LOGIN_STATUS = 49;
+
     public const int ID_LAUNCH_SKILL1 = 100;//释放技能1
 
     //------------------------------local event-----------------------------------------------------------

@@ -5,10 +5,11 @@ using System.Collections;
 
 public class DATA
 {
- 
+
     public const string UI_PREFABS_FILE_BATTLE = "Prefabs/ui/Battle";
- 
+
     public const string UI_PREFABS_FILE_PUBLIC = "Prefabs/ui/Public";
+    public const string UI_PREFABS_FILE_LOGIN = "Prefabs/ui/Login";
 
     public const string UI_LOADING = "加载中 {0}%  {1}";
 
@@ -36,4 +37,3 @@ public class DATA
 
 }
 
- 

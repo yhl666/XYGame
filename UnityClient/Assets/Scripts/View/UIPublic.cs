@@ -86,6 +86,11 @@ public sealed class UI_loading : ViewUI
                 } break;
             case Events.ID_LOADING_SHOW:
                 {
+                    if(userData != null)
+                    {
+                        this.txt.text = userData as string;
+
+                    }
                     this.shouldHideWhenComplete = false;
                     this._ui.SetActive(true);
                 }break;
