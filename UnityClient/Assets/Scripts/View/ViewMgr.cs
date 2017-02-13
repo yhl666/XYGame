@@ -86,8 +86,8 @@ public sealed class ViewMgr : GAObject
 
     public override void OnDispose()
     {
-        base.OnDispose();
-        this._views.Clear();
+
+        this._views.Clear(); base.OnDispose();
     }
 
     public override void OnExit()

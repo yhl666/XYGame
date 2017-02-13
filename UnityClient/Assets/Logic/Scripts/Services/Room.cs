@@ -13,7 +13,7 @@ namespace Services
             HashTable hash = Json.Decode(msg);
             Hero hero = HeroMgr.Create<BaseHero>();
             hero.no = hash.GetInt("no");
-
+            hero.name = hash["bane"];
             cb("ret:ok,");
         }
 
@@ -22,6 +22,7 @@ namespace Services
             HashTable hash = Json.Decode(msg);
             Hero hero = HeroMgr.Create<BaseHero>();
             hero.name = PublicData.GetInstance().self_name;
+
             hero.no = int.Parse(PublicData.GetInstance().self_no);
 
             HeroMgr.ins.self = hero;

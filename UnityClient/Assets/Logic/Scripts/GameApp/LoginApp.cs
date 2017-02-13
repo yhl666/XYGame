@@ -93,7 +93,7 @@ public class LoginApp : AppBase
 
             if (kv["ret"] == "ok")
             {
-                Debug.Log("login ok " + kv["name"]);
+                Debug.Log("login ok " + msg);
                 PublicData.GetInstance().self_name = kv["name"];
                 PublicData.GetInstance().self_account = kv["account"];
                 PublicData.GetInstance().self_no = kv["no"];
@@ -112,7 +112,7 @@ public class LoginApp : AppBase
 
 
     }
-    private void dpRegister(LoginInfo info)
+    private void doRegister(LoginInfo info)
     {
 
         string str = "name:" + info.name + ",";
@@ -138,16 +138,9 @@ public class LoginApp : AppBase
             }
             var kv = Json.Decode(msg);
 
-            if (kv["ret"] == "ok")
-            {
-                Debug.Log("register ok ");
-            }
-            else
-            {
-                EventDispatcher.ins.PostEvent(Events.ID_LOGIN_STATUS, kv["ret"]);
 
-                Debug.Log(msg);
-            }
+            EventDispatcher.ins.PostEvent(Events.ID_LOGIN_STATUS, kv["msg"]);
+
         });
 
 
@@ -173,7 +166,7 @@ public class LoginApp : AppBase
 
         if (type == Events.ID_BTN_REGISTER)
         {
-            this.dpRegister(info);
+            this.doRegister(info);
         }
 
 

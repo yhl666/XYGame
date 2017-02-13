@@ -167,7 +167,7 @@ public class RpcService : GAObject
         if (methods.Contains(method))
         {
             func = methods[method] as VoidFuncRpc;
-            Debug.Log("call func in cache");
+          ///  Debug.Log("call func in cache");
 
         }
         else
@@ -191,7 +191,7 @@ public class RpcService : GAObject
             };
             methods.Add(method, func);
 
-            Debug.Log("call func in new");
+         ///   Debug.Log("call func in new");
         }
 
 

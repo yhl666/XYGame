@@ -17,7 +17,8 @@ end
 
 function t:add(base_hero)
 
-    self.list[base_hero.ctx] = base_hero;
+    table.insert(self.list, base_hero);
+
     self.size = self.size + 1;
 end
 
@@ -25,7 +26,7 @@ end
 function t:remove(base_hero)
     if self.size == 0 then return end;
 
-    table.remove(self.list, base_hero.ctx);
+    table.remove(self.list, base_hero);
     self.size = self.size - 1;
 end
 
@@ -35,7 +36,7 @@ function t:clear()
     self.list = { };
 end
 
-function t:size()
+function t:current_size()
     return self.size;
 
 end
@@ -50,7 +51,6 @@ function t:foreach(cb)
         end
     end
 
-
     for k, v in ipairs(dirty_list) do
 
         self:remove(v);
@@ -58,5 +58,20 @@ function t:foreach(cb)
 
 end
 
+
+
+function t:remove_by_rpc_cli_id(id)
+
+    for k, v in pairs(self.list) do
+        if v.ctx:get_rpc_clt_id() == id then
+
+            self:remove(k);
+            return v;
+        end
+
+    end
+
+    return nil;
+end
 
 return t;

@@ -53,9 +53,9 @@ local function do_register(id, kv, cb)
     redis.set("login-" .. account, param, function(msg)
 
         if msg == "ok" then
-            cb("ret:ok," .. param); return;
+            cb("ret:ok,msg:注册成功,"); return;
         end
-        cb("ret:服务器内部错误，注册失败,");
+        cb("ret:error,msg:服务器内部错误，注册失败,");
     end );
 end
 
@@ -82,7 +82,7 @@ function t.register(ctx, msg, cb)
             end )
         else
 
-            cb("ret:账户已存在,");
+            cb("ret:error,msg:账户已存在,");
 
         end
 

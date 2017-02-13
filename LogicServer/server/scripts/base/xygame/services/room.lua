@@ -10,68 +10,55 @@ local log = require("log"):new("room")
 local remote = require("base.remote");
 local hero = require("model.base_hero")
 local hero_list = require("model.hero_list")
+
 local t = { }
 
-
+t.enable_hotfix = false;  -- 禁止hot fix
 
 global_hero_list = hero_list:new();
 
-local function notify_other(ctx, service, method, msg)
+function notify_other(ctx, service, method, msg)
 
-    for k, v in ipairs(global_base_heros) do
+    global_hero_list:foreach( function(k, v)
 
-        if ctx:get_game_clt_id() ~= v.ctx:get_game_clt_id() then
+        if v.ctx:get_game_clt_id():equals(ctx:get_game_clt_id()) == false then
             -- 广播给其他玩家
             remote.request_client(v.ctx, service, method, msg, function(msg)
                 if msg == "timeout" then
                     -- 通知失败
-                    print("notify other failed hero:" .. v.no);
+                    v.is_dirty = true;
+
+                else
                 end
 
             end )
         end
-    end
+    end );
+
 end
 
 
 
-local function notify_all(ctx, service, method, msg)
+function notify_all(service, method, msg)
 
-    for k, v in ipairs(global_base_heros) do
-        -- 广播给玩家
+    global_hero_list:foreach( function(k, v)
         remote.request_client(v.ctx, service, method, msg, function(msg)
             if msg == "timeout" then
                 -- 通知失败
-                print("notify other failed hero:" .. v.no);
+                v.is_dirty = true;
             end
-
         end )
 
-    end
+    end );
 end
 
 
-local function on_disconnected(rpc_clt_id)
+function on_disconnected(rpc_clt_id)
+    local hero = global_hero_list:remove_by_rpc_cli_id(rpc_clt_id);
 
-    for k, v in pairs(global_base_heros) do
-        if v.ctx:get_rpc_clt_id() == rpc_clt_id then
-            table.remove(global_base_heros, k);
-            print(" hero disconnected no=" .. v.no);
-
-            print("  alive hero   ------list-------");
-
-            for k, v in pairs(global_base_heros) do
-                print("hero alive : " .. "  " .. k .. "  " .. v.no);
-            end
-
-            print(" alive hero    -------end------");
-
-            notify_all(v.ctx, "Room", "LeaveRoom", "no:" .. v.no .. ",");
-            return;
-        end
-    end
-
+    notify_all("Room", "LeaveRoom", "no:" .. hero.no .. ",");
 end
+
 
 function t.new_position(ctx, msg, cb)
     cb("");
@@ -88,9 +75,8 @@ function t.enter_room(ctx, msg, cb)
 
         -- 响应成功后 添加到table里面
 
-
-        notify_all(ctx, "Room", "EnterRoom", msg);
-        table.insert(global_base_heros, hero.create(ctx, kv["no"]));
+        notify_all("Room", "EnterRoom", msg);
+        global_hero_list:add(hero.create(ctx, kv["no"]));
 
 
     end );

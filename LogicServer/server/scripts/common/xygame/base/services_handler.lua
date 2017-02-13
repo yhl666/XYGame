@@ -30,7 +30,7 @@ local t = { };
 local service_map = { }
 local log = require("log"):new("services_handler")
 
--- [Comment]
+--[Comment]
 -- C++调用，无需修改 访问 此文件内容 
 function t.handle(ctx, service_name, method_name, req_content)
 
@@ -61,8 +61,12 @@ function t.handle(ctx, service_name, method_name, req_content)
             return;
         end
 
+
+
         -- 如果模块存在，那么自动添加热更新
-    --  require("hotfix_helper").add_module_name(service_name);
+        if require(service_name).enable_hotfix ~= false then
+            require("hotfix_helper").add_module_name(service_name)
+        end
         file:close();
     end
 
