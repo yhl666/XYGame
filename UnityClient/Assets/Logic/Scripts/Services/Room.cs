@@ -13,7 +13,7 @@ namespace Services
             HashTable hash = Json.Decode(msg);
             Hero hero = HeroMgr.Create<BaseHero>();
             hero.no = hash.GetInt("no");
-            hero.name = hash["bane"];
+            hero.name = hash["name"];
             cb("ret:ok,");
         }
 
