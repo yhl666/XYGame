@@ -180,7 +180,7 @@ public sealed class UI_names : ViewUI
             Text txt = texts[i] as Text;
             Hero hero = heros[i] as Hero;
 
-            txt.text = "玩家id:" + hero.no.ToString();
+            txt.text = hero.name;
 
             txt.gameObject.transform.position = Camera.main.WorldToScreenPoint(
                 new Vector3(hero.x, hero.y + 1.2f, 0));

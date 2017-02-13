@@ -9,6 +9,7 @@ namespace Services
     {
         public void EnterRoom(string msg, VoidFuncString cb)
         {
+            Debug.Log(msg);
             HashTable hash = Json.Decode(msg);
             Hero hero = HeroMgr.Create<BaseHero>();
             hero.no = hash.GetInt("no");
@@ -21,8 +22,8 @@ namespace Services
             HashTable hash = Json.Decode(msg);
             Hero hero = HeroMgr.Create<BaseHero>();
             hero.name = PublicData.GetInstance().self_name;
+            hero.no = int.Parse(PublicData.GetInstance().self_no);
 
-            hero.no = hash.GetInt("no");
             HeroMgr.ins.self = hero;
             hero.x = 5f;
             hero.y = 1f;
@@ -73,6 +74,7 @@ namespace Services
         public void LeaveRoom(string msg, VoidFuncString cb)
         {
             HashTable hash = Json.Decode(msg);
+
             int no = int.Parse(hash["no"]);
             HeroMgr.ins.Remove(no);
             cb("ret:ok,");

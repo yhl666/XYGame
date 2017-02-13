@@ -47,7 +47,8 @@ public class PublicData : object
 
     public string self_name = "";
     public string self_account = "";
-
+    public string self_no = "";
+   
      // for frame sync  input status
     public bool IS_left = false;//left
     public bool IS_right = false;//right

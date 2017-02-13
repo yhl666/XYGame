@@ -79,10 +79,11 @@ public class LoginApp : AppBase
 
         RpcClient.ins.SendRequest("services.login", "login", str, (string msg) =>
         {
-            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
 
             if ("" == msg)
             {
+                EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
+
                 EventDispatcher.ins.PostEvent(Events.ID_LOGIN_STATUS, "连接服务器失败");
                 return;
             }
@@ -90,18 +91,18 @@ public class LoginApp : AppBase
             var kv = Json.Decode(msg);
 
 
-
             if (kv["ret"] == "ok")
             {
                 Debug.Log("login ok " + kv["name"]);
                 PublicData.GetInstance().self_name = kv["name"];
-                PublicData.GetInstance().self_name = kv["account"];
-
+                PublicData.GetInstance().self_account = kv["account"];
+                PublicData.GetInstance().self_no = kv["no"];
                 this.processWithLoginOK();
-
             }
             else
             {
+                EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
+
                 EventDispatcher.ins.PostEvent(Events.ID_LOGIN_STATUS, kv["ret"]);
 
                 Debug.Log(msg);
@@ -161,7 +162,7 @@ public class LoginApp : AppBase
 
         //  PublicData.GetInstance().game.Terminate();
         //   GameObject.DestroyImmediate(GameObject.Find("_ServiceCenterObject"));
-    //  PublicData.GetInstance().game.GotoScene();
+        //  PublicData.GetInstance().game.GotoScene();
         SceneMgr.Load("TownScene");
 
     }
