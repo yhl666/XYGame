@@ -80,17 +80,18 @@ end
 function t.enter_room(ctx, msg, cb)
     local kv = json.decode(msg);
 
-    remote.request_client(ctx, "Room", "SelfEnterRoom", "no:" .. kv["name"] .. ",", function(msg)
+    remote.request_client(ctx, "Room", "SelfEnterRoom", "no:" .. kv["no"] .. ",name:" .. kv["name"] .. ",", function(msgg)
 
-        if msg == "" then return end;
+        if msgg == "" then return end;
         --- 响应失败 忽略
 
         -- 响应成功后 添加到table里面
 
-        table.insert(global_base_heros, hero.create(ctx, kv["name"]));
+       
+        notify_all(ctx, "Room", "EnterRoom", msg);
+         table.insert(global_base_heros, hero.create(ctx, kv["no"]));
 
 
-           notify_other(ctx, "Room", "EnterRoom", msg);
     end );
     cb("ret:ok");
 end

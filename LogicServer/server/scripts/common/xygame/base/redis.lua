@@ -45,6 +45,20 @@ end
 
 
 
+--[Comment]
+-- 执行redis命令
+--  回调的参数为简单json 
+--ret:ok,msg:XXX,  表示成功 ，。msg为redis返回的信息
+--ret:error,msg:XXX,  表示失败，。msg为redis返回的信息
+function t.exec(cmd, cb)
+
+    c_redis.exec(cmd, function(msg)
+        cb(msg);
+        
+    end )
+end
+
+
 
 
 return t;

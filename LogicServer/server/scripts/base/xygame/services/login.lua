@@ -31,7 +31,7 @@ function t.login(ctx, msg, cb)
 
         if pwd == kvv["pwd"] then
             -- 登陆成功
-            cb("ret:ok,name:" .. kvv["name"] .. ",account:" .. account  .. ",");
+            cb("ret:ok," .. msg);
         else
             -- 账户密码错误
             cb("ret:密码或账户错误,");
@@ -43,14 +43,26 @@ end
 
 
 
+local function do_register(id, kv, cb)
 
-
-function t.register(ctx, msg, cb)
-    local kv = json.decode(msg);
     local name = kv["name"];
     local account = kv["account"];
     local pwd = kv["pwd"];
 
+    local param = "account:" .. account .. ",no:" .. id .. ",pwd:" .. pwd .. ",name:" .. name .. ",";
+    redis.set("login-" .. account, param, function(msg)
+
+        if msg == "ok" then
+            cb("ret:ok," .. param); return;
+        end
+        cb("ret:服务器内部错误，注册失败,");
+    end );
+end
+
+
+function t.register(ctx, msg, cb)
+    local kv = json.decode(msg);
+    local account = kv["account"];
 
     -- 先查询账户存在否
 
@@ -58,19 +70,21 @@ function t.register(ctx, msg, cb)
 
         if msg == "" then
             --- "账户不存在
-            redis.set("login-" .. account, "account:" .. account .. ",pwd:" .. pwd .. ",name:" .. name .. ",", function(msg)
+            redis.exec("incr GLOBAL_MAX_NO", function(msggg)
+                print("exec redis cme " .. msggg);
+                local kvv = json.decode(msggg);
+                if (kvv["ret"] == "ok") then
+                    -- 自动增长ID成功
+                    do_register(kvv["msg"], kv, cb);
 
-                if msg == "ok" then
-                    cb("ret:ok"); return;
                 end
-                cb("ret:服务器内部错误，注册失败,");
-            end );
+
+            end )
         else
 
             cb("ret:账户已存在,");
 
         end
-
 
     end );
 

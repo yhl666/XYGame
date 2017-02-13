@@ -18,7 +18,7 @@ namespace {
 	{
 
 		LuaIntf::LuaRef *cb = new LuaIntf::LuaRef(luaCallback);  // no const
-		GetRedis().Set(key,value, [=](string msg)
+		GetRedis().Set(key, value, [=](string msg)
 		{
 			(*cb)(msg);
 			delete cb;
@@ -34,6 +34,20 @@ namespace {
 			delete cb;
 		});
 
+	}
+
+	void Execute(const string& cmd, const LuaIntf::LuaRef& luaCallback)
+	{
+		LuaIntf::LuaRef *cb = new LuaIntf::LuaRef(luaCallback);  // no const
+		GetRedis().Execute(cmd, [=](string msg)
+		{
+			(*cb)(msg);
+			delete cb;
+		});
+
+
+
+
 	}  // namespace
 }
 namespace LuaRedis {
@@ -45,6 +59,7 @@ namespace LuaRedis {
 		LuaBinding(L).beginModule("c_redis")
 			.addFunction("set", &Set)
 			.addFunction("get", &Get)
+			.addFunction("exec", &Execute)
 			.endModule();
 	}
 

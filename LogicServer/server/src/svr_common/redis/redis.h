@@ -32,6 +32,7 @@ public:
 
 	void Set(const  std::string & key, const std::string & value, std::function<void(std::string msg)>);
 	void Get(const  std::string & key, std::function<void(std::string msg)>);
+	void Execute(const  std::string & cmd, std::function<void(std::string msg)>);
 
 private:
 	using Adapter = RedisCluster::BoostAsioAdapter;

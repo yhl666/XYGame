@@ -42,6 +42,55 @@ void setCallback(redisAsyncContext *c, void *r, void *privdata) {
 
 
 
+void execCallback(redisAsyncContext *c, void *r, void *privdata) {
+	redisReply *reply = (redisReply*)r;
+
+	printf(" %lld ", reply->integer);
+
+	if (reply != NULL)
+	{
+		string param = "ret:";
+
+		if (reply->str != nullptr)
+		{ // is string
+
+			string str = reply->str;
+
+			if (str.find("ERR") == string::npos)
+			{//ok
+				param = param + "ok,msg:" + str;
+			}
+			else
+			{
+				param = param + "error,msg:" + str;
+			}
+		}
+		else if (reply->integer != 0)
+		{// is number
+			char what[100];
+			sprintf(what, "%lld", reply->integer);
+
+			param = param + "ok,msg:" + what;
+		}
+		else
+		{
+			param = param + "error,msg:unknow error";
+		}
+
+
+		(*(std::function<void(string msg)>*)privdata)(param + ",");
+
+	}
+	else
+	{
+		(*(std::function<void(string msg)>*)privdata)("ret:error,msg:redis no reply error,");
+	}
+
+	delete privdata;
+}
+
+
+
 void connectCallback(const redisAsyncContext *c, int status) {
 	if (status != REDIS_OK) {
 		printf("Error: %s\n", c->errstr);
@@ -150,5 +199,18 @@ void CRedis::Get(const  std::string & key, std::function<void(string msg)> cb)
 	if (str == "<nil>") return "";
 	return str;
 	*/
+
+}
+
+
+
+
+void CRedis::Execute(const  std::string & cmd, std::function<void(string msg)> cb)
+{
+	Callback *cbb = new Callback([=](string mg)
+	{
+		cb(mg);
+	});
+	redisAsyncCommand(ctx, execCallback, cbb, (char*)cmd.c_str());
 
 }
