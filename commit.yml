@@ -3,42 +3,48 @@ branches: {
   }
 fileChange:
   /LogicServer:
-    newFile: !uuid '87b501a05ea27b8a7ce4ad4bd763b708ca79a2f7'
-    oldFile: !uuid 'e78433f2742b01ee3433a87c162973cbbec03e7a'
+    newFile: !uuid 'a7358bfd596e2e1303b20e3c4001f058bf7d98a6'
+    oldFile: !uuid '87b501a05ea27b8a7ce4ad4bd763b708ca79a2f7'
   /LogicServer/server:
-    newFile: !uuid '177f6fe1f75427934098d1a8635e0566d219b80a'
-    oldFile: !uuid '21c7fe19192af097aed3cf1c52d0c4c66e3f6e80'
+    newFile: !uuid '3fb70d401705ef02554c7ced53e60160a825144d'
+    oldFile: !uuid '177f6fe1f75427934098d1a8635e0566d219b80a'
+  /LogicServer/server/scripts:
+    newFile: !uuid '3aaf93396378c2ba83a435029fa6313e61560ee8'
+    oldFile: !uuid '307126f3aec20d13d879857d808c2f798539461c'
+  /LogicServer/server/scripts/base:
+    newFile: !uuid '03b245bab039b51f45c86fbfcb7c24398e3c2d87'
+    oldFile: !uuid 'c689f5060aa725a66630841b439d210406e11b30'
+  /LogicServer/server/scripts/base/xygame:
+    newFile: !uuid '89a440d62db468e767bc44915bda7eafec46c57c'
+    oldFile: !uuid '64853a09b86977a96ae834cc6cf407504a94612f'
+  /LogicServer/server/scripts/base/xygame/services:
+    newFile: !uuid '730f0e8736259f2786914b3a6c7710613bd90dae'
+    oldFile: !uuid '4222c552913a1de815a84cb700e5cfaf38bbdd94'
+  /LogicServer/server/scripts/base/xygame/services/login.lua:
+    newFile: !uuid '025aaa35531cee09f9a03ed7e01c205e4f0de86c'
+    oldFile: !uuid 'caf1228dad6d1a1d8bb418bb958a01964065dc09'
   /LogicServer/server/src:
-    newFile: !uuid '3b3bca26348a53b3c6c0a64ceec8b4d35364815c'
-    oldFile: null
+    newFile: !uuid '028bcff7a206a963c8975523774f2fa5b4004b69'
+    oldFile: !uuid '3b3bca26348a53b3c6c0a64ceec8b4d35364815c'
   /LogicServer/server/src/svr_common:
-    newFile: !uuid 'a6b8e478d0fb73d92a87acd342e331c4f9ac74f7'
-    oldFile: null
+    newFile: !uuid '3302801f03897b65be6a0337c611b4d480077f39'
+    oldFile: !uuid 'a6b8e478d0fb73d92a87acd342e331c4f9ac74f7'
   /LogicServer/server/src/svr_common/lua:
-    newFile: !uuid 'c48e24bb49f58730b0da7faea85ec09a7aa59fa1'
-    oldFile: null
+    newFile: !uuid 'bd20a87c16381ce2f1fc8c88cb7f124821381bb0'
+    oldFile: !uuid 'c48e24bb49f58730b0da7faea85ec09a7aa59fa1'
   /LogicServer/server/src/svr_common/lua/lua_redis.cpp:
-    newFile: !uuid 'fb24a2f964536089d527cf7ac24eb7c2b9f5f183'
-    oldFile: null
-  /LogicServer/server/src/svr_common/lua/lua_redis.h:
-    newFile: !uuid 'e865b36519cb75439cdfe4975eb07dca0911d361'
-    oldFile: null
+    newFile: !uuid 'b944e678d6f0aab5fc962c36b81b40dd39adc0a6'
+    oldFile: !uuid 'fb24a2f964536089d527cf7ac24eb7c2b9f5f183'
   /LogicServer/server/src/svr_common/redis:
-    newFile: !uuid '95025bff942fbe1cb502be40c3c0aaa6120ca922'
-    oldFile: null
+    newFile: !uuid 'c6a43675d577cbef1c0852c37691d14133bd3417'
+    oldFile: !uuid '95025bff942fbe1cb502be40c3c0aaa6120ca922'
   /LogicServer/server/src/svr_common/redis/redis.cpp:
-    newFile: !uuid '917b477a04c68aee3a3e87f8ce69fcfb5fe7ab26'
-    oldFile: null
+    newFile: !uuid 'fbef68606890ed04201a2e08af802689b03f5bce'
+    oldFile: !uuid '917b477a04c68aee3a3e87f8ce69fcfb5fe7ab26'
   /LogicServer/server/src/svr_common/redis/redis.h:
-    newFile: !uuid 'a41aed20828fca4dabdbdcfa2bf7b2072413b3ae'
-    oldFile: null
-  /LogicServer/server/src/svr_common/util.cpp:
-    newFile: !uuid '52703b685db76f2ee25b3b29c18e0bf4f0219f37'
-    oldFile: null
-  /LogicServer/server/src/svr_common/util.h:
-    newFile: !uuid 'f8d2b7434b89da9f3dabed85ab0751a99ed53ddb'
-    oldFile: null
-gitCommitId: !uuid 'ecbece9f1c7526235cef0058c95a1272d57cc362'
+    newFile: !uuid '869b9a90c3a5bc919bff19fcbe5082335319d805'
+    oldFile: !uuid 'a41aed20828fca4dabdbdcfa2bf7b2072413b3ae'
+gitCommitId: !uuid '76cb0e5d7cafbf9203e3216d96207bd8a5fff52b'
 renames: {
   }
-revisionId: 103
+revisionId: 104
