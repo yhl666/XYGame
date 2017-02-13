@@ -47,6 +47,7 @@ local function notify_all(ctx, service, method, msg)
     end
 end
 
+
 local function on_disconnected(rpc_clt_id)
 
     for k, v in pairs(global_base_heros) do

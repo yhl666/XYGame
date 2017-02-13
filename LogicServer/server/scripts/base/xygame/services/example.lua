@@ -10,17 +10,17 @@
 local t = { }
 
 local log = require("log"):new("login")
-local remote = require("xygame.base.remote");-- Ô¶³Ì·şÎñ
--- ºÍ¿Í»§¶Ë½»»¥µÄ·şÎñÊµÀı
+local remote = require("xygame.base.remote");-- è¿œç¨‹æœåŠ¡
+-- å’Œå®¢æˆ·ç«¯äº¤äº’çš„æœåŠ¡å®ä¾‹
 
 -- [Comment]
--- ctx ÉÏÏÂÎÄ£¬ÒòÎª¿ÉÄÜÒª·¢Æğ¿Í»§¶Ëµ÷ÓÃËùÒÔĞèÒª´øÉÏctx
--- msg #string Êı¾İ ÊÇ¼òµ¥µÄjson¸ñÊ½È«Îª×Ö·û´®
--- cb #function ĞèÒªÏìÓ¦µÄÊ±ºòµÄ»Øµ÷º¯Êı£¬²ÎÊıÎª¼òµ¥json¸ñÊ½
+-- ctx ä¸Šä¸‹æ–‡ï¼Œå› ä¸ºå¯èƒ½è¦å‘èµ·å®¢æˆ·ç«¯è°ƒç”¨æ‰€ä»¥éœ€è¦å¸¦ä¸Šctx
+-- msg #string æ•°æ® æ˜¯ç®€å•çš„jsonæ ¼å¼å…¨ä¸ºå­—ç¬¦ä¸²
+-- cb #function éœ€è¦å“åº”çš„æ—¶å€™çš„å›è°ƒå‡½æ•°ï¼Œå‚æ•°ä¸ºç®€å•jsonæ ¼å¼
 function t.login(ctx, msg, cb)
     local kv = json.decode(msg);
 
-    -- ·¢Æğcell·şÎñÆ÷µÄÔ¶³Ìµ÷ÓÃ£¬ÇëÇó Êı¾İ¿â·şÎñ
+    -- å‘èµ·cellæœåŠ¡å™¨çš„è¿œç¨‹è°ƒç”¨ï¼Œè¯·æ±‚ æ•°æ®åº“æœåŠ¡
     remote.request("services.example", "getValue", "name:" .. kv["name"] .. ",", function(msg)
 
         local m = json.decode(msg);
@@ -33,7 +33,7 @@ function t.login(ctx, msg, cb)
 
     end );
 
-    -- ÏòÓÎÏ·¿Í»§¶Ë·¢Æğrpcµ÷ÓÃ
+    -- å‘æ¸¸æˆå®¢æˆ·ç«¯å‘èµ·rpcè°ƒç”¨
     remote.request_client(ctx, "SampleServices", "method", "name:3,", function(msg)
         print(msg .. "  recv respone");
 

@@ -1,16 +1,16 @@
 
 --[[
-xygame ·şÎñÆ÷ Èë¿Ú lua½Å±¾
+xygame æœåŠ¡å™¨ å…¥å£ luaè„šæœ¬
 
-xygame·şÎñµÄºËĞÄ²¿·Ö£¬³ıÁËRPC·şÎñÕâÀï¶¼»áÌá¹©
-xygame·şÎñÆ÷Èë¿ÚÊÇ scripts.common.xygame.main
+xygameæœåŠ¡çš„æ ¸å¿ƒéƒ¨åˆ†ï¼Œé™¤äº†RPCæœåŠ¡è¿™é‡Œéƒ½ä¼šæä¾›
+xygameæœåŠ¡å™¨å…¥å£æ˜¯ scripts.common.xygame.main
 
 * Author: caoshanshan
 * Email: me@dreamyouxi.com
 
-¿ª·¢Ç°Çë¿´
-common/base/remote.luaÎÄ¼şµÄËµÃ÷
-common/base/services_handler.luaÎÄ¼şµÄËµÃ÷
+å¼€å‘å‰è¯·çœ‹
+common/base/remote.luaæ–‡ä»¶çš„è¯´æ˜
+common/base/services_handler.luaæ–‡ä»¶çš„è¯´æ˜
 
 ]]
 

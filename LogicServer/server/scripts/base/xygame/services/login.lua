@@ -1,6 +1,6 @@
 
 --[[
-µÇÂ¼·şÎñ
+ç™»å½•æœåŠ¡
 * Author: caoshanshan
 * Email: me@dreamyouxi.com
 
@@ -20,15 +20,15 @@ global_base_heros = { };
 function t.login(ctx, msg, cb)
     local kv = json.decode(msg);
 
-    -- ĞÂÁ¬½ÓÇëÇó
+    -- æ–°è¿æ¥è¯·æ±‚
     remote.request_client(ctx, "Room", "SelfEnterRoom", "no:" .. kv["name"] .. ",", function(msg)
 
         if msg == "timeout" then return end;
-        --- ÏìÓ¦Ê§°Ü ºöÂÔ
+        --- å“åº”å¤±è´¥ å¿½ç•¥
 
         print("hero join game no=" .. kv["name"]);
 
-        -- ÏìÓ¦³É¹¦ºó Ìí¼Óµ½tableÀïÃæ
+        -- å“åº”æˆåŠŸå æ·»åŠ åˆ°tableé‡Œé¢
         table.insert(global_base_heros, hero.create(ctx, kv["name"]));
 
     end );

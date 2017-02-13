@@ -12,8 +12,8 @@ local t = { }
 
 
 --[Comment]
--- ²ÎÊıÎª""±íÊ¾Ê§°Ü
--- "ok" ±íÊ¾³É¹¦
+-- å‚æ•°ä¸º""è¡¨ç¤ºå¤±è´¥
+-- "ok" è¡¨ç¤ºæˆåŠŸ
 function t.set(key, value, cb)
 
     c_redis.set(key, value, function(msg)
@@ -29,8 +29,8 @@ end
 
 
 --[Comment]
--- ²ÎÊıÎª""±íÊ¾Ê§°Ü
--- ÆäËû±íÊ¾ »ñÈ¡µÄÖµ ±íÊ¾³É¹¦
+-- å‚æ•°ä¸º""è¡¨ç¤ºå¤±è´¥
+-- å…¶ä»–è¡¨ç¤º è·å–çš„å€¼ è¡¨ç¤ºæˆåŠŸ
 function t.get(key, cb)
 
     c_redis.get(key, function(msg)
