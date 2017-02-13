@@ -6,11 +6,13 @@
 
 ]]
 
-local remote = require("xygame.base.remote");
-
+local log = require("log"):new("room")
+local remote = require("base.remote");
+local hero = require("model.base_hero")
 local t = { }
 
 
+global_base_heros = { };
 
 
 local function notify_other(ctx, service, method, msg)
@@ -75,7 +77,23 @@ function t.new_position(ctx, msg, cb)
     notify_other(ctx, "Room", "NewPosition", msg);
 end
  
+function t.enter_room(ctx, msg, cb)
+    local kv = json.decode(msg);
 
+    remote.request_client(ctx, "Room", "SelfEnterRoom", "no:" .. kv["name"] .. ",", function(msg)
+
+        if msg == "" then return end;
+        --- 响应失败 忽略
+
+        -- 响应成功后 添加到table里面
+
+        table.insert(global_base_heros, hero.create(ctx, kv["name"]));
+
+
+           notify_other(ctx, "Room", "EnterRoom", msg);
+    end );
+    cb("ret:ok");
+end
  
 
 function t.ckeck_alive(ctx, msg, cb)

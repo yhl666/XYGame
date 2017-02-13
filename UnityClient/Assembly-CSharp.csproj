@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Logic\Scripts\Base\LogicAppHost.cs" />
+     <Compile Include="Assets\Logic\Scripts\Base\LoginAppHost.cs" />
      <Compile Include="Assets\Logic\Scripts\Base\TestRPC.cs" />
      <Compile Include="Assets\Logic\Scripts\Base\cats_and_dogs.proto.cs" />
      <Compile Include="Assets\Logic\Scripts\Base\cats_and_dogs_push.proto.cs" />
@@ -53,12 +54,15 @@
      <Compile Include="Assets\Logic\Scripts\Base\login.proto.cs" />
      <Compile Include="Assets\Logic\Scripts\Base\msg.proto.cs" />
      <Compile Include="Assets\Logic\Scripts\GameApp\LogicApp.cs" />
+     <Compile Include="Assets\Logic\Scripts\GameApp\LoginApp.cs" />
      <Compile Include="Assets\Logic\Scripts\GameApp\SampleApp.cs" />
      <Compile Include="Assets\Logic\Scripts\GameApp\TownApp.cs" />
      <Compile Include="Assets\Logic\Scripts\LogicScene.cs" />
+     <Compile Include="Assets\Logic\Scripts\LoginScene.cs" />
      <Compile Include="Assets\Logic\Scripts\Model\BaseHero.cs" />
      <Compile Include="Assets\Logic\Scripts\Net\RpcClient.cs" />
      <Compile Include="Assets\Logic\Scripts\Services\Room.cs" />
+     <Compile Include="Assets\Logic\Scripts\View\UILogin.cs" />
      <Compile Include="Assets\Logic\Scripts\View\UITown.cs" />
      <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\2d\Animations.cs" />
@@ -1708,28 +1712,28 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="AssetManager">
- <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/AssetManager.dll</HintPath>
+ <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/AssetManager.dll</HintPath>
  </Reference>
  <Reference Include="AssetUpdater">
- <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/AssetUpdater.dll</HintPath>
+ <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/AssetUpdater.dll</HintPath>
  </Reference>
  <Reference Include="ByteStorage">
- <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ByteStorage.dll</HintPath>
+ <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ByteStorage.dll</HintPath>
  </Reference>
  <Reference Include="ByteStorage.Utility">
- <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ByteStorage.Utility.dll</HintPath>
+ <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ByteStorage.Utility.dll</HintPath>
  </Reference>
  <Reference Include="GiantLightFramework">
- <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/GiantLightFramework.dll</HintPath>
+ <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/GiantLightFramework.dll</HintPath>
  </Reference>
  <Reference Include="GiantLightServer">
- <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/GiantLightServer.dll</HintPath>
+ <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/GiantLightServer.dll</HintPath>
  </Reference>
  <Reference Include="NetworkManager">
- <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/NetworkManager.dll</HintPath>
+ <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/NetworkManager.dll</HintPath>
  </Reference>
  <Reference Include="ServiceCenter">
- <HintPath>D:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ServiceCenter.dll</HintPath>
+ <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ServiceCenter.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

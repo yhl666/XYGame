@@ -94,7 +94,8 @@ public class LoginApp : AppBase
             if (kv["ret"] == "ok")
             {
                 Debug.Log("login ok " + kv["name"]);
-                PublicData.GetInstance().selfName = kv["name"];
+                PublicData.GetInstance().self_name = kv["name"];
+                PublicData.GetInstance().self_name = kv["account"];
 
                 this.processWithLoginOK();
 
@@ -155,7 +156,12 @@ public class LoginApp : AppBase
     {
         EventDispatcher.DestroyInstance();
         AppMgr.ins.Dispose();
-        PublicData.GetInstance().game.Terminate();
+        ModelMgr.ins.Dispose();
+        ViewMgr.ins.Dispose();
+
+        //  PublicData.GetInstance().game.Terminate();
+        //   GameObject.DestroyImmediate(GameObject.Find("_ServiceCenterObject"));
+    //  PublicData.GetInstance().game.GotoScene();
         SceneMgr.Load("TownScene");
 
     }

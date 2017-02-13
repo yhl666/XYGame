@@ -14,7 +14,11 @@ public sealed class ModelMgr : GAObject
         ins.Add(m);
         return t;
     }
-
+    public override void OnDispose()
+    {
+        base.OnDispose();
+        this.lists.Clear();
+    }
     public void Add(Model b)
     {
         this.lists.Add(b);

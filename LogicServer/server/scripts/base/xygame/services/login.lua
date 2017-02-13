@@ -14,7 +14,6 @@ local remote = require("base.remote");
 local hero = require("model.base_hero")
 local redis = require("base.redis");
 
-global_base_heros = { };
 
 
 function t.login(ctx, msg, cb)
@@ -32,14 +31,11 @@ function t.login(ctx, msg, cb)
 
         if pwd == kvv["pwd"] then
             -- 登陆成功
-            cb("ret:ok,name:" .. kvv["name"] .. ",");
+            cb("ret:ok,name:" .. kvv["name"] .. ",account:" .. account  .. ",");
         else
             -- 账户密码错误
             cb("ret:密码或账户错误,");
         end
-
-
-
 
     end );
 
@@ -62,7 +58,7 @@ function t.register(ctx, msg, cb)
 
         if msg == "" then
             --- "账户不存在
-            redis.set("login-" .. account, "pwd:" .. pwd .. "," .. "name:" .. name .. ",", function(msg)
+            redis.set("login-" .. account, "account:" .. account .. ",pwd:" .. pwd .. ",name:" .. name .. ",", function(msg)
 
                 if msg == "ok" then
                     cb("ret:ok"); return;

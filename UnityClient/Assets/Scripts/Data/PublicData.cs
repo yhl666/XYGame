@@ -45,8 +45,8 @@ public class PublicData : object
 
     public string player_name = "Default";
 
-    public string selfName = "";
-
+    public string self_name = "";
+    public string self_account = "";
 
      // for frame sync  input status
     public bool IS_left = false;//left

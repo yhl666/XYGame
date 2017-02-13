@@ -43,12 +43,14 @@ public class TownApp : AppBase
 
             string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(500).ToString();
 
+            string p = "name:" + PublicData.GetInstance().self_name + ",";
+            Debug.Log(p);
 
-            RpcClient.ins.SendRequest("services.login", "login", "name:" + seed + ",", (string msg) =>
+            RpcClient.ins.SendRequest("services.room", "enter_room",p, (string msg) =>
             {
                 if (msg == "")
                 {
-                    Debug.Log("login error");
+                    Debug.Log("enter error");
                 }
                 else
                 {

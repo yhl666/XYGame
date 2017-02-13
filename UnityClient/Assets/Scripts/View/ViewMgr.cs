@@ -84,7 +84,11 @@ public sealed class ViewMgr : GAObject
         EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLVIEW_UPDATE);
     }
 
-
+    public override void OnDispose()
+    {
+        base.OnDispose();
+        this._views.Clear();
+    }
 
     public override void OnExit()
     {

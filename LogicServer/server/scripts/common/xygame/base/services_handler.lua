@@ -62,7 +62,7 @@ function t.handle(ctx, service_name, method_name, req_content)
         end
 
         -- 如果模块存在，那么自动添加热更新
-      require("hotfix_helper").add_module_name(service_name);
+    --  require("hotfix_helper").add_module_name(service_name);
         file:close();
     end
 
