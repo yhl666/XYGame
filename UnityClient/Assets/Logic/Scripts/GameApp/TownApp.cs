@@ -137,13 +137,20 @@ public class TownApp : AppBase
 
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (pos.y <= 2.4f)
-            {
-                this.PostSelfNewPosition(pos);
+            if ((Input.mousePosition.x > unclicked_xy.x && Input.mousePosition.y > unclicked_xy.y) && ((Input.mousePosition.x < unclicked_xy.x + unclicked_wh.x && Input.mousePosition.y < unclicked_xy.y + unclicked_wh.y)))
+            {//限制范围内
 
-                ///本地直接生效 不需要服务器验证
-                HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent(Events.ID_LOGIC_NEW_POSITION, new Vector2(pos.x, pos.y));
+            }
+            else
+            {
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if (pos.y <= 2.4f)
+                {
+                    this.PostSelfNewPosition(pos);
+
+                    ///本地直接生效 不需要服务器验证
+                    HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent(Events.ID_LOGIC_NEW_POSITION, new Vector2(pos.x, pos.y));
+                }
             }
         }
         if (tick.Tick() == false)
@@ -177,5 +184,16 @@ public class TownApp : AppBase
     {
         this.tick.Reset();
     }
+
+    public void SetUnClickAbleRange(Vector2 xy, Vector2 wh)
+    {
+        this.unclicked_xy = xy;
+        this.unclicked_wh = wh;
+    }
+
+    Vector2 unclicked_xy = new Vector2(0, 0);
+    Vector2 unclicked_wh = new Vector2(600, 600);
+
+
     Counter tick = Counter.Create(DATA.HERO_ALIVE_TICK);//tick for alive  30s
 }

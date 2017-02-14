@@ -238,13 +238,51 @@ public sealed class UI_worldchat : ViewUI
         this.cell_txt.text = "";
 
     }
+    private int current_size = 0;
+
     public override bool Init()
     {
         base.Init();
 
         this.cell_txt = GameObject.Find("worldcht_cell_txt").GetComponent<Text>();
+        this.obj_whold = GameObject.Find("worldchat_whole");
+
         this.cell_bg = GameObject.Find("worldchat_cell_bg");
         this.cell_btn = GameObject.Find("worldchat_cell_btn").GetComponent<Button>();
+        this.list_content = GameObject.Find("list_content").GetComponent<RectTransform>();
+
+        this.list_btn_send = GameObject.Find("worldchat_btn_send").GetComponent<Button>();
+        this.list_btn_close = GameObject.Find("worldchat_btn_close").GetComponent<Button>();
+
+        this.input = GameObject.Find("worldchat_inputfield").GetComponent<InputField>();
+
+        this.template_copy = GameObject.Instantiate(this.list_content.FindChild("one").gameObject, this.list_content.transform) as GameObject;
+
+
+        this.template_copy.SetActive(false);
+
+        this.list_content.FindChild("one").gameObject.SetActive(false);
+
+
+
+        this.list_btn_send.onClick.AddListener(() =>
+        {
+
+            if (input.text != "")
+            {
+                EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_SEND_BTN_CLICKED, input.text);
+                input.text = "";
+            }
+        });
+
+
+        this.list_btn_close.onClick.AddListener(() =>
+        {
+
+            this.HideWhole();
+        });
+
+
 
         this.cell_btn.onClick.AddListener(() =>
             {
@@ -254,12 +292,42 @@ public sealed class UI_worldchat : ViewUI
 
         this.hideSmall();
 
-
+        this.HideWhole();
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_RPC_WORLD_CHAT_NEW_MSG);
         return true;
     }
 
+
+    private void funccc()
+    {
+
+        GameObject obj = GameObject.Instantiate(this.template_copy, this.list_content) as GameObject;
+        obj.SetActive(true);
+        lists.Add(obj);
+        current_size += 1;
+        float max_height = current_size * 110;
+
+        this.list_content.sizeDelta = new Vector2(0, max_height);
+
+
+
+        Text name = obj.transform.FindChild("worldchat_cell_txt_head").transform.gameObject.GetComponent<Text>();
+        name.text = "<color=green>[世界]</color><color=#9420D2FF>测试玩家:</color>" + current_size.ToString();
+
+
+        //re position
+        int i = this.lists.Count;
+        foreach (GameObject one in this.lists)
+        {
+
+
+            one.transform.localPosition = new Vector3(one.transform.localPosition.x, 0 + i * 100, one.transform.localPosition.z);
+
+
+            i--;
+        }
+    }
     public override void OnEvent(int type, object userData)
     {
         if (type == Events.ID_RPC_WORLD_CHAT_NEW_MSG)
@@ -270,28 +338,91 @@ public sealed class UI_worldchat : ViewUI
 
             cell_txt.text = packMsg(hash["type"], hash["name"], hash["msg"]);
 
+
+
+
+            string time1 = hash["time"];
+
+            string time2 = hash["time2"];
+            time2 = time2.Replace("-", ":");
+
+
+
+
+            GameObject obj = GameObject.Instantiate(this.template_copy, this.list_content) as GameObject;
+            obj.SetActive(true);
+            lists.Add(obj);
+            current_size += 1;
+            float max_height = current_size * 110;
+
+            this.list_content.sizeDelta = new Vector2(0, max_height);
+
+
+
+
+            Text name = obj.transform.FindChild("worldchat_cell_txt_head").transform.gameObject.GetComponent<Text>();
+            name.text = "<color=green>[世界]" + "</color><color=#9420D2FF> 测试玩家:</color>";// +current_size.ToString();
+
+
+
+
+            Text txt_time = obj.transform.FindChild("worldchat_cell_txt_time").transform.gameObject.GetComponent<Text>();
+            txt_time.text = "<color=#9420D2FF>" + time1 + " " + time2 + "</color>";
+
+
+
+            Text txt_msg = obj.transform.FindChild("worldchat_cell_txt").transform.gameObject.GetComponent<Text>();
+            txt_msg.text = hash["msg"];
+
+
+
+
+            //re position
+            int i = this.lists.Count;
+            foreach (GameObject one in this.lists)
+            {
+
+
+                one.transform.localPosition = new Vector3(one.transform.localPosition.x, 0 + i * 100, one.transform.localPosition.z);
+
+
+                i--;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 
 
-    /// <summary>
-    /// 显示小界面
-    /// </summary>
-    private void ShowSmall()
-    {
 
-    }
 
     /// <summary>
     /// 显示完整的界面
     /// </summary>
     private void ShowWhole()
     {
+        this.obj_whold.SetActive(true);
 
-        EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED);
+        //  EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED);
 
     }
+    private void HideWhole()
+    {
+        this.obj_whold.SetActive(false);
 
+        //   EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED);
+
+    }
 
     private string packMsg(string type, string name, string msg)
     {
@@ -305,12 +436,20 @@ public sealed class UI_worldchat : ViewUI
 
 
 
+    private GameObject obj_whold = null;
     private Text txt;
     private Text cell_txt = null;
     private GameObject cell_bg = null;
     private Button cell_btn = null;
 
+    private RectTransform list_content = null;
+    private Button list_btn_send = null;
+    private Button list_btn_close = null;
 
+    private GameObject template_copy = null;
+    ArrayList lists = new ArrayList();
+
+    private InputField input = null;
     private Counter cell_counter = Counter.Create(200);//显示5秒
 
 }

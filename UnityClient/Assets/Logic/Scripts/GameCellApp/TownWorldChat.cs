@@ -49,6 +49,8 @@ public class TownWorldChat : CellApp
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_RPC_WORLD_CHAT_NEW_MSG);
         EventDispatcher.ins.AddEventListener(this, Events.ID_WORLDCHAT_CELL_BTN_CLICKED);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_WORLDCHAT_SEND_BTN_CLICKED);
+
 
         return true;
     }
@@ -64,10 +66,17 @@ public class TownWorldChat : CellApp
         else if (type == Events.ID_WORLDCHAT_CELL_BTN_CLICKED)
         {
 
+
+        }
+        else if (Events.ID_WORLDCHAT_SEND_BTN_CLICKED == type)
+        {
+            string what = userData as string;
+
             string msg = "name:" + PublicData.GetInstance().self_name;
-            msg = msg + ",type:[世界],msg:求老司机带我刷本，我是一直会喊6666的咸鱼,";
+            msg = msg + ",type:[世界],msg:" + what + ",name:" + PublicData.GetInstance().self_name + ",";
 
             RpcClient.ins.SendRequest("services.worldchat", "push", msg);
+
 
         }
     }

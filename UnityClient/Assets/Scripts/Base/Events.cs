@@ -84,6 +84,7 @@ public sealed class Events : object
 
     public const int ID_RPC_WORLD_CHAT_NEW_MSG = 50;//服务器推送 世界聊天新消息通知
     public const int ID_WORLDCHAT_CELL_BTN_CLICKED = 51;//聊天小窗口按钮被点击
+    public const int ID_WORLDCHAT_SEND_BTN_CLICKED = 52;//世界聊天窗口 点击发送按钮
 
     //------------------------------local event-----------------------------------------------------------
 
