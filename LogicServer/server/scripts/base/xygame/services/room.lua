@@ -17,7 +17,7 @@ t.enable_hotfix = false;  -- 禁止hot fix
 
 global_hero_list = hero_list:new();
 
-local function notify_other(ctx, service, method, msg)
+  function room_notify_other(ctx, service, method, msg)
 
     global_hero_list:foreach( function(k, v)
 
@@ -39,7 +39,7 @@ end
 
 
 
-local function notify_all(service, method, msg)
+  function room_notify_all(service, method, msg)
 
     global_hero_list:foreach( function(k, v)
         remote.request_client(v.ctx, service, method, msg, function(msg)
@@ -56,13 +56,13 @@ end
 local function on_disconnected(rpc_clt_id)
     local hero = global_hero_list:remove_by_rpc_cli_id(rpc_clt_id);
 
-    notify_all("Room", "LeaveRoom", "no:" .. hero.no .. ",");
+    room_notify_all("Room", "LeaveRoom", "no:" .. hero.no .. ",");
 end
 
 
 function t.new_position(ctx, msg, cb)
     cb("");
-    notify_other(ctx, "Room", "NewPosition", msg);
+    room_notify_other(ctx, "Room", "NewPosition", msg);
 end
  
 function t.enter_room(ctx, msg, cb)
@@ -75,7 +75,7 @@ function t.enter_room(ctx, msg, cb)
 
         -- 响应成功后 添加到table里面
 
-        notify_all("Room", "EnterRoom", msg);
+        room_notify_all("Room", "EnterRoom", msg);
         global_hero_list:add(hero.create(ctx, kv["no"]));
 
 
@@ -86,7 +86,7 @@ end
 
 function t.ckeck_alive(ctx, msg, cb)
     cb("");
-    notify_other(ctx, "Room", "CheckAlive", msg);
+    room_notify_other(ctx, "Room", "CheckAlive", msg);
 end
  
 

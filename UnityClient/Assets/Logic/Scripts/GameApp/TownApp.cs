@@ -33,6 +33,9 @@ public class TownApp : AppBase
         {
             ViewUI.Create<UITownRoot>();
 
+
+            this.AddCellApp<TownWorldChat>();
+
             EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
             Application.targetFrameRate = 40;
 
@@ -47,18 +50,42 @@ public class TownApp : AppBase
             Debug.Log(p);
 
 
-
-            //test case   --------------------------------------
-            string str = "account:1,pwd:1,no:1,name:0001,";
-
-            PublicData.GetInstance().self_name = "0001";
-            PublicData.GetInstance().self_account = "1";
-            PublicData.GetInstance().self_no = "1";
-
-
-            RpcClient.ins.SendRequest("services.login", "login", str, (string msg11) =>
+            if (PublicData.GetInstance().self_name == "")
             {
-                RpcClient.ins.SendRequest("services.room", "enter_room", str, (string msg) =>
+                //test case   --------------------------------------
+                string str = "account:1,pwd:1,no:1,name:0001,";
+
+                PublicData.GetInstance().self_name = "0001";
+                PublicData.GetInstance().self_account = "1";
+                PublicData.GetInstance().self_no = "1";
+
+
+                RpcClient.ins.SendRequest("services.login", "login", str, (string msg11) =>
+                {
+                    RpcClient.ins.SendRequest("services.room", "enter_room", str, (string msg) =>
+                    {
+                        if (msg == "")
+                        {
+                            Debug.Log("enter error");
+                        }
+                        else
+                        {
+                            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
+
+                        }
+                    });
+
+
+
+                });
+            }
+
+            else
+            {
+                //test case   -------------end-------------------------
+
+
+                RpcClient.ins.SendRequest("services.room", "enter_room", p, (string msg) =>
                 {
                     if (msg == "")
                     {
@@ -71,28 +98,7 @@ public class TownApp : AppBase
                     }
                 });
 
-
-
-            });
-
-            //test case   -------------end-------------------------
-            ///
-            /*
-
-                    RpcClient.ins.SendRequest("services.room", "enter_room", p, (string msg) =>
-                    {
-                        if (msg == "")
-                        {
-                            Debug.Log("enter error");
-                        }
-                        else
-                        {
-                            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
-
-                        }
-                    });*/
-
-
+            }
             return "本地资源加载完成，连接服务器...";
         }));
 

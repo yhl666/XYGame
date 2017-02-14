@@ -13,12 +13,14 @@ public class AppBase : GAObject
         return "AppBase";
     }
 
-    public void AddCellApp(CellApp app)
+
+    public void AddCellApp<T>() where T : new()
     {
+        CellApp app = new T() as CellApp;
         app.parent = this;
+        app.Init();
         this.Add(app);
     }
-
 
 
     private void Add(CellApp b)

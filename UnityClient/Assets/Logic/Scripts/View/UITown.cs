@@ -226,23 +226,53 @@ public sealed class UI_worldchat : ViewUI
     {
         base.Update();
 
-        var self = HeroMgr.ins.self;
-        if (self != null)
+        if (cell_counter.Tick() == false)
         {
-            txt.text = string.Format(DATA.UI_INFO_XY, (self.x * 100.0f).ToString("0"), (self.y * 100.0f).ToString("0"));
+            this.hideSmall();
         }
     }
 
+    private void hideSmall()
+    {
+        cell_bg.SetActive(false);
+        this.cell_txt.text = "";
+
+    }
     public override bool Init()
     {
         base.Init();
 
-        this.txt = GameObject.Find("xy").GetComponent<Text>();
+        this.cell_txt = GameObject.Find("worldcht_cell_txt").GetComponent<Text>();
+        this.cell_bg = GameObject.Find("worldchat_cell_bg");
+        this.cell_btn = GameObject.Find("worldchat_cell_btn").GetComponent<Button>();
 
+        this.cell_btn.onClick.AddListener(() =>
+            {
+                ShowWhole();
+                Debug.Log("click");
+            });
+
+
+        this.hideSmall();
+
+
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_RPC_WORLD_CHAT_NEW_MSG);
         return true;
     }
 
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_RPC_WORLD_CHAT_NEW_MSG)
+        {
+            cell_bg.SetActive(true);
+            cell_counter.Reset();
+            var hash = userData as HashTable;
 
+            cell_txt.text = packMsg(hash["type"], hash["name"], hash["msg"]);
+
+        }
+    }
 
 
     /// <summary>
@@ -259,7 +289,7 @@ public sealed class UI_worldchat : ViewUI
     private void ShowWhole()
     {
 
-
+        EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED);
 
     }
 
@@ -275,6 +305,13 @@ public sealed class UI_worldchat : ViewUI
     }
 
 
+
     private Text txt;
+    private Text cell_txt = null;
+    private GameObject cell_bg = null;
+    private Button cell_btn = null;
+
+
+    private Counter cell_counter = Counter.Create(200);//显示5秒
 
 }
