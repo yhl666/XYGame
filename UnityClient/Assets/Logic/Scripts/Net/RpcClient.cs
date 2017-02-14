@@ -54,7 +54,7 @@ public class RpcClient
         var t = new rpc.EnterRoomMsg();//protobuf
         t.peer_name = kv_json;
         ///   service = "xygame.services." + service;
-        Debug.LogWarning("[Client Rpc Call]:" + service + "." + method + " params:" + kv_json);
+        Debug.LogWarning("[Client Rpc Call]:" + service + "." + method + " params:-----" + kv_json);
         var wrapper = new Func<inner.ResponseWrapper, bool>((inner.ResponseWrapper resp) =>
         {//RPC 回调
             if (resp.ok)

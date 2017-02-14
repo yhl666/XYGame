@@ -389,7 +389,7 @@ namespace inner
 
             string msg = ByteConverter.BytesToProtoBuf<rpc.EnterRoomMsg>(content, 0, content.Length).peer_name;
       
-            Debug.LogWarning("[Server Rpc Call]:" + service + "." + method + " params:" + msg);
+            Debug.LogWarning("[Server Rpc Call]:" + service + "." + method + " params----" + msg);
             rpc._Inner_Invoke__(id, method, msg);
             return true;
         }
