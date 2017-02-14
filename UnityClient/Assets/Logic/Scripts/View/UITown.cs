@@ -331,7 +331,16 @@ public sealed class UI_worldchat : ViewUI
     public override void OnEvent(int type, object userData)
     {
         if (type == Events.ID_RPC_WORLD_CHAT_NEW_MSG)
-        {
+        {//新消息通知
+
+            if (current_size >= MAX_REMAIN_COUNTS)
+            {
+ 
+                GameObject.Destroy(lists[0] as GameObject);
+                lists.RemoveAt(0);
+                current_size -= 1;
+
+            }
             cell_bg.SetActive(true);
             cell_counter.Reset();
             var hash = userData as HashTable;
@@ -452,4 +461,5 @@ public sealed class UI_worldchat : ViewUI
     private InputField input = null;
     private Counter cell_counter = Counter.Create(200);//显示5秒
 
+    private int MAX_REMAIN_COUNTS = 10; //最大消息保留条数
 }
