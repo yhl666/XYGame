@@ -271,7 +271,7 @@ public sealed class UI_worldchat : ViewUI
             if (input.text != "")
             {
                 EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_SEND_BTN_CLICKED, input.text);
-  
+
                 input.text = "";
             }
         });
@@ -280,7 +280,7 @@ public sealed class UI_worldchat : ViewUI
         this.list_btn_close.onClick.AddListener(() =>
         {
             EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CLOSE_BTN_CLICKED);
- 
+
             this.HideWhole();
         });
 
@@ -338,7 +338,7 @@ public sealed class UI_worldchat : ViewUI
 
             if (current_size >= MAX_REMAIN_COUNTS)
             {
- 
+
                 GameObject.Destroy(lists[0] as GameObject);
                 lists.RemoveAt(0);
                 current_size -= 1;
@@ -365,7 +365,7 @@ public sealed class UI_worldchat : ViewUI
             obj.SetActive(true);
             lists.Add(obj);
             current_size += 1;
-            float max_height = current_size * 110;
+            float max_height = current_size * 60;
 
             this.list_content.sizeDelta = new Vector2(0, max_height);
 
@@ -373,7 +373,7 @@ public sealed class UI_worldchat : ViewUI
 
 
             Text name = obj.transform.FindChild("worldchat_cell_txt_head").transform.gameObject.GetComponent<Text>();
-            name.text = "<color=green>[世界]" + "</color><color=#9420D2FF>"  +  hash["name"] +":</color>";// +current_size.ToString();
+            name.text = "<color=green>[世界]" + "</color><color=#9420D2FF>" + hash["name"] + ":</color>";// +current_size.ToString();
 
 
 
@@ -385,8 +385,11 @@ public sealed class UI_worldchat : ViewUI
 
             Text txt_msg = obj.transform.FindChild("worldchat_cell_txt").transform.gameObject.GetComponent<Text>();
             txt_msg.text = hash["msg"];
+            float scale = 1.0f;
 
+            scale =( txt_msg.text.Length+1)/ 25.0f;
 
+            obj.transform.FindChild("worldchat_cell_bg1").transform.localScale = new Vector3(1.0f, scale, 1.0f);
 
 
             //re position
@@ -395,7 +398,7 @@ public sealed class UI_worldchat : ViewUI
             {
 
 
-                one.transform.localPosition = new Vector3(one.transform.localPosition.x, 0 + i * 100, one.transform.localPosition.z);
+                one.transform.localPosition = new Vector3(one.transform.localPosition.x, 0 + i * 60, one.transform.localPosition.z);
 
 
                 i--;
@@ -431,7 +434,7 @@ public sealed class UI_worldchat : ViewUI
     {
         this.obj_whold.SetActive(false);
 
-   
+
     }
 
     private string packMsg(string type, string name, string msg)
@@ -460,7 +463,7 @@ public sealed class UI_worldchat : ViewUI
     ArrayList lists = new ArrayList();
 
     private InputField input = null;
-    private Counter cell_counter = Counter.Create(200);//显示5秒
+    private Counter cell_counter = Counter.Create(400);//显示  10 秒
 
     private int MAX_REMAIN_COUNTS = 10; //最大消息保留条数
 }
