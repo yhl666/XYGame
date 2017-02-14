@@ -29,6 +29,9 @@ public class TownApp : AppBase
 
         }
 
+        Debug.Log(Json.MultiEncode(Json.MultiDecode("{name:10,pwd:1254,}{haha:125,}")));
+
+
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
         {
             ViewUI.Create<UITownRoot>();

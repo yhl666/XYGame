@@ -41,11 +41,7 @@ namespace Services
 
 
 
-
-
-
-
-public   class TownWorldChat : CellApp
+public class TownWorldChat : CellApp
 {
     public TownWorldChat() { }
     public override bool Init()
@@ -68,10 +64,10 @@ public   class TownWorldChat : CellApp
         else if (type == Events.ID_WORLDCHAT_CELL_BTN_CLICKED)
         {
 
-            string msg= "name:" + PublicData.GetInstance().self_name ;
+            string msg = "name:" + PublicData.GetInstance().self_name;
             msg = msg + ",type:[世界],msg:求老司机带我刷本，我是一直会喊6666的咸鱼,";
- 
-            RpcClient.ins.SendRequest("services.worldchat","push",msg);
+
+            RpcClient.ins.SendRequest("services.worldchat", "push", msg);
 
         }
     }

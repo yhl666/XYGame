@@ -10,6 +10,8 @@
 require("xygame.lib.extern");
 require("xygame.lib.json");
 require("xygame.lib.common")
+require("xygame.lib.json")
+
 
 package.path = package.path .. ";" .. G_LUA_ROOTPATH .. "/" .. "common/xygame/" .. "/?.lua"
  

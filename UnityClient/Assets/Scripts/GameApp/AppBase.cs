@@ -14,7 +14,7 @@ public class AppBase : GAObject
     }
 
 
-    public void AddCellApp<T>() where T : new()
+    public void AddCellApp<T>() where T : CellApp, new() 
     {
         CellApp app = new T() as CellApp;
         app.parent = this;

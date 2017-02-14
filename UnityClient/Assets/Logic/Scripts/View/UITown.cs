@@ -249,7 +249,6 @@ public sealed class UI_worldchat : ViewUI
         this.cell_btn.onClick.AddListener(() =>
             {
                 ShowWhole();
-                Debug.Log("click");
             });
 
 

@@ -55,4 +55,47 @@ public class Json
         return ret;
     }
 
+
+
+    public static ArrayList MultiDecode(string json)
+    {
+        ArrayList ret = new ArrayList();
+        int last = 1;
+
+        for (int i = 0; i < json.Length; i++)
+        {
+            char ch = json[i];
+            if (ch.Equals('}'))
+            {
+                string sub = json.Substring(last, i - last);
+
+                Debug.Log(sub);
+
+                ret.Add(Json.Decode(sub));
+
+                last = i + 2;
+            }
+        }
+        if (ret.Count == 0) return null;
+        return ret;
+    }
+
+
+
+    /// <summary>
+    /// 打包hash table 到json
+    /// </summary>
+    /// <param name="json"></param>
+    /// <returns></returns>
+    public static string MultiEncode(ArrayList list)
+    {
+        string ret = "";
+
+        foreach (HashTable table in list)
+        {
+            ret += "{" + table.ToJson() + "}";
+        }
+
+        return ret;
+    }
 }
