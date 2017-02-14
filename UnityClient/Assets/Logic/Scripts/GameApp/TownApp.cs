@@ -115,6 +115,7 @@ public class TownApp : AppBase
 
     public override void UpdateMS()
     {
+        base.UpdateMS();
         AutoReleasePool.ins.Clear();
 
         ModelMgr.ins.UpdateMS();
