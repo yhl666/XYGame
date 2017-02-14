@@ -81,6 +81,9 @@ public sealed class Events : object
 
     public const int ID_LAUNCH_SKILL1 = 100;//释放技能1
 
+
+    public const int ID_RPC_WORLD_CHAT_NEW_MSG = 50;//服务器推送 世界聊天新消息通知
+
     //------------------------------local event-----------------------------------------------------------
 
     /* public const int ID_DISABLE_RUN = 100;//禁止run 状态

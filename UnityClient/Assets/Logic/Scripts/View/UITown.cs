@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using System;
 
@@ -45,6 +42,14 @@ public sealed class UITownRoot : ViewUI
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_names>(this));
+
+            return DATA.EMPTY_STRING;
+        }));
+
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_worldchat>(this));
+
             return DATA.EMPTY_STRING;
         }));
 
@@ -208,3 +213,68 @@ public sealed class UI_names : ViewUI
     GameObject txt_template;
 }
 
+
+
+
+
+
+public sealed class UI_worldchat : ViewUI
+{
+
+
+    public override void Update()
+    {
+        base.Update();
+
+        var self = HeroMgr.ins.self;
+        if (self != null)
+        {
+            txt.text = string.Format(DATA.UI_INFO_XY, (self.x * 100.0f).ToString("0"), (self.y * 100.0f).ToString("0"));
+        }
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+
+        this.txt = GameObject.Find("xy").GetComponent<Text>();
+
+        return true;
+    }
+
+
+
+
+    /// <summary>
+    /// 显示小界面
+    /// </summary>
+    private void ShowSmall()
+    {
+
+    }
+
+    /// <summary>
+    /// 显示完整的界面
+    /// </summary>
+    private void ShowWhole()
+    {
+
+
+
+    }
+
+
+    private string packMsg(string type, string name, string msg)
+    {
+        return makeColor(type, "green") + makeColor(name + ":", "#9420D2FF") + makeColor(msg, "white");
+    }
+
+    private string makeColor(string what, string color)
+    {
+        return "<color=" + color + ">" + what + "</color>";
+    }
+
+
+    private Text txt;
+
+}
