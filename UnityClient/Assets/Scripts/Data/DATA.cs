@@ -32,7 +32,7 @@ public class DATA
 
     public const float ONE_DEGREE = 0.0174533f;//一度的弧度
 
-    public const int HERO_ALIVE_TICK = 1200;//30 秒
+    public const int HERO_ALIVE_TICK = 4800;//2分钟
 
 
 }

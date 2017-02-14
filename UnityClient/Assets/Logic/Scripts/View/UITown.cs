@@ -271,6 +271,7 @@ public sealed class UI_worldchat : ViewUI
             if (input.text != "")
             {
                 EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_SEND_BTN_CLICKED, input.text);
+  
                 input.text = "";
             }
         });
@@ -278,7 +279,8 @@ public sealed class UI_worldchat : ViewUI
 
         this.list_btn_close.onClick.AddListener(() =>
         {
-
+            EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CLOSE_BTN_CLICKED);
+ 
             this.HideWhole();
         });
 
@@ -287,6 +289,7 @@ public sealed class UI_worldchat : ViewUI
         this.cell_btn.onClick.AddListener(() =>
             {
                 ShowWhole();
+                EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED);
             });
 
 
@@ -370,7 +373,7 @@ public sealed class UI_worldchat : ViewUI
 
 
             Text name = obj.transform.FindChild("worldchat_cell_txt_head").transform.gameObject.GetComponent<Text>();
-            name.text = "<color=green>[世界]" + "</color><color=#9420D2FF> 测试玩家:</color>";// +current_size.ToString();
+            name.text = "<color=green>[世界]" + "</color><color=#9420D2FF>"  +  hash["name"] +":</color>";// +current_size.ToString();
 
 
 
@@ -422,15 +425,13 @@ public sealed class UI_worldchat : ViewUI
     {
         this.obj_whold.SetActive(true);
 
-        //  EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED);
 
     }
     private void HideWhole()
     {
         this.obj_whold.SetActive(false);
 
-        //   EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED);
-
+   
     }
 
     private string packMsg(string type, string name, string msg)

@@ -68,9 +68,6 @@ public class Json
             if (ch.Equals('}'))
             {
                 string sub = json.Substring(last, i - last);
-
-                Debug.Log(sub);
-
                 ret.Add(Json.Decode(sub));
 
                 last = i + 2;

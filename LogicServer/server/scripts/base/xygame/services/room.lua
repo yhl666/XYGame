@@ -76,7 +76,7 @@ function t.enter_room(ctx, msg, cb)
         -- 响应成功后 添加到table里面
 
         room_notify_all("Room", "EnterRoom", msg);
-        global_hero_list:add(hero.create(ctx, kv["no"]));
+        global_hero_list:add(hero.create(ctx, kv["no"]   , kv["name"]));
 
 
     end );

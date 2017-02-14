@@ -29,15 +29,12 @@ public class TownApp : AppBase
 
         }
 
-        Debug.Log(Json.MultiEncode(Json.MultiDecode("{name:10,pwd:1254,}{haha:125,}")));
-
-
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
         {
             ViewUI.Create<UITownRoot>();
 
 
-            this.AddCellApp<TownWorldChat>();
+            this.AddCellApp<WorldChatApp>();
 
             EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
             Application.targetFrameRate = 40;
@@ -50,35 +47,45 @@ public class TownApp : AppBase
             string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(500).ToString();
 
             string p = "name:" + PublicData.GetInstance().self_name + "," + "no:" + PublicData.GetInstance().self_no + ",";
-            Debug.Log(p);
-
+      
 
             if (PublicData.GetInstance().self_name == "")
             {
                 //test case   --------------------------------------
-                string str = "account:1,pwd:1,no:1,name:0001,";
+                string str = "account:1,pwd:1,";
 
                 PublicData.GetInstance().self_name = "0001";
                 PublicData.GetInstance().self_account = "1";
                 PublicData.GetInstance().self_no = "1";
 
 
-                RpcClient.ins.SendRequest("services.login", "login", str, (string msg11) =>
+                RpcClient.ins.SendRequest("services.login", "login", str, (string ree) =>
                 {
-                    RpcClient.ins.SendRequest("services.room", "enter_room", str, (string msg) =>
+                    HashTable kv = Json.Decode(ree);
+
+                    if (kv["ret"] == "ok")
                     {
-                        if (msg == "")
+                        PublicData.GetInstance().self_name = kv["name"];
+                        PublicData.GetInstance().self_account = kv["account"];
+                        PublicData.GetInstance().self_no = kv["no"];
+
+
+                        string pp = "name:" + PublicData.GetInstance().self_name + "," + "no:" + PublicData.GetInstance().self_no + ",";
+           
+                        RpcClient.ins.SendRequest("services.room", "enter_room", pp, (string msg) =>
                         {
-                            Debug.Log("enter error");
-                        }
-                        else
-                        {
-                            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
+                            if (msg == "")
+                            {
+                                Debug.Log("enter error");
+                            }
+                            else
+                            {
+                                EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
 
-                        }
-                    });
+                            }
+                        });
 
-
+                    }
 
                 });
             }
@@ -135,7 +142,7 @@ public class TownApp : AppBase
         if (HeroMgr.ins.self == null) return;
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && enable_newposition)
         {
             if ((Input.mousePosition.x > unclicked_xy.x && Input.mousePosition.y > unclicked_xy.y) && ((Input.mousePosition.x < unclicked_xy.x + unclicked_wh.x && Input.mousePosition.y < unclicked_xy.y + unclicked_wh.y)))
             {//限制范围内
@@ -192,8 +199,13 @@ public class TownApp : AppBase
     }
 
     Vector2 unclicked_xy = new Vector2(0, 0);
-    Vector2 unclicked_wh = new Vector2(600, 600);
+    Vector2 unclicked_wh = new Vector2(0, 0);
 
+    public void SetNewPositionAble(bool enable)
+    {
+        this.enable_newposition = enable;
+    }
 
+    private bool enable_newposition = true;
     Counter tick = Counter.Create(DATA.HERO_ALIVE_TICK);//tick for alive  30s
 }
