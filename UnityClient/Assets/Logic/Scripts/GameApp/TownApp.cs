@@ -111,7 +111,7 @@ public class TownApp : AppBase
     private void PostSelfNewPosition(Vector3 pos_world)
     {
         RpcClient.ins.SendRequest("services.room", "new_position", "no:" + HeroMgr.ins.self.no + ",x:" + pos_world.x.ToString() +
-             ",y:" + pos_world.y.ToString() + ",", (string msg) =>
+             ",y:" + pos_world.y.ToString() + ",name:" + HeroMgr.ins.self.name + "," , (string msg) =>
              {
                  if (msg == "timeout")
                  {

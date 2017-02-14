@@ -47,14 +47,6 @@ public sealed class UILoginRoot : ViewUI
 
 
 
-public class LoginInfo
-{
-    public string name;
-    public string account;
-    public string pwd;
-
-
-}
 
 public sealed class UI_login : ViewUI
 {

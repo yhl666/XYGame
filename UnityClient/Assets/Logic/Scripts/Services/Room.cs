@@ -14,6 +14,8 @@ namespace Services
             Hero hero = HeroMgr.Create<BaseHero>();
             hero.no = hash.GetInt("no");
             hero.name = hash["name"];
+            hero.x = 5f;
+            hero.y = 1f;
             cb("ret:ok,");
         }
 
@@ -47,7 +49,8 @@ namespace Services
             {
                 /// return;
                 hero = HeroMgr.Create<BaseHero>();
-                hero.no = int.Parse(hash["no"]);
+                hero.no = hash.GetInt("no");
+                hero.name =hash["name"];
                 hero.x = 5f;
                 hero.y = 1f;
             }

@@ -148,21 +148,18 @@ public class GiantLightSceneExtension : GiantLightScene
 public class RpcService : GAObject
 {
     public virtual string GetServiceName() { return ""; }
-    public void _Inner_Invoke__(uint id, string method, byte[] content)
+    public void _Inner_Invoke__(uint id, string method,string msg )
     {
         if ("_Inner_Invoke__" == method) return;
         if ("GetServiceName" == method) return;
 
-
-        string msg = ByteConverter.BytesToProtoBuf<rpc.EnterRoomMsg>(content, 0, content.Length).peer_name;
         VoidFuncString cb = new VoidFuncString((string kv_json) =>
         {
             var t = new rpc.EnterRoomMsg();//protobuf
             t.peer_name = kv_json;
             inner.RpcMgr.ins.SendResponse(id, ByteConverter.ProtoBufToBytes(t));
         });
-
-
+ 
         VoidFuncRpc func = null;
         if (methods.Contains(method))
         {
@@ -386,8 +383,14 @@ namespace inner
                 rpc = Activator.CreateInstance(t) as RpcService;
                 services.Add(service, rpc);
             }
-            Debug.LogWarning("[Server Rpc Call]:" + service + "." + method);
-            rpc._Inner_Invoke__(id, method, content);
+
+
+
+
+            string msg = ByteConverter.BytesToProtoBuf<rpc.EnterRoomMsg>(content, 0, content.Length).peer_name;
+      
+            Debug.LogWarning("[Server Rpc Call]:" + service + "." + method + " params:" + msg);
+            rpc._Inner_Invoke__(id, method, msg);
             return true;
         }
 
@@ -410,7 +413,7 @@ namespace inner
         /// <param name="cb"> 回调，参数是ResponseWrapper 该请求响应后会自动调用回调</param>
         public void SendRequest(string service, string method, byte[] content, Func<ResponseWrapper, bool> cb)
         {
-            Debug.LogWarning("[Client Rpc Call]:" + service + "." + method);
+     
             var wrapper = new RequestWrapper(service, method, content, cb);
             requests.Add(wrapper);
             scene.SendRequest(wrapper.id, service, method, content);

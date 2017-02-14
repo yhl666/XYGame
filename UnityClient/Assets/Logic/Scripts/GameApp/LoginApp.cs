@@ -1,8 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
-using System.Collections;
 using System;
+
+
+
+public class LoginInfo
+{
+    public string name;
+    public string account;
+    public string pwd;
+
+
+}
 public class LoginApp : AppBase
 {
     public override string GetAppName()
@@ -22,14 +31,14 @@ public class LoginApp : AppBase
 
         ViewUI.Create<UIPublicRoot>();
 
-        for (int i = 0; i < 100; i++)
+      /*  for (int i = 0; i < 100; i++)
         {
             EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
             {
                 return "";
             }));
 
-        }
+        }*/
 
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
         {
@@ -64,16 +73,19 @@ public class LoginApp : AppBase
 
 
 
-        for (int i = 0; i < 100; i++)
+     /*   for (int i = 0; i < 100; i++)
         {
             EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
             {
                 return "验证账户中 请稍后";
             }));
-        }
+        }*/
 
         string str = "account:" + info.account + ",";
         str = str + "pwd:" + info.pwd + ",";
+
+        PublicData.GetInstance().self_pwd =   info.pwd;
+
 
         EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW, "验证账户中 请稍后");
 
@@ -97,6 +109,7 @@ public class LoginApp : AppBase
                 PublicData.GetInstance().self_name = kv["name"];
                 PublicData.GetInstance().self_account = kv["account"];
                 PublicData.GetInstance().self_no = kv["no"];
+
                 this.processWithLoginOK();
             }
             else
@@ -118,13 +131,13 @@ public class LoginApp : AppBase
         string str = "name:" + info.name + ",";
         str = str + "account:" + info.account + ",";
         str = str + "pwd:" + info.pwd + ",";
-        for (int i = 0; i < 100; i++)
+      /*  for (int i = 0; i < 100; i++)
         {
             EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
             {
                 return "注册账户 请稍后";
             }));
-        }
+        }*/
 
 
         RpcClient.ins.SendRequest("services.login", "register", str, (string msg) =>

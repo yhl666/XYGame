@@ -13,7 +13,7 @@ local log = require("log"):new("login")
 local remote = require("base.remote");
 local hero = require("model.base_hero")
 local redis = require("base.redis");
-
+local redis_key = require("utils.redis_key")
 
 
 function t.login(ctx, msg, cb)
@@ -22,7 +22,7 @@ function t.login(ctx, msg, cb)
     local account = kv["account"];
     local pwd = kv["pwd"];
 
-    redis.get("login-" .. account, function(msg)
+    redis.get(redis_key.get_login(account) .. account, function(msg)
 
         if msg == "" then
             cb("ret:账户不存在,"); return;
@@ -50,7 +50,7 @@ local function do_register(id, kv, cb)
     local pwd = kv["pwd"];
 
     local param = "account:" .. account .. ",no:" .. id .. ",pwd:" .. pwd .. ",name:" .. name .. ",";
-    redis.set("login-" .. account, param, function(msg)
+    redis.set(redis_key.get_login(account) .. account, param, function(msg)
 
         if msg == "ok" then
             cb("ret:ok,msg:注册成功,"); return;
@@ -66,7 +66,7 @@ function t.register(ctx, msg, cb)
 
     -- 先查询账户存在否
 
-    redis.get("login-" .. account, function(msg)
+    redis.get(redis_key.get_login(account) .. account, function(msg)
 
         if msg == "" then
             --- "账户不存在

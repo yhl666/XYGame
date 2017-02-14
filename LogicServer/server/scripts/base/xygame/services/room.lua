@@ -17,7 +17,7 @@ t.enable_hotfix = false;  -- 禁止hot fix
 
 global_hero_list = hero_list:new();
 
-function notify_other(ctx, service, method, msg)
+local function notify_other(ctx, service, method, msg)
 
     global_hero_list:foreach( function(k, v)
 
@@ -39,7 +39,7 @@ end
 
 
 
-function notify_all(service, method, msg)
+local function notify_all(service, method, msg)
 
     global_hero_list:foreach( function(k, v)
         remote.request_client(v.ctx, service, method, msg, function(msg)
@@ -53,7 +53,7 @@ function notify_all(service, method, msg)
 end
 
 
-function on_disconnected(rpc_clt_id)
+local function on_disconnected(rpc_clt_id)
     local hero = global_hero_list:remove_by_rpc_cli_id(rpc_clt_id);
 
     notify_all("Room", "LeaveRoom", "no:" .. hero.no .. ",");

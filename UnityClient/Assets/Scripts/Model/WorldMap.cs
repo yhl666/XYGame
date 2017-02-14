@@ -8,6 +8,11 @@ public class WorldMap : Model
     {
         return terrain;
     }
+
+    public string GetWorldMapName()
+    {
+        return "城镇中心";
+    }
     public TerrainPlatform GetTerrainPlatform()
     {
         return platform;
