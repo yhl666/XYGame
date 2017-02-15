@@ -526,11 +526,20 @@ public sealed class UI_townmenuapp : ViewUI
     {
         this.panel.SetActive(true);
 
+        ScaleTo.Create(this.panel, 0.1f,0.8f, 0.8f).OnComptele = () =>
+        {
+          
+        };
+
     }
     public void __app__Hide()
     {
-        this.panel.SetActive(false);
 
+        ScaleTo.Create(this.panel, 0.1f, 0.0f,0.0f).OnComptele = () =>
+        {
+            this.panel.SetActive(false);
+
+        };
 
     }
 

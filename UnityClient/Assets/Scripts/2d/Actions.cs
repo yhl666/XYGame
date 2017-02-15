@@ -40,33 +40,44 @@ public class Actions : MonoBehaviour
 
 public class ScaleTo : Actions
 {
-    public float start = 0.0f;
-    public float end = 0.0f;
-    public float current = 0.0f;
+    public float start_x = 0.0f;
+    public float end_x = 0.0f;
+    public float current_x = 0.0f;
+
+    public float start_y = 0.0f;
+    public float end_y = 0.0f;
+    public float current_y = 0.0f;
 
     public override void UpdateMS()
     {
-        current = (end - start) * (current_time) / MAX_TIME + start;
+        current_x = (end_x - start_x) * (current_time) / MAX_TIME + start_x;
+        current_y = (end_y - start_y) * (current_time) / MAX_TIME + start_y;
 
-        this.transform.localScale = (new Vector3(current, current, 1.0f));
+        this.transform.localScale = (new Vector3(current_x, current_y, 1.0f));
     }
 
-    public static Actions Create(GameObject target, float time, float to)
+    public static Actions Create(GameObject target, float time, float x, float y)
     {
         ScaleTo action = target.AddComponent<ScaleTo>();
         action.MAX_TIME = time;
-        action.end = to;
+        action.end_x = x;
+        action.end_y = y;
         return action;
     }
-
+    public static Actions Create(GameObject target, float time, float xy)
+    {
+        return Create(target, time, xy, xy);
+    }
     public override void OnExit()
     {
         //修正
-        this.transform.localScale = (new Vector3(end, end, 1.0f));
+        this.transform.localScale = (new Vector3(end_x, end_y, 1.0f));
     }
     public override void OnEnter()
     {
-        start = this.transform.localScale.x;
+        start_x = this.transform.localScale.x;
+        start_y = this.transform.localScale.y;
+
     }
 
 }
@@ -76,17 +87,23 @@ public class ScaleTo : Actions
 
 public class ScaleBy : ScaleTo
 {
-    public static Actions Create(GameObject target, float time, float by)
+    public static Actions Create(GameObject target, float time, float x, float y)
     {
         ScaleBy action = target.AddComponent<ScaleBy>();
         action.MAX_TIME = time;
-        action.end = by;
+        action.end_x = x; action.end_y = y;
         return action;
+    }
+    public static Actions Create(GameObject target, float time, float xy)
+    {
+        return Create(target, time, xy, xy);
     }
 
     public override void OnEnter()
     {
         base.OnEnter();
-        end += start;
+        end_x += start_x;
+        end_y += start_y;
+
     }
 }
