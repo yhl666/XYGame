@@ -19,7 +19,6 @@ namespace Services
 
     }
 
-
 }
 
 
@@ -93,8 +92,5 @@ public class WorldChatApp : CellApp
     {
         base.OnDispose();
     }
-
-
-
 
 }

@@ -19,10 +19,6 @@ public sealed class UITownRoot : ViewUI
         // this._ui_root = PrefabsMgr.Load(DATA.UI_PREFABS_FILE_BATTLE);
         this._ui_root = GameObject.Find("UI_Town");
 
-
-
-
-
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_Townxy>(this));
@@ -36,7 +32,6 @@ public sealed class UITownRoot : ViewUI
             this._ui_child.Add(ViewUI.Create<UI_time>(this));
             return DATA.EMPTY_STRING;
         }));
-
 
 
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
@@ -67,9 +62,6 @@ public sealed class UITownRoot : ViewUI
 
 }
 
-
-
-
 public sealed class UI_Townxy : ViewUI
 {
 
@@ -84,7 +76,6 @@ public sealed class UI_Townxy : ViewUI
             txt.text = string.Format(DATA.UI_INFO_XY, (self.x * 100.0f).ToString("0"), (self.y * 100.0f).ToString("0"));
         }
     }
-
     public override bool Init()
     {
         base.Init();
@@ -94,11 +85,9 @@ public sealed class UI_Townxy : ViewUI
         return true;
     }
 
-
     private Text txt;
 
 }
-
 
 
 public sealed class UI_time : ViewUI
@@ -162,7 +151,6 @@ public sealed class UI_time : ViewUI
 }
 
 
-
 public sealed class UI_names : ViewUI
 {
     public override void Update()
@@ -214,10 +202,6 @@ public sealed class UI_names : ViewUI
 }
 
 
-
-
-
-
 public sealed class UI_worldchat : ViewUI
 {
 
@@ -263,15 +247,12 @@ public sealed class UI_worldchat : ViewUI
 
         this.list_content.FindChild("one").gameObject.SetActive(false);
 
-
-
         this.list_btn_send.onClick.AddListener(() =>
         {
 
             if (input.text != "")
             {
                 EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_SEND_BTN_CLICKED, input.text);
-
                 input.text = "";
             }
         });
@@ -283,7 +264,6 @@ public sealed class UI_worldchat : ViewUI
 
             this.HideWhole();
         });
-
 
 
         this.cell_btn.onClick.AddListener(() =>
@@ -323,11 +303,7 @@ public sealed class UI_worldchat : ViewUI
         int i = this.lists.Count;
         foreach (GameObject one in this.lists)
         {
-
-
             one.transform.localPosition = new Vector3(one.transform.localPosition.x, 0 + i * 100, one.transform.localPosition.z);
-
-
             i--;
         }
     }
@@ -351,15 +327,10 @@ public sealed class UI_worldchat : ViewUI
             cell_txt.text = packMsg(hash["type"], hash["name"], hash["msg"]);
 
 
-
-
             string time1 = hash["time"];
 
             string time2 = hash["time2"];
             time2 = time2.Replace("-", ":");
-
-
-
 
             GameObject obj = GameObject.Instantiate(this.template_copy, this.list_content) as GameObject;
             obj.SetActive(true);
@@ -370,24 +341,18 @@ public sealed class UI_worldchat : ViewUI
             this.list_content.sizeDelta = new Vector2(0, max_height);
 
 
-
-
             Text name = obj.transform.FindChild("worldchat_cell_txt_head").transform.gameObject.GetComponent<Text>();
             name.text = "<color=green>[世界]" + "</color><color=#9420D2FF>" + hash["name"] + ":</color>";// +current_size.ToString();
 
-
-
-
             Text txt_time = obj.transform.FindChild("worldchat_cell_txt_time").transform.gameObject.GetComponent<Text>();
             txt_time.text = "<color=#9420D2FF>" + time1 + " " + time2 + "</color>";
-
 
 
             Text txt_msg = obj.transform.FindChild("worldchat_cell_txt").transform.gameObject.GetComponent<Text>();
             txt_msg.text = hash["msg"];
             float scale = 1.0f;
 
-            scale =( txt_msg.text.Length+1)/ 25.0f;
+            scale = (txt_msg.text.Length + 1) / 25.0f;
 
             obj.transform.FindChild("worldchat_cell_bg1").transform.localScale = new Vector3(1.0f, scale, 1.0f);
 
@@ -396,28 +361,13 @@ public sealed class UI_worldchat : ViewUI
             int i = this.lists.Count;
             foreach (GameObject one in this.lists)
             {
-
-
                 one.transform.localPosition = new Vector3(one.transform.localPosition.x, 0 + i * 60, one.transform.localPosition.z);
-
 
                 i--;
             }
 
-
-
-
-
-
-
-
-
-
-
-
         }
     }
-
 
 
 
@@ -455,12 +405,12 @@ public sealed class UI_worldchat : ViewUI
     private GameObject cell_bg = null;
     private Button cell_btn = null;
 
-    private RectTransform list_content = null;
+    private RectTransform list_content = null;// list view 的 content
     private Button list_btn_send = null;
     private Button list_btn_close = null;
 
     private GameObject template_copy = null;
-    ArrayList lists = new ArrayList();
+    ArrayList lists = new ArrayList();//消息GameObject 容器
 
     private InputField input = null;
     private Counter cell_counter = Counter.Create(400);//显示  10 秒
