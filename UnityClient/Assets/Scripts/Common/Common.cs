@@ -93,7 +93,7 @@ public class Counter
     public bool Tick()
     {
         tick++;
-        if (tick < max) return true;
+        if (tick < max) {  return true; }
         tick = 0;
         return false;
     }

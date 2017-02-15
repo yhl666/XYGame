@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
-using System.Collections;
+ 
 namespace Services
 {
     public class WorldChat : RpcService
@@ -14,9 +13,7 @@ namespace Services
             string type = hash["type"];
 
             EventDispatcher.ins.PostEvent(Events.ID_RPC_WORLD_CHAT_NEW_MSG, hash);
-
         }
-
     }
 
 }
@@ -56,7 +53,7 @@ public class WorldChatApp : CellApp
             p.isOneCellAppShowLock = true;
 
             p.SetNewPositionAble(false);
-            view.__app__ShowWhole();
+            view.Show();
         }
         else if (Events.ID_WORLDCHAT_SEND_BTN_CLICKED == type)
         {
@@ -73,7 +70,7 @@ public class WorldChatApp : CellApp
         {
 
             p.SetNewPositionAble(true);
-            view.__app_HideWhole();
+            view.Hide();
 
             p.isOneCellAppShowLock = false;
 

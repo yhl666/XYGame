@@ -58,6 +58,7 @@
      <Compile Include="Assets\Logic\Scripts\GameApp\SampleApp.cs" />
      <Compile Include="Assets\Logic\Scripts\GameApp\TownApp.cs" />
      <Compile Include="Assets\Logic\Scripts\GameCellApp\TownMenuApp.cs" />
+     <Compile Include="Assets\Logic\Scripts\GameCellApp\TownSettingApp.cs" />
      <Compile Include="Assets\Logic\Scripts\GameCellApp\WorldChatApp.cs" />
      <Compile Include="Assets\Logic\Scripts\LogicScene.cs" />
      <Compile Include="Assets\Logic\Scripts\LoginScene.cs" />

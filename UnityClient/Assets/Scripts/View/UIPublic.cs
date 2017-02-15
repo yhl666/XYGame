@@ -23,7 +23,7 @@ public sealed class UIPublicRoot : ViewUI
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
             {
                 this._ui_child.Add(ViewUI.Create<UI_wait>(this));
-                this._ui_child.Add(ViewUI.Create<UI_push_msg>(this));
+             this._ui_child.Add(ViewUI.Create<UI_pushmsg>(this));
                 return DATA.EMPTY_STRING;
             }));
 
@@ -192,6 +192,50 @@ public sealed class UI_loading : ViewUI
 
 
 
+public sealed class UI_pushmsg : ViewUI
+{
+
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (tick.Tick()) return;
+
+
+        this.img_bg.SetActive(false);
+
+    }
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_PUBLIC_PUSH_MSG)
+        {
+            this.img_bg.SetActive(true);
+            tick.Reset();
+            this.txt.text = (userData as string).Substring(0, 30);
+        }
+
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        this.txt = GameObject.Find("txt_pushmsg").GetComponent<Text>();
+        this.img_bg = GameObject.Find("img_pushmsg");
+
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_PUBLIC_PUSH_MSG);
+        this.img_bg.SetActive(false);
+        return true;
+    }
+
+    private Text txt = null;
+    private GameObject img_bg = null;
+    Counter tick = Counter.Create(120);
+
+}
+
+
 public sealed class UI_wait : ViewUI
 {//进入游戏后 网络等待界面
 
@@ -249,7 +293,7 @@ public sealed class UI_wait : ViewUI
 }
 
 
-
+/*
 public sealed class UI_push_msg : ViewUI
 {
 
@@ -299,4 +343,4 @@ public sealed class UI_push_msg : ViewUI
 }
 
 
-
+*/

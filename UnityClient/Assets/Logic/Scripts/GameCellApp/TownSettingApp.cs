@@ -1,24 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
  
-namespace Services
+ 
+public class TownSettingApp : CellApp
 {
-
-}
-
-
-
-public class TownMenuApp : CellApp
-{
-    public TownMenuApp() { }
+    public TownSettingApp() { }
     public override bool Init()
     {
 
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_MENU_CLICKED);
-        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_MENU_CLOSE_CLICKED);
-
-
+    
         return true;
     }
     public override void OnEvent(int type, object userData)

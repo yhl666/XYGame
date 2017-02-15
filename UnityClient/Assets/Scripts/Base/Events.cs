@@ -16,7 +16,7 @@ public sealed class Events : object
     public const int ID_BATTLE_END = 1;// 战斗结束
     public const int ID_PLAYER_DEATH = 2;// 玩家死亡
 
-    public const int ID_PUSH_MSG = 7;//显示推送消息
+    public const int ID_PUBLIC_PUSH_MSG = 7;//显示 全局 推送消息,比如 提示玩家等级不够 等
 
     public const int ID_UI_WAIT = 9;//等待消息
     public const int ID_UI_NOWAIT = 10;//停止等待
@@ -89,6 +89,8 @@ public sealed class Events : object
 
     public const int ID_TOWN_MENU_CLICKED = 54;
     public const int ID_TOWN_MENU_CLOSE_CLICKED = 55;
+
+    public const int ID_VIEW_NEW_CELLAPP_VIEW = 56; //新CELL APP的view 事件 提供给Root View添加
 
     //------------------------------local event-----------------------------------------------------------
 

@@ -57,9 +57,29 @@ public sealed class UITownRoot : ViewUI
             return DATA.EMPTY_STRING;
         }));
 
+ 
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_VIEW_NEW_CELLAPP_VIEW);
+
+
         return true;
     }
 
+
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_VIEW_NEW_CELLAPP_VIEW)
+        {
+
+        }
+    }
+
+
+
+    private void AddCellApp(UICellApp view)
+    {
+
+    }
     public override void OnExit()
     {
 
@@ -67,6 +87,8 @@ public sealed class UITownRoot : ViewUI
 
         base.OnExit();
     }
+
+
     protected ArrayList _ui_child = new ArrayList();
 
 }
@@ -97,6 +119,8 @@ public sealed class UI_Townxy : ViewUI
     private Text txt;
 
 }
+
+
 
 
 public sealed class UI_time : ViewUI
@@ -211,7 +235,27 @@ public sealed class UI_names : ViewUI
 }
 
 
-public sealed class UI_worldchatapp : ViewUI
+
+public class UICellApp : ViewUI
+{
+    public virtual void Show()
+    {
+
+    }
+    public virtual void Hide()
+    {
+
+    }
+    /* public void BindCellApp(CellApp app)
+     {
+         this.app = app;
+     }
+
+     protected CellApp app = null;*/
+}
+
+
+public sealed class UI_worldchatapp : UICellApp
 {
 
 
@@ -366,7 +410,7 @@ public sealed class UI_worldchatapp : ViewUI
     /// <summary>
     /// 显示完整的界面
     /// </summary>
-    public void __app__ShowWhole()
+    public override void Show()
     {
         this.obj_whold.SetActive(true);
         ScaleTo.Create(this.obj_whold, 0.1f, 1.0f).OnComptele = () =>
@@ -376,7 +420,7 @@ public sealed class UI_worldchatapp : ViewUI
         };
 
     }
-    public void __app_HideWhole()
+    public override void Hide()
     {
 
         ScaleTo.Create(this.obj_whold, 0.1f, 0.0f).OnComptele = () =>
@@ -473,14 +517,12 @@ public sealed class UI_worldchatapp : ViewUI
 
 
 
-public sealed class UI_townmenuapp : ViewUI
+public sealed class UI_townmenuapp : UICellApp
 {
-
     public override void Update()
     {
         base.Update();
     }
-
 
     public override bool Init()
     {
@@ -505,8 +547,7 @@ public sealed class UI_townmenuapp : ViewUI
             EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLICKED, this);
         });
 
-
-        this.__app__Hide();
+        this.Hide();
         return true;
     }
 
@@ -522,20 +563,20 @@ public sealed class UI_townmenuapp : ViewUI
     /// <summary>
     /// 显示完整的界面
     /// </summary>
-    public void __app__Show()
+    public override void Show()
     {
         this.panel.SetActive(true);
 
-        ScaleTo.Create(this.panel, 0.1f,0.8f, 0.8f).OnComptele = () =>
+        ScaleTo.Create(this.panel, 0.1f, 0.8f, 0.8f).OnComptele = () =>
         {
-          
+
         };
 
     }
-    public void __app__Hide()
+    public override void Hide()
     {
 
-        ScaleTo.Create(this.panel, 0.1f, 0.8f,0.0f).OnComptele = () =>
+        ScaleTo.Create(this.panel, 0.1f, 0.8f, 0.0f).OnComptele = () =>
         {
             this.panel.SetActive(false);
 
@@ -546,8 +587,10 @@ public sealed class UI_townmenuapp : ViewUI
 
 
     private GameObject panel = null;
+
     private Button btn_close = null;
     private Button btn_show = null;
+
 }
 
 
