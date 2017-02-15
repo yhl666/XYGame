@@ -237,6 +237,7 @@ public sealed class UI_worldchat : ViewUI
 
         this.list_btn_send = GameObject.Find("worldchat_btn_send").GetComponent<Button>();
         this.list_btn_close = GameObject.Find("worldchat_btn_close").GetComponent<Button>();
+        this.scroll= GameObject.Find("worldchat_scrollview").GetComponent<ScrollRect>();
 
         this.input = GameObject.Find("worldchat_inputfield").GetComponent<InputField>();
 
@@ -255,6 +256,7 @@ public sealed class UI_worldchat : ViewUI
                 EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_SEND_BTN_CLICKED, input.text);
                 input.text = "";
             }
+       
         });
 
 
@@ -377,7 +379,7 @@ public sealed class UI_worldchat : ViewUI
     private void ShowWhole()
     {
         this.obj_whold.SetActive(true);
-
+        scroll.verticalScrollbar.value = 0;
 
     }
     private void HideWhole()
@@ -414,6 +416,7 @@ public sealed class UI_worldchat : ViewUI
 
     private InputField input = null;
     private Counter cell_counter = Counter.Create(400);//显示  10 秒
+    private ScrollRect scroll = null;
 
     private int MAX_REMAIN_COUNTS = 10; //最大消息保留条数
 }
