@@ -535,7 +535,7 @@ public sealed class UI_townmenuapp : ViewUI
     public void __app__Hide()
     {
 
-        ScaleTo.Create(this.panel, 0.1f, 0.0f,0.0f).OnComptele = () =>
+        ScaleTo.Create(this.panel, 0.1f, 0.8f,0.0f).OnComptele = () =>
         {
             this.panel.SetActive(false);
 
