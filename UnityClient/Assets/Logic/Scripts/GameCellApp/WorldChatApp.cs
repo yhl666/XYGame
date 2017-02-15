@@ -39,6 +39,7 @@ public class WorldChatApp : CellApp
     }
     public override void OnEvent(int type, object userData)
     {
+      
         if (type == Events.ID_RPC_WORLD_CHAT_NEW_MSG)
         {//新消息 // process
 

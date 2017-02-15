@@ -142,7 +142,7 @@ public class TownApp : AppBase
         if (HeroMgr.ins.self == null) return;
 
 
-        if (Input.GetMouseButtonDown(0) && enable_newposition)
+        if (Input.GetMouseButtonUp(0) && enable_newposition)
         {
             if ((Input.mousePosition.x > unclicked_xy.x && Input.mousePosition.y > unclicked_xy.y) && ((Input.mousePosition.x < unclicked_xy.x + unclicked_wh.x && Input.mousePosition.y < unclicked_xy.y + unclicked_wh.y)))
             {//限制范围内
