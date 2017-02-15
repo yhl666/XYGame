@@ -3,90 +3,33 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '8da2abee0969f399eea99d9cae89f772eb14d365'
-    oldFile: !uuid '152aa03b7812426119f85471bd2878d6231de153'
+    newFile: !uuid '51ff1d2f193b547dccb057247a202c0e2be01990'
+    oldFile: !uuid '8da2abee0969f399eea99d9cae89f772eb14d365'
+  /UnityClient/Assembly-CSharp-Editor-firstpass.csproj:
+    newFile: !uuid '897cccc0e4a26567018c60d2394d8acda2f6c268'
+    oldFile: !uuid '43b3859b83a3f105f49002df0bc226101244685d'
+  /UnityClient/Assembly-CSharp-Editor.csproj:
+    newFile: !uuid 'fb978e6023107f6d5b46f081169ea6730796f477'
+    oldFile: !uuid '1767b6bd8ea24a036a22616338a082b6a04b199b'
+  /UnityClient/Assembly-CSharp-firstpass.csproj:
+    newFile: !uuid '9d741cbe805761368c0a5f481bbfae18303adf6f'
+    oldFile: !uuid 'db00cd80b10cebaf9734e70cb48771ba50d67fd9'
   /UnityClient/Assembly-CSharp.csproj:
-    newFile: !uuid '25179c1ce234341c61d51f63fd70696bed47b484'
-    oldFile: !uuid 'ee9591f0a1c29b6aa8a27aa4780e5d819fef47f6'
+    newFile: !uuid '0d637db6a82f5154c4a611c701b7fdd8f6ad3203'
+    oldFile: !uuid '25179c1ce234341c61d51f63fd70696bed47b484'
   /UnityClient/Assets:
-    newFile: !uuid 'a4209b46769d69f2c58c809773e044e9f6161b85'
-    oldFile: !uuid '78ee1702e56d7a620408ad407a3093f269a9b4c7'
+    newFile: !uuid '2c257eb788ace9c868cf18c2c357dd780e5c0c93'
+    oldFile: !uuid 'a4209b46769d69f2c58c809773e044e9f6161b85'
   /UnityClient/Assets/Logic:
-    newFile: !uuid '15006abc04a755e6d680724aab797e095e4f355b'
-    oldFile: !uuid '528228c0cf354aa0504c68e70fdf8d45a03ab17c'
-  /UnityClient/Assets/Logic/LoginScene.unity:
-    newFile: !uuid '323c6f47b38b79433e5a6a56e19c847f45a909ca'
-    oldFile: !uuid '8302ed4d53b46102c9e3b73cdc9e61be699cf393'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid '54929d91deccea12d4dc136d0610a1c435fd059d'
-    oldFile: !uuid '22a14e87deb5023993746e2febe16042cef0773c'
-  /UnityClient/Assets/Logic/Scripts/GameApp:
-    newFile: !uuid 'c5f0116d8f6a47faeb94c00fc1f372c1742f7038'
-    oldFile: !uuid '5b7738f8f68866d1b51fefd3fcd113d7c57a61ac'
-  /UnityClient/Assets/Logic/Scripts/GameApp/TownApp.cs:
-    newFile: !uuid '1103e42fa4d45ddb0c7bc5cf2125f8a1f637591b'
-    oldFile: !uuid 'fe5c22b4410f0d5565ad14f3144f9f4939b1bfdc'
-  /UnityClient/Assets/Logic/Scripts/GameCellApp:
-    newFile: !uuid '847c6959b2cf1a92e5c58254f2689054b2691a3a'
-    oldFile: !uuid 'c1317e6d8060d2f9a7eaa227e08a0d6eecd79186'
-  /UnityClient/Assets/Logic/Scripts/GameCellApp/TownMenuApp.cs:
-    newFile: !uuid 'ddef2f47cbe37b22e6f88f575354a04c91640338'
-    oldFile: !uuid '9025959457c0ebed6b47076e86ae852e0ca1239c'
-  /UnityClient/Assets/Logic/Scripts/GameCellApp/TownSettingApp.cs:
-    newFile: !uuid 'a9cc3252b46d8a4a84a23e0b90ec98e5866960b2'
-    oldFile: null
-  /UnityClient/Assets/Logic/Scripts/GameCellApp/TownSettingApp.cs.meta:
-    newFile: !uuid '6eb0824debfcd7b69d737a6b2f493d6962b936a8'
-    oldFile: null
-  /UnityClient/Assets/Logic/Scripts/GameCellApp/WorldChatApp.cs:
-    newFile: !uuid 'aac5ac0c30ddfcb91f13f38aa7c741ad2bf7751a'
-    oldFile: !uuid '13d5a8844f97eac841a3668a47ce52c1e226e9a9'
-  /UnityClient/Assets/Logic/Scripts/View:
-    newFile: !uuid '98a24d32e4039ad783459d3f3d2e1421b3b760db'
-    oldFile: !uuid 'a77bf474208059f53ba07a3d07b0235266557bd3'
-  /UnityClient/Assets/Logic/Scripts/View/UITown.cs:
-    newFile: !uuid '4ee32d4cc18a77f1701b6e9328ef203ca2c4ded1'
-    oldFile: !uuid '14cafce54aabd1420759d4e5a402a3c5ada0e9dd'
+    newFile: !uuid '8c8eb396bae024790cd87d507e730d52d6d66388'
+    oldFile: !uuid '15006abc04a755e6d680724aab797e095e4f355b'
   /UnityClient/Assets/Logic/TownScene.unity:
-    newFile: !uuid 'ae30fe5faec7ee31c60d1469935458b28529dfae'
-    oldFile: !uuid '206ebc77395b72c5b6ba374bb67072e3aa0fe60a'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'efbc40391a2fa23348e30e16d5696172d77905d6'
-    oldFile: !uuid '657f0daccb6e9c41660e3ea88582f37823f4cc08'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '395064c93f32bd13cc154a095a3f5f4ab463ed18'
-    oldFile: !uuid '5aaae6332e7236d8e40e3c35d55da8c3a81e47c4'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '8466d3fe1485dbd3ab4c7b2c233499a89d95de90'
-    oldFile: !uuid '3df351d7207c8ba2b2f9c00d4aa27ada136b55ee'
-  /UnityClient/Assets/Resources/Prefabs/ui/Public.prefab:
-    newFile: !uuid 'd641f0703f6b4c94dcfd93730593f74919526873'
-    oldFile: !uuid '1ebb117e1c20a1d914a996896bf48d723a12806f'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '1c28f9c6ab22ed2226a30966a9bc9d6fe0051fdb'
-    oldFile: !uuid '8d7a0fb13c04e3489ab76b574addec8a32947d13'
-  /UnityClient/Assets/Scripts/Base:
-    newFile: !uuid 'c2369353f8d4352ac731d9226d85530b7a431be4'
-    oldFile: !uuid '3e0cd54b7bb3e6e5a302b7d0d9ddc98735d5880b'
-  /UnityClient/Assets/Scripts/Base/Events.cs:
-    newFile: !uuid '9d146059d1ab4915f696d4ab9bd1e911e820d597'
-    oldFile: !uuid '1971f168cfe6ecf3d7152dd3b9992d228bc1974a'
-  /UnityClient/Assets/Scripts/Common:
-    newFile: !uuid 'd27fe2386148054abccfc6e2f475716b5322a875'
-    oldFile: !uuid '4da361d151663cd2d3565682d54ed505198561c4'
-  /UnityClient/Assets/Scripts/Common/Common.cs:
-    newFile: !uuid 'f1ba859125c25709c1067a5addd1851dc8ce9d7a'
-    oldFile: !uuid 'b1944d460e38f713d780f68f4a0400d6f23e7d2e'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid '153b3fbb0066a4eea6d12f6446f817c2c0e102b9'
-    oldFile: !uuid 'f3d5fce459f22ea8cbba679c32e0b72ba2a95b43'
-  /UnityClient/Assets/Scripts/View/UIPublic.cs:
-    newFile: !uuid 'a1eeee779144cf116a9ed2cdd23319330333219d'
-    oldFile: !uuid 'a9dc57a6e9124ee77cec13818d7476eae19f93e5'
+    newFile: !uuid '533666ed381c4bbd878bc8be7c18f3902e36b2b7'
+    oldFile: !uuid 'ae30fe5faec7ee31c60d1469935458b28529dfae'
   /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid 'ec9b19cdd6a5cbe359c481c9a61d0acf66bbf77c'
-    oldFile: !uuid '6f293650289a3120989262debe13aaf6cbdb5081'
-gitCommitId: !uuid 'a2f73a09a516e23a6f50dd9fa055ced2e4ceddb5'
+    newFile: !uuid '8b97814d7d387f10b8fede9ea1b31282c2ba7b9b'
+    oldFile: !uuid 'ec9b19cdd6a5cbe359c481c9a61d0acf66bbf77c'
+gitCommitId: !uuid 'e8eb6f545bdda30f075466c4c71225a7ff7ecb29'
 renames: {
   }
-revisionId: 137
+revisionId: 138
