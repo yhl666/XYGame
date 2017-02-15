@@ -3,30 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'd86946be2305f96091638ab04659d4e0553f1bc5'
-    oldFile: !uuid '26e1b9ed95694748b9d6d1a0ff63349da2c5ddd5'
+    newFile: !uuid 'ad1e13b53f1d4c438b0f683bc82a0cf04d91a83e'
+    oldFile: !uuid 'd86946be2305f96091638ab04659d4e0553f1bc5'
   /UnityClient/Assets:
-    newFile: !uuid '4f3ada55b2853e19fdf993f3f198d5045e27de0c'
-    oldFile: !uuid '84e505b7fc96d59e89be628fa146b0b383e89b88'
+    newFile: !uuid '172adeca11addc3bce3e5843f9c543793af0302b'
+    oldFile: !uuid '4f3ada55b2853e19fdf993f3f198d5045e27de0c'
   /UnityClient/Assets/Logic:
-    newFile: !uuid '94579562084d5962d979e075cf17c5178858ff6d'
-    oldFile: !uuid 'a04b50efdce8e1cc769d68d9516f1eb51fd9dea1'
+    newFile: !uuid '43a293ba396108293196f9904d9e0e2c3a280074'
+    oldFile: !uuid '94579562084d5962d979e075cf17c5178858ff6d'
   /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid '6cf54f8729aa362f06fa452db482544b43cb46a6'
-    oldFile: !uuid '27395b44b54f941b2bfe84c37cb0930df974d69a'
+    newFile: !uuid 'bc35a076822572c7bf01d37bc0f42e050a5bf891'
+    oldFile: !uuid '6cf54f8729aa362f06fa452db482544b43cb46a6'
   /UnityClient/Assets/Logic/Scripts/View:
-    newFile: !uuid '9b6485d8aa08e9ed34ea2a7a585185e9e950327f'
-    oldFile: !uuid 'cb88e05e85bc5a0b010322b95a87f4cc90ff6174'
+    newFile: !uuid 'af4eadce897dddc7e7fc8927c44cb9642b84ddb4'
+    oldFile: !uuid '9b6485d8aa08e9ed34ea2a7a585185e9e950327f'
   /UnityClient/Assets/Logic/Scripts/View/UITown.cs:
-    newFile: !uuid 'e265b40251371aa922e271a44044ad214606d833'
-    oldFile: !uuid 'b648f3687e907bb4b9d1b356f13e718f59d79ec9'
-  /UnityClient/Assets/Logic/TownScene.unity:
-    newFile: !uuid 'e291ece8c49a9d7971e821d59c14c3fad2661c4d'
-    oldFile: !uuid '1cafac9422e0eba0df381aee98efe227476c4866'
-  /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid 'e89ad9eb52c9708bb559db17dc09f6a0133d3789'
-    oldFile: !uuid '9ca3391cb5a08427dbbf8620344b898bdf167f4f'
-gitCommitId: !uuid '56ca5c7f16bdad7672e43323b3d4d78cd406021d'
+    newFile: !uuid '3ed37b7b608efbbc885c9ff2b8f41e0b84d7faa0'
+    oldFile: !uuid 'e265b40251371aa922e271a44044ad214606d833'
+gitCommitId: !uuid '8eb10d0047c1843c9fa5d4c0c6ba0e8d15ae6187'
 renames: {
   }
-revisionId: 129
+revisionId: 130
