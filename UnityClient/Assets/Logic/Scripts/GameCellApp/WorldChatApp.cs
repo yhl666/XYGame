@@ -29,7 +29,7 @@ public class WorldChatApp : CellApp
     public override bool Init()
     {
 
-        EventDispatcher.ins.AddEventListener(this, Events.ID_RPC_WORLD_CHAT_NEW_MSG);
+      ///  EventDispatcher.ins.AddEventListener(this, Events.ID_RPC_WORLD_CHAT_NEW_MSG);
         EventDispatcher.ins.AddEventListener(this, Events.ID_WORLDCHAT_CELL_BTN_CLICKED);
         EventDispatcher.ins.AddEventListener(this, Events.ID_WORLDCHAT_SEND_BTN_CLICKED);
         EventDispatcher.ins.AddEventListener(this, Events.ID_WORLDCHAT_CLOSE_BTN_CLICKED);

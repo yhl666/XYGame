@@ -22,6 +22,10 @@ public class AppBase : GAObject
         this.Add(app);
     }
 
+    public void RemoveCellApp(CellApp app)
+    {
+        this.Remove(app);
+    }
 
     private void Add(CellApp b)
     {

@@ -48,6 +48,15 @@ public sealed class UITownRoot : ViewUI
             return DATA.EMPTY_STRING;
         }));
 
+
+
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_townmenuapp>(this));
+
+            return DATA.EMPTY_STRING;
+        }));
+
         return true;
     }
 
@@ -262,23 +271,22 @@ public sealed class UI_worldchatapp : ViewUI
 
         this.list_btn_close.onClick.AddListener(() =>
         {
-            EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CLOSE_BTN_CLICKED,this);
+            EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CLOSE_BTN_CLICKED, this);
 
-    
+
         });
 
 
         this.cell_btn.onClick.AddListener(() =>
             {
-  
-                EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED,this);
+
+                EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED, this);
             });
 
 
         this.hideSmall();
 
-        this.__app_HideWhole();
-
+        this.obj_whold.SetActive(false);
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_RPC_WORLD_CHAT_NEW_MSG);
         return true;
@@ -345,6 +353,9 @@ public sealed class UI_worldchatapp : ViewUI
 
             obj.transform.FindChild("worldchat_cell_bg1").transform.localScale = new Vector3(1.0f, scale, 1.0f);
 
+
+            obj.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+
             this.ReSize();
 
         }
@@ -358,13 +369,21 @@ public sealed class UI_worldchatapp : ViewUI
     public void __app__ShowWhole()
     {
         this.obj_whold.SetActive(true);
-        scroll.verticalScrollbar.value = 0;
+        ScaleTo.Create(this.obj_whold, 0.1f, 1.0f).OnComptele = () =>
+        {
+
+            scroll.verticalScrollbar.value = 0;
+        };
 
     }
     public void __app_HideWhole()
     {
-        this.obj_whold.SetActive(false);
 
+        ScaleTo.Create(this.obj_whold, 0.1f, 0.0f).OnComptele = () =>
+            {
+                this.obj_whold.SetActive(false);
+
+            };
 
     }
 
@@ -399,3 +418,135 @@ public sealed class UI_worldchatapp : ViewUI
 
     private int MAX_REMAIN_COUNTS = 10; //最大消息保留条数
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public sealed class UI_townmenuapp : ViewUI
+{
+
+    public override void Update()
+    {
+        base.Update();
+    }
+
+
+    public override bool Init()
+    {
+        base.Init();
+
+
+        this.btn_close = GameObject.Find("btn_menu_close").GetComponent<Button>();
+        this.btn_show = GameObject.Find("btn_menu_show").GetComponent<Button>();
+        this.panel = GameObject.Find("ui_panel_menus");
+
+        this.btn_close.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLOSE_CLICKED, this);
+
+
+        });
+
+
+        this.btn_show.onClick.AddListener(() =>
+        {
+
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLICKED, this);
+        });
+
+
+        this.__app__Hide();
+        return true;
+    }
+
+
+
+    public override void OnEvent(int type, object userData)
+    {
+
+    }
+
+
+
+    /// <summary>
+    /// 显示完整的界面
+    /// </summary>
+    public void __app__Show()
+    {
+        this.panel.SetActive(true);
+
+    }
+    public void __app__Hide()
+    {
+        this.panel.SetActive(false);
+
+
+    }
+
+
+
+    private GameObject panel = null;
+    private Button btn_close = null;
+    private Button btn_show = null;
+}
+
+
+
+
+
+
+
+
+
+

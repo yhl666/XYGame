@@ -87,6 +87,9 @@ public sealed class Events : object
     public const int ID_WORLDCHAT_SEND_BTN_CLICKED = 52;//世界聊天窗口 点击发送按钮
     public const int ID_WORLDCHAT_CLOSE_BTN_CLICKED = 53;//世界聊天窗口 点击关闭按钮
 
+    public const int ID_TOWN_MENU_CLICKED = 54;
+    public const int ID_TOWN_MENU_CLOSE_CLICKED = 55;
+
     //------------------------------local event-----------------------------------------------------------
 
     /* public const int ID_DISABLE_RUN = 100;//禁止run 状态

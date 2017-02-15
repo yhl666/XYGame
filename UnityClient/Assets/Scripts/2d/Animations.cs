@@ -45,9 +45,9 @@ public sealed class Animations : GAObject
         if (IsComplete())
         {
             loop--;
-            if(_OnComplete!=null)_OnComplete.Invoke();
+            if (_OnComplete != null) _OnComplete.Invoke();
             if (loop != 0)
-            {        
+            {
                 index = 0;
             }
             else
@@ -183,6 +183,3 @@ public sealed class Animations : GAObject
         this.UpdateMS();
     }
 }
-
-
-
