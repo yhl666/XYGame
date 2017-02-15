@@ -3,33 +3,30 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '51ff1d2f193b547dccb057247a202c0e2be01990'
-    oldFile: !uuid '8da2abee0969f399eea99d9cae89f772eb14d365'
-  /UnityClient/Assembly-CSharp-Editor-firstpass.csproj:
-    newFile: !uuid '897cccc0e4a26567018c60d2394d8acda2f6c268'
-    oldFile: !uuid '43b3859b83a3f105f49002df0bc226101244685d'
-  /UnityClient/Assembly-CSharp-Editor.csproj:
-    newFile: !uuid 'fb978e6023107f6d5b46f081169ea6730796f477'
-    oldFile: !uuid '1767b6bd8ea24a036a22616338a082b6a04b199b'
-  /UnityClient/Assembly-CSharp-firstpass.csproj:
-    newFile: !uuid '9d741cbe805761368c0a5f481bbfae18303adf6f'
-    oldFile: !uuid 'db00cd80b10cebaf9734e70cb48771ba50d67fd9'
+    newFile: !uuid '641ad170c2e8a4941a819488e757bba159988420'
+    oldFile: !uuid '51ff1d2f193b547dccb057247a202c0e2be01990'
   /UnityClient/Assembly-CSharp.csproj:
-    newFile: !uuid '0d637db6a82f5154c4a611c701b7fdd8f6ad3203'
-    oldFile: !uuid '25179c1ce234341c61d51f63fd70696bed47b484'
+    newFile: !uuid '00abb152133bc7b62a88f8e47fdab60711e1e490'
+    oldFile: !uuid '0d637db6a82f5154c4a611c701b7fdd8f6ad3203'
   /UnityClient/Assets:
-    newFile: !uuid '2c257eb788ace9c868cf18c2c357dd780e5c0c93'
-    oldFile: !uuid 'a4209b46769d69f2c58c809773e044e9f6161b85'
+    newFile: !uuid '3843c961e22ecc4c0b080d52fc8c738636b7e4d7'
+    oldFile: !uuid '2c257eb788ace9c868cf18c2c357dd780e5c0c93'
+  /UnityClient/Assets/AutoFlitScreen.cs:
+    newFile: !uuid 'a36a7eb7a65636c501be3b36a42fcd61fa141d47'
+    oldFile: null
+  /UnityClient/Assets/AutoFlitScreen.cs.meta:
+    newFile: !uuid '02ffbb4f1c2665d4be20ec8715db67d1a6bde964'
+    oldFile: null
   /UnityClient/Assets/Logic:
-    newFile: !uuid '8c8eb396bae024790cd87d507e730d52d6d66388'
-    oldFile: !uuid '15006abc04a755e6d680724aab797e095e4f355b'
+    newFile: !uuid '00f28b1a608795fff9bf9c4d55d3f1a40dff2b38'
+    oldFile: !uuid '8c8eb396bae024790cd87d507e730d52d6d66388'
   /UnityClient/Assets/Logic/TownScene.unity:
-    newFile: !uuid '533666ed381c4bbd878bc8be7c18f3902e36b2b7'
-    oldFile: !uuid 'ae30fe5faec7ee31c60d1469935458b28529dfae'
+    newFile: !uuid '7bec33c92c4085292f48018ab327dceea2a3214d'
+    oldFile: !uuid '533666ed381c4bbd878bc8be7c18f3902e36b2b7'
   /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid '8b97814d7d387f10b8fede9ea1b31282c2ba7b9b'
-    oldFile: !uuid 'ec9b19cdd6a5cbe359c481c9a61d0acf66bbf77c'
-gitCommitId: !uuid 'e8eb6f545bdda30f075466c4c71225a7ff7ecb29'
+    newFile: !uuid '58b4736a17585c89186bcfb9f7c6b16d35993e62'
+    oldFile: !uuid '8b97814d7d387f10b8fede9ea1b31282c2ba7b9b'
+gitCommitId: !uuid 'efa935ab96b16c57f895974b0efc50143e98d3b3'
 renames: {
   }
-revisionId: 138
+revisionId: 139
