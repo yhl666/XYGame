@@ -262,22 +262,22 @@ public sealed class UI_worldchatapp : ViewUI
 
         this.list_btn_close.onClick.AddListener(() =>
         {
-            EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CLOSE_BTN_CLICKED);
+            EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CLOSE_BTN_CLICKED,this);
 
-            this.HideWhole();
+    
         });
 
 
         this.cell_btn.onClick.AddListener(() =>
             {
-                ShowWhole();
-                EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED);
+  
+                EventDispatcher.ins.PostEvent(Events.ID_WORLDCHAT_CELL_BTN_CLICKED,this);
             });
 
 
         this.hideSmall();
 
-        this.HideWhole();
+        this.__app_HideWhole();
 
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_RPC_WORLD_CHAT_NEW_MSG);
@@ -355,13 +355,13 @@ public sealed class UI_worldchatapp : ViewUI
     /// <summary>
     /// 显示完整的界面
     /// </summary>
-    private void ShowWhole()
+    public void __app__ShowWhole()
     {
         this.obj_whold.SetActive(true);
         scroll.verticalScrollbar.value = 0;
 
     }
-    private void HideWhole()
+    public void __app_HideWhole()
     {
         this.obj_whold.SetActive(false);
 

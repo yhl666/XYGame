@@ -208,4 +208,6 @@ public class TownApp : AppBase
 
     private bool enable_newposition = true;
     Counter tick = Counter.Create(DATA.HERO_ALIVE_TICK);//tick for alive  30s
+    public bool isOneCellAppShowLock = false;// 小app 的呼出按钮可用否
+
 }

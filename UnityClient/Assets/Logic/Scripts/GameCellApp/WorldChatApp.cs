@@ -39,7 +39,10 @@ public class WorldChatApp : CellApp
     }
     public override void OnEvent(int type, object userData)
     {
-      
+
+        UI_worldchatapp view = userData as UI_worldchatapp;
+        TownApp p = (this.parent as TownApp);
+
         if (type == Events.ID_RPC_WORLD_CHAT_NEW_MSG)
         {//新消息 // process
 
@@ -49,8 +52,11 @@ public class WorldChatApp : CellApp
         else if (type == Events.ID_WORLDCHAT_CELL_BTN_CLICKED)
         {
 
-            TownApp p = (this.parent as TownApp);
+            if (p.isOneCellAppShowLock) return;
+            p.isOneCellAppShowLock = true;
+
             p.SetNewPositionAble(false);
+            view.__app__ShowWhole();
         }
         else if (Events.ID_WORLDCHAT_SEND_BTN_CLICKED == type)
         {
@@ -65,8 +71,11 @@ public class WorldChatApp : CellApp
         }
         else if (type == Events.ID_WORLDCHAT_CLOSE_BTN_CLICKED)
         {
-            TownApp p = (this.parent as TownApp);
+
             p.SetNewPositionAble(true);
+            view.__app_HideWhole();
+
+            p.isOneCellAppShowLock = false;
 
         }
     }
