@@ -47,17 +47,11 @@ public class TownApp : AppBase
 
             string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(500).ToString();
 
-            string p = "name:" + PublicData.GetInstance().self_name + "," + "no:" + PublicData.GetInstance().self_no + ",";
-      
 
-            if (PublicData.GetInstance().self_name == "")
+            if (PublicData.GetInstance().self_user == null)
             {
                 //test case   --------------------------------------
                 string str = "account:1,pwd:1,";
-
-                PublicData.GetInstance().self_name = "0001";
-                PublicData.GetInstance().self_account = "1";
-                PublicData.GetInstance().self_no = "1";
 
 
                 RpcClient.ins.SendRequest("services.login", "login", str, (string ree) =>
@@ -67,13 +61,11 @@ public class TownApp : AppBase
 
                     if (kv["ret"] == "ok")
                     {
-                        PublicData.GetInstance().self_name = kv["name"];
-                        PublicData.GetInstance().self_account = kv["account"];
-                        PublicData.GetInstance().self_no = kv["no"];
+                        DAO.User user = DAO.User.Create(kv);
+                        PublicData.GetInstance().self_user = user;
 
+                        string pp = "name:" + user.name + "," + "no:" + user.no + ",";
 
-                        string pp = "name:" + PublicData.GetInstance().self_name + "," + "no:" + PublicData.GetInstance().self_no + ",";
-           
                         RpcClient.ins.SendRequest("services.room", "enter_room", pp, (string msg) =>
                         {
                             if (msg == "")
@@ -96,6 +88,9 @@ public class TownApp : AppBase
             {
                 //test case   -------------end-------------------------
 
+                var user = PublicData.GetInstance().self_user;
+
+                string p = "name:" + user.name + "," + "no:" + user.no + ",";
 
                 RpcClient.ins.SendRequest("services.room", "enter_room", p, (string msg) =>
                 {

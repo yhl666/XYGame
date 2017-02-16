@@ -45,12 +45,9 @@ public class PublicData : object
 
     public string player_name = "Default";
 
-    public string self_name = "";
-    public string self_account = "";
-    public string self_no = "";
-    public string self_pwd = "";
+    public DAO.User self_user = null;
 
-     // for frame sync  input status
+    // for frame sync  input status
     public bool IS_left = false;//left
     public bool IS_right = false;//right
     public bool IS_jump = false;//jump

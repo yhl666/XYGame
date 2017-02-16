@@ -49,7 +49,7 @@ function t.login(msg, cb)
 
                 local str = user1:to_json();
 
-                cb("ret:ok,msg:" .. str .. ",");
+                cb("ret:ok," .. str);
                 -- 查询成功返回user信息
 
                 redis.set(redis_key.get_user(no), str, function(msg)

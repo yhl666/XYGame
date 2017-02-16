@@ -23,9 +23,8 @@ namespace Services
         {
             HashTable hash = Json.Decode(msg);
             Hero hero = HeroMgr.Create<BaseHero>();
-            hero.name = PublicData.GetInstance().self_name;
-
-            hero.no = int.Parse(PublicData.GetInstance().self_no);
+            hero.name = PublicData.GetInstance().self_user.name;
+            hero.no =  PublicData.GetInstance().self_user.no;
 
             HeroMgr.ins.self = hero;
             hero.x = 5f;

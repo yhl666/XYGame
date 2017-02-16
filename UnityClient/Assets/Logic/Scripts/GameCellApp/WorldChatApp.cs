@@ -59,8 +59,8 @@ public class WorldChatApp : CellApp
         {
             string what = userData as string;
 
-            string msg = "name:" + PublicData.GetInstance().self_name;
-            msg = msg + ",type:[世界],msg:" + what + ",name:" + PublicData.GetInstance().self_name + ",";
+            string msg = "name:" + PublicData.GetInstance().self_user.name;
+            msg = msg + ",type:[世界],msg:" + what + ",name:" + PublicData.GetInstance().self_user.name + ",";
 
             RpcClient.ins.SendRequest("services.worldchat", "push", msg);
 

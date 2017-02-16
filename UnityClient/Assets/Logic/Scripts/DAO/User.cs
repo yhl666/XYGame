@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class DAO
+public class DaoBase
 {
     public virtual void SetJson(string json)
     {
@@ -17,27 +17,52 @@ public class DAO
 
 
 }
-
-
-
-public class User : DAO
+namespace DAO
 {
-    public int no;
-    public string name;
-    public int level;
-    public string timestamp = "0";
-    public string type = "2";
 
-    public override void SetJson(string json)
+    public class User : DaoBase
     {
-        HashTable kv = Json.Decode(json);
+        public int no;
+        public string name;
+        public int level;
+        public string time = "0";
+        public string type = "2";
 
 
-        this.no = kv.GetInt("no");
-        this.name = kv["name"];
-        this.level = kv.GetInt("level");
-        this.timestamp = kv["time"];
+        public void SetHashTable(HashTable kv)
+        {
+            this.no = kv.GetInt("no");
+            this.name = kv["name"];
+            this.level = kv.GetInt("level");
+            this.time = kv["time"];
+        }
+        public override void SetJson(string json)
+        {
+            HashTable kv = Json.Decode(json);
+            this.SetHashTable(kv);
+        }
+
+        public static User Create(string json)
+        {
+            User ret = new User();
+            ret.SetJson(json);
+            return ret;
+        }
+
+        public static User Create(HashTable kv)
+        {
+            User ret = new User();
+            ret.SetHashTable(kv);
+            return ret;
+        }
+
+
+        public static User Create()
+        {
+            User ret = new User();
+            return ret;
+        }
+
+        private User() { }
     }
-
-
 }
