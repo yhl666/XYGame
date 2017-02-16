@@ -42,6 +42,10 @@ namespace DAO
             this.SetHashTable(kv);
         }
 
+        public override string ToJson()
+        {
+            return "no:" + no.ToString() + ",name:" + name + ",level:" + level.ToString() + ",type:" + type .ToString() +  ",time:" + time .ToString()+  ",";
+        }
         public static User Create(string json)
         {
             User ret = new User();

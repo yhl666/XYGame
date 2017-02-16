@@ -15,7 +15,7 @@ public class Hero : Entity
 
         base.UpdateMS();
     }
-
+    public DAO.User user = null;
     public string name_head;
 }
 

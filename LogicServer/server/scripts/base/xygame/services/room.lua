@@ -10,7 +10,7 @@ local log = require("log"):new("room")
 local remote = require("base.remote");
 local hero = require("model.base_hero")
 local hero_list = require("model.hero_list")
-
+local user = require("model.user")
 local t = { }
 
 t.enable_hotfix = false;  -- 禁止hot fix
@@ -60,7 +60,7 @@ local function on_disconnected(rpc_clt_id)
         log:error(" Cell Server id= " .. rpc_clt_id .. " has Disconnected");
         return;
     end
-    room_notify_all("Room", "LeaveRoom", "no:" .. hero.no .. ",");
+    room_notify_all("Room", "LeaveRoom", "no:" .. hero.user.no .. ",");
 end
 
 
@@ -72,7 +72,7 @@ end
 function t.enter_room(ctx, msg, cb)
     local kv = json.decode(msg);
 
-    remote.request_client(ctx, "Room", "SelfEnterRoom", "no:" .. kv["no"] .. ",name:" .. kv["name"] .. ",", function(msgg)
+    remote.request_client(ctx, "Room", "SelfEnterRoom", msg, function(msgg)
 
         if msgg == "" then return end;
         --- 响应失败 忽略
@@ -80,11 +80,17 @@ function t.enter_room(ctx, msg, cb)
         -- 响应成功后 添加到table里面
 
         room_notify_all("Room", "EnterRoom", msg);
-        global_hero_list:add(hero.create(ctx, kv["no"], kv["name"]));
 
+        print(msg);
+        local user1 = user.create();
+
+        user1:set_json(msg);
+        -- 暂时以客户端传来的为准
+
+        global_hero_list:add(hero.create(ctx, user1));
 
     end );
-    cb("ret:ok");
+    cb("ret:ok,");
 end
  
 

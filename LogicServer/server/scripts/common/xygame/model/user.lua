@@ -28,16 +28,9 @@ function t:ctor()
 end
 
  
+ function t.create()
 
-local test = t:new();
-local test11 = t:new();
-test.name = "333";
+  return t:new();
 
-
-
-print((test:to_json()));
-test11:set_json(test:to_json())
-print(test11:to_json());
-
-
+end
 return t;

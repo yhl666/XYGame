@@ -9,11 +9,13 @@ namespace Services
     {
         public void EnterRoom(string msg, VoidFuncString cb)
         {
-            Debug.Log(msg);
-            HashTable hash = Json.Decode(msg);
             Hero hero = HeroMgr.Create<BaseHero>();
-            hero.no = hash.GetInt("no");
-            hero.name = hash["name"];
+
+            DAO.User user = DAO.User.Create(msg);
+            hero.user = user;
+
+            hero.no = user.no;
+            hero.name = user.name;
             hero.x = 5f;
             hero.y = 1f;
             cb("ret:ok,");
@@ -21,16 +23,26 @@ namespace Services
 
         public void SelfEnterRoom(string msg, VoidFuncString cb)
         {
-            HashTable hash = Json.Decode(msg);
+
             Hero hero = HeroMgr.Create<BaseHero>();
-            hero.name = PublicData.GetInstance().self_user.name;
-            hero.no =  PublicData.GetInstance().self_user.no;
+            DAO.User user = DAO.User.Create(msg);
+            if ( true) //user.ToJson() == PublicData.GetInstance().self_user.ToJson())
+            {
+                //verify 
+                hero.name = user.name;
+                hero.no = user.no;
 
-            HeroMgr.ins.self = hero;
-            hero.x = 5f;
-            hero.y = 1f;
+                HeroMgr.ins.self = hero;
+                hero.x = 5f;
+                hero.y = 1f;
 
-            cb("ret:ok,");
+                cb("ret:ok,");
+
+            }else
+            {
+             //   cb("ret:error,");
+            }
+
         }
 
         public void NewPosition(string msg, VoidFuncString cb)
@@ -49,7 +61,7 @@ namespace Services
                 /// return;
                 hero = HeroMgr.Create<BaseHero>();
                 hero.no = hash.GetInt("no");
-                hero.name =hash["name"];
+                hero.name = hash["name"];
                 hero.x = 5f;
                 hero.y = 1f;
             }
