@@ -74,4 +74,15 @@ function t:remove_by_rpc_cli_id(id)
     return nil;
 end
 
+function t:get_hero_by_no(no)
+
+    for k, v in pairs(self.list) do
+        if v.no == no then
+            return v;
+        end
+    end
+    return nil;
+end
+
+
 return t;

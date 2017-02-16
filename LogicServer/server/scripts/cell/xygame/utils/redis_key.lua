@@ -19,7 +19,12 @@ function t.get_login(key)
 end
 
 function t.get_user(key)
-
-return const.REDIS_KEY_USER .. key;
+    return const.REDIS_KEY_USER .. key;
 end
+
+
+function t.get_friends(key)
+    return const.REDIS_KEY_FRIENDS .. key;
+end
+
 return t;
