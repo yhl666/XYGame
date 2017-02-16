@@ -3,33 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '4ad63573196a8417572570b27c3e49b5415f24d9'
-    oldFile: !uuid 'a766f02ef27fdd1537d8245069f626ceb13e012d'
+    newFile: !uuid '50fdf05de0473f94f59059322a28724867894768'
+    oldFile: !uuid '4ad63573196a8417572570b27c3e49b5415f24d9'
   /UnityClient/Assets:
-    newFile: !uuid '82c123bd6eedd8565f8438dd87ccb73d4626fee4'
-    oldFile: !uuid '9349182cabf7191b2729b1c69ec7bd72fa72eff3'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid '2f66ceaa0040dceef5e28352e167e2050e840620'
-    oldFile: !uuid 'd908098b46ee8be8abef9870f85fbb8296dce7ed'
-  /UnityClient/Assets/Logic/TownScene.unity:
-    newFile: !uuid '6ef605b9000cda942df4001542456e80ed717693'
-    oldFile: !uuid 'f88f68882102a2c57b7e5ed1d5059b4cb66faa77'
+    newFile: !uuid '6fcb8046b579d1b0a3cb7807335a1cbcdcde2bb1'
+    oldFile: !uuid '82c123bd6eedd8565f8438dd87ccb73d4626fee4'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '0ed7a5c702c7cd70996d3da0ee09cdee4cbebb99'
-    oldFile: !uuid 'efbc40391a2fa23348e30e16d5696172d77905d6'
+    newFile: !uuid '69dacd4893a1a0f1becd8a6221b4329c8dcc1ad6'
+    oldFile: !uuid '0ed7a5c702c7cd70996d3da0ee09cdee4cbebb99'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'f49213ec387ec32fb9791c45ba19025828cc1826'
-    oldFile: !uuid '395064c93f32bd13cc154a095a3f5f4ab463ed18'
+    newFile: !uuid 'ba8371fd2ec32857ccb1f424cf9031e31d99dcb3'
+    oldFile: !uuid 'f49213ec387ec32fb9791c45ba19025828cc1826'
   /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '2a5599f1a8e23a215835cf613eeed8b97e663e93'
-    oldFile: !uuid '8466d3fe1485dbd3ab4c7b2c233499a89d95de90'
-  /UnityClient/Assets/Resources/Prefabs/ui/Public.prefab:
-    newFile: !uuid '1dec95bed9eaebf3fb09b872da3eefa143501d98'
-    oldFile: !uuid 'd641f0703f6b4c94dcfd93730593f74919526873'
-  /UnityClient/Assets/Resources/Prefabs/ui/Public.prefab.meta:
-    newFile: !uuid 'fcb9fc685aba7cdbe86c09ea74f65a5520215b23'
-    oldFile: !uuid '64bfcff4a57ef7fa25cbf7c37b5d304bd1ac7b4d'
-gitCommitId: !uuid 'be4b6563033acd0a67230b151b684fdb2eac5260'
+    newFile: !uuid 'ca825f95b3157a11863c3f3b59e05a6eb32c9ca2'
+    oldFile: !uuid '2a5599f1a8e23a215835cf613eeed8b97e663e93'
+  /UnityClient/Assets/Resources/Prefabs/ui/PublicBBBB.prefab:
+    newFile: !uuid '42045b18af9adf1805260662c35c81389b1e0ba8'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/PublicBBBB.prefab.meta:
+    newFile: !uuid 'eaa65d7ef3d2ae80645b1e0bb653a1d0ff46caa8'
+    oldFile: null
+gitCommitId: !uuid '1412c1621d4c0ffd2a52df7fd60627a4a3ff0f6c'
 renames: {
   }
-revisionId: 142
+revisionId: 143
