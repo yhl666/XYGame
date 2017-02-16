@@ -3,42 +3,18 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'cdd9c91449e61fa7afede1f5863ed96ffa2c382b'
-    oldFile: !uuid '641ad170c2e8a4941a819488e757bba159988420'
-  /UnityClient/Assembly-CSharp-Editor-firstpass.csproj:
-    newFile: !uuid '43b3859b83a3f105f49002df0bc226101244685d'
-    oldFile: !uuid '897cccc0e4a26567018c60d2394d8acda2f6c268'
-  /UnityClient/Assembly-CSharp-Editor.csproj:
-    newFile: !uuid '1767b6bd8ea24a036a22616338a082b6a04b199b'
-    oldFile: !uuid 'fb978e6023107f6d5b46f081169ea6730796f477'
-  /UnityClient/Assembly-CSharp-firstpass.csproj:
-    newFile: !uuid 'db00cd80b10cebaf9734e70cb48771ba50d67fd9'
-    oldFile: !uuid '9d741cbe805761368c0a5f481bbfae18303adf6f'
-  /UnityClient/Assembly-CSharp.csproj:
-    newFile: !uuid '7808219583c4e2b389b1e14a598553abf30a2a11'
-    oldFile: !uuid '00abb152133bc7b62a88f8e47fdab60711e1e490'
+    newFile: !uuid 'a766f02ef27fdd1537d8245069f626ceb13e012d'
+    oldFile: !uuid 'cdd9c91449e61fa7afede1f5863ed96ffa2c382b'
   /UnityClient/Assets:
-    newFile: !uuid 'a94bc4df6cca0e1fb68ec23d7a6c50089bcfd552'
-    oldFile: !uuid '3843c961e22ecc4c0b080d52fc8c738636b7e4d7'
+    newFile: !uuid '9349182cabf7191b2729b1c69ec7bd72fa72eff3'
+    oldFile: !uuid 'a94bc4df6cca0e1fb68ec23d7a6c50089bcfd552'
   /UnityClient/Assets/Logic:
-    newFile: !uuid '23d248d336d91c4427cef07c4a11d3a49296ea74'
-    oldFile: !uuid '00f28b1a608795fff9bf9c4d55d3f1a40dff2b38'
-  /UnityClient/Assets/Logic/LoginScene.unity:
-    newFile: !uuid '8302ed4d53b46102c9e3b73cdc9e61be699cf393'
-    oldFile: !uuid '323c6f47b38b79433e5a6a56e19c847f45a909ca'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid 'a88e6f1c508966b047935fb37fe021aa082a2a97'
-    oldFile: !uuid '54929d91deccea12d4dc136d0610a1c435fd059d'
-  /UnityClient/Assets/Logic/Scripts/View:
-    newFile: !uuid '67c89fcde9feba621ae94db47fc0d79ba7aaeadd'
-    oldFile: !uuid '98a24d32e4039ad783459d3f3d2e1421b3b760db'
-  /UnityClient/Assets/Logic/Scripts/View/UITown.cs:
-    newFile: !uuid '1aa56d3df623f3db8db539c4cbcd76d9a4e2dfe4'
-    oldFile: !uuid '4ee32d4cc18a77f1701b6e9328ef203ca2c4ded1'
+    newFile: !uuid 'd908098b46ee8be8abef9870f85fbb8296dce7ed'
+    oldFile: !uuid '23d248d336d91c4427cef07c4a11d3a49296ea74'
   /UnityClient/Assets/Logic/TownScene.unity:
-    newFile: !uuid '49853aa29557893486a3ed8c1b7d86dbc8ed0ab6'
-    oldFile: !uuid '7bec33c92c4085292f48018ab327dceea2a3214d'
-gitCommitId: !uuid '85a9dfc50ebe2e06fe19424c414c74fbbbdf508d'
+    newFile: !uuid 'f88f68882102a2c57b7e5ed1d5059b4cb66faa77'
+    oldFile: !uuid '49853aa29557893486a3ed8c1b7d86dbc8ed0ab6'
+gitCommitId: !uuid 'e5acbb636cb4a0ce35d068156f338648c4cf0f89'
 renames: {
   }
-revisionId: 140
+revisionId: 141
