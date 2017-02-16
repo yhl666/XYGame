@@ -86,12 +86,12 @@ local function do_register(id, kv, cb)
 
             remote.request_local("services.user", "add_user", "no:" .. id .. ",name:" .. name .. ",", function(msgg)
 
-                if msgg == "ok" then
+                if msgg == "ret:ok," then
                     cb("ret:ok,msg:注册成功,");
 
                 else
                     cb("ret:error,msg:注册失败,");
-                    --执行删除该login 信息
+                    -- 执行删除该login 信息
                     redis.exec("del " .. redis_key.get_login(account), function(msggg)
 
                         local kvv = json.decode(msggg);

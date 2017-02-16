@@ -34,12 +34,12 @@ function t.add_user(msg, cb)
 
         if msg == "ok" then
             -- 新建user 成功
-            cb("ok"); return;
+            cb("ret:ok,"); return;
         end
 
         -- 新建user失败
 
-        cb("");
+        cb("ret::error,");
 
 
     end );
@@ -54,11 +54,9 @@ function t.query_user(msg, cb)
     redis.get(redis_key.get_user(no), function(msg)
 
         if msg == "" then
-            cb("");
+            cb("ret:error,");
         else
-            local user1 = user.create();
-            user1:set_json(msg);
-            cb(user1);
+            cb("ret:ok," .. msg);
         end
     end );
 
