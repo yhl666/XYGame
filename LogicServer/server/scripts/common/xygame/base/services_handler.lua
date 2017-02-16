@@ -82,8 +82,14 @@ function t.handle(ctx, service_name, method_name, req_content)
 
 
     if isRemote then
+
+        print("---[Rpc Cell Call]:" .. service_name .. "." .. method_name .. "(" .. pack.decode(req_content) .. ")");
+
         -- 远程cell 服务不需要ctx 因为远程服务 不能访问客户端 只需要处理cb即可
         methodFunc(pack.decode(req_content), function(msg)
+
+            print("---[Rpc Cell Resp]:" .. service_name .. "." .. method_name .. " (" .. msg .. ")");
+
             c_rpc.reply_to(ctx, pack.encode(msg));
 
         end );
