@@ -73,6 +73,12 @@ function t.request_client(ctx, services, method, json, cb)
 
 end
 
+
+function t.request_local(services, method, json, cb)
+    local handler = require("common.xygame.base.services_handler");
+    handler.handle_local(services, method, json, cb);
+
+end
 log:debug("load");
 
 return t;

@@ -83,34 +83,28 @@ local function do_register(id, kv, cb)
 
         if msg == "ok" then
             -- 插入login 信息成功
-            --- 插入user 表
-            local user1 = user:new();
-            user1.time = os.time();
-            user1.no = id;
-            redis.set(redis_key.get_user(id), user1:to_json(), function(msg)
 
-                if msg == "ok" then
-                    -- 插入user 成功
-                    cb("ret:ok,msg:注册成功,"); return;
+            remote.request_local("services.user", "add_user", "no:" .. id .. ",name:" .. name .. ",", function(msgg)
+
+                if msgg == "ok" then
+                    cb("ret:ok,msg:注册成功,");
+
+                else
+                    cb("ret:error,msg:注册失败,");
+                    --执行删除该login 信息
+                    redis.exec("del " .. redis_key.get_login(account), function(msggg)
+
+                        local kvv = json.decode(msggg);
+                        if (kvv["ret"] == "ok") then
+                            --   删除成功
+                        else
+                            -- 删除失败 或者 无该key
+                        end
+
+                    end )
+
                 end
-
-                -- 插入user失败  回滚插入 login 操作
-
-                cb("ret:error,msg:服务器内部错误 插入user失败，注册失败,");
-                redis.exec("del " .. redis_key.get_login(account), function(msggg)
-
-                    local kvv = json.decode(msggg);
-                    if (kvv["ret"] == "ok") then
-                        --   删除成功
-                    else
-                        -- 删除失败 或者 无该key
-                    end
-
-                end )
-
             end );
-
-
 
         else
             -- 插入login 失败

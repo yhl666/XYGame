@@ -105,4 +105,72 @@ function t.handle(ctx, service_name, method_name, req_content)
 
 end
 
+
+
+
+
+
+
+
+
+
+local local_service_map = { }
+
+
+
+-- [Comment]
+-- cell 处理本地rpc
+function t.handle_local(service_name, method_name, msg, cb)
+
+    service_name = "cell.xygame." .. service_name;
+
+
+    local service = local_service_map[service_name]
+    if service == nil then
+        -- is file exist
+
+        local f = G_LUA_ROOTPATH .. "/" ..(string.gsub(service_name, "[\\.]", "/")) .. ".lua";
+        local file, err = io.open(f, "r+");
+        if err ~= nil then
+
+            log:warn("No such local service: " .. service_name);
+            cb("");
+            return;
+        end
+
+
+
+        -- 如果模块存在，那么自动添加热更新
+        if require(service_name).enable_hotfix ~= false then
+            require("hotfix_helper").add_module_name(service_name)
+        end
+        file:close();
+    end
+
+    service = require(service_name);
+    local_service_map[service_name] = service;
+    local methodFunc = service[method_name];
+
+    if methodFunc == nil then
+        log:warn("No such local function: " .. service_name .. "." .. method_name);
+        cb("");
+        return;
+    end
+
+
+    print("---[Rpc Local Call]:" .. service_name .. "." .. method_name .. "(" .. msg .. ")");
+    methodFunc(msg, function(msg1)
+
+        print("---[Rpc Local Resp]:" .. service_name .. "." .. method_name .. " (" .. msg1 .. ")");
+
+        cb(msg1)
+    end );
+
+
+end
+
+
+
+
+
 return t;
