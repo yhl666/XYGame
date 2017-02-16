@@ -21,7 +21,24 @@ function t.remove(msg, cb)
 end
 
 -- 添加好友
-function t.add(ctx, msg, cb)
+function t.add( msg, cb)
+
+   local kv = json.decode(msg);
+    local no = kv["no"];
+    local who_no = kv["who"];
+
+
+
+    redis.get(redis_key.get_friends(no), function(res)
+        if res == "" then
+
+            cb("");
+        else
+            cb(res);
+        end
+
+    end );
+
 
 
 end
