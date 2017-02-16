@@ -38,11 +38,20 @@ function t.add(ctx, msg, cb)
 
 
 
-   local ret=   get_friends  ();
-   if ret == "" then
+end
 
-   ebd
 
+function t.add_by_name(ctx, msg, cb)
+
+    -- 发起cell服务器的远程调用，请求 register
+    remote.request("services.friends", "add_by_name", msg, function(msg)
+
+        if msg == "timeout" then
+            cb("ret:error,msg:timeout,");
+            return;
+        end
+        cb(msg);
+    end );
 
 end
 

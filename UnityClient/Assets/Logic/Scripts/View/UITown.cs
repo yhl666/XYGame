@@ -692,6 +692,13 @@ public sealed class UI_friendsapp : UICellApp
             EventDispatcher.ins.PostEvent(Events.ID_RPC_NEW_FRIEND, user);
 
 
+            RpcClient.ins.SendRequest("services.friends", "add_by_name", "no:1,name:6666,", (string msg) =>
+                {
+
+
+                    Debug.Log(msg);
+                });
+
         });
 
 
