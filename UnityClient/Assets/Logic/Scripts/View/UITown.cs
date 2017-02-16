@@ -669,6 +669,30 @@ public sealed class UI_friendsapp : UICellApp
         this.panel = GameObject.Find("ui_panel_friends");
 
         this.btn_close = panel.transform.FindChild("btn_friends_close").GetComponent<Button>();
+        this.btn_add = panel.transform.FindChild("btn_add_friends").GetComponent<Button>();
+
+
+        this.list_content = GameObject.Find("friends_list_content").GetComponent<RectTransform>();
+
+        this.txt_count = GameObject.Find("txt_friends_count").GetComponent<Text>();
+
+        this.template_copy = GameObject.Instantiate(this.list_content.FindChild("one").gameObject, this.list_content.transform) as GameObject;
+
+        this.template_copy.SetActive(false);
+
+        this.list_content.FindChild("one").gameObject.SetActive(false);
+
+
+
+
+        this.btn_add.onClick.AddListener(() =>
+        {
+            DAO.User user = DAO.User.Create();
+
+            EventDispatcher.ins.PostEvent(Events.ID_RPC_NEW_FRIEND, user);
+
+
+        });
 
 
         this.btn_close.onClick.AddListener(() =>
@@ -680,6 +704,7 @@ public sealed class UI_friendsapp : UICellApp
 
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_FRIENDS_CLICK);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_VIEW_SYNC_FRIENDS_LIST);
 
         this.Hide();
         return true;
@@ -694,6 +719,14 @@ public sealed class UI_friendsapp : UICellApp
 
             EventDispatcher.ins.PostEvent(Events.ID_FRIENDS_SHOW_CLICKED, this);
 
+
+        }
+        else if (type == Events.ID_VIEW_SYNC_FRIENDS_LIST)
+        {
+            //刷新界面
+            ArrayList list = userData as ArrayList;
+            this.list = list;
+            this.SyncList();
 
         }
     }
@@ -712,14 +745,74 @@ public sealed class UI_friendsapp : UICellApp
     {
         this.PopOut();
 
+    }
+    private void SyncList()
+    {
+        int i = 0;
+        this.Clear();
+
+        for (i = 0; i < list.Count; i++)
+        {
+            DAO.User user = list[i] as DAO.User;
+
+
+            GameObject obj = GameObject.Instantiate(this.template_copy, this.list_content) as GameObject;
+            obj.SetActive(true);
+            ones.Add(obj);
+
+            float max_height = list.Count * 100;
+
+            this.list_content.sizeDelta = new Vector2(0, max_height);
+
+
+            obj.transform.FindChild("txt_name").transform.gameObject.GetComponent<Text>().text = user.name;
+            obj.transform.FindChild("txt_time").transform.gameObject.GetComponent<Text>().text = user.time;
+            obj.transform.FindChild("txt_level").transform.gameObject.GetComponent<Text>().text = user.level.ToString();
+
+
+
+            obj.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+
+            this.ReSize();
+        }
+        this.txt_count.text = "好友数量:" + list.Count.ToString() + "/50";
+
+
+
+
 
     }
 
+    private void ReSize()
+    {
+        //re position
+        int i = this.ones.Count;
+        foreach (GameObject one in this.ones)
+        {
+            one.transform.localPosition = new Vector3(one.transform.localPosition.x, 0 + i * 100, one.transform.localPosition.z);
 
+            i--;
+        }
+
+
+    }
+    private void Clear()
+    {
+        foreach (GameObject obj in ones)
+        {
+            GameObject.Destroy(obj);
+        }
+        ones.Clear();
+    }
 
 
     private Button btn_close = null;
+    private Button btn_add = null;
+    private ArrayList list = null;
+    private ArrayList ones = new ArrayList();
+    private RectTransform list_content = null;
+    private GameObject template_copy = null;
 
-
+    private Text txt_count = null; // 好友数量
 }
 

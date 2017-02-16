@@ -212,7 +212,16 @@ public sealed class UI_pushmsg : ViewUI
         {
             this.img_bg.SetActive(true);
             tick.Reset();
-            this.txt.text = (userData as string).Substring(0, 30);
+            string str = userData as string;
+            if (str.Length > 30)
+            {
+
+                this.txt.text = (userData as string).Substring(0, 30);
+            }
+            else
+            {
+                this.txt.text = str;
+            }
         }
 
     }

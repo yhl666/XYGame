@@ -35,6 +35,15 @@ function t.add(ctx, msg, cb)
         end
         cb(msg);
     end );
+
+
+
+   local ret=   get_friends  ();
+   if ret == "" then
+
+   ebd
+
+
 end
 
 

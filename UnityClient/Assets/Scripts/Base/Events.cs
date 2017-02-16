@@ -101,8 +101,9 @@ public sealed class Events : object
     public const int ID_TOWN_FRIENDS_CLICK = 59;//菜单 的 好友被点击
 
 
+    public const int ID_RPC_NEW_FRIEND = 61;//有玩家添加你为好友
 
-
+    public const int ID_VIEW_SYNC_FRIENDS_LIST = 62;//刷新UI
 
     //------------------------------local event-----------------------------------------------------------
 

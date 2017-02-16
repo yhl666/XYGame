@@ -5,14 +5,12 @@ namespace Services
 {
     public class Friends : RpcService
     {
-        public void Push(string msg, VoidFuncString cb)
+        public void Add(string msg, VoidFuncString cb)
         {
             cb("ret:ok,");
-            var hash = Json.Decode(msg);
+            DAO.User who = DAO.User.Create(msg);
 
-            string type = hash["type"];
-
-            EventDispatcher.ins.PostEvent(Events.ID_RPC_WORLD_CHAT_NEW_MSG, hash);
+            EventDispatcher.ins.PostEvent(Events.ID_RPC_NEW_FRIEND, who);
         }
     }
 
@@ -31,6 +29,8 @@ public class FriendsApp : CellApp
         EventDispatcher.ins.AddEventListener(this, Events.ID_FRIENDS_CLOSE_CLICKED);
         EventDispatcher.ins.AddEventListener(this, Events.ID_FRIENDS_SHOW_CLICKED);
 
+        EventDispatcher.ins.AddEventListener(this, Events.ID_RPC_NEW_FRIEND);
+
         return true;
     }
     public override void OnEvent(int type, object userData)
@@ -41,7 +41,7 @@ public class FriendsApp : CellApp
 
 
         if (type == Events.ID_FRIENDS_SHOW_CLICKED)
-        { 
+        {
             if (p.isOneCellAppShowLock) return;
             p.isOneCellAppShowLock = true;
 
@@ -67,6 +67,18 @@ public class FriendsApp : CellApp
         }
 
 
+        else if (type == Events.ID_RPC_NEW_FRIEND)
+        { // 有人添加你为好友
+
+            DAO.User who = userData as DAO.User;
+
+            EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家:" + who.name + " 已添加你为好友!");
+
+            friends.Add(who);
+            EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
+
+        }
+
     }
 
     public override void UpdateMS()
@@ -91,5 +103,11 @@ public class FriendsApp : CellApp
     {
         base.OnDispose();
     }
+
+
+
+
+
+    private ArrayList friends = new ArrayList();
 
 }
