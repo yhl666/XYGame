@@ -3,30 +3,70 @@ branches: {
   }
 fileChange:
   /LogicServer:
-    newFile: !uuid '1cef8c49010487692b0d959553b27591fe75bba6'
-    oldFile: !uuid 'd24b31bb470f28ef1bfd0c2bbb0fc162e52dde83'
+    newFile: !uuid '99c995d5d0238a1e87656c06bafc9a8a84712fb3'
+    oldFile: !uuid '1cef8c49010487692b0d959553b27591fe75bba6'
   /LogicServer/server:
-    newFile: !uuid '534acb2b2d01787cdddbdc08adece058a806d62c'
-    oldFile: !uuid '5105dca8ef049fd67e50f628c246175100a382a2'
+    newFile: !uuid 'ef62b8157844ea3d83e5cb02e1a110bc4640e203'
+    oldFile: !uuid '534acb2b2d01787cdddbdc08adece058a806d62c'
   /LogicServer/server/scripts:
-    newFile: !uuid '5eaa0fcf01c21cf69e04b01572772969b3a2f36d'
-    oldFile: !uuid 'e72fcd0d54db99cf4ce4074baee8803b9d2e0989'
+    newFile: !uuid 'df849e3985bfbf347359792db4377892046a61d1'
+    oldFile: !uuid '5eaa0fcf01c21cf69e04b01572772969b3a2f36d'
   /LogicServer/server/scripts/base:
-    newFile: !uuid '3295e775b529ac603ec63322984f45209ab53864'
-    oldFile: !uuid '9c137e2b97241d04c59a6d683cbb6fa3eaa5e5ce'
+    newFile: !uuid 'a31560d5df99b62113e37bb2dcc3c38b003f4bb0'
+    oldFile: !uuid '3295e775b529ac603ec63322984f45209ab53864'
   /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid '957d4575b1424d6ffcaf388e75d41ad1830d7371'
-    oldFile: !uuid '46e2fd1ad661c9ae16edce66759cb91841a27563'
+    newFile: !uuid '900d4d4c11a8ff1f685b1a6867ebfa13806a5c96'
+    oldFile: !uuid '957d4575b1424d6ffcaf388e75d41ad1830d7371'
   /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid 'b878be4b6e6aece24165f41b518b4244aa8011c5'
-    oldFile: !uuid '3be6be0cc4af2779ec15c15837f46334707cf6b6'
+    newFile: !uuid '6d230963b087d96aa37e2da2264a454a432be65a'
+    oldFile: !uuid 'b878be4b6e6aece24165f41b518b4244aa8011c5'
   /LogicServer/server/scripts/base/xygame/services/login.lua:
-    newFile: !uuid '3bb3693f28bc98d078038b1bd2e5c848b7f2ba1a'
-    oldFile: !uuid '3b56886eaca62c77f700f1b88279aab32b29446a'
-  /LogicServer/server/scripts/base/xygame/services/room.lua:
-    newFile: !uuid '63a444ed4dde3b45ab46985c3e5b1085da6d40dd'
-    oldFile: !uuid 'ea514576812c4999ba6ca2dadd7a17df3f8b1b58'
-gitCommitId: !uuid '64a4f9009f285b1909dfbc04eaebcb79e62d2acd'
-renames: {
-  }
-revisionId: 151
+    newFile: !uuid '67ad570e395c437e35867d7f22e1e6c5ef315421'
+    oldFile: !uuid '3bb3693f28bc98d078038b1bd2e5c848b7f2ba1a'
+  /LogicServer/server/scripts/cell:
+    newFile: !uuid 'a330cee9e73f2c7f469a11bed885c9f9843be90c'
+    oldFile: !uuid '68ed2d20d8514c8810bc00e620510d574d5582b6'
+  /LogicServer/server/scripts/cell/xygame:
+    newFile: !uuid '5981fb06c38d87e5e2eecf2d900bb507fce8a4c0'
+    oldFile: !uuid 'e951fbadc76268485ec0a557e30c90084b5b0386'
+  /LogicServer/server/scripts/cell/xygame/base:
+    newFile: !uuid '5e74a54e4f6ea242ab7a86e58b0b9c291f06c780'
+    oldFile: null
+  /LogicServer/server/scripts/cell/xygame/base/redis.lua:
+    newFile: !uuid 'e179652c148d7a04e55bd3e56638e596657f7922'
+    oldFile: null
+  /LogicServer/server/scripts/cell/xygame/utils:
+    newFile: !uuid 'd45c081595d7ae030a97ca74ead2206f71158415'
+    oldFile: null
+  /LogicServer/server/scripts/cell/xygame/utils/redis_key.lua:
+    newFile: !uuid 'a4dc380aeb1c8726586af1ffaee05aa4a49f11d6'
+    oldFile: null
+  /LogicServer/server/scripts/common:
+    newFile: !uuid '5376e5de52ca10518f39c97d184c0f13cd62a496'
+    oldFile: !uuid 'baca63c1281183ce8fff4a6ec8effef20bebc156'
+  /LogicServer/server/scripts/common/xygame:
+    newFile: !uuid 'c6ef75b50218fa46f5d7afe0519bf82ef003ef65'
+    oldFile: !uuid 'e264f1899997159bc8c9610f4a6513920b26f952'
+  /LogicServer/server/scripts/common/xygame/base:
+    newFile: !uuid '1495711181ffd394fa086399e27e2473c528a778'
+    oldFile: !uuid '06620d88a87ec2e52c7ffce0603ecb46fde88180'
+  /LogicServer/server/scripts/common/xygame/base/redis.lua:
+    newFile: null
+    oldFile: !uuid 'e179652c148d7a04e55bd3e56638e596657f7922'
+  /LogicServer/server/scripts/common/xygame/lib:
+    newFile: !uuid '97b4830ec235096bab8aca5362096a1fc978268d'
+    oldFile: !uuid 'eb585699e82920c3edc6e629c1eb35973e970027'
+  /LogicServer/server/scripts/common/xygame/lib/init.lua:
+    newFile: !uuid 'cbfed059b10cc55cca5b9d49b4e5841f1102084c'
+    oldFile: !uuid '95d0d2ac6567c40bd2a42d6d5e404e34cb191369'
+  /LogicServer/server/scripts/common/xygame/utils:
+    newFile: null
+    oldFile: !uuid 'd45c081595d7ae030a97ca74ead2206f71158415'
+  /LogicServer/server/scripts/common/xygame/utils/redis_key.lua:
+    newFile: null
+    oldFile: !uuid 'a4dc380aeb1c8726586af1ffaee05aa4a49f11d6'
+gitCommitId: !uuid '8b43f57b180cac066e0d8a8c0715795cc9b35eda'
+renames:
+  /LogicServer/server/scripts/cell/xygame/base/redis.lua: /LogicServer/server/scripts/common/xygame/base/redis.lua
+  /LogicServer/server/scripts/cell/xygame/utils/redis_key.lua: /LogicServer/server/scripts/common/xygame/utils/redis_key.lua
+revisionId: 152
