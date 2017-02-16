@@ -15,8 +15,11 @@ local remote = require("base.remote");
 function t.login(ctx, msg, cb)
     -- 发起cell服务器的远程调用，请求 login
     remote.request("services.login", "login", msg, function(msg)
+        if msg == "timeout" then
+            cb("ret:error,msg:timeout,");
+            return;
+        end
         cb(msg);
-
     end );
 end
 
@@ -25,7 +28,7 @@ end
 
 function t.register(ctx, msg, cb)
 
-    -- 发起cell服务器的远程调用，请求 login
+    -- 发起cell服务器的远程调用，请求 register
     remote.request("services.login", "register", msg, function(msg)
         cb(msg);
     end );
