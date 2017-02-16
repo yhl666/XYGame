@@ -567,7 +567,7 @@ public sealed class UI_townmenuapp : UICellApp
     {
         this.panel.SetActive(true);
 
-        ScaleTo.Create(this.panel, 0.1f, 0.8f, 0.8f).OnComptele = () =>
+        ScaleTo.Create(this.panel, 0.1f, 1f, 1f).OnComptele = () =>
         {
 
         };
@@ -576,7 +576,7 @@ public sealed class UI_townmenuapp : UICellApp
     public override void Hide()
     {
 
-        ScaleTo.Create(this.panel, 0.1f, 0.8f, 0.0f).OnComptele = () =>
+        ScaleTo.Create(this.panel, 0.1f, 1f, 0.0f).OnComptele = () =>
         {
             this.panel.SetActive(false);
 
