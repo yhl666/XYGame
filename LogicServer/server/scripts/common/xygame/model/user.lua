@@ -3,7 +3,7 @@
 
 * Author: caoshanshan
 * Email: me@dreamyouxi.com
-
+should use DAO to instead ?
 ]]
 local model = require("model.model");
 
@@ -18,11 +18,11 @@ function t:ctor()
     -- id
     self.name = "111";
     -- 昵称
-    self.level = 50;
+    self.level = 1;
     -- 等级
-    self.type = 0;
+    self.type = 2;
     -- 类型，
-    self.last_login_timestamp = 0;
+    self.time = 0;
     -- 上次登录时间戳
 
 end

@@ -23,7 +23,6 @@ json = { }
 -- °Ñ json½âÎöÎªtable
 function json.decode(str)
     local ret = { }
-
     while true do
         local index = string.find(str, ",");
         if index == nil then

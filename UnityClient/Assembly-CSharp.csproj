@@ -54,6 +54,7 @@
      <Compile Include="Assets\Logic\Scripts\Base\empty_msg.proto.cs" />
      <Compile Include="Assets\Logic\Scripts\Base\login.proto.cs" />
      <Compile Include="Assets\Logic\Scripts\Base\msg.proto.cs" />
+     <Compile Include="Assets\Logic\Scripts\DAO\User.cs" />
      <Compile Include="Assets\Logic\Scripts\GameApp\LogicApp.cs" />
      <Compile Include="Assets\Logic\Scripts\GameApp\LoginApp.cs" />
      <Compile Include="Assets\Logic\Scripts\GameApp\SampleApp.cs" />

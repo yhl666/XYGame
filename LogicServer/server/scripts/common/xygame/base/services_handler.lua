@@ -30,7 +30,7 @@ local t = { };
 local service_map = { }
 local log = require("log"):new("services_handler")
 
---[Comment]
+-- [Comment]
 -- C++调用，无需修改 访问 此文件内容 
 function t.handle(ctx, service_name, method_name, req_content)
 
@@ -88,7 +88,11 @@ function t.handle(ctx, service_name, method_name, req_content)
 
         end );
     else
+        print("---[Rpc Call]:" .. service_name .. "." .. method_name .. "(" .. pack.decode(req_content) .. ")");
         methodFunc(ctx, pack.decode(req_content), function(msg)
+
+            print("---[Rpc Resp]:" .. service_name .. "." .. method_name .. " (" .. msg .. ")");
+
             c_rpc.reply_to(ctx, pack.encode(msg));
         end );
     end

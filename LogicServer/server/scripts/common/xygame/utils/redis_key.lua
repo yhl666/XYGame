@@ -18,5 +18,8 @@ function t.get_login(key)
     return const.REDIS_KEY_LOGIN .. key
 end
 
+function t.get_user(key)
 
+return const.REDIS_KEY_USER .. key;
+end
 return t;

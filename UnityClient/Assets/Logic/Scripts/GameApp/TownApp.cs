@@ -63,6 +63,7 @@ public class TownApp : AppBase
                 RpcClient.ins.SendRequest("services.login", "login", str, (string ree) =>
                 {
                     HashTable kv = Json.Decode(ree);
+                    Debug.Log("login " + ree);
 
                     if (kv["ret"] == "ok")
                     {
