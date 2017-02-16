@@ -36,6 +36,7 @@ public class TownApp : AppBase
 
             this.AddCellApp<WorldChatApp>();
             this.AddCellApp<TownMenuApp>();
+            this.AddCellApp<FriendsApp>();
 
             EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
             Application.targetFrameRate = 40;

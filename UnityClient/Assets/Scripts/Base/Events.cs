@@ -92,6 +92,18 @@ public sealed class Events : object
 
     public const int ID_VIEW_NEW_CELLAPP_VIEW = 56; //新CELL APP的view 事件 提供给Root View添加
 
+
+    public const int ID_FRIENDS_CLOSE_CLICKED = 57; // 关闭点击
+    public const int ID_FRIENDS_ADD_CLICKED = 58;// 加好友点击
+    public const int ID_FRIENDS_SHOW_CLICKED = 60;// 加好友点击
+
+
+    public const int ID_TOWN_FRIENDS_CLICK = 59;//菜单 的 好友被点击
+
+
+
+
+
     //------------------------------local event-----------------------------------------------------------
 
     /* public const int ID_DISABLE_RUN = 100;//禁止run 状态

@@ -57,7 +57,14 @@ public sealed class UITownRoot : ViewUI
             return DATA.EMPTY_STRING;
         }));
 
- 
+
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_friendsapp>(this));
+
+            return DATA.EMPTY_STRING;
+        }));
+
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_VIEW_NEW_CELLAPP_VIEW);
 
@@ -246,12 +253,43 @@ public class UICellApp : ViewUI
     {
 
     }
+
+    protected void PopIn()
+    {
+        this.panel.SetActive(true);
+        ScaleTo.Create(this.panel, 0.05f, 0.7f, 0.7f).OnComptele = () =>
+        {
+            ScaleTo.Create(this.panel, 0.01f, 0.9f, 0.9f).OnComptele = () =>
+            {
+                ScaleTo.Create(this.panel, 0.01f, 1.2f, 1.2f).OnComptele = () =>
+                {
+                    ScaleTo.Create(this.panel, 0.03f, 1f, 1f).OnComptele = () =>
+                    {
+
+                    };
+                };
+            };
+        };
+    }
+    protected void PopOut()
+    {
+        ScaleTo.Create(this.panel, 0.1f, 0.0f, 0.0f).OnComptele = () =>
+        {
+            this.panel.SetActive(false);
+
+        };
+    }
+
     /* public void BindCellApp(CellApp app)
      {
          this.app = app;
      }
 
      protected CellApp app = null;*/
+
+    protected GameObject panel = null;
+
+
 }
 
 
@@ -533,6 +571,10 @@ public sealed class UI_townmenuapp : UICellApp
         this.btn_show = GameObject.Find("btn_menu_show").GetComponent<Button>();
         this.panel = GameObject.Find("ui_panel_menus");
 
+        this.btn_friends = GameObject.Find("btn_friend").GetComponent<Button>();
+
+
+
         this.btn_close.onClick.AddListener(() =>
         {
             EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLOSE_CLICKED, this);
@@ -545,6 +587,14 @@ public sealed class UI_townmenuapp : UICellApp
         {
 
             EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLICKED, this);
+        });
+
+        this.btn_friends.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLOSE_CLICKED, this);
+
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_FRIENDS_CLICK);
+
         });
 
         this.Hide();
@@ -586,10 +636,9 @@ public sealed class UI_townmenuapp : UICellApp
 
 
 
-    private GameObject panel = null;
-
     private Button btn_close = null;
     private Button btn_show = null;
+    private Button btn_friends = null;
 
 }
 
@@ -601,4 +650,76 @@ public sealed class UI_townmenuapp : UICellApp
 
 
 
+
+
+
+
+
+public sealed class UI_friendsapp : UICellApp
+{
+    public override void Update()
+    {
+        base.Update();
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+
+        this.panel = GameObject.Find("ui_panel_friends");
+
+        this.btn_close = panel.transform.FindChild("btn_friends_close").GetComponent<Button>();
+
+
+        this.btn_close.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_FRIENDS_CLOSE_CLICKED, this);
+
+
+        });
+
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_FRIENDS_CLICK);
+
+        this.Hide();
+        return true;
+    }
+
+
+
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_TOWN_FRIENDS_CLICK)
+        {
+
+            EventDispatcher.ins.PostEvent(Events.ID_FRIENDS_SHOW_CLICKED, this);
+
+
+        }
+    }
+
+
+
+    /// <summary>
+    /// 显示完整的界面
+    /// </summary>
+    public override void Show()
+    {
+        this.PopIn();
+
+    }
+    public override void Hide()
+    {
+        this.PopOut();
+
+
+    }
+
+
+
+
+    private Button btn_close = null;
+
+
+}
 
