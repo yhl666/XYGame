@@ -35,7 +35,6 @@ function json.decode(str)
         end
         str = string.sub(str, index + 1, -1);
 
-
         local i = string.find(sub, ":");
         local k = string.sub(sub, 0, i - 1);
         local v = string.sub(sub, i + 1, -1);

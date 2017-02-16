@@ -20,7 +20,7 @@ require("xygame.lib.init");
 
 
 
-
+require("xygame.model.user");
 
 
 
