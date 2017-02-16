@@ -14,6 +14,8 @@ require("xygame.lib.json")
 
 
 package.path = package.path .. ";" .. G_LUA_ROOTPATH .. "/" .. "common/xygame/" .. "/?.lua"
+package.path = package.path .. ";" .. G_LUA_ROOTPATH .. "/" .. "cell/xygame/" .. "/?.lua"
+package.path = package.path .. ";" .. G_LUA_ROOTPATH .. "/" .. "base/xygame/" .. "/?.lua"
  
 
 print("lib init ok");

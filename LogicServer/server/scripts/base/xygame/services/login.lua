@@ -30,9 +30,12 @@ function t.register(ctx, msg, cb)
 
     -- 发起cell服务器的远程调用，请求 register
     remote.request("services.login", "register", msg, function(msg)
+        if msg == "timeout" then
+            cb("ret:error,msg:timeout,");
+            return;
+        end
         cb(msg);
     end );
-
 end
 
 
