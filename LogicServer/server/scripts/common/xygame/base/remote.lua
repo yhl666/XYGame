@@ -43,8 +43,6 @@ function t.request(services, method, json, cb)
             cb("timeout");
             log:error("call cell rpc timeout " .. services .. "." .. method);
             -- timeout
-        else
-            cb("");
         end
     end )
 
