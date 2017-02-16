@@ -39,7 +39,7 @@ function t.add_user(msg, cb)
 
         -- 新建user失败
 
-        cb("ret::error,");
+        cb("ret:error,");
 
 
     end );
