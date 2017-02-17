@@ -102,9 +102,10 @@ public sealed class Events : object
 
 
     public const int ID_RPC_NEW_FRIEND = 61;//有玩家添加你为好友
+    public const int ID_ADD_FRIEND_SUCCESS = 63;//添加好友成功
 
     public const int ID_VIEW_SYNC_FRIENDS_LIST = 62;//刷新UI
-
+   
     //------------------------------local event-----------------------------------------------------------
 
     /* public const int ID_DISABLE_RUN = 100;//禁止run 状态

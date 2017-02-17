@@ -30,6 +30,7 @@ public class FriendsApp : CellApp
         EventDispatcher.ins.AddEventListener(this, Events.ID_FRIENDS_SHOW_CLICKED);
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_RPC_NEW_FRIEND);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_ADD_FRIEND_SUCCESS);
 
         return true;
     }
@@ -77,6 +78,20 @@ public class FriendsApp : CellApp
             friends.Add(who);
             EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
 
+        }else if (type == Events.ID_ADD_FRIEND_SUCCESS)
+        {
+
+            DAO.User who = userData as DAO.User;
+ 
+
+            friends.Add(who);
+            EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
+
+            EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "添加:" +  who.name + "为好友成功");
+
+
+
+             
         }
 
     }

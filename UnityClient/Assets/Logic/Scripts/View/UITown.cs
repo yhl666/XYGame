@@ -689,6 +689,21 @@ public sealed class UI_friendsapp : UICellApp
         this.btn_detail_pk = panel_detail.transform.FindChild("btn_friends_pk").GetComponent<Button>();
 
 
+        this.txt_detail_name = panel_detail.transform.FindChild("base").FindChild("base_txt_name").GetComponent<Text>();
+        this.txt_detail_level = panel_detail.transform.FindChild("base").FindChild("base_txt_level").GetComponent<Text>();
+        this.txt_detail_time = panel_detail.transform.FindChild("base").FindChild("base_txt_time").GetComponent<Text>();
+
+
+
+        // init friend srarch
+
+        this.panel_search = panel.transform.FindChild("friends_search");
+        this.btn_search_add = this.panel_search.transform.FindChild("btn_search_friends").GetComponent<Button>();
+        this.btn_search_close = this.panel_search.transform.FindChild("btn_friends_search_close").GetComponent<Button>();
+
+        this.input_name = this.panel_search.transform.FindChild("friends_search_inputfield_name").GetComponent<InputField>();
+        this.input_no = this.panel_search.transform.FindChild("friends_search_inputfield_no").GetComponent<InputField>();
+
 
 
         this.template_copy = GameObject.Instantiate(this.list_content.FindChild("one").gameObject, this.list_content.transform) as GameObject;
@@ -703,22 +718,9 @@ public sealed class UI_friendsapp : UICellApp
         this.btn_add.onClick.AddListener(() =>
         {//添加好友
 
-            RpcClient.ins.SendRequest("services.friends", "add_by_name", "no:1,name:6666,", (string msg) =>
-                {
-                    Debug.Log(msg);
-                    HashTable kv = Json.Decode(msg);
-                    if (kv["ret"] == "ok")
-                    {
-                        DAO.User who = DAO.User.Create(kv);
+            this.panel_list.gameObject.SetActive(false);
+            this.panel_search.gameObject.SetActive(true);
 
-
-                        EventDispatcher.ins.PostEvent(Events.ID_RPC_NEW_FRIEND, who);
-                    }
-                    else
-                    {
-                        EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, kv["msg"]);
-                    }
-                });
         });
 
 
@@ -750,10 +752,76 @@ public sealed class UI_friendsapp : UICellApp
             this.panel.SetActive(true);
             this.panel_detail.gameObject.SetActive(false);
 
+            this.panel_list.gameObject.SetActive(true);
+
         });
 
+        this.btn_search_close.onClick.AddListener(() =>
+        { // 关闭搜索
+            this.panel_search.gameObject.SetActive(false);
+            this.panel_list.gameObject.SetActive(true);
+
+        });
+        this.btn_search_add.onClick.AddListener(() =>
+            {
+
+                if (input_no.text != "")
+                {
+                    RpcClient.ins.SendRequest("services.friends", "add_by_no", "no:1,name: " + input_name.text + ",", (string msg) =>
+                    {
+                        input_name.text = "";
+                        input_no.text = "";
+                        Debug.Log(msg);
+                        HashTable kv = Json.Decode(msg);
+                        if (kv["ret"] == "ok")
+                        {
+                            DAO.User who = DAO.User.Create(kv);
 
 
+                            EventDispatcher.ins.PostEvent(Events.ID_ADD_FRIEND_SUCCESS, who);
+                        }
+                        else
+                        {
+                            EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, kv["msg"]);
+                        }
+                    });
+
+                }
+                else if (input_name.text != "")
+                {
+
+                    RpcClient.ins.SendRequest("services.friends", "add_by_name", "no:1,name:" + input_name.text + ",", (string msg) =>
+                    {
+                        input_name.text = "";
+                        input_no.text = "";
+                        Debug.Log(msg);
+                        HashTable kv = Json.Decode(msg);
+                        if (kv["ret"] == "ok")
+                        {
+                            DAO.User who = DAO.User.Create(kv);
+
+                            EventDispatcher.ins.PostEvent(Events.ID_ADD_FRIEND_SUCCESS, who);
+                            this.panel_search.gameObject.SetActive(false);
+                            this.panel_list.gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, kv["msg"]);
+                        }
+                    });
+                }
+                else
+                {
+
+                    EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "请输入玩家名字或者ID");
+
+                }
+
+
+
+
+
+            });
 
 
 
@@ -763,7 +831,12 @@ public sealed class UI_friendsapp : UICellApp
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_FRIENDS_CLICK);
         EventDispatcher.ins.AddEventListener(this, Events.ID_VIEW_SYNC_FRIENDS_LIST);
+
+
+
         this.panel_detail.gameObject.SetActive(false);
+        this.panel_search.gameObject.SetActive(false);
+
         this.Hide();
         return true;
     }
@@ -787,10 +860,24 @@ public sealed class UI_friendsapp : UICellApp
             this.SyncList();
 
         }
+
     }
 
 
+    private void ShowDetail(DAO.User user)
+    {
+        //show detail
 
+        this.panel_list.gameObject.SetActive(false);
+        this.panel_detail.gameObject.SetActive(true);
+
+        //sync ui
+
+        this.txt_detail_level.text = user.level.ToString();
+        this.txt_detail_name.text = user.name;
+        this.txt_detail_time.text = user.time;
+
+    }
     /// <summary>
     /// 显示完整的界面
     /// </summary>
@@ -826,7 +913,12 @@ public sealed class UI_friendsapp : UICellApp
             obj.transform.FindChild("txt_name").transform.gameObject.GetComponent<Text>().text = user.name;
             obj.transform.FindChild("txt_time").transform.gameObject.GetComponent<Text>().text = user.time;
             obj.transform.FindChild("txt_level").transform.gameObject.GetComponent<Text>().text = user.level.ToString();
+            obj.transform.FindChild("btn_head").transform.gameObject.GetComponent<Button>().onClick.AddListener(() =>
+            {//re bind function
+                //    EventDispatcher.ins.PostEvent(Events.ID_FRIENDS_DETAIL_SHOW, user);
+                this.ShowDetail(user);
 
+            });
 
 
             obj.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
@@ -847,7 +939,7 @@ public sealed class UI_friendsapp : UICellApp
         int i = this.ones.Count;
         foreach (GameObject one in this.ones)
         {
-            one.transform.localPosition = new Vector3(one.transform.localPosition.x, 0 + i * 100, one.transform.localPosition.z);
+            one.transform.localPosition = new Vector3(one.transform.localPosition.x, -60 + i * 100, one.transform.localPosition.z);
 
             i--;
         }
@@ -875,10 +967,23 @@ public sealed class UI_friendsapp : UICellApp
 
     private Transform panel_list = null; //好友列表
     private Transform panel_detail = null; // 好友详细
+    private Transform panel_search = null; // 查找好友
+
+    private Button btn_search_add = null;
+    private Button btn_search_close = null;
+
+    private InputField input_name = null;
+    private InputField input_no = null;
+
     private Button btn_detail_close = null;
     private Button btn_detail_delete = null;
     private Button btn_detail_send = null;
     private Button btn_detail_pk = null;
+
+
+    private Text txt_detail_name = null;
+    private Text txt_detail_level = null;
+    private Text txt_detail_time = null;
 
 }
 
