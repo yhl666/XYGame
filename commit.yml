@@ -3,21 +3,18 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '8e7084eff4f0859892ba46c8d274f499990a3ad7'
-    oldFile: !uuid '776c171c10b53e2e835b6a867f44eaf8b9b1b2ba'
+    newFile: !uuid '0ea90cf10c810dc2a15fc3ba28aecb6493d1a3fa'
+    oldFile: !uuid '8e7084eff4f0859892ba46c8d274f499990a3ad7'
   /UnityClient/Assets:
-    newFile: !uuid '983ea50ce98ec941083eb7b15c251ff5f265991a'
-    oldFile: !uuid 'dec32464529b1b22c132b78fdf9b3a4ed0c18c29'
+    newFile: !uuid 'b5188456a0c266c7453c47c86f5f802b18e8d99e'
+    oldFile: !uuid '983ea50ce98ec941083eb7b15c251ff5f265991a'
   /UnityClient/Assets/Logic:
-    newFile: !uuid '2367e5a9954d55667308e36ec5e3abd4c7d767f1'
-    oldFile: !uuid '70f48a847c3ae5ae4931413a84fb81e5137d72f8'
+    newFile: !uuid 'f4bbb664c333bbc68d704f8231db9e8557113744'
+    oldFile: !uuid '2367e5a9954d55667308e36ec5e3abd4c7d767f1'
   /UnityClient/Assets/Logic/TownScene.unity:
-    newFile: !uuid '1825ce9df3205a00862587fdfde9f2d86f9780e5'
-    oldFile: !uuid 'b389586fc1836d4f85af1d534775c6d9951017f1'
-  /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid 'ee1172513952ccee4c4170ca053f41f862cd6ea1'
-    oldFile: !uuid '414acafc7207e49da227fcaa2343e1d11fa142bb'
-gitCommitId: !uuid '3edf2691e3b9de1a065583d0ad92ec33f4f03101'
+    newFile: !uuid 'fdd673162cf0f0373885a28399ffe08160f8f602'
+    oldFile: !uuid '1825ce9df3205a00862587fdfde9f2d86f9780e5'
+gitCommitId: !uuid '1063eddf9cc1d1a592deec09873ae06be2b2b8ca'
 renames: {
   }
-revisionId: 167
+revisionId: 168
