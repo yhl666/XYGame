@@ -668,13 +668,28 @@ public sealed class UI_friendsapp : UICellApp
 
         this.panel = GameObject.Find("ui_panel_friends");
 
-        this.btn_close = panel.transform.FindChild("btn_friends_close").GetComponent<Button>();
-        this.btn_add = panel.transform.FindChild("btn_add_friends").GetComponent<Button>();
+        // init friends list
+        this.panel_list = panel.transform.FindChild("friends_list");
 
+        this.btn_close = panel_list.transform.FindChild("btn_friends_close").GetComponent<Button>();
+        this.btn_add = panel_list.transform.FindChild("btn_add_friends").GetComponent<Button>();
 
         this.list_content = GameObject.Find("friends_list_content").GetComponent<RectTransform>();
 
-        this.txt_count = GameObject.Find("txt_friends_count").GetComponent<Text>();
+        this.txt_count = panel_list.transform.FindChild("txt_friends_count").GetComponent<Text>();
+
+
+        // init friend detail
+
+        this.panel_detail = panel.transform.FindChild("friends_detail");
+
+        this.btn_detail_close = panel_detail.transform.FindChild("btn_friends_detail_close").GetComponent<Button>();
+        this.btn_detail_delete = panel_detail.transform.FindChild("btn_friends_delete").GetComponent<Button>();
+        this.btn_detail_send = panel_detail.transform.FindChild("btn_friends_sendmsg").GetComponent<Button>();
+        this.btn_detail_pk = panel_detail.transform.FindChild("btn_friends_pk").GetComponent<Button>();
+
+
+
 
         this.template_copy = GameObject.Instantiate(this.list_content.FindChild("one").gameObject, this.list_content.transform) as GameObject;
 
@@ -686,33 +701,69 @@ public sealed class UI_friendsapp : UICellApp
 
 
         this.btn_add.onClick.AddListener(() =>
-        {
-            DAO.User user = DAO.User.Create();
-
-            EventDispatcher.ins.PostEvent(Events.ID_RPC_NEW_FRIEND, user);
-
+        {//添加好友
 
             RpcClient.ins.SendRequest("services.friends", "add_by_name", "no:1,name:6666,", (string msg) =>
                 {
-
-
                     Debug.Log(msg);
-                });
+                    HashTable kv = Json.Decode(msg);
+                    if (kv["ret"] == "ok")
+                    {
+                        DAO.User who = DAO.User.Create(kv);
 
+
+                        EventDispatcher.ins.PostEvent(Events.ID_RPC_NEW_FRIEND, who);
+                    }
+                    else
+                    {
+                        EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, kv["msg"]);
+                    }
+                });
         });
 
 
+
         this.btn_close.onClick.AddListener(() =>
-        {
+        { // 关闭好友列表
             EventDispatcher.ins.PostEvent(Events.ID_FRIENDS_CLOSE_CLICKED, this);
 
 
         });
+        this.btn_detail_delete.onClick.AddListener(() =>
+        { // 删除好友
+            Debug.Log("删除好友");
+
+        });
+        this.btn_detail_send.onClick.AddListener(() =>
+        { // 私聊好友
+
+            Debug.Log("私聊好友");
+        });
+        this.btn_detail_pk.onClick.AddListener(() =>
+        { // 切磋
+            Debug.Log("切磋好友");
+
+        });
+
+        this.btn_detail_close.onClick.AddListener(() =>
+        { // 关闭好友详细详细
+            this.panel.SetActive(true);
+            this.panel_detail.gameObject.SetActive(false);
+
+        });
+
+
+
+
+
+
+
+
 
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_FRIENDS_CLICK);
         EventDispatcher.ins.AddEventListener(this, Events.ID_VIEW_SYNC_FRIENDS_LIST);
-
+        this.panel_detail.gameObject.SetActive(false);
         this.Hide();
         return true;
     }
@@ -821,5 +872,13 @@ public sealed class UI_friendsapp : UICellApp
     private GameObject template_copy = null;
 
     private Text txt_count = null; // 好友数量
+
+    private Transform panel_list = null; //好友列表
+    private Transform panel_detail = null; // 好友详细
+    private Button btn_detail_close = null;
+    private Button btn_detail_delete = null;
+    private Button btn_detail_send = null;
+    private Button btn_detail_pk = null;
+
 }
 
