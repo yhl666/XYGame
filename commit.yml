@@ -2,34 +2,61 @@
 branches: {
   }
 fileChange:
+  /LogicServer:
+    newFile: !uuid 'c084d18eafb8997dafc48cd9dc5e66ac288aae9b'
+    oldFile: !uuid '545f4998ea88a60d90dad6ce9f1c4cd7fd673ac6'
+  /LogicServer/server:
+    newFile: !uuid 'f63dccfac1a3bc64992da5454fbbf861f5dc0075'
+    oldFile: !uuid 'df7594acf894417f7c565a7cd360a1c9667d23f5'
+  /LogicServer/server/scripts:
+    newFile: !uuid '147f9d991f0d3780eb439df29043e3a1b6870ca4'
+    oldFile: !uuid 'c7255bee550a269c57ac4738b61b8d5f904f62e0'
+  /LogicServer/server/scripts/cell:
+    newFile: !uuid '56eed80942dcfce392257c6ebb97c71204b763aa'
+    oldFile: !uuid 'd3cb5496bb68862713cb91e77bedd19367745b8b'
+  /LogicServer/server/scripts/cell/xygame:
+    newFile: !uuid 'd119433e9603d6a93c63c09f8f6605beb93f83f1'
+    oldFile: !uuid '94cb200b8fa1ec6e56e647517eaa8f27334e538c'
+  /LogicServer/server/scripts/cell/xygame/services:
+    newFile: !uuid '8eebee6b6d2699e28782e54d51f40a60c48fa019'
+    oldFile: !uuid '3e86d60cc49fd47ddf819642be5727aa48404f2b'
+  /LogicServer/server/scripts/cell/xygame/services/friends.lua:
+    newFile: !uuid 'e3b69a96c06edee4b0fee5cae9af979dacbe5de2'
+    oldFile: !uuid 'd8bdb1546cef3e2a933d921fae528ba34f1148ee'
+  /LogicServer/server/scripts/cell/xygame/services/user.lua:
+    newFile: !uuid '79f9785019cc27cbd422d0f4243e2773f08e8083'
+    oldFile: !uuid 'faed3db58020f2986a2c319ca4bb90ce03e1bf09'
   /UnityClient:
-    newFile: !uuid '84d932246093c31144f2387eade3730a16ce00ec'
-    oldFile: !uuid '0ea90cf10c810dc2a15fc3ba28aecb6493d1a3fa'
+    newFile: !uuid '58352e35017bdde6be6072cf2736e753e7fd4093'
+    oldFile: !uuid '84d932246093c31144f2387eade3730a16ce00ec'
+  /UnityClient/Assembly-CSharp-Editor-firstpass.csproj:
+    newFile: !uuid '4b9545f50f836a5fd18122ce5640281e385d791f'
+    oldFile: !uuid '43b3859b83a3f105f49002df0bc226101244685d'
+  /UnityClient/Assembly-CSharp-Editor.csproj:
+    newFile: !uuid '99823afbd96298b4bbcf58ee98722a7323c603af'
+    oldFile: !uuid '1767b6bd8ea24a036a22616338a082b6a04b199b'
+  /UnityClient/Assembly-CSharp-firstpass.csproj:
+    newFile: !uuid '20f76aea28c23304f1a7ad07ebdca34c6232a7f7'
+    oldFile: !uuid 'db00cd80b10cebaf9734e70cb48771ba50d67fd9'
+  /UnityClient/Assembly-CSharp.csproj:
+    newFile: !uuid '4095c7b4d37e28f84810b62d75fa48c5664633a8'
+    oldFile: !uuid '4c2cffab915d9817c73264dd0e6983e04238b1d9'
   /UnityClient/Assets:
-    newFile: !uuid '1b499183761d625840376d4394eeb1269f4b3fed'
-    oldFile: !uuid 'b5188456a0c266c7453c47c86f5f802b18e8d99e'
+    newFile: !uuid '95426db357e3a971977383b341a1c7eb95f76efe'
+    oldFile: !uuid '1b499183761d625840376d4394eeb1269f4b3fed'
   /UnityClient/Assets/Logic:
-    newFile: !uuid 'bf1e62de83acf006366d2377cefb597659319ef8'
-    oldFile: !uuid 'f4bbb664c333bbc68d704f8231db9e8557113744'
+    newFile: !uuid '60549dc6a07a416193b71c74051e9fe18a8a365d'
+    oldFile: !uuid 'bf1e62de83acf006366d2377cefb597659319ef8'
   /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid '1951c62ffb4201457b7ef7d76a35d0eeeede6d62'
-    oldFile: !uuid 'd652601de4d09a72cb09be01dadd3da89bc36f93'
+    newFile: !uuid '6d76fd4033ee2a7cf7397a1d591c308f1b77076e'
+    oldFile: !uuid '1951c62ffb4201457b7ef7d76a35d0eeeede6d62'
   /UnityClient/Assets/Logic/Scripts/GameCellApp:
-    newFile: !uuid 'ef5bd891008963ef1702fff8afa464971fb9cc75'
-    oldFile: !uuid 'd34c176c80effb6b8b2dd85e83de38029f0ebe43'
+    newFile: !uuid 'f39ff0a1a0f48b65451e990e40c49460aacc0c35'
+    oldFile: !uuid 'ef5bd891008963ef1702fff8afa464971fb9cc75'
   /UnityClient/Assets/Logic/Scripts/GameCellApp/FriendApp.cs:
-    newFile: !uuid 'e1dafe52066a164f90f5d5084601927e653a08cb'
-    oldFile: !uuid '492c52ae67621b4b850ec9bdf10b209e97079104'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'dde7f72b6b27e774342632b7d41b437770be296a'
-    oldFile: !uuid '9683678c6317bd5f71783050e82d50463dfeb25d'
-  /UnityClient/Assets/Scripts/Extensions:
-    newFile: !uuid '6aa766522f4ed9b4d7a771af8fae1dac699b2d03'
-    oldFile: !uuid 'b81ac2ac46b2a5a87350edd9aa845b871e7c778e'
-  /UnityClient/Assets/Scripts/Extensions/GameBoxExtension.cs:
-    newFile: !uuid '4e51c6c6cd762ca9895504f583458801fc99c336'
-    oldFile: !uuid '2cd603fd038251a7efbf4e332ea46768d10bcc51'
-gitCommitId: !uuid '7685fa3a4520fdf1ef2ad662fa3d05203aeaeb37'
+    newFile: !uuid '7f1da6e992927aca0771dfd5b4ce71e52a939cb0'
+    oldFile: !uuid 'e1dafe52066a164f90f5d5084601927e653a08cb'
+gitCommitId: !uuid '71e18a8e341d86a7c64576f32bcd58c6bb058038'
 renames: {
   }
-revisionId: 170
+revisionId: 171
