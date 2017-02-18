@@ -145,7 +145,38 @@ end
 
 
 
+function t.delete_by_no(msg, cb)
 
+    local kv = json.decode(msg);
+    local no = kv["no"];
+    local who = kv["who"];
+
+    redis.get(redis_key.get_friends(no), function(msg)
+        if msg == "" then
+            -- 没有好友
+            cb("ret:error,msg:你没有好友,"); return;
+        end
+        if string.find(msg, "no:" .. who .. ",") == nil then
+
+            -- 没有好友
+            cb("ret:error,msg:你们不是好友"); return;
+        end
+
+        msg =(string.gsub(msg, "{no:" .. who .. ",}", ""));
+
+        redis.set(redis_key.get_friends(no), msg, function(res)
+            if res == "" then
+
+                cb("ret:error,msg:删除出错,");
+            else
+                cb("ret:ok,msg:删除成功,");
+            end
+
+        end );
+
+
+    end );
+end
 
 
 

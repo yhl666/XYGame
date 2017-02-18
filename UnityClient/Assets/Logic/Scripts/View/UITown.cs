@@ -735,6 +735,16 @@ public sealed class UI_friendsapp : UICellApp
         { // 删除好友
             Debug.Log("删除好友");
 
+
+            RpcClient.ins.SendRequest("services.friends", "delete_by_no", "no:" + PublicData.ins.self_user.no + ",who:3,", (string msg) =>
+            {
+                Debug.Log("friend delete " + msg);
+               
+
+            });
+
+
+
         });
         this.btn_detail_send.onClick.AddListener(() =>
         { // 私聊好友
