@@ -161,10 +161,15 @@ function t.delete_by_no(msg, cb)
             -- 没有好友
             cb("ret:error,msg:你们不是好友"); return;
         end
-
+        print("reg11 " .. msg);
         msg =(string.gsub(msg, "{no:" .. who .. ",}", ""));
+        print("reg " .. msg);
 
-        redis.set(redis_key.get_friends(no), msg, function(res)
+        if msg == "" then
+            msg = "\"\""; --没有好友了
+
+        end
+        redis.set(redis_key.get_friends(no), msg .. "", function(res)
             if res == "" then
 
                 cb("ret:error,msg:删除出错,");

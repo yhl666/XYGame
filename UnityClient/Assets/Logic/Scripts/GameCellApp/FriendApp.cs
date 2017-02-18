@@ -31,6 +31,7 @@ public class FriendsApp : CellApp
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_RPC_NEW_FRIEND);
         EventDispatcher.ins.AddEventListener(this, Events.ID_ADD_FRIEND_SUCCESS);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_FRIENDS_DELETE_CLICKED);
 
         return true;
     }
@@ -119,27 +120,24 @@ public class FriendsApp : CellApp
 
 
         }
-        else if (Events.ID_FRIENDS_DELETE_CLICKED ==type)
+        else if (Events.ID_FRIENDS_DELETE_CLICKED == type)
         {
 
-            RpcClient.ins.SendRequest("services.friends", "delete_by_no", "no:" + PublicData.ins.self_user.no + ",who:" +  view.current_detail_no + ",", (string msg) =>
+            RpcClient.ins.SendRequest("services.friends", "delete_by_no", "no:" + PublicData.ins.self_user.no + ",who:" + view.current_detail_user.no + ",", (string msg) =>
             {
-                Debug.Log("friend delete " + msg);
-
-
                 HashTable kv = Json.Decode(msg);
                 if (kv["ret"] == "ok")
                 {
-                    foreach(DAO.User user in friends )
-                    {
-                        if(user.no.ToString() == view.current_detail_no)
-                        {
-                            friends.Remove(user); break;
-                        }
 
-                    }
-                    Debug.Log("sync");
+                    friends.Remove(view.current_detail_user);
+
+                    EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "删除好友:" + view.current_detail_user.name + "成功");
                     EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
+                }
+                else
+                {
+
+                    EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "删除好友:" + view.current_detail_user.name + "失败 " + kv["msg"]);
                 }
             });
         }

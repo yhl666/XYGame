@@ -735,16 +735,8 @@ public sealed class UI_friendsapp : UICellApp
         { // 删除好友
             Debug.Log("删除好友");
 
-
-          /*  RpcClient.ins.SendRequest("services.friends", "delete_by_no", "no:" + PublicData.ins.self_user.no + ",who:" + current_detail_no + ",", (string msg) =>
-            {
-                Debug.Log("friend delete " + msg);
-               
-
-            });
-            */
-
-
+            EventDispatcher.ins.PostEvent(Events.ID_FRIENDS_DELETE_CLICKED, this);
+    
         });
         this.btn_detail_send.onClick.AddListener(() =>
         { // 私聊好友
@@ -869,6 +861,10 @@ public sealed class UI_friendsapp : UICellApp
             this.list = list;
             this.SyncList();
 
+            this.panel_search.gameObject.SetActive(false);
+            this.panel_detail.gameObject.SetActive(false);
+            this.panel_list.gameObject.SetActive(true);
+
         }
 
     }
@@ -877,7 +873,7 @@ public sealed class UI_friendsapp : UICellApp
     private void ShowDetail(DAO.User user)
     {
         //show detail
-        this.current_detail_no = user.no.ToString() ;
+        this.current_detail_user = user ;
 
         this.panel_list.gameObject.SetActive(false);
         this.panel_detail.gameObject.SetActive(true);
@@ -992,7 +988,7 @@ public sealed class UI_friendsapp : UICellApp
     private Text txt_detail_level = null;
     private Text txt_detail_time = null;
 
-    public string current_detail_no = "";//当前显示详细信息的no
+    public DAO.User current_detail_user= null;//当前显示详细信息的no
 
 
 }
