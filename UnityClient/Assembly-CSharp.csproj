@@ -127,6 +127,7 @@
      <Compile Include="Assets\Scripts\View\ViewMgr.cs" />
      <Compile Include="Assets\Scripts\View\ViewUI.cs" />
      <Compile Include="Assets\TerrainMeta.cs" />
+     <Compile Include="Assets\TestServerHost.cs" />
      <None Include="Assets\Resources\hd\pet\pet_224\bullet\pet_224_bul_222021\pet_224_bul_222021.plist.xml" />
      <None Include="Assets\Resources\hd\roles\role_6\bullet\role_6_bul_62361\role_6_bul_62361.plist.xml" />
      <None Include="Assets\Resources\hd\buff\buff_200505\buff_200505.plist.xml" />
