@@ -667,6 +667,7 @@ public sealed class UI_friendsapp : UICellApp
         base.Init();
 
         this.panel = GameObject.Find("ui_panel_friends");
+        
 
         // init friends list
         this.panel_list = panel.transform.FindChild("friends_list");
@@ -832,7 +833,7 @@ public sealed class UI_friendsapp : UICellApp
 
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_FRIENDS_CLICK);
-        EventDispatcher.ins.AddEventListener(this, Events.ID_VIEW_SYNC_FRIENDS_LIST);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_FRIEND_SYNC_VIEW);
 
 
 
@@ -854,7 +855,7 @@ public sealed class UI_friendsapp : UICellApp
 
 
         }
-        else if (type == Events.ID_VIEW_SYNC_FRIENDS_LIST)
+        else if (type == Events.ID_FRIEND_SYNC_VIEW)
         {
             //刷新界面
             ArrayList list = userData as ArrayList;

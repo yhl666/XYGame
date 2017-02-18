@@ -64,7 +64,7 @@ public class FriendsApp : CellApp
 
 
                     }
-                    EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
+                    EventDispatcher.ins.PostEvent(Events.ID_FRIEND_SYNC_VIEW, friends);
 
                 });
 
@@ -102,7 +102,7 @@ public class FriendsApp : CellApp
             EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家:" + who.name + " 已添加你为好友!");
 
             friends.Add(who);
-            EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
+            EventDispatcher.ins.PostEvent(Events.ID_FRIEND_SYNC_VIEW, friends);
 
         }
         else if (type == Events.ID_ADD_FRIEND_SUCCESS)
@@ -112,7 +112,7 @@ public class FriendsApp : CellApp
 
 
             friends.Add(who);
-            EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
+            EventDispatcher.ins.PostEvent(Events.ID_FRIEND_SYNC_VIEW, friends);
 
             EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "添加:" + who.name + "为好友成功");
 
@@ -132,7 +132,7 @@ public class FriendsApp : CellApp
                     friends.Remove(view.current_detail_user);
 
                     EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "删除好友:" + view.current_detail_user.name + "成功");
-                    EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
+                    EventDispatcher.ins.PostEvent(Events.ID_FRIEND_SYNC_VIEW, friends);
                 }
                 else
                 {
