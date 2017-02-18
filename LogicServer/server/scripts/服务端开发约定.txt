@@ -1,0 +1,12 @@
+约定
+
+1.按照服务模块提交cell.xygame.services 和base.xygame.services里面的XXXX.lua文件 其他问题都提交为ISSUE 作为BUG处理，目前是我来修改
+
+2.每个服务开发前 在文件头部写上接口名字 和json参数信息 可以来个示范json。，提交到SVN后 客户端人员就可以根据该接口信息 开始开发
+到
+
+3.新建文件直接copy 重命名 Template.lua，作者和Email 改为你的即可
+
+4.不要用记事本写lua脚本 ！不要用记事本写lua脚本 ！ 因为带BOM的UTF8 不支持
+
+其他问题咨询 caoshanshan@ztgame.com
