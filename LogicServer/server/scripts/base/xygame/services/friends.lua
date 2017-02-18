@@ -1,4 +1,4 @@
-
+﻿
 --[[
 
 * Author: caoshanshan
@@ -45,6 +45,20 @@ function t.add_by_name(ctx, msg, cb)
 
     -- 发起cell服务器的远程调用，请求 add
     remote.request("services.friends", "add_by_name", msg, function(msg)
+
+        if msg == "timeout" then
+            cb("ret:error,msg:timeout,");
+            return;
+        end
+        cb(msg);
+    end );
+
+end
+
+function t.add_by_no(ctx, msg, cb)
+
+    -- 发起cell服务器的远程调用，请求 add
+    remote.request("services.friends", "add_by_no", msg, function(msg)
 
         if msg == "timeout" then
             cb("ret:error,msg:timeout,");

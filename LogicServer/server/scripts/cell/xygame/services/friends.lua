@@ -1,4 +1,4 @@
-
+﻿
 --[[
 
 * Author: caoshanshan
@@ -94,6 +94,51 @@ function t.add_by_name(msg, cb)
     end )
 
 end
+
+-- 添加好友，根据用户no
+function t.add_by_no(msg, cb)
+    local kv = json.decode(msg);
+    local no = kv["my_no"];
+    local no_target = kv["no_target"];
+    msg = "no:" .. no_target .. ",";
+
+    remote.request_local("services.user", "query_user", msg, function (msg)
+        local kv = json.decode(msg);
+        if "ok" == kv["ret"] then
+            local user_msg = msg;
+
+            redis.get(redis_key.get_friends(no), function(msg)
+                if msg == "" then
+                    -- 没有好友
+                else
+                    -- 有好友
+                    if string.find(msg, kv["no"]) ~= nil then
+
+                        cb("ret:error,msg:已经是你的好友,"); return;
+                    end
+                end
+
+                msg = msg .. "{no:" .. kv["no"] .. ",}";
+
+                redis.set(redis_key.get_friends(no), msg, function(msg1)
+                    if msg1 == "ok" then
+                        cb(user_msg)
+                    else
+                        cb("ret:error,msg:服务器内部错误");
+                    end
+
+                end )
+
+            end);
+            
+        else
+        
+            cb("ret:error,msg:该用户不存在,");
+        end
+    end);
+end
+
+
 
 -- 查询
 function t.query(msg, cb)
