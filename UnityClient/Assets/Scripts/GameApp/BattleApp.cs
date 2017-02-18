@@ -123,7 +123,7 @@ sealed class BattleSyncHandler
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-            ///   Debug.Log(xx);
+          ///    Debug.Log(xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -375,6 +375,7 @@ public sealed class BattleApp : AppBase
     }
     public override bool Init()
     {
+        ViewUI.Create<UIPublicRoot>();
         EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
         isOver = false;
 
@@ -386,7 +387,7 @@ public sealed class BattleApp : AppBase
 
         this.worldMap = ModelMgr.Create<BattleWorldMap>() as BattleWorldMap;
 
-        ViewUI.Create<UIPublicRoot>();
+
         ViewUI.Create<UIBattleRoot>();
 
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
@@ -565,7 +566,7 @@ public sealed class BattleApp : AppBase
 
             // process to the lastest frame (if current frame less than max frame(from server )  this will block until current frame
             syncHandler.UpdateMS();
-
+        
         } while (false);
 
     }

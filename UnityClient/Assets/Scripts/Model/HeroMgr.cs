@@ -30,7 +30,14 @@ public sealed class HeroMgr : GAObject
     }
 
 
-   
+    public override void OnDispose()
+    {
+
+        this.lists.Clear();
+        self = null;
+        me_no = 0;
+        _ins = null;
+    }
     public void Remove(int b)
     {
         Hero hero = this.GetHero(b);

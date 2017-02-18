@@ -127,6 +127,25 @@ public class TownApp : AppBase
 
     public override void UpdateMS()
     {
+
+
+        if (HeroMgr.ins.self !=null && HeroMgr.ins.self.x < 0.5)
+        {
+
+
+            AppMgr.ins.Dispose();
+            ModelMgr.ins.Dispose();
+            ViewMgr.ins.Dispose();
+
+            //  PublicData.GetInstance().game.Terminate();
+            //   GameObject.DestroyImmediate(GameObject.Find("_ServiceCenterObject"));
+            //  PublicData.GetInstance().game.GotoScene();
+
+            EventDispatcher.DestroyInstance();
+            SceneMgr.Load("BattlePVP");
+
+            return;
+        }
         base.UpdateMS();
         AutoReleasePool.ins.Clear();
 

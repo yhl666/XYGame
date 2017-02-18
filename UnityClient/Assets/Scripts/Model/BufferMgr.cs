@@ -118,7 +118,7 @@ public sealed class BufferMgr : GAObject
     private BufferMgr()
     {
     }
-
+ 
     Entity owner = null;
 }
 

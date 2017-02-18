@@ -26,7 +26,13 @@ public sealed class EnemyMgr : GAObject
         b.OnExit();
         b.LazyDispose();
     }
+    public override void OnDispose()
+    {
 
+        this.lists.Clear();
+ 
+        _ins = null;
+    }
     public override void UpdateMS()
     {
         foreach (Enemy b in lists)

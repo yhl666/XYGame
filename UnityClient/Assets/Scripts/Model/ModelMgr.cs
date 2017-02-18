@@ -18,6 +18,10 @@ public sealed class ModelMgr : GAObject
     {
 
         this.lists.Clear(); base.OnDispose();
+        BulletMgr.ins.Dispose();
+        HeroMgr.ins.Dispose();
+        EnemyMgr.ins.Dispose();
+ 
     }
     public void Add(Model b)
     {

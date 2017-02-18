@@ -10,7 +10,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Awake()
     {
-     //  Application.targetFrameRate = 999999;
+     Application.targetFrameRate = 999999;
     }
     // Use this for initialization
     void Start()

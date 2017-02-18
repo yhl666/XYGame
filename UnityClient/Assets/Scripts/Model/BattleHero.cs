@@ -135,7 +135,7 @@ public class BattleHero : Hero
 
         if (team == 1)
         {//test
-            eventDispatcher.PostEvent(Events.ID_BTN_ATTACK);
+           /// eventDispatcher.PostEvent(Events.ID_BTN_ATTACK);
         }
 
     }

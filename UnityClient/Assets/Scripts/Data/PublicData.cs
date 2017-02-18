@@ -30,7 +30,8 @@ public class PublicData : object
     {
         _ins = null;
     }
-
+    //是否是PVP 模式
+    public bool is_pvp = false;
 
     public string _game_over_info_string;
 

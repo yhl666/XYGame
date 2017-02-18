@@ -112,7 +112,7 @@ void Room::BroadcastFrameData()
 	{
 		p->SendJsonData(jsondata);
 	}
-	//Utils::log("Broadcast:%s", jsondata.c_str());
+Utils::log("Broadcast:%s", jsondata.c_str());
 ///	Utils::log("%s", jsondata.c_str());
 
 

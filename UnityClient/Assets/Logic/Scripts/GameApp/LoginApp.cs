@@ -166,7 +166,8 @@ public class LoginApp : AppBase
         //  PublicData.GetInstance().game.Terminate();
         //   GameObject.DestroyImmediate(GameObject.Find("_ServiceCenterObject"));
         //  PublicData.GetInstance().game.GotoScene();
-        SceneMgr.Load("TownScene");
+       SceneMgr.Load("TownScene");
+//        SceneMgr.Load("BattlePVP");
 
     }
 

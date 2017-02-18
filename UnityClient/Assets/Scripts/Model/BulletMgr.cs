@@ -53,7 +53,12 @@ public sealed class BulletMgr : GAObject
         b.LazyDispose();
     }
 
+    public override void OnDispose()
+    {
 
+        this.lists.Clear();
+        _ins = null;
+    }
     public override void UpdateMS()
     {
         EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLBULLET_UPDATEMS);
