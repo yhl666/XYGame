@@ -3,18 +3,12 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '8760fb445d32420cd32ded69f786fbdf9815f065'
-    oldFile: !uuid 'fc0bb170b9dec59ecc151f76d9521faeb3cc6c89'
-  /UnityClient/Assembly-CSharp.csproj:
-    newFile: !uuid 'f5d041df5abdb4fc21dc6a27c89bcd8836152020'
-    oldFile: !uuid '4c2cffab915d9817c73264dd0e6983e04238b1d9'
+    newFile: !uuid '048c70c720180d56f669ecc23199d9155a49f226'
+    oldFile: !uuid '8760fb445d32420cd32ded69f786fbdf9815f065'
   /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid 'ebe9926b691deeb8c6004b1db7a7284574efeea1'
-    oldFile: !uuid 'b0f51101489c46a430664816f7d179f6ead74339'
-  /UnityClient/客户端开发约定.txt:
-    newFile: !uuid 'c1baa6e84567b8434055892c08a91fdc7e6a6f7a'
-    oldFile: null
-gitCommitId: !uuid 'c35ac67aac1e32fc534156275e9916e40fd4a887'
+    newFile: !uuid '4ec6df720977465aadb585f098f2fee7e8b39b80'
+    oldFile: !uuid 'ebe9926b691deeb8c6004b1db7a7284574efeea1'
+gitCommitId: !uuid '529a1ecb1329c7f1e3506e179bb3dd18be784638'
 renames: {
   }
-revisionId: 183
+revisionId: 184
