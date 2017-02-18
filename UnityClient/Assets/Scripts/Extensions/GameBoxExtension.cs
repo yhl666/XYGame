@@ -379,7 +379,6 @@ namespace inner
                     Debug.LogWarning("UnKnown services:" + service);
                     return true;
                 }
-                Debug.Log("[Server Rpc Call]:" + service + " add to cache");
                 rpc = Activator.CreateInstance(t) as RpcService;
                 services.Add(service, rpc);
             }

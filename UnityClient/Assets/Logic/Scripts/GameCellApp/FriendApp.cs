@@ -48,6 +48,30 @@ public class FriendsApp : CellApp
 
             p.SetNewPositionAble(false);
             view.Show();
+
+            RpcClient.ins.SendRequest("services.friends", "query_all", "no:" + PublicData.ins.self_user.no + ",", (string msg) =>
+                {
+                    Debug.Log("friend list " + msg);
+
+                    ArrayList list = Json.MultiDecode(msg);
+                    friends.Clear();
+                    foreach (HashTable kv in list)
+                    {
+
+                        friends.Add(DAO.User.Create(kv));
+
+
+                    }
+                    EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
+
+                });
+
+
+
+
+
+
+
         }
 
         else if (type == Events.ID_FRIENDS_CLOSE_CLICKED)
@@ -78,20 +102,21 @@ public class FriendsApp : CellApp
             friends.Add(who);
             EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
 
-        }else if (type == Events.ID_ADD_FRIEND_SUCCESS)
+        }
+        else if (type == Events.ID_ADD_FRIEND_SUCCESS)
         {
 
             DAO.User who = userData as DAO.User;
- 
+
 
             friends.Add(who);
             EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
 
-            EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "添加:" +  who.name + "为好友成功");
+            EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "添加:" + who.name + "为好友成功");
 
 
 
-             
+
         }
 
     }
