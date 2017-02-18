@@ -119,6 +119,30 @@ public class FriendsApp : CellApp
 
 
         }
+        else if (Events.ID_FRIENDS_DELETE_CLICKED ==type)
+        {
+
+            RpcClient.ins.SendRequest("services.friends", "delete_by_no", "no:" + PublicData.ins.self_user.no + ",who:" +  view.current_detail_no + ",", (string msg) =>
+            {
+                Debug.Log("friend delete " + msg);
+
+
+                HashTable kv = Json.Decode(msg);
+                if (kv["ret"] == "ok")
+                {
+                    foreach(DAO.User user in friends )
+                    {
+                        if(user.no.ToString() == view.current_detail_no)
+                        {
+                            friends.Remove(user); break;
+                        }
+
+                    }
+                    Debug.Log("sync");
+                    EventDispatcher.ins.PostEvent(Events.ID_VIEW_SYNC_FRIENDS_LIST, friends);
+                }
+            });
+        }
 
     }
 

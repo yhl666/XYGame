@@ -105,6 +105,9 @@ public sealed class Events : object
     public const int ID_ADD_FRIEND_SUCCESS = 63;//添加好友成功
 
     public const int ID_VIEW_SYNC_FRIENDS_LIST = 62;//刷新UI
+
+    public const int ID_FRIENDS_DELETE_CLICKED = 64;//  
+
    
     //------------------------------local event-----------------------------------------------------------
 
