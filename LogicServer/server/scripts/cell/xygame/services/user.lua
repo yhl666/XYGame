@@ -15,6 +15,7 @@ local remote = require("base.remote");
 local redis = require("base.redis");
 local redis_key = require("utils.redis_key")
 local user = require("model.user");
+local stack = require("base.stack");
 
 
 
@@ -108,6 +109,41 @@ function t.query_by_name(msg, cb, no, limit)
 
 end
 
+
+function t.query_by_list(msg, cb, s, ret_msg)
+
+    if s == nil then
+        s = stack.new();
+        local kv = json.multi_decode(msg);
+
+        for k, v in ipairs(kv) do
+        print("push  " .. v["no"])
+            s:push(v["no"]);
+        end
+        t.query_by_list(msg, cb, s, "");
+        return;
+    end
+
+
+    if s:is_empty() == true then
+
+        cb(ret_msg); return;
+    end
+
+    local no = s:pop();
+
+    print(" query by list " .. no .. "   ")
+
+
+    redis.get(redis_key.get_user(no), function(msg1)
+
+        t.query_by_list(msg, cb, s, ret_msg .. "{" .. msg1 .. "}")
+    end );
+
+
+
+
+end
 
 
 return t;

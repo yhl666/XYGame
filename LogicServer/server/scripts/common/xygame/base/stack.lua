@@ -26,9 +26,10 @@ end
 --[Comment]
 --pop the top value
 function t:pop()
-    local x=self.data[self.c]
+
     if self.c>=1 then
-        self.data[self.c]=nil
+        local x=self:top();
+        self.data[self.c-1]=nil
         self.c=self.c-1
         return x
     end 

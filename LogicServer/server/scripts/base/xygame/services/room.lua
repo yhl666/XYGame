@@ -15,7 +15,7 @@ local t = { }
 
 t.enable_hotfix = false;  -- 禁止hot fix
 
-global_hero_list = hero_list:new();
+global_hero_list = hero_list.new();
 
 function room_notify_other(ctx, service, method, msg)
 

@@ -115,4 +115,45 @@ end
 
 
 
+
+
+
+
+
+
+
+-- 添加好友
+function t.query_all(msg, cb)
+
+    local kv = json.decode(msg);
+    local no = kv["no"];
+
+
+    redis.get(redis_key.get_friends(no), function(msg)
+        if msg == "" then
+            -- 没有好友
+            cb("ret:error,"); return;
+        end
+
+        remote.request_local("services.user", "query_by_list", msg, function(msg)
+
+        print("cell ret " .. msg)
+            cb(msg);
+        end );
+
+    end );
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
 return t;

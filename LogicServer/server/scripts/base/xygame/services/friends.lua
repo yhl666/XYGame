@@ -14,7 +14,7 @@ local remote = require("base.remote");
 
 -- 删除好友
 function t.remove(ctx, msg, cb)
-    -- 发起cell服务器的远程调用，请求 login
+    -- 发起cell服务器的远程调用，请求 remove
     remote.request("services.friends", "remove", msg, function(msg)
         if msg == "timeout" then
             cb("ret:error,msg:timeout,");
@@ -27,7 +27,7 @@ end
 -- 添加好友
 function t.add(ctx, msg, cb)
 
-    -- 发起cell服务器的远程调用，请求 register
+    -- 发起cell服务器的远程调用，请求 add
     remote.request("services.friends", "add", msg, function(msg)
         if msg == "timeout" then
             cb("ret:error,msg:timeout,");
@@ -43,7 +43,7 @@ end
 
 function t.add_by_name(ctx, msg, cb)
 
-    -- 发起cell服务器的远程调用，请求 register
+    -- 发起cell服务器的远程调用，请求 add
     remote.request("services.friends", "add_by_name", msg, function(msg)
 
         if msg == "timeout" then
@@ -88,7 +88,19 @@ end
 
 
 
+function  t.query_all(ctx,msg,cb)
+
+ -- 发起cell服务器的远程调用，请求 query
+    remote.request("services.friends", "query_all", msg, function(msg)
+
+        if msg == "timeout" then
+            cb("ret:error,msg:timeout,");
+            return;
+        end
+        cb(msg);
+    end );
 
 
+end
 
 return t;
