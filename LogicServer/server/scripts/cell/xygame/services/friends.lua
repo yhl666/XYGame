@@ -98,9 +98,9 @@ end
 -- 添加好友，根据用户no
 function t.add_by_no(msg, cb)
     local kv = json.decode(msg);
-    local no = kv["my_no"];
-    local no_target = kv["no_target"];
-    msg = "no:" .. no_target .. ",";
+    local no = kv["no"];
+    local who = kv["who"];
+    msg = "no:" .. who .. ",";
 
     remote.request_local("services.user", "query_user", msg, function (msg)
         local kv = json.decode(msg);
@@ -108,8 +108,9 @@ function t.add_by_no(msg, cb)
             local user_msg = msg;
 
             redis.get(redis_key.get_friends(no), function(msg)
+
                 if msg == "" then
-                    -- 没有好友
+                    
                 else
                     -- 有好友
                     if string.find(msg, kv["no"]) ~= nil then
@@ -162,11 +163,6 @@ end
 
 
 
-
-
-
-
-
 -- 添加好友
 function t.query_all(msg, cb)
 
@@ -190,43 +186,54 @@ end
 
 
 
+--删除好友
 function t.delete_by_no(msg, cb)
-
+    
     local kv = json.decode(msg);
     local no = kv["no"];
-    local who = kv["who"];
+    local who = kv["who"];  --好友的no
 
-    redis.get(redis_key.get_friends(no), function(msg)
-        if msg == "" then
-            -- 没有好友
-            cb("ret:error,msg:你没有好友,"); return;
-        end
-        if string.find(msg, "no:" .. who .. ",") == nil then
+    redis.get(redis_key.get_friends(no), function(msg2)
+        if "" == msg2 then
+            cb("ret:error, msg:你的好友列表为空,");return;
 
-            -- 没有好友
-            cb("ret:error,msg:你们不是好友"); return;
-        end
-        print("reg11 " .. msg);
-        msg =(string.gsub(msg, "{no:" .. who .. ",}", ""));
-        print("reg " .. msg);
+        else
+            if string.find(msg2, "no:" .. who .. ",") == nil then 
+                cb("ret:error,msg:该好友不存在,");return;
 
-        if msg == "" then
-            msg = "\"\""; --没有好友了
-
-        end
-        redis.set(redis_key.get_friends(no), msg .. "", function(res)
-            if res == "" then
-
-                cb("ret:error,msg:删除出错,");
             else
-                cb("ret:ok,msg:删除成功,");
-            end
+                msg2 = string.gsub(msg2, "{no:" .. who .. ",}", ""); --将目标的信息设置为空
 
-        end );
+                if msg2 == "" then
+                    redis.exec("del " .. redis_key.get_friends(no), function(msgg)
 
+                        local kvv = json.decode(msgg);
+                        if (kvv["ret"] ~= "ok") then
+                            cb("ret:error, msg:delete failed,"); return;     -- 删除失败 或者 无该key
+                        else
+                            cb("ret:ok, msg:delete success,"); return;
+                            --   删除成功
+                        end
+                    
+                    end);
+                end
+                
+                redis.set(redis_key.get_friends(no), msg2, function(msg3)
+                    
+                    if msg3 == "ok" then       
+                        cb("ret:ok, msg:delete success,");return;
+                    else
+                        cb("ret:error, msg:delete failed,");
+                    end
+                        
+                end);               
+            end    
+        end
+    
+    end);
 
-    end );
 end
+
 
 
 

@@ -53,8 +53,8 @@ function t.query_user(msg, cb)
     local no = kv["no"];
 
     redis.get(redis_key.get_user(no), function(msg)
-
         if msg == "" then
+        
             cb("ret:error,");
         else
             cb("ret:ok," .. msg);
