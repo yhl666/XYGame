@@ -184,6 +184,31 @@ function t.query_all(msg, cb)
 
 end
 
+--查询某个好友的用户信息
+function t.query_one(msg, cb)
+
+    local kv = json.decode(msg);
+    local no = kv["no"];
+    local who = kv["who"]
+
+    msg1 = "no:" .. who .. ",";
+
+    redis.get(redis_key.get_friends(no), function(msg)
+        if "" == msg then
+            cb(""); return;
+        end
+
+        remote.request_local("services.user", "query_user", msg1, function(msg2)
+            print(msg2);
+            msg2 = string.gsub(msg2, "ret:ok,", "");          -- ret:ok是user.lua里面的query_user引入的
+            msg2 = "{" .. msg2 .. "}";
+            cb(msg2);
+        end);
+    end);
+
+
+end
+
 
 
 --删除好友

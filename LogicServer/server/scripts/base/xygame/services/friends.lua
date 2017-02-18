@@ -117,7 +117,19 @@ function  t.query_all(ctx,msg,cb)
 
 end
 
+ -- 查询某个好友
+ function t.query_one(ctx, msg, cb)
 
+     --发起cell服务的远程调用
+     remote.request("services.friends", "query_one", msg, function(msg)
+     
+         if "timeout" == msg then
+            cb("ret:error,msg:timeout,");
+            return;
+        end
+        cb(msg);
+     end);
+ end
 
 
 function t.delete_by_no(ctx,msg,cb)
@@ -131,7 +143,6 @@ function t.delete_by_no(ctx,msg,cb)
         cb(msg);
     end );
 end
-
 
 
 return t;
