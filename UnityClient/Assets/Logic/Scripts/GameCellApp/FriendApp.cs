@@ -52,6 +52,7 @@ public class FriendsApp : CellApp
             RpcClient.ins.SendRequest("services.friends", "query_all", "no:" + PublicData.ins.self_user.no + ",", (string msg) =>
                 {
                     Debug.Log("friend list " + msg);
+                    if (msg == "") return;
 
                     ArrayList list = Json.MultiDecode(msg);
                     friends.Clear();

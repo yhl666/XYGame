@@ -1718,28 +1718,28 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="AssetManager">
- <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/AssetManager.dll</HintPath>
+ <HintPath>C:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/AssetManager.dll</HintPath>
  </Reference>
  <Reference Include="AssetUpdater">
- <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/AssetUpdater.dll</HintPath>
+ <HintPath>C:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/AssetUpdater.dll</HintPath>
  </Reference>
  <Reference Include="ByteStorage">
- <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ByteStorage.dll</HintPath>
+ <HintPath>C:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ByteStorage.dll</HintPath>
  </Reference>
  <Reference Include="ByteStorage.Utility">
- <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ByteStorage.Utility.dll</HintPath>
+ <HintPath>C:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ByteStorage.Utility.dll</HintPath>
  </Reference>
  <Reference Include="GiantLightFramework">
- <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/GiantLightFramework.dll</HintPath>
+ <HintPath>C:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/GiantLightFramework.dll</HintPath>
  </Reference>
  <Reference Include="GiantLightServer">
- <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/GiantLightServer.dll</HintPath>
+ <HintPath>C:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/GiantLightServer.dll</HintPath>
  </Reference>
  <Reference Include="NetworkManager">
- <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/NetworkManager.dll</HintPath>
+ <HintPath>C:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/NetworkManager.dll</HintPath>
  </Reference>
  <Reference Include="ServiceCenter">
- <HintPath>C:/Users/caoshanshan1/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ServiceCenter.dll</HintPath>
+ <HintPath>C:/Users/css/Desktop/XYGame/UnityClient/Assets/Logic/GameBox/ServiceCenter.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

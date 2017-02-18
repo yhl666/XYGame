@@ -117,7 +117,6 @@ function t.query_by_list(msg, cb, s, ret_msg)
         local kv = json.multi_decode(msg);
 
         for k, v in ipairs(kv) do
-        print("push  " .. v["no"])
             s:push(v["no"]);
         end
         t.query_by_list(msg, cb, s, "");
@@ -131,16 +130,10 @@ function t.query_by_list(msg, cb, s, ret_msg)
     end
 
     local no = s:pop();
-
-    print(" query by list " .. no .. "   ")
-
-
     redis.get(redis_key.get_user(no), function(msg1)
 
         t.query_by_list(msg, cb, s, ret_msg .. "{" .. msg1 .. "}")
     end );
-
-
 
 
 end

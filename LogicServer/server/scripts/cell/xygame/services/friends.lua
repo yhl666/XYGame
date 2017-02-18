@@ -132,17 +132,14 @@ function t.query_all(msg, cb)
     redis.get(redis_key.get_friends(no), function(msg)
         if msg == "" then
             -- 没有好友
-            cb("ret:error,"); return;
+            cb(""); return;
         end
-
         remote.request_local("services.user", "query_by_list", msg, function(msg)
 
-        print("cell ret " .. msg)
             cb(msg);
         end );
 
     end );
-
 
 end
 
