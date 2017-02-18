@@ -3,12 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '048c70c720180d56f669ecc23199d9155a49f226'
-    oldFile: !uuid '8760fb445d32420cd32ded69f786fbdf9815f065'
+    newFile: !uuid 'a383e234e4373ad620ad61895b32ed64bf39275b'
+    oldFile: !uuid '048c70c720180d56f669ecc23199d9155a49f226'
+  /UnityClient/Assembly-CSharp-Editor-firstpass.csproj:
+    newFile: null
+    oldFile: !uuid '43b3859b83a3f105f49002df0bc226101244685d'
+  /UnityClient/Assembly-CSharp-Editor.csproj:
+    newFile: null
+    oldFile: !uuid '1767b6bd8ea24a036a22616338a082b6a04b199b'
+  /UnityClient/Assembly-CSharp-firstpass.csproj:
+    newFile: null
+    oldFile: !uuid 'db00cd80b10cebaf9734e70cb48771ba50d67fd9'
+  /UnityClient/Assembly-CSharp.csproj:
+    newFile: null
+    oldFile: !uuid 'f5d041df5abdb4fc21dc6a27c89bcd8836152020'
+  /UnityClient/UnityClient.sln:
+    newFile: null
+    oldFile: !uuid '71c3f31bfac8891c489fceebdb90d282b1494a84'
   /UnityClient/UnityClient.v12.suo:
-    newFile: !uuid '4ec6df720977465aadb585f098f2fee7e8b39b80'
-    oldFile: !uuid 'ebe9926b691deeb8c6004b1db7a7284574efeea1'
-gitCommitId: !uuid '529a1ecb1329c7f1e3506e179bb3dd18be784638'
+    newFile: null
+    oldFile: !uuid '4ec6df720977465aadb585f098f2fee7e8b39b80'
+gitCommitId: !uuid '4ff7bd7373fe3e984cc176428cc5bebc624ab581'
 renames: {
   }
-revisionId: 184
+revisionId: 185
