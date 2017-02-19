@@ -200,8 +200,8 @@ function t.query_one(msg, cb)
 
         remote.request_local("services.user", "query_user", msg1, function(msg2)
             print(msg2);
-            msg2 = string.gsub(msg2, "ret:ok,", "");          -- ret:ok是user.lua里面的query_user引入的
-            msg2 = "{" .. msg2 .. "}";
+            --[[msg2 = string.gsub(msg2, "ret:ok,", "");          -- ret:ok是user.lua里面的query_user引入的
+            msg2 = "{" .. msg2 .. "}";--]]
             cb(msg2);
         end);
     end);
