@@ -2,25 +2,28 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '6412d201ef4d727e9e5a504bf855ac91be74499e'
-    oldFile: !uuid '8b9d9ccd39961b896d29beb1dc9e05298e04472f'
-  /UnityClient/Assets:
-    newFile: !uuid 'd856fae60c7d6558eeb9455ad276bb4e4f9a148d'
-    oldFile: !uuid '769b97fda196e0c04efcc089a484df6aad72acb8'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid 'd725c15491b459014109055ee3635fd1aa27960b'
-    oldFile: !uuid '4e8d4cd2f0ea366fbd1ac5f32f60e83eece7cc22'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid '3aafa36bc2fb997af8b6d5f7fb78705397b6f4cf'
-    oldFile: !uuid '6319199c0c8749ed749cdbc8ba8f94a7ae46d23d'
-  /UnityClient/Assets/Logic/Scripts/DAO:
-    newFile: !uuid 'e804da3313c4be9f71b24298f7a07ebfdc61092e'
-    oldFile: !uuid '9af948353795629d5e75a152807fdda671c83815'
-  /UnityClient/Assets/Logic/Scripts/DAO/User.cs:
-    newFile: !uuid '8db9d1a2179bb1179b2ccf09342f5683136ae9c3'
-    oldFile: !uuid 'd903f6b8f743971577ebe0eb91e6bc0b73976b64'
-gitCommitId: !uuid 'cf46dbd5608f3f878465d3f2422eb705b149f7f9'
+  /LogicServer:
+    newFile: !uuid '0d6347bba4093e9ee3d7263bd32a9212dd768f80'
+    oldFile: !uuid 'cbd46dbfa1f1949638efd9981d73e40af8d630b0'
+  /LogicServer/server:
+    newFile: !uuid '40bca68adb96596ba6410e43fddded0a7edb7c04'
+    oldFile: !uuid '61cb263eac182cea6713083495c3744c4c806231'
+  /LogicServer/server/scripts:
+    newFile: !uuid 'f8bd3a723f13121c0f9807bd07ac87f0b2ea420f'
+    oldFile: !uuid '314193614cd195529577d458913f6302441cfd83'
+  /LogicServer/server/scripts/cell:
+    newFile: !uuid '0e812c56d71c6d57eb28c9543a6ef9fb048b1d9d'
+    oldFile: !uuid '44c2ec489701032a876e7711cc2422e4bf4a9487'
+  /LogicServer/server/scripts/cell/xygame:
+    newFile: !uuid '3c0424ed70914e96a33d7f78707affb60796a49c'
+    oldFile: !uuid '69f64dabfafbe6cfd34ac44e3280535fc06d8451'
+  /LogicServer/server/scripts/cell/xygame/services:
+    newFile: !uuid '59bd10ef317244cd68d5e3769ef4fbce4cf71ea5'
+    oldFile: !uuid 'f983c71f93fce3a11f1fadcb144a231d1645ab51'
+  /LogicServer/server/scripts/cell/xygame/services/friends.lua:
+    newFile: !uuid '1e89320d48b4840e9b30c88ce0d4a5312e867bcc'
+    oldFile: !uuid '0d9464a06f6cb09508db34cf358f2468005bbc52'
+gitCommitId: !uuid 'd032da6221e0835ab4023810ae05c34834b3ae48'
 renames: {
   }
-revisionId: 189
+revisionId: 190
