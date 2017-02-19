@@ -2,40 +2,25 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid 'cbd46dbfa1f1949638efd9981d73e40af8d630b0'
-    oldFile: !uuid '96c1c7b5a7eb2bcfaae4ca958863c5f6f4333316'
-  /LogicServer/server:
-    newFile: !uuid '61cb263eac182cea6713083495c3744c4c806231'
-    oldFile: !uuid 'cb4decd77cea4d109688a8d0683326b4959937b6'
-  /LogicServer/server/scripts:
-    newFile: !uuid '314193614cd195529577d458913f6302441cfd83'
-    oldFile: !uuid '0fdd0f09045dd052f38d3f27cc09901436b6c6e2'
-  /LogicServer/server/scripts/base:
-    newFile: !uuid '697321c1c806d4ffb453b3952cf9f98377532701'
-    oldFile: !uuid 'd11dd8d8d53884c9d6be5f0cfb63cb6ca0e01a01'
-  /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid '7fe9af2da6626f775cd26df1e7f2289da3700f1e'
-    oldFile: !uuid 'b251a798bd9d22c5508717902e057b11ced68dc7'
-  /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid '8bf2ea00d7fcf6cc284eb7688d0aabd230f0719d'
-    oldFile: !uuid '4e76e77ea99f85be3d1906154e2e2ba379f1e7e6'
-  /LogicServer/server/scripts/base/xygame/services/friends.lua:
-    newFile: !uuid 'b2582ad05296bb4401e32f8728fe28bccde2145e'
-    oldFile: !uuid '06c1115955d933b9c291d1195f663d898faf95a5'
-  /LogicServer/server/scripts/cell:
-    newFile: !uuid '44c2ec489701032a876e7711cc2422e4bf4a9487'
-    oldFile: !uuid '21ac5f07ab8f2aacd5e1de94a50c1f6dc5e08d5f'
-  /LogicServer/server/scripts/cell/xygame:
-    newFile: !uuid '69f64dabfafbe6cfd34ac44e3280535fc06d8451'
-    oldFile: !uuid '3ee5e3489442aa2c55ff1b6edac5e5288045bfe8'
-  /LogicServer/server/scripts/cell/xygame/services:
-    newFile: !uuid 'f983c71f93fce3a11f1fadcb144a231d1645ab51'
-    oldFile: !uuid 'c7d36b9be5e38bae3960c4b14391c3908d9c85e6'
-  /LogicServer/server/scripts/cell/xygame/services/friends.lua:
-    newFile: !uuid '0d9464a06f6cb09508db34cf358f2468005bbc52'
-    oldFile: !uuid 'a662ab8e0f850230d61aa199896538b1903e5a58'
-gitCommitId: !uuid '53867189b1f7bcc5eb085fa18692b4aaf49bba85'
+  /UnityClient:
+    newFile: !uuid '6412d201ef4d727e9e5a504bf855ac91be74499e'
+    oldFile: !uuid '8b9d9ccd39961b896d29beb1dc9e05298e04472f'
+  /UnityClient/Assets:
+    newFile: !uuid 'd856fae60c7d6558eeb9455ad276bb4e4f9a148d'
+    oldFile: !uuid '769b97fda196e0c04efcc089a484df6aad72acb8'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid 'd725c15491b459014109055ee3635fd1aa27960b'
+    oldFile: !uuid '4e8d4cd2f0ea366fbd1ac5f32f60e83eece7cc22'
+  /UnityClient/Assets/Logic/Scripts:
+    newFile: !uuid '3aafa36bc2fb997af8b6d5f7fb78705397b6f4cf'
+    oldFile: !uuid '6319199c0c8749ed749cdbc8ba8f94a7ae46d23d'
+  /UnityClient/Assets/Logic/Scripts/DAO:
+    newFile: !uuid 'e804da3313c4be9f71b24298f7a07ebfdc61092e'
+    oldFile: !uuid '9af948353795629d5e75a152807fdda671c83815'
+  /UnityClient/Assets/Logic/Scripts/DAO/User.cs:
+    newFile: !uuid '8db9d1a2179bb1179b2ccf09342f5683136ae9c3'
+    oldFile: !uuid 'd903f6b8f743971577ebe0eb91e6bc0b73976b64'
+gitCommitId: !uuid 'cf46dbd5608f3f878465d3f2422eb705b149f7f9'
 renames: {
   }
-revisionId: 188
+revisionId: 189
