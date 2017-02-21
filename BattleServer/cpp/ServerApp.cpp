@@ -579,7 +579,7 @@ int ServerAppBattlePVP::Run()
 						room->AddPlayerDynamic(player);
 
 						cli->Send("cmd:Start:0:" + Utils::itos(player->GetNo()) + ":" + Utils::itos(room->GetCurrentFps()));
-
+						Sleep(1000);
 						Utils::log(" Room id = %d  add Player %d", room->GetID(), player->GetNo());
 						if (room->GetPlayerCounts() == Utils::stoi(room_max))
 						{
