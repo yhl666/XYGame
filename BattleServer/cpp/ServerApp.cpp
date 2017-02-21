@@ -555,11 +555,11 @@ int ServerAppBattlePVP::Run()
 
 					string cmd = pack->customs[0];
 
-					if (cmd == "new_pvp")
+					if (cmd == "new_pvp_friend")
 					{
 						string user_no = pack->customs[1];
 						string room_no = pack->customs[2];
-						string room_max = "2"; // pack->customs[3];
+						string room_max = pack->customs[3];
 
 
 						Room *room = nullptr;
@@ -570,25 +570,25 @@ int ServerAppBattlePVP::Run()
 							rooms[room_no] = room;
 							Utils::log("Create New Room id = %d", room->GetID());
 						}
-
+						room->Lock();
 
 						Player*player = Player::Create(cli, room);
 						player->SetNo(Utils::stoi(user_no));
 
-				
+
 						room->AddPlayerDynamic(player);
 
 						cli->Send("cmd:Start:0:" + Utils::itos(player->GetNo()) + ":" + Utils::itos(room->GetCurrentFps()));
-				
-						Utils::log(" Room id = %d  add Player %d", room->GetID() , player->GetNo());
+
+						Utils::log(" Room id = %d  add Player %d", room->GetID(), player->GetNo());
 						if (room->GetPlayerCounts() == Utils::stoi(room_max))
 						{
-							const vector<Player*> players = room->GetPlayers();
+							const vector<Player*> & players = room->GetPlayers();
 
 							for (int i = 0; i < players.size(); i++)
 							{
 								Player*player = players[i];
-								room->BroadcastCustomData("cmd:new_pvp:" +  Utils::itos( player->GetNo()));
+								room->BroadcastCustomData("cmd:new_pvp_friend:" + Utils::itos(player->GetNo()));
 							}
 							std::thread t(std::bind(ServerAppDynamic::RoomThreadFunc, room));
 							t.detach();
@@ -599,8 +599,8 @@ int ServerAppBattlePVP::Run()
 
 						}
 
+						room->UnLock();
 
- 
 
 
 					}
@@ -666,106 +666,106 @@ int ServerAppBattlePVP::Run()
 		//	t.detach();
 		while (true) // loop for accept Player Connecr
 		{
-			SocketClient * cli = nullptr;
+		SocketClient * cli = nullptr;
 
-			bool joinAble;
-			room->Lock();
-			joinAble = room->JoinAble();
-			room->UnLock();
-			while (joinAble && !cli)
-			{
-				cli = srv.AcceptLoop();
-				//	Sleep(100);
-				room->Lock();
+		bool joinAble;
+		room->Lock();
+		joinAble = room->JoinAble();
+		room->UnLock();
+		while (joinAble && !cli)
+		{
+		cli = srv.AcceptLoop();
+		//	Sleep(100);
+		room->Lock();
 
-				if ((room->GetPlayerCounts() > 0 && room->isEmptyRoom()))
-				{
-					room->UnLock();
-					break;;
-				}
-				joinAble = room->JoinAble();
+		if ((room->GetPlayerCounts() > 0 && room->isEmptyRoom()))
+		{
+		room->UnLock();
+		break;;
+		}
+		joinAble = room->JoinAble();
 
-				room->UnLock();
-			}
-			if (!cli)
-			{
-				Utils::log("Room id=%d UnJoinAble", room->GetID());
-				break;
-			}
+		room->UnLock();
+		}
+		if (!cli)
+		{
+		Utils::log("Room id=%d UnJoinAble", room->GetID());
+		break;
+		}
 
-			if (cli)
-			{
+		if (cli)
+		{
 
-				string str;
-				while (true)
-				{
-					str = cli->Recv().GetString();
+		string str;
+		while (true)
+		{
+		str = cli->Recv().GetString();
 
-					if (str != "" && str.size() > 0)
-					{
-						str[str.size() - 1] = '\0';
-						break;
-					}
-				}
+		if (str != "" && str.size() > 0)
+		{
+		str[str.size() - 1] = '\0';
+		break;
+		}
+		}
 
-				cli->SetAsync();
-
-
-				room->Lock();
-				TranslateDataPack * pack = TranslateDataPack::Decode(str);
-				if (pack)
-				{
-					if (pack->isCustomData)
-					{
-						string cmd = pack->customs[0];
-						if (cmd == "reconnect")
-						{
-							int fps = Utils::stoi(pack->customs[1]);
-							int no = Utils::stoi(pack->customs[2]);
-							room->ReConnect(cli, no, fps);
-						}
-						else if ((cmd == "new"))
-						{
-							Player*player = Player::Create(cli, room);
-							player->SetNo(++count);
-
-							cli->Send("cmd:Start:" + seeds + ":" + Utils::itos(player->GetNo()) + ":" + Utils::itos(room->GetCurrentFps()));
-							room->AddPlayerDynamic(player);
-
-							string noo = Utils::itos(player->GetNo());
-							cout << "       .." << noo << "." << endl;
-							string name = "name";
-
-							room->BroadcastCustomData("cmd:new:" + name + ":" + noo);
+		cli->SetAsync();
 
 
+		room->Lock();
+		TranslateDataPack * pack = TranslateDataPack::Decode(str);
+		if (pack)
+		{
+		if (pack->isCustomData)
+		{
+		string cmd = pack->customs[0];
+		if (cmd == "reconnect")
+		{
+		int fps = Utils::stoi(pack->customs[1]);
+		int no = Utils::stoi(pack->customs[2]);
+		room->ReConnect(cli, no, fps);
+		}
+		else if ((cmd == "new"))
+		{
+		Player*player = Player::Create(cli, room);
+		player->SetNo(++count);
 
-							//	room->BroadcastCustomData("cmd:new:" + pack->customs[1] + ":9");// +Utils::itos(player->GetNo()));
+		cli->Send("cmd:Start:" + seeds + ":" + Utils::itos(player->GetNo()) + ":" + Utils::itos(room->GetCurrentFps()));
+		room->AddPlayerDynamic(player);
+
+		string noo = Utils::itos(player->GetNo());
+		cout << "       .." << noo << "." << endl;
+		string name = "name";
+
+		room->BroadcastCustomData("cmd:new:" + name + ":" + noo);
 
 
-							cout << "Room id=" << room->GetID() << " Add Player id=" << player->GetNo() << " name=" << pack->customs[1] << endl;;
 
-						}
-						else
-						{
-							//Utils::log("unknow:%s1", cmd.c_str());
-						}
+		//	room->BroadcastCustomData("cmd:new:" + pack->customs[1] + ":9");// +Utils::itos(player->GetNo()));
 
-					}
-					else
-					{
-						//Utils::log("Accept noscene connected %s", str.c_str());
-					}
-				}
-				else
-				{
-					//Utils::log("Accept noscene connected %s", str.c_str());
-					//cli->Release();
-				}
 
-				pack->Release();
-				room->UnLock();
-			}
+		cout << "Room id=" << room->GetID() << " Add Player id=" << player->GetNo() << " name=" << pack->customs[1] << endl;;
+
+		}
+		else
+		{
+		//Utils::log("unknow:%s1", cmd.c_str());
+		}
+
+		}
+		else
+		{
+		//Utils::log("Accept noscene connected %s", str.c_str());
+		}
+		}
+		else
+		{
+		//Utils::log("Accept noscene connected %s", str.c_str());
+		//cli->Release();
+		}
+
+		pack->Release();
+		room->UnLock();
+		}
 
 		}*/
 
