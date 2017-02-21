@@ -8,6 +8,10 @@
 --{no:1,no_target:2,}no我的id no_target 我要战的id
 --request_pvp_v1(ctx, msg, cb)
 
+
+
+--{hp:50,no:1,}{hp:0,no:0,}
+--request_verify()
 end
 ]]
 
