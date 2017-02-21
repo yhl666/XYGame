@@ -8,7 +8,7 @@
 战斗帧同步服务器
 战斗时 客户端与该服务器直连。
 负责战斗的交互帧数据，暂时用多线程模型实现。
-
+[基础框架来自之前一个项目](https://git.oschina.net/dreamyouxi/Balls)
 可能采用的feature：
 1.改用ASIO的协程模型替代现有的多线程模型。
 
@@ -29,4 +29,7 @@
 #客户端 UnityClient
 采用Unity实现可配置化实现C# 和Lua 热更新
 功能：
-[框架来自之前一个项目](https://git.oschina.net/dreamyouxi/Balls)
+[基础框架来自之前一个项目](https://git.oschina.net/dreamyouxi/Balls)
+在此基础上的改进和扩展:
+1.添加小程序概念
+2.添加RPC调用
