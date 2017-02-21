@@ -80,7 +80,7 @@ function t.request_pvp_v2(msg, cb)
             redis.set(redis_key.get_pvproom(id), msg, function(msg1)
         
                 if msg1 == "ok" then 
-                    cb(msg1);
+                    cb("ret:ok,"..msg);
                 else
                     cb("ret:error,msg:服务器内部错误，申请战斗失败,");
                 end
