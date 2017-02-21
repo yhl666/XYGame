@@ -2,37 +2,19 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid '6a0c8889b16a7d900b745bf7dd2b1f1d3f93bed8'
-    oldFile: !uuid '70b310022ab1f15ae6810e24bd0add51b0e5f167'
-  /LogicServer/server:
-    newFile: !uuid '5e8cba25b1dc27c91ddbaf1c453432ba62858beb'
-    oldFile: !uuid 'a49bddd07e2236abb645e40190be845935c2c66b'
-  /LogicServer/server/scripts:
-    newFile: !uuid '87dafd67d7038f01cca48d27d746c0c9c7765d99'
-    oldFile: !uuid 'ecedd1b2b33fef6c06a71f339be2682d9ecea309'
-  /LogicServer/server/scripts/common:
-    newFile: !uuid 'edaa2b5e80bc5b83d7da40ec0cc4638dee3f8dae'
-    oldFile: !uuid '24f5e8703db040bf8a1138592705c9f6139f7471'
-  /LogicServer/server/scripts/common/xygame:
-    newFile: !uuid '63de3340950dcff3f601e57cf66b478dc60c9a2b'
-    oldFile: !uuid '20f7d4bcff80a694f8c71be78d643d989840ea10'
-  /LogicServer/server/scripts/common/xygame/base:
-    newFile: !uuid 'bc69862d462c727b02a6b1e6e5982aa186a0b72f'
-    oldFile: !uuid '4f2bde0d59e7009fab1691acc65fd393c9c5c7b1'
-  /LogicServer/server/scripts/common/xygame/base/queue.lua:
-    newFile: !uuid '588706744344246c82b91495e3516c3be9cea6a9'
-    oldFile: !uuid '1b3387802c70bcd19205676124cc68df6a01777e'
-  /LogicServer/server/scripts/common/xygame/base/stack.lua:
-    newFile: !uuid '8a3904ef3e31447408672e283ade553b5978daee'
-    oldFile: !uuid '0b8209f4c21c4c00cb9e55e5282cb3fc90ad31cb'
-  /LogicServer/server/scripts/common/xygame/lib:
-    newFile: !uuid '0b194c0b5755d0f4f067657e318bc62274fbc591'
-    oldFile: !uuid '97b4830ec235096bab8aca5362096a1fc978268d'
-  /LogicServer/server/scripts/common/xygame/lib/extern.lua:
-    newFile: !uuid '20331bf6543b449cd33350294f4ce328fd56465d'
-    oldFile: !uuid '0d1c596a306c85bd6f407f46f1bc653ee106b592'
-gitCommitId: !uuid '2d8e6466aefe1cb00581418b1256fec6e8482524'
+  /UnityClient:
+    newFile: !uuid '3742166eb51d241ce4959981a0384d4677a647ea'
+    oldFile: !uuid 'a9360595a2f4eac549d53b7d2a5c94e5cd080537'
+  /UnityClient/Assets:
+    newFile: !uuid '3e5382aa97dfbde3e6a951382fb4f1cd74c6fded'
+    oldFile: !uuid '5f57da09c8b173cc3e021993c51936dcffbb2811'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid 'af114950e7243e47c8d24822273b76cc0b6109df'
+    oldFile: !uuid 'bfe559b8af61defe17ed962a1d0ebe5e2fbe393b'
+  /UnityClient/Assets/Logic/TownScene.unity:
+    newFile: !uuid '967e049884d0991fc5b3427d813be6877eb34c26'
+    oldFile: !uuid 'b9564a70c38816cd20354d1be34a3e66ac3eac90'
+gitCommitId: !uuid '85c21d87c3b35c5ca89eaa00ddd805fa5551c9b9'
 renames: {
   }
-revisionId: 211
+revisionId: 212
