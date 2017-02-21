@@ -17,6 +17,7 @@ local remote = require("base.remote");
 local redis = require("base.redis");
 local redis_key = require("utils.redis_key")
 local user = require("model.user");
+local hero = require("model.base_hero");
 
 function t.request_pvp_v1(msg, cb)
     
@@ -56,5 +57,39 @@ function t.request_pvp_v1(msg, cb)
         end
     end);
 end
+
+
+function t.request_pvp_v2(msg, cb)
+
+    local kv = json.decode(msg);
+    local no = kv["no"];
+    local no_target = kv["no_target"];
+
+    msg1 = "no:" .. no_target .. ","
+            
+    redis.exec("incr GLOBAL_MAX_BATTLE_ROOM_NO", function(msg3)
+
+        print("exec redis cmd: " .. msg3);
+        local kvv = json.decode(msg3);
+        local id = kvv["msg"];
+
+        local msg = "pvproom_id:" .. id.. "," .. "max_no:1" .. "," .. "p1:" .. no .. "," .. "p2:" .. no_target .. ",";
+
+        if (kvv["ret"] == "ok") then
+            -- 自动增长ID成功
+            redis.set(redis_key.get_pvproom(id), msg, function(msg1)
+        
+                if msg1 == "ok" then 
+                    cb(msg1);
+                else
+                    cb("ret:error,msg:服务器内部错误，申请战斗失败,");
+                end
+            end);
+        end
+
+    end);  
+end
+ 
+
 
 return t;
