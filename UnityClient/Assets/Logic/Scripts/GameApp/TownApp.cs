@@ -165,6 +165,39 @@ public class TownApp : AppBase
 
         if (Input.GetMouseButtonUp(0) && enable_newposition)
         {
+
+
+
+            {
+
+
+                GlobalDialogInfo info = new GlobalDialogInfo();
+                info.txt_info = "玩家:111111" + " 邀请你PK,接受吗?";
+                info.txt_title = "好友邀请";
+                info._OnYes = () =>
+                {
+                    Debug.Log("okkkkkkkkkkkkkkkkkkkkkkkk");
+
+                };
+
+                info._OnNo = () =>
+                {
+                    Debug.Log("nooooooooooooooooooooooo");
+
+
+                };
+
+
+
+                EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_GLOBALDIALOG_SHOW, info);
+
+            }
+
+
+
+
+
+
             if ((Input.mousePosition.x > unclicked_xy.x && Input.mousePosition.y > unclicked_xy.y) && ((Input.mousePosition.x < unclicked_xy.x + unclicked_wh.x && Input.mousePosition.y < unclicked_xy.y + unclicked_wh.y)))
             {//限制范围内
 

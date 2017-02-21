@@ -26,7 +26,11 @@ public class ViewUI : View
     {
         ScaleTo.Create(host, 0.1f, 0.0f, 0.0f).OnComptele = () =>
         {
-            host.SetActive(false);
+
+            if (host.GetComponent<Actions>() == null)
+            {
+                host.SetActive(false);
+            }
         };
     }
 
@@ -53,7 +57,7 @@ public class ViewUI : View
         this._enable = e;
     }
 
-    public static ViewUI Create<T>(ViewUI _ui_root=null) where T : new()
+    public static ViewUI Create<T>(ViewUI _ui_root = null) where T : new()
     {
         ViewUI ret = new T() as ViewUI;
         ret._root = _ui_root;

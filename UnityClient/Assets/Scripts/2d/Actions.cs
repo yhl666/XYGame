@@ -28,7 +28,7 @@ public class Actions : MonoBehaviour
         {
             this.OnExit();
             if (OnComptele != null) OnComptele();
-            GameObject.Destroy(this.GetComponent<Actions>());
+            GameObject.Destroy(this as Component);
         }
     }
 

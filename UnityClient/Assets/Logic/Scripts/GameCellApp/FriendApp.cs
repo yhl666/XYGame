@@ -18,7 +18,8 @@ namespace Services
             DAO.User who = DAO.User.Create(msg);
 
             GlobalDialogInfo info = new GlobalDialogInfo();
-            info.txt = "玩家:" + who.name + " 邀请你PK 接受吗?";
+            info.txt_info = "玩家:" + who.name + " 邀请你PK,接受吗?";
+            info.txt_title = "好友邀请";
             info._OnYes = () =>
             {
                 cb("ret:ok,");

@@ -365,8 +365,12 @@ public sealed class GlobalDialogInfo
 {
     public VoidFuncVoid _OnYes = null;
     public VoidFuncVoid _OnNo = null;
-    public int timeout = 0;
-    public string txt = "";
+    public int timeout = 0xfffffff;
+    public string txt_info = "";
+    public string txt_title = "提醒";
+
+    public string btn_yes_txt = "是";
+    public string btn_no_txt = "否";
 
 }
 
@@ -389,7 +393,11 @@ public sealed class UI_globaldialog : ViewUI
             this.info = userData as GlobalDialogInfo;
             this.PopIn(this.panel);
 
-            this.txt.text = info.txt;
+            this.txt_info.text = info.txt_info;
+            this.txt_title.text = info.txt_title;
+
+            this.txt_btn_no.text = info.btn_no_txt;
+            this.txt_btn_yes.text = info.btn_yes_txt;
         }
 
     }
@@ -400,8 +408,12 @@ public sealed class UI_globaldialog : ViewUI
         this.panel = GameObject.Find("ui_panel_globaldialog");
         this.btn_yes = panel.transform.FindChild("btn_yes").GetComponent<Button>();
         this.btn_no = panel.transform.FindChild("btn_no").GetComponent<Button>();
-        this.txt = panel.transform.FindChild("txt_msg").GetComponent<Text>();
+        this.txt_info = panel.transform.FindChild("txt_msg").GetComponent<Text>();
+        this.txt_title = panel.transform.FindChild("txt_title").GetComponent<Text>();
 
+        this.txt_btn_yes = btn_yes.transform.FindChild("txt").GetComponent<Text>();
+        this.txt_btn_no = btn_yes.transform.FindChild("txt").GetComponent<Text>();
+    
 
         this.btn_yes.onClick.AddListener(() =>
         {
@@ -435,8 +447,11 @@ public sealed class UI_globaldialog : ViewUI
         info._OnNo();
     }
 
-    private Text txt = null;
+    private Text txt_info = null;
+    private Text txt_title = null;
 
+    private Text txt_btn_yes = null;
+    private Text txt_btn_no = null;
 
     private Button btn_yes = null;
     private Button btn_no = null;

@@ -275,8 +275,10 @@ public class UICellApp : ViewUI
     {
         ScaleTo.Create(this.panel, 0.1f, 0.0f, 0.0f).OnComptele = () =>
         {
-            this.panel.SetActive(false);
-
+            if (this.panel.gameObject.GetComponent<Actions>() == null)
+            {
+                this.panel.SetActive(false);
+            }
         };
     }
 
