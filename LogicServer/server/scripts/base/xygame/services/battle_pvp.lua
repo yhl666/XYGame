@@ -10,7 +10,7 @@
 
 
 
---{hp:50,no:1,}{hp:0,no:0,}
+--{hp:50,no:1,}{hp:0,no:0,} -- 第一个默认为1号玩家
 --request_verify()
 end
 ]]
