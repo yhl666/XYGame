@@ -29,7 +29,10 @@
 #客户端 UnityClient
 采用Unity实现可配置化实现C# 和Lua 热更新
 功能：
-[基础框架来自之前一个项目](https://git.oschina.net/dreamyouxi/Balls)
+[基础框架来自之前一个项目（Balls-小球大作战）](https://git.oschina.net/dreamyouxi/Balls)
 在此基础上的改进和扩展:
 1.添加小程序概念
 2.添加RPC调用
+3.添加骨骼动画(来自Spine官方Unity库的简单封装)
+4.添加对来自cocos2dx 的帧动画 plist png等文件的处理，实现一行代码播放帧动画
+5.对2D动画进行扩展，比如ScaleTo动画等，详见游戏中各种UI的动画
