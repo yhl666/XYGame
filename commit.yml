@@ -2,22 +2,10 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'a9650df6302721cc4e5b7e47cb905540a3749564'
-    oldFile: !uuid 'cb3fc48bab21ca4d1c27200fc349a84c0aefc9c7'
-  /UnityClient/Assets:
-    newFile: !uuid '43d52ff2f15267d8058dfd1e289c23251e265595'
-    oldFile: !uuid '5f04a75ef28144b7b373b0cecd46cb0dddb7747d'
-  /UnityClient/Assets/Plugins:
-    newFile: !uuid 'a92f877a8a4393027c68a5715267c6effc01c1fe'
-    oldFile: !uuid '804a8a6fc52940d46188b09f0e6faea316bb5ac8'
-  /UnityClient/Assets/Plugins/Spine:
-    newFile: !uuid '5152f4ed5adef2e8e092c1d7d0f764130b06e134'
-    oldFile: !uuid '5a173ec0196a6264b953a0bfd3c9cd383f292a72'
-  /UnityClient/Assets/Plugins/Spine/PList.cs:
-    newFile: !uuid '47caece41f112c28aa1aa1a869b02dfc6a8d3ef7'
-    oldFile: !uuid 'f9f89830ce29fdd25de79553700b3500b6b5354d'
-gitCommitId: !uuid '778c1bca19b7981edd2fae9319a97e433d91ea1d'
+  /README.md:
+    newFile: !uuid 'c982f21e0682921f56f12f07b9253bf8e75c4217'
+    oldFile: !uuid 'd5cbbcad23e4d954612bf008c204600ca1dd2bf5'
+gitCommitId: !uuid '0ac674cb84f25524d206b7947a0ec36bddb5528f'
 renames: {
   }
-revisionId: 277
+revisionId: 278
