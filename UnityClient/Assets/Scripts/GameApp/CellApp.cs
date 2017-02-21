@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+* Author:  caoshanshan
+* Email:   me@dreamyouxi.com
+
+ */
+using UnityEngine;
 using System;
 
 // 小程序基类

@@ -1,5 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿/*
+* Author:  caoshanshan
+* Email:   me@dreamyouxi.com
+
+ */
 using UnityEngine;
 using System.Collections;
 using GameBox.Service.GiantLightFramework;

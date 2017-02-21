@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+* Author:  caoshanshan
+* Email:   me@dreamyouxi.com
+
+ */
+using UnityEngine;
 using System.Collections;
 using System;
 using System.Threading;

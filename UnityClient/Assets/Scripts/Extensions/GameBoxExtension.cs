@@ -1,4 +1,9 @@
-﻿
+﻿/*
+* Author:  caoshanshan
+* Email:   me@dreamyouxi.com
+
+ */
+
 
 using System.Collections;
 using GameBox.Service.GiantLightFramework;
