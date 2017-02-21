@@ -2,13 +2,10 @@
 branches: {
   }
 fileChange:
-  /BattleServer:
-    newFile: !uuid 'e877f4edb509c9bbf98b9fee2c7d4e0b0c7ece6c'
-    oldFile: !uuid '4ba5167459164e2bfb25d875f84c5f30833cc40a'
-  /BattleServer/README.txt:
-    newFile: !uuid '31c4a094ddc93ac9f77a7a6474e7c18902fd6737'
-    oldFile: !uuid 'de28827be83cd138f2d6612dc22f6694a93e602a'
-gitCommitId: !uuid '2b1154a6df5b58f9dec2dc44b6de884784fa3447'
+  /README.md:
+    newFile: !uuid '10679266a556fe89ae841acf077e250791463152'
+    oldFile: !uuid 'e2d3be74343e159d49cf57e2abeb03d3f97c3df6'
+gitCommitId: !uuid '63a6b920de2d924086a1ace6960ec52eb8a319de'
 renames: {
   }
-revisionId: 260
+revisionId: 261
