@@ -173,7 +173,7 @@ public class Terrain : TerrainBase
         }
 
         Debug.Log("Terrain Init Point Count=" + (objs.Length - 1));
-
+        //自动化 初始
         GameObject map_range = obj_terrain.transform.FindChild("MapRange").gameObject;
 
         limit_x_left = map_range.transform.FindChild("Point_limit_x_left").transform.position.x;
@@ -215,7 +215,7 @@ public class TerrainPlatform : TerrainBase
             return false;
         }
         ArrayList blocks = this.AutoSort(objs);
-        //初始化地形
+        //初始化地形 自动化
         for (int i = 0; i < blocks.Count; i += 2)
         {
             TerrainBlock p1 = blocks[i] as TerrainBlock;
