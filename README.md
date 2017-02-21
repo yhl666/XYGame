@@ -43,7 +43,7 @@
 3.添加骨骼动画(来自Spine官方Unity库的简单封装)
 4.添加对来自cocos2dx 的帧动画 plist png等文件的处理（包括像素切图详见2D文件夹），实现一行代码播放帧动画
 5.添加对2D动画的支持，比如ScaleTo动画等，详见游戏中各种UI的动画
-6.添加对Lua实现部分逻辑的支持详见class LuaBuffer 还可以用可配置化的逻辑比如class BulletConfig
+6.添加对Lua实现部分逻辑的支持详见class LuaBuffer 还可以用可配置化的逻辑比如class BulletConfig(出于性能考虑暂不大面积使用lua)
 7.实现混合状态机详见StateMachine.cs和StateBase.cs
 8.添加对地图地形的可视化编辑 详见 Terrain.cs 和 WorldMap.cs 战斗场景结构
 9.等等
