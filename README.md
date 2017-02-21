@@ -19,6 +19,11 @@
 只有脚本代码。runtime 为私有
 拉取代码直接覆盖runtime的文件就能直接运行xygame服务器
 
+#客户服务端 ClientServer
+运行在服务端的软件。
+用于模拟客户端的运算 来校验数据，原则上 只是UnityClient的一个场景 和部分修改代码
+没有UI 只有逻辑，有单独的线程 负责和 LogicServer通信
+
 
 #客户端 UnityClient
 采用可配置化实现C# 和Lua 热更新
