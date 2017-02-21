@@ -3,42 +3,27 @@ branches: {
   }
 fileChange:
   /LogicServer:
-    newFile: !uuid 'bee01d499006f1d7850a5f05bf6cb1668f6ea2fd'
-    oldFile: !uuid '6a0c8889b16a7d900b745bf7dd2b1f1d3f93bed8'
+    newFile: !uuid '5af89423c6e7886fd5bca09917a851a1fd1498d0'
+    oldFile: !uuid 'bee01d499006f1d7850a5f05bf6cb1668f6ea2fd'
   /LogicServer/server:
-    newFile: !uuid '5935714e747dd9c7d4d1d9d81831fd8ea86d573c'
-    oldFile: !uuid '5e8cba25b1dc27c91ddbaf1c453432ba62858beb'
+    newFile: !uuid '7737ed567345aae3519c08350e5fea8d4318f256'
+    oldFile: !uuid '5935714e747dd9c7d4d1d9d81831fd8ea86d573c'
   /LogicServer/server/scripts:
-    newFile: !uuid 'd14e9eb0581f2898127338e1ab8a75ff4f9990cc'
-    oldFile: !uuid '87dafd67d7038f01cca48d27d746c0c9c7765d99'
+    newFile: !uuid 'd1bbb37de85e292437d29e6c4316e5083e3c8b76'
+    oldFile: !uuid 'd14e9eb0581f2898127338e1ab8a75ff4f9990cc'
   /LogicServer/server/scripts/base:
-    newFile: !uuid '1bd7f4efa24ecbb8ea53a2ac4a4e06c88b0c21fb'
-    oldFile: !uuid '5763b1983648d46b8a744e7bf2c80f88f1b2fafd'
+    newFile: !uuid '1b2e678427b1f7dea652da3cf23a81594a587cc8'
+    oldFile: !uuid '1bd7f4efa24ecbb8ea53a2ac4a4e06c88b0c21fb'
   /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid '942bff8ba2478afbc7df315de8e6d14735a92ed4'
-    oldFile: !uuid '5e110a6697891b0035e92e3795c0bd5d07232aea'
+    newFile: !uuid '7d04314fabfa91b74a04529c83a50c3ee9ac1926'
+    oldFile: !uuid '942bff8ba2478afbc7df315de8e6d14735a92ed4'
   /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid '867148df2dcd71f85cf58317768edf16bab82288'
-    oldFile: !uuid '574423c5aa3cccbb2574a25f716e7ed55cd1a446'
-  /LogicServer/server/scripts/base/xygame/services/friends.lua:
-    newFile: !uuid '0682752e15cc7a73ce7dd37ada2e2786726e1fed'
-    oldFile: !uuid '0f765304c0e74abb961440923150757056347842'
-  /LogicServer/server/scripts/cell:
-    newFile: !uuid '8261b7ae6a0a1b4471360d2999424399d659d9d0'
-    oldFile: !uuid '296c6c70ae594a6780c3d05cad9f96e717efbc7e'
-  /LogicServer/server/scripts/cell/xygame:
-    newFile: !uuid 'ae3fcb893103d0e6257aba365e12193f8ccee6ff'
-    oldFile: !uuid '9d1b678c292dd71f4f1efd4a2c883697623637e2'
-  /LogicServer/server/scripts/cell/xygame/services:
-    newFile: !uuid '6a5096e750125ec006ff9394a3c1ef8e7c70ddb8'
-    oldFile: !uuid '486dc2ca4df5f42b5ecb69f4d513919aff522556'
-  /LogicServer/server/scripts/cell/xygame/services/friends.lua:
-    newFile: !uuid '86c2d262eddf53493db2a1deb1cd64060fd9c699'
-    oldFile: !uuid '83f026bccd416455e827ea3f6eb524de63739e62'
-  /LogicServer/server/scripts/cell/xygame/services/user.lua:
-    newFile: !uuid 'dc04cb2d234e6c7155cb8ea2e754e91b297cef19'
-    oldFile: !uuid 'f911cac7855fd1d5b377b2d80281e1667d552e29'
-gitCommitId: !uuid 'f8a48db4435b0c03a5d83e7262c9fe160ba7f5d7'
+    newFile: !uuid '55dd3c6fd43f139566e7686fc2a26939ea0fa478'
+    oldFile: !uuid '867148df2dcd71f85cf58317768edf16bab82288'
+  /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
+    newFile: !uuid 'a063049dc2d82848c078ee07bd637bca58b8c79d'
+    oldFile: !uuid '9046366edfd9fc38ee5fe04a255f14bcebba0ce3'
+gitCommitId: !uuid 'af2d62b3007789cf731e3f746496e6849dc8a4d3'
 renames: {
   }
-revisionId: 213
+revisionId: 214
