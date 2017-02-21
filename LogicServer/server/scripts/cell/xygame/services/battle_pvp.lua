@@ -73,7 +73,7 @@ function t.request_pvp_v2(msg, cb)
         local kvv = json.decode(msg3);
         local id = kvv["msg"];
 
-        local msg = "pvproom_id:" .. id.. "," .. "max_no:1" .. "," .. "p1:" .. no .. "," .. "p2:" .. no_target .. ",";
+        local msg = "pvproom_id:" .. id.. "," .. "max_no:2" .. "," .. "p1:" .. no .. "," .. "p2:" .. no_target .. ",";
 
         if (kvv["ret"] == "ok") then
             -- 自动增长ID成功

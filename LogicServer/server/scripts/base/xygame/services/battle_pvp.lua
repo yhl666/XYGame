@@ -70,11 +70,11 @@ function t.request_pvp_v2(ctx, msg, cb)
                             cb("ret:error,msg:timeout,");
                             return;
                         end
-                        remote.request_client(ctx_2, "Friends", "RecvPVP", user2..msg5, function(msg)
+                        remote.request_client(ctx_2, "Friends", "RecvPVP", user1 ..msg5, function(msg)
 
                             local kv = json.decode(msg);
                             if kv["ret"] == "ok" then
-                                cb(user1 .. msg5);
+                                cb(user2 .. msg5);
                             else
                                 cb("ret:error,msg:2222玩家拒绝,");
                             end
