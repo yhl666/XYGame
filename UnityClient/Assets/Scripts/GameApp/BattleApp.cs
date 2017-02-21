@@ -260,7 +260,11 @@ sealed class BattleSyncHandler
                 h2.team = PublicData.ins.user_pvp_other.no;
                 h2.no = PublicData.ins.user_pvp_other.no; ;
                 h2.name = PublicData.ins.user_pvp_other.name;
+
+                h2.x = 10;//目标玩家初始在右边
+
                 h2.SetPVPAIEnable(true);
+
             }
 
         }

@@ -204,6 +204,23 @@ public class FriendsApp : CellApp
 
                      Debug.Log("拒绝你的邀请");
                  }
+
+              /*   PublicData.ins.is_pvp_friend_ai = true;
+
+                 var other1 = DAO.User.Create(); 
+                 var self = DAO.User.Create();
+                 self.no = 1;
+                 other.no = 2;
+                 PublicData.ins.user_pvp_other = other1;
+                 PublicData.ins.self_user = self;
+                 this.parent.Dispose();
+
+                 SceneMgr.Load("BattlePVP");
+
+                 Debug.Log("拒绝你的邀请");*/
+
+
+
              });
         }
 

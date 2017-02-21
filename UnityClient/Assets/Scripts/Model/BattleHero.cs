@@ -182,6 +182,7 @@ public class BattleHero : Hero
 
         foreach (Hero h in heros)
         {//找出一个最近的玩家 作为锁定目标
+            if (h == this) continue;
             float dis = h.ClaculateDistance(x, y);
             if (dis < minDis)
             {
