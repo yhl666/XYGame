@@ -5,7 +5,7 @@ using System.Linq;
 using System.Xml.Linq;
 using System.IO;
 namespace Data
-{//http://www.cnblogs.com/magicsea/p/4241120.html
+{
     public class PList : Dictionary<string, object>
     {
         public PList()
