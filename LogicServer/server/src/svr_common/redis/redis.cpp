@@ -1,5 +1,5 @@
 // Author: Jin Qing (http://blog.csdn.net/jq0123)
-//Author :cao shan shan
+//Author :cao shan shan  (www.dreamyouxi.com)
 
 #include "redis.h"
 
