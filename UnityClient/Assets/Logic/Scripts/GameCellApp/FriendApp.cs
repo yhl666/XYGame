@@ -16,6 +16,7 @@ namespace Services
         public void RecvPVP(string msg, VoidFuncString cb)
         {
             DAO.User who = DAO.User.Create(msg);
+            HashTable kv = Json.Decode(msg);
 
             GlobalDialogInfo info = new GlobalDialogInfo();
             info.txt_info = "玩家:" + who.name + " 邀请你PK,接受吗?";
@@ -23,6 +24,22 @@ namespace Services
             info._OnYes = () =>
             {
                 cb("ret:ok,");
+                PublicData.ins.is_pvp_friend_owner = false;
+
+                //接受成功 自动连接战斗服
+                string room_id = kv["pvproom_id"];
+                string max = kv["max_no"];
+
+                PublicData.ins.pvp_room_max = max;
+                PublicData.ins.pvp_room_no = room_id;
+                PublicData.ins.user_pvp_other = DAO.User.Create(kv);
+
+                PublicData.ins.is_pvp_friend = true;
+                AppMgr.GetCurrentApp<TownApp>().Dispose();
+
+                //    AutoReleasePool.ins.Clear();
+                SceneMgr.Load("BattlePVP");
+
 
             };
 
@@ -174,8 +191,31 @@ public class FriendsApp : CellApp
             //切磋
             DAO.User other = userData as DAO.User;
 
-            RpcClient.ins.SendRequest("services.battle_pvp", "request_pvp_v1", "no:1,no_target:" + other.no.ToString() + ",", (string msg) =>
+            RpcClient.ins.SendRequest("services.battle_pvp", "request_pvp_v2", "no:1,no_target:" + other.no.ToString() + ",", (string msg) =>
              {
+                 /*if (msg == "")
+                 {
+
+                     GlobalDialogInfo info = new GlobalDialogInfo();
+                     info.txt_title = "好友PVP";
+                     info.txt_info = "玩家拒绝了你的邀请,是否进入离线模式PVP";
+
+                     info._OnYes = () =>
+                     {
+                         PublicData.ins.is_pvp_friend_ai = true;
+                         PublicData.ins.user_pvp_other = other;
+
+                         this.parent.Dispose();
+
+                         SceneMgr.Load("BattlePVP");
+
+                         Debug.Log("拒绝你的邀请");
+                     };
+
+
+                     EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_GLOBALDIALOG_SHOW, info);
+                     return;
+                 }*/
 
                  HashTable kv = Json.Decode(msg);
                  if (kv["ret"] == "ok")
@@ -195,29 +235,41 @@ public class FriendsApp : CellApp
                  else if (kv["ret"] == "error")
                  { //拒绝  启动离线模式
 
-                     PublicData.ins.is_pvp_friend_ai = true;
-                     PublicData.ins.user_pvp_other = other;
 
-                     this.parent.Dispose();
+                     GlobalDialogInfo info = new GlobalDialogInfo();
+                     info.txt_title = "好友PVP";
+                     info.txt_info = "玩家拒绝了你的邀请,是否进入离线模式PVP";
 
-                     SceneMgr.Load("BattlePVP");
+                     info._OnYes = () =>
+                     {
+                         PublicData.ins.is_pvp_friend_ai = true;
+                         PublicData.ins.user_pvp_other = other;
 
-                     Debug.Log("拒绝你的邀请");
+                         this.parent.Dispose();
+
+                         SceneMgr.Load("BattlePVP");
+
+                         Debug.Log("拒绝你的邀请");
+                     };
+
+
+                     EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_GLOBALDIALOG_SHOW, info);
+
                  }
 
-              /*   PublicData.ins.is_pvp_friend_ai = true;
+                 /*   PublicData.ins.is_pvp_friend_ai = true;
 
-                 var other1 = DAO.User.Create(); 
-                 var self = DAO.User.Create();
-                 self.no = 1;
-                 other.no = 2;
-                 PublicData.ins.user_pvp_other = other1;
-                 PublicData.ins.self_user = self;
-                 this.parent.Dispose();
+                    var other1 = DAO.User.Create(); 
+                    var self = DAO.User.Create();
+                    self.no = 1;
+                    other.no = 2;
+                    PublicData.ins.user_pvp_other = other1;
+                    PublicData.ins.self_user = self;
+                    this.parent.Dispose();
 
-                 SceneMgr.Load("BattlePVP");
+                    SceneMgr.Load("BattlePVP");
 
-                 Debug.Log("拒绝你的邀请");*/
+                    Debug.Log("拒绝你的邀请");*/
 
 
 

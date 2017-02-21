@@ -123,7 +123,7 @@ sealed class BattleSyncHandler
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-            Debug.Log(xx);
+            ///  Debug.Log(xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -219,7 +219,7 @@ sealed class BattleSyncHandler
 
 
             Hero h2 = HeroMgr.Create<BattleHero>();
-            h2.team = 2;
+            h2.team = 0xfff;
             h2.no = HeroMgr.ins.me_no;
             HeroMgr.ins.self = h2;
 
@@ -268,13 +268,44 @@ sealed class BattleSyncHandler
             }
 
         }
-        else if (cmd == "chat")
-        {//聊天
+        else if (cmd == "new_pvp_friend")
+        {//pvp 好友  模式 新玩家
+
+            int no = int.Parse(decode.customs[1] as string);
+            if (no == HeroMgr.ins.me_no) return;
+            if (HeroMgr.ins.GetHero(no) != null) return;
+
+
+            Debug.Log("NEW PVP player no= " + no);
+            BattleHero h2 = HeroMgr.Create<BattleHero>();
+            h2.team = PublicData.ins.user_pvp_other.no;
+            h2.no = PublicData.ins.user_pvp_other.no; ;
+            h2.name = PublicData.ins.user_pvp_other.name;
+
+            h2.x = 10;//目标玩家初始在右边
+
+
+            if (PublicData.ins.is_pvp_friend_owner)
+            {
+                //我是发起方
+                h2.x = 10;
+                HeroMgr.ins.self.x = 0;
+
+            }
+            else
+            {//我不是发起方
+
+                h2.x = 0;
+                HeroMgr.ins.self.x =10;
+
+
+            }
+ 
 
         }
         else
         {
-            Debug.LogWarning("ProcessWithCustomData:UnKnow cmd=" + cmd);
+            Debug.LogError("ProcessWithCustomData:UnKnow cmd=" + cmd);
         }
 
     }

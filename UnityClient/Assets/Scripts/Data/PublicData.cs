@@ -65,5 +65,6 @@ public class PublicData : object
     //是否是PVP 模式
     public bool is_pvp_friend = false;
     public bool is_pvp_friend_ai = false;
+    public bool is_pvp_friend_owner = true;//主动发起的一方
 
 }
