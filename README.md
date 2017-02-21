@@ -20,7 +20,7 @@
 ![](http://git.oschina.net/dreamyouxi/XYGame/raw/master/%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/IMG_0740.jpg)
 使用C++ 和Lua 实现RPC回调完成逻辑，IO模型采用boost:asio
 逻辑服务器采用应用层RPC来交互
-只有脚本代码。runtime 为私有[Jin Qing (http://blog.csdn.net/jq0123)]
+只有脚本代码。runtime 为私有---------Jin Qing (   http://blog.csdn.net/jq0123   )
 拉取代码直接覆盖runtime的文件就能直接运行xygame服务器
 内部对原runtime进行了扩展，比如Lua层实现"真正的RPC"开发方法
 对ClientServer交互的扩展支持等
