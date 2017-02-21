@@ -1,3 +1,10 @@
+
+--[[
+
+* Author: caoshanshan
+* Email: me@dreamyouxi.com
+
+]]
 local t=class("queue")
 --[Comment]
 --Queue

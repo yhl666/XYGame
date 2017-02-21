@@ -1,3 +1,10 @@
+
+--[[
+
+* Author: caoshanshan
+* Email: me@dreamyouxi.com
+
+]]
 local t=class("Stack")
 --[Comment]
 --Stack

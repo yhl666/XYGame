@@ -1,4 +1,10 @@
 
+--[[
+
+* Author: caoshanshan
+* Email: me@dreamyouxi.com
+use cocos2dx's
+]]
 function clone(object)
     local lookup_table = {}
     local function _copy(object)
