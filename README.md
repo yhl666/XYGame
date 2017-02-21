@@ -9,22 +9,23 @@
     采用帧同步
 战斗帧同步服务器
 战斗时 客户端与该服务器直连。
-负责战斗的交互帧数据，暂时用多线程模型实现。
+负责战斗的交互帧数据，暂时用多线程模型实现。等
 [基础框架来自之前一个项目](https://git.oschina.net/dreamyouxi/Balls)
 可能采用的feature：
 1.改用ASIO的协程模型替代现有的多线程模型。
 
 ##非战斗部分 LogicServer
 ![](http://git.oschina.net/dreamyouxi/XYGame/raw/master/%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/IMG_0740.jpg)
-    采用RPC回调完成逻辑
+使用C++ 和Lua 实现RPC回调完成逻辑
 逻辑服务器采用应用层RPC来交互
 只有脚本代码。runtime 为私有
 拉取代码直接覆盖runtime的文件就能直接运行xygame服务器
-
+内部对原runtime进行了扩展，比如Lua层实现"真正的RPC"开发方法
+对ClientServer交互的扩展支持等
 #客户服务端 ClientServer
 运行在服务端的软件。
 用于模拟客户端的运算 来校验数据，原则上 只是UnityClient的一个场景 和部分修改代码
-没有UI 只有逻辑，有单独的线程 负责和 LogicServer通信
+没有UI 只有逻辑，有单独的线程 负责和 LogicServer通信等
 
 #------------------------------客户端概述--------------------------
 
