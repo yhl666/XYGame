@@ -29,4 +29,4 @@
 #客户端 UnityClient
 采用Unity实现可配置化实现C# 和Lua 热更新
 功能：
-![alt txt](https://git.oschina.net/dreamyouxi/Balls,"框架来自之前一个项目")
+[框架来自之前一个项目](https://git.oschina.net/dreamyouxi/Balls)
