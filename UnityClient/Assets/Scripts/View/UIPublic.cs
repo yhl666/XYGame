@@ -23,7 +23,10 @@ public sealed class UIPublicRoot : ViewUI
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
             {
                 this._ui_child.Add(ViewUI.Create<UI_wait>(this));
-             this._ui_child.Add(ViewUI.Create<UI_pushmsg>(this));
+                this._ui_child.Add(ViewUI.Create<UI_pushmsg>(this));
+                this._ui_child.Add(ViewUI.Create<UI_globaldialog>(this));
+
+
                 return DATA.EMPTY_STRING;
             }));
 
@@ -77,7 +80,7 @@ public sealed class UI_loading : ViewUI
             case Events.ID_LOADING_OK:
                 {
                     this._enable = false;
-                    if(shouldHideWhenComplete) {this._ui.SetActive(_enable);}
+                    if (shouldHideWhenComplete) { this._ui.SetActive(_enable); }
                 } break;
 
             case Events.ID_ADD_ASYNC:
@@ -86,24 +89,24 @@ public sealed class UI_loading : ViewUI
                 } break;
             case Events.ID_LOADING_SHOW:
                 {
-                    if(userData != null)
+                    if (userData != null)
                     {
                         this.txt.text = userData as string;
 
                     }
                     this.shouldHideWhenComplete = false;
                     this._ui.SetActive(true);
-                }break;
+                } break;
             case Events.ID_LOADING_HIDE:
                 {
                     this.shouldHideWhenComplete = true;
                     this._ui.SetActive(false);
-                }break;
+                } break;
 
             case Events.ID_LOADING_SYNC_STRING:
                 {
                     this.txt.text = userData as string;
-                }break;
+                } break;
         }
 
 
@@ -122,7 +125,7 @@ public sealed class UI_loading : ViewUI
 
             // Thread.Sleep(250);
 
-    
+
             this._enable = true;
             this._ui.SetActive(_enable);
 
@@ -131,7 +134,7 @@ public sealed class UI_loading : ViewUI
 
             //TODO here can invoke work in other thead
             // will consider some func can only run in  UnityEngine main thread ?
-            string ret= SyncFunc();
+            string ret = SyncFunc();
             ii++;
             if (ret == DATA.EMPTY_STRING)
             {
@@ -353,3 +356,93 @@ public sealed class UI_push_msg : ViewUI
 
 
 */
+
+
+
+
+
+public sealed class GlobalDialogInfo
+{
+    public VoidFuncVoid _OnYes = null;
+    public VoidFuncVoid _OnNo = null;
+    public int timeout = 0;
+    public string txt = "";
+
+}
+
+
+public sealed class UI_globaldialog : ViewUI
+{
+
+
+    public override void Update()
+    {
+        base.Update();
+
+
+
+    }
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_PUBLIC_GLOBALDIALOG_SHOW)
+        {
+            this.info = userData as GlobalDialogInfo;
+            this.PopIn(this.panel);
+
+            this.txt.text = info.txt;
+        }
+
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        this.panel = GameObject.Find("ui_panel_globaldialog");
+        this.btn_yes = panel.transform.FindChild("btn_yes").GetComponent<Button>();
+        this.btn_no = panel.transform.FindChild("btn_no").GetComponent<Button>();
+        this.txt = panel.transform.FindChild("txt_msg").GetComponent<Text>();
+
+
+        this.btn_yes.onClick.AddListener(() =>
+        {
+            this.ClickYes();
+            this.info = null;
+        });
+        this.btn_no.onClick.AddListener(() =>
+        {
+            this.ClickNo();
+            this.info = null;
+        });
+
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_PUBLIC_GLOBALDIALOG_SHOW);
+        this.panel.SetActive(false);
+        return true;
+    }
+
+    private void ClickYes()
+    {
+        this.PopOut(this.panel);
+        if (info == null) return;
+        if (info._OnYes == null) return;
+        info._OnYes();
+    }
+    private void ClickNo()
+    {
+        this.PopOut(this.panel);
+        if (info == null) return;
+        if (info._OnNo == null) return;
+        info._OnNo();
+    }
+
+    private Text txt = null;
+
+
+    private Button btn_yes = null;
+    private Button btn_no = null;
+    private GameObject panel = null;
+
+    private GlobalDialogInfo info = null;
+
+}
+

@@ -4,6 +4,33 @@ using System.Collections;
 
 public class ViewUI : View
 {
+
+    protected void PopIn(GameObject host)
+    {
+        host.SetActive(true);
+        ScaleTo.Create(host, 0.05f, 0.7f, 0.7f).OnComptele = () =>
+        {
+            ScaleTo.Create(host, 0.01f, 0.9f, 0.9f).OnComptele = () =>
+            {
+                ScaleTo.Create(host, 0.01f, 1.2f, 1.2f).OnComptele = () =>
+                {
+                    ScaleTo.Create(host, 0.03f, 1f, 1f).OnComptele = () =>
+                    {
+
+                    };
+                };
+            };
+        };
+    }
+    protected void PopOut(GameObject host)
+    {
+        ScaleTo.Create(host, 0.1f, 0.0f, 0.0f).OnComptele = () =>
+        {
+            host.SetActive(false);
+        };
+    }
+
+
     public override void Update()
     {
         if (!_enable) return;

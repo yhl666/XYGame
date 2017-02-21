@@ -107,9 +107,9 @@ public sealed class Events : object
     public const int ID_FRIEND_SYNC_VIEW = 62;//刷新UI
 
     public const int ID_FRIENDS_DELETE_CLICKED = 64;//  
+    public const int ID_FRIENDS_PVP_CLICKED = 65;
 
-
-
+    public const int ID_PUBLIC_GLOBALDIALOG_SHOW = 66;//全局对话框显示
 
     public const int ID_REQUEST_EQUIP_GET_XXXXX = 200;
 

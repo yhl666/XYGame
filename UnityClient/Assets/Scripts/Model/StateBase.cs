@@ -457,7 +457,7 @@ public class AttackState_1 : StateBase
     {
         if (type == "attack")
         {
-            this.Target.AddBuffer<BufferFlashMove>();
+          ///  this.Target.AddBuffer<BufferFlashMove>();
             this.OnEvent(Events.ID_BTN_ATTACK, userData);
         }
         else if ("SpineComplete" == type)
@@ -472,7 +472,7 @@ public class AttackState_1 : StateBase
 
         if (type == Events.ID_BTN_ATTACK && this.Enable == false)
         {
-            this.Target.AddBuffer<BufferFlashMove>();
+          ///  this.Target.AddBuffer<BufferFlashMove>();
             if (cd_attack > 0) return;
 
             this.Enable = true;

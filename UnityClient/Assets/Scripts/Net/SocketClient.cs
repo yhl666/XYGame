@@ -26,6 +26,7 @@ public class SocketClient : object
     private bool isConnected = false;
     virtual public void AddSendMsg(string msg)
     {
+        Debug.LogWarning("[SocketSend]:" + msg);
         _sendQueue.Enqueue(msg);
     }
 
@@ -314,3 +315,107 @@ public class SockClientWithVideoMode : SocketClient
         _mutex.ReleaseMutex();
     }
 }
+
+
+
+public class SockClientWithPVPAIMode : SocketClient
+{
+
+    public ArrayList _recv_list;
+    private Thread t_recv;
+
+
+    public override void AddSendMsg(string msg)
+    {
+        this._sendQueue.Enqueue(msg);
+    }
+
+    public override bool Startup()
+    {
+
+        this.InitThread();
+        return true;
+    }
+    public override void Terminal()
+    {
+
+        t_recv.Abort();
+
+        Debug.Log("[NetWork]:Socket Thread Close");
+
+    }
+
+    private void InitThread()
+    {
+        this._recv_list = PublicData.GetInstance()._recv_last_game;
+
+        t_recv = new Thread(new ThreadStart(ThreadFunction_Recv));
+
+        t_recv.Start();
+        Debug.Log("[NetWork]:Socket Thread Start");
+
+    }
+
+
+    private void ThreadFunction_Recv()
+    {
+
+        int fps = 0;
+        int no = 0;
+
+        {
+            DAO.User self = PublicData.ins.self_user;
+            no = self.no;
+            string s1 = "cmd:Start:0:" + no + ":0";
+            AppMgr.GetCurrentApp<BattleApp>().AddRecvMsg(s1);
+        }
+
+        //sync cache to main thread new_pvp_friend_ai
+        {
+            Thread.Sleep(this._thread_delte);
+            string s1 = "cmd:new_pvp_friend_ai:" + PublicData.ins.user_pvp_other.no;
+            AppMgr.GetCurrentApp<BattleApp>().AddRecvMsg(s1);
+        }
+        Thread.Sleep(this._thread_delte);
+
+        while (fps < 2400)//默认一分钟
+        {
+            fps++;
+            Thread.Sleep(this._thread_delte);
+            string msg = "no:" + no + ",fps:" + fps + ",";
+
+            while (_sendQueue.Empty() == false)
+            {
+                msg += (string)_sendQueue.Dequeue();
+            }
+            AppMgr.GetCurrentApp<BattleApp>().AddRecvMsg(msg + "+");
+
+
+        }
+        Thread.Sleep(this._thread_delte);
+
+        AppMgr.GetCurrentApp<BattleApp>().AddRecvMsg("cmd:Over");
+
+        while (true)
+        {
+            Thread.Sleep(this._thread_delte);
+
+        }
+
+    }
+
+
+
+    Mutex _mutex = new Mutex();
+    private int _thread_delte = 1000 / Config.MAX_FPS;
+
+    public void SetPlayeSpeed(int sp)
+    {
+        _mutex.WaitOne();
+        this._thread_delte = sp;
+        _mutex.ReleaseMutex();
+    }
+
+    private ThreadSafeQueue _sendQueue = new ThreadSafeQueue();
+}
+

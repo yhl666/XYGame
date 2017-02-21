@@ -12,7 +12,33 @@ namespace Services
 
             EventDispatcher.ins.PostEvent(Events.ID_RPC_NEW_FRIEND, who);
         }
+
+        public void RecvPVP(string msg, VoidFuncString cb)
+        {
+            DAO.User who = DAO.User.Create(msg);
+
+            GlobalDialogInfo info = new GlobalDialogInfo();
+            info.txt = "玩家:" + who.name + " 邀请你PK 接受吗?";
+            info._OnYes = () =>
+            {
+                cb("ret:ok,");
+
+            };
+
+            info._OnNo = () =>
+            {
+                cb("ret:error,");
+
+            };
+
+
+
+
+            EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_GLOBALDIALOG_SHOW, info);
+        }
     }
+
+
 
 }
 
@@ -33,6 +59,7 @@ public class FriendsApp : CellApp
         EventDispatcher.ins.AddEventListener(this, Events.ID_ADD_FRIEND_SUCCESS);
         EventDispatcher.ins.AddEventListener(this, Events.ID_FRIENDS_DELETE_CLICKED);
 
+        EventDispatcher.ins.AddEventListener(this, Events.ID_FRIENDS_PVP_CLICKED);
         return true;
     }
     public override void OnEvent(int type, object userData)
@@ -140,6 +167,43 @@ public class FriendsApp : CellApp
                     EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "删除好友:" + view.current_detail_user.name + "失败 " + kv["msg"]);
                 }
             });
+        }
+        else if (type == Events.ID_FRIENDS_PVP_CLICKED)
+        {
+            //切磋
+            DAO.User other = userData as DAO.User;
+
+            RpcClient.ins.SendRequest("services.battle_pvp", "request_pvp_v1", "no:1,no_target:" + other.no.ToString() + ",", (string msg) =>
+             {
+
+                 HashTable kv = Json.Decode(msg);
+                 if (kv["ret"] == "ok")
+                 {
+                     string room_id = kv["pvproom_id"];
+                     string max = kv["max_no"];
+
+                     PublicData.ins.pvp_room_max = max;
+                     PublicData.ins.pvp_room_no = room_id;
+                     PublicData.ins.user_pvp_other = DAO.User.Create(kv);
+
+                     PublicData.ins.is_pvp_friend = true;
+                     this.parent.Dispose();
+                     //    AutoReleasePool.ins.Clear();
+                     SceneMgr.Load("BattlePVP");
+                 }
+                 else if (kv["ret"] == "error")
+                 { //拒绝  启动离线模式
+
+                     PublicData.ins.is_pvp_friend_ai = true;
+                     PublicData.ins.user_pvp_other = other;
+
+                     this.parent.Dispose();
+
+                     SceneMgr.Load("BattlePVP");
+
+                     Debug.Log("拒绝你的邀请");
+                 }
+             });
         }
 
     }

@@ -90,6 +90,7 @@ public sealed class BufferMgr : GAObject
         return InitHelper(new T() as Buffer);
     }
 
+    
     /// <summary>
     ///  for config able suport
     /// </summary>

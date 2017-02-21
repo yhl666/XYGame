@@ -123,7 +123,7 @@ sealed class BattleSyncHandler
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-          ///    Debug.Log(xx);
+            Debug.Log(xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -246,6 +246,22 @@ sealed class BattleSyncHandler
             h2.team = 3;
             h2.no = no;
             h2.name = name;
+
+        }
+        else if (cmd == "new_pvp_friend_ai")
+        {//pvp 好友 离线模式 模式 新玩家
+
+            int no = int.Parse(decode.customs[1] as string);
+            ///  if (no == HeroMgr.ins.me_no)
+            //  if (HeroMgr.ins.GetHero(no) != null) return;
+            {
+                Debug.Log("NEW PVP player no= " + no);
+                BattleHero h2 = HeroMgr.Create<BattleHero>();
+                h2.team = PublicData.ins.user_pvp_other.no;
+                h2.no = PublicData.ins.user_pvp_other.no; ;
+                h2.name = PublicData.ins.user_pvp_other.name;
+                h2.SetPVPAIEnable(true);
+            }
 
         }
         else if (cmd == "chat")
@@ -478,7 +494,13 @@ public sealed class BattleApp : AppBase
     public void InitNet(bool isReConnect = false)
     {
 
-        if (PublicData.GetInstance().isVideoMode)
+
+        if (PublicData.ins.is_pvp_friend_ai)
+        {
+            socket = new SockClientWithPVPAIMode();
+        }
+
+        else if (PublicData.GetInstance().isVideoMode)
         {
             socket = new SockClientWithVideoMode();
         }
@@ -503,8 +525,29 @@ public sealed class BattleApp : AppBase
 
         if (!isReConnect)
         {
-            this.socket.AddSendMsg("cmd:new:" + PublicData.GetInstance().player_name);
+            if (PublicData.ins.is_pvp_friend)
+            {
+                /*  PublicData.ins.self_user.no = 2;
 
+                  PublicData.ins.user_pvp_other = DAO.User.Create();
+                  PublicData.ins.user_pvp_other.no = 1;
+
+                  this.socket.AddSendMsg("cmd:new_pvp:" + PublicData.ins.self_user.no.ToString() + ":" + PublicData.ins.pvp_room_no + ":" + PublicData.ins.pvp_room_max);
+
+            */
+
+                this.socket.AddSendMsg("cmd:new_pvp_friend:" + PublicData.ins.self_user.no.ToString() + ":" + PublicData.ins.pvp_room_no + ":" + PublicData.ins.pvp_room_max);
+
+
+            }
+            else if (PublicData.ins.is_pvp_friend_ai)
+            {
+
+                //  this.socket.AddSendMsg("cmd:new:" + PublicData.GetInstance().player_name);
+
+
+
+            }
         }
 
 
@@ -566,7 +609,7 @@ public sealed class BattleApp : AppBase
 
             // process to the lastest frame (if current frame less than max frame(from server )  this will block until current frame
             syncHandler.UpdateMS();
-        
+
         } while (false);
 
     }
@@ -638,6 +681,13 @@ public sealed class BattleApp : AppBase
 
     public override void OnDispose()
     {
+        PublicData.ins.is_pvp_friend_ai = false;
+        PublicData.ins.is_pvp_friend = false;
+        PublicData.ins.isVideoMode = false;
+
+
+
+
         ViewMgr.ins.Dispose();
         //   BallsMgr.ins.Dispose();
         //   FoodsMgr.ins.Dispose();

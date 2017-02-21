@@ -747,6 +747,7 @@ public sealed class UI_friendsapp : UICellApp
         this.btn_detail_pk.onClick.AddListener(() =>
         { // 切磋
             Debug.Log("切磋好友");
+            EventDispatcher.ins.PostEvent(Events.ID_FRIENDS_PVP_CLICKED,current_detail_user);
 
         });
 

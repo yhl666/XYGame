@@ -43,10 +43,11 @@ public class AppBase : GAObject
     {
         base.UpdateMS();
 
-        foreach (CellApp app in cells)
+        for (int i = 0; i<cells.Count;i++ )
         {
+            if (this.IsInValid()) return;
             // if (b.IsValid()) 
-
+            CellApp app = cells[i] as CellApp;
             { app.UpdateMS(); }
         }
 
@@ -63,6 +64,12 @@ public class AppBase : GAObject
             }
         }
 
+    }
+    public override void OnDispose()
+    {
+        cells.Clear();
+      ///  cells = null;
+        base.OnDispose();
     }
     ArrayList cells = new ArrayList();
 

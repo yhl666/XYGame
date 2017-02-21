@@ -15,8 +15,13 @@ public class Hero : Entity
 
         base.UpdateMS();
     }
+    public void SetPVPAIEnable(bool e)
+    {
+        this.enable_pvp_ai = e;
+    }
     public DAO.User user = null;
     public string name_head;
+    protected bool enable_pvp_ai = false;
 }
 
 

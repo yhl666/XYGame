@@ -124,31 +124,37 @@ public class TownApp : AppBase
 
 
     }
-
-    public override void UpdateMS()
+    public override void OnDispose()
     {
 
+        AppMgr.ins.Dispose();
+        ModelMgr.ins.Dispose();
+        ViewMgr.ins.Dispose();
 
-        if (HeroMgr.ins.self !=null && HeroMgr.ins.self.x < 0.5)
-        {
+        //  PublicData.GetInstance().game.Terminate();
+        //   GameObject.DestroyImmediate(GameObject.Find("_ServiceCenterObject"));
+        //  PublicData.GetInstance().game.GotoScene();
+        
+        EventDispatcher.DestroyInstance();
+        base.OnDispose();
+    }
 
-
-            AppMgr.ins.Dispose();
-            ModelMgr.ins.Dispose();
-            ViewMgr.ins.Dispose();
-
-            //  PublicData.GetInstance().game.Terminate();
-            //   GameObject.DestroyImmediate(GameObject.Find("_ServiceCenterObject"));
-            //  PublicData.GetInstance().game.GotoScene();
-
-            EventDispatcher.DestroyInstance();
-            SceneMgr.Load("BattlePVP");
-
-            return;
-        }
-        base.UpdateMS();
+    /// <summary>
+    /// 
+    /// </summary>
+    bool is_pvp_ok = false;
+    bool is_pvp_wait = false;
+    
+    public override void UpdateMS()
+    {
         AutoReleasePool.ins.Clear();
 
+        if (this.IsInValid()) return; ;
+
+      
+
+        base.UpdateMS();
+     
         ModelMgr.ins.UpdateMS();
         ViewMgr.ins.Update();
         ViewMgr.ins.UpdateMS();

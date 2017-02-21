@@ -30,8 +30,6 @@ public class PublicData : object
     {
         _ins = null;
     }
-    //是否是PVP 模式
-    public bool is_pvp = false;
 
     public string _game_over_info_string;
 
@@ -58,5 +56,14 @@ public class PublicData : object
 
 
     public IGiantGame game = null;
+
+    // -------------------------------------------------------------pvp
+    public DAO.User user_pvp_other = null;
+    public string pvp_room_no = "1024";//房间id
+    public string pvp_room_max="1";//房间最大数
+
+    //是否是PVP 模式
+    public bool is_pvp_friend = false;
+    public bool is_pvp_friend_ai = false;
 
 }
