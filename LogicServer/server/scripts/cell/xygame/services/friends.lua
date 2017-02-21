@@ -77,7 +77,7 @@ function t.add_by_name(msg, cb)
 
                 redis.set(redis_key.get_friends(no), msg, function(msg1)
                     if msg1 == "ok" then
-                        cb(user_msg)
+                        cb(user_msg)--返回请求方
                     else
                         cb("ret:error,msg:服务器内部错误");
                     end

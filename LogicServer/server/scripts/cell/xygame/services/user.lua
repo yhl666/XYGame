@@ -77,7 +77,7 @@ function t.query_by_name(msg, cb, no, limit)
     end
 
 
-    if limit == no then
+    if limit +1  == no then
 
         cb("ret:error,msg:" .. "用户不存在,"); return;
     end

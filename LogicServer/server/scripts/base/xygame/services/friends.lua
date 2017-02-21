@@ -42,15 +42,38 @@ end
 
 
 function t.add_by_name(ctx, msg, cb)
+    local kvv = json.decode(msg);
 
     -- 发起cell服务器的远程调用，请求 add
-    remote.request("services.friends", "add_by_name", msg, function(msg)
+    remote.request("services.friends", "add_by_name", msg, function(msg1)
 
-        if msg == "timeout" then
+        if msg1 == "timeout" then
             cb("ret:error,msg:timeout,");
             return;
         end
-        cb(msg);
+
+        local kv = json.decode(msg1);
+
+        if kv["ret"] == "ok" then
+
+
+            -- 反向添加好友
+            remote.request("services.friends", "add_by_no", "no:" .. kv["no"] .. ",who:" .. kvv["no"] .. ",", function(msg)
+
+                if msg == "timeout" then
+                    cb("ret:error,msg:timeout,");
+                    -- 反向添加失败 待删除
+                    return;
+                end
+                cb(msg1);
+                -- 反向添加成功
+
+            end );
+
+        else
+
+        end
+
     end );
 
 end
@@ -58,13 +81,52 @@ end
 function t.add_by_no(ctx, msg, cb)
 
     -- 发起cell服务器的远程调用，请求 add
-    remote.request("services.friends", "add_by_no", msg, function(msg)
+    remote.request("services.friends", "add_by_no", msg, function(msg1)
 
-        if msg == "timeout" then
+        if msg1 == "timeout" then
             cb("ret:error,msg:timeout,");
             return;
         end
-        cb(msg);
+
+
+
+
+        local kv = json.decode(msg1);
+
+        local kvv = json.decode(msg);
+
+        if kv["ret"] == "ok" then
+
+
+            -- 反向添加好友
+            remote.request("services.friends", "add_by_no", "no:" .. kv["no"] .. ",who:" .. kvv["no"] .. ",", function(msg)
+
+                if msg == "timeout" then
+                    cb("ret:error,msg:timeout,");
+                    -- 反向添加失败 待删除
+                    return;
+                end
+                cb(msg1);
+                -- 反向添加成功
+
+            end );
+
+        else
+
+        end
+
+
+
+
+
+
+
+
+
+
+
+
+
     end );
 
 end
@@ -102,9 +164,9 @@ end
 
 
 
-function  t.query_all(ctx,msg,cb)
+function t.query_all(ctx, msg, cb)
 
- -- 发起cell服务器的远程调用，请求 query
+    -- 发起cell服务器的远程调用，请求 query
     remote.request("services.friends", "query_all", msg, function(msg)
 
         if msg == "timeout" then
@@ -117,23 +179,23 @@ function  t.query_all(ctx,msg,cb)
 
 end
 
- -- 查询某个好友
- function t.query_one(ctx, msg, cb)
+-- 查询某个好友
+function t.query_one(ctx, msg, cb)
 
-     --发起cell服务的远程调用
-     remote.request("services.friends", "query_one", msg, function(msg)
-     
-         if "timeout" == msg then
+    -- 发起cell服务的远程调用
+    remote.request("services.friends", "query_one", msg, function(msg)
+
+        if "timeout" == msg then
             cb("ret:error,msg:timeout,");
             return;
         end
         cb(msg);
-     end);
- end
+    end );
+end
 
 
-function t.delete_by_no(ctx,msg,cb)
-  -- 发起cell服务器的远程调用，请求 delete
+function t.delete_by_no(ctx, msg, cb)
+    -- 发起cell服务器的远程调用，请求 delete
     remote.request("services.friends", "delete_by_no", msg, function(msg)
 
         if msg == "timeout" then
