@@ -45,7 +45,7 @@
 5.添加对2D动画的支持，比如ScaleTo动画等，详见游戏中各种UI的动画
 6.添加对Lua实现部分逻辑的支持详见class LuaBuffer 还可以用可配置化的逻辑比如class BulletConfig
 7.实现混合状态机详见StateMachine.cs和StateBase.cs
-8.添加对战斗地图地形的可视化编辑 详见 Terrain.cs 和 WorldMap.cs 战斗场景结构
+8.添加对地图地形的可视化编辑 详见 Terrain.cs 和 WorldMap.cs 战斗场景结构
 9.等等
 
 #---------------------------------------已实现的玩法---------------------------
