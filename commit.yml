@@ -3,27 +3,15 @@ branches: {
   }
 fileChange:
   /BattleServer:
-    newFile: !uuid 'ea47a226fb47d1ef66f8b0404b9b4cd6a48d3598'
-    oldFile: !uuid 'fcf7650028dd0665b5a19480c92dcd17c11a79ce'
-  /BattleServer/Debug:
-    newFile: !uuid 'ef1cd83e7e730da812c49f9128ab57033daa7d38'
-    oldFile: !uuid 'b129794a9f9a3241ec0936114ab7577b372f02ef'
-  /BattleServer/Debug/BattleServer.exe:
-    newFile: !uuid '349843a796fc8fa3d5571b3fa1cabb036d46ede0'
-    oldFile: !uuid '031a31dc2fb4b6a3d743b168abf59e60b028e5a7'
-  /BattleServer/Debug/config.ini:
-    newFile: !uuid 'b8cba2ebfc7456acf70607b51d891e7eb09b56c7'
-    oldFile: !uuid '1d95f68d99829fa9a1a9d9e29f409b65dcfe1a9e'
-  /BattleServer/cpp:
-    newFile: !uuid '88a8fc0694da3d14ebe01d1fc09bd0a3efa095ba'
-    oldFile: !uuid 'b706e2a6f5091ed55a3402fbe2ac743aa04ffc25'
-  /BattleServer/cpp/Room.cpp:
-    newFile: !uuid 'c9bde7818fca98f05463d05840027209f74a8ca6'
-    oldFile: !uuid '127f434a1b96b7c5e6151a17279e2387a3848def'
-  /BattleServer/cpp/config.ini:
-    newFile: !uuid 'b8cba2ebfc7456acf70607b51d891e7eb09b56c7'
-    oldFile: !uuid '1d95f68d99829fa9a1a9d9e29f409b65dcfe1a9e'
-gitCommitId: !uuid '9cf85d0ee8225cbf6341ecac1abe77fc341eaecb'
+    newFile: !uuid 'c12e4f0965e47c3d09d88bae652ad6fe257a19c6'
+    oldFile: !uuid 'ea47a226fb47d1ef66f8b0404b9b4cd6a48d3598'
+  /BattleServer/Release:
+    newFile: !uuid '28a948fa7da69eec2e30b2ef0fac60605f927701'
+    oldFile: !uuid '4ecc24148366af22f84ce6c8700402520eecbdf3'
+  /BattleServer/Release/BattleServer.exe:
+    newFile: !uuid 'ecf1baf06b582a703d8a1e9126bc6d7f0b6af71d'
+    oldFile: !uuid '7831a4f43a5d574e26bacd495bd9ef6a02b859c4'
+gitCommitId: !uuid '7b79b4162a85f2c702d213dd1a4660d7a7df5368'
 renames: {
   }
-revisionId: 216
+revisionId: 217
