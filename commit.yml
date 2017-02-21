@@ -2,22 +2,10 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid '23f0b5e2cb71ee280e45b5484258b7db20523284'
-    oldFile: !uuid '39e43a474d5a51329c13cb4b87799821de45a5c9'
-  /LogicServer/server:
-    newFile: !uuid '8966b34d57c0d84acb2e24b8f503281721858b93'
-    oldFile: !uuid '98bd73a55c27e8fbd7f3098319ddcebdec715d4a'
-  /LogicServer/server/scripts:
-    newFile: !uuid '629d0427b0b9987844983d94686826f027ca6bf5'
-    oldFile: !uuid 'b3cf2cfc86c2a59d7c9d05b8fd9f990db5cec263'
-  /LogicServer/server/scripts/common:
-    newFile: !uuid '9596a3553dbcf85c38dd8b3af1b5772513fd900d'
-    oldFile: !uuid 'edaa2b5e80bc5b83d7da40ec0cc4638dee3f8dae'
-  /LogicServer/server/scripts/common/hotfix_helper.lua:
-    newFile: !uuid '9c4dcf38489ff8a11553252860233f514f75cdb5'
-    oldFile: null
-gitCommitId: !uuid '150b227b8bc4ca05e0f1688e8ff3b1ec18de252a'
+  /README.md:
+    newFile: !uuid '79f617bdf62a86a8a5a1870c5dcf893cee81ed2a'
+    oldFile: !uuid 'c982f21e0682921f56f12f07b9253bf8e75c4217'
+gitCommitId: !uuid '68173572de11f66de77646d700cfb7e58fa1f9eb'
 renames: {
   }
-revisionId: 282
+revisionId: 283
