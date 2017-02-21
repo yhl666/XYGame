@@ -5,10 +5,19 @@
 ##战斗部分 
 ![](http://git.oschina.net/dreamyouxi/XYGame/raw/master/%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/IMG_0741.jpg)
     采用帧同步
+战斗帧同步服务器
+战斗时 客户端与改服务器直连。
+负责战斗的交互帧数据，暂时用多线程模型实现。
+
+可能采用的feature：
+1.改用ASIO的协程模型替代现有的多线程模型。
+
 ##非战斗部分 
 ![](http://git.oschina.net/dreamyouxi/XYGame/raw/master/%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/IMG_0740.jpg)
     采用RPC回调完成逻辑
-
+逻辑服务器采用应用层RPC来交互
+只有脚本代码。runtime 为私有
+拉取代码直接覆盖runtime的文件就能直接运行xygame服务器
 
 
 #客户端
