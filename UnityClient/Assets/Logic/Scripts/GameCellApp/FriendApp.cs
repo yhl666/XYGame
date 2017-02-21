@@ -193,7 +193,6 @@ public class FriendsApp : CellApp
 
             RpcClient.ins.SendRequest("services.battle_pvp", "request_pvp_v2", "no:1,no_target:" + other.no.ToString() + ",", (string msg) =>
              {
-                 Debug.LogError(msg + "...........");
                  /*if (msg == "")
                  {
 
@@ -240,7 +239,7 @@ public class FriendsApp : CellApp
 
                      GlobalDialogInfo info = new GlobalDialogInfo();
                      info.txt_title = "好友PVP";
-                     info.txt_info = "玩家拒绝了你的邀请,是否进入离线模式PVP";
+                     info.txt_info = "玩家拒绝了你的邀请("  + kv["msg"] +"),是否进入离线模式PVP";
 
                      info._OnYes = () =>
                      {

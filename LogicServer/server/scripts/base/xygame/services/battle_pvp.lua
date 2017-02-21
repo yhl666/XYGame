@@ -52,7 +52,7 @@ function t.request_pvp_v2(ctx, msg, cb)
     end );
 
     if online == false then
-        cb("ret:error,msg:1111该玩家不在线,"); return;
+        cb("ret:error,msg:该玩家不在线,"); return;
     end
 
     remote.request("services.user", "query_user", msg2, function(msg5)
@@ -76,18 +76,18 @@ function t.request_pvp_v2(ctx, msg, cb)
                             if kv["ret"] == "ok" then
                                 cb(user2 .. msg5);
                             else
-                                cb("ret:error,msg:2222玩家拒绝,");
+                                cb("ret:error,msg:玩家拒绝,");
                             end
                         end );
                     end );
                 else
 
-                    cb("ret:error,msg:3333该玩家不存在,");
+                    cb("ret:error,msg:该玩家不存在,");
                 end
             end );
         else
 
-            cb("ret:error,msg:44444该玩家不存在,");
+            cb("ret:error,msg:该玩家不存在,");
         end
     end );
 end
