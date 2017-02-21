@@ -1,5 +1,5 @@
-﻿// Author: Jin Qing (http://blog.csdn.net/jq0123)
-//Author :cao chan chan
+// Author: Jin Qing (http://blog.csdn.net/jq0123)
+//Author :cao shan shan
 
 #include "redis.h"
 
