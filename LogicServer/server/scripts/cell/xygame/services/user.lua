@@ -83,7 +83,7 @@ function t.query_by_name(msg, cb, no, limit)
     end
 
 
-    print(" query " .. no .. "   " .. limit)
+  ---  print(" query " .. no .. "   " .. limit)
 
     local kv = json.decode(msg);
     local name = kv["name"];

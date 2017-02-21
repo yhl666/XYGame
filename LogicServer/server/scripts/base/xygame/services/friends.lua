@@ -71,7 +71,7 @@ function t.add_by_name(ctx, msg, cb)
             end );
 
         else
-
+            cb(msg1);
         end
 
     end );
@@ -112,20 +112,8 @@ function t.add_by_no(ctx, msg, cb)
             end );
 
         else
-
+            cb(msg1);
         end
-
-
-
-
-
-
-
-
-
-
-
-
 
     end );
 
@@ -196,13 +184,39 @@ end
 
 function t.delete_by_no(ctx, msg, cb)
     -- 发起cell服务器的远程调用，请求 delete
-    remote.request("services.friends", "delete_by_no", msg, function(msg)
+    remote.request("services.friends", "delete_by_no", msg, function(msg1)
 
-        if msg == "timeout" then
+        if msg1 == "timeout" then
             cb("ret:error,msg:timeout,");
             return;
         end
-        cb(msg);
+        ---   cb(msg);
+
+        local kv = json.decode(msg1);
+
+        local kvv = json.decode(msg);
+
+        if kv["ret"] == "ok" then
+
+
+            -- 反向删除好友
+            remote.request("services.friends", "delete_by_no", "no:" .. kvv["who"] .. ",who:" .. kvv["no"] .. ",", function(msg)
+
+                if msg == "timeout" then
+                    cb("ret:error,msg:timeout,");
+                    -- 反向删除失败 待删除
+                    return;
+                end
+                cb(msg1);
+                -- 反向删除成功
+
+            end );
+
+        else
+            cb(msg1);
+        end
+
+
     end );
 end
 

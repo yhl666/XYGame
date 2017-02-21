@@ -77,7 +77,8 @@ function t.add_by_name(msg, cb)
 
                 redis.set(redis_key.get_friends(no), msg, function(msg1)
                     if msg1 == "ok" then
-                        cb(user_msg)--返回请求方
+                        cb(user_msg)
+                        -- 返回请求方
                     else
                         cb("ret:error,msg:服务器内部错误");
                     end
@@ -102,7 +103,7 @@ function t.add_by_no(msg, cb)
     local who = kv["who"];
     msg = "no:" .. who .. ",";
 
-    remote.request_local("services.user", "query_user", msg, function (msg)
+    remote.request_local("services.user", "query_user", msg, function(msg)
         local kv = json.decode(msg);
         if "ok" == kv["ret"] then
             local user_msg = msg;
@@ -110,7 +111,7 @@ function t.add_by_no(msg, cb)
             redis.get(redis_key.get_friends(no), function(msg)
 
                 if msg == "" then
-                    
+
                 else
                     -- 有好友
                     if string.find(msg, kv["no"]) ~= nil then
@@ -130,13 +131,13 @@ function t.add_by_no(msg, cb)
 
                 end )
 
-            end);
-            
+            end );
+
         else
-        
+
             cb("ret:error,msg:该用户不存在,");
         end
-    end);
+    end );
 end
 
 
@@ -184,7 +185,7 @@ function t.query_all(msg, cb)
 
 end
 
---查询某个好友的用户信息
+-- 查询某个好友的用户信息
 function t.query_one(msg, cb)
 
     local kv = json.decode(msg);
@@ -203,59 +204,64 @@ function t.query_one(msg, cb)
             --[[msg2 = string.gsub(msg2, "ret:ok,", "");          -- ret:ok是user.lua里面的query_user引入的
             msg2 = "{" .. msg2 .. "}";--]]
             cb(msg2);
-        end);
-    end);
+        end );
+    end );
 
 
 end
 
 
 
---删除好友
+-- 删除好友
 function t.delete_by_no(msg, cb)
-    
+
     local kv = json.decode(msg);
     local no = kv["no"];
-    local who = kv["who"];  --好友的no
+    local who = kv["who"];
+    -- 好友的no
 
     redis.get(redis_key.get_friends(no), function(msg2)
         if "" == msg2 then
-            cb("ret:error, msg:你的好友列表为空,");return;
+            cb("ret:error,msg:你的好友列表为空,"); return;
 
         else
-            if string.find(msg2, "no:" .. who .. ",") == nil then 
-                cb("ret:error,msg:该好友不存在,");return;
+            if string.find(msg2, "no:" .. who .. ",") == nil then
+                cb("ret:error,msg:该好友不存在,"); return;
 
             else
-                msg2 = string.gsub(msg2, "{no:" .. who .. ",}", ""); --将目标的信息设置为空
+                msg2 = string.gsub(msg2, "{no:" .. who .. ",}", "");
+                -- 将目标的信息设置为空
 
-                if msg2 == "" then
+                if msg2 == "" then --没有好友列表了
                     redis.exec("del " .. redis_key.get_friends(no), function(msgg)
 
                         local kvv = json.decode(msgg);
                         if (kvv["ret"] ~= "ok") then
-                            cb("ret:error, msg:delete failed,"); return;     -- 删除失败 或者 无该key
+                            cb("ret:error,msg:delete failed,"); return;
+                            -- 删除失败 或者 无该key
                         else
-                            cb("ret:ok, msg:delete success,"); return;
+                            cb("ret:ok,msg:delete success,"); return;
                             --   删除成功
                         end
-                    
-                    end);
+
+                    end );
+                else
+                --好友列表存在好友
+                    redis.set(redis_key.get_friends(no), msg2, function(msg3)
+
+                        if msg3 == "ok" then
+                            cb("ret:ok,msg:delete success,"); return;
+                        else
+                            cb("ret:error,msg:delete failed,");
+                        end
+
+                    end );
+
                 end
-                
-                redis.set(redis_key.get_friends(no), msg2, function(msg3)
-                    
-                    if msg3 == "ok" then       
-                        cb("ret:ok, msg:delete success,");return;
-                    else
-                        cb("ret:error, msg:delete failed,");
-                    end
-                        
-                end);               
-            end    
+            end
         end
-    
-    end);
+
+    end );
 
 end
 
