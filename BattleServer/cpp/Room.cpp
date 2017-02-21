@@ -7,6 +7,8 @@
 #include <string>
 #include <fstream>
 #include "SocketClient.h"
+#include <fstream>
+#include <thread>
 using namespace  std;
 
 
@@ -75,10 +77,10 @@ void Room::Remove(Player * player)
 }
 
 
-void Room:: BroadcastCustomData(const std::string & msg, bool isAddToCache)
+void Room::BroadcastCustomData(const std::string & msg, bool isAddToCache)
 {
 	if (players.size() <= 0)return;
-	string str =  msg;
+	string str = msg;
 	str += NET_MSG_ENG_LINE;
 
 	for (auto p : players)
@@ -103,7 +105,7 @@ void Room::BroadcastFrameData()
 		FrameData *f = p->GetFrameDataByFps(current_fps);
 		jsondata += f->toJson();
 		jsondata += "+";
-	
+
 		i++;
 	}
 	jsondata += NET_MSG_ENG_LINE;
@@ -112,8 +114,8 @@ void Room::BroadcastFrameData()
 	{
 		p->SendJsonData(jsondata);
 	}
-Utils::log("Broadcast:%s", jsondata.c_str());
-///	Utils::log("%s", jsondata.c_str());
+	Utils::log("Broadcast:%s", jsondata.c_str());
+	///	Utils::log("%s", jsondata.c_str());
 
 
 	//this->log->log("Broadcast:%s", jsondata.c_str());
@@ -178,7 +180,7 @@ void Room::IncreaseFps()
 
 	if (this->isGameOver())
 	{
-	
+
 		this->BroadcastCustomData("cmd:Over");
 		this->isOver = true;
 		return;
@@ -243,6 +245,26 @@ void Room::SendTick()
 
 Room::~Room()
 {
+	//Ð´ÈëÎÄ¼þ
+
+	std::thread t([&]()
+	{
+		std::vector<string>   right_ref = std::move(this->_brocastDatas);
+		fstream file;
+		string name = "room-";
+		name += Utils::itos(id);
+		name += ".log";
+		file.open(name, ios::out);
+
+		for each (auto &  str in right_ref)
+		{
+			file << str << endl;
+			Sleep(100);
+		}
+		file.close();
+	});
+	t.detach();
+
 	for (auto p : players)
 	{
 		p->Release();
@@ -254,7 +276,7 @@ Room::~Room()
 
 bool Room::isGameOver()
 {
-	return current_fps >  Config::GAME_OVER_FRAME_COUNT;
+	return current_fps > Config::GAME_OVER_FRAME_COUNT;
 }
 
 bool Room::CanDestory()
@@ -316,7 +338,7 @@ bool Room::JoinAble()
 	{
 		return false;
 	}
-	if (current_fps >  Config::ROOM_UNABLE_FRAME_COUNT)
+	if (current_fps > Config::ROOM_UNABLE_FRAME_COUNT)
 	{
 		return false;
 
