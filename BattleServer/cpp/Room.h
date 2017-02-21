@@ -79,6 +79,7 @@ public:
 	void ReConnect(SocketClient*client, int no ,int fps);
 
 	bool JoinAble();
+	const std::vector<Player*> & GetPlayers() const{ return players; }
 	int GetID(){ return id; }
 private:
 	/**
