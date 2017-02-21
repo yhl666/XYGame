@@ -123,7 +123,7 @@ sealed class BattleSyncHandler
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-            ///  Debug.Log(xx);
+           Debug.Log("Recv " + xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -224,6 +224,7 @@ sealed class BattleSyncHandler
             HeroMgr.ins.self = h2;
 
             PublicData.GetInstance()._on_enter_max_fps = on_enter_max_fps;
+            Debug.Log("self init ok");
 
             EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
         }
@@ -278,6 +279,7 @@ sealed class BattleSyncHandler
 
             Debug.Log("NEW PVP player no= " + no);
             BattleHero h2 = HeroMgr.Create<BattleHero>();
+
             h2.team = PublicData.ins.user_pvp_other.no;
             h2.no = PublicData.ins.user_pvp_other.no; ;
             h2.name = PublicData.ins.user_pvp_other.name;
@@ -289,6 +291,7 @@ sealed class BattleSyncHandler
             {
                 //我是发起方
                 h2.x = 10;
+                var xxx = HeroMgr.ins.self;
                 HeroMgr.ins.self.x = 0;
 
             }
@@ -296,11 +299,11 @@ sealed class BattleSyncHandler
             {//我不是发起方
 
                 h2.x = 0;
-                HeroMgr.ins.self.x =10;
+                HeroMgr.ins.self.x = 10;
 
 
             }
- 
+
 
         }
         else

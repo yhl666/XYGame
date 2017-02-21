@@ -773,7 +773,7 @@ public sealed class UI_friendsapp : UICellApp
 
                 if (input_no.text != "")
                 {
-                    RpcClient.ins.SendRequest("services.friends", "add_by_no", "no:1,who: " + input_name.text + ",", (string msg) =>
+                    RpcClient.ins.SendRequest("services.friends", "add_by_no", "no:" + PublicData.ins.self_user.no + ",who: " + input_name.text + ",", (string msg) =>
                     {
                         input_name.text = "";
                         input_no.text = "";
@@ -796,7 +796,7 @@ public sealed class UI_friendsapp : UICellApp
                 else if (input_name.text != "")
                 {
 
-                    RpcClient.ins.SendRequest("services.friends", "add_by_name", "no:1,name:" + input_name.text + ",", (string msg) =>
+                    RpcClient.ins.SendRequest("services.friends", "add_by_name", "no:"+PublicData.ins.self_user.no +",name:" + input_name.text + ",", (string msg) =>
                     {
                         input_name.text = "";
                         input_no.text = "";
