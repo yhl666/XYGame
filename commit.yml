@@ -2,28 +2,28 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid 'aaf6b481584616c6d4aca3a1cc5fc0b842c8f4b1'
-    oldFile: !uuid '5af89423c6e7886fd5bca09917a851a1fd1498d0'
-  /LogicServer/server:
-    newFile: !uuid 'bb5fb2801218b4ff25b71777bef8a35a779ccb59'
-    oldFile: !uuid '7737ed567345aae3519c08350e5fea8d4318f256'
-  /LogicServer/server/scripts:
-    newFile: !uuid 'b3cf2cfc86c2a59d7c9d05b8fd9f990db5cec263'
-    oldFile: !uuid 'd1bbb37de85e292437d29e6c4316e5083e3c8b76'
-  /LogicServer/server/scripts/base:
-    newFile: !uuid '050df9b97c59a30b607527199ff21e13048f893e'
-    oldFile: !uuid '1b2e678427b1f7dea652da3cf23a81594a587cc8'
-  /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid '624381b43d1d782777bf3220f416963d653ae1c1'
-    oldFile: !uuid '7d04314fabfa91b74a04529c83a50c3ee9ac1926'
-  /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid '21ebc47f3cdf711686c5b8b5bc06c832a520f3ab'
-    oldFile: !uuid '55dd3c6fd43f139566e7686fc2a26939ea0fa478'
-  /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
-    newFile: !uuid 'b109f78c09eb17822d9610ed21a953a8913ae133'
-    oldFile: !uuid 'a063049dc2d82848c078ee07bd637bca58b8c79d'
-gitCommitId: !uuid '28e6176a432c43029beac222f7ce670e9aeb00b4'
+  /BattleServer:
+    newFile: !uuid 'ea47a226fb47d1ef66f8b0404b9b4cd6a48d3598'
+    oldFile: !uuid 'fcf7650028dd0665b5a19480c92dcd17c11a79ce'
+  /BattleServer/Debug:
+    newFile: !uuid 'ef1cd83e7e730da812c49f9128ab57033daa7d38'
+    oldFile: !uuid 'b129794a9f9a3241ec0936114ab7577b372f02ef'
+  /BattleServer/Debug/BattleServer.exe:
+    newFile: !uuid '349843a796fc8fa3d5571b3fa1cabb036d46ede0'
+    oldFile: !uuid '031a31dc2fb4b6a3d743b168abf59e60b028e5a7'
+  /BattleServer/Debug/config.ini:
+    newFile: !uuid 'b8cba2ebfc7456acf70607b51d891e7eb09b56c7'
+    oldFile: !uuid '1d95f68d99829fa9a1a9d9e29f409b65dcfe1a9e'
+  /BattleServer/cpp:
+    newFile: !uuid '88a8fc0694da3d14ebe01d1fc09bd0a3efa095ba'
+    oldFile: !uuid 'b706e2a6f5091ed55a3402fbe2ac743aa04ffc25'
+  /BattleServer/cpp/Room.cpp:
+    newFile: !uuid 'c9bde7818fca98f05463d05840027209f74a8ca6'
+    oldFile: !uuid '127f434a1b96b7c5e6151a17279e2387a3848def'
+  /BattleServer/cpp/config.ini:
+    newFile: !uuid 'b8cba2ebfc7456acf70607b51d891e7eb09b56c7'
+    oldFile: !uuid '1d95f68d99829fa9a1a9d9e29f409b65dcfe1a9e'
+gitCommitId: !uuid '9cf85d0ee8225cbf6341ecac1abe77fc341eaecb'
 renames: {
   }
-revisionId: 215
+revisionId: 216
