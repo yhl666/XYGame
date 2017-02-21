@@ -1,26 +1,9 @@
 !revision
 branches: {
   }
-fileChange:
-  /LogicServer:
-    newFile: !uuid '9969ecab4237e7e12f6c24618edc79e9187aa715'
-    oldFile: !uuid '306de1c9d0005f3c1f7fdc8816e2772116eaca84'
-  /LogicServer/server:
-    newFile: !uuid 'fc620b02ff27d1026ceb6fb5ad8228ecf61df427'
-    oldFile: !uuid 'bb5fb2801218b4ff25b71777bef8a35a779ccb59'
-  /LogicServer/server/src:
-    newFile: !uuid '8d72cbf03f98c95bbc692a73e7b1f775da02ddc4'
-    oldFile: !uuid '20dd8a51b99d5cf54b1279b8fcb2347a07b15246'
-  /LogicServer/server/src/svr_common:
-    newFile: !uuid 'b5b0fdd67655cf7409a4cbe14bdebe91e8d54ceb'
-    oldFile: !uuid '409595f6d00ebe98e052198ea44942eea1c359a3'
-  /LogicServer/server/src/svr_common/redis:
-    newFile: !uuid '4316f6de012f39f72b9a96db5e1e2cde0538ffa4'
-    oldFile: !uuid '8c5ac30fa6344778c4f30785845420472b1cee1b'
-  /LogicServer/server/src/svr_common/redis/redis.cpp:
-    newFile: !uuid '09ddfca0dc0c21a88723d79c49e88b58a1964cea'
-    oldFile: !uuid '51b6dd0a182a43d3bcc676519b4621e26266d6ed'
-gitCommitId: !uuid '68819fc844383a257b305d9c01cda5080a7a7dc6'
+fileChange: {
+  }
+gitCommitId: !uuid '5dde0c7c2071df684c90b21625900fb501c3a3c5'
 renames: {
   }
-revisionId: 279
+revisionId: 280
