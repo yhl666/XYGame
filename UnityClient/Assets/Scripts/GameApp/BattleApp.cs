@@ -123,7 +123,7 @@ sealed class BattleSyncHandler
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-           Debug.Log("Recv " + xx);
+        ///   Debug.Log("Recv " + xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)

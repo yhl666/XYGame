@@ -773,7 +773,7 @@ public sealed class UI_friendsapp : UICellApp
 
                 if (input_no.text != "")
                 {
-                    RpcClient.ins.SendRequest("services.friends", "add_by_no", "no:" + PublicData.ins.self_user.no + ",who: " + input_name.text + ",", (string msg) =>
+                    RpcClient.ins.SendRequest("services.friends", "add_by_no", "no:" + PublicData.ins.self_user.no + ",who:" + input_no.text + ",", (string msg) =>
                     {
                         input_name.text = "";
                         input_no.text = "";
