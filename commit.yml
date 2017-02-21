@@ -1,17 +1,9 @@
 !revision
 branches: {
   }
-fileChange:
-  /BattleServer:
-    newFile: !uuid 'c12e4f0965e47c3d09d88bae652ad6fe257a19c6'
-    oldFile: !uuid 'ea47a226fb47d1ef66f8b0404b9b4cd6a48d3598'
-  /BattleServer/Release:
-    newFile: !uuid '28a948fa7da69eec2e30b2ef0fac60605f927701'
-    oldFile: !uuid '4ecc24148366af22f84ce6c8700402520eecbdf3'
-  /BattleServer/Release/BattleServer.exe:
-    newFile: !uuid 'ecf1baf06b582a703d8a1e9126bc6d7f0b6af71d'
-    oldFile: !uuid '7831a4f43a5d574e26bacd495bd9ef6a02b859c4'
-gitCommitId: !uuid '7b79b4162a85f2c702d213dd1a4660d7a7df5368'
+fileChange: {
+  }
+gitCommitId: !uuid 'e917fe65524f571f9f74ff7cf18be4f47ec9d38f'
 renames: {
   }
-revisionId: 217
+revisionId: 218
