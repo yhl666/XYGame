@@ -27,4 +27,8 @@ function t.get_friends(key)
     return const.REDIS_KEY_FRIENDS .. key;
 end
 
+function t.get_pvproom(key)
+    return const.REDIS_KEY_PVPROOM .. key;
+end
+
 return t;
