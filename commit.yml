@@ -2,10 +2,13 @@
 branches: {
   }
 fileChange:
-  /README.md:
-    newFile: !uuid 'ea2d7218fc224448d1238ef765c141285ad12321'
-    oldFile: !uuid 'e4aeea08bcb167f5226ed012ce07d3753dd2d465'
-gitCommitId: !uuid 'd8b5af5967e11dbdb23f76ec1100a82ed8df03df'
+  /UnityClient:
+    newFile: !uuid '0498d64b42fa4a80debf5ae5a76df56118bd2bdf'
+    oldFile: !uuid 'a9650df6302721cc4e5b7e47cb905540a3749564'
+  /UnityClient/客户端开发约定.txt:
+    newFile: !uuid '4032e1b1233eff3f48aac3637e34fa7a89a082e6'
+    oldFile: !uuid 'c1baa6e84567b8434055892c08a91fdc7e6a6f7a'
+gitCommitId: !uuid '1658eafa55e8238a343be32dd36ed3fd8c333c95'
 renames: {
   }
-revisionId: 287
+revisionId: 288
