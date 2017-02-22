@@ -121,14 +121,15 @@ sealed class BattleSyncHandler
         while (_recvQueue.Empty() == false)
         {
             i++;
+            ///  Thread.Sleep(40);
 
-            if (i > 80) break;//连续计算80帧强制刷新UI
+            if (i > 50) break;//连续计算80帧强制刷新UI
             _need_send = true;
             //     if (_recvQueue.Count() % 50 == 0) return;
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-        ///   Debug.Log("Recv " + xx);
+            ///   Debug.Log("Recv " + xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -278,38 +279,77 @@ sealed class BattleSyncHandler
         {//pvp 好友  模式 新玩家
 
             int no = int.Parse(decode.customs[1] as string);
-            if (no == HeroMgr.ins.me_no) return;
-            if (HeroMgr.ins.GetHero(no) != null) return;
+
+            if (PublicData.ins.is_client_server)
+            { //客户服务器
+
+                if (HeroMgr.ins.GetHero(no) != null) return;
+                if (no == HeroMgr.ins.me_no) return;
+
+                Debug.Log("NEW PVP player no= " + no);
+                BattleHero h2 = HeroMgr.Create<BattleHero>();
+
+                h2.team = no;
+                h2.no = no; ;
+                h2.name = no.ToString();
+                if (HeroMgr.ins.self == null)
+                {
+                    HeroMgr.ins.self = h2;
+                    HeroMgr.ins.me_no = h2.no;
+                    h2.x = 10;//目标玩家初始在右边
+                }
+
+                if (PublicData.ins.is_pvp_friend_owner)
+                {
+                    //我是发起方
+                    h2.x = 10;
+                    var xxx = HeroMgr.ins.self;
+                    HeroMgr.ins.self.x = 0;
+
+                }
+                else
+                {//我不是发起方
+
+                    h2.x = 0;
+                    HeroMgr.ins.self.x = 10;
 
 
-            Debug.Log("NEW PVP player no= " + no);
-            BattleHero h2 = HeroMgr.Create<BattleHero>();
-
-            h2.team = PublicData.ins.user_pvp_other.no;
-            h2.no = PublicData.ins.user_pvp_other.no; ;
-            h2.name = PublicData.ins.user_pvp_other.name;
-
-            h2.x = 10;//目标玩家初始在右边
-
-
-            if (PublicData.ins.is_pvp_friend_owner)
-            {
-                //我是发起方
-                h2.x = 10;
-                var xxx = HeroMgr.ins.self;
-                HeroMgr.ins.self.x = 0;
+                }
 
             }
             else
-            {//我不是发起方
+            {
+                if (no == HeroMgr.ins.me_no) return;
+                if (HeroMgr.ins.GetHero(no) != null) return;
 
-                h2.x = 0;
-                HeroMgr.ins.self.x = 10;
+
+                Debug.Log("NEW PVP player no= " + no);
+                BattleHero h2 = HeroMgr.Create<BattleHero>();
+
+                h2.team = PublicData.ins.user_pvp_other.no;
+                h2.no = PublicData.ins.user_pvp_other.no; ;
+                h2.name = PublicData.ins.user_pvp_other.name;
+
+                h2.x = 10;//目标玩家初始在右边
 
 
+                if (PublicData.ins.is_pvp_friend_owner)
+                {
+                    //我是发起方
+                    h2.x = 10;
+                    var xxx = HeroMgr.ins.self;
+                    HeroMgr.ins.self.x = 0;
+
+                }
+                else
+                {//我不是发起方
+
+                    h2.x = 0;
+                    HeroMgr.ins.self.x = 10;
+
+
+                }
             }
-
-
         }
         else
         {
@@ -534,11 +574,36 @@ public sealed class BattleApp : AppBase
 
 
     }
+
+    private void InitWithClientServer()
+    {
+
+        System.IO.StreamReader sr = new System.IO.StreamReader(Application.dataPath + "/room-20.log", System.Text.Encoding.Default);
+        String line;
+        while ((line = sr.ReadLine()) != null)
+        {
+            string str = line.ToString();
+            Debug.Log("Read From File:      " + str);
+            this.AddRecvMsg(str.Substring(0, str.Length - 1));
+        }
+
+
+
+
+
+    }
     public void InitNet(bool isReConnect = false)
     {
 
-
-        if (PublicData.ins.is_pvp_friend_ai)
+        if (PublicData.ins.is_client_server)
+        {
+            this.InitWithClientServer();
+            socket = new SockClientEmpty();
+            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
+            var controller = ClientServerApp.ins;
+            return;
+        }
+        else if (PublicData.ins.is_pvp_friend_ai)
         {
             socket = new SockClientWithPVPAIMode();
         }
@@ -586,9 +651,14 @@ public sealed class BattleApp : AppBase
             else if (PublicData.ins.is_pvp_friend_ai)
             {
 
-                //  this.socket.AddSendMsg("cmd:new:" + PublicData.GetInstance().player_name);
+                this.socket.AddSendMsg("cmd:new:" + PublicData.GetInstance().player_name);
 
 
+
+            }
+            else
+            {
+                this.socket.AddSendMsg("cmd:new_pvp_friend:1" + ":1" + ":1");
 
             }
         }

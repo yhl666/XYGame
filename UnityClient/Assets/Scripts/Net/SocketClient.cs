@@ -424,3 +424,44 @@ public class SockClientWithPVPAIMode : SocketClient
     private ThreadSafeQueue _sendQueue = new ThreadSafeQueue();
 }
 
+
+public class SockClientEmpty : SocketClient
+{
+
+    public override void AddSendMsg(string msg)
+    {
+        
+    }
+
+    public override bool Startup()
+    {
+
+        return true;
+    }
+    public override void Terminal()
+    {
+
+
+
+    }
+
+    private void InitThread()
+    {
+ 
+    
+    }
+
+
+    private void ThreadFunction_Recv()
+    {
+
+       
+    }
+
+    public void SetPlayeSpeed(int sp)
+    {
+
+    }
+
+}
+
