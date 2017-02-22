@@ -1,12 +1,12 @@
-Լ��
+约定
 
-1.���շ���ģ���ύcell.xygame.services ��base.xygame.services�����XXXX.lua�ļ� �������ⶼ�ύΪISSUE ��ΪBUG������Ŀǰ�������޸�
+1.按照服务模块提交cell.xygame.services 和base.xygame.services里面的XXXX.lua文件 其他问题都提交为ISSUE 作为BUG处理，目前是我来修改
 
-2.ÿ�����񿪷�ǰ ���ļ�ͷ��д�Ͻӿ����� ��json������Ϣ ��������ʾ��json�����ύ��SVN�� �ͻ�����Ա�Ϳ��Ը��ݸýӿ���Ϣ ��ʼ����
-��
+2.每个服务开发前 在文件头部写上接口名字 和json参数信息 可以来个示范json。，提交到SVN后 客户端人员就可以根据该接口信息 开始开发
+到
 
-3.�½��ļ�ֱ��copy ������ Template.lua�����ߺ�Email ��Ϊ��ļ���
+3.新建文件直接copy 重命名 Template.lua，作者和Email 改为你的即可
 
-4.��Ҫ�ü��±�дlua�ű� ����Ҫ�ü��±�дlua�ű� �� ��Ϊ��BOM��UTF8 ��֧��
+4.不要用记事本写lua脚本 ！不要用记事本写lua脚本 ！ 因为带BOM的UTF8 不支持
 
-����������ѯ caoshanshan@ztgame.com
+其他问题咨询 me@dreamyouxi.com
