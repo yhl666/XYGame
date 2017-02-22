@@ -123,13 +123,13 @@ sealed class BattleSyncHandler
             i++;
             ///  Thread.Sleep(40);
 
-            if (i > 50) break;//连续计算80帧强制刷新UI
+            if (i > 2) break;//连续计算80帧强制刷新UI
             _need_send = true;
             //     if (_recvQueue.Count() % 50 == 0) return;
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-            ///   Debug.Log("Recv " + xx);
+           /// Debug.Log("Recv " + xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -285,22 +285,32 @@ sealed class BattleSyncHandler
             { //客户服务器
 
                 if (HeroMgr.ins.GetHero(no) != null) return;
-                if (no == HeroMgr.ins.me_no) return;
 
                 ///  Debug.Log("NEW PVP player no= " + no);
                 BattleHero h2 = HeroMgr.Create<BattleHero>();
 
+
                 h2.team = no;
                 h2.no = no; ;
                 h2.name = no.ToString();
-                if (HeroMgr.ins.self == null)
-                {
+       
+                if (Json.Decode(PublicData.ins.client_server_room_info)["p1"] == no.ToString())
+                {//默认self是发起方
+
+                    PublicData.ins.is_pvp_friend_owner = true;
                     HeroMgr.ins.self = h2;
                     HeroMgr.ins.me_no = h2.no;
+                    h2.x = 0;//目标玩家初始在右边
+
+                }
+                else
+                {
+                    PublicData.ins.is_pvp_friend_owner = false;
                     h2.x = 10;//目标玩家初始在右边
+
                 }
 
-                if (PublicData.ins.is_pvp_friend_owner)
+              /*  if (PublicData.ins.is_pvp_friend_owner)
                 {
                     //我是发起方
                     h2.x = 10;
@@ -315,7 +325,7 @@ sealed class BattleSyncHandler
                     HeroMgr.ins.self.x = 10;
 
 
-                }
+                }*/
 
             }
             else
@@ -361,6 +371,7 @@ sealed class BattleSyncHandler
 
     public void ProcessWithFrameData()
     {
+
         AutoReleasePool.ins.Clear();//更新前 先清理一次 使每帧 都有效清理
 
         ArrayList data = (ArrayList)framedatas[current_fps];
@@ -579,6 +590,7 @@ public sealed class BattleApp : AppBase
     private void InitWithClientServer()
     {
         string id = Json.Decode(PublicData.ins.client_server_room_info)["pvproom_id"];
+     //   id = "67";
 
 
         System.IO.StreamReader sr = new System.IO.StreamReader(Application.dataPath + "../../../Room/room-" +
@@ -701,6 +713,7 @@ public sealed class BattleApp : AppBase
 
             PublicData.ins.client_server_room_info += "h1:" + p1.current_hp + ",h2:" + p2.current_hp + ",";
             PublicData.ins.client_server_result = PublicData.ins.client_server_room_info;
+            Debug.Log("Over:" + PublicData.ins.client_server_result);
 
         }
         if (PublicData.ins.is_pvp_friend)
@@ -715,6 +728,7 @@ public sealed class BattleApp : AppBase
 
                 upload += "h1:" + HeroMgr.ins.self.current_hp.ToString();
                 upload += ",h2:" + HeroMgr.ins.GetHero(PublicData.ins.user_pvp_other.no).current_hp + ",";
+                Thread.Sleep(1000);
 
             }
             else
@@ -728,7 +742,7 @@ public sealed class BattleApp : AppBase
             }
 
             ///发起验证
-            RpcClient.ins.SendRequest("services.battle_pvp", "verify", upload, (string msg) =>
+            RpcClient.ins.SendRequest("services.battle_pvp", "request_verify", upload, (string msg) =>
                 {
 
                     Debug.LogError("Verify: " + msg);

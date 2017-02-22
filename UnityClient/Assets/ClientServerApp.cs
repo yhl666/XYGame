@@ -29,6 +29,18 @@ public class ClientServerApp : GAObject
         if (_ins == null)
         {
             _ins = new ClientServerApp();
+           /* {
+
+
+                PublicData.ins.client_server_room_info = "pvproom_id:67,p1:1,p2:2,";
+                PublicData.ins.is_client_server = true;
+   
+                SceneMgr.Load("BattlePVP");
+
+
+
+
+            }*/
             _ins.Init();
             _ins.OnEnter();
         }
