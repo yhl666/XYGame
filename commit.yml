@@ -2,28 +2,31 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid 'f02e2f5a77bd9ae94197489d5d7e499148546c6c'
-    oldFile: !uuid '1d5011c8e05147984c5fe31001f5fe43dfc5f470'
-  /LogicServer/server:
-    newFile: !uuid '58d4a2f2ba760eb2f62e802cd6829bb6316bbc0c'
-    oldFile: !uuid 'd9f7bd4ea24db1e63aff4ff0fe091621ced02ba2'
-  /LogicServer/server/scripts:
-    newFile: !uuid 'bb589ad3d79bd615267683b0d35a92263b4ffd98'
-    oldFile: !uuid 'a77cd65dcdcb3f688479e6030deeb63ae3322bd1'
-  /LogicServer/server/scripts/base:
-    newFile: !uuid '265b73a8809f6febb1e59b78c132b4a9f048eeda'
-    oldFile: !uuid '8fa39bc4e7c4b306cbcba1be3024e304623ce137'
-  /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid 'c087afffff09d5c67b535bcc328bb0d746381402'
-    oldFile: !uuid '441e0b87d69713806938e08e3c824a9cfd744be5'
-  /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid 'efe57e1d9bbdf9bcc1f9e426347b3feba9a27b1f'
-    oldFile: !uuid '9bdf4d88a4c8e4ca342932103a4297e73c60a034'
-  /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
-    newFile: !uuid 'ffb289c0c88d3481f0ad72bc6f1a80253f9f585f'
-    oldFile: !uuid 'dbbf238f9b73348d16903ead9abba7cdaf8b4e09'
-gitCommitId: !uuid 'dc29219b3ec930ca589d321074e70bcfb87dab5a'
+  /UnityClient:
+    newFile: !uuid '7b3852f748c5e84ee98b82dae82ce0c0e1684595'
+    oldFile: !uuid '1495de19516a611b2fd9435ac4347e5c79845b3a'
+  /UnityClient/Assets:
+    newFile: !uuid '96ed2c1ed92e8343889c7f48f3d62eda9efdb3f4'
+    oldFile: !uuid 'cd0c066028298bc597c5bfba12bc34b08517d754'
+  /UnityClient/Assets/ClientServerApp.cs:
+    newFile: !uuid '490954ddb6b712b1966d1085161b12ee6f933343'
+    oldFile: !uuid '5ac42cb37ae081059527b6c47c8e4c4ac3146e0e'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '0bf9b866f9aef752cf497da3a901b45d29e05cfd'
+    oldFile: !uuid '5443a60c84a825ab24dddf6adbe36ffbcb4de090'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid '700e2bf003387aa144986d7b49426e0d1ab31c27'
+    oldFile: !uuid '4339ea5e4dc5770d006b09a02c208d376824b905'
+  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
+    newFile: !uuid '2dc2a53850c8fc1cdcb1a34bcd285ae5d6271bb1'
+    oldFile: !uuid 'c5c9597c2b5ef950a9fb1193efb3c21bd8572d9d'
+  /UnityClient/ProjectSettings:
+    newFile: !uuid 'bf01f2634558af0b5c9d9c3db20d2e7ad682ca5f'
+    oldFile: !uuid '528caa1a64ca6ca1df7807700f2370d8ff395648'
+  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
+    newFile: !uuid 'cea75eea2ab9fc37f6233e389c6dac5a2b46e597'
+    oldFile: !uuid '96e90a8426df700afbb3f9fba7e8afafe64929b7'
+gitCommitId: !uuid 'c87ba1463aeebd01aa18d539e1284aa649743b51'
 renames: {
   }
-revisionId: 304
+revisionId: 305
