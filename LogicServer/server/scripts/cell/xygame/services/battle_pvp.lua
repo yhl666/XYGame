@@ -89,7 +89,39 @@ function t.request_pvp_v2(msg, cb)
 
     end);  
 end
- 
 
+
+ --通知检验比赛结果
+ function t.request_verify_read(msg, cb)
+
+    local kv =json.decode(msg);
+    local pvproom_id = kv["pvproom_id"];
+
+    redis.get(redis_key.get_pvproom(pvproom_id), function (msg)
+        if msg == "" then
+            cb("ret:error,msg:战斗房间为空,");
+            return;
+        else
+            cb(msg);
+        end
+
+    end);
+end
+
+
+function t.request_verify_write(msg, cb)
+
+    local tbl = json.multi_decode(msg);
+    local pvproom_id = tbl[1]["pvproom_id"];
+
+    redis.set(redis_key.get_pvproom(pvproom_id), msg, function(msg1)
+        if msg1 == "ok" then 
+            cb("ret:ok" .. msg); 
+        else
+            cb("ret:error,msg:数据写入失败,");return;  
+        end
+    end)
+
+end
 
 return t;

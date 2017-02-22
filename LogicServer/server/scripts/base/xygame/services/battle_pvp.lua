@@ -74,7 +74,7 @@ function t.request_pvp_v2(ctx, msg, cb)
                             cb("ret:error,msg:timeout,");
                             return;
                         end
-                        remote.request_client(ctx_2, "Friends", "RecvPVP", user1 ..msg5, function(msg)
+                        remote.request_client(ctx_2, "Friends", "RecvPVP", user1 .. msg5, function(msg)
 
                             local kv = json.decode(msg);
                             if kv["ret"] == "ok" then
@@ -96,4 +96,104 @@ function t.request_pvp_v2(ctx, msg, cb)
     end );
 end
 
+
+function t.request_verify(ctx, msg, cb)
+
+    local tbl = json.decode(msg);
+    local pvproom_id = tbl["pvproom_id"];
+    local msg1 = "pvproom_id:" .. pvproom_id .. ",";
+    local p1 = tbl["p1"];
+    local p2 = tbl["p2"];
+
+    -- 参数校验
+
+    -- 约定{pvproomid:1,max_no:2,p1:1,p2:2}{hp:100,p1:1}{hp:100,p2:2},消息发送者为p1,对手为p2
+    local ctx_other;
+
+    remote.request("services.battle_pvp", "request_verify_read", msg1, function(msg2)
+
+        local tbl_battle_in_redis = json.multi_decode("{" .. msg2 .. "}");
+
+        if tbl_battle_in_redis[1]["ret"] == "error" then
+            cb("ret:error,msg:房间数据错误,"); return;
+        else
+            if tbl["pvproom_id"] ~= tbl_battle_in_redis[1]["pvproom_id"] or tbl["p1"] ~= tbl_battle_in_redis[1]["p1"] or
+               tbl["p2"] ~= tbl_battle_in_redis[1]["p2"] then
+                -- todo
+                -- 如果房间信息有误则通知两个玩家游戏结果校验失败
+                remote.request_client(ctx, "Friends", "BattlePVP", "ret:ok,msg:verifyError,", function(msg3)
+
+                end );
+
+                remote.request_client(ctx_other, "Friends", "BattlePVP", "ret:ok,msg:verifyError,", function(msg3)
+
+                end );
+
+            else
+                if tbl_battle_in_redis[2] == nil then
+                    -- 如果是一号玩家
+                    local msg_to_write = msg2 .. "{" .. "h1:" .. tbl["h1"] .. "," .. "p1:" .. tbl["p1"] .. "," .. "}" .. "{" .. "h2:" .. tbl["h2"] .. "," .. "p2:" .. tbl["p2"] .. "," .. "}";
+                    remote.request("services.battle_pvp", "request_verify_write", msg_to_write, function(msg4)
+
+                        local kvv = json.decode(msg4);
+                        if kvv["ret"] == "ok" then
+                            -- 已经写入redis
+                            cb("ret:ok,msg:写入成功,");
+                        else
+                            cb("ret:ok,msg:写入失败,");
+                            -- 写入redis失败
+                        end
+
+                    end )
+
+                elseif tbl_battle_in_redis[2] ~= nil and tbl_battle_in_redis[3] ~= nil then
+                    -- todo josn.encode(tbl_battle_in_redis[2]) == ""
+                    -- 如果是二号玩家
+
+                    if json.encode(tbl[2] == tbl_battle_in_redis[2]) and json.encode(tbl[3] == tbl_battle_in_redis[3]) then
+
+                        -- 发给客户服务器发送房间信息
+                        local room_info = "pvproom_id:" .. pvproom_id .. "," .. "p1:" .. p1 .. "," .. "p2:" .. p2 .. ",";
+                        remote.request_client_server(room_info, function(msgg)
+
+                            local kvv = json.decode(msgg);
+
+                            if tbl_battle_in_redis[2]["h1"] == kvv["h1"] and tbl_battle_in_redis[3]["h2"] == kvv["h2"] then
+
+                                remote.request_client(ctx, "BattlePVP", "PushResult", "ret:ok,msg:verifyOk,", function(msg6)
+                                    -- Friend?
+                                end );
+
+                                remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:ok,msg:verifyOk,", function(msg6)
+                                    -- Friend?
+                                end );
+                            else
+                                remote.request_client(ctx, "BattlePVP", "PushResult", "ret:ok,msg:verifyError,", function(msg6)
+                                    -- Friend?
+                                end );
+
+                                remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:ok,msg:verifyError,", function(msg6)
+                                    -- Friend?
+                                end );
+                            end
+                        end )
+
+                    else
+                        remote.request_client(ctx, "BattlePVP", "PushResult", "ret:ok,msg:verifyError,", function(msg6)
+                            -- Friend?
+                        end );
+
+                        remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:ok,msg:verifyError,", function(msg6)
+                            -- Friend?
+                        end );
+
+                    end
+                end
+
+
+            end
+
+        end
+    end );
+end
 return t;
