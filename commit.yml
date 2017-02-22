@@ -1,41 +1,9 @@
 !revision
 branches: {
   }
-fileChange:
-  /UnityClient:
-    newFile: !uuid 'aa0950c22116852bffc6cf66c08987f3704f5cd6'
-    oldFile: !uuid '0498d64b42fa4a80debf5ae5a76df56118bd2bdf'
-  /UnityClient/Assets:
-    newFile: !uuid '183ef11dadc24321408e37dd705964bbbb3e6517'
-    oldFile: !uuid '43d52ff2f15267d8058dfd1e289c23251e265595'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid 'ee80ea0833c56d81a7c0e796ae982db016a6545b'
-    oldFile: !uuid '1ce0fb9dae2954b3b028839df6c1914439cdf9e8'
-  /UnityClient/Assets/Scenes/BattlePVPServer.unity:
-    newFile: !uuid 'f27d4055ce53f501cb6851c6fcd5b1e286f3341c'
-    oldFile: !uuid '433444e4139614de831b8d87f51a58b38021237f'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '05d9f8a14fbadccb05fe21da58f2dbc83c9a6af7'
-    oldFile: !uuid '9285a51246dcfd577801d969e74969404be585a0'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '56aba718120c80ca44dc9dcc91ece790538f951e'
-    oldFile: !uuid 'a12a0633a4180af9ece53948521714ef1d7b5984'
-  /UnityClient/Assets/Scripts/Data/PublicData.cs:
-    newFile: !uuid 'bb1ac949ecfc582530efb1dea441215af5a646b6'
-    oldFile: !uuid '91f83ed1d89bbc9e4adca14d6e8a9b57a58bf574'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid '88a32bbd2acd20b98be78499dbc9cbcd08c08d38'
-    oldFile: !uuid 'd556a849c3e190dcf373ab3951c019546d1c5354'
-  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
-    newFile: !uuid '869c0ea983e639d797d03698f3d5a740010b5fb8'
-    oldFile: !uuid '2c7e9ec4dbbe9eb89b28a258782b13499b85b740'
-  /UnityClient/Assets/Scripts/Net:
-    newFile: !uuid 'df591537d389c3b780ef6525c856b47288607492'
-    oldFile: !uuid '1edb58d22e1fade6cf7dde60f9e2cde758085011'
-  /UnityClient/Assets/Scripts/Net/SocketClient.cs:
-    newFile: !uuid 'eec4ebe9b12f37720729a539b9fe33b54d96ef39'
-    oldFile: !uuid '546f2518b1a11db0e9cb604561407d6cd60a6ccd'
-gitCommitId: !uuid '5a0fc239491a4d6ff461102b8b810e7cb13b3b15'
+fileChange: {
+  }
+gitCommitId: !uuid '46bc24b1e7128dcc147e416e76df6cedf8ce4d74'
 renames: {
   }
-revisionId: 292
+revisionId: 293
