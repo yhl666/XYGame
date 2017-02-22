@@ -21,7 +21,7 @@ local log = require("log"):new("remote")
 
 local t = { }
 
--- [Comment]
+--[Comment]
 -- 向cell服务器发起RPC请求
 -- services #string 服务类型
 -- method #string 函数名字
@@ -51,7 +51,7 @@ function t.request(services, method, json, cb)
 end
 
 
--- [Comment]
+--[Comment]
 -- 向游戏客户端发起RPC请求
 function t.request_client(ctx, services, method, json, cb)
     log:debug("send a client services request to cell server");
@@ -77,6 +77,14 @@ end
 function t.request_local(services, method, json, cb)
     local handler = require("common.xygame.base.services_handler");
     handler.handle_local(services, method, json, cb);
+
+end
+
+--[Common]
+-- 发起ClientServer 校验请求
+-- "pvproom_id:2,p1:1,p2:2,"
+function t.request_client_server(room_info, cb)
+    require("xygame.base.client_server_handler").request_client_server(room_info, cb);
 
 end
 log:debug("load");

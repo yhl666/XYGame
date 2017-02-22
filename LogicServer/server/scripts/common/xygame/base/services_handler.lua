@@ -159,10 +159,10 @@ function t.handle_local(service_name, method_name, msg, cb)
     end
 
 
-    print("---[Rpc Local Call]:" .. service_name .. "." .. method_name .. "(" .. tostring( msg) .. ")");
+    print("---[Rpc Local Call]:" .. service_name .. "." .. method_name .. "(" .. tostring(msg) .. ")");
     methodFunc(msg, function(msg1)
 
-        print("---[Rpc Local Resp]:" .. service_name .. "." .. method_name .. " (" .. tostring( msg1) .. ")");
+        print("---[Rpc Local Resp]:" .. service_name .. "." .. method_name .. " (" .. tostring(msg1) .. ")");
 
         cb(msg1)
     end );
@@ -170,7 +170,7 @@ function t.handle_local(service_name, method_name, msg, cb)
 
 end
 
-
+ 
 
 
 

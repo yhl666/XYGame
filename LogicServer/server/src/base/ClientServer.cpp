@@ -5,22 +5,23 @@ Author cao shanshan
 Email me@dreamyouxi.com
 
 */
-
+#include "ClientServer.h"
 #include "world.h"  // for GetLuaState()
 #include "get_world.h"  // for GetWorld()
-#include "ClientServer.h"
+#include "timer_queue_root.h"
+#include "timer_queue.h"
+
 #include <LuaIntf/LuaIntf.h>
 #include "windows.h"
 #include <iostream>
 #include <winsock2.h>
-#include "timer_queue_root.h"
 
 #pragma comment(lib,"ws2_32.lib") 
 
 using namespace std;
 namespace {
 
- 
+
 	using LuaRef = LuaIntf::LuaRef;
 
 
@@ -33,30 +34,31 @@ namespace {
 
 
 
+
+	namespace LuaClientServer {
+
+		void Bind(lua_State* L)
+		{
+			assert(L);
+			using namespace LuaIntf;
+			LuaBinding(L).beginModule("client_server")
+				.addFunction("send", &Send)
+
+				.endModule();
+		}
+
+	};
+
+};
+
+ 
+
+
+
+void ClientServer::BindLua(lua_State *l)
+{
+	LuaClientServer::Bind(l);
 }
-namespace LuaClientServer {
-
-	void Bind(lua_State* L)
-	{
-		assert(L);
-		using namespace LuaIntf;
-		LuaBinding(L).beginModule("client_server")
-			.addFunction("send", &Send)
-
-			.endModule();
-	}
-
-}  // namespace LuaRedis
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -165,8 +167,37 @@ void   ClientServer::ThreadFunc_Recv()
 
 void   ClientServer::ThreadFunc_Send()
 {
+	/*this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
 	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
-
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+	*/
 	while (true)
 	{
 		Sleep(1);
@@ -190,7 +221,7 @@ void ClientServer::ProcessInLua(const std::string & msg)
 {
 	/*GetWorld()->AddMainThreadFunc([=]()
 	{
-	
+
 		using LuaIntf::LuaRef;
 		LuaRef require(GetWorld()->GetLuaState(), "require");
 		try
@@ -205,7 +236,7 @@ void ClientServer::ProcessInLua(const std::string & msg)
 			cout << "Failed to call lua xygame.base.client_server_handler.handle(), " << e.what();
 		}
 
-	
+
 	});*/
 
 	m_pTimerQueue->InsertSingleFromNow(0, [=]()
@@ -217,15 +248,16 @@ void ClientServer::ProcessInLua(const std::string & msg)
 		{
 			LuaRef handler = require.call<LuaRef>("xygame.base.client_server_handler");
 
-			handler.dispatchStatic("handle",  (msg));
+			handler.dispatchStatic("handle_client_server", (msg.substr(0,msg
+				.size()-1)));
 			// Todo: Register Lua service directly. No rpc_request_handler.
 
-			this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+		///	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
 
 		}
 		catch (const LuaIntf::LuaException& e)
 		{
-			cout << "Failed to call lua xygame.base.client_server_handler.handle(), " << e.what();
+			cout << "Failed to call lua xygame.base.client_server_handler.handle_client_server(), " << e.what();
 		}
 
 	});

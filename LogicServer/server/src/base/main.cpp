@@ -50,11 +50,8 @@ int main(int argc, char* argv[])
 
 
 	//接入ClientServer
-	ClientServer::GetInstance();
-
-
-
-
+	ClientServer::GetInstance()->BindLua(worldbase.GetLuaState());
+ 
 
 	worldbase.BlockingRun();
 	return 0;

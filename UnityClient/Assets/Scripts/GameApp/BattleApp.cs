@@ -287,7 +287,7 @@ sealed class BattleSyncHandler
                 if (HeroMgr.ins.GetHero(no) != null) return;
                 if (no == HeroMgr.ins.me_no) return;
 
-                Debug.Log("NEW PVP player no= " + no);
+              ///  Debug.Log("NEW PVP player no= " + no);
                 BattleHero h2 = HeroMgr.Create<BattleHero>();
 
                 h2.team = no;
@@ -587,7 +587,7 @@ public sealed class BattleApp : AppBase
         while ((line = sr.ReadLine()) != null)
         {
             string str = line.ToString();
-            Debug.Log("Read From File:      " + str);
+        ///    Debug.Log("Read From File:      " + str);
             this.AddRecvMsg(str.Substring(0, str.Length - 1));
         }
 

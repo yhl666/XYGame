@@ -117,11 +117,10 @@ public class ClientServerApp : GAObject
     private void ProcessOneRequest()
     {
         if (recvQueue.Empty() == true) return;
+        Debug.Log("队列剩余请求:" + recvQueue.Count());
 
         string request = recvQueue.Dequeue() as string;
         HashTable kv = Json.Decode(request);
-
-        Debug.Log("process one   " + request);
 
         PublicData.ins.client_server_room_info = request;
         PublicData.ins.is_client_server = true;

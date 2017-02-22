@@ -8,15 +8,9 @@
 #include <mutex>
 #include <queue>
 #include <memory>
+#include "timer_queue.h"
 struct lua_State;
-
-namespace LuaClientServer
-{
-	void Bind(lua_State* L);
-}
-
-class TimerQueue;
-
+ 
 template< typename T>
 class ThreadSafeQueue
 {
@@ -75,7 +69,7 @@ public:
 	*/
 	void AddSendMsg(std::string msg);
 
-
+	void BindLua(lua_State *l);
 
 private:
 	ClientServer();
