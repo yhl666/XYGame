@@ -251,7 +251,7 @@ Room::~Room()
 	{
 		std::vector<string>   right_ref = std::move(this->_brocastDatas);
 		fstream file;
-		string name = "room-";
+		string name = "../../Room/room-";
 		name += Utils::itos(id);
 		name += ".log";
 		file.open(name, ios::out);
