@@ -2,28 +2,22 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid '3afa78ca196b91b31cd858da3473c3b29207a210'
-    oldFile: !uuid '22e88f0b50956c54ed48e7e0302b2009146719f7'
-  /LogicServer/server:
-    newFile: !uuid '0b93dd85128eb6c72bf4ba623c8696cff0c7d2e0'
-    oldFile: !uuid '0b6211f203355e5990d6f106e968eef18358d4bb'
-  /LogicServer/server/scripts:
-    newFile: !uuid '43d494e78228d366df9fe5f7d3ae3cb305ee9b5c'
-    oldFile: !uuid '3e4d924b513c3f116d388f9a5f163441fefb5fac'
-  /LogicServer/server/scripts/common:
-    newFile: !uuid 'f95d3dad8f96145f45fbeb2c18b057ae8b8c8f83'
-    oldFile: !uuid '855543bc01b94ec8027eb0aa04372a59fef8c852'
-  /LogicServer/server/scripts/common/xygame:
-    newFile: !uuid '9d3f7ab79d5ce36138e2074ccaa36c043d709802'
-    oldFile: !uuid '50da438a5f631268a31178897b480e1b14232037'
-  /LogicServer/server/scripts/common/xygame/base:
-    newFile: !uuid 'a5da2f0e1cef8884a43d4dbdafbcd2a9b206a074'
-    oldFile: !uuid 'ef5de4a0b517d5c3c6de5e0e2cf23f2cd06c1e87'
-  /LogicServer/server/scripts/common/xygame/base/client_server_handler.lua:
-    newFile: !uuid '649a82a0af73e28aae875cfd7b983c4b5cc630b6'
-    oldFile: null
-gitCommitId: !uuid '300c9e0212f22b62b669053479c65ad08ea217a1'
+  /BattleServer:
+    newFile: !uuid 'fd03abf86b12fbd2f510e56ed72e1067a394bd4b'
+    oldFile: !uuid 'b01795b2bb53235f8e0dc7439fd66b45935e8f85'
+  /BattleServer/Debug:
+    newFile: !uuid '89b78135bb1b7f9151d2eac041b99269de3a5274'
+    oldFile: !uuid 'd822070746667ddb1b010dc3c67602cf574ebee2'
+  /BattleServer/Debug/BattleServer.exe:
+    newFile: !uuid 'd72f78ea475907553338f215a96358a8acb9f177'
+    oldFile: !uuid '9e22a4c5cac9b1e7099abfbf3a5932c5de0e64ea'
+  /BattleServer/cpp:
+    newFile: !uuid '30a6c1b386f823d46007488e7c29e795173f6c90'
+    oldFile: !uuid '88a8fc0694da3d14ebe01d1fc09bd0a3efa095ba'
+  /BattleServer/cpp/Room.cpp:
+    newFile: !uuid '69c4ce2dde7783d98057b266be15bdcbf530916d'
+    oldFile: !uuid 'c9bde7818fca98f05463d05840027209f74a8ca6'
+gitCommitId: !uuid '378b01d475360866a17b4301e24fa4949cff1e2f'
 renames: {
   }
-revisionId: 298
+revisionId: 299
