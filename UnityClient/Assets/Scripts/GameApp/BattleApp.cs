@@ -238,6 +238,7 @@ sealed class BattleSyncHandler
         else if (cmd == "Over")
         {//游戏结束
             app.SetGameOver();
+
         }
         else if (cmd == "ReConnect")
         {//重新连接
@@ -577,8 +578,11 @@ public sealed class BattleApp : AppBase
 
     private void InitWithClientServer()
     {
+        string id = Json.Decode(PublicData.ins.client_server_room_info)["pvproom_id"];
 
-        System.IO.StreamReader sr = new System.IO.StreamReader(Application.dataPath + "/room-20.log", System.Text.Encoding.Default);
+
+        System.IO.StreamReader sr = new System.IO.StreamReader(Application.dataPath + "../../../Room/room-" +
+            id + ".log", System.Text.Encoding.Default);
         String line;
         while ((line = sr.ReadLine()) != null)
         {
@@ -586,8 +590,6 @@ public sealed class BattleApp : AppBase
             Debug.Log("Read From File:      " + str);
             this.AddRecvMsg(str.Substring(0, str.Length - 1));
         }
-
-
 
 
 
@@ -669,6 +671,12 @@ public sealed class BattleApp : AppBase
 
     public override void Update()
     {
+
+        if (PublicData.ins.is_client_server)
+        {
+            ClientServerApp.ins.UpdateMS();
+        }
+
         this.Process();
         AutoReleasePool.ins.Clear(); // 没帧数结束 清理一次， 逻辑帧 Process内部已处理
     }
@@ -679,6 +687,20 @@ public sealed class BattleApp : AppBase
     {
         if (this.isVideoMode() == false)
         {
+
+        }
+
+        if (PublicData.ins.is_client_server)
+        {
+            //写入结果
+
+            HashTable kv = Json.Decode(PublicData.ins.client_server_room_info);
+
+            Hero p1 = HeroMgr.ins.GetHero(int.Parse(kv["p1"]));
+            Hero p2 = HeroMgr.ins.GetHero(int.Parse(kv["p2"]));
+
+            PublicData.ins.client_server_room_info += "h1:" + p1.current_hp + ",h2:" + p2.current_hp + ",";
+            PublicData.ins.client_server_result = PublicData.ins.client_server_room_info;
 
         }
 
@@ -822,6 +844,15 @@ public sealed class BattleApp : AppBase
 
         base.OnExit();
 
+
+
+
+
+        if (PublicData.ins.is_client_server)
+        {
+            SceneMgr.Load("ClientServerScene");
+
+        }
     }
 }
 

@@ -70,10 +70,7 @@ public class PublicData : object
     public bool is_pvp_friend_ai = false;
     public bool is_pvp_friend_owner = true;//主动发起的一方
 
-
-
-
-
-
-    public bool is_client_server = true;
+    public string client_server_room_info = "";
+    public bool is_client_server = false;
+    public string client_server_result="";
 }
