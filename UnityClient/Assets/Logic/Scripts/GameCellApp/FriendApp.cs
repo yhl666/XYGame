@@ -61,6 +61,16 @@ namespace Services
         }
     }
 
+    public class BattlePVP : RpcService
+    {
+
+
+        public void PushResult(string msg, VoidFuncString cb)
+        {
+            Debug.LogError("  BattlePVP   PushResult " + msg);
+        }
+    }
+
 
 
 }
@@ -231,7 +241,7 @@ public class FriendsApp : CellApp
                      PublicData.ins.pvp_room_max = max;
                      PublicData.ins.pvp_room_no = room_id;
                      PublicData.ins.user_pvp_other = DAO.User.Create(kv);
-                   
+
 
                      PublicData.ins.is_pvp_friend = true;
                      this.parent.Dispose();
@@ -244,7 +254,7 @@ public class FriendsApp : CellApp
 
                      GlobalDialogInfo info = new GlobalDialogInfo();
                      info.txt_title = "好友PVP";
-                     info.txt_info = "玩家拒绝了你的邀请("  + kv["msg"] +"),是否进入离线模式PVP";
+                     info.txt_info = "玩家拒绝了你的邀请(" + kv["msg"] + "),是否进入离线模式PVP";
 
                      info._OnYes = () =>
                      {

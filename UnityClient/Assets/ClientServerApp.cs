@@ -151,7 +151,7 @@ public class ClientServerApp : GAObject
         while (true)
         {
 
-            Thread.Sleep(1);
+            Thread.Sleep(10);
 
 
             byte[] buffer = new byte[Config.MAX_NETSOCKET_BUFFER_SIZE];
@@ -228,7 +228,7 @@ public class ClientServerApp : GAObject
         {
             while (sendQueue.Empty() == false)
             {
-                ///   Thread.Sleep(100);
+                  Thread.Sleep(10);
 
                 string msg = (string)sendQueue.Dequeue() + "^";
 
@@ -245,10 +245,6 @@ public class ClientServerApp : GAObject
     }
     ThreadSafeQueue recvQueue = new ThreadSafeQueue();//LogicServer的请求队列
     ThreadSafeQueue sendQueue = new ThreadSafeQueue();// 发送LogicServer的队列
-
-
-
-
 
 
     private static TcpClient _inner_socket = null;

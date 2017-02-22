@@ -287,7 +287,7 @@ sealed class BattleSyncHandler
                 if (HeroMgr.ins.GetHero(no) != null) return;
                 if (no == HeroMgr.ins.me_no) return;
 
-              ///  Debug.Log("NEW PVP player no= " + no);
+                ///  Debug.Log("NEW PVP player no= " + no);
                 BattleHero h2 = HeroMgr.Create<BattleHero>();
 
                 h2.team = no;
@@ -587,7 +587,7 @@ public sealed class BattleApp : AppBase
         while ((line = sr.ReadLine()) != null)
         {
             string str = line.ToString();
-        ///    Debug.Log("Read From File:      " + str);
+            ///    Debug.Log("Read From File:      " + str);
             this.AddRecvMsg(str.Substring(0, str.Length - 1));
         }
 
@@ -703,7 +703,40 @@ public sealed class BattleApp : AppBase
             PublicData.ins.client_server_result = PublicData.ins.client_server_room_info;
 
         }
+        if (PublicData.ins.is_pvp_friend)
+        {
+            string upload = "pvproom_id:" + PublicData.ins.pvp_room_no + ",p1:";
 
+            if (PublicData.ins.is_pvp_friend_owner)
+            {
+                //我是发起者
+                upload += HeroMgr.ins.self.no.ToString();
+                upload += ",p2:" + PublicData.ins.user_pvp_other.no + ",";
+
+                upload += "h1:" + HeroMgr.ins.self.current_hp.ToString();
+                upload += ",h2:" + HeroMgr.ins.GetHero(PublicData.ins.user_pvp_other.no).current_hp + ",";
+
+            }
+            else
+            {
+                upload += PublicData.ins.user_pvp_other.no.ToString(); ;
+                upload += ",p2:" + HeroMgr.ins.self.no.ToString() + ",";
+
+                upload += "h1:" + HeroMgr.ins.GetHero(PublicData.ins.user_pvp_other.no).current_hp;
+                upload += ",h2:" + HeroMgr.ins.self.current_hp.ToString() + ",";
+
+            }
+
+            ///发起验证
+            RpcClient.ins.SendRequest("services.battle_pvp", "verify", upload, (string msg) =>
+                {
+
+                    Debug.LogError("Verify: " + msg);
+                });
+
+
+
+        }
         this.Dispose();
 
     }
