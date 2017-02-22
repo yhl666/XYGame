@@ -2,31 +2,28 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '7b3852f748c5e84ee98b82dae82ce0c0e1684595'
-    oldFile: !uuid '1495de19516a611b2fd9435ac4347e5c79845b3a'
-  /UnityClient/Assets:
-    newFile: !uuid '96ed2c1ed92e8343889c7f48f3d62eda9efdb3f4'
-    oldFile: !uuid 'cd0c066028298bc597c5bfba12bc34b08517d754'
-  /UnityClient/Assets/ClientServerApp.cs:
-    newFile: !uuid '490954ddb6b712b1966d1085161b12ee6f933343'
-    oldFile: !uuid '5ac42cb37ae081059527b6c47c8e4c4ac3146e0e'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '0bf9b866f9aef752cf497da3a901b45d29e05cfd'
-    oldFile: !uuid '5443a60c84a825ab24dddf6adbe36ffbcb4de090'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid '700e2bf003387aa144986d7b49426e0d1ab31c27'
-    oldFile: !uuid '4339ea5e4dc5770d006b09a02c208d376824b905'
-  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
-    newFile: !uuid '2dc2a53850c8fc1cdcb1a34bcd285ae5d6271bb1'
-    oldFile: !uuid 'c5c9597c2b5ef950a9fb1193efb3c21bd8572d9d'
-  /UnityClient/ProjectSettings:
-    newFile: !uuid 'bf01f2634558af0b5c9d9c3db20d2e7ad682ca5f'
-    oldFile: !uuid '528caa1a64ca6ca1df7807700f2370d8ff395648'
-  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
-    newFile: !uuid 'cea75eea2ab9fc37f6233e389c6dac5a2b46e597'
-    oldFile: !uuid '96e90a8426df700afbb3f9fba7e8afafe64929b7'
-gitCommitId: !uuid 'c87ba1463aeebd01aa18d539e1284aa649743b51'
+  /BattleServer:
+    newFile: !uuid 'bde740297b9802fb9884306053984ab94cf55eed'
+    oldFile: !uuid 'b7d8102903eed559109d279a89396bf6aa9da30b'
+  /BattleServer/Debug:
+    newFile: !uuid '0be1ea9cffad33a12d69c6f934c0b9eb4708401e'
+    oldFile: !uuid '89b78135bb1b7f9151d2eac041b99269de3a5274'
+  /BattleServer/Debug/BattleServer.exe:
+    newFile: !uuid 'cac217caa898c1b24906bded01ab7269dac23753'
+    oldFile: !uuid 'd72f78ea475907553338f215a96358a8acb9f177'
+  /BattleServer/Release:
+    newFile: !uuid 'e1fd5d53ae6c2de2200583123faf11d6ed79d04b'
+    oldFile: !uuid '991ba7adc6e80090baa1e8e9b3db94b9dfe78f0f'
+  /BattleServer/Release/BattleServer.exe:
+    newFile: !uuid '26b1e391e7a49acb4900de54b221989941318930'
+    oldFile: !uuid 'f39333220a04bef432ab46106ff75f64530e5493'
+  /BattleServer/cpp:
+    newFile: !uuid '6b5f07d0d6d33f3e7046762fa46c29dba99f5558'
+    oldFile: !uuid '30a6c1b386f823d46007488e7c29e795173f6c90'
+  /BattleServer/cpp/Room.cpp:
+    newFile: !uuid 'dbf1227c70f03743bf665b544c1b3effdf3cf25f'
+    oldFile: !uuid '69c4ce2dde7783d98057b266be15bdcbf530916d'
+gitCommitId: !uuid '3847690b996ac8aae3b36501e525c42aaaa69bac'
 renames: {
   }
-revisionId: 305
+revisionId: 306
