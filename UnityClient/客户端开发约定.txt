@@ -1,9 +1,9 @@
-cell app¿ª·¢Ô¼¶¨
+cell appå¼€å‘çº¦å®š
 
-1.½çÃæ×÷ÎªÔ¤Éè£¬¶¯Ì¬¼ÓÔØ£¬cellappµÄui¿ÉÒÔÁíÍâÅªÒ»¸öÎÄ¼þ£¬UITownRootÀïÃæÌí¼Ó¼ÓÔØ¼´¿É£¬
-2.cellapµÄui µÄparentÉèÖÃÎªUITownRootÏÂµÄ_ui_root ¼´¿É
-3.EventsÊÂ¼þ ÒÑ500¿ªÊ¼ ±ÈÈç501 503 550µÈ
+1.ç•Œé¢ä½œä¸ºé¢„è®¾ï¼ŒåŠ¨æ€åŠ è½½ï¼Œcellappçš„uiå¯ä»¥å¦å¤–å¼„ä¸€ä¸ªæ–‡ä»¶ï¼ŒUITownRooté‡Œé¢æ·»åŠ åŠ è½½å³å¯ï¼Œ
+2.cellapçš„ui çš„parentè®¾ç½®ä¸ºUITownRootä¸‹çš„_ui_root å³å¯
+3.Eventsäº‹ä»¶ å·²500å¼€å§‹ æ¯”å¦‚501 503 550ç­‰
 
-4. ´úÂëÌá½»½öÌá½»´úÂëºÍÔ¤Éè
+4. ä»£ç æäº¤ä»…æäº¤ä»£ç å’Œé¢„è®¾
 
-ÆäËûÎÊÌâ×ÉÑ¯ caoshanshan@ztgame.com
+å…¶ä»–é—®é¢˜å’¨è¯¢ me@dreamyouxi.com
