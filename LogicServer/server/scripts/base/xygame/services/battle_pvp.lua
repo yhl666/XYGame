@@ -19,7 +19,7 @@ end
 local t = { }
 
 local log = require("log"):new("login")
-local remote = require("base.remote");
+local remote = require("xygame.base.remote");
 local hero = require("model.base_hero")
 
 -- [Common]
@@ -99,19 +99,50 @@ end
 
 function t.request_verify(ctx, msg, cb)
 
-    local tbl = json.decode(msg);
-    local pvproom_id = tbl["pvproom_id"];
+    local kv = json.decode(msg);
+    local pvproom_id = kv["pvproom_id"];
+    local p1 = kv["p1"];
+    local p2 = kv["p2"];
     local msg1 = "pvproom_id:" .. pvproom_id .. ",";
-    local p1 = tbl["p1"];
-    local p2 = tbl["p2"];
-
     -- 参数校验
 
     -- 约定{pvproomid:1,max_no:2,p1:1,p2:2}{hp:100,p1:1}{hp:100,p2:2},消息发送者为p1,对手为p2
     local ctx_other;
 
     remote.request("services.battle_pvp", "request_verify_read", msg1, function(msg2)
+        print("  read " .. msg2);
 
+        local kvv = json.decode(msg2);
+        if kvv["h1"] == nil then
+            -- 1号玩家
+
+            remote.request("services.battle_pvp", "request_verify_write", msg, function(msg4)
+
+
+                local kvv = json.decode(msg4);
+                if kvv["ret"] == "ok" then
+                    -- 已经写入redis
+                    cb("ret:ok,msg:写入成功,");
+                else
+                    cb("ret:ok,msg:写入失败,");
+                    -- 写入redis失败
+                end
+
+            end )
+        else
+            -- 2号玩家
+
+
+            remote.request_client_server(msg, function(msgg)
+
+
+                print("......... verify  " .. msgg);
+
+
+            end );
+
+
+        end
 
     end );
 end

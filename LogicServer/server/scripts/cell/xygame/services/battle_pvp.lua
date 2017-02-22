@@ -111,8 +111,8 @@ end
 
 function t.request_verify_write(msg, cb)
 
-    local tbl = json.multi_decode(msg);
-    local pvproom_id = tbl[1]["pvproom_id"];
+    local kv = json.decode(msg);
+    local pvproom_id =kv["pvproom_id"];
 
     redis.set(redis_key.get_pvproom(pvproom_id), msg, function(msg1)
         if msg1 == "ok" then 
