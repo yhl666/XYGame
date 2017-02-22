@@ -2,25 +2,74 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid '61af4ad2f91ebcd1b311c095e701295fa0999b87'
-    oldFile: !uuid '0ec18384f2c2e5c71f5472b0627a84a141a3ee2b'
-  /LogicServer/server:
-    newFile: !uuid 'ff5dd072652d98715fc91a95b14b47fd0cdfd3dc'
-    oldFile: !uuid '488bd9c1dae813d77a7082188c2291f3d35f426f'
-  /LogicServer/server/src:
-    newFile: !uuid '6811493b8b943e11d6998758dca8275a90d5d52f'
-    oldFile: !uuid '01b68bed3cbf4dd6836ea1e106184c7cce1eb3c4'
-  /LogicServer/server/src/base:
-    newFile: !uuid '2760ceea5bb58f67b2204d4396eafa1f78c846a6'
-    oldFile: !uuid 'e3e59aebe3e0c9cee3bb82f9ada3b91f98ec3f63'
-  /LogicServer/server/src/base/ClientServer.cpp:
-    newFile: !uuid '7c542a586a2eb8f9a36469db7fed72801637c700'
-    oldFile: !uuid '564ec1c382606b4eed95e42bd15f8ed1545d655f'
-  /LogicServer/server/src/base/ClientServer.h:
-    newFile: !uuid 'e2238255c22bb9c4da50d55f18e715e9b48c14cf'
-    oldFile: !uuid '77d9b0baccedbf0a73a1f6437266922c1c16bf3e'
-gitCommitId: !uuid 'c2b7c8a5698d3eeb1b10939e494ca5a71dcdc9aa'
-renames: {
-  }
-revisionId: 294
+  /UnityClient:
+    newFile: !uuid '044db1ce88c4d938ee5be99e531b656d8b073532'
+    oldFile: !uuid 'aa0950c22116852bffc6cf66c08987f3704f5cd6'
+  /UnityClient/Assets:
+    newFile: !uuid '2695abc6745acb4a81be734c726f198ef8ab1d02'
+    oldFile: !uuid '183ef11dadc24321408e37dd705964bbbb3e6517'
+  /UnityClient/Assets/ClientServerApp.cs:
+    newFile: !uuid 'cb5a13740fa56dfec8e04eea937d1f5a8758a1f6'
+    oldFile: null
+  /UnityClient/Assets/ClientServerApp.cs.meta:
+    newFile: !uuid '25cea958ac2132d991230ad17d3099dfa7fb679d'
+    oldFile: null
+  /UnityClient/Assets/ClientServerHost.cs:
+    newFile: !uuid '38cd8688416afddc67d93e7ed2033e46980d273c'
+    oldFile: null
+  /UnityClient/Assets/ClientServerHost.cs.meta:
+    newFile: !uuid '2fa1c0702d563ae70a21d244f40894ec32f6c76b'
+    oldFile: null
+  /UnityClient/Assets/Lua:
+    newFile: !uuid '8a0f61c5e44ffe7859575acae5dd607addabdc0e'
+    oldFile: !uuid 'c8a7ccf0fe8f29ba583039d1582b4e045e0ec694'
+  /UnityClient/Assets/Lua/Data:
+    newFile: !uuid '63b8978ce15daff408e3f80ee1a3484fefea9657'
+    oldFile: !uuid 'fcda4f4f4fed4693a20e03170bf14884b5012841'
+  /UnityClient/Assets/Lua/Data/data.txt.meta:
+    newFile: !uuid 'b491f0402c753513379d3c038222143917b6df47'
+    oldFile: null
+  /UnityClient/Assets/Lua/View:
+    newFile: !uuid '951beb37e201d14f33d7e930f12c191720e574a5'
+    oldFile: !uuid 'a2671d7152a342c604cf61d192432bcc87aff813'
+  /UnityClient/Assets/Lua/View/view.txt.meta:
+    newFile: !uuid '999f14bbd957e0be18b34c1aaba1613a058a5533'
+    oldFile: null
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid '20999fc4841f455069cd83fa10abbbd376bbbe0a'
+    oldFile: !uuid 'ee80ea0833c56d81a7c0e796ae982db016a6545b'
+  /UnityClient/Assets/Scenes/BattlePVPServer.unity:
+    newFile: null
+    oldFile: !uuid 'f27d4055ce53f501cb6851c6fcd5b1e286f3341c'
+  /UnityClient/Assets/Scenes/BattlePVPServer.unity.meta:
+    newFile: null
+    oldFile: !uuid '09b3c40cb3b041f6dc6c16fb2382899f0f010461'
+  /UnityClient/Assets/Scenes/ClientServerScene.unity:
+    newFile: !uuid 'd5c621f56f31c1a67c9d3dccfc6aaf2cca2b1107'
+    oldFile: null
+  /UnityClient/Assets/Scenes/ClientServerScene.unity.meta:
+    newFile: !uuid '833a036a753767a13a659bb6e4e5b7668b970af1'
+    oldFile: null
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '0b0cc173e1fdfba8f5915288d6ffe91777987e84'
+    oldFile: !uuid '05d9f8a14fbadccb05fe21da58f2dbc83c9a6af7'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid '7973df85c32b6b65bb5fd545d72856099ad46dc0'
+    oldFile: !uuid '56aba718120c80ca44dc9dcc91ece790538f951e'
+  /UnityClient/Assets/Scripts/Data/PublicData.cs:
+    newFile: !uuid '0110b351b33b85eecce832bb4fc55cf311acf0e5'
+    oldFile: !uuid 'bb1ac949ecfc582530efb1dea441215af5a646b6'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid '5bc44525651e75a1995853a03dc99089ba621018'
+    oldFile: !uuid '88a32bbd2acd20b98be78499dbc9cbcd08c08d38'
+  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
+    newFile: !uuid '389b8fb31931084ecef4e845c1704df607e58440'
+    oldFile: !uuid '869c0ea983e639d797d03698f3d5a740010b5fb8'
+  /UnityClient/Assets/TestLuaHost.rar.meta:
+    newFile: null
+    oldFile: !uuid 'fa753f0097cbd8b3835c094491e367671a8a55c7'
+gitCommitId: !uuid 'fe25cf8867876f14dd784aed8be1ce55e1fa5192'
+renames:
+  /UnityClient/Assets/Scenes/ClientServerScene.unity: /UnityClient/Assets/Scenes/BattlePVPServer.unity
+  /UnityClient/Assets/Scenes/ClientServerScene.unity.meta: /UnityClient/Assets/Scenes/BattlePVPServer.unity.meta
+revisionId: 295
