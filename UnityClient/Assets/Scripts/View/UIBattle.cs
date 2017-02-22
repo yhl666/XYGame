@@ -319,15 +319,54 @@ public sealed class UI_heroInfo : ViewUI
         {
             this.m = HeroMgr.ins.GetSelfHero();
             if (m == null) return;
-        }
-        txt_info.text = m.name + "LV:" + m.level;
-        txt_exp.text = m.current_exp + "/" + m.exp;
-        txt_hp.text = m.current_hp + "/" + m.hp;
-        txt_mp.text = m.current_mp + "/" + m.mp;
 
-        img_hp.transform.localScale = new Vector3(m.current_hp * 1.0f / m.hp, 1.0f, 1.0f);
-        img_mp.transform.localScale = new Vector3(m.current_mp * 1.0f / m.mp, 1.0f, 1.0f);
-        img_exp.transform.localScale = new Vector3(m.current_exp * 1.0f / m.exp, 1.0f, 1.0f);
+        }
+        if (m2 == null)
+        {
+            if ( m2 != null) return;
+
+            ArrayList heros = HeroMgr.ins.GetHeros();
+            if (heros.Count == 1) return;
+
+            foreach (Hero hero in heros)
+            {
+                if (hero != m)
+                {
+                    //other;
+
+                    m2 = hero;
+                    panel2.SetActive(true);
+                }
+            }
+        }
+
+
+        txt_info1.text = m.no + " LV:" + m.level;
+        txt_exp1.text = m.current_exp + "/" + m.exp;
+        txt_hp1.text = m.current_hp + "/" + m.hp;
+        txt_mp1.text = m.current_mp + "/" + m.mp;
+
+        img_hp1.transform.localScale = new Vector3(m.current_hp * 1.0f / m.hp, 1.0f, 1.0f);
+        img_mp1.transform.localScale = new Vector3(m.current_mp * 1.0f / m.mp, 1.0f, 1.0f);
+        img_exp1.transform.localScale = new Vector3(m.current_exp * 1.0f / m.exp, 1.0f, 1.0f);
+
+
+        if (m2 != null)
+        {
+
+            txt_info2.text = m2.no + " LV:" + m2.level;
+            txt_exp2.text = m2.current_exp + "/" + m2.exp;
+            txt_hp2.text = m2.current_hp + "/" + m2.hp;
+            txt_mp2.text = m2.current_mp + "/" + m2.mp;
+
+            img_hp2.transform.localScale = new Vector3(m2.current_hp * 1.0f / m2.hp, 1.0f, 1.0f);
+            img_mp2.transform.localScale = new Vector3(m2.current_mp * 1.0f / m2.mp, 1.0f, 1.0f);
+            img_exp2.transform.localScale = new Vector3(m2.current_exp * 1.0f / m2.exp, 1.0f, 1.0f);
+
+
+
+
+        }
 
     }
 
@@ -347,25 +386,50 @@ public sealed class UI_heroInfo : ViewUI
         _ui_root.transform.SetParent(parent.transform);
 
 
-        // init member
-        this.img_hp = _ui_root.transform.FindChild("hero_img_hp").GetComponent<Image>();
-        this.img_mp = _ui_root.transform.FindChild("hero_img_mp").GetComponent<Image>();
-        this.img_exp = _ui_root.transform.FindChild("hero_img_exp").GetComponent<Image>();
+        panel1 = GameObject.Find("panel_hero");
+        panel2 = GameObject.Find("panel_hero2");
 
-        this.txt_hp = _ui_root.transform.FindChild("hero_txt_hp").GetComponent<Text>();
-        this.txt_mp = _ui_root.transform.FindChild("hero_txt_mp").GetComponent<Text>();
-        this.txt_exp = _ui_root.transform.FindChild("hero_txt_exp").GetComponent<Text>();
-        this.txt_info = _ui_root.transform.FindChild("hero_txt_info").GetComponent<Text>();
+
+        // init member
+        this.img_hp1 = panel1.transform.FindChild("hero_img_hp").GetComponent<Image>();
+        this.img_mp1 = panel1.transform.FindChild("hero_img_mp").GetComponent<Image>();
+        this.img_exp1 = panel1.transform.FindChild("hero_img_exp").GetComponent<Image>();
+
+        this.txt_hp1 = panel1.transform.FindChild("hero_txt_hp").GetComponent<Text>();
+        this.txt_mp1 = panel1.transform.FindChild("hero_txt_mp").GetComponent<Text>();
+        this.txt_exp1 = panel1.transform.FindChild("hero_txt_exp").GetComponent<Text>();
+        this.txt_info1 = panel1.transform.FindChild("hero_txt_info").GetComponent<Text>();
+
+
+        // init member
+        this.img_hp2 = panel2.transform.FindChild("hero_img_hp").GetComponent<Image>();
+        this.img_mp2 = panel2.transform.FindChild("hero_img_mp").GetComponent<Image>();
+        this.img_exp2 = panel2.transform.FindChild("hero_img_exp").GetComponent<Image>();
+
+        this.txt_hp2 = panel2.transform.FindChild("hero_txt_hp").GetComponent<Text>();
+        this.txt_mp2 = panel2.transform.FindChild("hero_txt_mp").GetComponent<Text>();
+        this.txt_exp2 = panel2.transform.FindChild("hero_txt_exp").GetComponent<Text>();
+        this.txt_info2 = panel2.transform.FindChild("hero_txt_info").GetComponent<Text>();
+
+
+
+
 
 
         //init state
-        txt_hp.text = "0/0";
-        txt_mp.text = "0/0";
-        txt_exp.text = "0/0";
+        txt_hp1.text = "0/0";
+        txt_mp1.text = "0/0";
+        txt_exp1.text = "0/0";
 
-        txt_info.text = "测试玩家 LV:50";
+        txt_info1.text = "测试玩家 LV:50";
+        //init state
+        txt_hp2.text = "0/0";
+        txt_mp2.text = "0/0";
+        txt_exp2.text = "0/0";
 
+        txt_info2.text = "测试玩家 LV:50";
 
+        this.panel2.SetActive(false);
         this.m = HeroMgr.ins.GetSelfHero();
 
         return true;
@@ -388,18 +452,41 @@ public sealed class UI_heroInfo : ViewUI
     }
 
 
-    Hero m;
+    Hero m = null;
+    Hero m2 = null;
+    Text txt_hp1;
+    Text txt_mp1;
+    Text txt_exp1;
+    Text txt_info1;
 
-    Text txt_hp;
-    Text txt_mp;
-    Text txt_exp;
-    Text txt_info;
+    Image img_hp1;
+    Image img_mp1;
+    Image img_exp1;
+    Image img_icon1;
 
-    Image img_hp;
-    Image img_mp;
-    Image img_exp;
-    Image img_icon;
 
+
+
+    Text txt_hp2;
+    Text txt_mp2;
+    Text txt_exp2;
+    Text txt_info2;
+
+    Image img_hp2;
+    Image img_mp2;
+    Image img_exp2;
+    Image img_icon2;
+
+
+
+
+
+
+
+
+
+    GameObject panel1 = null;
+    GameObject panel2 = null;
 
     GameObject parent;// parent is ui_panel_hero_info
 }
