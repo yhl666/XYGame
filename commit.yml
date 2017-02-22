@@ -2,13 +2,19 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '0498d64b42fa4a80debf5ae5a76df56118bd2bdf'
-    oldFile: !uuid 'a9650df6302721cc4e5b7e47cb905540a3749564'
-  /UnityClient/客户端开发约定.txt:
-    newFile: !uuid '4032e1b1233eff3f48aac3637e34fa7a89a082e6'
-    oldFile: !uuid 'c1baa6e84567b8434055892c08a91fdc7e6a6f7a'
-gitCommitId: !uuid '1658eafa55e8238a343be32dd36ed3fd8c333c95'
+  /LogicServer:
+    newFile: !uuid 'ec1115b2867ff59c8dfaa95791bfd061ebe22584'
+    oldFile: !uuid '23f0b5e2cb71ee280e45b5484258b7db20523284'
+  /LogicServer/server:
+    newFile: !uuid 'c07bac001a31f78e4fef624c731446b2361051bd'
+    oldFile: !uuid '8966b34d57c0d84acb2e24b8f503281721858b93'
+  /LogicServer/server/scripts:
+    newFile: !uuid 'fb093ca4b3d593f22e066a49e05b9be7cf4c4a94'
+    oldFile: !uuid '629d0427b0b9987844983d94686826f027ca6bf5'
+  /LogicServer/server/scripts/服务端开发约定.txt:
+    newFile: !uuid 'd351f891a17442dbf2f5a3855e3b94f4f98852c5'
+    oldFile: !uuid '7bde184e60dd6c4ffd1558df98c964ff26a0c1a7'
+gitCommitId: !uuid '36afefa7df5e75eb48627bc07d9096ad63e5f8d7'
 renames: {
   }
-revisionId: 288
+revisionId: 289
