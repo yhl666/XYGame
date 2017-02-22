@@ -250,7 +250,7 @@ sealed class BattleSyncHandler
             if (no == HeroMgr.ins.me_no) return;
 
             Hero h2 = HeroMgr.Create<BattleHero>();
-            h2.team = 3;
+            h2.team = 0xfff;
             h2.no = no;
             h2.name = name;
 
@@ -269,7 +269,8 @@ sealed class BattleSyncHandler
                 h2.name = PublicData.ins.user_pvp_other.name;
 
                 h2.x = 10;//目标玩家初始在右边
-
+                h2.flipX = 1f;
+                HeroMgr.ins.self.x = 3.6f;
                 h2.SetPVPAIEnable(true);
 
             }
@@ -299,14 +300,14 @@ sealed class BattleSyncHandler
                     PublicData.ins.is_pvp_friend_owner = true;
                     HeroMgr.ins.self = h2;
                     HeroMgr.ins.me_no = h2.no;
-                    h2.x = 0;//目标玩家初始在右边
+                    h2.x = 3.6f;//目标玩家初始在右边
 
                 }
                 else
                 {
                     PublicData.ins.is_pvp_friend_owner = false;
                     h2.x = 10;//目标玩家初始在右边
-
+                    h2.flipX = 1f;
                 }
 
               /*  if (PublicData.ins.is_pvp_friend_owner)
@@ -346,15 +347,17 @@ sealed class BattleSyncHandler
                 {
                     //我是发起方
                     h2.x = 10;
+                    h2.flipX = 1f;
                     var xxx = HeroMgr.ins.self;
-                    HeroMgr.ins.self.x = 0;
+                    HeroMgr.ins.self.x = 3f;
 
                 }
                 else
                 {//我不是发起方
 
-                    h2.x = 0;
+                    h2.x = 3f;
                     HeroMgr.ins.self.x = 10;
+                    HeroMgr.ins.self.flipX = 1f;
 
 
                 }
