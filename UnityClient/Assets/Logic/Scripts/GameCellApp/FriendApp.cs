@@ -206,7 +206,7 @@ public class FriendsApp : CellApp
             //切磋
             DAO.User other = userData as DAO.User;
 
-            RpcClient.ins.SendRequest("services.battle_pvp", "request_pvp_v2", "no:1,no_target:" + other.no.ToString() + ",", (string msg) =>
+            RpcClient.ins.SendRequest("services.battle_pvp", "request_pvp_v2", "no:"+ HeroMgr.ins.self.no+",no_target:" + other.no.ToString() + ",", (string msg) =>
              {
                  /*if (msg == "")
                  {
