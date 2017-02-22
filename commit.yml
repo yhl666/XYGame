@@ -1,9 +1,26 @@
 !revision
 branches: {
   }
-fileChange: {
-  }
-gitCommitId: !uuid '46bc24b1e7128dcc147e416e76df6cedf8ce4d74'
+fileChange:
+  /LogicServer:
+    newFile: !uuid '61af4ad2f91ebcd1b311c095e701295fa0999b87'
+    oldFile: !uuid '0ec18384f2c2e5c71f5472b0627a84a141a3ee2b'
+  /LogicServer/server:
+    newFile: !uuid 'ff5dd072652d98715fc91a95b14b47fd0cdfd3dc'
+    oldFile: !uuid '488bd9c1dae813d77a7082188c2291f3d35f426f'
+  /LogicServer/server/src:
+    newFile: !uuid '6811493b8b943e11d6998758dca8275a90d5d52f'
+    oldFile: !uuid '01b68bed3cbf4dd6836ea1e106184c7cce1eb3c4'
+  /LogicServer/server/src/base:
+    newFile: !uuid '2760ceea5bb58f67b2204d4396eafa1f78c846a6'
+    oldFile: !uuid 'e3e59aebe3e0c9cee3bb82f9ada3b91f98ec3f63'
+  /LogicServer/server/src/base/ClientServer.cpp:
+    newFile: !uuid '7c542a586a2eb8f9a36469db7fed72801637c700'
+    oldFile: !uuid '564ec1c382606b4eed95e42bd15f8ed1545d655f'
+  /LogicServer/server/src/base/ClientServer.h:
+    newFile: !uuid 'e2238255c22bb9c4da50d55f18e715e9b48c14cf'
+    oldFile: !uuid '77d9b0baccedbf0a73a1f6437266922c1c16bf3e'
+gitCommitId: !uuid 'c2b7c8a5698d3eeb1b10939e494ca5a71dcdc9aa'
 renames: {
   }
-revisionId: 293
+revisionId: 294
