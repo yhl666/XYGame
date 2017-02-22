@@ -2,16 +2,37 @@
 branches: {
   }
 fileChange:
-  /BattleServer:
-    newFile: !uuid 'b7d8102903eed559109d279a89396bf6aa9da30b'
-    oldFile: !uuid 'fd03abf86b12fbd2f510e56ed72e1067a394bd4b'
-  /BattleServer/Release:
-    newFile: !uuid '991ba7adc6e80090baa1e8e9b3db94b9dfe78f0f'
-    oldFile: !uuid '28a948fa7da69eec2e30b2ef0fac60605f927701'
-  /BattleServer/Release/BattleServer.exe:
-    newFile: !uuid 'f39333220a04bef432ab46106ff75f64530e5493'
-    oldFile: !uuid 'ecf1baf06b582a703d8a1e9126bc6d7f0b6af71d'
-gitCommitId: !uuid '70e8a3bda2ce85810d8aa85eb438d46e01580366'
+  /UnityClient:
+    newFile: !uuid '1495de19516a611b2fd9435ac4347e5c79845b3a'
+    oldFile: !uuid 'd85b68daa7078abc06a9f3e052893ae9227e0765'
+  /UnityClient/Assets:
+    newFile: !uuid 'cd0c066028298bc597c5bfba12bc34b08517d754'
+    oldFile: !uuid 'a688b87ef15c1a3f7db30d47e988d694a097ca68'
+  /UnityClient/Assets/ClientServerApp.cs:
+    newFile: !uuid '5ac42cb37ae081059527b6c47c8e4c4ac3146e0e'
+    oldFile: !uuid '2aeba6188dea4b5802b04605ec61047f1f14bb31'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid '72c7370be5131c08a38b5f00e2968b1a61e90601'
+    oldFile: !uuid 'af114950e7243e47c8d24822273b76cc0b6109df'
+  /UnityClient/Assets/Logic/Scripts:
+    newFile: !uuid '471fb9cad47e5b670042fd087ba7ce0956640e6c'
+    oldFile: !uuid 'b63fa8f123c1d5c364921fa957a0079370daaa5b'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp:
+    newFile: !uuid 'a28aee877fb060fd3d571a7fe670212929675085'
+    oldFile: !uuid '9fab24eedf7f88335af59c582f9796d83a42148d'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/FriendApp.cs:
+    newFile: !uuid '53dc3b7bec85b9e00887a75867b507ab07fdeee0'
+    oldFile: !uuid 'a23b47ed7fb3134d2c46a1fb8e10d44ef360b68a'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '5443a60c84a825ab24dddf6adbe36ffbcb4de090'
+    oldFile: !uuid '8ebfb0dc6ca4ba336c8e606bb0f1e01810427bfc'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid '4339ea5e4dc5770d006b09a02c208d376824b905'
+    oldFile: !uuid '6535929cf198962d290370e6191cac452266e0e8'
+  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
+    newFile: !uuid 'c5c9597c2b5ef950a9fb1193efb3c21bd8572d9d'
+    oldFile: !uuid 'dd1247d60c838a6d49ec544568df5fd277567aca'
+gitCommitId: !uuid 'a3434d5382057ce466f7212c63ef5b468231071d'
 renames: {
   }
-revisionId: 300
+revisionId: 301
