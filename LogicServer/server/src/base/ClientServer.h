@@ -49,7 +49,12 @@ private:
 	std::queue<T> _queue;
 };
 
-
+class RequestInfo
+{
+public:
+	std::string key;
+	std::string value;
+};
 
 class ClientServer
 {
@@ -74,7 +79,7 @@ public:
 
 private:
 	ClientServer();
-	void ProcessInLua( const std::string & msg);
+	void ProcessInLua(const std::string & msg);
 	void InitSocket();
 	void AcceptConnected();
 
@@ -92,7 +97,7 @@ private:
 	std::unique_ptr<TimerQueue> m_pTimerQueue;
 
 	std::mutex read_write_mutex;
-	 
+
 };
 
 

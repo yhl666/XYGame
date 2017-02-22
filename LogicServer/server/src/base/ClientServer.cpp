@@ -60,11 +60,9 @@ namespace LuaClientServer {
 
 
 
-
-
 void   ClientServer::AddSendMsg(std::string msg)
 {
-	sendQueue.push(msg);
+	sendQueue.push(msg + "^");
 }
 
 
@@ -167,19 +165,22 @@ void   ClientServer::ThreadFunc_Recv()
 
 void   ClientServer::ThreadFunc_Send()
 {
+	this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+
 	while (true)
 	{
 		Sleep(1);
 		while (sendQueue.empty() == false)
 		{
-			string msg = sendQueue.front(); sendQueue.pop();
-
+			string msg = sendQueue.front();
+			cout << "send " << msg << endl;
 			int ret = ::send(socket_client_server, msg.c_str(), msg.size(), 0);
 
 			if (ret == SOCKET_ERROR)
 			{
 				continue;;
 			}
+			sendQueue.pop();
 		}
 	}
 }
@@ -218,14 +219,16 @@ void ClientServer::ProcessInLua(const std::string & msg)
 
 			handler.dispatchStatic("handle",  (msg));
 			// Todo: Register Lua service directly. No rpc_request_handler.
+
+			this->AddSendMsg("pvproom_id:20,p1:1,p2:2,");
+
 		}
 		catch (const LuaIntf::LuaException& e)
 		{
 			cout << "Failed to call lua xygame.base.client_server_handler.handle(), " << e.what();
 		}
 
-		cout <<"                end" << endl;
 	});
 
-	ClientServer::GetInstance()->AddSendMsg("hello ok^");
+	///ClientServer::GetInstance()->AddSendMsg("hello ok^");
 }
