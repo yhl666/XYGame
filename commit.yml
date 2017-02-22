@@ -2,16 +2,28 @@
 branches: {
   }
 fileChange:
-  /BattleServer:
-    newFile: !uuid 'b01795b2bb53235f8e0dc7439fd66b45935e8f85'
-    oldFile: !uuid 'e877f4edb509c9bbf98b9fee2c7d4e0b0c7ece6c'
-  /BattleServer/Debug:
-    newFile: !uuid 'd822070746667ddb1b010dc3c67602cf574ebee2'
-    oldFile: !uuid 'ef1cd83e7e730da812c49f9128ab57033daa7d38'
-  /BattleServer/Debug/BattleServer.exe:
-    newFile: !uuid '9e22a4c5cac9b1e7099abfbf3a5932c5de0e64ea'
-    oldFile: !uuid '349843a796fc8fa3d5571b3fa1cabb036d46ede0'
-gitCommitId: !uuid '89073800598c3793a0a903605655293e50e95e7f'
+  /LogicServer:
+    newFile: !uuid '0ec18384f2c2e5c71f5472b0627a84a141a3ee2b'
+    oldFile: !uuid 'ec1115b2867ff59c8dfaa95791bfd061ebe22584'
+  /LogicServer/server:
+    newFile: !uuid '488bd9c1dae813d77a7082188c2291f3d35f426f'
+    oldFile: !uuid 'c07bac001a31f78e4fef624c731446b2361051bd'
+  /LogicServer/server/src:
+    newFile: !uuid '01b68bed3cbf4dd6836ea1e106184c7cce1eb3c4'
+    oldFile: !uuid '59030f89e80b7f4be98fc84597f75ee055775471'
+  /LogicServer/server/src/base:
+    newFile: !uuid 'e3e59aebe3e0c9cee3bb82f9ada3b91f98ec3f63'
+    oldFile: null
+  /LogicServer/server/src/base/ClientServer.cpp:
+    newFile: !uuid '564ec1c382606b4eed95e42bd15f8ed1545d655f'
+    oldFile: null
+  /LogicServer/server/src/base/ClientServer.h:
+    newFile: !uuid '77d9b0baccedbf0a73a1f6437266922c1c16bf3e'
+    oldFile: null
+  /LogicServer/server/src/base/main.cpp:
+    newFile: !uuid '12e1fe716d6d8e08d2a420b25a71df0c69ba535f'
+    oldFile: null
+gitCommitId: !uuid '7836fe796bbfe0ca3486e7115cdcc558fce5607b'
 renames: {
   }
-revisionId: 290
+revisionId: 291
