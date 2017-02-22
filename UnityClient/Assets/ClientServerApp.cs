@@ -88,7 +88,10 @@ public class ClientServerApp : GAObject
     {
 
     }
-
+    public int GetCurrentQueueCount()
+    {
+        return recvQueue.Count();
+    }
     public override void UpdateMS()
     {
 
