@@ -248,7 +248,7 @@ Room::~Room()
 	//Ð´ÈëÎÄ¼þ
 
 	std::thread t([&]()
-	{
+	{{
 		std::vector<string>   right_ref = std::move(this->_brocastDatas);
 		fstream file;
 		string name = "../../Room/room-";
@@ -259,9 +259,11 @@ Room::~Room()
 		for each (auto &  str in right_ref)
 		{
 			file << str << endl;
-			Sleep(100);
 		}
+
+		file.flush();
 		file.close();
+	}
 	});
 	t.detach();
 
