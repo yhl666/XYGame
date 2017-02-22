@@ -79,7 +79,6 @@ public class Entity : Model
     public void TakeAttack(Entity who)
     {
         this.current_hp -= who.GetRealAttackDamage();
-        Debug.Log(this.current_hp);
         //  this.isHurt = true;
         eventDispatcher.PostEvent(Events.ID_HURT);
     }

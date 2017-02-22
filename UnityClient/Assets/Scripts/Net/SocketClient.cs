@@ -31,7 +31,6 @@ public class SocketClient : object
     private bool isConnected = false;
     virtual public void AddSendMsg(string msg)
     {
-        Debug.LogWarning("[SocketSend]:" + msg);
         _sendQueue.Enqueue(msg);
     }
 

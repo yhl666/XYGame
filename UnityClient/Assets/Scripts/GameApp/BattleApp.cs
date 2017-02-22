@@ -230,7 +230,6 @@ sealed class BattleSyncHandler
             HeroMgr.ins.self = h2;
 
             PublicData.GetInstance()._on_enter_max_fps = on_enter_max_fps;
-            Debug.Log("self init ok");
 
             EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
         }
@@ -334,7 +333,7 @@ sealed class BattleSyncHandler
                 if (HeroMgr.ins.GetHero(no) != null) return;
 
 
-                Debug.Log(" 111  NEW PVP player no= " + no);
+                Debug.Log("   NEW PVP player no= " + no);
                 BattleHero h2 = HeroMgr.Create<BattleHero>();
 
                 h2.team = PublicData.ins.user_pvp_other.no;
@@ -342,8 +341,6 @@ sealed class BattleSyncHandler
                 h2.name = PublicData.ins.user_pvp_other.name;
 
                 h2.x = 10;//目标玩家初始在右边
-
-                Debug.Log(" 111  NEW PVP player no= " + h2.no);
 
                 if (PublicData.ins.is_pvp_friend_owner)
                 {
