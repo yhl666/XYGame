@@ -102,7 +102,7 @@ end
             cb("ret:error,msg:战斗房间为空,");
             return;
         else
-            cb(msg);
+            cb("ret:ok,"  .. msg);
         end
 
     end);
@@ -116,7 +116,7 @@ function t.request_verify_write(msg, cb)
 
     redis.set(redis_key.get_pvproom(pvproom_id), msg, function(msg1)
         if msg1 == "ok" then 
-            cb("ret:ok" .. msg); 
+            cb("ret:ok,"); 
         else
             cb("ret:error,msg:数据写入失败,");return;  
         end

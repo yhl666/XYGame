@@ -113,14 +113,25 @@ function t.request_verify(ctx, msg, cb)
     remote.request("services.battle_pvp", "request_verify_read", msg1, function(msg2)
 
         local tbl_battle_in_redis = json.multi_decode("{" .. msg2 .. "}");
+        local orgin_read= msg2;
+
+        print("1111111111111111111111111111");
+
 
         if tbl_battle_in_redis[1]["ret"] == "error" then
             cb("ret:error,msg:房间数据错误,"); return;
         else
+
+        
+        print("2222222222222222222222");
+
+
             if tbl["pvproom_id"] ~= tbl_battle_in_redis[1]["pvproom_id"] or tbl["p1"] ~= tbl_battle_in_redis[1]["p1"] or
                tbl["p2"] ~= tbl_battle_in_redis[1]["p2"] then
                 -- todo
                 -- 如果房间信息有误则通知两个玩家游戏结果校验失败
+
+
                 remote.request_client(ctx, "Friends", "BattlePVP", "ret:ok,msg:verifyError,", function(msg3)
 
                 end );
@@ -130,10 +141,28 @@ function t.request_verify(ctx, msg, cb)
                 end );
 
             else
+
+            
+        print("333333333333333333333333333");
+
+
                 if tbl_battle_in_redis[2] == nil then
                     -- 如果是一号玩家
-                    local msg_to_write = msg2 .. "{" .. "h1:" .. tbl["h1"] .. "," .. "p1:" .. tbl["p1"] .. "," .. "}" .. "{" .. "h2:" .. tbl["h2"] .. "," .. "p2:" .. tbl["p2"] .. "," .. "}";
+
+                    
+        print("444444444444444444444");
+
+
+                    local msg_to_write =  "{" .. orgin_read    .. "}{" .. "h1:" .. tbl["h1"] .. "," .. "p1:" .. tbl["p1"] .. "," .. "}" .. "{" .. "h2:" .. tbl["h2"] .. "," .. "p2:" .. tbl["p2"] .. "," .. "}";
+
+                    
+        print("6555555555555555555555555");
+
+
                     remote.request("services.battle_pvp", "request_verify_write", msg_to_write, function(msg4)
+                    
+        print("77777777777777777777777");
+
 
                         local kvv = json.decode(msg4);
                         if kvv["ret"] == "ok" then
@@ -145,6 +174,9 @@ function t.request_verify(ctx, msg, cb)
                         end
 
                     end )
+                    
+        print("66666666666666666666666666");
+
 
                 elseif tbl_battle_in_redis[2] ~= nil and tbl_battle_in_redis[3] ~= nil then
                     -- todo josn.encode(tbl_battle_in_redis[2]) == ""
