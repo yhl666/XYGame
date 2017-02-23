@@ -21,6 +21,12 @@ local t = { }
 local log = require("log"):new("login")
 local remote = require("xygame.base.remote");
 local hero = require("model.base_hero")
+local queue = require("base.queue");
+
+
+t.enable_hotfix = false;  -- 禁止hot fix
+
+global_ramdon_queue_v1 = queue.new();--全局队列
 
 -- [Common]
 -- {no:1,no_target:2,}
@@ -422,5 +428,24 @@ function t.request_verify1111111111111111(ctx, msg, cb)
     end );
 end
 
+
+
+
+
+
+-- 进入 1v1的随机匹配
+-- msg = no;1,
+function t.request_pvp_ramdon_enter_queue_v1(ctx, msg, cb)
+
+
+
+end
+-- 离开 1v1的随机匹配
+-- msg = no;1,
+function t.request_pvp_ramdon_leave_queue_v1(ctx, msg, cb)
+
+
+
+end
 
 return t;
