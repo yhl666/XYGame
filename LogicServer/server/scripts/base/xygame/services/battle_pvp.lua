@@ -164,7 +164,7 @@ function t.request_verify(ctx, msg, cb)
                 else
 
                     -- 如果是二号玩家
-
+                    cb("ret:ok,");
                     if msg == msg2 then
                         -- 二号发过来的结果数据和数据库中取得一致则
 
@@ -172,6 +172,7 @@ function t.request_verify(ctx, msg, cb)
                         local room_info = "pvproom_id:" .. pvproom_id .. "," .. "p1:" .. p1 .. "," .. "p2:" .. p2 .. ",";
 
                         remote.request_client_server(room_info, function(msgg)
+
 
                             local kvv = json.decode(msgg);
 
@@ -185,11 +186,11 @@ function t.request_verify(ctx, msg, cb)
                                     -- Friend?
                                 end );
                             else
-                                remote.request_client(ctx, "BattlePVP", "PushResult", "ret:ok,msg:verifyError,", function(msg6)
+                                remote.request_client(ctx, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
                                     -- Friend?
                                 end );
 
-                                remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:ok,msg:verifyError,", function(msg6)
+                                remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
                                     -- Friend?
                                 end );
                             end
@@ -197,11 +198,11 @@ function t.request_verify(ctx, msg, cb)
 
                     else
 
-                        remote.request_client(ctx, "BattlePVP", "PushResult", "ret:ok,msg:verifyError,", function(msg6)
+                        remote.request_client(ctx, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
                             -- Friend?
                         end );
 
-                        remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:ok,msg:verifyError,", function(msg6)
+                        remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
                             -- Friend?
                         end );
 
