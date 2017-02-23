@@ -77,7 +77,7 @@ end
 function t:get_hero_by_no(no)
 
     for k, v in pairs(self.list) do
-        if v.no == no then
+        if v.user.no == no then
             return v;
         end
     end

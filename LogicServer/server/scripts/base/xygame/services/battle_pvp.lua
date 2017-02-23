@@ -224,107 +224,130 @@ function t.request_verify(ctx, msg, cb)
     end );
 end
 
+
+local function notify_client(user, msg, no)
+
+    remote.request_client(user.ctx, "TownBattlePVP", "PushResult", msg, function(msg3)
+        if msg3 == "timeout" then
+
+            if user.user.is_dirty == true then
+            else
+                global_ramdon_queue_v1:push(no);
+            end
+        end
+
+        local kv = json.decode(msg3);
+        if kv["ret"] == "ok" then
+
+        else
+            global_ramdon_queue_v1:push(no);
+        end
+
+    end );
+
+end
+
 -- 进入 1v1的随机匹配
 -- msg = no;1,
-function t.request_pvp_ramdon_enter_queue_v1(ctx, msg, cb)
-    
+function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
+
     local kv = json.decode(msg);
     local no = kv["no"];
-    local msg1 = "no:" .. no .. ",";
 
-    local queue_size = global_ramdon_queue_v1:size();
-    --local hero_frist;
-    --匹配的第一个玩家
-    if queue_size < 1 then
-        
-        global_hero_list:foreach(function (k, v)
-            
-            if v.user.no == no then
-                global_ramdon_queue_v1:push(v);
-                cb("ret:ok,msg:你已经进入游戏队列");
-            else
-                cb("ret:ok,msg:你的玩家信息有误,");return;
+    if global_ramdon_queue_v1:size() >= 1 then
+        -- 第二个玩家
+        local no1 = global_ramdon_queue_v1:front();
+        local no2 = no;
+
+        local user1 = nil;
+        local user2 = nil;
+
+        global_hero_list:foreach( function(k, v)
+            if no1 == v.user.no then
+                user1 = v;
+            end
+            if no2 == v.user.no then
+                user2 = v;
             end
 
-        end)
+        end );
+
+
+        remote.request("services.battle_pvp", "request_pvp_v2", "no:" .. no1 .. ",no_target:" .. no2 .. ",", function(msg5)
+
+            if msg == "tiemout" then
+                cb("ret:error,msg:timeout,");
+                return;
+            end
+
+
+            msg5 = string.gsub(msg5, "ret:ok,", "");
+
+
+            local u1 = global_hero_list:get_hero_by_no(no1);
+            local u2 = global_hero_list:get_hero_by_no(no2)
+
+
+            if u1 == nil and u2 == nil then
+                return;
+            end
+
+            if u2 == nil then
+                global_ramdon_queue_v1:push(no1); return;
+            end
+
+            if u1 == nil then
+                global_ramdon_queue_v1:push(no2); cb("ret:ok,") return;
+            end
+
+            notify_client(user1, msg5 .. user2.user:to_json(), no1);
+            notify_client(user2, msg5 .. user1.user:to_json(), no2);
+
+
+        end );
+
     else
-        --匹配的第二个玩家
-        local u;
-        global_hero_list:foreach(function (k, v)
-            if v.user.no == no then
-                u = v;
-            else
-                cb("ret:ok,msg:你的信息有误,"); --传入的玩家二的no信息有误
-            end
-
-        end)
-        
-
-        local v = global_ramdon_queue_v1:front();
-        local msg_to_cell = "p1:" .. v.no .. "," .. "p2:" .. no .. ",";
-        remote.request("service.battle_pvp", "request_pvp_ramdon_enter_queue_v1", msg_to_cell, function (msg_from_cell)
-
-            local kvv = json.decode(msg_from_cell);            
-            local msg2 = "pvproom_id:" .. kvv["pvproom_id"].. "," .. "max_no:2" .. "," .. "p1:" .. kvv["p1"] .. "," .. "p2:" .. kvv["p2"] .. ",";
-            global_ramdon_queue_v1:pop();
-
-
-            remote.request_client(v.ctx, "TownBattlePvP", "PushResult", msg2 .. v.user.tostring(), function (msg3)           --todo
-                
-                local kvvv = json.decode(msg3);
-                if kvvv["ret"] == "ok" then
-                    cb(msg2 .. u.user.tostring());
-                else
-                    cb("ret:error,msg:匹配失败,");
-                    global_hero_list:foreach(function (k, v)
-            
-                        if v.user.no == no then
-                            global_ramdon_queue_v1:push(v);
-                            cb("ret:ok,msg:你已经进入游戏队列");
-                        else
-                            cb("ret:ok,msg:你的玩家信息有误,");return;
-                        end
-
-                    end)
-                end
-            end );    
-
-        end)
-     
+        -- 第一个玩家
+        global_ramdon_queue_v1:push(no);
+        cb("ret:ok,msg:进入队列成功,");
     end
+
+
+
+
 end
 
 
 local function get_hero_from_global_list(list, no, hero)
-    
-    list:foreach(function (k, v)
-        if v.user.no == no then 
-           hero = v;
+
+    list:foreach( function(k, v)
+        if v.user.no == no then
+            hero = v;
         else
             hero = nil;
-        end 
-    end)
+        end
+    end )
 
     return hero;
 end
 
 -- 离开 1v1的随机匹配
 -- msg = no;1,
-function t.request_pvp_ramdon_leave_queue_v1(ctx, msg, cb)
+function t.request_pvp_ramdon_leave_queue_v2(ctx, msg, cb)
 
     local kv = json.decode(msg);
     local no = kv["no"];
-    
-    
-    global_ramdon_queue_v1:foreach(function(k, v) 
-        
-        if k.user.no == no then
-            global_ramdon_queue_v1:front();
-            cb("ret:ok,msg:删除成功,");
-        else
-            cb("ret:error,msg:退出房间有误,");
-        end
-    end)
+
+
+    local noo = global_ramdon_queue_v1:front();
+    if noo == no then
+
+
+        cb("ret:ok,");
+    else
+        cb("ret:error,");
+    end
+
 end
 
 
@@ -332,18 +355,22 @@ end
 
 -- 进入 1v1的随机匹配
 -- msg = no;1,
-function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
+function t.request_pvp_ramdon_enter_queue_v3(ctx, msg, cb)
 
     cb("ret:ok,");
 
 end
 -- 离开 1v1的随机匹配
 -- msg = no;1,
-function t.request_pvp_ramdon_leave_queue_v2(ctx, msg, cb)
+function t.request_pvp_ramdon_leave_queue_v3(ctx, msg, cb)
 
     cb("ret:ok,");
 
 
 end
+
+
+ 
+
 
 return t;
