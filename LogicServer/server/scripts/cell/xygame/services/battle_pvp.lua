@@ -124,4 +124,29 @@ function t.request_verify_write(msg, cb)
 
 end
 
+function t.request_pvp_ramdon_enter_queue_v1(msg, cb)
+    
+    local kv = json.decode(msg);
+    local p1 = kv["p1"];
+    local p2 = kv["p2"];
+
+    redis.exec("incr GLOBAL_MAX_BATTLE_ROOM_NO", function (msg_from_redis)
+        
+        local kvv = json.decode(msg_from_redis);
+        local id = kvv["msg"];
+
+        local msg_to_redis = "pvproom_id:" .. id.. "," .. "max_no:2" .. "," .. "p1:" .. p1 .. "," .. "p2:" .. p2 .. ",";
+
+        redis.set(redis_key.get_pvproom(id), msg_to_redis, function (msg_from_redis)
+            if msg_from_redis == "ok" then
+            
+                cb("ret:ok," .. msg_to_redis);          --可能有问题
+            else
+                cb("ret:error,msg:服务器内存错误,");
+            end
+        end)
+    end);
+
+
+end
 return t;

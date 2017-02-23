@@ -64,7 +64,7 @@ function t:remove_by_rpc_cli_id(id)
 
     for k, v in pairs(self.list) do
         if v.ctx:get_rpc_clt_id() == id then
-
+            v.is_dirty = true; --标识玩家是否在线
             self:remove(k);
             return v;
         end
