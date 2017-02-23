@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="service">
+      <UniqueIdentifier>{9659138C-0239-9227-0B51-1DFE77AFF888}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\base\base_server.h" />
+    <ClInclude Include="..\src\base\lua_rpc_router.h" />
+    <ClInclude Include="..\src\base\rpc_forwarder.h" />
+    <ClInclude Include="..\src\base\rpc_router.h" />
+    <ClInclude Include="..\src\base\service\svc_forward_to_clt.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\service\svc_test_cpp.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\world_base.h" />
+    <ClInclude Include="..\src\base\ClientServer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\base\base_server.cpp" />
+    <ClCompile Include="..\src\base\lua_rpc_router.cpp" />
+    <ClCompile Include="..\src\base\main.cpp" />
+    <ClCompile Include="..\src\base\rpc_forwarder.cpp" />
+    <ClCompile Include="..\src\base\rpc_router.cpp" />
+    <ClCompile Include="..\src\base\service\svc_forward_to_clt.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\service\svc_test_cpp.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\world_base.cpp" />
+    <ClCompile Include="..\src\base\ClientServer.cpp" />
+  </ItemGroup>
+</Project>
