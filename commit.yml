@@ -3,51 +3,39 @@ branches: {
   }
 fileChange:
   /LogicServer:
-    newFile: !uuid 'edec07b7e33c96f8f5e0c1324f0f8bfc902bad8f'
-    oldFile: !uuid '0d7c37a75b64ad47cd54ea8766386cc8d83ee322'
+    newFile: !uuid 'e714ec29a66c1098646772e5af89a9bf87eb75fe'
+    oldFile: !uuid 'edec07b7e33c96f8f5e0c1324f0f8bfc902bad8f'
   /LogicServer/server:
-    newFile: !uuid '9e9aa61a04acf178ba6b2b04a97ad3fc0b71e2a4'
-    oldFile: !uuid 'ea71e2266a80cfe4518ee511f7b68ea210b94f23'
+    newFile: !uuid '52fb38a04df6c97622a3be8dcbee9461b7bddc8e'
+    oldFile: !uuid '9e9aa61a04acf178ba6b2b04a97ad3fc0b71e2a4'
   /LogicServer/server/scripts:
-    newFile: !uuid 'bf693e147bcf18eefd5d7e608c693b4ebe50eee6'
-    oldFile: !uuid '0bb064d93afdc852d24afb60590916f61dbba299'
+    newFile: !uuid '5e62bc01250ba9ef81813e7b2ea1c6be48b9c030'
+    oldFile: !uuid 'bf693e147bcf18eefd5d7e608c693b4ebe50eee6'
   /LogicServer/server/scripts/base:
-    newFile: !uuid 'b2dec28f3ee8a43636cbb325fa7b9aa1e41915ea'
-    oldFile: !uuid '11646586703bca5526b5c34c22796408c657978c'
+    newFile: !uuid '49c1f0953333a5c980ed9961e0219dba09c2dab5'
+    oldFile: !uuid 'b2dec28f3ee8a43636cbb325fa7b9aa1e41915ea'
   /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid '26782d85bc7156056d1f062fc67cce8fb17a71ee'
-    oldFile: !uuid 'f24f59d05e4794c7ab70f3393ffcf849f044045e'
+    newFile: !uuid '2a6792d92a4f13d3e7270e73605724355350fcaf'
+    oldFile: !uuid '26782d85bc7156056d1f062fc67cce8fb17a71ee'
   /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid '2156b71dc7756309ab3ce70ba173f7307d497273'
-    oldFile: !uuid '002033ada57413dad310e2039d82e957a9bab926'
+    newFile: !uuid '480bda53f81ce19cbad95b4599b45fe2533f70dc'
+    oldFile: !uuid '2156b71dc7756309ab3ce70ba173f7307d497273'
   /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
-    newFile: !uuid '5e9c2ff8bf47f06b6487ce1d5380dee6b896a872'
-    oldFile: !uuid '56b060fdc4973ce7f8ba1f86c6e0cb157f7e3f60'
-  /LogicServer/server/scripts/cell:
-    newFile: !uuid '1e1b87a497fe9c7bb6652f099f4a66279c117b94'
-    oldFile: !uuid '82874bf221a14d2f7d4f4f240c9da9aa12475289'
-  /LogicServer/server/scripts/cell/xygame:
-    newFile: !uuid '28bd41211c9df0ebe1a4e166b02c22bb7af35db6'
-    oldFile: !uuid 'ef7e57f23371ce5f3efe91879160d37e1456a90e'
-  /LogicServer/server/scripts/cell/xygame/services:
-    newFile: !uuid '4b1eab88594d575e143ef7bc88b9f7c4bb6d1384'
-    oldFile: !uuid 'a658f2e91be35831dbdc115cf5635ff26b47d6f9'
-  /LogicServer/server/scripts/cell/xygame/services/battle_pvp.lua:
-    newFile: !uuid '0e11ae29e361375415483a080ea40da7b7977ed0'
-    oldFile: !uuid '0ebf993abf4919af380b32fe2fbddf9081fde526'
+    newFile: !uuid 'd196ce623c29e5ccea4212a240aaf314e9047105'
+    oldFile: !uuid '5e9c2ff8bf47f06b6487ce1d5380dee6b896a872'
   /LogicServer/server/scripts/common:
-    newFile: !uuid '811e6475bb73f6dbedf809ef275319a6beb712a0'
-    oldFile: !uuid '422f0bb8aee6097362bb1bb256775f2fb04418af'
+    newFile: !uuid '5f20a9e9fa85ec04e323864caed2c1703bb750f0'
+    oldFile: !uuid '811e6475bb73f6dbedf809ef275319a6beb712a0'
   /LogicServer/server/scripts/common/xygame:
-    newFile: !uuid 'f7f80c0866dd8ea726a4288fc52a10abff0ab97c'
-    oldFile: !uuid '316d08f549befd42cc02e6465d762d8515bade71'
+    newFile: !uuid '32b806ff91326d1a3a5c095ef3523e9b62c85f43'
+    oldFile: !uuid 'f7f80c0866dd8ea726a4288fc52a10abff0ab97c'
   /LogicServer/server/scripts/common/xygame/model:
-    newFile: !uuid 'eed16cd7b91cbb332b8e646d0687db8c868eb5e3'
-    oldFile: !uuid '843af862527a66c150338e0ced8c63478d931b04'
+    newFile: !uuid '19a32c0b46f1fe874613e911adebe186fd918979'
+    oldFile: !uuid 'eed16cd7b91cbb332b8e646d0687db8c868eb5e3'
   /LogicServer/server/scripts/common/xygame/model/hero_list.lua:
-    newFile: !uuid 'f4ffda47e7147c9cfac165c430599d6c9558b4f4'
-    oldFile: !uuid 'e4811ea7395ba78594b4fafe8cbc27d320cd5e73'
-gitCommitId: !uuid '7af7127719b5acbcf3619601d0ab5d3a7e3895ec'
+    newFile: !uuid '27be3bfd9e9974884bbed797e8aa3512eae9fabe'
+    oldFile: !uuid 'f4ffda47e7147c9cfac165c430599d6c9558b4f4'
+gitCommitId: !uuid '6cebf76a39282f4dc1593bc2cb90bd08b48e903c'
 renames: {
   }
-revisionId: 329
+revisionId: 330
