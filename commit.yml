@@ -2,58 +2,28 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'fb84cfeca638cf8736e5406eebf64b697fa95dc6'
-    oldFile: !uuid '08a889802695c09697a5f25b022319cd5d870507'
-  /UnityClient/Assets:
-    newFile: !uuid '7c2bbeeb126f97b27ca6ac3edfb78506b8cd1bd9'
-    oldFile: !uuid 'b87bec612d499bac6b1ad587b8bb4624967309c2'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid '3b4a4d7e6da288f031f04c06144e13f798d69d38'
-    oldFile: !uuid 'c4242e49dcab77d3c76d32daeca7f8d1b04d85dd'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid '4a6e7946c278231aae5fcbc3323d46b8ad32b206'
-    oldFile: !uuid 'a479408bcaef88a2ffe902791b74b0cfd16491d9'
-  /UnityClient/Assets/Logic/Scripts/GameCellApp:
-    newFile: !uuid '4d2552710ccfe5c4843f7c6fd55a5c2328769a42'
-    oldFile: !uuid '2e5c0e738d1971c941967603fd116e82a635d307'
-  /UnityClient/Assets/Logic/Scripts/GameCellApp/FriendApp.cs:
-    newFile: !uuid 'e7670547c0b48aefeae980c0196144089669d97b'
-    oldFile: !uuid '7a948116f4ba1a9af64f30f3e8d7f6d5c27d564a'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '53fdd8273d5331c24d2baaa17da6a2ba07d7e227'
-    oldFile: !uuid '679c7ed2e9b19d9a0b387b01e2f1545a7090549c'
-  /UnityClient/Assets/Scenes/BattlePVP.unity:
-    newFile: !uuid 'fc92ebb118663514d5792f11f06014d5c068b223'
-    oldFile: !uuid '0c3fabc24d1077a19a4c05ccc2240c52a3e4fe8c'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'dc897defeb83f5df2be66e664ddc21bc49196a74'
-    oldFile: !uuid '1049b6b9921a5630c06758c141f31baaff7449a6'
-  /UnityClient/Assets/Scripts/Base:
-    newFile: !uuid '564353011ff08060dfaac5bd55fabd86142390df'
-    oldFile: !uuid '2570c9f63a546df40433aa65c4966597cd01523e'
-  /UnityClient/Assets/Scripts/Base/Events.cs:
-    newFile: !uuid '5e2ad2e59d64b6d31a8a5a6fef281cb8fafbfee0'
-    oldFile: !uuid '3417fe86f34f920527952876f673bae629fc7ac8'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid 'ed8aac726c670b61599279799710a145ef4f767e'
-    oldFile: !uuid 'c675d79bc7d80f9e80827d9ad18041d614e9f930'
-  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
-    newFile: !uuid 'd098cf75fed880053959b75e7d1e5803a2a457aa'
-    oldFile: !uuid '93bbd8e94e939d56a0591ee7e36a56a9622176d5'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'f359cae139d54d6546294e86e28d405fe57b0310'
-    oldFile: !uuid 'fe81bfaf6564bd8d2c704afc1570530ed87e4689'
-  /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid 'aaec88efd2ce4c8d566143da63adf057aa572a79'
-    oldFile: !uuid '0c08feb89aee9ce090100dcae524c139d9392717'
-  /UnityClient/ProjectSettings:
-    newFile: !uuid 'f1d4c237c9a43ec0f9685637e976be3a2c823da6'
-    oldFile: !uuid '8835ffa36e2d0173dea86e7e8649ef821d5780fe'
-  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
-    newFile: !uuid 'cea75eea2ab9fc37f6233e389c6dac5a2b46e597'
-    oldFile: !uuid '96e90a8426df700afbb3f9fba7e8afafe64929b7'
-gitCommitId: !uuid '1d249e5b143425d221eac5a43ea7f6f0a991e546'
+  /LogicServer:
+    newFile: !uuid 'a1ccccc30cfce11e4f15d9c066043073f482206f'
+    oldFile: !uuid 'ecfadd07ab40f1c3c00daff72afdfa4566c183fd'
+  /LogicServer/server:
+    newFile: !uuid '46ac506415ab5d29af2b691a4610ed12a5ec31fb'
+    oldFile: !uuid 'ead2856dc74ba4d1d07e408cad782269a8bd1652'
+  /LogicServer/server/scripts:
+    newFile: !uuid 'a67fcf076804b3e161d12c2b23da896d9bc6b91a'
+    oldFile: !uuid 'cda4cc7349cf670fb217d5c187018b3e5b6714a7'
+  /LogicServer/server/scripts/base:
+    newFile: !uuid 'c6be4f3e8fef040725eba0ab48bd28ab34587efa'
+    oldFile: !uuid '4d8abe2b7a4fd348e082d98e96693ca11cff4c0a'
+  /LogicServer/server/scripts/base/xygame:
+    newFile: !uuid '15f5dcb6e50ef6afbd0a7be3b90ed1ec3f70c776'
+    oldFile: !uuid '3fd3ee0bc9b7f9623a5b0c4e407bcdb1342e6561'
+  /LogicServer/server/scripts/base/xygame/services:
+    newFile: !uuid '34f0f4de8865b7172dfa4539477425cf82e626ba'
+    oldFile: !uuid 'a5937a22b932c00cfae0efd59b0b51b67a21e5af'
+  /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
+    newFile: !uuid 'dc68fdb6402de7c3eb6f266efaa5b4db09b42efb'
+    oldFile: !uuid 'ac4754cea653b719125e87e1630752bd8d795843'
+gitCommitId: !uuid 'bd9fc0a0acf217124f9f64ecec380ef0122276f1'
 renames: {
   }
-revisionId: 320
+revisionId: 321
