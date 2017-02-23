@@ -16,9 +16,8 @@ namespace Services
         public void PushResult(string msg, VoidFuncString cb)
         {
             cb("ret:ok,");
-            Debug.LogError("  BattlePVP   PushResult " + msg);
 
-            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_RETULT,msg);
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_RETULT, msg);
         }
     }
 
@@ -147,7 +146,7 @@ sealed class BattleSyncHandler
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-           /// Debug.Log("Recv " + xx);
+            /// Debug.Log("Recv " + xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -311,7 +310,7 @@ sealed class BattleSyncHandler
                 h2.team = no;
                 h2.no = no; ;
                 h2.name = no.ToString();
-       
+
                 if (Json.Decode(PublicData.ins.client_server_room_info)["p1"] == no.ToString())
                 {//默认self是发起方
 
@@ -328,22 +327,22 @@ sealed class BattleSyncHandler
                     h2.flipX = 1f;
                 }
 
-              /*  if (PublicData.ins.is_pvp_friend_owner)
-                {
-                    //我是发起方
-                    h2.x = 10;
-                    var xxx = HeroMgr.ins.self;
-                    HeroMgr.ins.self.x = 0;
+                /*  if (PublicData.ins.is_pvp_friend_owner)
+                  {
+                      //我是发起方
+                      h2.x = 10;
+                      var xxx = HeroMgr.ins.self;
+                      HeroMgr.ins.self.x = 0;
 
-                }
-                else
-                {//我不是发起方
+                  }
+                  else
+                  {//我不是发起方
 
-                    h2.x = 0;
-                    HeroMgr.ins.self.x = 10;
+                      h2.x = 0;
+                      HeroMgr.ins.self.x = 10;
 
 
-                }*/
+                  }*/
 
             }
             else
@@ -583,6 +582,9 @@ public sealed class BattleApp : AppBase
             Debug.Log("BattleApp Result " + userData as string);
 
             this.Dispose();
+
+           
+
             SceneMgr.Load("TownScene");
         }
 
@@ -617,7 +619,7 @@ public sealed class BattleApp : AppBase
     private void InitWithClientServer()
     {
         string id = Json.Decode(PublicData.ins.client_server_room_info)["pvproom_id"];
-     //   id = "67";
+        //   id = "67";
 
 
         System.IO.StreamReader sr = new System.IO.StreamReader(Application.dataPath + "../../../Room/room-" +
@@ -747,6 +749,7 @@ public sealed class BattleApp : AppBase
             PublicData.ins.client_server_room_info += "h1:" + p1.current_hp + ",h2:" + p2.current_hp + ",";
             PublicData.ins.client_server_result = PublicData.ins.client_server_room_info;
             Debug.Log("Over:" + PublicData.ins.client_server_result);
+            this.Dispose();//服务器模式直接跳转
 
         }
         if (PublicData.ins.is_pvp_friend)
@@ -761,7 +764,7 @@ public sealed class BattleApp : AppBase
 
                 upload += "h1:" + HeroMgr.ins.self.current_hp.ToString();
                 upload += ",h2:" + HeroMgr.ins.GetHero(PublicData.ins.user_pvp_other.no).current_hp + ",";
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
 
             }
             else
@@ -785,13 +788,13 @@ public sealed class BattleApp : AppBase
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
 
         }
-        this.Dispose();
 
     }
 
     public void SetGameOver()
     {
         Debug.LogError("Over");
+        this.ProcessWithGameOver();
         /*  if (this.socket != null)
           {
               EventDispatcher.ins.RemoveEventListener(this, "DisConnect");
@@ -819,7 +822,7 @@ public sealed class BattleApp : AppBase
         { // do while 流程
             if (isOver)
             {
-                this.ProcessWithGameOver();
+              ///  this.ProcessWithGameOver();
                 break;
             }
 

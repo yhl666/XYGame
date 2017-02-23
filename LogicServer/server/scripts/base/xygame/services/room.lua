@@ -80,8 +80,7 @@ function t.enter_room(ctx, msg, cb)
         -- 响应成功后 添加到table里面
 
         room_notify_all("Room", "EnterRoom", msg);
-
-        print(msg);
+ 
         local user1 = user.create();
 
         user1:set_json(msg);

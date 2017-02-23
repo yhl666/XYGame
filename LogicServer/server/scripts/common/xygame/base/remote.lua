@@ -21,7 +21,7 @@ local log = require("log"):new("remote")
 
 local t = { }
 
---[Comment]
+-- [Comment]
 -- 向cell服务器发起RPC请求
 -- services #string 服务类型
 -- method #string 函数名字
@@ -51,10 +51,10 @@ function t.request(services, method, json, cb)
 end
 
 
---[Comment]
+-- [Comment]
 -- 向游戏客户端发起RPC请求
 function t.request_client(ctx, services, method, json, cb)
-    print("---[Rpc Client] " ..tostring( ctx:get_rpc_clt_id()) .. services .. "." ..method .. "(" .. json..")");
+    print("---[Rpc Client] " .. services .. "." .. method .. "(" .. json .. ")");
 
     local called = false;
     c_rpc.request(ctx:get_rpc_clt_id(), services, method, pack.encode(json), function(msg)
@@ -80,7 +80,7 @@ function t.request_local(services, method, json, cb)
 
 end
 
---[Common]
+-- [Common]
 -- 发起ClientServer 校验请求
 -- "pvproom_id:2,p1:1,p2:2,"
 function t.request_client_server(room_info, cb)

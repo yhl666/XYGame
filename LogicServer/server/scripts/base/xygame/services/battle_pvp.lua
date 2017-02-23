@@ -175,22 +175,10 @@ function t.request_verify(ctx, msg, cb)
                     if msg == msg2 then
                         -- 二号发过来的结果数据和数据库中取得一致则
 
-                        print(".....Call Verify....." .. tostring(ctx) .. "      " .. tostring(ctx_other));
-
-                        remote.request_client(ctx, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
-                            -- Friend?
-                        end );
-
-                        remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
-                            -- Friend?
-                        end );
-                        --[[
                         -- 发给客户服务器发送房间信息
                         local room_info = "pvproom_id:" .. pvproom_id .. "," .. "p1:" .. p1 .. "," .. "p2:" .. p2 .. ",";
 
                         remote.request_client_server(room_info, function(msgg)
-
-                            print(".....Call Verify....." .. tostring(ctx) .. "      " .. tostring(ctx_other));
 
                             local kvv = json.decode(msgg);
 
@@ -223,7 +211,7 @@ function t.request_verify(ctx, msg, cb)
                         remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
                             -- Friend?
                         end );
-                        ]]
+
                     end
 
                 end
