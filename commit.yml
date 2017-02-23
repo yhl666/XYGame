@@ -2,49 +2,49 @@
 branches: {
   }
 fileChange:
-  /BattleServer:
-    newFile: !uuid '7d28050c62e9e95c5ea8f867db39043bf6b5bc43'
-    oldFile: !uuid '85a8a776f9eccf21caa459090ed0e9b3d98b6e27'
-  /BattleServer/Debug:
-    newFile: !uuid '302f4ac883603928f4a0a187a58f73027f8a80d3'
-    oldFile: !uuid '3d2fdc5116a3438c7ddc6dc7fe46126293b33fde'
-  /BattleServer/Debug/config.ini:
-    newFile: !uuid '21742ace417451f64f3f06e06a1aa390331a8f84'
-    oldFile: !uuid '0e097d190b14b72d43587a8ea8b193f470677fa1'
   /LogicServer:
-    newFile: !uuid '08afbc96ff5f31e71f8ecab7047b77a467198357'
-    oldFile: !uuid '3e6d1ed43433fbc28ed8ed59492faf09af5010fd'
+    newFile: !uuid '0e2f7bd5852a4bd1051ad0ae348181be72811b37'
+    oldFile: !uuid '08afbc96ff5f31e71f8ecab7047b77a467198357'
   /LogicServer/server:
-    newFile: !uuid 'c6dade9a5661134dbba1e2b66c454ef0f1d5c79c'
-    oldFile: !uuid '381cf7ca9987e37075f0036b01a23fbff49a961b'
+    newFile: !uuid 'f034f44884858c045fe460a07dcc9b33afbbcbf7'
+    oldFile: !uuid 'c6dade9a5661134dbba1e2b66c454ef0f1d5c79c'
+  /LogicServer/server/scripts:
+    newFile: !uuid 'cda4cc7349cf670fb217d5c187018b3e5b6714a7'
+    oldFile: !uuid '214f32d5dbcd0f9c3a58399c13aad096c7173780'
+  /LogicServer/server/scripts/base:
+    newFile: !uuid '4d8abe2b7a4fd348e082d98e96693ca11cff4c0a'
+    oldFile: !uuid '988049294aaa3d3ec2c93d20763fe89e5e4f6039'
+  /LogicServer/server/scripts/base/xygame:
+    newFile: !uuid '3fd3ee0bc9b7f9623a5b0c4e407bcdb1342e6561'
+    oldFile: !uuid 'aca2e32c4d62a2a61112687a5ed0cb864af1dec5'
+  /LogicServer/server/scripts/base/xygame/services:
+    newFile: !uuid 'a5937a22b932c00cfae0efd59b0b51b67a21e5af'
+    oldFile: !uuid '37eb053b46adec322b6b15906351295fcd82b758'
+  /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
+    newFile: !uuid 'ac4754cea653b719125e87e1630752bd8d795843'
+    oldFile: !uuid '970dbae24d970657a363499829485a522dfb76af'
+  /LogicServer/server/scripts/cell:
+    newFile: !uuid '82874bf221a14d2f7d4f4f240c9da9aa12475289'
+    oldFile: !uuid '800f0799d47969321be67bb3466c27b1ddc429e8'
+  /LogicServer/server/scripts/cell/xygame:
+    newFile: !uuid 'ef7e57f23371ce5f3efe91879160d37e1456a90e'
+    oldFile: !uuid '5ccd1a8f19043f64fa6ef5ab14d6f575c258f7d9'
+  /LogicServer/server/scripts/cell/xygame/services:
+    newFile: !uuid 'a658f2e91be35831dbdc115cf5635ff26b47d6f9'
+    oldFile: !uuid 'da6c874ffb24201ef82326e96876f1ce5fbde046'
+  /LogicServer/server/scripts/cell/xygame/services/battle_pvp.lua:
+    newFile: !uuid '0ebf993abf4919af380b32fe2fbddf9081fde526'
+    oldFile: !uuid '0f04f43bf0e9fd48846d4b382e79b6820e54a619'
   /LogicServer/server/src:
-    newFile: !uuid '64f4cca808b5b1cb73de6f7b8a053501b96561e9'
-    oldFile: !uuid '4090cdb8275ab8a232ef3ef8932efbd629efea23'
+    newFile: !uuid '548ce5fff1d7e2c2c3af7ddaf549ad967cda5d42'
+    oldFile: !uuid '64f4cca808b5b1cb73de6f7b8a053501b96561e9'
   /LogicServer/server/src/base:
-    newFile: !uuid 'c0502f58104cecb23227bcc5a5da844fa02730e7'
-    oldFile: !uuid 'f6b0969baa83ba5b64eb4e8c3855c9727a18fef6'
-  /LogicServer/server/src/base/ClientServer.cpp:
-    newFile: !uuid '665e1b9b07183bb14bb125afd16361adac8c6825'
-    oldFile: !uuid '314460250850af41dd9790c609822d933af22d25'
-  /LogicServer/server/src/base/ClientServer.h:
-    newFile: !uuid '8eae33f5691d97158a2ad4b51eba41e8324aafc0'
-    oldFile: !uuid 'f611c541132444bcb58be7c444cc1ea014ed2c2d'
-  /UnityClient:
-    newFile: !uuid '08a889802695c09697a5f25b022319cd5d870507'
-    oldFile: !uuid '5466677b24359a58f7f72dc15764905eb8e312e8'
-  /UnityClient/Assets:
-    newFile: !uuid 'b87bec612d499bac6b1ad587b8bb4624967309c2'
-    oldFile: !uuid 'd2c917aa157ae2ff3b7b4d2c745a3a53f2db5513'
-  /UnityClient/Assets/ClientServerApp.cs:
-    newFile: !uuid '5d7952b098d4f7108a902264e6be152dfcb23c44'
-    oldFile: !uuid '490954ddb6b712b1966d1085161b12ee6f933343'
-  /UnityClient/ProjectSettings:
-    newFile: !uuid '8835ffa36e2d0173dea86e7e8649ef821d5780fe'
-    oldFile: !uuid 'f1d4c237c9a43ec0f9685637e976be3a2c823da6'
-  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
-    newFile: !uuid '96e90a8426df700afbb3f9fba7e8afafe64929b7'
-    oldFile: !uuid 'cea75eea2ab9fc37f6233e389c6dac5a2b46e597'
-gitCommitId: !uuid '14b4f4d5e5a260888546ac83c3b6543f58d44905'
+    newFile: !uuid '38ce95405560afd5172afdc44cb9b94cacf35eeb'
+    oldFile: !uuid 'c0502f58104cecb23227bcc5a5da844fa02730e7'
+  /LogicServer/server/src/base/main.cpp:
+    newFile: !uuid 'eef90d772104c70d941a1dfe7eb84d565de050f6'
+    oldFile: !uuid '98b17fe1a1bd754d0823cf0d84b61c4d1df44dfd'
+gitCommitId: !uuid '9e62f6cdb987ecae77fe9f565fbd7ec47cf2947c'
 renames: {
   }
-revisionId: 316
+revisionId: 317
