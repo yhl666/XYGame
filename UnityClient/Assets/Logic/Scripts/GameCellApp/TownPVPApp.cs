@@ -6,10 +6,25 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace Services
 {
+    public class TownBattlePVP : RpcService
+    {
+
+        public void PushResult(string msg, VoidFuncString cb)
+        {
+            cb("ret:ok,");
+
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_PVP_QUEUE_RESULT, msg);
+        }
+
+    }
+
+
 
 }
+
 
 
 
@@ -23,6 +38,7 @@ public class TownPVPApp : CellApp
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_PVP_ENTER_QUEUE_CLICKED);
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_PVP_LEAVE_QUEUE_CLICKED);
 
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_PVP_QUEUE_RESULT);
 
         return true;
     }
@@ -99,6 +115,51 @@ public class TownPVPApp : CellApp
                }
 
            });
+
+
+
+
+
+        }
+        else if (type == Events.ID_TOWN_PVP_QUEUE_RESULT)
+        {
+            //匹配结果
+            string str = userData as string;
+            Debug.Log("PVP QUEUE " + str);
+            HashTable kv = Json.Decode(str);
+
+
+            if (kv["p2"] == HeroMgr.ins.self.no.ToString())
+            {//第二个发起匹配的为 
+                //暂时用 好友对战一套
+                PublicData.ins.is_pvp_friend_owner = false;
+            }
+            //接受成功 自动连接战斗服
+            string room_id = kv["pvproom_id"];
+            string max = kv["max_no"];
+
+            PublicData.ins.pvp_room_max = max;
+            PublicData.ins.pvp_room_no = room_id;
+            PublicData.ins.user_pvp_other = DAO.User.Create(kv);
+
+            PublicData.ins.is_pvp_friend = true;
+            AppMgr.GetCurrentApp<TownApp>().Dispose();
+
+            //    AutoReleasePool.ins.Clear();
+            SceneMgr.Load("BattlePVP");
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
