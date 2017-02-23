@@ -8,6 +8,24 @@ using System.Collections;
 using System;
 using System.Threading;
 
+namespace Services
+{
+    public class BattlePVP : RpcService
+    {
+
+        public void PushResult(string msg, VoidFuncString cb)
+        {
+            cb("ret:ok,");
+            Debug.LogError("  BattlePVP   PushResult " + msg);
+
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_RETULT,msg);
+        }
+    }
+
+
+
+}
+
 
 /// <summary>
 /// 处理玩家键盘 输入信息
@@ -489,6 +507,7 @@ public sealed class BattleApp : AppBase
     {
         ViewUI.Create<UIPublicRoot>();
         EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_PVP_RETULT);//接受战斗结束消息 来自RPC派发
         isOver = false;
 
         syncHandler = new BattleSyncHandler();
@@ -558,6 +577,13 @@ public sealed class BattleApp : AppBase
         {
             this.Dispose();
 
+        }
+        else if (type == Events.ID_BATTLE_PVP_RETULT)
+        {
+            Debug.Log("BattleApp Result " + userData as string);
+
+            this.Dispose();
+            SceneMgr.Load("TownScene");
         }
 
         /*   if (type == Events.ID_NET_DISCONNECT)
@@ -698,6 +724,12 @@ public sealed class BattleApp : AppBase
 
     private void ProcessWithGameOver()
     {
+        if (this.socket != null)
+        {
+            //先关闭战斗服的连接
+            this.socket.Terminal();
+            this.socket = null;
+        }
         if (this.isVideoMode() == false)
         {
 
@@ -749,7 +781,8 @@ public sealed class BattleApp : AppBase
                     Debug.LogError("Verify: " + msg);
                 });
 
-
+            //显示等待结果界面
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
 
         }
         this.Dispose();

@@ -68,6 +68,11 @@ public sealed class UIBattleRoot : ViewUI
             this._ui_child.Add(ViewUI.Create<UI_fpsms>(this));
             return DATA.EMPTY_STRING;
         }));
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
+            return DATA.EMPTY_STRING;
+        }));
         return true;
     }
 
@@ -323,7 +328,7 @@ public sealed class UI_heroInfo : ViewUI
         }
         if (m2 == null)
         {
-            if ( m2 != null) return;
+            if (m2 != null) return;
 
             ArrayList heros = HeroMgr.ins.GetHeros();
             if (heros.Count == 1) return;
@@ -614,5 +619,36 @@ public sealed class UI_frame : ViewUI
 
     private Text txt;
 
+}
+
+
+public sealed class UI_pvpresult : ViewUI
+{
+
+    public override void Update()
+    {
+
+    }
+    public override void OnEvent(int type, object userData)
+    {
+       if(type== Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW)
+       {
+           this.panel.SetActive(true);
+       }
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        this.panel = GameObject.Find("ui_panel_result");
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
+
+
+        this.panel.SetActive(false);
+        return true;
+    }
+
+
+    GameObject panel = null;
 }
 

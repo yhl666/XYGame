@@ -61,18 +61,6 @@ namespace Services
         }
     }
 
-    public class BattlePVP : RpcService
-    {
-
-
-        public void PushResult(string msg, VoidFuncString cb)
-        {
-            Debug.LogError("  BattlePVP   PushResult " + msg);
-        }
-    }
-
-
-
 }
 
 

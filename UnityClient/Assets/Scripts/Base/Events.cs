@@ -116,9 +116,11 @@ public sealed class Events : object
 
     public const int ID_PUBLIC_GLOBALDIALOG_SHOW = 66;//全局对话框显示
 
+    public const int ID_BATTLE_PVP_WAITFOR_RESULT_SHOW = 67;//等待战斗结果
+    public const int ID_BATTLE_PVP_RETULT = 68;// 来自服务端的战斗结果通知
     public const int ID_REQUEST_EQUIP_GET_XXXXX = 200;
 
-   
+
     //------------------------------local event-----------------------------------------------------------
 
     /* public const int ID_DISABLE_RUN = 100;//禁止run 状态
