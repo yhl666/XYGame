@@ -134,7 +134,7 @@ void   ClientServer::AcceptConnected()
 		exit(0);
 
 	}
-
+	isConnected = true;
 	socket_client_server = socket;
 	cout << "Accept ClientServer Connected ok" << endl;;
 }
@@ -151,6 +151,8 @@ void   ClientServer::ThreadFunc_Recv()
 
 		if (ret == SOCKET_ERROR)
 		{
+			isConnected = false;
+			this->AcceptConnected(); 
 			continue;;
 		}
 		if (ret > 0)

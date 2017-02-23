@@ -91,7 +91,7 @@ private:
 	std::unique_ptr<TimerQueue> m_pTimerQueue;
 
 	std::mutex read_write_mutex;
-
+	bool isConnected = false;
 };
 
 

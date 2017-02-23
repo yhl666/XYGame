@@ -29,18 +29,18 @@ public class ClientServerApp : GAObject
         if (_ins == null)
         {
             _ins = new ClientServerApp();
-           /* {
+            /* {
 
 
-                PublicData.ins.client_server_room_info = "pvproom_id:67,p1:1,p2:2,";
-                PublicData.ins.is_client_server = true;
+                 PublicData.ins.client_server_room_info = "pvproom_id:67,p1:1,p2:2,";
+                 PublicData.ins.is_client_server = true;
    
-                SceneMgr.Load("BattlePVP");
+                 SceneMgr.Load("BattlePVP");
 
 
 
 
-            }*/
+             }*/
             _ins.Init();
             _ins.OnEnter();
         }
@@ -56,16 +56,9 @@ public class ClientServerApp : GAObject
         base.Init();
         try
         {
-            _inner_socket = new TcpClient();
+            if (_inner_socket == null)
+                Connect();
 
-            _inner_socket.Connect("127.0.0.1", 8899);
-            _inner_tcp_stream = _inner_socket.GetStream();
-            Debug.Log("Connect LogicServer OK");
-
-
-
-            t_send = new Thread(new ThreadStart(this.ThreadFunc_Send));
-            t_recv = new Thread(new ThreadStart(this.ThreadFunc_Recv));
 
         }
         catch (Exception e)
@@ -73,7 +66,23 @@ public class ClientServerApp : GAObject
 
 
         }
+        if (t_send == null)
+        {
+            t_send = new Thread(new ThreadStart(this.ThreadFunc_Send));
+            t_recv = new Thread(new ThreadStart(this.ThreadFunc_Recv));
+        }
+
         return true;
+    }
+
+    private void Connect()
+    {
+        _inner_socket = new TcpClient();
+
+        _inner_socket.Connect("127.0.0.1", 8899);
+        _inner_tcp_stream = _inner_socket.GetStream();
+        Debug.Log("Connect LogicServer OK");
+
     }
     public override void OnEnter()
     {
@@ -81,6 +90,7 @@ public class ClientServerApp : GAObject
 
         t_send.Start();
         t_recv.Start();
+
     }
     public override void OnDispose()
     {
@@ -122,6 +132,8 @@ public class ClientServerApp : GAObject
         }
         else
         {
+            Thread.Sleep(10);
+            Application.targetFrameRate = 60;
             this.ProcessOneRequest();
         }
 
@@ -140,6 +152,7 @@ public class ClientServerApp : GAObject
         PublicData.ins.client_server_room_info = request;
         PublicData.ins.is_client_server = true;
         is_processing = true;
+        Application.targetFrameRate = 0xfffff;
         SceneMgr.Load("BattlePVP");
 
 
@@ -163,7 +176,7 @@ public class ClientServerApp : GAObject
         while (true)
         {
 
-            Thread.Sleep(10);
+            Thread.Sleep(30);
 
 
             byte[] buffer = new byte[Config.MAX_NETSOCKET_BUFFER_SIZE];
@@ -219,8 +232,18 @@ public class ClientServerApp : GAObject
             {
                 Debug.Log("连接已经断开" + e.Message);
 
+                try
+                {
+                    Connect();
 
-                return;
+
+                }
+                catch (Exception ee)
+                {
+                    Debug.Log(ee.Message);
+
+
+                }
             };
 
 
@@ -238,9 +261,10 @@ public class ClientServerApp : GAObject
 
         while (true)
         {
+            Thread.Sleep(30);
+
             while (sendQueue.Empty() == false)
             {
-                  Thread.Sleep(10);
 
                 string msg = (string)sendQueue.Dequeue() + "^";
 
@@ -262,8 +286,8 @@ public class ClientServerApp : GAObject
     private static TcpClient _inner_socket = null;
     private static NetworkStream _inner_tcp_stream = null;
 
-    private Thread t_send = null;
-    private Thread t_recv = null;
+    static private Thread t_send = null;
+    static private Thread t_recv = null;
 
 
 
