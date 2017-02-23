@@ -54,7 +54,7 @@ end
 --[Comment]
 -- 向游戏客户端发起RPC请求
 function t.request_client(ctx, services, method, json, cb)
-    print("---[Rpc Client] " .. services .. "." ..method .. "(" .. json..")");
+    print("---[Rpc Client] " ..tostring( ctx:get_rpc_clt_id()) .. services .. "." ..method .. "(" .. json..")");
 
     local called = false;
     c_rpc.request(ctx:get_rpc_clt_id(), services, method, pack.encode(json), function(msg)

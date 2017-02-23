@@ -19,7 +19,7 @@ function t.handle_client_server(room_info)
     local key = "pvproom_id:" .. kv["pvproom_id"] .. ",p1:" .. kv["p1"] .. ",p2:" .. kv["p2"] .. ",";
 
     local cb = client_room_map[key];
- 
+
     cb(room_info);
 
 end
@@ -28,7 +28,7 @@ end
 function t.add_client_server(room_info, cb)
 
     client_room_map[room_info] = cb;
- ---   print("reg " .. room_info .. tostring(client_room_map[tostring(room_info)]));
+    ---   print("reg " .. room_info .. tostring(client_room_map[tostring(room_info)]));
 
 end
 
@@ -38,6 +38,7 @@ function t.request_client_server(room_info, cb)
 
     local kv = json.decode(room_info);
     local key = "pvproom_id:" .. kv["pvproom_id"] .. ",p1:" .. kv["p1"] .. ",p2:" .. kv["p2"] .. ",";
+    print("---[Rpc ClientServer]" .. room_info);
 
     t.add_client_server(key, cb);
     client_server.send(key);

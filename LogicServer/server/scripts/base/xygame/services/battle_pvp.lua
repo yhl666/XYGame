@@ -26,7 +26,8 @@ local queue = require("base.queue");
 
 t.enable_hotfix = false;  -- 禁止hot fix
 
-global_ramdon_queue_v1 = queue.new();--全局队列
+global_ramdon_queue_v1 = queue.new();-- 全局队列
+global_ramdon_queue_v2 = queue.new();-- 全局队列
 
 -- [Common]
 -- {no:1,no_target:2,}
@@ -115,12 +116,12 @@ function t.request_verify(ctx, msg, cb)
     local ctx_other;
     global_hero_list:foreach( function(k, v)
 
-        if v.user.no == p1 and ctx ~= v.ctx then
+        if v.user.no == p1 and ctx:get_rpc_clt_id() ~= v.ctx:get_rpc_clt_id() then
             ctx_other = v.ctx;
 
         end
 
-        if v.user.no == p2 and ctx ~= v.ctx then
+        if v.user.no == p2 and ctx:get_rpc_clt_id() ~= v.ctx:get_rpc_clt_id() then
             ctx_other = v.ctx;
 
         end
@@ -174,11 +175,22 @@ function t.request_verify(ctx, msg, cb)
                     if msg == msg2 then
                         -- 二号发过来的结果数据和数据库中取得一致则
 
+                        print(".....Call Verify....." .. tostring(ctx) .. "      " .. tostring(ctx_other));
+
+                        remote.request_client(ctx, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
+                            -- Friend?
+                        end );
+
+                        remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
+                            -- Friend?
+                        end );
+                        --[[
                         -- 发给客户服务器发送房间信息
                         local room_info = "pvproom_id:" .. pvproom_id .. "," .. "p1:" .. p1 .. "," .. "p2:" .. p2 .. ",";
 
                         remote.request_client_server(room_info, function(msgg)
 
+                            print(".....Call Verify....." .. tostring(ctx) .. "      " .. tostring(ctx_other));
 
                             local kvv = json.decode(msgg);
 
@@ -211,8 +223,9 @@ function t.request_verify(ctx, msg, cb)
                         remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
                             -- Friend?
                         end );
-
+                        ]]
                     end
+
                 end
 
 
@@ -435,15 +448,16 @@ end
 
 -- 进入 1v1的随机匹配
 -- msg = no;1,
-function t.request_pvp_ramdon_enter_queue_v1(ctx, msg, cb)
+function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
 
-
+    cb("ret:ok,");
 
 end
 -- 离开 1v1的随机匹配
 -- msg = no;1,
-function t.request_pvp_ramdon_leave_queue_v1(ctx, msg, cb)
+function t.request_pvp_ramdon_leave_queue_v2(ctx, msg, cb)
 
+    cb("ret:ok,");
 
 
 end
