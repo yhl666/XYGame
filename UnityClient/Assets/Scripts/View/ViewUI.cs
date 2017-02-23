@@ -67,7 +67,6 @@ public class ViewUI : View
         ViewUI ret = new T() as ViewUI;
         ret._root = _ui_root;
         ret.Init();
-        ViewMgr.ins.Add(ret);
         return ret;
     }
     protected ViewUI _root = null;

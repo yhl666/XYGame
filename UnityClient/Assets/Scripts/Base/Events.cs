@@ -120,6 +120,12 @@ public sealed class Events : object
     public const int ID_BATTLE_PVP_RETULT = 68;// 来自服务端的战斗结果通知
     public const int ID_REQUEST_EQUIP_GET_XXXXX = 200;
 
+    public const int ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED = 69;//进入随机匹配1v1队列按钮
+    public const int ID_TOWN_BTN_PVP_LEAVE_QUEUE_CLICKED = 70;//退出随机匹配1v1队列按钮
+    public const int ID_TOWN_BTN_PVP_ENTER_QUEUE_CLICKED = 71;//退出随机匹配1v1队列按钮
+
+
+
 
     //------------------------------local event-----------------------------------------------------------
 

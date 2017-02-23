@@ -31,6 +31,13 @@ public sealed class UITownRoot : ViewUI
         }));
 
 
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_component>(this));
+
+            return DATA.EMPTY_STRING;
+        }));
+
 
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
@@ -70,7 +77,12 @@ public sealed class UITownRoot : ViewUI
             return DATA.EMPTY_STRING;
         }));
 
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_townpvpapp>(this));
 
+            return DATA.EMPTY_STRING;
+        }));
         EventDispatcher.ins.AddEventListener(this, Events.ID_VIEW_NEW_CELLAPP_VIEW);
 
 
@@ -509,59 +521,6 @@ public sealed class UI_worldchatapp : UICellApp
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public sealed class UI_townmenuapp : UICellApp
 {
     public override void Update()
@@ -655,13 +614,6 @@ public sealed class UI_townmenuapp : UICellApp
 
 
 
-
-
-
-
-
-
-
 public sealed class UI_friendsapp : UICellApp
 {
     public override void Update()
@@ -674,7 +626,7 @@ public sealed class UI_friendsapp : UICellApp
         base.Init();
 
         this.panel = GameObject.Find("ui_panel_friends");
-        
+
 
         // init friends list
         this.panel_list = panel.transform.FindChild("friends_list");
@@ -744,7 +696,7 @@ public sealed class UI_friendsapp : UICellApp
             Debug.Log("删除好友");
 
             EventDispatcher.ins.PostEvent(Events.ID_FRIENDS_DELETE_CLICKED, this);
-    
+
         });
         this.btn_detail_send.onClick.AddListener(() =>
         { // 私聊好友
@@ -754,7 +706,7 @@ public sealed class UI_friendsapp : UICellApp
         this.btn_detail_pk.onClick.AddListener(() =>
         { // 切磋
             Debug.Log("切磋好友");
-            EventDispatcher.ins.PostEvent(Events.ID_FRIENDS_PVP_CLICKED,current_detail_user);
+            EventDispatcher.ins.PostEvent(Events.ID_FRIENDS_PVP_CLICKED, current_detail_user);
 
         });
 
@@ -801,7 +753,7 @@ public sealed class UI_friendsapp : UICellApp
                 else if (input_name.text != "")
                 {
 
-                    RpcClient.ins.SendRequest("services.friends", "add_by_name", "no:"+PublicData.ins.self_user.no +",name:" + input_name.text + ",", (string msg) =>
+                    RpcClient.ins.SendRequest("services.friends", "add_by_name", "no:" + PublicData.ins.self_user.no + ",name:" + input_name.text + ",", (string msg) =>
                     {
                         input_name.text = "";
                         input_no.text = "";
@@ -830,13 +782,7 @@ public sealed class UI_friendsapp : UICellApp
 
 
 
-
-
             });
-
-
-
-
 
 
 
@@ -882,7 +828,7 @@ public sealed class UI_friendsapp : UICellApp
     private void ShowDetail(DAO.User user)
     {
         //show detail
-        this.current_detail_user = user ;
+        this.current_detail_user = user;
 
         this.panel_list.gameObject.SetActive(false);
         this.panel_detail.gameObject.SetActive(true);
@@ -997,8 +943,157 @@ public sealed class UI_friendsapp : UICellApp
     private Text txt_detail_level = null;
     private Text txt_detail_time = null;
 
-    public DAO.User current_detail_user= null;//当前显示详细信息的no
+    public DAO.User current_detail_user = null;//当前显示详细信息的no
 
 
+}
+
+
+
+
+
+public sealed class UI_component : UICellApp
+{
+    public override void Update()
+    {
+        base.Update();
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+
+        this.panel = GameObject.Find("ui_panel_components");
+
+        this.btn_pvp_random_queue = panel.transform.FindChild("btn_pvp").GetComponent<Button>();
+
+
+
+
+        this.btn_pvp_random_queue.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED);
+
+        });
+
+
+        return true;
+    }
+
+
+
+    public override void OnEvent(int type, object userData)
+    {
+
+    }
+
+
+
+
+    private Button btn_pvp_random_queue = null;//进入1v1 随机匹配队列
+
+}
+
+
+
+
+public sealed class UI_townpvpapp : UICellApp
+{
+    public override void Update()
+    {
+        base.Update();
+
+        if (this.panel.activeSelf)
+        {
+            this.total_time +=   Time.deltaTime;
+
+            int sec_total =(int)  total_time;
+
+            int min = sec_total / 60;
+
+            int sec = sec_total - min * 60;
+            string s_sec, s_min;
+            if (sec < 10)
+            {
+                s_sec = "0" + sec.ToString();
+            }
+            else
+            {
+                s_sec = sec.ToString();
+            }
+
+            if (min < 10)
+            {
+                s_min = "0" + min.ToString();
+            }
+            else
+            {
+                s_min = min.ToString();
+            }
+            txt_time .text = (" 已等待时间: " + s_min + ":" + s_sec);
+
+        }
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+
+
+        this.panel = GameObject.Find("ui_panel_pvp_queue");
+
+        this.btn_close = panel.transform.FindChild("btn_close").GetComponent<Button>();
+        this.txt_time = panel.transform.FindChild("txt_time").GetComponent<Text>();
+
+
+
+        this.btn_close.onClick.AddListener(() =>
+        {//离开队列
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVP_LEAVE_QUEUE_CLICKED, this);
+
+        });
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED);
+
+        this.panel.SetActive(false);
+        this.panel.transform.localScale = new Vector3(1.0f, 0.0f, 1.0f);
+        return true;
+    }
+
+
+
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED)
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVP_ENTER_QUEUE_CLICKED, this);
+
+        }
+    }
+
+    public override void Show()
+    {
+        total_time = 0.0f;
+        this.panel.SetActive(true);
+
+        ScaleTo.Create(this.panel, 0.1f, 1f, 1f).OnComptele = () =>
+        {
+
+        };
+
+    }
+    public override void Hide()
+    {
+
+        ScaleTo.Create(this.panel, 0.1f, 1f, 0.0f).OnComptele = () =>
+        {
+            this.panel.SetActive(false);
+
+        };
+
+    }
+    private Button btn_close = null;
+    private Text txt_time = null;
+    private float total_time = 0.0f;
 }
 

@@ -42,6 +42,7 @@ public class TownApp : AppBase
             this.AddCellApp<WorldChatApp>();
             this.AddCellApp<TownMenuApp>();
             this.AddCellApp<FriendsApp>();
+            this.AddCellApp<TownPVPApp>();
 
             EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
             Application.targetFrameRate = 40;
@@ -141,7 +142,7 @@ public class TownApp : AppBase
         //  PublicData.GetInstance().game.Terminate();
         //   GameObject.DestroyImmediate(GameObject.Find("_ServiceCenterObject"));
         //  PublicData.GetInstance().game.GotoScene();
-        
+
         EventDispatcher.DestroyInstance();
         base.OnDispose();
     }
@@ -151,21 +152,20 @@ public class TownApp : AppBase
     /// </summary>
     bool is_pvp_ok = false;
     bool is_pvp_wait = false;
-    
+
     public override void UpdateMS()
     {
         AutoReleasePool.ins.Clear();
 
         if (this.IsInValid()) return; ;
 
-      
+
 
         base.UpdateMS();
-     
+
         ModelMgr.ins.UpdateMS();
         ViewMgr.ins.Update();
         ViewMgr.ins.UpdateMS();
-
 
         if (HeroMgr.ins.self == null) return;
 

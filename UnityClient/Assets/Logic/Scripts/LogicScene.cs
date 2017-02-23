@@ -24,7 +24,7 @@ public class LogicScene : GiantLightSceneExtension
     public override void Update(float delta)
     {
         base.Update(delta);
-        AppMgr.ins.Update();
+       /// AppMgr.ins.Update();
         AppMgr.ins.UpdateMS();
     }
 
