@@ -259,6 +259,12 @@ function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
         local no1 = global_ramdon_queue_v1:front();
         local no2 = no;
 
+        local u1 = global_hero_list:get_hero_by_no(no1);
+        if u1 == nil or no1 == no2 then
+            global_ramdon_queue_v1:push(no2);
+            cb("ret:ok,");
+            return;
+        end
         local user1 = nil;
         local user2 = nil;
 
@@ -337,17 +343,22 @@ function t.request_pvp_ramdon_leave_queue_v2(ctx, msg, cb)
 
     local kv = json.decode(msg);
     local no = kv["no"];
+    local size = global_ramdon_queue_v1:size();
 
+    print("current size = " .. size);
+    for i = 0, size do
 
-    local noo = global_ramdon_queue_v1:front();
-    if noo == no then
+        local noo = global_ramdon_queue_v1:front();
+        if noo == no then
 
+            cb("ret:ok,"); return;
+        else
+            global_ramdon_queue_v1:push(noo);
+        end
 
-        cb("ret:ok,");
-    else
-        cb("ret:error,");
     end
 
+    cb("ret:error,");
 end
 
 
