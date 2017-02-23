@@ -3,21 +3,21 @@ branches: {
   }
 fileChange:
   /LogicServer:
-    newFile: !uuid '3da4d6808fa2b85ce4bcb4b28631527d5a83f8b7'
-    oldFile: !uuid '0e2f7bd5852a4bd1051ad0ae348181be72811b37'
+    newFile: !uuid 'ecfadd07ab40f1c3c00daff72afdfa4566c183fd'
+    oldFile: !uuid '3da4d6808fa2b85ce4bcb4b28631527d5a83f8b7'
   /LogicServer/server:
-    newFile: !uuid '3b8154f609258ca950d77ca9ac45055aeef79059'
-    oldFile: !uuid 'f034f44884858c045fe460a07dcc9b33afbbcbf7'
-  /LogicServer/server/src:
-    newFile: !uuid '64f4cca808b5b1cb73de6f7b8a053501b96561e9'
-    oldFile: !uuid '548ce5fff1d7e2c2c3af7ddaf549ad967cda5d42'
-  /LogicServer/server/src/base:
-    newFile: !uuid 'c0502f58104cecb23227bcc5a5da844fa02730e7'
-    oldFile: !uuid '38ce95405560afd5172afdc44cb9b94cacf35eeb'
-  /LogicServer/server/src/base/main.cpp:
-    newFile: !uuid '98b17fe1a1bd754d0823cf0d84b61c4d1df44dfd'
-    oldFile: !uuid 'eef90d772104c70d941a1dfe7eb84d565de050f6'
-gitCommitId: !uuid '9cb985a0f513c91471bd681157171006b1e72634'
+    newFile: !uuid 'ead2856dc74ba4d1d07e408cad782269a8bd1652'
+    oldFile: !uuid '3b8154f609258ca950d77ca9ac45055aeef79059'
+  /LogicServer/server/build:
+    newFile: !uuid 'c45177315de4ccb567fc4586aea3fe6c8cb8d940'
+    oldFile: null
+  /LogicServer/server/build/Server.sln:
+    newFile: !uuid '8cd49a3affd32fda9dfe7970b83d651183085813'
+    oldFile: null
+  /LogicServer/server/build/base.vcxproj.filters:
+    newFile: !uuid '5eafab278b831ff64a6401abb01e1ae3174b0244'
+    oldFile: null
+gitCommitId: !uuid '04e731a143c29858f72618750dd92a96e47bb547'
 renames: {
   }
-revisionId: 318
+revisionId: 319
