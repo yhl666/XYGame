@@ -13,6 +13,7 @@ static CWorldBase s_worldBase;
 CWorld* g_pTheWorld = &s_worldBase;
 
 #include "ClientServer.h"
+#include "ClientServer.cpp"
 
 
 

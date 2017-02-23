@@ -102,7 +102,7 @@ end
             cb("ret:error,msg:战斗房间为空,");
             return;
         else
-            cb("ret:ok,"  .. msg);
+            cb("ret:ok," .. msg);
         end
 
     end);
