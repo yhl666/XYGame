@@ -2,40 +2,49 @@
 branches: {
   }
 fileChange:
+  /BattleServer:
+    newFile: !uuid '7d28050c62e9e95c5ea8f867db39043bf6b5bc43'
+    oldFile: !uuid '85a8a776f9eccf21caa459090ed0e9b3d98b6e27'
+  /BattleServer/Debug:
+    newFile: !uuid '302f4ac883603928f4a0a187a58f73027f8a80d3'
+    oldFile: !uuid '3d2fdc5116a3438c7ddc6dc7fe46126293b33fde'
+  /BattleServer/Debug/config.ini:
+    newFile: !uuid '21742ace417451f64f3f06e06a1aa390331a8f84'
+    oldFile: !uuid '0e097d190b14b72d43587a8ea8b193f470677fa1'
+  /LogicServer:
+    newFile: !uuid '08afbc96ff5f31e71f8ecab7047b77a467198357'
+    oldFile: !uuid '3e6d1ed43433fbc28ed8ed59492faf09af5010fd'
+  /LogicServer/server:
+    newFile: !uuid 'c6dade9a5661134dbba1e2b66c454ef0f1d5c79c'
+    oldFile: !uuid '381cf7ca9987e37075f0036b01a23fbff49a961b'
+  /LogicServer/server/src:
+    newFile: !uuid '64f4cca808b5b1cb73de6f7b8a053501b96561e9'
+    oldFile: !uuid '4090cdb8275ab8a232ef3ef8932efbd629efea23'
+  /LogicServer/server/src/base:
+    newFile: !uuid 'c0502f58104cecb23227bcc5a5da844fa02730e7'
+    oldFile: !uuid 'f6b0969baa83ba5b64eb4e8c3855c9727a18fef6'
+  /LogicServer/server/src/base/ClientServer.cpp:
+    newFile: !uuid '665e1b9b07183bb14bb125afd16361adac8c6825'
+    oldFile: !uuid '314460250850af41dd9790c609822d933af22d25'
+  /LogicServer/server/src/base/ClientServer.h:
+    newFile: !uuid '8eae33f5691d97158a2ad4b51eba41e8324aafc0'
+    oldFile: !uuid 'f611c541132444bcb58be7c444cc1ea014ed2c2d'
   /UnityClient:
-    newFile: !uuid '5466677b24359a58f7f72dc15764905eb8e312e8'
-    oldFile: !uuid 'c1558eedb6862df39f4f24539974d196bf2ea912'
+    newFile: !uuid '08a889802695c09697a5f25b022319cd5d870507'
+    oldFile: !uuid '5466677b24359a58f7f72dc15764905eb8e312e8'
   /UnityClient/Assets:
-    newFile: !uuid 'd2c917aa157ae2ff3b7b4d2c745a3a53f2db5513'
-    oldFile: !uuid 'f9a53e0a4907733cad36c6d4a0fb56aff4922db8'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '541354cfac4c949dc45a3c0debf1e0da784aa302'
-    oldFile: !uuid '43d117197dd3d713b3818349fb311bbfdf346ec8'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'a9dba8b36a74315e4bd62cf17041a65f93991b35'
-    oldFile: !uuid '8c42694ad579c7def42002b9549ca56d921783e6'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '3469fe03ab8cdd00f66e425725cb0329a520da0f'
-    oldFile: !uuid '0000dbb76c3350fe28535b32bb9d8ce4efbd8319'
-  /UnityClient/Assets/Resources/Prefabs/ui/Battle.prefab:
-    newFile: !uuid 'e9d6fb6b6fa60e476d5840faf082b0007edec18e'
-    oldFile: !uuid 'fb4d7010159b43945d5d69b0306c3a5c916b3f24'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '679c7ed2e9b19d9a0b387b01e2f1545a7090549c'
-    oldFile: !uuid 'c27434fcd8958febacd427892987cf8a01ea587d'
-  /UnityClient/Assets/Scenes/BattlePVP.unity:
-    newFile: !uuid '0c3fabc24d1077a19a4c05ccc2240c52a3e4fe8c'
-    oldFile: !uuid '499660f3ce6a1d7c93519ca1fa6b7b4f3dfe4518'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '1049b6b9921a5630c06758c141f31baaff7449a6'
-    oldFile: !uuid 'a2fc17ae16523717f5ca72db6106f8c307bb4853'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'fe81bfaf6564bd8d2c704afc1570530ed87e4689'
-    oldFile: !uuid '8ac0a2d86efc00145800a74199d3777fca1cf624'
-  /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid '0c08feb89aee9ce090100dcae524c139d9392717'
-    oldFile: !uuid 'dae4f9ad887888e9072522c8b3df81d0ceae2e74'
-gitCommitId: !uuid 'd6c0dea217f0a053a5743b6ec35e4feba567d810'
+    newFile: !uuid 'b87bec612d499bac6b1ad587b8bb4624967309c2'
+    oldFile: !uuid 'd2c917aa157ae2ff3b7b4d2c745a3a53f2db5513'
+  /UnityClient/Assets/ClientServerApp.cs:
+    newFile: !uuid '5d7952b098d4f7108a902264e6be152dfcb23c44'
+    oldFile: !uuid '490954ddb6b712b1966d1085161b12ee6f933343'
+  /UnityClient/ProjectSettings:
+    newFile: !uuid '8835ffa36e2d0173dea86e7e8649ef821d5780fe'
+    oldFile: !uuid 'f1d4c237c9a43ec0f9685637e976be3a2c823da6'
+  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
+    newFile: !uuid '96e90a8426df700afbb3f9fba7e8afafe64929b7'
+    oldFile: !uuid 'cea75eea2ab9fc37f6233e389c6dac5a2b46e597'
+gitCommitId: !uuid '14b4f4d5e5a260888546ac83c3b6543f58d44905'
 renames: {
   }
-revisionId: 315
+revisionId: 316
