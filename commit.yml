@@ -2,28 +2,67 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid 'e516b8314248bb421b695d9169b52d76d00e17a7'
-    oldFile: !uuid 'f0f283ca977a99d41b23d1bc12b4057b178954e7'
-  /LogicServer/server:
-    newFile: !uuid '78a33a56f2ff98690ca7c299631513a09cc8804f'
-    oldFile: !uuid '9175fc78af0cf0aa052e32922d007c44e6c11c46'
-  /LogicServer/server/scripts:
-    newFile: !uuid '1916179d374a77b083ed750349455d6d10d9bf44'
-    oldFile: !uuid '340be555c0c1360c4fd0d4ac499732e5b37a97a0'
-  /LogicServer/server/scripts/base:
-    newFile: !uuid 'f49708513f11fbf6a2a71ffaeb03a6d9f8086f08'
-    oldFile: !uuid '8db3fa46c739642b1df2a55553deb1360d787f3d'
-  /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid 'e9bac16cff38ecea41b6f70027c92a4626f76a42'
-    oldFile: !uuid 'dfe51df52eaa0b00205618af9dfb6baca7d8610f'
-  /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid 'e9f8af0d2c90f0ec8ead20a85c0f116cc280a72e'
-    oldFile: !uuid '56414217a5d5cacb5800b02e453354cec6b1016b'
-  /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
-    newFile: !uuid '83b04bc0e297942eb082cd2a776ad7a2ff80bd09'
-    oldFile: !uuid '04589d78c2b7fe5648fc9499654cae19f50bdc9d'
-gitCommitId: !uuid '5dc4d80f5d6462452fbb79f9e9d1eefe70affe5a'
+  /UnityClient:
+    newFile: !uuid '8aea5a9510a42460a9945af2bd09b94dfca7088b'
+    oldFile: !uuid 'fb84cfeca638cf8736e5406eebf64b697fa95dc6'
+  /UnityClient/Assets:
+    newFile: !uuid 'a4711a407bde954e6e08fccd7f9cfde6a3743947'
+    oldFile: !uuid '7c2bbeeb126f97b27ca6ac3edfb78506b8cd1bd9'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid '5fe234d7bbefdf02d8a78d07a8f43c14c8ea5ded'
+    oldFile: !uuid '3b4a4d7e6da288f031f04c06144e13f798d69d38'
+  /UnityClient/Assets/Logic/Scripts:
+    newFile: !uuid 'ad0e7a51f16bd1f6f5fbaf6512e82493b69c3e71'
+    oldFile: !uuid '4a6e7946c278231aae5fcbc3323d46b8ad32b206'
+  /UnityClient/Assets/Logic/Scripts/GameApp:
+    newFile: !uuid '5a9760ca2786d5f25d4d41462f693027be1b091f'
+    oldFile: !uuid '6f5e81c1916396d70bd3674fa6c572f2d6dcf577'
+  /UnityClient/Assets/Logic/Scripts/GameApp/TownApp.cs:
+    newFile: !uuid 'c38400b421bf3a6068378c758c4a2b37565c33b6'
+    oldFile: !uuid '4d46837409b036d7bb3e869c3c28403d0720ed2c'
+  /UnityClient/Assets/Logic/Scripts/LogicScene.cs:
+    newFile: !uuid '90e4f47f9bdeccd45bcfd3681dcb1e21fdcaf8e6'
+    oldFile: !uuid '08be4e6e3305ec921934da6144bc8fb17893add2'
+  /UnityClient/Assets/Logic/Scripts/View:
+    newFile: !uuid 'bb48572f0245527343427e6b0586c689e1bdd2c8'
+    oldFile: !uuid 'db6c888eca595a8e52616e8e0c1ddaf34d5f4285'
+  /UnityClient/Assets/Logic/Scripts/View/UITown.cs:
+    newFile: !uuid '733ad0d633c1fd81a296d12e18622a5b349b79bd'
+    oldFile: !uuid 'ab78c9e9c104d6fd28572b52fdc84dcc83bca254'
+  /UnityClient/Assets/Logic/TownScene.unity:
+    newFile: !uuid 'f9ae7662aac53aeb7ef73232b99c7ea062b2b1ce'
+    oldFile: !uuid '967e049884d0991fc5b3427d813be6877eb34c26'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '5737ce7457ec03a81a8570a048184a1250524429'
+    oldFile: !uuid '541354cfac4c949dc45a3c0debf1e0da784aa302'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'aa11428905d70be9dc18cdebbfcc1bb836c893d1'
+    oldFile: !uuid 'a9dba8b36a74315e4bd62cf17041a65f93991b35'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid '5c981c8c5be87a3526054ad33cb7a5278c373987'
+    oldFile: !uuid '3469fe03ab8cdd00f66e425725cb0329a520da0f'
+  /UnityClient/Assets/Resources/Prefabs/ui/Town.prefab:
+    newFile: !uuid '8977547c7d152ee529678680ca0b054fd8dcbc21'
+    oldFile: !uuid '8f8dae761ba77b4c69be4769a58f5a70ffac86cd'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '90e29f66f99ee2dacb03988d0057ba34b8ef3eb0'
+    oldFile: !uuid 'dc897defeb83f5df2be66e664ddc21bc49196a74'
+  /UnityClient/Assets/Scripts/Base:
+    newFile: !uuid 'b2448777f56755838545894a9e97629b53004938'
+    oldFile: !uuid '564353011ff08060dfaac5bd55fabd86142390df'
+  /UnityClient/Assets/Scripts/Base/Events.cs:
+    newFile: !uuid '2c022e0daf5f7fa62d295c4534f475857181cf3e'
+    oldFile: !uuid '5e2ad2e59d64b6d31a8a5a6fef281cb8fafbfee0'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid '752dad116fe00b70973614ddaf51b3edde46c189'
+    oldFile: !uuid 'f359cae139d54d6546294e86e28d405fe57b0310'
+  /UnityClient/Assets/Scripts/View/View.cs:
+    newFile: !uuid '4b172cd2b59d6f339b67a90defa194d5e3b691fb'
+    oldFile: !uuid '0be2b43f6510efe5144f72d76fc847a9d4aeb56b'
+  /UnityClient/Assets/Scripts/View/ViewUI.cs:
+    newFile: !uuid '754e25bf661b8d82140e577a523c525789d81893'
+    oldFile: !uuid '2ccb3a0cd015453e3e6798056ae2f4d5010d4602'
+gitCommitId: !uuid 'e07f5ae3b7f6e10edaf476685322130d0191e037'
 renames: {
   }
-revisionId: 323
+revisionId: 324
