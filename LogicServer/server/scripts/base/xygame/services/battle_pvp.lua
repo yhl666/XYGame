@@ -301,9 +301,9 @@ function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
             if u2 == nil then
                 global_ramdon_queue_v1:push(no1); return;
             end
-
+            cb("ret:ok,")
             if u1 == nil then
-                global_ramdon_queue_v1:push(no2); cb("ret:ok,") return;
+                global_ramdon_queue_v1:push(no2);  return;
             end
 
             notify_client(user1, msg5 .. user2.user:to_json(), no1);
