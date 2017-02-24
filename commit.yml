@@ -2,28 +2,25 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid 'eb95cde6a03cd59ef3212499bdd00a823bce4ca1'
-    oldFile: !uuid '386b6c3e1efab7874260e8e73b0b0611e75c9aca'
-  /LogicServer/server:
-    newFile: !uuid 'e2bd3b566e927c79269b2379a0261e953186a953'
-    oldFile: !uuid '6591d86406ee12a99312b332dc3b828d1da25101'
-  /LogicServer/server/scripts:
-    newFile: !uuid '0238ebf3c8fe793d1118afc90399ebb7b1fc288b'
-    oldFile: !uuid '7a35d3b285909272e97871ac862217daf9a77837'
-  /LogicServer/server/scripts/base:
-    newFile: !uuid 'b99c2ddb5c61d6ebe8f0e8276fb2910a413d6ec3'
-    oldFile: !uuid 'd41c09b761eb5706e05df89567b850898a67c104'
-  /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid '57facac7b6f0d92de903d91b8db1ad72e3c88c4f'
-    oldFile: !uuid 'd74ec796c58251adb226b4d59fe1c18c23643a95'
-  /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid '5a821bfaf07c6c4bc4f653cd6f5f9b6b0414f13c'
-    oldFile: !uuid '0f451f4c6e9dd953255b2203837e7625e4b9f8a0'
-  /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
-    newFile: !uuid '0e40e7bae3402f25f045159e67e799018afbe997'
-    oldFile: !uuid '7e64d83727dc5e22068980ff399e61444a8d6e69'
-gitCommitId: !uuid '029b09c015e93a587c62ab13e86e7117583dd12b'
+  /UnityClient:
+    newFile: !uuid 'b2ce82105f0710bd21a3e8c132b9aabda0dfdf69'
+    oldFile: !uuid '1e8729d53dc5793cd5a9e28e54a0fa86bc395b32'
+  /UnityClient/Assets:
+    newFile: !uuid '423bdc282218b5d1d67e72d6603caf17d96ff018'
+    oldFile: !uuid '5b41082f5680aa0168e29e60c26f45cd1f2cca95'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '909f319dad2ce8e104c8fa64fc5e57a4cf900490'
+    oldFile: !uuid '5737ce7457ec03a81a8570a048184a1250524429'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '0e4b084f6243d101572896a192fce3526be48d84'
+    oldFile: !uuid 'aa11428905d70be9dc18cdebbfcc1bb836c893d1'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid 'eb8113272799157c18312e3030a52c9587b03af4'
+    oldFile: !uuid '5c981c8c5be87a3526054ad33cb7a5278c373987'
+  /UnityClient/Assets/Resources/Prefabs/ui/Town.prefab:
+    newFile: !uuid '1436426ab9e40e6c2db5374702876a20cfa6b1d7'
+    oldFile: !uuid '8977547c7d152ee529678680ca0b054fd8dcbc21'
+gitCommitId: !uuid '43c06efbe1e8e7d1e04810c9ac68adf09cac1d7e'
 renames: {
   }
-revisionId: 333
+revisionId: 334
