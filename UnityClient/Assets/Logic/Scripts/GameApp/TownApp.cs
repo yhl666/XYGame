@@ -43,7 +43,12 @@ public class TownApp : AppBase
             this.AddCellApp<TownMenuApp>();
             this.AddCellApp<FriendsApp>();
             this.AddCellApp<TownPVPApp>();
-
+            this.AddCellApp<TrumpApp>();
+            this.AddCellApp<TrumpLevelApp>();
+            this.AddCellApp<BackpackApp>();
+            this.AddCellApp<SettingsApp>();
+            this.AddCellApp<CharacterInfoApp>();
+            this.AddCellApp<AfficheApp>();
             EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
             Application.targetFrameRate = 40;
 

@@ -83,6 +83,44 @@ public sealed class UITownRoot : ViewUI
 
             return DATA.EMPTY_STRING;
         }));
+
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_trumpapp>(this));
+
+            return DATA.EMPTY_STRING;
+        }));
+
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_trump_levelupapp>(this));
+
+            return DATA.EMPTY_STRING;
+        }));
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_backpackapp>(this));
+
+            return DATA.EMPTY_STRING;
+        }));
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_settingapp>(this));
+
+            return DATA.EMPTY_STRING;
+        }));
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_afficheapp>(this));
+
+            return DATA.EMPTY_STRING;
+        }));
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_characterinfoapp>(this));
+
+            return DATA.EMPTY_STRING;
+        }));
         EventDispatcher.ins.AddEventListener(this, Events.ID_VIEW_NEW_CELLAPP_VIEW);
 
 
@@ -539,8 +577,10 @@ public sealed class UI_townmenuapp : UICellApp
 
         this.btn_friends = GameObject.Find("btn_friend").GetComponent<Button>();
 
-
-
+        this.btn_backpack = GameObject.Find("btn_pack").GetComponent<Button>();
+        this.btn_trump = GameObject.Find("btn_magic").GetComponent<Button>();
+        this.btn_setting = GameObject.Find("btn_set").GetComponent<Button>();
+        this.btn_character_info = GameObject.Find("btn_maininfo").GetComponent<Button>();
         this.btn_close.onClick.AddListener(() =>
         {
             EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLOSE_CLICKED, this);
@@ -563,6 +603,29 @@ public sealed class UI_townmenuapp : UICellApp
 
         });
 
+        this.btn_backpack.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLOSE_CLICKED, this);
+            EventDispatcher.ins.PostEvent(Events.ID_INFO_BACKPACK);
+
+        });
+        this.btn_trump.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLOSE_CLICKED, this);
+            EventDispatcher.ins.PostEvent(Events.ID_INFO_TRUMP);
+
+        });
+        this.btn_setting.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLOSE_CLICKED, this);
+            EventDispatcher.ins.PostEvent(Events.ID_INFO_SETTING);
+
+        });
+        this.btn_character_info.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLOSE_CLICKED, this);
+            EventDispatcher.ins.PostEvent(Events.ID_INFO_CHARACTER_INFO);
+        });
         this.Hide();
         return true;
     }
@@ -600,8 +663,10 @@ public sealed class UI_townmenuapp : UICellApp
 
     }
 
-
-
+    private Button btn_character_info = null;
+    private Button btn_setting = null;
+    private Button btn_trump = null;
+    private Button btn_backpack = null;
     private Button btn_close = null;
     private Button btn_show = null;
     private Button btn_friends = null;
