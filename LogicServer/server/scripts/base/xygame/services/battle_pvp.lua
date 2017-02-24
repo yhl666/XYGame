@@ -151,11 +151,12 @@ function t.request_verify(ctx, msg, cb)
                 tbl["p2"] ~= tbl_battle_in_redis["p2"] then
                 -- todo
                 -- 如果房间信息有误则通知两个玩家游戏结果校验失败
-                remote.request_client(ctx, "Friends", "BattlePVP", "ret:ok,msg:verifyError,", function(msg3)
+                cb("ret:ok,");
+                remote.request_client(ctx, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg3)
 
                 end );
 
-                remote.request_client(ctx_other, "Friends", "BattlePVP", "ret:ok,msg:verifyError,", function(msg3)
+                remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg3)
 
                 end );
 

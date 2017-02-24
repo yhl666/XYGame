@@ -60,17 +60,35 @@ public class PublicData : object
 
     public IGiantGame game = null;
 
+
+    public string client_server_room_info = "";
+    public bool is_client_server = false;
+    public string client_server_result = "";
+
+
+
     // -------------------------------------------------------------pvp
     public DAO.User user_pvp_other = null;
     public string pvp_room_no = "1024";//房间id
-    public string pvp_room_max="1";//房间最大数
+    public string pvp_room_max = "1";//房间最大数
 
     //是否是PVP 模式
     public bool is_pvp_friend = false;
     public bool is_pvp_friend_ai = false;
     public bool is_pvp_friend_owner = true;//主动发起的一方
 
-    public string client_server_room_info = "";
-    public bool is_client_server = false;
-    public string client_server_result="";
+ 
+    public void ResetPVP()
+    {
+        user_pvp_other = null;
+        pvp_room_no = "1024";//房间id
+        pvp_room_max = "1";//房间最大数
+
+        //是否是PVP 模式
+        is_pvp_friend = false;
+        is_pvp_friend_ai = false;
+        is_pvp_friend_owner = true;//主动发起的一方
+
+  
+    }
 }

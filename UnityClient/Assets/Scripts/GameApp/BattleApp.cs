@@ -19,7 +19,7 @@ namespace Services
 
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_RETULT, msg);
         }
- 
+
     }
 
 
@@ -584,8 +584,8 @@ public sealed class BattleApp : AppBase
 
             this.Dispose();
 
-           
 
+            PublicData.ins.ResetPVP();
             SceneMgr.Load("TownScene");
         }
 
@@ -750,6 +750,7 @@ public sealed class BattleApp : AppBase
             PublicData.ins.client_server_room_info += "h1:" + p1.current_hp + ",h2:" + p2.current_hp + ",";
             PublicData.ins.client_server_result = PublicData.ins.client_server_room_info;
             Debug.Log("Over:" + PublicData.ins.client_server_result);
+            PublicData.ins.ResetPVP();//服务器模式直接设置，其他要在跳转场景设置
             this.Dispose();//服务器模式直接跳转
 
         }
@@ -823,7 +824,7 @@ public sealed class BattleApp : AppBase
         { // do while 流程
             if (isOver)
             {
-              ///  this.ProcessWithGameOver();
+                ///  this.ProcessWithGameOver();
                 break;
             }
 
