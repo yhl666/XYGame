@@ -23,6 +23,17 @@ function t:add(base_hero)
 end
 
 
+function t:replace(base_hero)
+
+    for k, v in pairs(self.list) do
+        if v.user.no == base_hero.user.no then
+            self.list[k] = base_hero; return;
+        end
+    end
+
+end
+
+
 function t:remove(base_hero)
     if self.size == 0 then return end;
 
@@ -64,7 +75,8 @@ function t:remove_by_rpc_cli_id(id)
 
     for k, v in pairs(self.list) do
         if v.ctx:get_rpc_clt_id() == id then
-            v.is_dirty = true; --标识玩家是否在线
+            v.is_dirty = true;
+            -- 标识玩家是否在线
             self:remove(k);
             return v;
         end
@@ -73,6 +85,23 @@ function t:remove_by_rpc_cli_id(id)
 
     return nil;
 end
+
+
+function t:remove_by_no(no)
+
+    for k, v in pairs(self.list) do
+        if v.user.no == no then
+            v.is_dirty = true;
+            -- 标识玩家是否在线
+            self:remove(k);
+            return v;
+        end
+
+    end
+
+    return nil;
+end
+
 
 function t:get_hero_by_no(no)
 

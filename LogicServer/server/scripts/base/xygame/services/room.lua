@@ -55,13 +55,25 @@ end
 
 local function on_disconnected(rpc_clt_id)
     local hero = global_hero_list:remove_by_rpc_cli_id(rpc_clt_id);
+
     if hero == nil then
         -- 表示不是客户端 而是cell 服务器断开了连接
         log:error(" Cell Server id= " .. rpc_clt_id .. " has Disconnected");
         return;
     end
+    global_online_hero_list:remove_by_rpc_cli_id(rpc_clt_id);
+
     room_notify_all("Room", "LeaveRoom", "no:" .. hero.user.no .. ",");
 end
+
+
+function room_leave_room_by_no(no)
+    print(" room_leave_room_by_no   " .. no);
+    local hero = global_hero_list:remove_by_no(no);
+
+    room_notify_all("Room", "LeaveRoom", "no:" .. no .. ",");
+end
+
 
 
 function t.new_position(ctx, msg, cb)
@@ -80,7 +92,7 @@ function t.enter_room(ctx, msg, cb)
         -- 响应成功后 添加到table里面
 
         room_notify_all("Room", "EnterRoom", msg);
- 
+
         local user1 = user.create();
 
         user1:set_json(msg);

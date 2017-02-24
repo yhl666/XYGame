@@ -39,6 +39,11 @@ function t.request_pvp_v1(ctx, msg, cb)
             cb("ret:error,msg:timeout,");
             return;
         end
+        local kv = json.decode(msg);
+        room_leave_room_by_no(kv["no"]);
+        room_leave_room_by_no(kv["no_target"]);
+
+
         cb(msg1);
     end );
 end
@@ -87,6 +92,10 @@ function t.request_pvp_v2(ctx, msg, cb)
                             local kv = json.decode(msg);
                             if kv["ret"] == "ok" then
                                 cb(user2 .. msg5);
+
+                                room_leave_room_by_no(no);
+                                room_leave_room_by_no(no_target);
+
                             else
                                 cb("ret:error,msg:玩家拒绝,");
                             end
@@ -115,7 +124,7 @@ function t.request_verify(ctx, msg, cb)
 
     -- 参数校验
     local ctx_other;
-    global_hero_list:foreach( function(k, v)
+    global_online_hero_list:foreach( function(k, v)
 
         if v.user.no == p1 and ctx:get_rpc_clt_id() ~= v.ctx:get_rpc_clt_id() then
             ctx_other = v.ctx;
@@ -301,9 +310,9 @@ function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
             if u2 == nil then
                 global_ramdon_queue_v1:push(no1); return;
             end
-            cb("ret:ok,")
+            cb("ret:ok,");
             if u1 == nil then
-                global_ramdon_queue_v1:push(no2);  return;
+                global_ramdon_queue_v1:push(no2); return;
             end
 
             notify_client(user1, msg5 .. user2.user:to_json(), no1);
