@@ -2,22 +2,28 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '2524a2b1b8f2230c1a79103bd9a16397ed88b655'
-    oldFile: !uuid 'cfdba8753a919d4953fc7b9f146a320491825eac'
-  /UnityClient/Assets:
-    newFile: !uuid '5224c1d2fa0d8bb2c8d77ee2b2fe1ea207b310ac'
-    oldFile: !uuid 'd23048645fc53e3a1be68c4992cdfec378495e1d'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '9ccc79b14a8d7754334ab54480dd712d90f6589c'
-    oldFile: !uuid '03640dc9fb9346faa5a09f1783d638c9102105ed'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid 'a2f347e6fce8b3e6be7ebe5ac066cbf190b46606'
-    oldFile: !uuid 'e71963f7ea8d9bf9910cdedd6b088a1d5c35a660'
-  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
-    newFile: !uuid 'efcf21e2d6ffecf3d2054fa4f2e1ca2e880f1ce0'
-    oldFile: !uuid 'ca268ab13328577477ad7ea5bc522b5bbee1eee0'
-gitCommitId: !uuid 'dffaedc0230db7a8a778ea06c2a34a4e5fad7954'
+  /LogicServer:
+    newFile: !uuid 'd125206702e3bb49ee9ae58113b996b0bb3b18c4'
+    oldFile: !uuid 'd24a8c91efe3c9cd6ba21bf6773329c3f6d80c4a'
+  /LogicServer/server:
+    newFile: !uuid '0309d6208fe98a494bbaf0879bf579d13871ef82'
+    oldFile: !uuid 'e53322968c1879c2275ac5fd76034db8340d43dc'
+  /LogicServer/server/scripts:
+    newFile: !uuid '42ab03ca13e1a6520173285b7766db2f6f2b36eb'
+    oldFile: !uuid 'dba94815fb1275a9f016eaa33bc62c9611cf72f1'
+  /LogicServer/server/scripts/base:
+    newFile: !uuid 'b5a1fa9f5c0c55200285f67820fff71f50d1d00b'
+    oldFile: !uuid 'd7cf31625c3d6f8f9c187e2ee45462397a51a9cc'
+  /LogicServer/server/scripts/base/xygame:
+    newFile: !uuid '1b3cfe3e56ac220e8e634df2bf987e76b13bfaf3'
+    oldFile: !uuid 'a14ab4673cd88cd428e90fb999e19574f22b4153'
+  /LogicServer/server/scripts/base/xygame/services:
+    newFile: !uuid '641396bc4884e967e50b966ad4fda630c0913d08'
+    oldFile: !uuid '011451ed22bf71a24d21b846df7325381efe415c'
+  /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
+    newFile: !uuid '72ed1bb4e25575d627fafaff7488ae4127d92142'
+    oldFile: !uuid '19fd6fb358b9cd0874aa0c31150d2a115b9c5b66'
+gitCommitId: !uuid 'e0e1d167ecd3157ec8e5cf7cd075f830a56c4727'
 renames: {
   }
-revisionId: 340
+revisionId: 341
