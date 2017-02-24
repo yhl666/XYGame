@@ -248,7 +248,8 @@ local function notify_client(user, msg, no)
 
         local kv = json.decode(msg3);
         if kv["ret"] == "ok" then
-
+          room_leave_room_by_no(no);
+     
         else
             global_ramdon_queue_v1:push(no);
         end
