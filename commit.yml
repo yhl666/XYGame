@@ -2,49 +2,58 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid 'd24a8c91efe3c9cd6ba21bf6773329c3f6d80c4a'
-    oldFile: !uuid '7ed08a1e3314a4a516d99d3e8baa276a69ab12d3'
-  /LogicServer/server:
-    newFile: !uuid 'e53322968c1879c2275ac5fd76034db8340d43dc'
-    oldFile: !uuid '4a101d04d16fccb8ba8a1d491855862dd1460bab'
-  /LogicServer/server/scripts:
-    newFile: !uuid 'dba94815fb1275a9f016eaa33bc62c9611cf72f1'
-    oldFile: !uuid '7faad4b3b71182b6d5c522a0db5bd79d79036f6b'
-  /LogicServer/server/scripts/base:
-    newFile: !uuid 'd7cf31625c3d6f8f9c187e2ee45462397a51a9cc'
-    oldFile: !uuid '09ca36e80d4f3c44be0b38f7434667e39a690d39'
-  /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid 'a14ab4673cd88cd428e90fb999e19574f22b4153'
-    oldFile: !uuid 'e1c9df6061f57b241fd12254627208046f8faf64'
-  /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid '011451ed22bf71a24d21b846df7325381efe415c'
-    oldFile: !uuid 'c959fa32348a2b00df365eae5753f27dcc6ef3fd'
-  /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
-    newFile: !uuid '19fd6fb358b9cd0874aa0c31150d2a115b9c5b66'
-    oldFile: !uuid '11867cc4612a0422699c63e98596f2b121065646'
   /UnityClient:
-    newFile: !uuid '82a1d3026269525795f5e32147b9056261b41784'
-    oldFile: !uuid 'b2ce82105f0710bd21a3e8c132b9aabda0dfdf69'
+    newFile: !uuid 'c4a597884907379fe00b31f7fb93c6db423e9e76'
+    oldFile: !uuid '82a1d3026269525795f5e32147b9056261b41784'
   /UnityClient/Assets:
-    newFile: !uuid '3fec24268e53a036249317922d29fcc05bafb68f'
-    oldFile: !uuid '423bdc282218b5d1d67e72d6603caf17d96ff018'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '059c9604160b085d15d80e5df6dc3ed62ca555ca'
-    oldFile: !uuid '1a173fd7aeb28e32585b85c0dd6c208a48d67a45'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '9cbcafa9755ab3518c73ce393314675ed3a7631f'
-    oldFile: !uuid '7973df85c32b6b65bb5fd545d72856099ad46dc0'
-  /UnityClient/Assets/Scripts/Data/PublicData.cs:
-    newFile: !uuid 'e80049c2200084389bf31d4cc814595916d2fc82'
-    oldFile: !uuid '0110b351b33b85eecce832bb4fc55cf311acf0e5'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid 'e71963f7ea8d9bf9910cdedd6b088a1d5c35a660'
-    oldFile: !uuid '55922bc7be12465e16fa3b30b97dee505aa15812'
-  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
-    newFile: !uuid 'ca268ab13328577477ad7ea5bc522b5bbee1eee0'
-    oldFile: !uuid 'e5556c32015fe440400f8f7cce8c378f36633676'
-gitCommitId: !uuid '1712dd625fae054264911d4f2406659f8dbd2aaa'
+    newFile: !uuid '0c4536dcc0545677ff74330f01c1b9c768bf7a36'
+    oldFile: !uuid '3fec24268e53a036249317922d29fcc05bafb68f'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '65d0d4cfbaaa0e3b2c3d7212be51e6b9e3a5e900'
+    oldFile: !uuid '909f319dad2ce8e104c8fa64fc5e57a4cf900490'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '5e76417d4b35263c05886a8e5c6523b2c3917cc6'
+    oldFile: !uuid '0e4b084f6243d101572896a192fce3526be48d84'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid 'afa81906b0b25038d0f89b2c7a85b4437b0342f8'
+    oldFile: !uuid 'eb8113272799157c18312e3030a52c9587b03af4'
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_affiche.prefab:
+    newFile: !uuid 'c2e9a39863fb60806469b77ea50e47428f3ea96b'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_affiche.prefab.meta:
+    newFile: !uuid '6ebdd7050727030fdd1ef775168ab9529e7b9ef0'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_backpack.prefab:
+    newFile: !uuid '8d83638c993c8da6dda31fa0e492533aa15618ac'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_backpack.prefab.meta:
+    newFile: !uuid 'ddc1a9fccc3604dfac7b5e34448757861b848f26'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_character_info.prefab:
+    newFile: !uuid 'babc788f892ed56883e77c8c52fe444735753329'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_character_info.prefab.meta:
+    newFile: !uuid '41feaf03b2dbcec12129a901a3ad0e227432f9be'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_setting.prefab:
+    newFile: !uuid 'd9ba329facb7ec9fae6b93e6d978698d501741a7'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_setting.prefab.meta:
+    newFile: !uuid 'c731e443ceeedd13e0cc8e099893b6fea5b6931d'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_trump.prefab:
+    newFile: !uuid 'fb10abd6a4d4c7609aabdd8b4562aeb55fad566b'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_trump.prefab.meta:
+    newFile: !uuid '4601cde2480f5d09817907c7faad92f0fafe4dbb'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_trump_levelup.prefab:
+    newFile: !uuid '41fc4a56d2b968f206084874022c7d235c6f8e7a'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_trump_levelup.prefab.meta:
+    newFile: !uuid '5dbe5abb1f99f520274ecdba5b754ab3f0010b61'
+    oldFile: null
+gitCommitId: !uuid 'dd6a248c2c243aa20e4cc061c270da68ae5ef02c'
 renames: {
   }
-revisionId: 336
+revisionId: 337
