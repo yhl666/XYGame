@@ -3,57 +3,111 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'c4a597884907379fe00b31f7fb93c6db423e9e76'
-    oldFile: !uuid '82a1d3026269525795f5e32147b9056261b41784'
+    newFile: !uuid 'fc54d3fc5be4782e0da85276e3026a20b5f38c8a'
+    oldFile: !uuid 'c4a597884907379fe00b31f7fb93c6db423e9e76'
   /UnityClient/Assets:
-    newFile: !uuid '0c4536dcc0545677ff74330f01c1b9c768bf7a36'
-    oldFile: !uuid '3fec24268e53a036249317922d29fcc05bafb68f'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '65d0d4cfbaaa0e3b2c3d7212be51e6b9e3a5e900'
-    oldFile: !uuid '909f319dad2ce8e104c8fa64fc5e57a4cf900490'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '5e76417d4b35263c05886a8e5c6523b2c3917cc6'
-    oldFile: !uuid '0e4b084f6243d101572896a192fce3526be48d84'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'afa81906b0b25038d0f89b2c7a85b4437b0342f8'
-    oldFile: !uuid 'eb8113272799157c18312e3030a52c9587b03af4'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_affiche.prefab:
-    newFile: !uuid 'c2e9a39863fb60806469b77ea50e47428f3ea96b'
+    newFile: !uuid 'ca6f25fc0c3afaaad6f408c2eb06d5bb13245b25'
+    oldFile: !uuid '0c4536dcc0545677ff74330f01c1b9c768bf7a36'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid '94295c1967244b3af3fd9bd6000830e6260af532'
+    oldFile: !uuid '45ceb7073f153cc0952f261f6d4ca6e2430c7f1e'
+  /UnityClient/Assets/Logic/Scripts:
+    newFile: !uuid 'ffb59b8377bdd6d2444f74fa4e1b2b606b8da432'
+    oldFile: !uuid '21a16bdd6a138c30487ee29022199812e5781f3c'
+  /UnityClient/Assets/Logic/Scripts/GameApp:
+    newFile: !uuid '32027b73d7a4a166c455e10269ba33e883d61b62'
+    oldFile: !uuid '5a9760ca2786d5f25d4d41462f693027be1b091f'
+  /UnityClient/Assets/Logic/Scripts/GameApp/TownApp.cs:
+    newFile: !uuid '4e4ec1639a81e288e141497f2cc9428d6983e6f2'
+    oldFile: !uuid 'c38400b421bf3a6068378c758c4a2b37565c33b6'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp:
+    newFile: !uuid 'de27f8f7cad5f0f3c5095544dd46f3f09ca24615'
+    oldFile: !uuid '67ecba95f9dca96ed2d9e88401fb972bbd8cac35'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/AfficheApp.cs:
+    newFile: !uuid '1a5cf813985c4ac15ac8e736f7a1869441f3d275'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_affiche.prefab.meta:
-    newFile: !uuid '6ebdd7050727030fdd1ef775168ab9529e7b9ef0'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/AfficheApp.cs.meta:
+    newFile: !uuid '0b926a606a42930c6056da5410038ac683ea6cbe'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_backpack.prefab:
-    newFile: !uuid '8d83638c993c8da6dda31fa0e492533aa15618ac'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/BackpackApp.cs:
+    newFile: !uuid 'fb13ccdf0adcf7724ac0a781f0aec5183d63bdc5'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_backpack.prefab.meta:
-    newFile: !uuid 'ddc1a9fccc3604dfac7b5e34448757861b848f26'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/BackpackApp.cs.meta:
+    newFile: !uuid 'f1ff4eacdcc70abec1fd85e0e1cc6e8eb0b0f481'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_character_info.prefab:
-    newFile: !uuid 'babc788f892ed56883e77c8c52fe444735753329'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/CharacterInfoApp.cs:
+    newFile: !uuid 'cfb6a15161a73c20235b197bccad40e8b0f7202e'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_character_info.prefab.meta:
-    newFile: !uuid '41feaf03b2dbcec12129a901a3ad0e227432f9be'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/CharacterInfoApp.cs.meta:
+    newFile: !uuid '9c807291a44e4886c25777465e100a667758eb51'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_setting.prefab:
-    newFile: !uuid 'd9ba329facb7ec9fae6b93e6d978698d501741a7'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/SettingApp.cs:
+    newFile: !uuid '18b3a1da2b1b8d7bb25bf0c38bfe8ec3245aa7e6'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_setting.prefab.meta:
-    newFile: !uuid 'c731e443ceeedd13e0cc8e099893b6fea5b6931d'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/SettingApp.cs.meta:
+    newFile: !uuid '8700b501687fc088c33980b424a6b0a440c6070b'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_trump.prefab:
-    newFile: !uuid 'fb10abd6a4d4c7609aabdd8b4562aeb55fad566b'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/TrumpApp.cs:
+    newFile: !uuid '328309a5956135bb58ea8329ac398e9302e99172'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_trump.prefab.meta:
-    newFile: !uuid '4601cde2480f5d09817907c7faad92f0fafe4dbb'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/TrumpApp.cs.meta:
+    newFile: !uuid 'df3ec2eee8c3f0ae1539727cfafd34bd13df8906'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_trump_levelup.prefab:
-    newFile: !uuid '41fc4a56d2b968f206084874022c7d235c6f8e7a'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/TrumpLevelApp.cs:
+    newFile: !uuid '959fa87f9cb0760782666f51994eadb4efbe3a18'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_trump_levelup.prefab.meta:
-    newFile: !uuid '5dbe5abb1f99f520274ecdba5b754ab3f0010b61'
+  /UnityClient/Assets/Logic/Scripts/GameCellApp/TrumpLevelApp.cs.meta:
+    newFile: !uuid '39bd92073e0339ecdc3f1850e6a591c5e623f1a7'
     oldFile: null
-gitCommitId: !uuid 'dd6a248c2c243aa20e4cc061c270da68ae5ef02c'
+  /UnityClient/Assets/Logic/Scripts/View:
+    newFile: !uuid '3acfa9558bb6d26f38aed6cacbc78d16a0250fd4'
+    oldFile: !uuid 'bb48572f0245527343427e6b0586c689e1bdd2c8'
+  /UnityClient/Assets/Logic/Scripts/View/UITown.cs:
+    newFile: !uuid 'e4d4a28c6167df1f45f5f59cf8235e00d19a3339'
+    oldFile: !uuid '733ad0d633c1fd81a296d12e18622a5b349b79bd'
+  /UnityClient/Assets/Logic/Scripts/View/UI_afficheapp.cs:
+    newFile: !uuid 'fad92fb1ad0f70333786df1534e947daf0750cd1'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_afficheapp.cs.meta:
+    newFile: !uuid 'a411a4c54138015573d1e8971c505e5e3dd5af2b'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_backpackapp.cs:
+    newFile: !uuid '99ff33ef338e8df74c59885757586c0a7f31498b'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_backpackapp.cs.meta:
+    newFile: !uuid 'd624bd4a37089a36e51e8faa72b4dee870d9f3fd'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_characterinfoapp.cs:
+    newFile: !uuid '73cac85c3e1094e9b667854a168b33ae1f249bf6'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_characterinfoapp.cs.meta:
+    newFile: !uuid '28b2492c91131a368000a0be2bb965d0c72ad353'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_settingapp.cs:
+    newFile: !uuid '8d301cfccacb59f781e5cc358a7f45499d287769'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_settingapp.cs.meta:
+    newFile: !uuid '689ebabf6821d5c8439d92f56c7cec101ccd4a33'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_townlogoutapp.cs:
+    newFile: !uuid 'ea2f14937029177377161e97638f8ac5b7397318'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_townlogoutapp.cs.meta:
+    newFile: !uuid '6090936c06f833483c9e350f46058c77c8292a41'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_trump_levelupapp.cs:
+    newFile: !uuid '2f2e6e0718c76c9a6629d4ff79d35a345257b06d'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_trump_levelupapp.cs.meta:
+    newFile: !uuid '56be506129449588045bd9b2e13e34f758c1666f'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_trumpapp.cs:
+    newFile: !uuid '60430a031c29dc0ff7edd366e8d6fec63a6f7fb1'
+    oldFile: null
+  /UnityClient/Assets/Logic/Scripts/View/UI_trumpapp.cs.meta:
+    newFile: !uuid '12cb787f4ec90cc261d2e83e8e6bb145c6d2129c'
+    oldFile: null
+gitCommitId: !uuid '0e0b397ae7a2bae8dd0cc656402b9779520e01d7'
 renames: {
   }
-revisionId: 337
+revisionId: 338
