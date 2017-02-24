@@ -160,7 +160,7 @@ public sealed class Events : object
     public const int ID_BTN_LOGOUT = 588;
 
     public const int ID_TOWN_PVP_QUEUE_RESULT = 72;//  匹配结果消息
-
+    public const int ID_BATTLE_EXIT = 73;//退出战斗
 
     //------------------------------local event-----------------------------------------------------------
 

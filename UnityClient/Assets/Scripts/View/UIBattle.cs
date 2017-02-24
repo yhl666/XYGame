@@ -631,24 +631,62 @@ public sealed class UI_pvpresult : ViewUI
     }
     public override void OnEvent(int type, object userData)
     {
-       if(type== Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW)
-       {
-           this.panel.SetActive(true);
-       }
+        if (type == Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW)
+        {
+            this.panel.SetActive(true);
+        }
+
+        else if (type == Events.ID_BATTLE_PVP_RETULT)
+        {
+            string res = userData as string;
+            Debug.Log("BattleApp Result " +res);
+            this.btn_video.gameObject.SetActive(true);
+            this.btn_return.gameObject.SetActive(true);
+
+            HashTable kv = Json.Decode(res);
+            this.txt_result.text =  kv["msg"];
+
+        }
     }
     public override bool Init()
     {
         base.Init();
 
         this.panel = GameObject.Find("ui_panel_result");
-        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
 
+        this.btn_return = panel.transform.FindChild("btn_return").GetComponent<Button>();
+        this.btn_video = panel.transform.FindChild("btn_video").GetComponent<Button>();
+        this.txt_result = panel.transform.FindChild("txt_result").GetComponent<Text>();
+
+ 
+
+        this.btn_return.onClick.AddListener(() =>
+         {
+             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_EXIT);//dispost BattleApp
+
+             PublicData.ins.ResetPVP();
+             SceneMgr.Load("TownScene");
+         });
+
+        this.btn_video.onClick.AddListener(() =>
+           {
+               Debug.Log("观看录像");
+           });
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_PVP_RETULT);
 
         this.panel.SetActive(false);
+        this.btn_video.gameObject.SetActive(false);
+        this.btn_return.gameObject.SetActive(false);
+        this.txt_result.text = "等待服务器响应...";
         return true;
     }
 
 
     GameObject panel = null;
+    Button btn_return = null;
+    Button btn_video = null;
+    Text txt_result = null;
 }
 

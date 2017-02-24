@@ -581,13 +581,17 @@ public sealed class BattleApp : AppBase
         }
         else if (type == Events.ID_BATTLE_PVP_RETULT)
         {
-            Debug.Log("BattleApp Result " + userData as string);
+          /*  Debug.Log("BattleApp Result " + userData as string);
 
             this.Dispose();
 
 
             PublicData.ins.ResetPVP();
-            SceneMgr.Load("TownScene");
+            SceneMgr.Load("TownScene");*/
+        }
+        else if (type == Events.ID_BATTLE_EXIT)
+        {
+            this.Dispose();
         }
 
         /*   if (type == Events.ID_NET_DISCONNECT)
