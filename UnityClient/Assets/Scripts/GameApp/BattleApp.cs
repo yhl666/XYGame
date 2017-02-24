@@ -147,7 +147,7 @@ sealed class BattleSyncHandler
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-            /// Debug.Log("Recv " + xx);
+          //  Debug.Log("Recv " + xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -643,7 +643,7 @@ public sealed class BattleApp : AppBase
     }
     public void InitNet(bool isReConnect = false)
     {
-
+        Debug.Log(PublicData.ins.isVideoMode);
         if (PublicData.ins.is_client_server)
         {
             this.InitWithClientServer();
@@ -738,9 +738,13 @@ public sealed class BattleApp : AppBase
             this.socket.Terminal();
             this.socket = null;
         }
-        if (this.isVideoMode() == false)
+        if (this.isVideoMode())
         {
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
 
+            string str = "ret:ok,msg:播放战斗录像结束!,";
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_RETULT, str);
+            return;
         }
 
         if (PublicData.ins.is_client_server)
@@ -909,7 +913,7 @@ public sealed class BattleApp : AppBase
     {
         PublicData.ins.is_pvp_friend_ai = false;
         PublicData.ins.is_pvp_friend = false;
-        PublicData.ins.isVideoMode = false;
+     ///   PublicData.ins.isVideoMode = false;
 
 
 

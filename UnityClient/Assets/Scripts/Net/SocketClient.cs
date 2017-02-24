@@ -321,7 +321,7 @@ public class SockClientWithVideoMode : SocketClient
 }
 
 
-
+//练习模式
 public class SockClientWithPVPAIMode : SocketClient
 {
 
@@ -356,7 +356,7 @@ public class SockClientWithPVPAIMode : SocketClient
         t_recv = new Thread(new ThreadStart(ThreadFunction_Recv));
 
         t_recv.Start();
-        Debug.Log("[NetWork]:Socket Thread Start");
+        Debug.Log("[NetWork]:Socket Thread Start With Video Mode");
 
     }
 

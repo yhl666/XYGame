@@ -89,6 +89,6 @@ public class PublicData : object
         is_pvp_friend_ai = false;
         is_pvp_friend_owner = true;//主动发起的一方
 
-  
+        isVideoMode = false;
     }
 }
