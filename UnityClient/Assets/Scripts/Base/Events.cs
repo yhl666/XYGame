@@ -125,6 +125,40 @@ public sealed class Events : object
     public const int ID_TOWN_BTN_PVP_ENTER_QUEUE_CLICKED = 71;//进入随机匹配1v1队列按钮
 
 
+    public const int ID_SETTING_CLICKED = 557;
+    public const int ID_SETTING_CLOSE_CLICKED = 558;
+    public const int ID_INFO_SETTING = 559;
+
+    public const int ID_HIDE_MENU = 560;
+    public const int ID_SHOW_MENU = 561;
+
+    public const int ID_AFFICHE_CLICKED = 562;
+    public const int ID_AFFICHE_CLOSE_CLICKED = 563;
+    public const int ID_INFO_AFFICHE = 564;
+
+    public const int ID_CHARACTER_INFO_CLICKED = 501;
+    public const int ID_CHARACTER_INFO_CLOSE_CLICKED = 502;
+    public const int ID_INFO_CHARACTER_INFO = 503;
+
+
+    public const int ID_TRUMP_CLICKED = 504;
+    public const int ID_TRUMP_CLOSE_CLICKED = 505;
+    public const int ID_INFO_TRUMP = 506;
+
+    public const int ID_TRUMP_LEVELUP_CLICKED = 507;
+    public const int ID_TRUMP_LEVELUP_CLOSE_CLICKED = 508;
+    public const int ID_INFO_TRUMP_LEVELUP = 509;
+
+    public const int ID_BACKPACK_CLICKED = 510;
+    public const int ID_BACKPACK_CLOSE_CLICKED = 511;
+    public const int ID_INFO_BACKPACK = 512;
+    public const int ID_INFO_BACKPACK_SHOW = 513;
+    public const int ID_INFO_BACKPACK_UNSHOW = 514;
+
+
+
+    public const int ID_BTN_LOGOUT = 588;
+
     public const int ID_TOWN_PVP_QUEUE_RESULT = 72;//  匹配结果消息
 
 
