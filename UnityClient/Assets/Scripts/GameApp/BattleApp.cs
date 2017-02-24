@@ -249,7 +249,6 @@ sealed class BattleSyncHandler
 
             PublicData.GetInstance()._on_enter_max_fps = on_enter_max_fps;
 
-            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
         }
 
         else if (cmd == "Over")
@@ -276,6 +275,7 @@ sealed class BattleSyncHandler
         else if (cmd == "new_pvp_friend_ai")
         {//pvp 好友 离线模式 模式 新玩家
 
+            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
             int no = int.Parse(decode.customs[1] as string);
             ///  if (no == HeroMgr.ins.me_no)
             //  if (HeroMgr.ins.GetHero(no) != null) return;
@@ -297,6 +297,7 @@ sealed class BattleSyncHandler
         else if (cmd == "new_pvp_friend")
         {//pvp 好友  模式 新玩家
 
+            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
             int no = int.Parse(decode.customs[1] as string);
 
             if (PublicData.ins.is_client_server)
