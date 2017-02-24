@@ -2,25 +2,46 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'b2ce82105f0710bd21a3e8c132b9aabda0dfdf69'
-    oldFile: !uuid '1e8729d53dc5793cd5a9e28e54a0fa86bc395b32'
-  /UnityClient/Assets:
-    newFile: !uuid '423bdc282218b5d1d67e72d6603caf17d96ff018'
-    oldFile: !uuid '5b41082f5680aa0168e29e60c26f45cd1f2cca95'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '909f319dad2ce8e104c8fa64fc5e57a4cf900490'
-    oldFile: !uuid '5737ce7457ec03a81a8570a048184a1250524429'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '0e4b084f6243d101572896a192fce3526be48d84'
-    oldFile: !uuid 'aa11428905d70be9dc18cdebbfcc1bb836c893d1'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'eb8113272799157c18312e3030a52c9587b03af4'
-    oldFile: !uuid '5c981c8c5be87a3526054ad33cb7a5278c373987'
-  /UnityClient/Assets/Resources/Prefabs/ui/Town.prefab:
-    newFile: !uuid '1436426ab9e40e6c2db5374702876a20cfa6b1d7'
-    oldFile: !uuid '8977547c7d152ee529678680ca0b054fd8dcbc21'
-gitCommitId: !uuid '43c06efbe1e8e7d1e04810c9ac68adf09cac1d7e'
+  /LogicServer:
+    newFile: !uuid '7ed08a1e3314a4a516d99d3e8baa276a69ab12d3'
+    oldFile: !uuid 'eb95cde6a03cd59ef3212499bdd00a823bce4ca1'
+  /LogicServer/server:
+    newFile: !uuid '4a101d04d16fccb8ba8a1d491855862dd1460bab'
+    oldFile: !uuid 'e2bd3b566e927c79269b2379a0261e953186a953'
+  /LogicServer/server/scripts:
+    newFile: !uuid '7faad4b3b71182b6d5c522a0db5bd79d79036f6b'
+    oldFile: !uuid '0238ebf3c8fe793d1118afc90399ebb7b1fc288b'
+  /LogicServer/server/scripts/base:
+    newFile: !uuid '09ca36e80d4f3c44be0b38f7434667e39a690d39'
+    oldFile: !uuid 'b99c2ddb5c61d6ebe8f0e8276fb2910a413d6ec3'
+  /LogicServer/server/scripts/base/xygame:
+    newFile: !uuid 'e1c9df6061f57b241fd12254627208046f8faf64'
+    oldFile: !uuid '57facac7b6f0d92de903d91b8db1ad72e3c88c4f'
+  /LogicServer/server/scripts/base/xygame/services:
+    newFile: !uuid 'c959fa32348a2b00df365eae5753f27dcc6ef3fd'
+    oldFile: !uuid '5a821bfaf07c6c4bc4f653cd6f5f9b6b0414f13c'
+  /LogicServer/server/scripts/base/xygame/services/battle_pvp.lua:
+    newFile: !uuid '11867cc4612a0422699c63e98596f2b121065646'
+    oldFile: !uuid '0e40e7bae3402f25f045159e67e799018afbe997'
+  /LogicServer/server/scripts/base/xygame/services/login.lua:
+    newFile: !uuid 'eeeaa927aba549da26518ccb7af53e195731b0cc'
+    oldFile: !uuid '67ad570e395c437e35867d7f22e1e6c5ef315421'
+  /LogicServer/server/scripts/base/xygame/services/room.lua:
+    newFile: !uuid '1fa75eb0560f3c8e6eb48626a582032163b3b2cb'
+    oldFile: !uuid 'b7c5d02f3c5fe8e1e4118eb0eeba9e83799f0dfc'
+  /LogicServer/server/scripts/common:
+    newFile: !uuid 'e549f2b8c3d3355eff676180bbffb0cbd924a0f2'
+    oldFile: !uuid '5f20a9e9fa85ec04e323864caed2c1703bb750f0'
+  /LogicServer/server/scripts/common/xygame:
+    newFile: !uuid '34ad7742877a5d74a43156ab954cbac2ed7c5b4e'
+    oldFile: !uuid '32b806ff91326d1a3a5c095ef3523e9b62c85f43'
+  /LogicServer/server/scripts/common/xygame/model:
+    newFile: !uuid '24fb0515eef58249688ad3457de5e2ce4282219c'
+    oldFile: !uuid '19a32c0b46f1fe874613e911adebe186fd918979'
+  /LogicServer/server/scripts/common/xygame/model/hero_list.lua:
+    newFile: !uuid '1dc0b9d63a1b95b95d084fa0973771eb2d273934'
+    oldFile: !uuid '27be3bfd9e9974884bbed797e8aa3512eae9fabe'
+gitCommitId: !uuid '85df251fecfda6d97865527a6f21c02f62b0fe9d'
 renames: {
   }
-revisionId: 334
+revisionId: 335
