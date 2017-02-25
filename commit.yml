@@ -2,34 +2,49 @@
 branches: {
   }
 fileChange:
-  /BattleServer:
-    newFile: !uuid '8e4e045f073295ecc8620312b946397faf7382ac'
-    oldFile: !uuid '7d28050c62e9e95c5ea8f867db39043bf6b5bc43'
-  /BattleServer/Debug:
-    newFile: !uuid 'eb430ffe5ca53065d7d1458dee3926131f2a58f3'
-    oldFile: !uuid '302f4ac883603928f4a0a187a58f73027f8a80d3'
-  /BattleServer/Debug/BattleServer.exe:
-    newFile: !uuid '024c8c883ed5d3cf5641d2ef32c14e480082daae'
-    oldFile: !uuid 'cac217caa898c1b24906bded01ab7269dac23753'
-  /BattleServer/Debug/config.ini:
-    newFile: !uuid '0e097d190b14b72d43587a8ea8b193f470677fa1'
-    oldFile: !uuid '21742ace417451f64f3f06e06a1aa390331a8f84'
-  /BattleServer/cpp:
-    newFile: !uuid '8d7ab168e40ab51bd7b46cee071009b9740f7c00'
-    oldFile: !uuid '6b5f07d0d6d33f3e7046762fa46c29dba99f5558'
-  /BattleServer/cpp/ServerApp.cpp:
-    newFile: !uuid '2435fa1e8a2893b5f42659e2994f9b27754d36ef'
-    oldFile: !uuid '75f2ae65b5648ed3b05062d7658752764e422748'
-  /BattleServer/cpp/ServerApp.h:
-    newFile: !uuid '1912993d9032b6490aec2d40dfafc5c9b0b92115'
-    oldFile: !uuid '9bf1567aa047b1e28c7adc27ae4391dd324d91f8'
-  /BattleServer/cpp/config.ini:
-    newFile: !uuid '232bc5dafdbf23668990e689e7dd9166e2189942'
-    oldFile: !uuid 'b8cba2ebfc7456acf70607b51d891e7eb09b56c7'
-  /BattleServer/cpp/main.cpp:
-    newFile: !uuid '9710c4bfeacd00b912d3cc317ace2cabe32e664f'
-    oldFile: !uuid 'c97e017649cc5a224918359f08424e65118e62e6'
-gitCommitId: !uuid '24827797daa297723ef374aaf78fb476a14477ed'
+  /UnityClient:
+    newFile: !uuid 'aaed15639100f2c254d2c76af8435a38491a2632'
+    oldFile: !uuid '0baf012edaa7f7d5e523ffca0c64fe7a8f5dc247'
+  /UnityClient/Assets:
+    newFile: !uuid 'ae4cafe2bd125d5f201541f6e3d945eee324a245'
+    oldFile: !uuid '6934b43738978a6b2f2e11d3d451d11603d1dae3'
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid 'bf24b3aa64a74ea01771a15b1be3c5517d9db884'
+    oldFile: !uuid 'd74c2a9ca6953a673789ff2e2b11474b9f56e597'
+  /UnityClient/Assets/Scenes/BattleEnemy.unity:
+    newFile: !uuid '061e6604b600b167dcbb504ee37abd504a80b743'
+    oldFile: !uuid '070bd525ac59b9ff56579f0ea0c7f0b0736b6e2a'
+  /UnityClient/Assets/Scenes/BattlePVE.unity:
+    newFile: !uuid '3b9145eb91a867d057aa3148eebac6ecd03a014d'
+    oldFile: null
+  /UnityClient/Assets/Scenes/BattlePVE.unity.meta:
+    newFile: !uuid '32e13df89fe28d33d1110bdd9a07fab383e18165'
+    oldFile: null
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '5bea4002348bed07069f02fb8790c29ffa7eb867'
+    oldFile: !uuid 'c710d0ecd19b22de1bb71aa95dd4d201a0479a09'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '4f49c1ec2e732a37889240bcb5531176aad36175'
+    oldFile: !uuid '705a6d32029f12bee35030ee815c0650dcbbd42b'
+  /UnityClient/Assets/Scripts/Model/Buffer.cs:
+    newFile: !uuid '76d1fbb11625008074e3f4c9574dd39e7e6dc9ce'
+    oldFile: !uuid '4f7e831f05bfea49dda31cf9c5ebf78adc2eb219'
+  /UnityClient/Assets/Scripts/Model/Bullet.cs:
+    newFile: !uuid '87dda460826e1315da7f60d6b1bd43b0b9a933d2'
+    oldFile: !uuid '1822eccfe02d187e9a3c347af5da3be7cdc9424a'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'a0d41ff96056ffbc9252b2af9c21d5bd9bd0ceac'
+    oldFile: !uuid '550c3a461a10268804456c95f960276433609f97'
+  /UnityClient/Assets/Scripts/View/UIBattle.cs:
+    newFile: !uuid '4d2bea520e7a4f909dfc13518d8abc4809d3828f'
+    oldFile: !uuid '5effae6b28b26a40871c04e2e27ab06c9a4cd1cf'
+  /UnityClient/ProjectSettings:
+    newFile: !uuid '8835ffa36e2d0173dea86e7e8649ef821d5780fe'
+    oldFile: !uuid '1902614ea9be33a2b03d14d352c3f8af8e938f06'
+  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
+    newFile: !uuid '96e90a8426df700afbb3f9fba7e8afafe64929b7'
+    oldFile: !uuid '55b7f0f52a1257c751c8acc117112da46df10eb2'
+gitCommitId: !uuid 'cab3a1272d4f559becc9b8b4d530f09401eea8d7'
 renames: {
   }
-revisionId: 349
+revisionId: 350
