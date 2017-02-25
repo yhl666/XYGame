@@ -28,7 +28,7 @@ public class Enemy : Entity
         if (isHurt) return;
 
         // 有目标 ，先判断是否在攻击范围内
-        float dis = target.ClaculateDistance(x, y);
+        float dis = target.ClaculateDistance(x, y+height);
         if (dis < 2)
         {
             //攻击范围内

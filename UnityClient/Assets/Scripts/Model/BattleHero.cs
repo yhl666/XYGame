@@ -80,11 +80,11 @@ public class BattleHero : Hero
         ViewMgr.Create<ViewEntity>(this);
 
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 1; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy>();
                 e1.x = Random.Range(5, 80);
-            //    e1.x =10;
+             e1.x =10;
 
 
 

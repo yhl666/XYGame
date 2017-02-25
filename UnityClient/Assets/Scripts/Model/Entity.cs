@@ -111,7 +111,7 @@ public class Entity : Model
     }
     public float ClaculateDistance(float x, float y)
     {
-        return Utils.ClaculateDistance(new Vector2(this.x, this.y), new Vector2(x, y));
+        return Utils.ClaculateDistance(new Vector2(this.x, this.y+this.height), new Vector2(x, y));
     }
 
     public float GetRealY()
