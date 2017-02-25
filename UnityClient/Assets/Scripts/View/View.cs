@@ -220,6 +220,111 @@ public class ViewEntity : View
 
 
 
+public class ViewEnemy : View
+{
+
+    public override void OnDispose()
+    {
+        GameObject.DestroyImmediate(obj);
+    }
+
+
+
+    public override bool Init()
+    {
+        base.Init();
+        this.m = model as Entity;
+
+        this.obj = PrefabsMgr.Load(m.prefabsName);
+        this.spine = obj.GetComponent<SkeletonAnimation>();
+        spine.initialSkinName = m.skin;
+        spine.skeleton.SetSkin(m.skin);
+        this.transform = obj.GetComponent<Transform>();
+
+
+        //init event
+
+        spine.state._OnComplete = () =>
+        {
+            //   Debug.Log("_OnComplete");
+            m.eventDispatcher.PostEvent("SpineComplete", spine.AnimationName);
+
+        };
+
+
+        spine.state._OnEnd = () =>
+        {//
+            // Debug.Log("end");
+        };
+        spine.state._OnStart = () =>
+        {
+            //   Debug.Log("start");
+        };
+
+        return true;
+    }
+
+
+
+    public override void UpdateMS()
+    {
+        if (m.IsInValid())
+        {
+            this.SetInValid();
+            return;
+        }
+
+
+        this.obj.name = m.no.ToString();
+        transform.position = new Vector3(m.x, m.y + m.height, transform.position.z);
+        float factor = m.scale;
+        transform.localScale = new Vector3(m.flipX * factor, factor, factor);
+
+        string name = "";
+        //优先级匹配，状态可能组合，但是动画只有一个
+        if (m.isHurt)
+        {
+            name = m.ani_hurt;
+        }
+        else if (m.isAttacking)
+        {
+            name = m.attackingAnimationName;
+        }
+      /*  else if (m.isJumpTwice)
+        {
+            name = m.ani_jumpTwice;
+        }
+        else if (m.isJumping)
+        {
+            name = m.ani_jump;
+        }
+        else if (m.isFalling)
+        {
+            name = m.ani_fall;
+        }*/
+        else if (m.isRunning)
+        {
+            name = m.ani_run;
+        }
+        else if (m.isStand)
+        {
+            name = m.ani_stand;
+        }
+
+        spine.AnimationName = name;
+
+
+        spine.UpdateMS(Utils.deltaTime);
+    }
+
+
+    SkeletonAnimation spine = null;
+    Transform transform = null;
+    GameObject obj = null;
+    Entity m = null;
+}
+
+
 
 public class ViewBuffer2_1 : View
 {

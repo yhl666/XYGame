@@ -77,12 +77,29 @@ public class BattleHero : Hero
         bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
 
         bullet_atk1_info = BulletConfigInfo.Create();
-
-
-
         ViewMgr.Create<ViewEntity>(this);
 
-        //   EnemyMgr.Create<Enemy>();
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Enemy e1 = EnemyMgr.Create<Enemy>();
+                e1.x = Random.Range(5, 80);
+            //    e1.x =10;
+
+
+
+                e1.y = 5;
+                e1.team = 333;
+            }
+        }
+
+
+        this.team = 1;
+
+
+
+
+
 
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
         return true;
@@ -217,7 +234,7 @@ public class BattleHero : Hero
         if (cd_atk <= 0)
         {
             //   target.TakeAttack(this);
-            BulletMgr.Create(this, this.bulleClassName_atk1,this.bullet_atk1_info);
+            BulletMgr.Create(this, this.bulleClassName_atk1, this.bullet_atk1_info);
 
 
             atk = true;

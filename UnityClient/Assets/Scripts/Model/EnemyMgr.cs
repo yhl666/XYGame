@@ -42,6 +42,7 @@ public sealed class EnemyMgr : GAObject
     {
         foreach (Enemy b in lists)
         {
+            b.AI_UpdateMSWithAI();
             EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ONEENTITY_UPDATEMS, b);
             b.UpdateMS();
             EventDispatcher.ins.PostEvent(Events.ID_AFTER_ONEENTITY_UPDATEMS, b);

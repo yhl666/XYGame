@@ -64,12 +64,28 @@ public class Enemy : Entity
         {
             //玩家在右方
             right = true;
+            if (this.isInOneTerrainRight == true)
+            {
+                if (this.GetRealY() < target.GetRealY())
+                {
+                    this.jump = true;
+                }
+            }
         }
         else
         {
             //玩家在左方
             left = true;
+            if (this.isInOneTerrainRight == false)
+            {
+                if (this.GetRealY() < target.GetRealY())
+                {
+                    this.jump = true;
+                }
+            }
         }
+
+      
     }
     public virtual void AI_AttackTarget()
     {
@@ -109,7 +125,7 @@ public class Enemy : Entity
 
         //init state machine
  
-        {
+       /* {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
             s.PushSingleState(StateBase.Create<AttackState_1>(this));
@@ -137,8 +153,51 @@ public class Enemy : Entity
             this.machine.AddParallelState(s);
             s.PushSingleState(StateBase.Create<HurtState>(this));
         }
+        */
 
-        ViewMgr.Create<ViewEntity>(this);
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<AttackState_1>(this));
+        }
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<RunState>(this));
+
+        }
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<JumpState>(this));
+        }
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<FallState>(this));
+        }
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<StandState>(this));
+
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<SkillState>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<HurtState>(this));
+        }
+        ViewMgr.Create<ViewEnemy>(this);
 
 
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
@@ -159,7 +218,7 @@ public class Enemy : Entity
     }
     public override void UpdateMS()
     {
-        this.AI_UpdateMSWithAI();
+     ///   this.AI_UpdateMSWithAI();
         //process  input status
         if (atk)
         {
@@ -181,14 +240,18 @@ public class Enemy : Entity
             eventDispatcher.PostEvent(Events.ID_BTN_RIGHT);
             right = false;
         }
-
+        if (jump)
+        {
+            eventDispatcher.PostEvent(Events.ID_BTN_JUMP);
+            jump = false;
+        }
         if (s1)
         {
             eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1);
             s1 = false;
         }
 
-
+ 
         base.UpdateMS();
 
     }
