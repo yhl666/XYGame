@@ -368,13 +368,13 @@ sealed class BattleSyncHandler
                     h2.x = 10;
                     h2.flipX = 1f;
                     var xxx = HeroMgr.ins.self;
-                    HeroMgr.ins.self.x = 3f;
+                    HeroMgr.ins.self.x = 3.6f;
 
                 }
                 else
                 {//我不是发起方
 
-                    h2.x = 3f;
+                    h2.x = 3.6f;
                     HeroMgr.ins.self.x = 10;
                     HeroMgr.ins.self.flipX = 1f;
 

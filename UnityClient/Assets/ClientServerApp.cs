@@ -71,7 +71,7 @@ public class ClientServerApp : GAObject
             t_send = new Thread(new ThreadStart(this.ThreadFunc_Send));
             t_recv = new Thread(new ThreadStart(this.ThreadFunc_Recv));
         }
-
+      ///  this.recvQueue.Enqueue("pvproom_id:69,p1:2,p2:3,");
         return true;
     }
 
