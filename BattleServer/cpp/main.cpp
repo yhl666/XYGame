@@ -17,7 +17,7 @@ int main()
 	bool ok=Config::InitWithFile("config.ini");
 	if (ok)
 	{
-		ServerAppBattlePVP app;
+		ServerAppBattlePVE app;
 		//ServerApp app;
 		app.Startup();
 		app.Run();
