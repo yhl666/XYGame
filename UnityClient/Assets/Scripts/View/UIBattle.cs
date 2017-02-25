@@ -513,7 +513,7 @@ public sealed class UI_xy : ViewUI
         var self = HeroMgr.ins.self;
         if (self != null)
         {
-            txt.text = string.Format(DATA.UI_INFO_XY, self.x.ToString("0"), self.y.ToString("0"));
+            txt.text = string.Format(DATA.UI_INFO_XY,(100.0f* self.x).ToString("0"), ((self.y + self.height)*100.0f).ToString("0"));
         }
     }
 
