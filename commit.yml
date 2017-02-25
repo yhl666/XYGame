@@ -2,10 +2,46 @@
 branches: {
   }
 fileChange:
-  /README.md:
-    newFile: !uuid 'afd07d9c02e0f977451e5264b03e24754a6e3ab7'
-    oldFile: !uuid 'ea2d7218fc224448d1238ef765c141285ad12321'
-gitCommitId: !uuid 'b67fc2464fac143fe5b76a8e680b1b57bcda97a1'
+  /BattleServer:
+    newFile: !uuid '70525557474026cdeb289a608da901120be3ed7e'
+    oldFile: !uuid '8e4e045f073295ecc8620312b946397faf7382ac'
+  /BattleServer/Debug:
+    newFile: !uuid '5f4827bdaaace05f962bdea789dd3d1541108843'
+    oldFile: !uuid 'eb430ffe5ca53065d7d1458dee3926131f2a58f3'
+  /BattleServer/Debug/config.ini:
+    newFile: !uuid 'b51d9f478672da01b04e95d7f7368d83811a4125'
+    oldFile: !uuid '0e097d190b14b72d43587a8ea8b193f470677fa1'
+  /UnityClient:
+    newFile: !uuid 'cd5be0003064a142d16adc25b0e6a8bfc22bb79d'
+    oldFile: !uuid '00455c9700bf30b0da3d56568d59944593931ab2'
+  /UnityClient/Assets:
+    newFile: !uuid '9e22570fd4e97a1f4b5d98e4289f0fc6600302ca'
+    oldFile: !uuid '0274ff7b16ab6243ce45e8ce6d4ec5464e25feb7'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '982aa90ff9b4b1f7610dea902b3857ae2a1998a6'
+    oldFile: !uuid 'bcfe13f670d33ebd885c80d6932f207bbf903b16'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'b0cdc6d8f060ba4fa080ca48e5d40ae1375199f1'
+    oldFile: !uuid '374273c34f69f337c77e2e48ebdb7fcbb3e8ed8a'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid 'abfaeb414222fba261bb3379b1765a6cfb7134c9'
+    oldFile: !uuid '5986f3e558057e6adcd4e0e856cf015a2cbc7788'
+  /UnityClient/Assets/Scripts/Model/Bullet.cs:
+    newFile: !uuid 'b51569d769433991ef2c902223be5eae9867cb01'
+    oldFile: !uuid '87dda460826e1315da7f60d6b1bd43b0b9a933d2'
+  /UnityClient/Assets/Scripts/Model/Enemy.cs:
+    newFile: !uuid 'fca29eb4cbf6754a1854ebed80390c103ca0d841'
+    oldFile: !uuid '887607b840f30b5762d287cac2cfb944e7754abd'
+  /UnityClient/Assets/Scripts/Model/Entity.cs:
+    newFile: !uuid '917b8bcbb4fb48fe980b2714f8e2cd59a520989f'
+    oldFile: !uuid 'dd9b1c9b26114938b0ff5244778067c213745240'
+  /UnityClient/ProjectSettings:
+    newFile: !uuid 'c42bfe11adec0670f454acdda647e0233f5c4be8'
+    oldFile: !uuid '8835ffa36e2d0173dea86e7e8649ef821d5780fe'
+  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
+    newFile: !uuid '8ff7e322888223ae76f597396d5edba75860e818'
+    oldFile: !uuid '96e90a8426df700afbb3f9fba7e8afafe64929b7'
+gitCommitId: !uuid 'eaf48e9566ad2c9af072f3682c7bb18d66ca43f6'
 renames: {
   }
-revisionId: 353
+revisionId: 354
