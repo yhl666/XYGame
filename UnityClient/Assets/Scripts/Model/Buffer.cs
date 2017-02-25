@@ -191,7 +191,7 @@ public class Buffer2_1 : Buffer
     {
         base.OnEnter();
         this.SetLastTime(5);
-        target.x_auto -= 1 * target.flipX;
+     ///   target.x_auto -= 1 * target.flipX;
     }
 
 

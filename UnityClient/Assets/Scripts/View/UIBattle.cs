@@ -70,7 +70,7 @@ public sealed class UIBattleRoot : ViewUI
         }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
-            this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
+         ///   this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
             return DATA.EMPTY_STRING;
         }));
         return true;
@@ -326,7 +326,7 @@ public sealed class UI_heroInfo : ViewUI
             if (m == null) return;
 
         }
-        if (m2 == null)
+        /*if (m2 == null)
         {
             if (m2 != null) return;
 
@@ -343,7 +343,7 @@ public sealed class UI_heroInfo : ViewUI
                     panel2.SetActive(true);
                 }
             }
-        }
+        }*/
 
 
         txt_info1.text = m.no + " LV:" + m.level;

@@ -365,7 +365,7 @@ public class Bullet2_1 : Bullet
 
     public override void OnEnter()
     {
-        this.owner.AddBuffer<LuaBuffer>();
+        this.owner.AddBuffer<Buffer2_1>();
 
     }
 
