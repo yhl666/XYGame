@@ -3,39 +3,15 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '62ab9b974cc1674c9ce243610b6e8628bc8b4ddd'
-    oldFile: !uuid '70ed020babd961cdee6ed7b5c53e6c7d2691e1fe'
-  /UnityClient/Assets:
-    newFile: !uuid '1df14bc055b45be9965a00da488c3277ebe8b630'
-    oldFile: !uuid '0133c847667a75bb88d146c2125e0a0df98754c9'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '0545a6beebe0325b9b6ef46a2b5f2a4ecb6d6f60'
-    oldFile: !uuid '65d0d4cfbaaa0e3b2c3d7212be51e6b9e3a5e900'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '7f61712463571fc5a55be9766c5ae435c6295c23'
-    oldFile: !uuid '5e76417d4b35263c05886a8e5c6523b2c3917cc6'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '9d5bd139d07d7d92661da6ee5c0ca35795a8f621'
-    oldFile: !uuid 'afa81906b0b25038d0f89b2c7a85b4437b0342f8'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_affiche.prefab:
-    newFile: !uuid '9eda95b9f48541ef51ef7fd9fe451d5a062c2d70'
-    oldFile: !uuid 'c2e9a39863fb60806469b77ea50e47428f3ea96b'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_backpack.prefab:
-    newFile: !uuid '1b5b93097709cb59ed0ebb8720bfe67bf6a040c4'
-    oldFile: !uuid '8d83638c993c8da6dda31fa0e492533aa15618ac'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_character_info.prefab:
-    newFile: !uuid '069cbeec6545460db5cfb1c31eff5990890268c5'
-    oldFile: !uuid 'babc788f892ed56883e77c8c52fe444735753329'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_setting.prefab:
-    newFile: !uuid '5a993fde689cf2f29bd78e0fe5eabd2aab19fbe1'
-    oldFile: !uuid 'd9ba329facb7ec9fae6b93e6d978698d501741a7'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_trump.prefab:
-    newFile: !uuid 'ea5dd5fb48bd3f53a2326e6d108a4e2346aeaf21'
-    oldFile: !uuid 'fb10abd6a4d4c7609aabdd8b4562aeb55fad566b'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_trump_levelup.prefab:
-    newFile: !uuid '92defbf3157866efc7710294175aea9b74031e9e'
-    oldFile: !uuid '41fc4a56d2b968f206084874022c7d235c6f8e7a'
-gitCommitId: !uuid '0c4cc60ff174b8d26f33196206cedb824422b616'
+    newFile: !uuid '14620a7d24c5226c688d32d049c2bd904f8b9308'
+    oldFile: !uuid '62ab9b974cc1674c9ce243610b6e8628bc8b4ddd'
+  /UnityClient/ProjectSettings:
+    newFile: !uuid '1902614ea9be33a2b03d14d352c3f8af8e938f06'
+    oldFile: !uuid 'f1d4c237c9a43ec0f9685637e976be3a2c823da6'
+  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
+    newFile: !uuid '55b7f0f52a1257c751c8acc117112da46df10eb2'
+    oldFile: !uuid 'cea75eea2ab9fc37f6233e389c6dac5a2b46e597'
+gitCommitId: !uuid '7786bbcfd86c7c3344c083c73b529dec7fff7fdd'
 renames: {
   }
-revisionId: 345
+revisionId: 346
