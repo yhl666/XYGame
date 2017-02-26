@@ -134,7 +134,8 @@ public class ViewEntity : View
         spine.skeleton.SetSkin(m.skin);
         this.transform = obj.GetComponent<Transform>();
 
-   
+        EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
+
         //init event
 
         spine.state._OnComplete = () =>
@@ -157,7 +158,14 @@ public class ViewEntity : View
         return true;
     }
 
-   
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_DIE)
+        {
+            if (userData as Entity == m)
+                this.SetInValid();
+        }
+    }
 
     public override void UpdateMS()
     {
@@ -177,7 +185,7 @@ public class ViewEntity : View
         //优先级匹配，状态可能组合，但是动画只有一个
         if (m.isDie)
         {
-            name = m.ani_hurt;
+          //  name = m.ani_die;
         }
         else if (m.isHurt)
         {

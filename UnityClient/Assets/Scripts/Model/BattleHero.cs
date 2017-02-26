@@ -88,7 +88,7 @@ public class BattleHero : Hero
             {
                 Enemy e1 = EnemyMgr.Create<Enemy>();
                 e1.x = Random.Range(5, 80);
-         ///    e1.x =10;
+           e1.x =5;
 
 
 
@@ -100,7 +100,7 @@ public class BattleHero : Hero
 
         this.team = 1;
 
-        this.current_hp = 1;
+      ///  this.current_hp = 1;
 
 
 
@@ -124,9 +124,10 @@ public class BattleHero : Hero
     }
     public override void UpdateMS()
     {
+       
         if(this.isDie)
         {
-
+            this.machine.Pause(); return;
         }
         if (this.enable_pvp_ai)
         {

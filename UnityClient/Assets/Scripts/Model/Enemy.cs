@@ -207,6 +207,7 @@ public class Enemy : Entity
 
 
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
         return true;
     }
 
@@ -220,13 +221,23 @@ public class Enemy : Entity
 
             //   Bullet b = BulletMgr.Create<Bullet2_1>(this);
 
+        }else if (Events.ID_DIE == type)
+        {
+            if (userData as Enemy ==  this)
+            {
+               this.machine.Pause();
+               /// this.LazyDispose();
+            }
         }
     }
     public override void UpdateMS()
     {
         ///   this.AI_UpdateMSWithAI();
         ///   
-    
+        if (this.isDie)
+        {
+            this.machine.Pause(); return;
+        }
         //process  input status
         if (atk)
         {

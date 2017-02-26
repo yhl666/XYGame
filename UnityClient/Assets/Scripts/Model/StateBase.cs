@@ -450,11 +450,8 @@ public class DieState : StateBase
 
         if (Target.current_hp <= 0)
         {
- 
             this.Enable = false;
             Target.isDie = true;
-           
-            stack.GetStateMachine().Pause();
         }
 
     }
