@@ -100,6 +100,7 @@ public class BattleHero : Hero
 
         this.team = 1;
 
+        this.current_hp = 1;
 
 
 
@@ -123,6 +124,10 @@ public class BattleHero : Hero
     }
     public override void UpdateMS()
     {
+        if(this.isDie)
+        {
+
+        }
         if (this.enable_pvp_ai)
         {
             this.AI_UpdateMSWithAI();

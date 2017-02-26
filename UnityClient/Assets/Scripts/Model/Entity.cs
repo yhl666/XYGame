@@ -461,9 +461,9 @@ public class Entity : Model
     {
         base.Init();
 
-        machine = StateMachine.Create(this);
-        eventDispatcher = EventDispatcher.Create("Entity");
-        bufferMgr = BufferMgr.Create(this);
+        _machine = StateMachine.Create(this);
+        _eventDispatcher = EventDispatcher.Create("Entity");
+        _bufferMgr = BufferMgr.Create(this);
         this.InitStateMachine();
         return true;
     }
@@ -471,10 +471,13 @@ public class Entity : Model
     {
 
     }
-    public StateMachine machine = null;
-    public EventDispatcher eventDispatcher = null;
-    public BufferMgr bufferMgr = null;
+    private StateMachine _machine = null;
+    private EventDispatcher _eventDispatcher = null;
+    private BufferMgr _bufferMgr = null;
 
+    public StateMachine machine{ get{ return _machine;}}
+    public EventDispatcher eventDispatcher{ get{ return _eventDispatcher;}}
+    public BufferMgr bufferMgr{ get{ return _bufferMgr;}}
 
 }
 

@@ -471,7 +471,6 @@ public class DieState : StateBase
         {
             if (this.Enable==false)
             {
-                Target.SetInValid();
                 EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
             }
         }
