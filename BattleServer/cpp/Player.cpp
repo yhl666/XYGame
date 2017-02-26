@@ -149,6 +149,10 @@ void  Player::OnRecvMessage(SocketClient *client, string what)
 		{
 			room->BroadcastCustomData(what, false);
 		}
+		else if (cmd == "over")
+		{
+			this->_isOver = true;
+		}
 		pack->Release();
 		///	cout << __FUNCTION__ << what << endl;
 		return;

@@ -23,6 +23,8 @@ private:
 	bool _isConnected = true;
 	int current_send_ok_fps = 1;
 	Room *room = nullptr;
+
+	bool _isOver = false;
 public:
 
 	void AddFrameData(FrameData*data);
@@ -88,6 +90,7 @@ public:
 	~Player();
 
 	bool isConnected(){ return _isConnected; }
+	bool GetIsOver() { return _isOver; }
 
 public:
 	void Recv();

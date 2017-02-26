@@ -278,6 +278,14 @@ Room::~Room()
 
 bool Room::isGameOver()
 {
+	bool ret = false;
+	for (Player * p : players)
+	{
+		if (p->GetIsOver() == true)
+		{
+			return true;
+		}
+	}
 	return current_fps > Config::GAME_OVER_FRAME_COUNT;
 }
 
