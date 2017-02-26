@@ -2,34 +2,22 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'bdca9478d66544798fefc9f974674e0cb2b4ed6a'
-    oldFile: !uuid 'c0e3c0f7437eaa2919b20b3147482e5e0a27712b'
-  /UnityClient/Assets:
-    newFile: !uuid 'c6d4bd0b4b48c005006d0c19e9b3add41fcc337e'
-    oldFile: !uuid 'bdf2a77cde66efe7c4350d751274e072149ead1f'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '3a270afb6f4da420f8ca2b1236db8d76af8a7722'
-    oldFile: !uuid '49071d0b39cee1ffb4e13f522f3351c805a98869'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'e80f97609342b6de1bb6076b34c9639d932c5289'
-    oldFile: !uuid '39ae5f38b48457c52e17e607c129e2c22aeb332c'
-  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
-    newFile: !uuid 'c41aca12eaa0731783aaee0324112b8508bf0850'
-    oldFile: !uuid 'f35f744e1de892bb9eb412578115fce762b3ee76'
-  /UnityClient/Assets/Scripts/Model/Enemy.cs:
-    newFile: !uuid 'f7a6c794c37b1e6a86851258cb2f2d0b9ebcc414'
-    oldFile: !uuid '8b3dbb4dcaa39dbc721aaf405a01e3483cb63e5d'
-  /UnityClient/Assets/Scripts/Model/StateBase.cs:
-    newFile: !uuid '51971ff8b74b87644102f7f2a31d66e96dce3bb6'
-    oldFile: !uuid '58b1e4fcb451090ea1cc0c431ed60814c47bbdda'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid '9e9b24307eb0d6b6f207c907b51bd290fcb48518'
-    oldFile: !uuid '046c8cdea19a56e4a382c8c114c5415051602926'
-  /UnityClient/Assets/Scripts/View/View.cs:
-    newFile: !uuid 'a72e41489878518bcfef644eccf49b9b704e421a'
-    oldFile: !uuid 'a7e421c00ffc3a18916d904ff478bd8a0aea38d4'
-gitCommitId: !uuid '8fcadf448455122d985b3372ab397f5aa134de7e'
+  /BattleServer:
+    newFile: !uuid 'f5d09fb35c4e9b230482ae1c74347d7922390c16'
+    oldFile: !uuid '70525557474026cdeb289a608da901120be3ed7e'
+  /BattleServer/cpp:
+    newFile: !uuid '76fab906ffd33c693c3d92121d78a0aba8a96210'
+    oldFile: !uuid '8d7ab168e40ab51bd7b46cee071009b9740f7c00'
+  /BattleServer/cpp/Player.cpp:
+    newFile: !uuid '675d2f99534e54307a8460220395e15f1927de4a'
+    oldFile: !uuid '1e5929a8c9ad37c53e9c4fb8355286a678f52c29'
+  /BattleServer/cpp/Player.h:
+    newFile: !uuid '23f11aa858506df0960ba8baa0a6ecdf084a3fe0'
+    oldFile: !uuid 'd26bc856f6693fcad69cbad6b98761b172b8baec'
+  /BattleServer/cpp/Room.cpp:
+    newFile: !uuid '6f1ebdac124973fe349577dd806eb3f1f7cd781b'
+    oldFile: !uuid 'dbf1227c70f03743bf665b544c1b3effdf3cf25f'
+gitCommitId: !uuid '4cd3f191cfd2b5c5b9103d09f1f36088eeb296f9'
 renames: {
   }
-revisionId: 357
+revisionId: 358
