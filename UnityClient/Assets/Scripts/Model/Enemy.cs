@@ -28,7 +28,7 @@ public class Enemy : Entity
         if (isHurt) return;
 
         // 有目标 ，先判断是否在攻击范围内
-        float dis = target.ClaculateDistance(x, y+height);
+        float dis = target.ClaculateDistance(x, y + height);
         if (dis < 2)
         {
             //攻击范围内
@@ -85,7 +85,7 @@ public class Enemy : Entity
             }
         }
 
-      
+
     }
     public virtual void AI_AttackTarget()
     {
@@ -124,37 +124,41 @@ public class Enemy : Entity
 
 
         //init state machine
- 
-       /* {
-            StateStack s = StateStack.Create();
-            this.machine.AddParallelState(s);
-            s.PushSingleState(StateBase.Create<AttackState_1>(this));
-        }
 
+        /* {
+             StateStack s = StateStack.Create();
+             this.machine.AddParallelState(s);
+             s.PushSingleState(StateBase.Create<AttackState_1>(this));
+         }
+
+         {
+             StateStack s = StateStack.Create();
+             this.machine.AddParallelState(s);
+             s.PushSingleState(StateBase.Create<RunState>(this));
+
+         }
+
+         {
+             StateStack s = StateStack.Create();
+             this.machine.AddParallelState(s);
+             s.PushSingleState(StateBase.Create<StandState>(this));
+         }
+         {
+             StateStack s = StateStack.Create();
+             this.machine.AddParallelState(s);
+             s.PushSingleState(StateBase.Create<SkillState>(this));
+         }
+         {
+             StateStack s = StateStack.Create();
+             this.machine.AddParallelState(s);
+             s.PushSingleState(StateBase.Create<HurtState>(this));
+         }
+         */
         {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
-            s.PushSingleState(StateBase.Create<RunState>(this));
-
+            s.PushSingleState(StateBase.Create<DieState>(this));
         }
-
-        {
-            StateStack s = StateStack.Create();
-            this.machine.AddParallelState(s);
-            s.PushSingleState(StateBase.Create<StandState>(this));
-        }
-        {
-            StateStack s = StateStack.Create();
-            this.machine.AddParallelState(s);
-            s.PushSingleState(StateBase.Create<SkillState>(this));
-        }
-        {
-            StateStack s = StateStack.Create();
-            this.machine.AddParallelState(s);
-            s.PushSingleState(StateBase.Create<HurtState>(this));
-        }
-        */
-
 
         {
             StateStack s = StateStack.Create();
@@ -197,6 +201,8 @@ public class Enemy : Entity
             this.machine.AddParallelState(s);
             s.PushSingleState(StateBase.Create<HurtState>(this));
         }
+
+        this.current_hp = 5;
         ViewMgr.Create<ViewEnemy>(this);
 
 
@@ -218,7 +224,9 @@ public class Enemy : Entity
     }
     public override void UpdateMS()
     {
-     ///   this.AI_UpdateMSWithAI();
+        ///   this.AI_UpdateMSWithAI();
+        ///   
+    
         //process  input status
         if (atk)
         {
@@ -251,7 +259,7 @@ public class Enemy : Entity
             s1 = false;
         }
 
- 
+
         base.UpdateMS();
 
     }

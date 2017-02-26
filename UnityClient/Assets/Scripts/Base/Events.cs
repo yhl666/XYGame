@@ -161,7 +161,7 @@ public sealed class Events : object
 
     public const int ID_TOWN_PVP_QUEUE_RESULT = 72;//  匹配结果消息
     public const int ID_BATTLE_EXIT = 73;//退出战斗
-
+    public const int ID_DIE = 74;
     //------------------------------local event-----------------------------------------------------------
 
     /* public const int ID_DISABLE_RUN = 100;//禁止run 状态

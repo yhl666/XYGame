@@ -56,7 +56,7 @@ public class Entity : Model
     public bool s1 = false;//skill 1
     public bool stand = false;//stand
 
-
+  
     //--------------------------------------------------interface for outside game logic-----
     /// <summary>
     ///  outside to add buffer by type
@@ -408,7 +408,7 @@ public class Entity : Model
     public bool isAttacking = false;
     public bool isRunning = false;
     public bool isHurt = false;
-
+    public bool isDie = false; // die state but this will not sunc to other clients
     //public bool right_enable = true;//是否允许右移
     //  public bool left_enable = true;//是否允许左移动
 
@@ -419,6 +419,7 @@ public class Entity : Model
     public string ani_atk = "2000";
     public string ani_run = "run";
     public string ani_hurt = "hurt";
+    public string ani_die = "die";
 
     public string attackingAnimationName = "";
 

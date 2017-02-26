@@ -134,6 +134,7 @@ public class ViewEntity : View
         spine.skeleton.SetSkin(m.skin);
         this.transform = obj.GetComponent<Transform>();
 
+        EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
 
         //init event
 
@@ -157,7 +158,14 @@ public class ViewEntity : View
         return true;
     }
 
-
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_DIE)
+        {
+            if (userData as Entity == m)
+                this.SetInValid();
+        }
+    }
 
     public override void UpdateMS()
     {
@@ -175,7 +183,11 @@ public class ViewEntity : View
 
         string name = "";
         //优先级匹配，状态可能组合，但是动画只有一个
-        if (m.isHurt)
+        if (m.isDie)
+        {
+            name = m.ani_die;
+        }
+        else if (m.isHurt)
         {
             name = m.ani_hurt;
         }
@@ -240,6 +252,7 @@ public class ViewEnemy : View
         spine.initialSkinName = m.skin;
         spine.skeleton.SetSkin(m.skin);
         this.transform = obj.GetComponent<Transform>();
+        EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
 
 
         //init event
@@ -264,7 +277,14 @@ public class ViewEnemy : View
         return true;
     }
 
-
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_DIE)
+        {
+            if (userData as Entity == m)
+                this.SetInValid();
+        }
+    }
 
     public override void UpdateMS()
     {
@@ -282,7 +302,11 @@ public class ViewEnemy : View
 
         string name = "";
         //优先级匹配，状态可能组合，但是动画只有一个
-        if (m.isHurt)
+        if (m.isDie)
+        {
+            name = m.ani_die;
+        }
+        else if (m.isHurt)
         {
             name = m.ani_hurt;
         }
@@ -290,18 +314,18 @@ public class ViewEnemy : View
         {
             name = m.attackingAnimationName;
         }
-      /*  else if (m.isJumpTwice)
-        {
-            name = m.ani_jumpTwice;
-        }
-        else if (m.isJumping)
-        {
-            name = m.ani_jump;
-        }
-        else if (m.isFalling)
-        {
-            name = m.ani_fall;
-        }*/
+        /*  else if (m.isJumpTwice)
+          {
+              name = m.ani_jumpTwice;
+          }
+          else if (m.isJumping)
+          {
+              name = m.ani_jump;
+          }
+          else if (m.isFalling)
+          {
+              name = m.ani_fall;
+          }*/
         else if (m.isRunning)
         {
             name = m.ani_run;

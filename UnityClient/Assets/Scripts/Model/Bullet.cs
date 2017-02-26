@@ -281,7 +281,7 @@ public class Bullet2_0 : Bullet
             if (h.team != owner.team)
             {
                 float diss = h.ClaculateDistance(x, y);
-               Debug.Log("dis = " + diss);
+          //     Debug.Log("dis = " + diss);
                 if (diss < 1)
                 {
                     h.TakeAttack(owner);

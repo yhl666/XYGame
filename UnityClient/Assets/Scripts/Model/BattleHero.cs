@@ -15,7 +15,11 @@ public class BattleHero : Hero
         base.InitStateMachine();
 
         //init state machine
-
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<DieState>(this));
+        }
         {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
@@ -80,11 +84,11 @@ public class BattleHero : Hero
         ViewMgr.Create<ViewEntity>(this);
 
         {
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy>();
                 e1.x = Random.Range(5, 80);
-             e1.x =10;
+         ///    e1.x =10;
 
 
 

@@ -55,7 +55,8 @@ public sealed class StateMachine : GAObject
     {
         foreach (StateStack s in states)
         {
-            s.UpdateMS();
+            if (pause == false)
+                s.UpdateMS();
         }
     }
 
@@ -79,7 +80,14 @@ public sealed class StateMachine : GAObject
         return null;
     }
 
-
+    public void Pause()
+    {
+        pause = true;
+    }
+    public void Resume()
+    {
+        pause = false;
+    }
     public StateBase GetState<T>() where T : new()
     {
         foreach (StateStack s in states)
@@ -92,12 +100,13 @@ public sealed class StateMachine : GAObject
     }
     ArrayList states = new ArrayList();
     private Entity host = null;
+    private bool pause = false;
 }
 
 /// <summary>
 /// 状态栈（单行状态），负责维护每个状态
 /// </summary>
-public sealed  class StateStack : GAObject
+public sealed class StateStack : GAObject
 {
     public const int ID_UNKNOWN = 0;
     public const int ID_RUN = 1;
@@ -190,7 +199,10 @@ public sealed  class StateStack : GAObject
         host.eventDispatcher.AddEventListener(this, what);
     }
 
-
+    public StateMachine GetStateMachine()
+    {
+        return machine;
+    }
 
     public string name = "";
     public int id = ID_UNKNOWN;

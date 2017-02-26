@@ -428,6 +428,62 @@ public class HurtState : StateBase
 }
 
 
+
+
+public class DieState : StateBase
+{
+    public override StateBase GetState<T>()
+    {
+        if (typeof(T) == typeof(DieState))
+        {
+            return this;
+        }
+        return null;
+    }
+
+    public DieState()
+    {
+
+    }
+    public override void UpdateMS()
+    {
+
+        if (Target.current_hp <= 0)
+        {
+ 
+            this.Enable = false;
+            Target.isDie = true;
+           
+            stack.GetStateMachine().Pause();
+        }
+
+    }
+
+    public override void OnEnter()
+    {
+
+        this.Enable = true;
+        this.stack.AddLocalEventListener("SpineComplete");
+    }
+    public override void OnEvent(string type, object userData)
+    {
+        if (type == "SpineComplete")
+        {
+            if (this.Enable==false)
+            {
+                Target.SetInValid();
+                EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
+            }
+        }
+
+    }
+    public override void OnExit()
+    {
+
+    }
+ 
+}
+
 public class AttackState_1 : StateBase
 {//普通 攻击 连招1
 
@@ -462,7 +518,7 @@ public class AttackState_1 : StateBase
     {
         if (type == "attack")
         {
-          ///  this.Target.AddBuffer<BufferFlashMove>();
+            ///  this.Target.AddBuffer<BufferFlashMove>();
             this.OnEvent(Events.ID_BTN_ATTACK, userData);
         }
         else if ("SpineComplete" == type)
@@ -477,7 +533,7 @@ public class AttackState_1 : StateBase
 
         if (type == Events.ID_BTN_ATTACK && this.Enable == false)
         {
-          ///  this.Target.AddBuffer<BufferFlashMove>();
+            ///  this.Target.AddBuffer<BufferFlashMove>();
             if (cd_attack > 0) return;
 
             this.Enable = true;
@@ -843,8 +899,8 @@ public class RunXYState : StateBase
         }
 
         if (this.y >= 2.4f) this.y = 2.4f;
-      
-        degree = Utils.GetDegree(new Vector2(Target.x, Target.y), new Vector2(x,y) );
+
+        degree = Utils.GetDegree(new Vector2(Target.x, Target.y), new Vector2(x, y));
 
     }
 
