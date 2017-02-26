@@ -260,7 +260,7 @@ public class RunState : StateBase
     {
         if (Target.isAttacking && Target.isStand) return;
         if (Target.isHurt) return;
-        this.Target.x -= (0.05f * this.Target.flipX);
+        this.Target.x -= (Target.speed * this.Target.flipX);
 
         Target.isRunning = true;
 

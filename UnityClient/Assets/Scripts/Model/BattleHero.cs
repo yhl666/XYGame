@@ -84,23 +84,28 @@ public class BattleHero : Hero
         ViewMgr.Create<ViewEntity>(this);
 
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 1; i++)
             {
-                Enemy e1 = EnemyMgr.Create<Enemy>();
+                Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = Random.Range(5, 80);
-           e1.x =5;
-
-
-
+         e1.x =5;
                 e1.y = 5;
                 e1.team = 333;
             }
+          /*  for (int i = 0; i < 10; i++)
+            {
+                Enemy e1 = EnemyMgr.Create<Enemy>();
+                e1.x = Random.Range(5, 80);
+                ///   e1.x =5;
+                e1.y = 5;
+                e1.team = 333;
+            }*/
         }
 
 
         this.team = 1;
 
-      ///  this.current_hp = 1;
+    this.current_hp = 1;
 
 
 

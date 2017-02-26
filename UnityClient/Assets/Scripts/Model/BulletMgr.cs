@@ -41,7 +41,12 @@ public sealed class BulletMgr : GAObject
         }
         ret.Init();
         BulletMgr.ins.Add(ret);
-        ViewMgr.Create<ViewBullet>(ret);
+ 
+
+        if (ret.plist != "")
+        {
+           ViewMgr.Create<ViewBullet>(ret);
+        }
         return ret;
     }
 

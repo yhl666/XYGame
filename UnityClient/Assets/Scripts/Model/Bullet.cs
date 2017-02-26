@@ -71,7 +71,7 @@ public sealed class BulletConfigInfo
     public float distance = 10.0f;// 移动距离
     public float distance_atk = 1.0f;// 普通，攻击距离
     public ArrayList buffers = new ArrayList();//附加buffer 名字 string
-    public Vector2 launch_pivot;//初始位置位于 角色锚点位置
+    public Vector2 launch_delta_xy = new Vector2(0.5f,0.3f);//初始位置位于 角色锚点位置
 
     //   public int realValidTimes = 1;//真实有效次数 ，计算真实命中敌人的次数{比如法术命中玩家3次后失效，否则一直存在}
     public int validTimes = 1;//有效次数    //表示 命中目标后  的 伤害 次数
@@ -215,15 +215,15 @@ public sealed class BulletConfig : Bullet
     {
         base.OnEnter();
 
-        this.y = owner.y + owner.height + 0.3f;
+        this.y = owner.y + owner.height + info.launch_delta_xy.y;
         this.flipX = -owner.flipX;
         if (this.flipX < 0)
         {
-            this.x = owner.x - 1f;
+            this.x = owner.x -  info.launch_delta_xy.x;
         }
         else
         {
-            this.x = owner.x + 1f;
+            this.x = owner.x + info.launch_delta_xy.x;
         }
     }
 
@@ -410,3 +410,43 @@ public class Bullet444_0 : Bullet2_0
     }
 
 }
+
+
+/// <summary>
+
+/// </summary>
+public class Bullet221_0 : Bullet
+{
+
+    public override void UpdateMS()
+    {
+
+  
+    }
+
+    public override void OnEnter()
+    {
+      //  this.owner.AddBuffer<BufferDamage>();
+        this.SetInValid();
+    }
+
+    public override void OnExit()
+    {
+        base.OnExit();
+        Debug.Log(" exit");
+
+    }
+    public override void OnDispose()
+    {
+        base.OnDispose();
+        Debug.Log(" dispose");
+
+    }
+   
+    public override bool Init()
+    {
+        this.plist = "";
+        return true;
+    }
+}
+

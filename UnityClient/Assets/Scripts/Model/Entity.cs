@@ -142,7 +142,7 @@ public class Entity : Model
 
 
     //-------------------------------------------------member
-
+    public float atk_range = 2.0f;
     // base property
     public float x = 1.0f;
     public float y = 0.0f;
@@ -391,7 +391,7 @@ public class Entity : Model
 
     public int atk_level = 1;//基本攻击连招段数 默认不连招
     // for static data
-    public float speed = 1.0f;//移动速度
+    public float speed = 0.05f;//移动速度
 
 
     //for view 
@@ -465,9 +465,14 @@ public class Entity : Model
         _eventDispatcher = EventDispatcher.Create("Entity");
         _bufferMgr = BufferMgr.Create(this);
         this.InitStateMachine();
+        this.InitInfo();
         return true;
     }
     public virtual void InitStateMachine()
+    {
+
+    }
+    public virtual void InitInfo()
     {
 
     }

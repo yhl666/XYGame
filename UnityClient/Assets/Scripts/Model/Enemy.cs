@@ -29,7 +29,7 @@ public class Enemy : Entity
 
         // 有目标 ，先判断是否在攻击范围内
         float dis = target.ClaculateDistance(x, y + height);
-        if (dis < 2)
+        if (dis <this.atk_range)
         {
             //攻击范围内
             this.AI_AttackTarget();
@@ -92,7 +92,7 @@ public class Enemy : Entity
         if (cd_atk <= 0)
         {
             //   target.TakeAttack(this);
-            BulletMgr.Create(this, "Bullet444_0");
+          ///  BulletMgr.Create(this, "Bullet444_0");
 
 
             atk = true;
@@ -105,11 +105,8 @@ public class Enemy : Entity
     }
 
 
-
-    // override 
-    public override bool Init()
+    public override void InitInfo()
     {
-        base.Init();
         this.prefabsName = "Prefabs/Enemy444";
 
         ani_hurt = "hurt";
@@ -122,6 +119,12 @@ public class Enemy : Entity
         bulleClassName_s1 = "Bullet444_0"; // 1 号技能 子弹名字
 
 
+    }
+    // override 
+    public override bool Init()
+    {
+        base.Init();
+    
 
         //init state machine
 
@@ -278,4 +281,36 @@ public class Enemy : Entity
 }
 
 
+
+
+public class Enemy221 : Enemy
+{
+
+
+    public override void InitInfo()
+    {
+        this.prefabsName = "Prefabs/Enemy221";
+        this.skin = "baihu4";
+        ani_hurt = "hurt";
+        ani_run = "walk";
+        ani_stand = "rest";
+        ani_atk = "218010";
+        attackingAnimationName = ani_atk;
+
+        bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
+        bulleClassName_s1 = "Bullet221_0"; // 1 号技能 子弹名字
+        this.bullet_atk1_info =    BulletConfigInfo.Create();
+        bullet_atk1_info.plistAnimation = "";
+        bullet_atk1_info.distance = 0.2f;
+        bullet_atk1_info.distance_atk = 1f;
+        this.speed *= 0.5f; ;
+
+        this.atk_range = 1.0f;
+        Debug.Log("1111111111111");
+
+
+    }
+  
+   
+}
 

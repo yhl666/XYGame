@@ -70,7 +70,7 @@ public sealed class UIBattleRoot : ViewUI
         }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
-         ///   this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
+        this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
             return DATA.EMPTY_STRING;
         }));
         return true;

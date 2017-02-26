@@ -77,7 +77,6 @@ public class PublicData : object
     public bool is_pvp_friend_ai = false;
     public bool is_pvp_friend_owner = true;//主动发起的一方
 
- 
     public void ResetPVP()
     {
         user_pvp_other = null;
@@ -88,7 +87,12 @@ public class PublicData : object
         is_pvp_friend = false;
         is_pvp_friend_ai = false;
         is_pvp_friend_owner = true;//主动发起的一方
-
         isVideoMode = false;
     }
+
+
+
+    //--------------------------------------pve
+    public bool is_pve = false;
+ 
 }

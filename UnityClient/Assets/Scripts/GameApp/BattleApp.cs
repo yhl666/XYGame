@@ -480,6 +480,11 @@ sealed class BattleSyncHandler
         //process update
         ModelMgr.ins.UpdateMS();
         ViewMgr.ins.UpdateMS();
+
+        if(HeroMgr.ins.self.current_hp<=0)
+        {
+            this.AddSendMsg("cmd:over");
+        }
         if (current_fps < current_max_fps)
         {
             this.ProcessWithFrameData();
@@ -487,7 +492,10 @@ sealed class BattleSyncHandler
 
     }
 
-
+    public void AddSendMsg(string msg )
+    {
+        app.AddSendMsg(msg);
+    }
 
 }
 
@@ -797,6 +805,11 @@ public sealed class BattleApp : AppBase
 
             //显示等待结果界面
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
+
+        }
+        else
+        {
+          ///  EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
 
         }
 
