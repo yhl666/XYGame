@@ -2,43 +2,19 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'e62e3cb8fcb5a9b391c83dc2dc900572d2986e6d'
-    oldFile: !uuid '7997bcaf00cfd1a844ccc30185de40265ad36964'
-  /UnityClient/Assets:
-    newFile: !uuid '8c11467b590192c9558045da6e5393997384fa75'
-    oldFile: !uuid '58b77f7aa89472a7fc8af58f819eea7f8eaddfd2'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '6d16d5599eb3697296c38d63646d16dee446c100'
-    oldFile: !uuid '0545a6beebe0325b9b6ef46a2b5f2a4ecb6d6f60'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '2435f609f457b5814d3c7e3eb81c132d483e78f1'
-    oldFile: !uuid '7f61712463571fc5a55be9766c5ae435c6295c23'
-  /UnityClient/Assets/Resources/Prefabs/AnimationsTest.prefab:
-    newFile: !uuid '716115959b252e5e80243fa83619951be6852153'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/AnimationsTest.prefab.meta:
-    newFile: !uuid '0ce2a5e2e62c577b7986cc0db3b25c6d182d3734'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/Enemy221.prefab:
-    newFile: !uuid '07ed96aa79842d774d050225b50f31ea13c9d3af'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/Enemy221.prefab.meta:
-    newFile: !uuid '1492f823e608666f53cac879893063f0c7d7a0d9'
-    oldFile: null
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'a91a40ff7fff885ff08bcf5b0a1221e353040db8'
-    oldFile: !uuid 'a96e84b58f9b51d232c6f2733f508f8148175b92'
-  /UnityClient/Assets/Scripts/2d:
-    newFile: !uuid '7fef1410b48c47c7c366bf821c7e8b0bf4b0d232'
-    oldFile: !uuid '7437a0d772b439e35f4212cd3b2e243c3c7a1fb3'
-  /UnityClient/Assets/Scripts/2d/AnimationstorTest.cs:
-    newFile: !uuid 'f664ad1a973ae01c6f6483a6f6d0fb911c62ed8f'
-    oldFile: null
-  /UnityClient/Assets/Scripts/2d/AnimationstorTest.cs.meta:
-    newFile: !uuid '0a46a958edec14f36dd7fbac10bd1c7a3d3be651'
-    oldFile: null
-gitCommitId: !uuid 'd3d97e2de798e5a0441783fecd023a27c79ca5f0'
+  /BattleServer:
+    newFile: !uuid '626ab4677da26e96a94adaf1991659c4d7ef6867'
+    oldFile: !uuid 'f5d09fb35c4e9b230482ae1c74347d7922390c16'
+  /BattleServer/Debug:
+    newFile: !uuid 'fe105fff214184f44a5c0959f6a0bff046663657'
+    oldFile: !uuid '5f4827bdaaace05f962bdea789dd3d1541108843'
+  /BattleServer/Debug/BattleServer.exe:
+    newFile: !uuid '9ac6b3009df56018136b77ff70ca510e3f12ce5e'
+    oldFile: !uuid '024c8c883ed5d3cf5641d2ef32c14e480082daae'
+  /BattleServer/Debug/config.ini:
+    newFile: !uuid 'ca1d7ab350e1fa099f267898818be76adf4a6857'
+    oldFile: !uuid 'b51d9f478672da01b04e95d7f7368d83811a4125'
+gitCommitId: !uuid '8d5066e0d850fde6e166729ce3f73891aa6cdf26'
 renames: {
   }
-revisionId: 360
+revisionId: 361
