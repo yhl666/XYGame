@@ -451,14 +451,15 @@ sealed class BattleSyncHandler
     }
     private void InitPVE()
     {
-      var   randObj = new System.Random(0);
+        PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
+        var randObj = new System.Random(PublicData.ins.battle_random_seed);
         {
             for (int i = 0; i < 50; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
-                e1.x = randObj.Next(5,80);
+                e1.x = randObj.Next(5, 80);
                 ;
-            //    e1.x = 5;
+                //    e1.x = 5;
                 e1.y = 5;
                 e1.team = 333;
             }
@@ -476,9 +477,6 @@ sealed class BattleSyncHandler
     }
     public void ProcessWithFrameData()
     {
-
-        Debug.Log(HeroMgr.ins.self.no);
-
         if (current_fps == 0 && PublicData.ins.is_pve)
         {
             this.InitPVE();
@@ -729,6 +727,7 @@ public sealed class BattleApp : AppBase
     {
         HashTable kv = Json.Decode(PublicData.ins.client_server_room_info);
         string id = kv["pvproom_id"];
+        PublicData.ins.pvp_room_no = id;
         //   id = "67";
         if (kv["mode"] == "pvp")
         {
