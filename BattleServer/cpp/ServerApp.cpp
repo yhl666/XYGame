@@ -209,7 +209,7 @@ int ServerAppDynamic::Run()
 						}
 						else
 						{
-							//Utils::log("unknow:%s1", cmd.c_str());
+							Utils::log("unknow:%s", cmd.c_str());
 						}
 
 					}
@@ -971,6 +971,178 @@ int ServerAppBattlePVE::Run()
 
 
 void   ServerAppBattlePVE::RoomThreadFunc(void *arg1)
+{
+	PTR_PARAM_CHECK_RETURN(arg1);
+
+	Room *room = (Room*)arg1;
+
+	LARGE_INTEGER nFreq;
+	LARGE_INTEGER nLast;
+	LARGE_INTEGER nNow;
+	LARGE_INTEGER perFrame;
+
+	QueryPerformanceFrequency(&nFreq);
+	perFrame.QuadPart = (LONGLONG)(1.0 / 40.0 * nFreq.QuadPart);//25MS
+
+
+	QueryPerformanceCounter(&nLast);
+
+	while (true)
+	{
+		QueryPerformanceCounter(&nNow);
+		//room->LockWithRAII();
+
+		room->Lock();
+		if (nNow.QuadPart - nLast.QuadPart > perFrame.QuadPart)
+		{// time to increase fps
+			nLast.QuadPart = nNow.QuadPart;
+
+			room->IncreaseFps();
+			if (room->CanDestory() || (room->GetPlayerCounts() > 0 && room->isEmptyRoom()))
+			{
+				Sleep(100);
+				room->UnLock();
+				room->Release();
+
+				Memory::PrintTrace();
+				return;
+			}
+			//check new player
+		}
+		else
+		{//loop for all recv send tick
+			room->RecvTick();
+			room->SendTick();
+			std::this_thread::sleep_for(std::chrono::microseconds(1));//Sleep(0);
+		}
+
+		room->UnLock();
+	}
+}
+
+
+
+
+
+
+////---------------------------------------PVP 战斗服务器
+
+void ServerAppBattle::Startup()
+{
+	srv.Init();
+	Utils::log("Startup Battle Server OK");
+}
+
+int ServerAppBattle::Run()
+{
+	while (this->isTerminal == false)
+	{
+
+		SocketClient * cli = nullptr;
+
+
+		while (cli == nullptr)//接受连接请求
+		{
+			cli = srv.AcceptLoop();
+			Sleep(1);
+		}
+
+		if (cli)
+		{
+			string str;//接受第一条消息
+			while (true)
+			{
+				str = cli->Recv().GetString();
+
+				if (str != "" && str.size() > 0)
+				{
+					str[str.size() - 1] = '\0';
+					break;
+				}
+			}
+
+			///
+			TranslateDataPack * pack = TranslateDataPack::Decode(str);
+			if (pack)
+			{
+				if (pack->isCustomData)
+				{
+
+
+
+					string cmd = pack->customs[0];
+
+					if (cmd == "new_pvp_friend")
+					{
+						string user_no = pack->customs[1];
+						string room_no = pack->customs[2];
+						string room_max = pack->customs[3];
+
+
+						Room *room = nullptr;
+						room = rooms[room_no];
+						if (room == nullptr)
+						{
+							room = Room::Create(Utils::stoi(room_no));
+							rooms[room_no] = room;
+							Utils::log("Create New Room id = %d", room->GetID());
+						}
+						room->Lock();
+
+						Player*player = Player::Create(cli, room);
+						player->SetNo(Utils::stoi(user_no));
+
+
+						room->AddPlayerDynamic(player);
+
+						cli->Send("cmd:Start:0:" + Utils::itos(player->GetNo()) + ":" + Utils::itos(room->GetCurrentFps()));
+						Sleep(1000);
+						Utils::log(" Room id = %d  add Player %d", room->GetID(), player->GetNo());
+						if (room->GetPlayerCounts() == Utils::stoi(room_max))
+						{
+							const vector<Player*> & players = room->GetPlayers();
+
+							for (int i = 0; i < players.size(); i++)
+							{
+								Player*player = players[i];
+								room->BroadcastCustomData("cmd:new_pvp_friend:" + Utils::itos(player->GetNo()));
+							}
+							std::thread t(std::bind(ServerAppDynamic::RoomThreadFunc, room));
+							t.detach();
+
+						}
+						else
+						{
+
+						}
+
+						room->UnLock();
+
+
+
+					}
+					else
+					{
+						Utils::log("unknow:%s1", cmd.c_str());
+					}
+
+
+
+
+				}
+			}
+			pack->Release();
+
+		}
+
+	}
+
+	return 0;
+}
+
+
+
+void   ServerAppBattle::RoomThreadFunc(void *arg1)
 {
 	PTR_PARAM_CHECK_RETURN(arg1);
 

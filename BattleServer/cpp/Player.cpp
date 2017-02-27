@@ -153,6 +153,10 @@ void  Player::OnRecvMessage(SocketClient *client, string what)
 		{
 			this->_isOver = true;
 		}
+		else if (cmd == "pve")
+		{
+			room->BroadcastCustomData("cmd:pve");
+		}
 		pack->Release();
 		///	cout << __FUNCTION__ << what << endl;
 		return;

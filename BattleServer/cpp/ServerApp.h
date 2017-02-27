@@ -109,3 +109,29 @@ private:
 	bool isTerminal = false;
  
 };
+
+
+/**
+* @brief  impl class for main function
+*/
+class ServerAppBattle :public ClientEventHandler
+{
+private:
+
+public:
+
+
+	/**
+	* @brief start up and init  app
+	*/
+	void Startup();
+
+	int Run();
+
+	static void RoomThreadFunc(void *);
+private:
+	int fps;
+	SocketServer srv;
+	bool isTerminal = false;
+	std::unordered_map<std::string, Room*> rooms;
+};
