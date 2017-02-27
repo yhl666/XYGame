@@ -326,7 +326,7 @@ public sealed class UI_heroInfo : ViewUI
             if (m == null) return;
 
         }
-        /*if (m2 == null)
+        if (m2 == null)
         {
             if (m2 != null) return;
 
@@ -343,7 +343,7 @@ public sealed class UI_heroInfo : ViewUI
                     panel2.SetActive(true);
                 }
             }
-        }*/
+        }
 
 
         txt_info1.text = m.no + " LV:" + m.level;

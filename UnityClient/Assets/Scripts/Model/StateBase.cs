@@ -865,7 +865,7 @@ public class RunXYState : StateBase
             Target.isRunning = true;
         }
 
-        float speed = 0.05f * Target.speed;
+        float speed = Target.speed;
 
         float dd = degree * DATA.ONE_DEGREE;//一度的弧度
 

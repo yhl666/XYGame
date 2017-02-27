@@ -1031,6 +1031,7 @@ public sealed class UI_component : UICellApp
         this.panel = GameObject.Find("ui_panel_components");
 
         this.btn_pvp_random_queue = panel.transform.FindChild("btn_pvp").GetComponent<Button>();
+        this.btn_pve_random_queue = panel.transform.FindChild("btn_activity").GetComponent<Button>();
 
 
 
@@ -1040,7 +1041,11 @@ public sealed class UI_component : UICellApp
             EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED);
 
         });
+        this.btn_pve_random_queue.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVE_RAMDON_QUEUE_CLICKED);
 
+        });
 
         return true;
     }
@@ -1056,6 +1061,7 @@ public sealed class UI_component : UICellApp
 
 
     private Button btn_pvp_random_queue = null;//进入1v1 随机匹配队列
+    private Button btn_pve_random_queue = null;//进入1v1 随机匹配队列
 
 }
 

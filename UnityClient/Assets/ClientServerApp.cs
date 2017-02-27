@@ -29,16 +29,13 @@ public class ClientServerApp : GAObject
         if (_ins == null)
         {
             _ins = new ClientServerApp();
-            /* {
+         /*  {
 
 
-                 PublicData.ins.client_server_room_info = "pvproom_id:67,p1:1,p2:2,";
+                 PublicData.ins.client_server_room_info = "pvproom_id:270,p1:1,p2:2,mode:pve,";
                  PublicData.ins.is_client_server = true;
    
-                 SceneMgr.Load("BattlePVP");
-
-
-
+                 SceneMgr.Load("BattlePVE");
 
              }*/
             _ins.Init();
@@ -153,8 +150,21 @@ public class ClientServerApp : GAObject
         PublicData.ins.is_client_server = true;
         is_processing = true;
         Application.targetFrameRate = 0xfffff;
-        SceneMgr.Load("BattlePVP");
 
+ 
+        string mode = kv["mode"];
+        if ( mode == "pvp")
+        {
+            PublicData.ins.battle_mode = "pvp";
+            PublicData.ins.is_pve = false;
+            SceneMgr.Load("BattlePVP");
+        }
+        else
+        {
+            PublicData.ins.battle_mode = "pve";
+            PublicData.ins.is_pve = true;
+            SceneMgr.Load("BattlePVE");
+        }
 
 
 

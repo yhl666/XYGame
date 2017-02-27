@@ -88,11 +88,14 @@ public class PublicData : object
         is_pvp_friend_ai = false;
         is_pvp_friend_owner = true;//主动发起的一方
         isVideoMode = false;
+        is_pve = false;
+        battle_mode = "pvp";
     }
 
 
 
     //--------------------------------------pve
     public bool is_pve = false;
+    public string battle_mode = "pvp";
  
 }

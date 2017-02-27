@@ -40,6 +40,8 @@ public class TownPVPApp : CellApp
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_PVP_QUEUE_RESULT);
 
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_PVE_RAMDON_QUEUE_CLICKED);
+
         return true;
     }
     public override void OnEvent(int type, object userData)
@@ -54,8 +56,8 @@ public class TownPVPApp : CellApp
             p.isOneCellAppShowLock = true;
 
 
-            RpcClient.ins.SendRequest("services.battle_pvp", "request_pvp_ramdon_enter_queue_v2",
-                "no:" + PublicData.ins.self_user.no.ToString() + ",", (string msg) =>
+            RpcClient.ins.SendRequest("services.battle", "request_pvp_ramdon_enter_queue_v2",
+                "no:" + PublicData.ins.self_user.no.ToString() + "," + "mode:" + PublicData.ins.battle_mode + ",", (string msg) =>
                 {
                     if (msg == "")
                     {
@@ -89,8 +91,8 @@ public class TownPVPApp : CellApp
         else if (type == Events.ID_TOWN_BTN_PVP_LEAVE_QUEUE_CLICKED)
         { // close 
 
-            RpcClient.ins.SendRequest("services.battle_pvp", "request_pvp_ramdon_leave_queue_v2",
-           "no:" + PublicData.ins.self_user.no.ToString() + ",", (string msg) =>
+            RpcClient.ins.SendRequest("services.battle", "request_pvp_ramdon_leave_queue_v2",
+           "no:" + PublicData.ins.self_user.no.ToString() + ","  + "mode:" + PublicData.ins.battle_mode + ",", (string msg) =>
            {
 
                if (msg == "")
@@ -137,7 +139,8 @@ public class TownPVPApp : CellApp
             //接受成功 自动连接战斗服
             string room_id = kv["pvproom_id"];
             string max = kv["max_no"];
-
+            string mode =  kv["mode"];
+     
             PublicData.ins.pvp_room_max = max;
             PublicData.ins.pvp_room_no = room_id;
             PublicData.ins.user_pvp_other = DAO.User.Create(kv);
@@ -145,26 +148,28 @@ public class TownPVPApp : CellApp
             PublicData.ins.is_pvp_friend = true;
             AppMgr.GetCurrentApp<TownApp>().Dispose();
 
-            //    AutoReleasePool.ins.Clear();
-            SceneMgr.Load("BattlePVP");
 
+            if (mode=="pve")
+            {
+                PublicData.ins.is_pve = true;
 
+                SceneMgr.Load("BattlePVE");
+            }
+            else
+            {
+                PublicData.ins.is_pve = false;
 
+                SceneMgr.Load("BattlePVP");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            }
+        }
+        else if (type == Events.ID_TOWN_BTN_PVE_RAMDON_QUEUE_CLICKED)
+        {
+            //pve 组队
+            Debug.Log("pve");
+            PublicData.ins.battle_mode = "pve";
+            PublicData.ins.is_pve = true;
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED);//显示PVP流程
         }
     }
 

@@ -38,7 +38,8 @@ namespace Services
                 PublicData.ins.pvp_room_max = max;
                 PublicData.ins.pvp_room_no = room_id;
                 PublicData.ins.user_pvp_other = DAO.User.Create(kv);
-
+                PublicData.ins.battle_mode = "pvp";
+                PublicData.ins.is_pve = false;
                 PublicData.ins.is_pvp_friend = true;
                 AppMgr.GetCurrentApp<TownApp>().Dispose();
 
@@ -194,7 +195,7 @@ public class FriendsApp : CellApp
             //切磋
             DAO.User other = userData as DAO.User;
 
-            RpcClient.ins.SendRequest("services.battle_pvp", "request_pvp_v2", "no:"+ HeroMgr.ins.self.no+",no_target:" + other.no.ToString() + ",", (string msg) =>
+            RpcClient.ins.SendRequest("services.battle", "request_pvp_v2", "no:" + HeroMgr.ins.self.no + ",no_target:" + other.no.ToString() + "," + "mode:pvp,", (string msg) =>
              {
                  /*if (msg == "")
                  {
@@ -230,7 +231,8 @@ public class FriendsApp : CellApp
                      PublicData.ins.pvp_room_no = room_id;
                      PublicData.ins.user_pvp_other = DAO.User.Create(kv);
 
-
+                     PublicData.ins.battle_mode = "pvp";
+                     PublicData.ins.is_pve = false;
                      PublicData.ins.is_pvp_friend = true;
                      this.parent.Dispose();
                      //    AutoReleasePool.ins.Clear();
@@ -248,7 +250,8 @@ public class FriendsApp : CellApp
                      {
                          PublicData.ins.is_pvp_friend_ai = true;
                          PublicData.ins.user_pvp_other = other;
-
+                         PublicData.ins.battle_mode = "pvp";
+                         PublicData.ins.is_pve = false;
                          this.parent.Dispose();
 
                          SceneMgr.Load("BattlePVP");

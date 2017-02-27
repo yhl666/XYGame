@@ -76,7 +76,10 @@ public sealed class EnemyMgr : GAObject
         }
         return null;
     }
-
+    public int GetEnemyCount()
+    {
+        return lists.Count;
+    }
     ArrayList lists = new ArrayList();
 
     public static EnemyMgr ins
