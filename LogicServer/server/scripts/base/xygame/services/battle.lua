@@ -26,9 +26,12 @@ local user = require("model.user")
 
 
 t.enable_hotfix = false;  -- 禁止hot fix
-
+--[[
 global_ramdon_queue_v1 = queue.new();-- 全局队列
 global_ramdon_queue_v2 = queue.new();-- 全局队列
+]]
+global_random_queue_pvp = queue.new();
+global_random_queue_pve = queue.new();
 
 -- [Common]
 -- {no:1,no_target:2,}
@@ -49,7 +52,7 @@ function t.request_pvp_v1(ctx, msg, cb)
 end
 
 
---和好友PK
+-- 和好友PK
 function t.request_pvp_v2(ctx, msg, cb)
     local kv = json.decode(msg);
     local no = kv["no"];
@@ -237,23 +240,23 @@ function t.request_verify(ctx, msg, cb)
 end
 
 
-local function notify_client(user, msg, no)
+local function notify_client(queue,user, msg, no)
 
     remote.request_client(user.ctx, "TownBattlePVP", "PushResult", msg, function(msg3)
         if msg3 == "timeout" then
 
             if user.user.is_dirty == true then
             else
-                global_ramdon_queue_v1:push(no);
+                queue:push(no);
             end
         end
 
         local kv = json.decode(msg3);
         if kv["ret"] == "ok" then
-          room_leave_room_by_no(no);
-     
+            room_leave_room_by_no(no);
+
         else
-            global_ramdon_queue_v1:push(no);
+            queue:push(no);
         end
 
     end );
@@ -267,14 +270,22 @@ function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
     local kv = json.decode(msg);
     local no = kv["no"];
     local mode = kv["mode"];
-    if global_ramdon_queue_v1:size() >= 1 then
+ 
+    local queue;
+    if mode == "pvp" then
+        queue = global_random_queue_pvp;
+    else
+        queue = global_random_queue_pve;
+    end
+
+    if queue:size() >= 1 then
         -- 第二个玩家
-        local no1 = global_ramdon_queue_v1:front();
+        local no1 = queue:front();
         local no2 = no;
 
         local u1 = global_hero_list:get_hero_by_no(no1);
         if u1 == nil or no1 == no2 then
-            global_ramdon_queue_v1:push(no2);
+            queue:push(no2);
             cb("ret:ok,");
             return;
         end
@@ -292,7 +303,7 @@ function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
         end );
 
 
-        remote.request("services.battle", "request_pvp_v2", "no:" .. no1 .. ",no_target:" .. no2 .. "," .. "mode:" .. mode ..",", function(msg5)
+        remote.request("services.battle", "request_pvp_v2", "no:" .. no1 .. ",no_target:" .. no2 .. "," .. "mode:" .. mode .. ",", function(msg5)
 
             if msg == "tiemout" then
                 cb("ret:error,msg:timeout,");
@@ -312,22 +323,22 @@ function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
             end
 
             if u2 == nil then
-                global_ramdon_queue_v1:push(no1); return;
+                queue:push(no1); return;
             end
             cb("ret:ok,");
             if u1 == nil then
-                global_ramdon_queue_v1:push(no2); return;
+                queue:push(no2); return;
             end
 
-            notify_client(user1, msg5 .. user2.user:to_json(), no1);
-            notify_client(user2, msg5 .. user1.user:to_json(), no2);
+            notify_client(queue,user1, msg5 .. user2.user:to_json(), no1);
+            notify_client(queue,user2, msg5 .. user1.user:to_json(), no2);
 
 
         end );
 
     else
         -- 第一个玩家
-        global_ramdon_queue_v1:push(no);
+        queue:push(no);
         cb("ret:ok,msg:进入队列成功,");
     end
 
@@ -356,17 +367,24 @@ function t.request_pvp_ramdon_leave_queue_v2(ctx, msg, cb)
 
     local kv = json.decode(msg);
     local no = kv["no"];
-    local size = global_ramdon_queue_v1:size();
+    local mode = kv["mode"];
 
-    print("current size = " .. size);
+    local queue;
+    if mode == "pvp" then
+        queue = global_random_queue_pvp;
+    else
+        queue = global_random_queue_pve;
+    end
+    local size = queue:size();
+ 
     for i = 0, size do
 
-        local noo = global_ramdon_queue_v1:front();
+        local noo = queue:front();
         if noo == no then
 
             cb("ret:ok,"); return;
         else
-            global_ramdon_queue_v1:push(noo);
+            queue:push(noo);
         end
 
     end
@@ -376,7 +394,7 @@ end
 
 
 
-
+--[[
 -- 进入 1v1的随机匹配
 -- msg = no;1,
 function t.request_pvp_ramdon_enter_queue_v3(ctx, msg, cb)
@@ -393,7 +411,7 @@ function t.request_pvp_ramdon_leave_queue_v3(ctx, msg, cb)
 
 end
 
-
+]]
  
 
 
