@@ -1025,7 +1025,7 @@ void   ServerAppBattlePVE::RoomThreadFunc(void *arg1)
 
 
 
-////---------------------------------------PVP 战斗服务器
+////--------------------------------------- 战斗服务器
 
 void ServerAppBattle::Startup()
 {
@@ -1118,17 +1118,11 @@ int ServerAppBattle::Run()
 
 						room->UnLock();
 
-
-
 					}
 					else
 					{
 						Utils::log("unknow:%s1", cmd.c_str());
 					}
-
-
-
-
 				}
 			}
 			pack->Release();
