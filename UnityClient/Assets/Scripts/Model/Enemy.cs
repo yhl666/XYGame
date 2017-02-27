@@ -229,7 +229,7 @@ public class Enemy : Entity
             if (userData as Enemy ==  this)
             {
                this.machine.Pause();
-               /// this.LazyDispose();
+                this.LazyDispose();
             }
         }
     }
@@ -306,8 +306,7 @@ public class Enemy221 : Enemy
         this.speed *= 0.5f; ;
 
         this.atk_range = 1.0f;
-        Debug.Log("1111111111111");
-
+ 
 
     }
   

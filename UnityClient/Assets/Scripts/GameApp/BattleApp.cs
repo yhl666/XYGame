@@ -147,7 +147,7 @@ sealed class BattleSyncHandler
             string xx = _recvQueue.Dequeue() as string;
 
             TranslateDataPack decode = TranslateDataPack.Decode(xx);
-          //    Debug.Log("Recv " + xx);
+            //    Debug.Log("Recv " + xx);
             if (decode == null) { continue; }
 
             if (decode.isCustomData)
@@ -236,19 +236,19 @@ sealed class BattleSyncHandler
 
             app.randObj = new System.Random(seed);
             //    FoodsMgr.ins.Init();
-           HeroMgr.ins.me_no = int.Parse(decode.customs[2] as string);
+            HeroMgr.ins.me_no = int.Parse(decode.customs[2] as string);
 
             on_enter_max_fps = int.Parse(decode.customs[3] as string);
             Debug.Log("Current max fps=" + on_enter_max_fps);
 
 
-           /*
+            /*
             
-           Hero h2 = HeroMgr.Create<BattleHero>();
-            h2.team = 0xfff;
-            h2.no = HeroMgr.ins.me_no;
-            HeroMgr.ins.self = h2;
-            */
+            Hero h2 = HeroMgr.Create<BattleHero>();
+             h2.team = 0xfff;
+             h2.no = HeroMgr.ins.me_no;
+             HeroMgr.ins.self = h2;
+             */
             PublicData.GetInstance()._on_enter_max_fps = on_enter_max_fps;
 
         }
@@ -308,7 +308,7 @@ sealed class BattleSyncHandler
                 if (HeroMgr.ins.GetHero(no) != null) return;
 
 
-                   Debug.Log("NEW PVP player no= " + no);
+                Debug.Log("NEW PVP player no= " + no);
                 BattleHero h2 = HeroMgr.Create<BattleHero>();
 
                 if (is_pve)
@@ -317,7 +317,7 @@ sealed class BattleSyncHandler
                     h2.no = no; ;
                     h2.name = no.ToString();
 
-                    if ( Json.Decode(PublicData.ins.client_server_room_info)["p1"] == no.ToString())
+                    if (Json.Decode(PublicData.ins.client_server_room_info)["p1"] == no.ToString())
                     {//默认self是发起方
 
                         PublicData.ins.is_pvp_friend_owner = true;
@@ -359,9 +359,8 @@ sealed class BattleSyncHandler
             }
             else
             {///UnityClient
-            ///    if (no == HeroMgr.ins.me_no) return;
+                ///    if (no == HeroMgr.ins.me_no) return;
                 if (HeroMgr.ins.GetHero(no) != null) return;
-
 
                 Debug.Log("   NEW PVP player no= " + no);
                 BattleHero h2 = HeroMgr.Create<BattleHero>();
@@ -373,20 +372,17 @@ sealed class BattleSyncHandler
                     h2.name = PublicData.ins.user_pvp_other.name;
 
                     h2.x = 0.7f;//目标玩家初始在右边
-                    if(HeroMgr.ins.me_no == no)
+                    if (HeroMgr.ins.me_no == no)
                     {
                         HeroMgr.ins.self = h2;
                         h2.no = PublicData.ins.self_user.no;
                         h2.name = PublicData.ins.self_user.name;
-
                     }
-                    
 
                     if (PublicData.ins.is_pvp_friend_owner)
                     {
                         //我是发起方
                         h2.x = 0.7f;
-                        h2.flipX = 1f;
                         if (HeroMgr.ins.self != null)
                         {
                             HeroMgr.ins.self.x = 0.5f;
@@ -399,9 +395,7 @@ sealed class BattleSyncHandler
                         if (HeroMgr.ins.self != null)
                         {
                             HeroMgr.ins.self.x = 0.7f;
-                            HeroMgr.ins.self.flipX = 1f;
                         }
-
                     }
                 }
                 else
@@ -429,23 +423,26 @@ sealed class BattleSyncHandler
                         {
                             var xxx = HeroMgr.ins.self;
                             HeroMgr.ins.self.x = 3.6f;
+                            HeroMgr.ins.self.flipX = -1.0f;
                         }
                     }
                     else
                     {//我不是发起方
 
                         h2.x = 3.6f;
+                        h2.flipX = -1f;
                         if (HeroMgr.ins.self != null)
                         {
                             HeroMgr.ins.self.x = 10;
                             HeroMgr.ins.self.flipX = 1f;
+
                         }
 
                     }
                 }
             }
         }
- 
+
         else
         {
             Debug.LogError("ProcessWithCustomData:UnKnow cmd=" + cmd);
@@ -456,11 +453,11 @@ sealed class BattleSyncHandler
     {
 
         {
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 50; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = UnityEngine.Random.Range(5, 80);
-                e1.x = 5;
+            //    e1.x = 5;
                 e1.y = 5;
                 e1.team = 333;
             }
@@ -480,7 +477,7 @@ sealed class BattleSyncHandler
     {
 
 
-        if(current_fps==0)
+        if (current_fps == 0 && PublicData.ins.is_pve)
         {
             this.InitPVE();
         }
@@ -573,15 +570,11 @@ sealed class BattleSyncHandler
         ModelMgr.ins.UpdateMS();
         ViewMgr.ins.UpdateMS();
 
-
-
-
-        Debug.Log(  "hero [0] no = "+ (HeroMgr.ins.GetHeros()[0] as Hero).no);
         if (HeroMgr.ins.self.current_hp <= 0)
         {
             this.AddSendMsg("cmd:over");
         }
-        if (EnemyMgr.ins.GetEnemyCount() <= 0)
+        if (PublicData.ins.is_pve && EnemyMgr.ins.GetEnemyCount() <= 0)
         {
             this.AddSendMsg("cmd:over");
         }
@@ -761,7 +754,6 @@ public sealed class BattleApp : AppBase
     }
     public void InitNet(bool isReConnect = false)
     {
-        Debug.Log(PublicData.ins.isVideoMode);
         if (PublicData.ins.is_client_server)
         {
             this.InitWithClientServer();
