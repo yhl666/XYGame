@@ -2,16 +2,10 @@
 branches: {
   }
 fileChange:
-  /BattleServer:
-    newFile: !uuid 'd606c406c3bf237ee1710aa68bd5fe1ab7be1280'
-    oldFile: !uuid '57ee5793e227ed6118352198a2ef66d4704d74d1'
-  /BattleServer/cpp:
-    newFile: !uuid '6ef2877f9fd4792c9deb061f1c806c4b8cb2aae2'
-    oldFile: !uuid 'c32ebdee1c0fce8039d2cbb7431fc26a50dcd92a'
-  /BattleServer/cpp/ServerApp.cpp:
-    newFile: !uuid '97a518a6481fd8541dad5a03c8ada14b45e09e40'
-    oldFile: !uuid '8eb7fa117626cd95d14284d2a026d838496d0929'
-gitCommitId: !uuid 'eabbce8cfc23978929521b86b7a4f66e81def230'
+  /README.md:
+    newFile: !uuid '87e631eef1b31eb480eb61cb1237c52c43b63724'
+    oldFile: !uuid 'afd07d9c02e0f977451e5264b03e24754a6e3ab7'
+gitCommitId: !uuid '14bf714193b131f7a1fd8664b99743eabc0af89f'
 renames: {
   }
-revisionId: 367
+revisionId: 368
