@@ -454,7 +454,7 @@ sealed class BattleSyncHandler
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = randObj.Next(5, 80);
@@ -472,8 +472,10 @@ sealed class BattleSyncHandler
                   e1.team = 333;
               }*/
         }
-
-
+        if (PublicData.ins.is_client_server == false)
+        {
+            Application.targetFrameRate = 80;
+        }
     }
     public void ProcessWithFrameData()
     {

@@ -112,7 +112,7 @@ public class SocketClient : object
         {
             while (_sendQueue.Empty() == false)
             {
-                Thread.Sleep(1);
+                Thread.Sleep(12);
 
                 string msg = (string)_sendQueue.Dequeue() + "^";
 
@@ -143,7 +143,7 @@ public class SocketClient : object
 
         while (true)
         {
-            Thread.Sleep(1);
+            Thread.Sleep(12);
 
 
             byte[] buffer = new byte[Config.MAX_NETSOCKET_BUFFER_SIZE];
