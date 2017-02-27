@@ -19,18 +19,20 @@ public class AnimationstorTest : MonoBehaviour
     public Animations ani = null;
     void Awake()
     {
+        Application.targetFrameRate = 40;
+
         this.Init();
     }
 
     public void Update()
     {
- 
+
 
         if (ani == null)
         {
             this.Init();
         }
-     ///   if (ani != null)
+        ///   if (ani != null)
         ani.UpdateMS();
     }
 
@@ -50,10 +52,14 @@ public class AnimationstorTest : MonoBehaviour
         if (ani == null)
         {
             ani = AnimationsCache.ins.AddAnimatons(name, Animations.CreateWithFile(file));
-         ani.Init();
-         ani.Run();
+            ani.Init();
+            ani.Run();
         }
-
+        else
+        {
+            ani.Init();
+            ani.Run();
+        }
         ani.target = this.GetComponent<SpriteRenderer>();
         ani.perFrame = FrameDelay;
 
