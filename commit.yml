@@ -2,19 +2,22 @@
 branches: {
   }
 fileChange:
-  /BattleServer:
-    newFile: !uuid '626ab4677da26e96a94adaf1991659c4d7ef6867'
-    oldFile: !uuid 'f5d09fb35c4e9b230482ae1c74347d7922390c16'
-  /BattleServer/Debug:
-    newFile: !uuid 'fe105fff214184f44a5c0959f6a0bff046663657'
-    oldFile: !uuid '5f4827bdaaace05f962bdea789dd3d1541108843'
-  /BattleServer/Debug/BattleServer.exe:
-    newFile: !uuid '9ac6b3009df56018136b77ff70ca510e3f12ce5e'
-    oldFile: !uuid '024c8c883ed5d3cf5641d2ef32c14e480082daae'
-  /BattleServer/Debug/config.ini:
-    newFile: !uuid 'ca1d7ab350e1fa099f267898818be76adf4a6857'
-    oldFile: !uuid 'b51d9f478672da01b04e95d7f7368d83811a4125'
-gitCommitId: !uuid '8d5066e0d850fde6e166729ce3f73891aa6cdf26'
+  /UnityClient:
+    newFile: !uuid '4509dc2d1aa5601d63d39da68f27711e5d3303ca'
+    oldFile: !uuid 'e62e3cb8fcb5a9b391c83dc2dc900572d2986e6d'
+  /UnityClient/Assets:
+    newFile: !uuid '8fd3219c47e1b1389330f9a074c964878d6dd23a'
+    oldFile: !uuid '8c11467b590192c9558045da6e5393997384fa75'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'c7617a9175e3e9e3f44a7c15bef5146aa0d257dc'
+    oldFile: !uuid 'a91a40ff7fff885ff08bcf5b0a1221e353040db8'
+  /UnityClient/Assets/Scripts/2d:
+    newFile: !uuid 'ff5466d68e2f96a3f13942be3e0ba02d0fc430b5'
+    oldFile: !uuid '7fef1410b48c47c7c366bf821c7e8b0bf4b0d232'
+  /UnityClient/Assets/Scripts/2d/AnimationstorTest.cs:
+    newFile: !uuid 'cc1de198ee7ef03fb2fd717c656ecb914f5435bd'
+    oldFile: !uuid 'f664ad1a973ae01c6f6483a6f6d0fb911c62ed8f'
+gitCommitId: !uuid '502473d9f8ba60910657b78c4aab1bca854e2748'
 renames: {
   }
-revisionId: 361
+revisionId: 362
