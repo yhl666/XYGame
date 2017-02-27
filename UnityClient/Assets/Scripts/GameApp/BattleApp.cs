@@ -451,12 +451,13 @@ sealed class BattleSyncHandler
     }
     private void InitPVE()
     {
-
+      var   randObj = new System.Random(0);
         {
             for (int i = 0; i < 50; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
-                e1.x = UnityEngine.Random.Range(5, 80);
+                e1.x = randObj.Next(5,80);
+                ;
             //    e1.x = 5;
                 e1.y = 5;
                 e1.team = 333;
