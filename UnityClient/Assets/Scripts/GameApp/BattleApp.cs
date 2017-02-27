@@ -483,7 +483,7 @@ sealed class BattleSyncHandler
         {
             if (PublicData.ins.is_client_server == false)
             {
-                Application.targetFrameRate = 80;
+                Utils.SetTargetFPS(80);
             }
         }
         AutoReleasePool.ins.Clear();//更新前 先清理一次 使每帧 都有效清理
@@ -618,7 +618,7 @@ public sealed class BattleApp : AppBase
         isOver = false;
         if (PublicData.ins.is_client_server == false)
         {
-            Application.targetFrameRate = 0xffffff;
+            Utils.SetTargetFPS(0xffffff);
         }
         syncHandler = new BattleSyncHandler();
         syncHandler.app = this;
@@ -1045,7 +1045,7 @@ public sealed class BattleApp : AppBase
     {
         if (PublicData.ins.is_client_server == false)
         {
-            Application.targetFrameRate = 0xffffff;
+            Utils.SetTargetFPS(0xffffff);
         }
         PublicData.ins.is_pvp_friend_ai = false;
         PublicData.ins.is_pvp_friend = false;

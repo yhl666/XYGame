@@ -19,8 +19,7 @@ public class AnimationstorTest : MonoBehaviour
     public Animations ani = null;
     void Awake()
     {
-        Application.targetFrameRate = 40;
-
+        Utils.SetTargetFPS(40);
         this.Init();
     }
 

@@ -16,7 +16,7 @@ public class LogicScene : GiantLightSceneExtension
     public override void Enter(IGiantGame game)
     {
         base.Enter(game);
-        Application.targetFrameRate = 0xfffffff;
+        Utils.SetTargetFPS(0xffffff);
         AppMgr.ins.OnEnter();
         AppMgr.ins.LoadApp<TownApp>();
     }

@@ -49,8 +49,7 @@ public class LoginApp : AppBase
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
         {
             ViewUI.Create<UILoginRoot>();
-            Application.targetFrameRate = 40;
-
+            Utils.SetTargetFPS(40);
 
             return "";
         }));

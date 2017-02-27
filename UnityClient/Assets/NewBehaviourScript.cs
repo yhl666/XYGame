@@ -15,7 +15,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Awake()
     {
-     Application.targetFrameRate = 999999;
+        Utils.SetTargetFPS(0xffffff);
     }
     // Use this for initialization
     void Start()

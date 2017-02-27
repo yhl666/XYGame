@@ -16,29 +16,10 @@ public class TownApp : AppBase
     private bool init = false;
     // Use this for initialization
 
-    public override bool Init()
+    private void InitCustomAsync()
     {
-        if (init) return true;
-        init = true;
-        base.Init();
-
-
-        ViewUI.Create<UIPublicRoot>();
-
-        for (int i = 0; i < 10; i++)
-        {
-            EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
-            {
-                return "";
-            }));
-
-        }
-
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
         {
-            ViewUI.Create<UITownRoot>();
-
-
             this.AddCellApp<WorldChatApp>();
             this.AddCellApp<TownMenuApp>();
             this.AddCellApp<FriendsApp>();
@@ -50,12 +31,17 @@ public class TownApp : AppBase
             this.AddCellApp<CharacterInfoApp>();
             this.AddCellApp<AfficheApp>();
             EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
-            Application.targetFrameRate = 40;
+            return "";
+        }));
 
+
+        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+        {
+
+            Utils.SetTargetFPS(40);
 
 
             this.worldMap = ModelMgr.Create<LogicWorldMap>();
-
 
             string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(500).ToString();
 
@@ -119,12 +105,33 @@ public class TownApp : AppBase
             return "本地资源加载完成，连接服务器...";
         }));
 
+    }
+    public override bool Init()
+    {
+        if (init) return true;
+        init = true;
+        base.Init();
+
+        Utils.SetTargetFPS(0xffffff);
+        ViewUI.Create<UIPublicRoot>();
 
 
+        for (int i = 0; i < 10; i++)
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+            {
+                return "";
+            }));
 
+        }
 
+        EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+        {
+            ViewUI.Create<UITownRoot>();
 
-
+            this.InitCustomAsync();
+            return "";
+        }));
 
         return true;
     }

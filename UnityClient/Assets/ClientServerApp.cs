@@ -130,7 +130,7 @@ public class ClientServerApp : GAObject
         else
         {
             Thread.Sleep(10);
-            Application.targetFrameRate = 60;
+            Utils.SetTargetFPS(60);
             this.ProcessOneRequest();
         }
 
@@ -149,8 +149,7 @@ public class ClientServerApp : GAObject
         PublicData.ins.client_server_room_info = request;
         PublicData.ins.is_client_server = true;
         is_processing = true;
-        Application.targetFrameRate = 0xfffff;
-
+        Utils.SetTargetFPS(0xffffff);
  
         string mode = kv["mode"];
         if ( mode == "pvp")

@@ -130,7 +130,6 @@ public sealed class UI_loading : ViewUI
 
             // Thread.Sleep(250);
 
-
             this._enable = true;
             this._ui.SetActive(_enable);
 

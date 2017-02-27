@@ -144,6 +144,11 @@ public sealed class Utils
         }
     }
 
+    public static void  SetTargetFPS(int fps)
+    {
+         Application.targetFrameRate = fps;
+    }
+
     /// <summary>
     /// unity 世界坐标（单位米） 转换为2D像素坐标
     /// </summary>
