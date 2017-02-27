@@ -123,12 +123,15 @@ public sealed class Events : object
 
 
     //-------------------------BATTLE
-    public const int ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED = 300;//进入随机匹配1v1队列按钮
-    public const int ID_TOWN_BTN_PVP_LEAVE_QUEUE_CLICKED = 301;//退出随机匹配1v1队列按钮
-    public const int ID_TOWN_BTN_PVP_ENTER_QUEUE_CLICKED = 302;//进入随机匹配1v1队列按钮
+  
+    public const int ID_TOWN_BTN_BATTLE_LEAVE_QUEUE_CLICKED = 301;//退出随机匹配1v1队列按钮
+    public const int ID_TOWN_BTN_BATTLE_ENTER_QUEUE_CLICKED = 302;//进入随机匹配1v1队列按钮
+
     public const int ID_TOWN_BTN_PVE_RAMDON_QUEUE_CLICKED = 303;//进入随机匹配1v1队列按钮
+    public const int ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED = 300;//进入随机匹配1v1队列按钮
 
-
+    public const int ID_TOWN_COMPONENT_BTN_PVP_QUEUE_CLICKED = 304;//退出随机匹配1v1队列按钮
+    public const int ID_TOWN_COMPONENT_BTN_PVE_QUEUE_CLICKED = 305;//进入随机匹配1v1队列按钮
 
 
 

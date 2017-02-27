@@ -35,21 +35,22 @@ public class TownPVPApp : CellApp
     {
 
         //1v1 随机匹配
-        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_PVP_ENTER_QUEUE_CLICKED);
-        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_PVP_LEAVE_QUEUE_CLICKED);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_BATTLE_ENTER_QUEUE_CLICKED);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_BATTLE_LEAVE_QUEUE_CLICKED);
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_PVP_QUEUE_RESULT);
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_PVE_RAMDON_QUEUE_CLICKED);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED);
 
         return true;
     }
     public override void OnEvent(int type, object userData)
     {
 
-        UI_townpvpapp view = userData as UI_townpvpapp;
+   
         TownApp p = (this.parent as TownApp);
-        if (type == Events.ID_TOWN_BTN_PVP_ENTER_QUEUE_CLICKED)
+        if (type == Events.ID_TOWN_BTN_BATTLE_ENTER_QUEUE_CLICKED)
         {// open
             //允许移动 但不允许点击其他APP
             if (p.isOneCellAppShowLock) return;
@@ -59,6 +60,7 @@ public class TownPVPApp : CellApp
             RpcClient.ins.SendRequest("services.battle", "request_pvp_ramdon_enter_queue_v2",
                 "no:" + PublicData.ins.self_user.no.ToString() + "," + "mode:" + PublicData.ins.battle_mode + ",", (string msg) =>
                 {
+                    UI_townpvpapp view = userData as UI_townpvpapp;
                     if (msg == "")
                     {
                         p.isOneCellAppShowLock = false;//防止重复点击
@@ -88,9 +90,9 @@ public class TownPVPApp : CellApp
 
 
         }
-        else if (type == Events.ID_TOWN_BTN_PVP_LEAVE_QUEUE_CLICKED)
+        else if (type == Events.ID_TOWN_BTN_BATTLE_LEAVE_QUEUE_CLICKED)
         { // close 
-
+            UI_townpvpapp view = userData as UI_townpvpapp;
             RpcClient.ins.SendRequest("services.battle", "request_pvp_ramdon_leave_queue_v2",
            "no:" + PublicData.ins.self_user.no.ToString() + ","  + "mode:" + PublicData.ins.battle_mode + ",", (string msg) =>
            {
@@ -169,8 +171,18 @@ public class TownPVPApp : CellApp
             Debug.Log("pve");
             PublicData.ins.battle_mode = "pve";
             PublicData.ins.is_pve = true;
-            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED);//显示PVP流程
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_BATTLE_ENTER_QUEUE_CLICKED,userData);//显示PVP流程
+       
         }
+        else if (type == Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED)
+        {
+            //pve 组队
+            Debug.Log("pvp");
+            PublicData.ins.battle_mode = "pvp";
+            PublicData.ins.is_pve = false;
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_BATTLE_ENTER_QUEUE_CLICKED,userData);//显示PVP流程
+        }
+
     }
 
     public override void UpdateMS()

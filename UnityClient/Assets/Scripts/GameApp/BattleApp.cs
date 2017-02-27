@@ -454,7 +454,7 @@ sealed class BattleSyncHandler
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         {
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 50; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = randObj.Next(5, 80);
@@ -472,16 +472,19 @@ sealed class BattleSyncHandler
                   e1.team = 333;
               }*/
         }
-        if (PublicData.ins.is_client_server == false)
-        {
-            Application.targetFrameRate = 80;
-        }
     }
     public void ProcessWithFrameData()
     {
         if (current_fps == 0 && PublicData.ins.is_pve)
         {
             this.InitPVE();
+        }
+        if(current_fps==0)
+        {
+            if (PublicData.ins.is_client_server == false)
+            {
+                Application.targetFrameRate = 80;
+            }
         }
         AutoReleasePool.ins.Clear();//更新前 先清理一次 使每帧 都有效清理
 
@@ -613,7 +616,10 @@ public sealed class BattleApp : AppBase
         EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_PVP_RETULT);//接受战斗结束消息 来自RPC派发
         isOver = false;
-
+        if (PublicData.ins.is_client_server == false)
+        {
+            Application.targetFrameRate = 0xffffff;
+        }
         syncHandler = new BattleSyncHandler();
         syncHandler.app = this;
 
@@ -1037,6 +1043,10 @@ public sealed class BattleApp : AppBase
 
     public override void OnDispose()
     {
+        if (PublicData.ins.is_client_server == false)
+        {
+            Application.targetFrameRate = 0xffffff;
+        }
         PublicData.ins.is_pvp_friend_ai = false;
         PublicData.ins.is_pvp_friend = false;
         ///   PublicData.ins.isVideoMode = false;

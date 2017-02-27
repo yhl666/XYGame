@@ -1038,12 +1038,12 @@ public sealed class UI_component : UICellApp
 
         this.btn_pvp_random_queue.onClick.AddListener(() =>
         {
-            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED);
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_COMPONENT_BTN_PVP_QUEUE_CLICKED);
 
         });
         this.btn_pve_random_queue.onClick.AddListener(() =>
         {
-            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVE_RAMDON_QUEUE_CLICKED);
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_COMPONENT_BTN_PVE_QUEUE_CLICKED);
 
         });
 
@@ -1120,11 +1120,12 @@ public sealed class UI_townpvpapp : UICellApp
 
         this.btn_close.onClick.AddListener(() =>
         {//离开队列
-            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVP_LEAVE_QUEUE_CLICKED, this);
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_BATTLE_LEAVE_QUEUE_CLICKED, this);
 
         });
 
-        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_COMPONENT_BTN_PVP_QUEUE_CLICKED);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_COMPONENT_BTN_PVE_QUEUE_CLICKED);
 
         this.panel.SetActive(false);
         this.panel.transform.localScale = new Vector3(1.0f, 0.0f, 1.0f);
@@ -1135,10 +1136,14 @@ public sealed class UI_townpvpapp : UICellApp
 
     public override void OnEvent(int type, object userData)
     {
-        if (type == Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED)
+        if (type == Events.ID_TOWN_COMPONENT_BTN_PVP_QUEUE_CLICKED)
         {
-            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVP_ENTER_QUEUE_CLICKED, this);
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVP_RAMDON_QUEUE_CLICKED, this);
 
+        }
+        else if (type == Events.ID_TOWN_COMPONENT_BTN_PVE_QUEUE_CLICKED)
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_BTN_PVE_RAMDON_QUEUE_CLICKED, this);
         }
     }
 
