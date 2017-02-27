@@ -672,7 +672,15 @@ public sealed class UI_pvpresult : ViewUI
            {
                Debug.Log("观看录像");
                PublicData.ins.isVideoMode = true;
-               SceneMgr.Load("BattlePVP");
+
+               if (PublicData.ins.is_pve)
+               {
+                   SceneMgr.Load("BattlePVE");
+               }
+               else
+               {
+                   SceneMgr.Load("BattlePVP");
+               }
            });
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);

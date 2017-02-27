@@ -476,6 +476,7 @@ sealed class BattleSyncHandler
     public void ProcessWithFrameData()
     {
 
+        Debug.Log(HeroMgr.ins.self.no);
 
         if (current_fps == 0 && PublicData.ins.is_pve)
         {
