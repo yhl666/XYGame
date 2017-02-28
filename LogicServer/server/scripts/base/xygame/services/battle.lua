@@ -1,8 +1,8 @@
 
 --[[
 
-* Author:  sutao
-* Email:   sutao@ztgame.com
+* Author:  caoshanshan
+* Email:   me@dreamyouxi.com
 
 
 --{no:1,no_target:2,}no我的id no_target 我要战的id
