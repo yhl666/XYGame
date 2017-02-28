@@ -545,7 +545,7 @@ public class AttackState_1 : StateBase
         {
             Target.isAttacking = false;
             this.Enable = false;
-            //    Debug.Log(" 连招  1111 完成");
+               Debug.Log(" 连招  1111 完成");
             if (Target.atk_level > 1)
             {//下段招数
                 this.stack.PushSingleState(StateBase.Create<AttackState_2>(Target));
@@ -591,7 +591,7 @@ public class AttackState_2 : StateBase
         return null;
     }
 
-    public override string GetAnimationName() { return "2120"; }
+    public override string GetAnimationName() { return "2121"; }
 
     bool checkForTimeOut = true;
     int tick = 0;
@@ -611,6 +611,7 @@ public class AttackState_2 : StateBase
             Debug.Log(" 连招  222 超时");
 
         }
+        Debug.Log("11111111111111");
 
     }
     public override void OnEvent(string type, object userData)
@@ -632,9 +633,15 @@ public class AttackState_2 : StateBase
         if (type == Events.ID_BTN_ATTACK)
         {
             Target.attackingAnimationName = this.GetAnimationName();
-            this.checkForTimeOut = false;
+         ///   this.checkForTimeOut = false;
             this.Enable = true;
             Target.isAttacking = true;
+
+
+         //   BulletMgr.Create(this.Target, Target.bulleClassName_atk1, Target.bullet_atk1_info);
+            Target.AddBuffer<BufferLighting>();
+
+
         }
         else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
         {
@@ -645,6 +652,8 @@ public class AttackState_2 : StateBase
             this.stack.PopSingleState();
             if (Target.atk_level > 2)
             {//下段招数
+                Debug.Log(this.stack.ToString());
+
                 this.stack.PushSingleState(StateBase.Create<AttackState_3>(Target));
             }
         }
@@ -654,6 +663,8 @@ public class AttackState_2 : StateBase
     public override void OnEnter()
     {
         this.Enable = true;
+
+        this.stack.id = StateStack.ID_ATTACK;
     }
     public override void OnExit()
     {
@@ -676,7 +687,7 @@ public class AttackState_3 : StateBase
     }
 
 
-    public override string GetAnimationName() { return "2130"; }
+    public override string GetAnimationName() { return "2210"; }
 
     bool checkForTimeOut = true;
     int tick = 0;
@@ -688,7 +699,7 @@ public class AttackState_3 : StateBase
     public override void UpdateMS()
     {
         if (this.checkForTimeOut == false) return;
-
+        Debug.Log("33333333333333333");
         tick++;
         if (tick > 60)
         {//time out
@@ -697,7 +708,7 @@ public class AttackState_3 : StateBase
             this.stack.PopSingleState();
             Debug.Log("连招   333333 超时");
         }
-
+ 
     }
     public override void OnEvent(string type, object userData)
     {
@@ -722,6 +733,8 @@ public class AttackState_3 : StateBase
             this.Enable = true;
             Target.isAttacking = true;
             this.checkForTimeOut = false;
+            Target.AddBuffer<BufferAssemble>();
+
 
         }
         else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
@@ -738,7 +751,7 @@ public class AttackState_3 : StateBase
 
     public override void OnEnter()
     {
-        this.Enable = true;
+        this.Enable = true;  
     }
     public override void OnExit()
     {

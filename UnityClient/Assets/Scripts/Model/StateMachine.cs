@@ -133,7 +133,7 @@ public sealed class StateStack : GAObject
     {//单行状态机
         StateBase s = stacks.Pop() as StateBase;//
         s.OnExit();
-        s.stack = null;
+      //  s.stack = null;
     }
 
     public override void UpdateMS()

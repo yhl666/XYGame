@@ -88,6 +88,7 @@ public class BattleHero : Hero
 
     this.current_hp = 1;
 
+    this.atk_level = 3;
 
 
 
