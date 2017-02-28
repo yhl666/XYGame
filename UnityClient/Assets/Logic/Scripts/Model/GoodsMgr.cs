@@ -22,7 +22,7 @@ public sealed class GoodsMgr : GAObject
         this.lists.Clear();
         _ins = null;
     }
-    public void Remove(string no)
+    public void Remove(int no)
     {
         Goods obj = this.GetGoods(no);
         if (obj == null) return;
@@ -35,7 +35,7 @@ public sealed class GoodsMgr : GAObject
         return lists;
     }
 
-    public Goods GetGoods(string no)
+    public Goods GetGoods(int no)
     {
         foreach (Goods obj in lists)
         {

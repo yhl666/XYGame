@@ -36,9 +36,9 @@ namespace DAO
     /// </summary>
     public sealed class Equip : DaoBase
     {
-        public string id;//装备id
-        public string ownner;//拥有者id
-        public string no;//全局id
+        public int id;//装备id
+        public int ownner;//拥有者id
+        public int no;//全局id
         public int level; // 等级
         public int exp;
 
@@ -79,9 +79,9 @@ namespace DAO
     //道具
     public sealed class Goods : DaoBase
     {
-        public string id;//id
-        public string ownner;//拥有者id
-        public string no;//全局id
+        public int id;//id
+        public int ownner;//拥有者id
+        public int no;//全局id
         public int count; // 数量
 
 

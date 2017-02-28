@@ -22,7 +22,7 @@ public sealed class EquipMgr : GAObject
         this.lists.Clear();
         _ins = null;
     }
-    public void Remove(string no)
+    public void Remove(int no)
     {
         Equip obj = this.GetEquip(no);
         if (obj == null) return;
@@ -35,7 +35,7 @@ public sealed class EquipMgr : GAObject
         return lists;
     }
 
-    public Equip GetEquip(string no)
+    public Equip GetEquip(int no)
     {
         foreach (Equip obj in lists)
         {
