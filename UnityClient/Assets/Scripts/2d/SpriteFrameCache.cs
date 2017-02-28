@@ -26,7 +26,7 @@ public sealed class SpriteFrameCache
     }
 
 
-    public void AddSpriteFrameWithPng(string png)
+    public SpriteFrame AddSpriteFrameWithPng(string png)
     {
         SpriteFrame sp = SpriteFrame.CreateWithPng(png);
 
@@ -34,13 +34,28 @@ public sealed class SpriteFrameCache
         {
             this.AddSpriteFrame(png, sp);
         }
+        return sp;
     }
     public SpriteFrame GetSpriteFrame(string name)
     {
         if (hash.Contains(name)) return (hash[name] as SpriteFrame).Clone();
         return null;
     }
+    /// <summary>
+    /// miss 自动添加
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    public SpriteFrame GetSpriteFrameAuto(string png)
+    {
+        SpriteFrame sp = this.GetSpriteFrame(png);
 
+        if (sp == null)
+        {
+            return this.AddSpriteFrameWithPng(png);
+        }
+        return sp;
+    }
 
     public void RemoveSpriteFrame(string name)
     {
@@ -291,7 +306,7 @@ public sealed class SpriteFrameCache
     }
 
 
-    public  static void PrintCacheStatus()
+    public static void PrintCacheStatus()
     {
         Debug.Log("SpriteFrameCache: " + ins.hash.Count + " in Cache");
         foreach (DictionaryEntry kv in ins.hash)

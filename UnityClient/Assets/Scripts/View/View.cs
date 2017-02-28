@@ -185,7 +185,7 @@ public class ViewEntity : View
         //优先级匹配，状态可能组合，但是动画只有一个
         if (m.isDie)
         {
-          //  name = m.ani_die;
+            //  name = m.ani_die;
         }
         else if (m.isHurt)
         {
@@ -391,4 +391,6 @@ public class ViewBuffer2_1 : View
     private Buffer2_1 m = null;
 
 }
+
+
 
