@@ -31,4 +31,7 @@ function t.get_pvproom(key)
     return const.REDIS_KEY_PVPROOM .. key;
 end
 
+function  t:get_equip(key)
+    return const.REDIS_KEY_EQUIP .. key;
+end
 return t;
