@@ -2,25 +2,40 @@
 branches: {
   }
 fileChange:
-  /设计文档:
-    newFile: !uuid 'fd68fab72512a69c11c27f07f27bd0ee027021b7'
-    oldFile: !uuid '5e7e0a3af5ada35bf4357a2c2558698488cf9787'
-  /设计文档/28号PPT.pptx:
-    newFile: !uuid 'f1da793f3a76f9e3d46312018cb661cfa73fae73'
-    oldFile: null
-  /设计文档/性能优化.txt:
-    newFile: !uuid '20ab4fed4f726dc7420c838dc3018f9042cf48d6'
-    oldFile: null
-  /设计文档/服务端结构.xmind:
-    newFile: !uuid '6d92001ac011480f6cc2f2fc8a7f80865e9d2ae9'
-    oldFile: null
-  /设计文档/状态机关系类图.png:
-    newFile: !uuid '807a5e371a3f4a689f417dd8f1a10d553736f118'
-    oldFile: null
-  /设计文档/状态机关系类图.vsd:
-    newFile: !uuid '0cd2b0e1bb9adaedd7e7349899ac0cd70494012f'
-    oldFile: !uuid '8b19b4d20aad4ae6d57caa25901e974775ae6f43'
-gitCommitId: !uuid '740aa86bc75d6f4027e3058938eb8c09b7bf16ab'
+  /UnityClient:
+    newFile: !uuid 'f1598d089dfa8eded6014ce8b44cf75367daea51'
+    oldFile: !uuid '5a1a45b2b8cec02fdb55b1d3a3b2373d34f7209a'
+  /UnityClient/Assets:
+    newFile: !uuid 'd3d9c8f13dd9955d3c1020f33935df1a4159d023'
+    oldFile: !uuid 'f7e076cf415b1701f8d31e41927a0b00fcb48456'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '6a0460f085cde78ce8ef7927dbffd7fd605b6964'
+    oldFile: !uuid '20d095bd44746336a0702ebece8a40b258e288bc'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid '086d5f7a2fe26bb4fe15d9ed8a9bf00c89c8ef97'
+    oldFile: !uuid '40006d52fc169fbafbedaafca89c4c4e0ed42f50'
+  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
+    newFile: !uuid '5e341fc3f82877eba41e9595b9efa7bbe09e0584'
+    oldFile: !uuid '9a56cfcd85e0ec26d3ebe851c3bbb228236f29cb'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '3d74303b2dc8003252fc17861b17d87a5afaf873'
+    oldFile: !uuid '8aa6cc09817868279736d90db6eee5a2236f7151'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid 'eb80f56c0fbc79b295b18ea7c6c462f1c0ef88db'
+    oldFile: !uuid 'c342ad85ca60a4b24e14b5bf94129ac386eab0d0'
+  /UnityClient/Assets/Scripts/Model/StateBase.cs:
+    newFile: !uuid 'd72a19c23d906fd9ea3e0b14b6929973907ee299'
+    oldFile: !uuid 'dcfe3b5dc8676ddff35e1278695adf037a4d5e09'
+  /UnityClient/Assets/Scripts/Model/StateMachine.cs:
+    newFile: !uuid 'b3e88a4794e65258072b9d584014ce0d3cc9eac0'
+    oldFile: !uuid '09f7b22f3b6e09bee4ba40e7359ae132287a918d'
+  /UnityClient/ProjectSettings:
+    newFile: !uuid '06904f9c0c61f864f17dbdca6497c1b6a17ba6b7'
+    oldFile: !uuid 'c81807ba5b8a0b2d93f9e8c0baacc16762f2f034'
+  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
+    newFile: !uuid '896e05c7ba70f5a05b05b1d92005bf5b140535c5'
+    oldFile: !uuid 'a7eba809c79fc142998970051bf3943a3a70308f'
+gitCommitId: !uuid '1d6407709482b4c2af2752ba25d597317768a22e'
 renames: {
   }
-revisionId: 378
+revisionId: 379
