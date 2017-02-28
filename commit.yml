@@ -2,70 +2,25 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '5a1a45b2b8cec02fdb55b1d3a3b2373d34f7209a'
-    oldFile: !uuid 'b195c9ee276d836002cbd1a24adaea650691b26f'
-  /UnityClient/Assets:
-    newFile: !uuid 'f7e076cf415b1701f8d31e41927a0b00fcb48456'
-    oldFile: !uuid '3ee72eb25003e40f019a503a149037b66571df5d'
-  /UnityClient/Assets/ClientServerApp.cs:
-    newFile: !uuid 'd098a1a341a133f6257c959d28a3b115ffc982c9'
-    oldFile: !uuid 'a437755ec035636d76909b2fceef2e1826a4805f'
-  /UnityClient/Assets/ClientServerText.cs:
-    newFile: !uuid 'db7c9158669f9d1c4c7a23b67ad89050e2b5f964'
-    oldFile: !uuid '44bca55870b4fb7925d0668ac4ac5e7aacae13b8'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid 'e8a8ce134f934c6fe4585876184ffac507a7407d'
-    oldFile: !uuid '8070a966c152186e55e99ff93b65374daf4a4430'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid '316fca5c538708ca24e5e19ef0ba39e2bf06d25b'
-    oldFile: !uuid '54ae00890f711e6d7a3b6b512cc6abd30870afd1'
-  /UnityClient/Assets/Logic/Scripts/GameApp:
-    newFile: !uuid '820caa7074304992f10070c8b93a4759ed6cc796'
-    oldFile: !uuid '32027b73d7a4a166c455e10269ba33e883d61b62'
-  /UnityClient/Assets/Logic/Scripts/GameApp/LoginApp.cs:
-    newFile: !uuid '29f36681716d9359235e9d7f6521e674f1c322fe'
-    oldFile: !uuid 'cccdc673e19ace89fa711ee5ebf2d8a6453aeb1f'
-  /UnityClient/Assets/Logic/Scripts/GameApp/TownApp.cs:
-    newFile: !uuid 'a047ee8bf110cd794f9c4991630325405d3637a5'
-    oldFile: !uuid '4e4ec1639a81e288e141497f2cc9428d6983e6f2'
-  /UnityClient/Assets/Logic/Scripts/LogicScene.cs:
-    newFile: !uuid 'c1bbb658cefbca643243f374ee752ea2f24c0f79'
-    oldFile: !uuid '90e4f47f9bdeccd45bcfd3681dcb1e21fdcaf8e6'
-  /UnityClient/Assets/Logic/Scripts/LoginScene.cs:
-    newFile: !uuid '8d204ac03ed03ee072708d0df5a73e6d8c79a00e'
-    oldFile: !uuid '17906acb66809d3547718218668976f3c5c99b82'
-  /UnityClient/Assets/NewBehaviourScript.cs:
-    newFile: !uuid 'eaeb27577b81fc9f6f46ce1096b7aaabdc3bdd74'
-    oldFile: !uuid '04a484be3c673a267a81e1b46f68358d974ce3dd'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '20d095bd44746336a0702ebece8a40b258e288bc'
-    oldFile: !uuid '090f6814fdbd68767d7e69339de95cae468b7fa8'
-  /UnityClient/Assets/Scripts/2d:
-    newFile: !uuid '3fabfd12fb2847bb5a910c6bc12c9cbeddd4e0fe'
-    oldFile: !uuid 'ff5466d68e2f96a3f13942be3e0ba02d0fc430b5'
-  /UnityClient/Assets/Scripts/2d/AnimationstorTest.cs:
-    newFile: !uuid '179bed25db94edcc2b0dd42b74b23a3cd5aa3c61'
-    oldFile: !uuid 'cc1de198ee7ef03fb2fd717c656ecb914f5435bd'
-  /UnityClient/Assets/Scripts/Common:
-    newFile: !uuid '7f4942ae4311992bdcc2d9cfd88e9c6095c85e02'
-    oldFile: !uuid '9869b8dc5abcf35c2a1ff575916ba5ca9bc8dd1f'
-  /UnityClient/Assets/Scripts/Common/Utils.cs:
-    newFile: !uuid 'cf05163aabf9a8c4d9b1559713fee2ee50fbfb13'
-    oldFile: !uuid 'dbfd54d0f8a786705bf00ceca4c9f9f20a6b2d20'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid '40006d52fc169fbafbedaafca89c4c4e0ed42f50'
-    oldFile: !uuid 'a0ccfac7dec1557a61aee04b256b6c217f98463d'
-  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
-    newFile: !uuid '9a56cfcd85e0ec26d3ebe851c3bbb228236f29cb'
-    oldFile: !uuid 'ab82c64d0f69c04d6efce4df2b032f2fa5cff2b7'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'abcf47e4e4e6eb981b9980ca162bb0ee7cf7003b'
-    oldFile: !uuid 'fa0ed4184ba3f47d8d6199a0d363a86166b28542'
-  /UnityClient/Assets/Scripts/View/UIPublic.cs:
-    newFile: !uuid '7206bc6455a5ddf966a64a2d9d8015a269e5b16e'
-    oldFile: !uuid '460528e7bfe639115cb19151c0d22f0157a7664c'
-gitCommitId: !uuid 'c0f748e8dcaf4867ad21e86c1004a32b48c3aa2c'
+  /设计文档:
+    newFile: !uuid 'fd68fab72512a69c11c27f07f27bd0ee027021b7'
+    oldFile: !uuid '5e7e0a3af5ada35bf4357a2c2558698488cf9787'
+  /设计文档/28号PPT.pptx:
+    newFile: !uuid 'f1da793f3a76f9e3d46312018cb661cfa73fae73'
+    oldFile: null
+  /设计文档/性能优化.txt:
+    newFile: !uuid '20ab4fed4f726dc7420c838dc3018f9042cf48d6'
+    oldFile: null
+  /设计文档/服务端结构.xmind:
+    newFile: !uuid '6d92001ac011480f6cc2f2fc8a7f80865e9d2ae9'
+    oldFile: null
+  /设计文档/状态机关系类图.png:
+    newFile: !uuid '807a5e371a3f4a689f417dd8f1a10d553736f118'
+    oldFile: null
+  /设计文档/状态机关系类图.vsd:
+    newFile: !uuid '0cd2b0e1bb9adaedd7e7349899ac0cd70494012f'
+    oldFile: !uuid '8b19b4d20aad4ae6d57caa25901e974775ae6f43'
+gitCommitId: !uuid '740aa86bc75d6f4027e3058938eb8c09b7bf16ab'
 renames: {
   }
-revisionId: 377
+revisionId: 378
