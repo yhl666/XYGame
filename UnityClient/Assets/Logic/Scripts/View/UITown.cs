@@ -1260,6 +1260,10 @@ public sealed class UI_equipsystemapp : UICellApp
         this.PopIn();
 
     }
+    public void Show(DAO.Equip dao)
+    {
+
+    }
     public override void Hide()
     {
         this.PopOut();

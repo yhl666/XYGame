@@ -68,13 +68,10 @@ public sealed class EquipMgr : GAObject
 
     private EquipMgr()
     {
-        for (int i = 1300; i < 1315; i++)
+        for (int i = 1300; i < 1308; i++)
         {
-            DAO.Equip dao = DAO.Equip.Create();
+            DAO.Equip dao = DAO.Equip.Create(i);
             this.Add(dao);
-
-            dao.png = "hd/interface/items/" + i.ToString() + ".png";
-
 
         }
     }

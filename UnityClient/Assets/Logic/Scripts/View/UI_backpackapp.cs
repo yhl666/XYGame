@@ -31,6 +31,9 @@ public sealed class UI_backpackapp : UICellApp
 
             Button btn_temp = root.GetComponentInChildren<Button>();
             Image img = root.transform.FindChild("Image").GetComponent<Image>();
+              img = root.GetComponentInChildren<Image>();
+
+
             //Debug.Log("backpack_panel_button" + i.ToString());
             if (btn_temp!=null)
             {
