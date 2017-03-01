@@ -8,5 +8,6 @@
 
 如果是返回单条数据就返回比如 查询玩家某件装备 成功"ret:ok,id:1,level:3," 失败"ret:error,msg:XXX,"
 
+客户端同理
 
-
+对应使用json.decode json.multi_decode 来解析打包
