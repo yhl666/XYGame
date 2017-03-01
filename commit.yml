@@ -3,12 +3,12 @@ branches: {
   }
 fileChange:
   /设计文档:
-    newFile: !uuid 'e4ed212bb6209d8dd7cd2ccda58fd42e1e553965'
-    oldFile: !uuid 'f9c009232c7063aa51fe1f9e46d4ae7a64399373'
+    newFile: !uuid '24746d11ee541c228dbbac9da9e9a32565b69a40'
+    oldFile: !uuid 'e4ed212bb6209d8dd7cd2ccda58fd42e1e553965'
   /设计文档/客户端服务端交互协议.txt:
-    newFile: !uuid '5faee54a5ae77232d14ee18bb714bb6b573a21f2'
-    oldFile: !uuid 'a158cc212521a24398db8e0ba84d487c7f76bf6e'
-gitCommitId: !uuid 'd7903cf9001018d039abcbca0c790639231e0bb0'
+    newFile: !uuid '7e9fa1c5a8d0bcd6ff68b85249ae26c3f67978dd'
+    oldFile: !uuid '5faee54a5ae77232d14ee18bb714bb6b573a21f2'
+gitCommitId: !uuid 'b1bd3a1190db117be5137374b899c0e3e8adb530'
 renames: {
   }
-revisionId: 389
+revisionId: 390
