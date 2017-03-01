@@ -1,0 +1,12 @@
+使用简单json来交互具体见Json.cs 或 json.lua
+
+按照接口的定义，
+如果是返回单条数据就返回比如 玩家登陆  成功"ret:ok,msg:XXXX,"  失败"ret:error,msg:XXX"
+
+
+如果是返回单条数据就返回比如 查询玩家所有装备 成功"{id:1,level:3,}{id:2,level:3}" 失败""
+
+如果是返回单条数据就返回比如 查询玩家某件装备 成功"ret:ok,id:1,level:3," 失败"ret:error,msg:XXX,"
+
+
+
