@@ -2,34 +2,28 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'b66a3a3bd04e1698501df30c9bf9139e6de8b97c'
-    oldFile: !uuid '838e0d93bfcfae90aa3774e9a6626a5254b048a3'
-  /UnityClient/Assets:
-    newFile: !uuid '60f578882399e1a9486dbf87be62012622d43a99'
-    oldFile: !uuid 'dc1c1c0880aac9e107d17fb7c490fb67b8628f3a'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid 'c60b5ed0906e3b394598465fef458da8a064be77'
-    oldFile: !uuid 'cefcbdbba0cadbfb16be88cadf3880167208a0da'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid '30e8f41635c19e303a6dd9b4d70bbe8f4f1123e7'
-    oldFile: !uuid '60c3ddbd1cc24c5e7b46450650e2c2765e604255'
-  /UnityClient/Assets/Logic/Scripts/DAO:
-    newFile: !uuid 'ac08acf2ab39f14e7f58e03aae85c2be8669c8d4'
-    oldFile: !uuid 'fdf874e8b155135082e6f923bbf3ab082a558bb8'
-  /UnityClient/Assets/Logic/Scripts/DAO/DaoBase.cs:
-    newFile: !uuid 'ee341c973b4e4facf423fbf5f41d00bc8cde122b'
-    oldFile: !uuid '1211fb42cddd2699d63bc56bcf1b2de586af10f3'
-  /UnityClient/Assets/Logic/Scripts/Model:
-    newFile: !uuid '9f46853aa00a116c29163e85e66dd6521da947af'
-    oldFile: !uuid '6238d87b7617e335074cf49a833f658cfa37bcca'
-  /UnityClient/Assets/Logic/Scripts/Model/EquipMgr.cs:
-    newFile: !uuid '120a4830edbf1be5df39c42b914550398b29d8a7'
-    oldFile: !uuid '67f94a378b797df4ef659946383b96b5b432c243'
-  /UnityClient/Assets/Logic/Scripts/Model/GoodsMgr.cs:
-    newFile: !uuid '93f95c521e51576d92e7346c2ed31ef9608aca3b'
-    oldFile: !uuid '694b13f15878f9345a019e25c7a8c8ffb79bd00e'
-gitCommitId: !uuid '89af23c13e9a8d40f1c7a891a1af01b30ebffd3e'
+  /LogicServer:
+    newFile: !uuid '529bc159ef7f81066a7641749dfaf2a8fefc1630'
+    oldFile: !uuid '52d69c8baeb7a0d11be9bbd7414ff6fdb5479a6c'
+  /LogicServer/server:
+    newFile: !uuid 'd26ab4b912c8d95e4994ad0be5d073d9bbe3e479'
+    oldFile: !uuid 'f2158c94ace52211ebe8b368e559281ccc02baf6'
+  /LogicServer/server/scripts:
+    newFile: !uuid 'b245eb8803cdb21434d99a1c79bfb35c8ed8b8f7'
+    oldFile: !uuid 'a9720485f6e0ec4cc90cfd5463402c775659e004'
+  /LogicServer/server/scripts/cell:
+    newFile: !uuid '39d25fce9dc17ccddb790814f5c7ca0254537d4f'
+    oldFile: !uuid 'fb5a9caf64ccba180e7533c360022e4781c95cd7'
+  /LogicServer/server/scripts/cell/xygame:
+    newFile: !uuid 'a75c019a612da3fba73f09219b6e7afe68d7f6c2'
+    oldFile: !uuid 'c7d25051abbd3c9e99feb774685d7c0e87b6a734'
+  /LogicServer/server/scripts/cell/xygame/services:
+    newFile: !uuid '4790b9bbd4cdafc94648516055aeb3c3f868c713'
+    oldFile: !uuid '2c02e788224bfe0a3e976483f27fc3c0598a5669'
+  /LogicServer/server/scripts/cell/xygame/services/equip.lua:
+    newFile: !uuid '8a8b743095b5b7d61d69f43722dded41ec6e1298'
+    oldFile: !uuid '674029740842b7e2cd3bdccae0a8d29b434d4816'
+gitCommitId: !uuid 'cfd77b791cfad0cfc2f154f468ea8903517c2c6a'
 renames: {
   }
-revisionId: 384
+revisionId: 385
