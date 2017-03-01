@@ -72,5 +72,30 @@ function t.add_exp(msg, cb)
 
 end
 
- 
+--产生一件装备
+--ownner 拥有者id，id 装备id
+function t.gen_a_random()
+
+end
+
+
+--查询该玩家所有装备
+--ownner
+function t.query_all()
+
+end
+
+--查询一条装备信息
+--ownner
+function t.query()
+
+end
+
+--修改装备属性
+--ownner
+--no
+function  t.modify(args)
+
+end
+
 return t;
