@@ -66,7 +66,18 @@ public sealed class EquipMgr : GAObject
         return _ins;
     }
 
+    private EquipMgr()
+    {
+        for (int i = 1300; i < 1315; i++)
+        {
+            DAO.Equip dao = DAO.Equip.Create();
+            this.Add(dao);
 
+            dao.png = "hd/interface/items/" + i.ToString() + ".png";
+
+
+        }
+    }
 }
 
 

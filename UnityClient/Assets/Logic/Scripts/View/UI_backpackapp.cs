@@ -27,11 +27,15 @@ public sealed class UI_backpackapp : UICellApp
         });
         for (int i = 1; i < 25; i++)
         {
-            Button btn_temp = GameObject.Find("backpack_panel_button" + i.ToString()).GetComponentInChildren<Button>();
+            GameObject root = GameObject.Find("backpack_panel_button" + i.ToString());
+
+            Button btn_temp = root.GetComponentInChildren<Button>();
+            Image img = root.transform.FindChild("Image").GetComponent<Image>();
             //Debug.Log("backpack_panel_button" + i.ToString());
             if (btn_temp!=null)
             {
                 btndetails.Add(btn_temp);
+                list_imgs.Add(img);
             }
         }
         //Debug.Log("count==="+btndetails.Count.ToString());
@@ -48,19 +52,25 @@ public sealed class UI_backpackapp : UICellApp
                 //showdetailmaterial.transform.position = ;
 
                 //hidematerial.onClick.AddListener(() =>
-                //{
+                //{q
                 //    showdetailmaterial.SetActive(true);
                 //    showdetailmaterial.transform.position = (btndetails[i] as Button).transform.position;
-                //});
+                //}); 
                 //showdetailmaterial.GetComponentInChildren<Button>().onClick.AddListener(() =>
                 //{
                 //    Debug.Log("hide detail");
                 //    showdetailmaterial.SetActive(false);
                 //});
+
+                int index = i;
+
+                this.OnClicked(index);
+
                 Button hidedetail = GameObject.Find("btn_backpack_panel_detail_hide_material").GetComponent<Button>();
                 hidedetail.onClick.AddListener(()=>
                 {
                     showdetailmaterial.SetActive(false);
+        
                 }
             );
             }
@@ -73,24 +83,17 @@ public sealed class UI_backpackapp : UICellApp
         return true;
     }
 
+
     public override void Show()
     {
-        this.panel.SetActive(true);
-
-        ScaleTo.Create(this.panel, 0.1f, 1f, 1f).OnComptele = () =>
-        {
-
-        };
+        this.PopIn();
+        this.Sync();
 
     }
     public override void Hide()
     {
 
-        ScaleTo.Create(this.panel, 0.1f, 1f, 0.0f).OnComptele = () =>
-        {
-            this.panel.SetActive(false);
-
-        };
+        this.PopOut();
 
     }
 
@@ -103,11 +106,32 @@ public sealed class UI_backpackapp : UICellApp
             //this.Show();
         }
     }
-    private GameObject panel = null;
+
+    public void Sync()
+    {
+        ArrayList lists = EquipMgr.ins.GetEquips();
+
+
+        for (int i = 0; i<lists.Count;i++ )
+        {
+            DAO.Equip dao = lists[i] as DAO.Equip;
+            SpriteFrame frame = SpriteFrameCache.ins.GetSpriteFrameAuto(dao.png);
+            (list_imgs[i] as Image).sprite = frame.sprite;
+
+        }
+
+
+    }
+
+    public void OnClicked(int index)
+    {
+
+    }
     GameObject showdetailmaterial = null;
     private GameObject showDetailEquip = null;
     private Button btn_close = null;
     
     private ArrayList btndetails =new ArrayList();
+    private ArrayList list_imgs = new ArrayList();
 }
 

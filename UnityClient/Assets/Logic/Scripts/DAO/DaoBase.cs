@@ -73,6 +73,13 @@ namespace DAO
         {
             return base.ToJson();
         }
+
+        public static Equip Create()
+        {
+            return new Equip();
+   
+        }
+
     }
 
 
