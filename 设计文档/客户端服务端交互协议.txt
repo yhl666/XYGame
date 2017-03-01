@@ -1,13 +1,13 @@
-ʹ�ü�json�����������Json.cs �� json.lua
+使用简单json来交互具体见Json.cs 或 json.lua
 
-���սӿڵĶ��壬
-����Ƿ��ص������ݾͷ��ر��� ��ҵ�½  �ɹ�"ret:ok,msg:XXXX,"  ʧ��"ret:error,msg:XXX"
+按照接口的定义，
+如果是返回单条数据就返回比如 玩家登陆  成功"ret:ok,msg:XXXX,"  失败"ret:error,msg:XXX,"
 
 
-����Ƿ��ص������ݾͷ��ر��� ��ѯ�������װ�� �ɹ�"{id:1,level:3,}{id:2,level:3}" ʧ��""
+如果是返回单条数据就返回比如 查询玩家所有装备 成功"{id:1,level:3,}{id:2,level:3,}" 失败""
 
-����Ƿ��ص������ݾͷ��ر��� ��ѯ���ĳ��װ�� �ɹ�"ret:ok,id:1,level:3," ʧ��"ret:error,msg:XXX,"
+如果是返回单条数据就返回比如 查询玩家某件装备 成功"ret:ok,id:1,level:3," 失败"ret:error,msg:XXX,"
 
-�ͻ���ͬ��
+客户端同理
 
-��Ӧʹ��json.decode json.multi_decode ���������
+对应使用json.decode json.multi_decode 来解析打包
