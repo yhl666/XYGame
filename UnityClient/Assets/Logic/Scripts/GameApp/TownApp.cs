@@ -30,6 +30,7 @@ public class TownApp : AppBase
             this.AddCellApp<SettingsApp>();
             this.AddCellApp<CharacterInfoApp>();
             this.AddCellApp<AfficheApp>();
+            this.AddCellApp<EquipSystemApp>();
             EventDispatcher.ins.PostEvent(Events.ID_LOADING_SHOW);
             return "";
         }));

@@ -69,7 +69,12 @@ public sealed class UITownRoot : ViewUI
             return DATA.EMPTY_STRING;
         }));
 
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_equipsystemapp>(this));
 
+            return DATA.EMPTY_STRING;
+        }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_friendsapp>(this));
@@ -337,6 +342,13 @@ public class UICellApp : ViewUI
         };
     }
 
+    protected void LoadWithPrefabs(string file)
+    {
+        this.panel = PrefabsMgr.Load(file);
+        this.panel.transform.parent = this._root._ui_root.transform;
+        this.panel.transform.localPosition = Vector3.zero;
+    }
+
     /* public void BindCellApp(CellApp app)
      {
          this.app = app;
@@ -576,6 +588,7 @@ public sealed class UI_townmenuapp : UICellApp
         this.panel = GameObject.Find("ui_panel_menus");
 
         this.btn_friends = GameObject.Find("btn_friend").GetComponent<Button>();
+        this.btn_equipsystem = GameObject.Find("btn_equipstrength").GetComponent<Button>();
 
         this.btn_backpack = GameObject.Find("btn_pack").GetComponent<Button>();
         this.btn_trump = GameObject.Find("btn_magic").GetComponent<Button>();
@@ -626,6 +639,11 @@ public sealed class UI_townmenuapp : UICellApp
             EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLOSE_CLICKED, this);
             EventDispatcher.ins.PostEvent(Events.ID_INFO_CHARACTER_INFO);
         });
+        this.btn_equipsystem.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_MENU_CLOSE_CLICKED, this);
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_EQUIPSYSTEM_BTN_OTHER_SHOW_CLICKED);
+        });
         this.Hide();
         return true;
     }
@@ -670,6 +688,7 @@ public sealed class UI_townmenuapp : UICellApp
     private Button btn_close = null;
     private Button btn_show = null;
     private Button btn_friends = null;
+    private Button btn_equipsystem = null;
 
 }
 
@@ -1076,9 +1095,9 @@ public sealed class UI_townpvpapp : UICellApp
 
         if (this.panel.activeSelf)
         {
-            this.total_time +=   Time.deltaTime;
+            this.total_time += Time.deltaTime;
 
-            int sec_total =(int)  total_time;
+            int sec_total = (int)total_time;
 
             int min = sec_total / 60;
 
@@ -1101,7 +1120,7 @@ public sealed class UI_townpvpapp : UICellApp
             {
                 s_min = min.ToString();
             }
-            txt_time .text = (" 已等待时间: " + s_min + ":" + s_sec);
+            txt_time.text = (" 已等待时间: " + s_min + ":" + s_sec);
 
         }
     }
@@ -1173,3 +1192,96 @@ public sealed class UI_townpvpapp : UICellApp
     private float total_time = 0.0f;
 }
 
+
+
+
+public sealed class UI_equipsystemapp : UICellApp
+{
+    public override void Update()
+    {
+        base.Update();
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+
+        this.LoadWithPrefabs("Prefabs/ui/ui_panel_equipsystem");
+
+        this.btn_close = panel.transform.FindChild("btn_close").GetComponent<Button>();
+        this.btn_strengthen = panel.transform.FindChild("btn_strengthent").GetComponent<Button>();
+
+
+
+
+        this.btn_close.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_EQUIPSYSTEM_BTN_CLOSE_CLICKED, this);
+        });
+
+
+
+        this.btn_strengthen.onClick.AddListener(() =>
+        {
+            Debug.Log("强化");
+        });
+
+
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_EQUIPSYSTEM_BTN_OTHER_SHOW_CLICKED);
+        this.panel.SetActive(false);
+
+        this.Hide();
+        return true;
+    }
+
+
+
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_TOWN_EQUIPSYSTEM_BTN_OTHER_SHOW_CLICKED)
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_EQUIPSYSTEM_BTN_SHOW_CLICKED, this);
+        }
+        else if (type == Events.ID_FRIEND_SYNC_VIEW)
+        {
+
+        }
+
+    }
+
+
+
+    /// <summary>
+    /// 显示完整的界面
+    /// </summary>
+    public override void Show()
+    {
+        this.PopIn();
+
+    }
+    public override void Hide()
+    {
+        this.PopOut();
+
+    }
+    private void Sync()
+    {
+
+
+    }
+
+    private void ReSize()
+    {
+        //re position of needs
+
+    }
+
+
+
+    Button btn_close = null;
+    Button btn_strengthen = null;
+    ArrayList needs_img = new ArrayList();
+    ArrayList needs_txt = new ArrayList();
+
+}

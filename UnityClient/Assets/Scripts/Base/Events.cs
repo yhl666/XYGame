@@ -120,6 +120,12 @@ public sealed class Events : object
     public const int ID_BATTLE_PVP_RETULT = 68;// 来自服务端的战斗结果通知
     public const int ID_REQUEST_EQUIP_GET_XXXXX = 200;
 
+    //--------------TOWN
+
+    public const int ID_TOWN_EQUIPSYSTEM_BTN_OTHER_SHOW_CLICKED = 100;//其他界面通知UI显示，UI再负责自己的APP 显示派发
+    public const int ID_TOWN_EQUIPSYSTEM_BTN_SHOW_CLICKED = 101;
+    public const int ID_TOWN_EQUIPSYSTEM_BTN_CLOSE_CLICKED = 102;
+
 
 
     //-------------------------BATTLE
@@ -133,8 +139,7 @@ public sealed class Events : object
     public const int ID_TOWN_COMPONENT_BTN_PVP_QUEUE_CLICKED = 304;//退出随机匹配1v1队列按钮
     public const int ID_TOWN_COMPONENT_BTN_PVE_QUEUE_CLICKED = 305;//进入随机匹配1v1队列按钮
 
-
-
+  
     public const int ID_SETTING_CLICKED = 557;
     public const int ID_SETTING_CLOSE_CLICKED = 558;
     public const int ID_INFO_SETTING = 559;
