@@ -2,22 +2,25 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'b4887b915357d0b742c0e12129f22b0ef6883f7d'
-    oldFile: !uuid 'ab3865464655287a8c026a7fd81c7d54d87911b8'
-  /UnityClient/Assets:
-    newFile: !uuid '12d2d833575fc54d4e1e25e6b56241a325acff75'
-    oldFile: !uuid '557dc9d938a804f2dd7293d20211465ebd409f95'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'e7c9f1650458db36cbad7b701df124505b9f18a7'
-    oldFile: !uuid '3e8b84d4e770e953b6db550c4efc854e7f5c54e1'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid '0e37c9f3d65b353c747c1732310743f52d10aa34'
-    oldFile: !uuid '0a604892cd48fd28f375918366eae3406a4b2b18'
-  /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid '73b5e58f259a7cf4ef29d5e1b24e158e42b64410'
-    oldFile: !uuid 'a39c90ad5c4e8154993250802cbca9ddc896009d'
-gitCommitId: !uuid 'd7c450bde280a86e1dfa3b93a0d897647c27eea0'
+  /LogicServer:
+    newFile: !uuid '115f9afaaeb8b21f6d47e63d3424a72f60bd1845'
+    oldFile: !uuid '927670254ad03779538bbb0ea2ca8a61abfd2e81'
+  /LogicServer/server:
+    newFile: !uuid '85568c581269ecb0833e5029f844d0598e0dd6fe'
+    oldFile: !uuid '8e12023f5818fe27b5a9d3ba89a31d21d4429a43'
+  /LogicServer/server/src:
+    newFile: !uuid '874b30bee081c7669532c35b0b3f9a296da4071b'
+    oldFile: !uuid 'd426e81e279384897a681f69fc0768e5645244d9'
+  /LogicServer/server/src/svr_common:
+    newFile: !uuid '58423474d9a8c35336a27a2b737cfd299df0b592'
+    oldFile: !uuid '688f170099ab76a6a2244632fd21825d1b955fa8'
+  /LogicServer/server/src/svr_common/XYGameLog.cpp:
+    newFile: !uuid 'fe2cc140bd93f6b25cd9f0167436e8520a3fa042'
+    oldFile: !uuid '6a5fd0fdae0b8edbff9bc861d080a9828537f462'
+  /LogicServer/server/src/svr_common/XYGameLog.h:
+    newFile: !uuid '9bd6c411d9cefdb9ba814cd19627a596c3e4f97f'
+    oldFile: !uuid '5fe089bbf5d0ed0fd38c61cd09edb1858e660c2d'
+gitCommitId: !uuid '5f2d3dc5d58ad347d780630fd17a6eba060a5910'
 renames: {
   }
-revisionId: 401
+revisionId: 402
