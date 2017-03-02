@@ -2,15 +2,20 @@
 #define __BASE_SERVER_HEAD__CLIENTSERVER
 
 
-
+#include <windows.h>
 #include <string>
 #include <thread>
 #include <mutex>
 #include <queue>
 #include <memory>
+#include <unordered_map>
+
+#include "world.h"
+
 #include "timer_queue.h"
 struct lua_State;
  
+using namespace std;
 class XYGameLog
 {//记录玩家关键操作，可用于GM系统分析 处理
 public:
@@ -25,6 +30,7 @@ private:
 public:
 //记录一条日志接口
 	void Log(const std::string &file,const std::string & info);
+	void CreateDir(const std::string &file);
 
 	void BindLua(lua_State *l);
 
