@@ -466,7 +466,7 @@ public class DieState : StateBase
     {
         if (type == "SpineComplete")
         {
-            if (this.Enable==false)
+            if (this.Enable == false)
             {
                 EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
             }
@@ -477,7 +477,7 @@ public class DieState : StateBase
     {
 
     }
- 
+
 }
 
 public class AttackState_1 : StateBase
@@ -532,6 +532,8 @@ public class AttackState_1 : StateBase
             ///  this.Target.AddBuffer<BufferFlashMove>();
             if (cd_attack > 0) return;
 
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_ATTACK, this.Target);
+
             this.Enable = true;
             Target.isAttacking = true;
             Target.attackingAnimationName = Target.ani_atk; // this.GetAnimationName();
@@ -539,13 +541,14 @@ public class AttackState_1 : StateBase
             cd_attack = 40;//2s cd
 
             BulletMgr.Create(this.Target, Target.bulleClassName_atk1, Target.bullet_atk1_info);
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
         }
         else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
         {
             Target.isAttacking = false;
             this.Enable = false;
-               Debug.Log(" 连招  1111 完成");
+           // Debug.Log(" 连招  1111 完成");
             if (Target.atk_level > 1)
             {//下段招数
                 this.stack.PushSingleState(StateBase.Create<AttackState_2>(Target));
@@ -597,7 +600,7 @@ public class AttackState_2 : StateBase
     int tick = 0;
     public AttackState_2()
     {
-        Debug.Log(" 连招  222 待命");
+      //  Debug.Log(" 连招  222 待命");
     }
     public override void UpdateMS()
     {
@@ -608,10 +611,9 @@ public class AttackState_2 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-            Debug.Log(" 连招  222 超时");
+        //    Debug.Log(" 连招  222 超时");
 
         }
-        Debug.Log("11111111111111");
 
     }
     public override void OnEvent(string type, object userData)
@@ -632,28 +634,30 @@ public class AttackState_2 : StateBase
 
         if (type == Events.ID_BTN_ATTACK)
         {
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_ATTACK, this.Target);
+
             Target.attackingAnimationName = this.GetAnimationName();
-         ///   this.checkForTimeOut = false;
+            ///   this.checkForTimeOut = false;
             this.Enable = true;
             Target.isAttacking = true;
 
 
-         //   BulletMgr.Create(this.Target, Target.bulleClassName_atk1, Target.bullet_atk1_info);
+            //   BulletMgr.Create(this.Target, Target.bulleClassName_atk1, Target.bullet_atk1_info);
             Target.AddBuffer<BufferLighting>();
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
 
         }
         else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
         {
-            Debug.Log("连招   222 完成");
+          //  Debug.Log("连招   222 完成");
 
             Target.isAttacking = false;
             this.Enable = false;
             this.stack.PopSingleState();
             if (Target.atk_level > 2)
             {//下段招数
-                Debug.Log(this.stack.ToString());
-
+ 
                 this.stack.PushSingleState(StateBase.Create<AttackState_3>(Target));
             }
         }
@@ -693,22 +697,21 @@ public class AttackState_3 : StateBase
     int tick = 0;
     public AttackState_3()
     {
-        Debug.Log("连招   3333 待命");
+     //   Debug.Log("连招   3333 待命");
 
     }
     public override void UpdateMS()
     {
         if (this.checkForTimeOut == false) return;
-        Debug.Log("33333333333333333");
         tick++;
         if (tick > 60)
         {//time out
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-            Debug.Log("连招   333333 超时");
+          //  Debug.Log("连招   333333 超时");
         }
- 
+
     }
     public override void OnEvent(string type, object userData)
     {
@@ -729,19 +732,21 @@ public class AttackState_3 : StateBase
 
         if (type == Events.ID_BTN_ATTACK && checkForTimeOut)
         {
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_ATTACK, this.Target);
+
             Target.attackingAnimationName = this.GetAnimationName();
             this.Enable = true;
             Target.isAttacking = true;
             this.checkForTimeOut = false;
             Target.AddBuffer<BufferAssemble>();
-
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
         }
         else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
         {
             Target.isAttacking = false;
             this.Enable = false;
-            Debug.Log("连招   33333 完成");
+           // Debug.Log("连招   33333 完成");
             this.stack.PopSingleState();
 
 
@@ -751,7 +756,7 @@ public class AttackState_3 : StateBase
 
     public override void OnEnter()
     {
-        this.Enable = true;  
+        this.Enable = true;
     }
     public override void OnExit()
     {

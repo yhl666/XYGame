@@ -130,6 +130,7 @@ public sealed class Events : object
 
     //-------------------------BATTLE
   
+   
     public const int ID_TOWN_BTN_BATTLE_LEAVE_QUEUE_CLICKED = 301;//退出随机匹配1v1队列按钮
     public const int ID_TOWN_BTN_BATTLE_ENTER_QUEUE_CLICKED = 302;//进入随机匹配1v1队列按钮
 
@@ -139,7 +140,19 @@ public sealed class Events : object
     public const int ID_TOWN_COMPONENT_BTN_PVP_QUEUE_CLICKED = 304;//退出随机匹配1v1队列按钮
     public const int ID_TOWN_COMPONENT_BTN_PVE_QUEUE_CLICKED = 305;//进入随机匹配1v1队列按钮
 
-  
+
+    public const int ID_BATTLE_ENTITY_BEFORE_ATTACK = 306;//攻击前时触发的事件
+    public const int ID_BATTLE_ENTITY_BEFORE_HIT = 307;//命中敌方前事件
+
+    public const int ID_BATTLE_ENEITY_AFTER_ATTACK = 308;//攻击后时触发的事件
+    public const int ID_BATTLE_ENTITY_AFTER_HIT = 309;//命中敌方后事件
+
+
+    public const int ID_BATTLE_ENEITY_AFTER_TAKEATTACKED = 310;//接受攻击后
+    public const int ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED = 311;//接受攻击前
+
+ 
+
     public const int ID_SETTING_CLICKED = 557;
     public const int ID_SETTING_CLOSE_CLICKED = 558;
     public const int ID_INFO_SETTING = 559;

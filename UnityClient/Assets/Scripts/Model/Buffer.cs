@@ -9,6 +9,15 @@ using System.Collections;
 
 public class Buffer : Model
 {
+
+    //----for ui
+    public bool has_ui = false;
+    public string biref = "";
+    public string name = "";
+
+
+
+    //--for logic
     public Entity target;// target entity
     public Entity owner; // who launch this buffer
 
@@ -191,7 +200,7 @@ public class Buffer2_1 : Buffer
     {
         base.OnEnter();
         this.SetLastTime(5);
-     ///   target.x_auto -= 1 * target.flipX;
+        ///   target.x_auto -= 1 * target.flipX;
     }
 
 
@@ -231,6 +240,178 @@ public class BufferFlashMove : Buffer
         return true;
     }
 }
+
+
+
+//装备buffer 屠龙效果 测试
+
+//一定几率触发Buffer 攻击力+10 暴击率+10% 最多叠加5次 持续4S
+public class BufferEquipTest1 : Buffer
+{
+
+    public override void OnEnter()
+    {
+        base.OnEnter();
+
+
+
+    }
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_BATTLE_ENTITY_BEFORE_ATTACK)
+        {
+            if (userData as Entity != this.owner) return;
+            //一定几率触发屠龙效果
+            if (this._level >= 5) return;
+
+            if (random.Next(0, 100) < 50)
+            {
+                tick.Reset();
+
+                //触发屠龙效果
+                this._level += 1;
+                int add_damage = 50;
+                this.owner.damage += add_damage;
+
+                int add_crits = 10;
+                this.owner.crits_ratio += add_crits;
+                Debug.Log("触发了屠龙效果" + this._level + " 伤害增加" + add_damage + "  暴击率增加" + add_crits);
+
+            }
+
+        }
+    }
+    public override void UpdateMS()
+    {
+        if (tick.Tick())
+        {
+            return;
+        }
+        this.ResetBuffer();
+    }
+
+    public void ResetBuffer()
+    {
+        if (this._level <= 0) return;
+
+        this.owner.damage -= this._level * 50;
+        this.owner.crits_ratio -= this._level * 10;
+
+        this._level = 0;
+        Debug.Log("屠龙效果 清除");
+    }
+    public override bool Init()
+    {
+        base.Init();
+        this.has_ui = true;
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_ATTACK);
+        this.target = this.owner;
+        return true;
+    }
+
+    private System.Random random = new System.Random(0);
+    private int _level = 0;
+    private Counter tick = Counter.Create(160);//4 s
+}
+
+
+
+
+
+//装备buffer 护体效果 测试
+
+// 持续4秒 吸收100点伤害
+public class BufferEquipTest2 : Buffer
+{
+
+    public override void OnEnter()
+    {
+        base.OnEnter();
+
+    }
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED)
+        {
+            AttackInfo info = userData as AttackInfo;
+              
+
+            if (info.target != this.owner) return;
+            //一定几率触发
+
+            if (random.Next(0, 100) < 30)
+            {
+                tick.Reset();
+                this.left_hp = 25;
+
+                Debug.Log("触发了护体效果吸收" + left_hp+"伤害  Hero剩余血量" + owner.current_hp);
+                //触发
+            }
+
+
+            if (left_hp > 0)
+            {
+                int damage = info.damage;
+
+                this.left_hp -= info.damage;
+                info.damage =0;
+                if (this.left_hp < 0)
+                {
+                    info.damage = -left_hp;
+                    this.ResetBuffer();
+                }
+
+                //  if (this.left_hp <= 0) left_hp = 0;
+           //     info.damage = -left_hp;
+                if (info.is_crits)
+                {
+                    Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点暴击伤害 剩余血量" + owner.current_hp);
+                }
+                else
+                {
+                    Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点伤害 剩余血量" + owner.current_hp);
+              
+                }
+          
+            }
+
+         
+
+        }
+    }
+    public override void UpdateMS()
+    {
+        if (tick.Tick())
+        {
+            return;
+        }
+        if (left_hp > 0)
+        {
+            this.ResetBuffer();
+        }
+    }
+    private void ResetBuffer()
+    {
+        this.left_hp = 0;
+        Debug.Log("护体效果结束");
+
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+        this.has_ui = true;
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+        this.target = this.owner;
+        return true;
+    }
+
+    private int left_hp = 0;//护罩剩余血量
+    private System.Random random = new System.Random(0);
+    private Counter tick = Counter.Create(160);//4 s
+}
+
 
 /// <summary>
 ///  lua buffer wrapper

@@ -65,6 +65,24 @@ public sealed class EquipMgr : GAObject
         }
         return _ins;
     }
+    public DAO.Equip GetTestEquip()
+    {
+        DAO.Equip dao = DAO.Equip.Create();
+        dao.id = 2300;
+        dao.type = "equip";//装备类型
+        dao.name = "屠龙刀";// 装备名字
+        dao.brief = "传说中的武器";//简介
+        dao.detail = "倚天剑1段\n攻击:+10\n魔法+5\n\n一定几率造成屠龙效果。\n一定几率造成100%额外伤害。\n攻击时吸血10%。";//详细简介
+
+        dao.damage = 20;//伤害加成
+        dao.defend = 30;//防御加成
+        dao.mp = 10;//魔法加成
+        dao.hp = 230;//气血加成
+
+        dao.buffers.Add("BufferEquipTest1");
+        dao.buffers.Add("BufferEquipTest2");
+        return dao;
+    }
 
     private EquipMgr()
     {

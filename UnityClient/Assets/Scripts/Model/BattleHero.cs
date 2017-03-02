@@ -86,11 +86,17 @@ public class BattleHero : Hero
 
         this.team = 1;
 
-    this.current_hp = 1;
+        this.current_hp = 0xfffff;
+        this.hp = 0xffffff;
+        this.atk_level = 3;
 
-    this.atk_level = 3;
 
+       DAO.Equip equip =  EquipMgr.ins.GetTestEquip();
 
+        foreach(string buf in equip.buffers)
+        {
+            this.AddBuffer(buf);
+        }
 
 
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
@@ -111,8 +117,8 @@ public class BattleHero : Hero
     }
     public override void UpdateMS()
     {
-       
-        if(this.isDie)
+
+        if (this.isDie)
         {
             this.machine.Pause(); return;
         }

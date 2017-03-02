@@ -12,11 +12,33 @@ using System;
 
 public class AttackInfo
 {
-    public static AttackInfo Create()
+    /// <summary>
+    /// 如果使用默认 调用InitWithCommon，否则自行修改info信息
+    /// </summary>
+    /// <param name="owner"></param>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public static AttackInfo Create(Entity owner, Entity target)
     {
         AttackInfo ret = new AttackInfo();
-
+        ret.ownner = owner;
+        ret.target = target;
         return ret;
+    }
+    /// <summary>
+    ///  可用于群体攻击时 可拷贝一样的info
+    /// </summary>
+    /// <returns></returns> 
+    public AttackInfo Clone()
+    {
+        AttackInfo ret = Create(this.ownner, this.target);
+        ret.damage = damage;
+        ret.is_crits = is_crits;
+        ret.crits_damage = crits_damage;
+        ret.atk_func = atk_func;
+        ret.buffers = buffers;
+        return ret;
+
     }
     private AttackInfo()
     {
@@ -25,14 +47,41 @@ public class AttackInfo
     public Entity ownner = null;
     public Func<AttackInfo, bool> atk_func = null;
 
+    //---参与数值计算的属性
+    public int damage = 0;
+    public float crits_damage = 0.0f;
+    public bool is_crits = false;
+
+
+    /// <summary>
+    /// 调用攻击函数接口
+    /// </summary>
     public void Invoke()
     {
-        atk_func.Invoke(this);
+        if (atk_func != null)
+            atk_func.Invoke(this);
     }
 
+    /// <summary>
+    ///通用属性初始化
+    /// </summary>
+    public void InitWithCommon()
+    {
+        this.damage = ownner.GetRealAttackDamage();
 
-    //add buffer to atk info
-    public void AddBuffer(Buffer buf)
+        if (damage > ownner.damage)
+        {
+            this.is_crits = true;
+            crits_damage = ownner.crits_damage;
+        }
+
+    }
+
+    /// <summary>
+    /// add buffer to atk info
+    /// </summary>
+    /// <param name="buf"></param>
+    public void AddBuffer(string buf)
     {
         this.buffers.Add(buf);
     }
@@ -56,7 +105,7 @@ public class Entity : Model
     public bool s1 = false;//skill 1
     public bool stand = false;//stand
 
-  
+
     //--------------------------------------------------interface for outside game logic-----
     /// <summary>
     ///  outside to add buffer by type
@@ -73,14 +122,37 @@ public class Entity : Model
         return this.bufferMgr.Create(buffer);
     }
     /// <summary>
-    ///  accpet attacl
+    ///  accpet attacked
     /// </summary>
     /// <param name="who"></param>
-    public void TakeAttack(Entity who)
+    /*  public void TakeAttacked(Entity who)
+      {
+          this.current_hp -= who.GetRealAttackDamage();
+          //  this.isHurt = true;
+          eventDispatcher.PostEvent(Events.ID_HURT);
+
+      }*/
+
+    public void TakeAttacked(AttackInfo info)
     {
-        this.current_hp -= who.GetRealAttackDamage();
-        //  this.isHurt = true;
-        eventDispatcher.PostEvent(Events.ID_HURT);
+        EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED, info);
+
+        foreach (string buf in info.buffers)
+        {
+            this.AddBuffer(buf);
+        }
+        ///    this.TakeAttacked(info.ownner);
+        ///    
+
+        if (info.damage > 0)
+        {
+            this.current_hp -= info.damage;
+            eventDispatcher.PostEvent(Events.ID_HURT);//notify ui
+        }
+
+        info.Invoke();
+
+        EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_TAKEATTACKED, info);
     }
 
 
@@ -111,7 +183,7 @@ public class Entity : Model
     }
     public float ClaculateDistance(float x, float y)
     {
-        return Utils.ClaculateDistance(new Vector2(this.x, this.y+this.height), new Vector2(x, y));
+        return Utils.ClaculateDistance(new Vector2(this.x, this.y + this.height), new Vector2(x, y));
     }
 
     public float GetRealY()
@@ -480,9 +552,9 @@ public class Entity : Model
     private EventDispatcher _eventDispatcher = null;
     private BufferMgr _bufferMgr = null;
 
-    public StateMachine machine{ get{ return _machine;}}
-    public EventDispatcher eventDispatcher{ get{ return _eventDispatcher;}}
-    public BufferMgr bufferMgr{ get{ return _bufferMgr;}}
+    public StateMachine machine { get { return _machine; } }
+    public EventDispatcher eventDispatcher { get { return _eventDispatcher; } }
+    public BufferMgr bufferMgr { get { return _bufferMgr; } }
 
 }
 

@@ -71,7 +71,7 @@ public sealed class BulletConfigInfo
     public float distance = 10.0f;// 移动距离
     public float distance_atk = 1.0f;// 普通，攻击距离
     public ArrayList buffers = new ArrayList();//附加buffer 名字 string
-    public Vector2 launch_delta_xy = new Vector2(0.5f,0.3f);//初始位置位于 角色锚点位置
+    public Vector2 launch_delta_xy = new Vector2(0.5f, 0.3f);//初始位置位于 角色锚点位置
 
     //   public int realValidTimes = 1;//真实有效次数 ，计算真实命中敌人的次数{比如法术命中玩家3次后失效，否则一直存在}
     public int validTimes = 1;//有效次数    //表示 命中目标后  的 伤害 次数
@@ -154,7 +154,11 @@ public sealed class BulletConfig : Bullet
                 if (diss < info.distance_atk)
                 {
                     hitNumber++;
-                    h.TakeAttack(owner);
+
+                    AttackInfo inf = AttackInfo.Create(owner, h);
+                    inf.InitWithCommon();
+                    h.TakeAttacked(inf);
+
                     info.InVokeOnTakeAttack(this);
                     tagForValidTimes = true;
                     foreach (string buffer in info.buffers)
@@ -183,7 +187,10 @@ public sealed class BulletConfig : Bullet
                 //    Debug.Log("dis = " + diss);
                 if (diss < info.distance_atk)
                 {
-                    h.TakeAttack(owner);
+                    AttackInfo inf = AttackInfo.Create(owner, h);
+                    inf.InitWithCommon();
+                    h.TakeAttacked(inf);
+
                     info.InVokeOnTakeAttack(this);
                     tagForValidTimes = true;
                     hitNumber++;
@@ -219,7 +226,7 @@ public sealed class BulletConfig : Bullet
         this.flipX = -owner.flipX;
         if (this.flipX < 0)
         {
-            this.x = owner.x -  info.launch_delta_xy.x;
+            this.x = owner.x - info.launch_delta_xy.x;
         }
         else
         {
@@ -281,10 +288,13 @@ public class Bullet2_0 : Bullet
             if (h.team != owner.team)
             {
                 float diss = h.ClaculateDistance(x, y);
-          //     Debug.Log("dis = " + diss);
+                //     Debug.Log("dis = " + diss);
                 if (diss < 1)
                 {
-                    h.TakeAttack(owner);
+                    AttackInfo inf = AttackInfo.Create(owner, h);
+                    inf.InitWithCommon();
+                    h.TakeAttacked(inf);
+
                     isDirty = true;
                 }
             }
@@ -303,10 +313,13 @@ public class Bullet2_0 : Bullet
             if (h.team != owner.team)
             {
                 float diss = h.ClaculateDistance(x, y);
-                  Debug.Log("dis = " + diss);
+                Debug.Log("dis = " + diss);
                 if (diss < 1)
                 {
-                    h.TakeAttack(owner);
+                    AttackInfo inf = AttackInfo.Create(owner, h);
+                    inf.InitWithCommon();
+                    h.TakeAttacked(inf);
+
                     isDirty = true;
                 }
             }
@@ -421,12 +434,12 @@ public class Bullet221_0 : Bullet
     public override void UpdateMS()
     {
 
-  
+
     }
 
     public override void OnEnter()
     {
-      //  this.owner.AddBuffer<BufferDamage>();
+        //  this.owner.AddBuffer<BufferDamage>();
         this.SetInValid();
     }
 
@@ -442,7 +455,7 @@ public class Bullet221_0 : Bullet
         Debug.Log(" dispose");
 
     }
-   
+
     public override bool Init()
     {
         this.plist = "";

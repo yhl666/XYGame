@@ -362,7 +362,7 @@ sealed class BattleSyncHandler
                 ///    if (no == HeroMgr.ins.me_no) return;
                 if (HeroMgr.ins.GetHero(no) != null) return;
 
-                Debug.Log("   NEW PVP player no= " + no);
+                Debug.Log("   NEW player no= " + no);
                 BattleHero h2 = HeroMgr.Create<BattleHero>();
 
                 if (is_pve)
@@ -454,12 +454,12 @@ sealed class BattleSyncHandler
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         {
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = randObj.Next(5, 80);
                 ;
-                //    e1.x = 5;
+               //    e1.x = 5;
                 e1.y = 5;
                 e1.team = 333;
             }
@@ -473,7 +473,7 @@ sealed class BattleSyncHandler
               }*/
 
 
-            for (int i = 0; i < 25; i++)
+         /*   for (int i = 0; i < 25; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy>();
                 e1.x = randObj.Next(5, 80);
@@ -481,7 +481,7 @@ sealed class BattleSyncHandler
                 //    e1.x = 5;
                 e1.y = 5;
                 e1.team = 333;
-            }
+            }*/
         }
     }
     public void ProcessWithFrameData()

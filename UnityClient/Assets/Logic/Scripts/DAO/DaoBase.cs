@@ -44,8 +44,8 @@ namespace DAO
 
 
         //静态数据
-        public string type="equip";//装备类型
-        public string name;// 装备名字
+        public string type = "equip";//装备类型
+        public string name = "";// 装备名字
         public string brief;//简介
         public string detail;//详细简介
 
@@ -65,7 +65,7 @@ namespace DAO
 
         public ArrayList buffers = new ArrayList();//buffers id
 
-    
+
 
         public void SetHashTable(HashTable kv)
         {
@@ -79,6 +79,7 @@ namespace DAO
         public override void InitWithStatic()
         {
             this.png = "hd/interface/items/" + id.ToString() + ".png";
+   
         }
         public override void SetJson(string json)
         {
@@ -105,8 +106,8 @@ namespace DAO
         }
 
         public static Equip Create(int id)
-        {   
-            Equip dao= new Equip();
+        {
+            Equip dao = new Equip();
             dao.id = id;
             dao.InitWithStatic();
             return dao;
@@ -114,6 +115,7 @@ namespace DAO
         public static Equip Create()
         {
             Equip dao = new Equip();
+            dao.InitWithStatic();
             return dao;
         }
     }
@@ -147,7 +149,7 @@ namespace DAO
         {
             return base.ToJson();
         }
-    
+
     }
 
 

@@ -117,6 +117,10 @@ public class Counter
     {
         this.max = max;
     }
+    public bool IsMax()
+    {
+        return tick >= max;
+    }
     private Counter() { }
     private int tick;
     private int max;
