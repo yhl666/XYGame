@@ -2,22 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '4520bcfc22e3d0ca9cb43b3b2d7174d8c61b07c5'
-    oldFile: !uuid '3f018faa6f1a5dced1050c8f9e166f373c3b7fa1'
-  /UnityClient/Assets:
-    newFile: !uuid 'c3cf676270d1fd8f1fe5a2e15cff9e14c5cca24e'
-    oldFile: !uuid 'e5e90876f1bcdd76e09113e74d1149bb18b8290f'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'c9a1fb7205357d6cab08cb03083538826e5c90c0'
-    oldFile: !uuid '62e7d6b8398fce616e59e264d1e2a364db258ab5'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '11ffb3f6ba9d0fc0582edab036c5043dd21e76ee'
-    oldFile: !uuid 'fca9e3b57491f11b667a1d06a520791a45299614'
-  /UnityClient/Assets/Scripts/Data/PublicData.cs:
-    newFile: !uuid '4a27f76844b3cb2274d87563278cba1b855f0643'
-    oldFile: !uuid 'd61dbd50c51fbc69b909926e58f2609096de4706'
-gitCommitId: !uuid 'd99feee2d93b084cad70acdcb54fd2bbeff85a63'
+  /BattleServer:
+    newFile: !uuid 'c31ed2dad71753333753f9358e05fc9f76710385'
+    oldFile: !uuid 'd606c406c3bf237ee1710aa68bd5fe1ab7be1280'
+  /BattleServer/Debug:
+    newFile: !uuid '446ec79681dd9d3eb837386e60a308d427b7e9c0'
+    oldFile: !uuid '4ddee5c4ef8302c211d7e97931ec4f2942e1237b'
+  /BattleServer/Debug/BattleServerPVETEST.exe:
+    newFile: !uuid 'b6c0deef33f92c900668eeac05956d997c93eb53'
+    oldFile: null
+gitCommitId: !uuid '8660630ccfea25e0ecf9d9e6c5d5ae8598a82927'
 renames: {
   }
-revisionId: 393
+revisionId: 394
