@@ -34,6 +34,20 @@ public class PublicData : object
         _ins = null;
     }
 
+    private PublicData()
+    {
+        //PVE 副本测试修改
+        //测试技能 buffer 等 1个玩家打，对应战斗服BattleServerPVETEST.exe
+        //不需要测试的话直接屏蔽该构造器
+
+        self_user = DAO.User.Create();
+        user_pvp_other = DAO.User.Create();
+        is_pve = true;
+        battle_mode = "pve";
+        self_user.no = 1;
+        user_pvp_other.no = 2;
+    }
+
     public string _game_over_info_string;
 
     public ArrayList _recv_last_game;
