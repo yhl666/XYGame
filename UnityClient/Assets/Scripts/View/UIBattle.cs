@@ -733,22 +733,17 @@ public sealed class UI_buffers : ViewUI
 
             (list_panel[index] as GameObject).SetActive(true);
 
-
-            Image img = list_img[index] as Image;
-
-            Image img_filled = list_img_filled[index] as Image;
-
             Counter t = buffer.GetCounter();
 
             float current = t.GetCurrent();
             float max = t.GetMax();
-            img_filled.fillAmount = current / max;
+            (list_img_filled[index] as Image).fillAmount = current / max;
 
             int time = (int)((max - current) / Config.MAX_FPS);
             (list_txt_time[index] as Text).text = time.ToString();
             (list_txt[index] as Text).text = buffer.brief;
             Sprite sp = SpriteFrameCache.ins.GetSpriteFrameAuto(buffer.icon).sprite;
-            img.sprite = sp;
+            (list_img[index] as Image).sprite = sp;
             ++index;
         }
 
