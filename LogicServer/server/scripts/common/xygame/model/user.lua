@@ -25,6 +25,23 @@ function t:ctor()
     self.time = "0";
     -- 上次登录时间戳
 
+    self.no_dec = "0";
+    -- 穿上的饰品
+    self.no_atk = "0";
+    -- 穿上的武器
+    self.no_def = "0";
+    -- 穿上的防具
+
+    self.id_dec = "0";
+    -- 穿上的饰品id
+    self.id_atk = "0";
+    -- 穿上的武器id
+    self.id_def = "0";
+    -- 穿上的防具id
+
+    self.exp = 0;
+    -- 经验
+
 end
 
  
