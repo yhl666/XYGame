@@ -29,7 +29,7 @@ Email me@dreamyouxi.com
 
 #pragma comment(lib,"ws2_32.lib") 
 
-XYGameLog::XYGameLog() 
+XYGameLog::XYGameLog()
 {
 
 }
@@ -61,10 +61,13 @@ void XYGameLog::Log(const std::string &file, const std::string & info)
 
 	//判断目录是否存在
 	boost::filesystem::path path_file(file);
+
+
 	if (!(boost::filesystem::is_directory(path_file)))
 	{
 		this->CreateDir(file);
 	}
+
 
 	std::string path = file + "\\" + file_name;
 	//cout << path << endl;
@@ -78,41 +81,46 @@ void XYGameLog::Log(const std::string &file, const std::string & info)
 	{
 		f << "[" << tp->tm_hour << ":" << tp->tm_min << ":" << tp->tm_sec << "]" << info << endl;
 	}
+	f.close();
 }
 
 
-void  XYGameLog::CreateDir(const std::string &file)
+void  XYGameLog::CreateDir(std::string file)
 {
 	if (file.empty() == true)
 	{
-		std::cout << "你输入的目录为空" << std::endl;      //TODO
+		return;
 	}
 
-	assert(!file.empty());
 	boost::filesystem::path path_file(file);
+
 	if (boost::filesystem::is_directory(path_file))
 	{
 		//目录存在 
 		return;
 	}
-	else
+
+	// not multi level dir
+	if (std::string::npos == file.find('\\'))
 	{
-		//error
-		// not multi level dir
-		if (std::string::npos == file.find('\\'))
+		if (std::string::npos == file.find('/'))
 		{
+			boost::filesystem::create_directory(file);
 			return;
 		}
-
-		int i = file.size();
-		for (; i >= 0; i--)
-		{
-			if (file[i] == '\\')
-			{
-				break;
-			}
-		}
-		CreateDir(file.substr(0, i));
-		boost::filesystem::create_directory(file);
 	}
+
+	int i = file.size();
+	for (; i >= 0; i--)
+	{
+		if (file[i] == '\\' || file[i] == '/')
+		{
+			break;
+		}
+	}
+
+	CreateDir(file.substr(0, i));
+
+	boost::filesystem::create_directory(file);
+
 }

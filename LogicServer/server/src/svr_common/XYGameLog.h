@@ -1,5 +1,5 @@
-﻿#ifndef __BASE_SERVER_HEAD__CLIENTSERVER
-#define __BASE_SERVER_HEAD__CLIENTSERVER
+﻿#ifndef __BASE_SERVER_HEAD__XYGAMELOG
+#define __BASE_SERVER_HEAD__XYGAMELOG
 
 
 #include <windows.h>
@@ -30,7 +30,7 @@ private:
 public:
 //记录一条日志接口
 	void Log(const std::string &file,const std::string & info);
-	void CreateDir(const std::string &file);
+	void CreateDir( std::string file);
 
 	void BindLua(lua_State *l);
 
@@ -40,18 +40,6 @@ private:
 	void SyncToFile();
 	std::unordered_map <std::string,std::string> hash;
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
