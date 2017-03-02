@@ -49,7 +49,10 @@ public sealed class BufferMgr : GAObject
             }
         }
     }
-
+    public ArrayList GetBuffers()
+    {
+        return lists;
+    }
     public bool IsExist(Buffer b)
     {
         foreach (Buffer bb in lists)

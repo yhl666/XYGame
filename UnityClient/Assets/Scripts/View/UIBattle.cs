@@ -70,7 +70,13 @@ public sealed class UIBattleRoot : ViewUI
         }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
-        this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
+            this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
+            return DATA.EMPTY_STRING;
+        }));
+
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_buffers>(this));
             return DATA.EMPTY_STRING;
         }));
         return true;
@@ -513,7 +519,7 @@ public sealed class UI_xy : ViewUI
         var self = HeroMgr.ins.self;
         if (self != null)
         {
-            txt.text = string.Format(DATA.UI_INFO_XY,(100.0f* self.x).ToString("0"), ((self.y + self.height)*100.0f).ToString("0"));
+            txt.text = string.Format(DATA.UI_INFO_XY, (100.0f * self.x).ToString("0"), ((self.y + self.height) * 100.0f).ToString("0"));
         }
     }
 
@@ -639,12 +645,12 @@ public sealed class UI_pvpresult : ViewUI
         else if (type == Events.ID_BATTLE_PVP_RETULT)
         {
             string res = userData as string;
-            Debug.Log("BattleApp Result " +res);
+            Debug.Log("BattleApp Result " + res);
             this.btn_video.gameObject.SetActive(true);
             this.btn_return.gameObject.SetActive(true);
 
             HashTable kv = Json.Decode(res);
-            this.txt_result.text =  kv["msg"];
+            this.txt_result.text = kv["msg"];
 
         }
     }
@@ -658,7 +664,7 @@ public sealed class UI_pvpresult : ViewUI
         this.btn_video = panel.transform.FindChild("btn_video").GetComponent<Button>();
         this.txt_result = panel.transform.FindChild("txt_result").GetComponent<Text>();
 
- 
+
 
         this.btn_return.onClick.AddListener(() =>
          {
@@ -700,3 +706,84 @@ public sealed class UI_pvpresult : ViewUI
     Text txt_result = null;
 }
 
+
+
+
+
+public sealed class UI_buffers : ViewUI
+{
+
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (tick.Tick()) return;
+        tick.Reset();
+        Hero self = HeroMgr.ins.self;
+        if (self == null) return;
+
+        ArrayList buffers = self.bufferMgr.GetBuffers();
+
+        int index = 0;
+        foreach (Buffer buffer in buffers)
+        {
+            if (!buffer.show_ui) continue;
+            if (index > MAX_BUFFER_SHOW) break;
+
+            Image img = (list_img[index] as Image);
+            Text txt = (list_txt[index] as Text);
+
+            img.gameObject.SetActive(true);
+            txt.gameObject.SetActive(true);
+
+            txt.text = buffer.brief;
+            Sprite sp = SpriteFrameCache.ins.GetSpriteFrameAuto(buffer.icon).sprite;
+            img.sprite =sp;
+            ++index;
+        }
+
+        for (int i = index; i <= MAX_BUFFER_SHOW; i++)
+        {
+            (list_txt[i] as Text).gameObject.SetActive(false);
+            (list_img[i] as Image).gameObject.SetActive(false);
+        }
+
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+        this.panel = GameObject.Find("ui_panel_buffers");
+
+
+        for (int i = 0; i <= MAX_BUFFER_SHOW; i++)
+        {
+            string name = "buffer" + i.ToString();
+
+            Transform buf = this.panel.transform.FindChild(name);
+
+            Image img = buf.GetComponentInChildren<Image>();
+            Text txt = buf.GetComponentInChildren<Text>();
+
+            this.list_img.Add(img);
+            this.list_txt.Add(txt);
+
+            img.gameObject.SetActive(false);
+            txt.gameObject.SetActive(false);
+
+        }
+        if (list_img.Count != list_txt.Count)
+        {
+            throw new ArgumentNullException("");
+        }
+        return true;
+    }
+
+    Counter tick = Counter.Create(10);
+    private const int MAX_BUFFER_SHOW = 7;
+
+    ArrayList list_img = new ArrayList();
+    ArrayList list_txt = new ArrayList();
+    GameObject panel = null;
+}

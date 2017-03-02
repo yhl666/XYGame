@@ -11,10 +11,11 @@ public class Buffer : Model
 {
 
     //----for ui
-    public bool has_ui = false;
-    public string biref = "";
+    public bool show_ui = false;
+    public float percent = 0.0f;
+    public string brief = "";
     public string name = "";
-
+    public string icon = "hd/interface/items/502154.png";
 
 
     //--for logic
@@ -267,7 +268,7 @@ public class BufferEquipTest1 : Buffer
             if (random.Next(0, 100) < 50)
             {
                 tick.Reset();
-
+                this.show_ui = true;
                 //触发屠龙效果
                 this._level += 1;
                 int add_damage = 50;
@@ -276,6 +277,7 @@ public class BufferEquipTest1 : Buffer
                 int add_crits = 10;
                 this.owner.crits_ratio += add_crits;
                 Debug.Log("触发了屠龙效果" + this._level + " 伤害增加" + add_damage + "  暴击率增加" + add_crits);
+                this.brief = "屠龙x" + this._level;
 
             }
 
@@ -292,6 +294,7 @@ public class BufferEquipTest1 : Buffer
 
     public void ResetBuffer()
     {
+        this.show_ui = false;
         if (this._level <= 0) return;
 
         this.owner.damage -= this._level * 50;
@@ -303,7 +306,7 @@ public class BufferEquipTest1 : Buffer
     public override bool Init()
     {
         base.Init();
-        this.has_ui = true;
+        this.icon = "hd/interface/items/503063.png";
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_ATTACK);
         this.target = this.owner;
@@ -344,8 +347,9 @@ public class BufferEquipTest2 : Buffer
             {
                 tick.Reset();
                 this.left_hp = 25;
-
+                this.show_ui = true;
                 Debug.Log("触发了护体效果吸收" + left_hp+"伤害  Hero剩余血量" + owner.current_hp);
+          
                 //触发
             }
 
@@ -395,15 +399,17 @@ public class BufferEquipTest2 : Buffer
     {
         this.left_hp = 0;
         Debug.Log("护体效果结束");
-
+        this.show_ui = false;
     }
 
     public override bool Init()
     {
         base.Init();
-        this.has_ui = true;
+        this.icon = "hd/interface/items/503119.png";
+
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
         this.target = this.owner;
+        this.brief = "护体";
         return true;
     }
 
