@@ -2,28 +2,25 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid '8cc8ccd50d55b3988e852f100763a1c9b9799a59'
-    oldFile: !uuid 'bdf13610435ef778c4cfead8f2c0206a817040c3'
-  /LogicServer/server:
-    newFile: !uuid '0de61345da2b0d6029cf3cde05b34c7268a8fd53'
-    oldFile: !uuid '249689bff863b90f894402f22a0cd50fad0a283c'
-  /LogicServer/server/scripts:
-    newFile: !uuid '4459c4bb61f61ccc0e388d7114f1a230ab7bb8ec'
-    oldFile: !uuid 'f1918b055b24ef3711a76a207cdd6d49384aab17'
-  /LogicServer/server/scripts/common:
-    newFile: !uuid '049de3137cc3b3dbfd31d0ec3f5234f0d9ce6e98'
-    oldFile: !uuid '38ba42236809445971d8551d1a111c4bf4e11a07'
-  /LogicServer/server/scripts/common/xygame:
-    newFile: !uuid 'b9f5ba8abcd22518ec74237943f1f68f855bc9e5'
-    oldFile: !uuid 'fd8cc991d84de3c07ae7b7a39d465bfa538a982c'
-  /LogicServer/server/scripts/common/xygame/model:
-    newFile: !uuid 'a5d3ca05cdc37a19a770f46b88b7c28842aaceb0'
-    oldFile: !uuid '31c4f0f9258ed0c0991f2ad4940157244befb619'
-  /LogicServer/server/scripts/common/xygame/model/user.lua:
-    newFile: !uuid 'cca5f452925f9b1fb6a18980df2ece51c4bac013'
-    oldFile: !uuid '99506b9cba5f4315472a682b67e6df7dfc576a39'
-gitCommitId: !uuid 'bfd73d63b0956815f28920c268a41ca815dd707e'
+  /UnityClient:
+    newFile: !uuid '56078c2ac917ef8687cc0449a78ac476e3095935'
+    oldFile: !uuid '4520bcfc22e3d0ca9cb43b3b2d7174d8c61b07c5'
+  /UnityClient/Assets:
+    newFile: !uuid '408888be1bc98fa441c91ea0859e2905216b0099'
+    oldFile: !uuid 'c3cf676270d1fd8f1fe5a2e15cff9e14c5cca24e'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'e5ae2239eee7c1adce415113252e0097fc450d91'
+    oldFile: !uuid '436e605e14b9236f779d89121cf45e4e03f0cf91'
+  /UnityClient/Assets/Resources/Spine:
+    newFile: !uuid '5cfe00c86deca6e7421ef83e0b0d7c1d4a6979de'
+    oldFile: !uuid '808287fa5be1d604b868c0fa2d39792d1e6db156'
+  /UnityClient/Assets/Resources/Spine/221_SkeletonData.asset:
+    newFile: !uuid '3eebb8b32d99d64ec75902cf684dfb4ad50651ba'
+    oldFile: null
+  /UnityClient/Assets/Resources/Spine/221_SkeletonData.asset.meta:
+    newFile: !uuid '206ab97d48e9348fde27b3ea771d0940c889aa1a'
+    oldFile: null
+gitCommitId: !uuid '3441f6f3057c5473ee54e92634a3751f291aac30'
 renames: {
   }
-revisionId: 395
+revisionId: 396
