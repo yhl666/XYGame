@@ -731,22 +731,31 @@ public sealed class UI_buffers : ViewUI
             if (!buffer.show_ui) continue;
             if (index > MAX_BUFFER_SHOW) break;
 
-            Image img = (list_img[index] as Image);
-            Text txt = (list_txt[index] as Text);
+            (list_panel[index] as GameObject).SetActive(true);
 
-            img.gameObject.SetActive(true);
-            txt.gameObject.SetActive(true);
 
-            txt.text = buffer.brief;
+            Image img = list_img[index] as Image;
+
+            Image img_filled = list_img_filled[index] as Image;
+
+            Counter t = buffer.GetCounter();
+
+            float current = t.GetCurrent();
+            float max = t.GetMax();
+            img_filled.fillAmount = current / max;
+
+            int time = (int)((max - current) / Config.MAX_FPS);
+            (list_txt_time[index] as Text).text = time.ToString();
+            (list_txt[index] as Text).text = buffer.brief;
             Sprite sp = SpriteFrameCache.ins.GetSpriteFrameAuto(buffer.icon).sprite;
-            img.sprite =sp;
+            img.sprite = sp;
             ++index;
         }
 
         for (int i = index; i <= MAX_BUFFER_SHOW; i++)
         {
-            (list_txt[i] as Text).gameObject.SetActive(false);
-            (list_img[i] as Image).gameObject.SetActive(false);
+            (list_panel[i] as GameObject).SetActive(false);
+
         }
 
     }
@@ -763,14 +772,17 @@ public sealed class UI_buffers : ViewUI
 
             Transform buf = this.panel.transform.FindChild(name);
 
-            Image img = buf.GetComponentInChildren<Image>();
+            Image img = buf.FindChild("icon").GetComponent<Image>();
             Text txt = buf.GetComponentInChildren<Text>();
-
+            Image img_fill = buf.FindChild("filled").GetComponent<Image>();
+            Text txt_time = buf.FindChild("time").GetComponent<Text>();
             this.list_img.Add(img);
             this.list_txt.Add(txt);
+            this.list_img_filled.Add(img_fill);
+            this.list_txt_time.Add(txt_time);
 
-            img.gameObject.SetActive(false);
-            txt.gameObject.SetActive(false);
+            buf.gameObject.SetActive(false);
+            this.list_panel.Add(buf.gameObject);
 
         }
         if (list_img.Count != list_txt.Count)
@@ -782,8 +794,10 @@ public sealed class UI_buffers : ViewUI
 
     Counter tick = Counter.Create(10);
     private const int MAX_BUFFER_SHOW = 7;
-
+    ArrayList list_panel = new ArrayList();//GameObject
     ArrayList list_img = new ArrayList();
     ArrayList list_txt = new ArrayList();
+    ArrayList list_txt_time = new ArrayList();
+    ArrayList list_img_filled = new ArrayList();
     GameObject panel = null;
 }

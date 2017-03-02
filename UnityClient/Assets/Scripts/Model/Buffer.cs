@@ -12,17 +12,19 @@ public class Buffer : Model
 
     //----for ui
     public bool show_ui = false;
-    public float percent = 0.0f;
     public string brief = "";
     public string name = "";
     public string icon = "hd/interface/items/502154.png";
-
+    public Counter GetCounter()
+    {
+        return tick;
+    }
 
     //--for logic
     public Entity target;// target entity
     public Entity owner; // who launch this buffer
 
-    public int tick = 0;
+    public int tick1 = 0;
     public int MAX_TICK = 80;
 
     public virtual int GetId() { return 0; }  //buffe 唯一id
@@ -32,7 +34,7 @@ public class Buffer : Model
     /// </summary>
     public override void UpdateMS()
     {
-        ++tick;
+        ++tick1;
         if (this.IsComplete())
         {
             this.SetInValid();
@@ -51,7 +53,7 @@ public class Buffer : Model
     /// <returns></returns>
     public virtual bool IsComplete()
     {
-        return (tick > MAX_TICK);
+        return (tick1 > MAX_TICK);
     }
     public override void OnExit()
     {
@@ -73,6 +75,8 @@ public class Buffer : Model
     {
         this.MAX_TICK = (int)(s * 40.0f);
     }
+
+    protected Counter tick = Counter.Create();
 }
 
 
@@ -246,7 +250,7 @@ public class BufferFlashMove : Buffer
 
 //装备buffer 屠龙效果 测试
 
-//一定几率触发Buffer 攻击力+10 暴击率+10% 最多叠加5次 持续4S
+//一定几率触发Buffer 攻击力+10 暴击率+10% 最多叠加5次 持续10 s
 public class BufferEquipTest1 : Buffer
 {
 
@@ -310,12 +314,12 @@ public class BufferEquipTest1 : Buffer
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_ATTACK);
         this.target = this.owner;
+        tick.SetMax(1600);//40 s
         return true;
     }
 
     private System.Random random = new System.Random(0);
     private int _level = 0;
-    private Counter tick = Counter.Create(160);//4 s
 }
 
 
@@ -410,12 +414,12 @@ public class BufferEquipTest2 : Buffer
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
         this.target = this.owner;
         this.brief = "护体";
+        tick.SetMax(160);// 4 s
         return true;
     }
 
     private int left_hp = 0;//护罩剩余血量
     private System.Random random = new System.Random(0);
-    private Counter tick = Counter.Create(160);//4 s
 }
 
 

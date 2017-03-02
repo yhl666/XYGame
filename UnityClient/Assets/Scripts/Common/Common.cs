@@ -121,6 +121,14 @@ public class Counter
     {
         return tick >= max;
     }
+    public int GetMax()
+    {
+        return max;
+    }
+    public int GetCurrent()
+    {
+        return this.tick;
+    }
     private Counter() { }
     private int tick;
     private int max;
