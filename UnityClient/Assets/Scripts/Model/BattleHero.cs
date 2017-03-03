@@ -86,7 +86,7 @@ public class BattleHero : Hero
 
         this.team = 1;
 
-        this.current_hp = 0xfffff;
+        this.current_hp = 100;
         this.hp = 0xffffff;
         this.atk_level = 3;
 
