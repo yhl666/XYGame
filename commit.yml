@@ -3,24 +3,21 @@ branches: {
   }
 fileChange:
   /LogicServer:
-    newFile: !uuid '115f9afaaeb8b21f6d47e63d3424a72f60bd1845'
-    oldFile: !uuid '927670254ad03779538bbb0ea2ca8a61abfd2e81'
+    newFile: !uuid '673fcd90f49d070cc21f9f66b1f6f76216cb4f51'
+    oldFile: !uuid '115f9afaaeb8b21f6d47e63d3424a72f60bd1845'
   /LogicServer/server:
-    newFile: !uuid '85568c581269ecb0833e5029f844d0598e0dd6fe'
-    oldFile: !uuid '8e12023f5818fe27b5a9d3ba89a31d21d4429a43'
+    newFile: !uuid 'a3dd4be1381b875d5922cf67f8c5c13a37b84d27'
+    oldFile: !uuid '85568c581269ecb0833e5029f844d0598e0dd6fe'
   /LogicServer/server/src:
-    newFile: !uuid '874b30bee081c7669532c35b0b3f9a296da4071b'
-    oldFile: !uuid 'd426e81e279384897a681f69fc0768e5645244d9'
+    newFile: !uuid '859a13887a106a12964d25c0937176285af395f8'
+    oldFile: !uuid '874b30bee081c7669532c35b0b3f9a296da4071b'
   /LogicServer/server/src/svr_common:
-    newFile: !uuid '58423474d9a8c35336a27a2b737cfd299df0b592'
-    oldFile: !uuid '688f170099ab76a6a2244632fd21825d1b955fa8'
+    newFile: !uuid '01f59b5e36c01d8a3cebd272e00f774d15f50c9a'
+    oldFile: !uuid '58423474d9a8c35336a27a2b737cfd299df0b592'
   /LogicServer/server/src/svr_common/XYGameLog.cpp:
-    newFile: !uuid 'fe2cc140bd93f6b25cd9f0167436e8520a3fa042'
-    oldFile: !uuid '6a5fd0fdae0b8edbff9bc861d080a9828537f462'
-  /LogicServer/server/src/svr_common/XYGameLog.h:
-    newFile: !uuid '9bd6c411d9cefdb9ba814cd19627a596c3e4f97f'
-    oldFile: !uuid '5fe089bbf5d0ed0fd38c61cd09edb1858e660c2d'
-gitCommitId: !uuid '5f2d3dc5d58ad347d780630fd17a6eba060a5910'
+    newFile: !uuid '2981306c03bc1190e3cb0ab4a65ea89d7dfcb75b'
+    oldFile: !uuid 'fe2cc140bd93f6b25cd9f0167436e8520a3fa042'
+gitCommitId: !uuid 'add8c81aceabc49d054bff72d1ecc794bfdf5173'
 renames: {
   }
-revisionId: 402
+revisionId: 403
