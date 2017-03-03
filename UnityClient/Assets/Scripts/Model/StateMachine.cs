@@ -55,8 +55,10 @@ public sealed class StateMachine : GAObject
     {
         foreach (StateStack s in states)
         {
-            if (pause == false)
-                s.UpdateMS();
+            if (s.pause) continue;
+            if (pause) continue;
+
+            s.UpdateMS();
         }
     }
 
@@ -88,6 +90,24 @@ public sealed class StateMachine : GAObject
     {
         pause = false;
     }
+
+    public void PauseAllStack()
+    {
+        foreach (StateStack s in states)
+        {
+            s.Pause();
+        }
+    }
+    public void ResumeAllStack()
+    {
+        foreach (StateStack s in states)
+        {
+            s.Resume();
+        }
+    }
+
+
+
     public StateBase GetState<T>() where T : new()
     {
         foreach (StateStack s in states)
@@ -123,6 +143,18 @@ public sealed class StateStack : GAObject
     {
 
     }
+    public void Pause()
+    {
+        pause = true;
+        StateBase s = stacks.Peek() as StateBase;
+        s.OnPause();
+    }
+    public void Resume()
+    {
+        pause = false;
+        StateBase s = stacks.Peek() as StateBase;
+        s.OnResume();
+    }
     public void PushSingleState(StateBase s)
     {//单行状态机
         s.stack = this;
@@ -133,7 +165,7 @@ public sealed class StateStack : GAObject
     {//单行状态机
         StateBase s = stacks.Pop() as StateBase;//
         s.OnExit();
-      //  s.stack = null;
+        //  s.stack = null;
     }
 
     public override void UpdateMS()
@@ -154,7 +186,7 @@ public sealed class StateStack : GAObject
     public override void OnEvent(string what, object userData)
     {
         if (this.enable == false) return;
-
+        if (this.pause) return;
         GAObject s = stacks.Peek() as GAObject;
         s.OnEvent(what, userData);
 
@@ -163,7 +195,7 @@ public sealed class StateStack : GAObject
     public override void OnEvent(int what, object userData)
     {
         if (this.enable == false) return;
-
+        if (this.pause) return;
         GAObject s = stacks.Peek() as GAObject;
         s.OnEvent(what, userData);
 
@@ -216,6 +248,7 @@ public sealed class StateStack : GAObject
     public StateMachine machine = null;
     Stack stacks = new Stack();
     public StateBase _current_state = null;
+    public bool pause = false;
     public Entity host = null;
 }
 

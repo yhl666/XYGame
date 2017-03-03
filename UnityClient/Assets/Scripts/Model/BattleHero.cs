@@ -79,8 +79,9 @@ public class BattleHero : Hero
 
         bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
         bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
+        bulleClassName_atk1 = "BulletStateMachineTest";
 
-        bullet_atk1_info = BulletConfigInfo.Create();
+     ///   bullet_atk1_info = BulletConfigInfo.Create();
         ViewMgr.Create<ViewEntity>(this);
 
 

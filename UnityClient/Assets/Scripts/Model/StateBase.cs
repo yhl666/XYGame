@@ -10,6 +10,8 @@ using System.Collections;
 
 public class StateBase : GAObject
 {
+    protected ArrayList conflict_states = new ArrayList();
+
 
     public static StateBase Create<T>(Entity target) where T : new()
     {
@@ -21,7 +23,7 @@ public class StateBase : GAObject
 
     public Entity Target = null; // reference
     public StateStack stack = null;//reference
-    public virtual string GetName() { return "State"; }
+    public virtual string GetName() { return "StateBase"; }
     public virtual string GetAnimationName() { return ""; }
     public bool Enable = false;
     public void SetDisable()
@@ -41,6 +43,32 @@ public class StateBase : GAObject
     {
 
     }
+    /// <summary>
+    /// 被打断事件
+    /// </summary>
+    public void OnInterrupted(GAObject what)
+    {
+
+    }
+
+    public virtual void OnPause()
+    {
+     
+    }
+    public virtual void OnResume()
+    {
+         
+    }
+    /*
+    public bool pause = false;
+    public void Pause()
+    {
+        pause = true;
+    }
+    public void Resume()
+    {
+        pause = false;
+    }*/
     //  public string animationName = "null";
 
 }
@@ -56,7 +84,7 @@ public class JumpState : StateBase
         }
         return null;
     }
-
+    public override string GetName() { return "JumpState"; }
     public override string GetAnimationName() { return "jump"; }
     public override void UpdateMS()
     {
@@ -134,7 +162,7 @@ public class JumpTwiceState : StateBase
         }
         return null;
     }
-
+    public override string GetName() { return "JumpTwiceState"; }
     public override void UpdateMS()
     {
 
@@ -196,7 +224,7 @@ public class FallState : StateBase
         }
         return null;
     }
-
+    public override string GetName() { return "FallState"; }
     public override void UpdateMS()
     {
         Target.isFalling = false;
@@ -251,7 +279,7 @@ public class RunState : StateBase
         }
         return null;
     }
-
+    public override string GetName() { return "RunState"; }
     public RunState()
     {
 
@@ -332,7 +360,7 @@ public class StandState : StateBase
         }
         return null;
     }
-
+    public override string GetName() { return "StandState"; }
     public StandState()
     {
     }
@@ -377,7 +405,7 @@ public class HurtState : StateBase
         }
         return null;
     }
-
+    public override string GetName() { return "HurtState"; }
     public HurtState()
     {
 
@@ -440,7 +468,7 @@ public class DieState : StateBase
         }
         return null;
     }
-
+    public override string GetName() { return "DieState"; }
     public DieState()
     {
 
@@ -852,13 +880,13 @@ public class RunXYState : StateBase
 {
     public override StateBase GetState<T>()
     {
-        if (typeof(T) == typeof(RunState))
+        if (typeof(T) == typeof(RunXYState))
         {
             return this;
         }
         return null;
     }
-
+    public override string GetName() { return "RunXYState"; }
     public RunXYState()
     {
 

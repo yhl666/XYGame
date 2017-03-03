@@ -463,3 +463,65 @@ public class Bullet221_0 : Bullet
     }
 }
 
+
+
+
+
+
+
+
+/// <summary>
+
+/// </summary>
+public class BulletStateMachineTest : Bullet
+{
+
+    public override void UpdateMS()
+    {
+
+        if (tick1.Tick())
+        {
+            owner.machine.PauseAllStack();
+          ///  owner.attackingAnimationName = "";
+            owner.isAttacking = false;
+            owner.machine.GetState<FallState>().stack.Resume();
+            owner.x_auto += 0.05f;
+
+
+            return;
+        }
+
+        // process with oover;
+ 
+        owner.machine.ResumeAllStack();
+        
+        this.SetInValid();
+    }
+
+    public override void OnEnter()
+    {
+
+
+    }
+
+    public override void OnExit()
+    {
+        base.OnExit();
+        Debug.Log(" exit");
+
+    }
+    public override void OnDispose()
+    {
+        base.OnDispose();
+        Debug.Log(" dispose");
+
+    }
+
+    public override bool Init()
+    {
+        this.plist = "";
+
+        return true;
+    }Counter tick1 = Counter.Create(120);//3s
+}
+
