@@ -124,3 +124,33 @@ void  XYGameLog::CreateDir(std::string file)
 	boost::filesystem::create_directory(file);
 
 }
+
+
+using namespace std;
+namespace
+{
+
+	using LuaRef = LuaIntf::LuaRef;
+
+	void Log(const std::string &file, const std::string & info)
+	{
+		XYGameLog::GetInstance()->Log(file, info);
+	}
+
+	namespace LuaXYGameLog
+	{
+		void Bind(lua_State* L)
+		{
+			assert(L);
+			LuaIntf::LuaBinding(L).beginModule("xygame_log")
+				.addFunction("log", &Log)
+				.endModule();
+		}
+	};
+};
+
+
+void XYGameLog::BindLua(lua_State *l)
+{
+	LuaXYGameLog::Bind(l);
+}
