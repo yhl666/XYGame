@@ -1,9 +1,35 @@
 !revision
 branches: {
   }
-fileChange: {
-  }
-gitCommitId: !uuid '1e775312aef2f17939f09d5f5c14a4867902fbfb'
+fileChange:
+  /UnityClient:
+    newFile: !uuid 'e42d13812f54f693a80feb80d325d4ba8ca7fda9'
+    oldFile: !uuid '61395a4017fbca93fd0d598990577378add8836a'
+  /UnityClient/Assets:
+    newFile: !uuid '7a7f9e23db063d801b32a8e39fb653474d958aa9'
+    oldFile: !uuid '68b8b9c5d5074f6a4d63d674c8f6091ef75b15dd'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '6e82123415a98f6a3a57bfdbebe54d8cd6c657f4'
+    oldFile: !uuid 'e4af2417959e424e0589e645ec605288044d7598'
+  /UnityClient/Assets/Resources/Spine:
+    newFile: !uuid '4059512aa608229c5b064c8cd5f81cb368c84ae7'
+    oldFile: !uuid '5cfe00c86deca6e7421ef83e0b0d7c1d4a6979de'
+  /UnityClient/Assets/Resources/Spine/221_SkeletonData.asset.meta:
+    newFile: !uuid '418fdd4c2d92b309126c02418bf957e44f93f988'
+    oldFile: !uuid '206ab97d48e9348fde27b3ea771d0940c889aa1a'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '81fc5411326cd09b675bbfab56f2df3864b598f4'
+    oldFile: !uuid 'a1128577e3834d3bd33674e5aec7161c37a57828'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'f936b8c18a8627a81e0e904610d010859ab71ddd'
+    oldFile: !uuid 'e7af379d072158d115d6721b184e8a4a073244e2'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid '40f2e2fb54602d8bf162d085914d54283298a4ec'
+    oldFile: !uuid '7cbccb3c5d5160b37682a9ac7dd364986119fc51'
+  /UnityClient/Assets/Scripts/Model/StateBase.cs:
+    newFile: !uuid 'd9ad153b1d94198967f1b1a3695e05cbda086876'
+    oldFile: !uuid 'c3e6ffaff4dfe455f3bc9597da2dd41f85f71389'
+gitCommitId: !uuid '5aa2d3de6f471a9b9934fc03b63c28dce28bc956'
 renames: {
   }
-revisionId: 413
+revisionId: 414
