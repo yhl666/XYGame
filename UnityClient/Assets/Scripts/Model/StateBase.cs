@@ -954,14 +954,14 @@ public class SkillState : StateBase
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
-            s.PushSingleSkill(new Skill_1());
+            s.PushSingleSkill(new Skill2_1());
             this.skill_stacks.Add(s);
         }
         {
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
-            s.PushSingleSkill(new Skill_2());
+            s.PushSingleSkill(new Skill2_2());
             this.skill_stacks.Add(s);
         }
 

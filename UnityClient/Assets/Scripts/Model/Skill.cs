@@ -141,10 +141,10 @@ public sealed class SkillStack : GAObject
     }
     public override void OnEnter()
     {
-        SkillBase s = new Skill_1();
+      /*  SkillBase s = new Skill_1();
         s.Target = this.host;
         this.PushSingleSkill(s);
-
+        */
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
 
     }
@@ -207,7 +207,7 @@ public class SkillBase : Model
 /// <summary>
 ///可打断 蓄力1 秒 后，释放一条冰龙 造成100点伤害
 /// </summary>
-public class Skill_1 : SkillBase
+public class Skill2_1 : SkillBase
 {
     public override void OnEnter()
     {
@@ -316,7 +316,7 @@ public class Skill_1 : SkillBase
 /// <summary>
 ///可被打断 角色施法 出一个伤害移动的伤害范围， 再次按下触发 一颗雷从天而降 造成大量伤害
 /// </summary>
-public class Skill_2 : SkillBase
+public class Skill2_2 : SkillBase
 {
     public override void OnEnter()
     {
