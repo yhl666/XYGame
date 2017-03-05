@@ -273,21 +273,21 @@ public sealed class UI_skills : ViewUI
         this.btn_skill1.onClick.AddListener(delegate()
         {
             //  this.On_BtnClicked(1);
-            PublicData.ins.IS_s1 = true;
+            PublicData.ins.IS_s1 = 1;
         });
         this.btn_skill2.onClick.AddListener(delegate()
         {
-            this.On_BtnClicked(2);
+            PublicData.ins.IS_s1 = 2;
         });
         this.btn_skill3.onClick.AddListener(delegate()
         {
-            this.On_BtnClicked(3);
+            PublicData.ins.IS_s1 = 3;
         });
 
 
 
-        this.btn_skill2.gameObject.SetActive(false);
-        this.btn_skill3.gameObject.SetActive(false);
+        //  this.btn_skill2.gameObject.SetActive(false);
+        //   this.btn_skill3.gameObject.SetActive(false);
         return true;
     }
 

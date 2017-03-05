@@ -68,7 +68,7 @@ public class PublicData : object
     public bool IS_right = false;//right
     public bool IS_jump = false;//jump
     public bool IS_atk = false;//atk
-    public bool IS_s1 = false;//skill 1
+    public int IS_s1 = 0;//skill 1
     public bool IS_stand = false;//stand
 
 

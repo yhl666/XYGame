@@ -47,8 +47,10 @@ public sealed class SkillStack : GAObject
     public void PushSingleSkill(SkillBase s)
     {//单行状态机
         s.stack = this;
+        s.Target = this.host;
+        s.Init();
         stacks.Push(s);
-        s.OnEnter();
+
     }
     public void PopSingleSkill()
     {//单行状态机
@@ -163,7 +165,7 @@ public class SkillBase : Model
     public SkillStack stack = null;//reference
     public virtual string GetName() { return "SkillBase"; }
     public virtual string GetAnimationName() { return ""; }
-    public bool Enable = true;
+    public bool Enable = false;
     public void SetDisable()
     {
         this.Enable = false;
@@ -203,7 +205,7 @@ public class SkillBase : Model
 
 
 /// <summary>
-///可打断 蓄力2 秒 后，释放一条冰龙 造成100点伤害
+///可打断 蓄力1 秒 后，释放一条冰龙 造成100点伤害
 /// </summary>
 public class Skill_1 : SkillBase
 {
@@ -220,6 +222,10 @@ public class Skill_1 : SkillBase
         //开始蓄力
         Target.attackingAnimationName = "2200_0";
         Target.is_spine_loop = false;
+
+        RunState run = (Target.machine.GetState<RunState>() as RunState);
+        run.stack.Resume();
+        run.DisableMove();
     }
     public override void UpdateMS()
     {
@@ -264,7 +270,10 @@ public class Skill_1 : SkillBase
 
         BulletConfigInfo info = BulletConfigInfo.Create();
         info.plistAnimation = "hd/roles/role_2/bullet/role_2_bul_2201/role_2_bul_2201.plist";
-
+        info.number = 0xffff;
+        info.distance = 10.0f;
+        info.validTimes = 0xffff;
+        info.isHitDestory = false;
         BulletMgr.Create(this.Target, "BulletConfig", info);
 
     }
@@ -274,13 +283,17 @@ public class Skill_1 : SkillBase
         Target.isAttacking = false;
         Target.is_spine_loop = true;
         Target.machine.ResumeAllStack();
-
+        RunState run = (Target.machine.GetState<RunState>() as RunState);
+        run.EnableMove();
     }
     public override void OnPush()
     {
-        if (this.Enable == false)
-            this.OnEnter();
+        if (Target.isAttacking) return;
 
+        if (this.Enable == false)
+        {
+            this.OnEnter();
+        }
     }
     public override void OnInterrupted(AttackInfo info)
     {
@@ -290,7 +303,7 @@ public class Skill_1 : SkillBase
     }
     private bool is_launch_bullet = false;
     private bool is_wait_done = false;
-    Counter tick = Counter.Create(80);
+    Counter tick = Counter.Create(40);
     Counter tick1 = Counter.Create(5);
 
 
@@ -383,9 +396,8 @@ public class Skill_2 : SkillBase
     {
         if (Target.isStand == false) return;
 
-        if (this.Enable == false)
+        if (this.Enable == false && Target.isAttacking == false)
         {
-
             this.OnEnter();
         }
         else if (this.Enable == true && is_shifa)

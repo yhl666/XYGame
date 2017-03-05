@@ -87,7 +87,7 @@ public class BattleHero : Hero
 
         this.team = 1;
 
-        this.current_hp = 100;
+        this.current_hp = 0xffffff;
         this.hp = 0xffffff;
         this.atk_level = 3;
 
@@ -156,10 +156,10 @@ public class BattleHero : Hero
             jump = false;
         }
 
-        if (s1)
+        if (s1!=0)
         {
-            eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1);
-            s1 = false;
+            eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1,s1);
+            s1 = 0;
         }
 
 

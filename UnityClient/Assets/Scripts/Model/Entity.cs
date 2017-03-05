@@ -102,7 +102,7 @@ public class Entity : Model
     public bool right = false;//right
     public bool jump = false;//jump
     public bool atk = false;//atk
-    public bool s1 = false;//skill 1
+    public int s1 = 0;//skill 1
     public bool stand = false;//stand
 
 

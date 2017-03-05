@@ -286,6 +286,7 @@ public class RunState : StateBase
     }
     public override void UpdateMS()
     {
+        if (moveable == false) return;
         if (Target.isAttacking && Target.isStand) return;
         if (Target.isHurt) return;
         this.Target.x -= (Target.speed * this.Target.flipX);
@@ -327,7 +328,16 @@ public class RunState : StateBase
 
 
     }
+    public void DisableMove()
+    {
+        moveable = false;
+    }
+    public void EnableMove()
+    {
+        moveable = true;
+    }
 
+    public bool moveable = true;
 
     public override void OnEnter()
     {
@@ -893,8 +903,10 @@ public class SkillState : StateBase
     }
     public override void UpdateMS()
     {
-        s.UpdateMS();
-
+        foreach (SkillStack s in skill_stacks)
+        {
+            s.UpdateMS();
+        }
     }
 
     public override void OnEvent(string type, object userData)
@@ -913,14 +925,20 @@ public class SkillState : StateBase
     {
         if (type == Events.ID_LAUNCH_SKILL1 && this.Enable == true)
         {
-            s.OnPush();
+            int idx = (int)userData;
+            if (idx > skill_stacks.Count) return;
+
+            (skill_stacks[idx - 1] as SkillStack).OnPush();
 
         }
         else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
         {
             if (Target.isAttacking)
             {
-                s.OnSpineCompolete();
+                foreach (SkillStack s in skill_stacks)
+                {
+                    s.OnSpineCompolete();
+                }
             }
         }
     }
@@ -932,13 +950,25 @@ public class SkillState : StateBase
         this.stack.AddLocalEventListener(Events.ID_SPINE_COMPLETE);
         this.stack.AddLocalEventListener("SpineComplete");
 
+        {
+            SkillStack s = SkillStack.Create();
+            s.host = this.Target;
+            s.parent = this;
+            s.PushSingleSkill(new Skill_1());
+            this.skill_stacks.Add(s);
+        }
+        {
+            SkillStack s = SkillStack.Create();
+            s.host = this.Target;
+            s.parent = this;
+            s.PushSingleSkill(new Skill_2());
+            this.skill_stacks.Add(s);
+        }
 
-        SkillStack s = SkillStack.Create();
-        //   skill_stacks.Add(s);
-        this.s = s;
-        s.host = this.Target;
-        s.parent = this;
-        s.OnEnter();
+
+
+
+
         this.Enable = true;
 
     }
@@ -947,8 +977,9 @@ public class SkillState : StateBase
 
     }
 
-    //  ArrayList skill_stacks = new ArrayList();
-    SkillStack s = null;
+    ArrayList skill_stacks = new ArrayList();
+
+
 }
 
 

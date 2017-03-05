@@ -119,8 +119,8 @@ sealed class BattlePVEHandler : BattleHandlerBase
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = randObj.Next(5, 80);
                 ;
-                //    e1.x = 5;
-                e1.y = 5;
+               e1.x = 5+i*0.1f;
+              e1.y = 5;
                 e1.team = 333;
             }
             /*  for (int i = 0; i < 10; i++)
@@ -321,10 +321,10 @@ public sealed class BattleSyncHandler
             dd.stand = 1;
             PublicData.ins.IS_stand = false;
         }
-        if (PublicData.ins.IS_s1)
+        if (PublicData.ins.IS_s1!=0)
         {
-            dd.s1 = 1;
-            PublicData.ins.IS_s1 = false;
+            dd.s1 = PublicData.ins.IS_s1;
+            PublicData.ins.IS_s1 = 0;
         }
 
         app.Send(dd.toUploadJson());
@@ -634,9 +634,9 @@ public sealed class BattleSyncHandler
             {
                 hero.atk = true;
             }
-            if (f.s1 == 1)
+            if (f.s1 !=0)
             {
-                hero.s1 = true;
+                hero.s1 = f.s1;
             }
 
 

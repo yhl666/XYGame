@@ -267,10 +267,10 @@ public class Enemy : Entity
             eventDispatcher.PostEvent(Events.ID_BTN_JUMP);
             jump = false;
         }
-        if (s1)
+        if (s1!=0)
         {
-            eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1);
-            s1 = false;
+            eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1,s1);
+            s1 = 0;
         }
 
 
@@ -303,7 +303,7 @@ public class Enemy221 : Enemy
         bullet_atk1_info.plistAnimation = "";
         bullet_atk1_info.distance = 0.2f;
         bullet_atk1_info.distance_atk = 1f;
-        this.speed *= 0.5f; ;
+        this.speed *= 0.001f; ;
 
         this.atk_range = 1.0f;
  
