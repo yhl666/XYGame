@@ -65,6 +65,9 @@ public sealed class BulletConfigInfo
 
     public string plistAnimation = "hd/roles/role_2/bullet/role_2_bul_2001/role_2_bul_2001.plist"; // 子弹 view 的plist 帧动画文件
     public int lastTime = 0; // 持续时间,为0表示 使用距离来标示，不为0 表示 距离和 时间 一起来标示
+
+    //   public int deltaTime = 0;//延迟多久才开始 伤害判定
+    public bool isHitDestory = true;//命中即可销毁
     //  public Vector2 range;//攻击范围
     public int number = 0xffff;// 范围内攻击敌人个数，1表示 单体，2表示 2个敌人.....
     public float speed = 0.1f; // 移动速度
@@ -125,7 +128,7 @@ public sealed class BulletConfig : Bullet
     public override void UpdateMS()
     {
         tick++;
-        float dis = flipX * info.speed;
+        float dis = flipX * speed;
         this.x += dis;
         distance -= Mathf.Abs(dis);
         if (distance <= 0) distance = 0;
@@ -135,7 +138,17 @@ public sealed class BulletConfig : Bullet
             this.SetInValid();
             return;
         }
-
+        if (validTimes >= info.validTimes)
+        {//超过 有效次数 
+            if (info.isHitDestory)
+            {
+                this.SetInValid(); return;
+            }
+            else
+            {
+                return;
+            }
+        }
 
         //scan heros
         ArrayList heros = HeroMgr.ins.GetHeros();
@@ -209,10 +222,7 @@ public sealed class BulletConfig : Bullet
         {//命中过敌人 有效次数
             validTimes++;
         }
-        if (validTimes >= info.validTimes)
-        {//超过 有效次数 
-            this.SetInValid();
-        }
+
 
 
 
@@ -251,9 +261,9 @@ public sealed class BulletConfig : Bullet
     {
         this.plist = info.plistAnimation;
         this.distance = info.distance;
-
+        this.speed = info.speed;
     }
-    private BulletConfigInfo info = null;
+    public BulletConfigInfo info = null;
 }
 
 
@@ -482,7 +492,7 @@ public class BulletStateMachineTest : Bullet
         if (tick1.Tick())
         {
             owner.machine.PauseAllStack();
-          ///  owner.attackingAnimationName = "";
+            ///  owner.attackingAnimationName = "";
             owner.isAttacking = false;
             owner.machine.GetState<FallState>().stack.Resume();
             owner.x_auto += 0.05f;
@@ -492,9 +502,9 @@ public class BulletStateMachineTest : Bullet
         }
 
         // process with oover;
- 
+
         owner.machine.ResumeAllStack();
-        
+
         this.SetInValid();
     }
 

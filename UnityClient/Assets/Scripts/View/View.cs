@@ -69,6 +69,11 @@ public class ViewBullet : View
                 m.OnComplete();
             };
 
+
+        ani.gameObject.transform.position = new Vector3(m.x, m.y  , ani.gameObject.transform.position.z);
+
+
+
         ani.ani.SetLoop(1);
         ani.ani.Run();
         return true;
@@ -215,7 +220,7 @@ public class ViewEntity : View
         {
             name = m.ani_stand;
         }
-
+        spine.loop = m.is_spine_loop;
 
         spine.AnimationName = name;
 

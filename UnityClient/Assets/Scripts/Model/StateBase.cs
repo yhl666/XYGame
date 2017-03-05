@@ -53,11 +53,11 @@ public class StateBase : GAObject
 
     public virtual void OnPause()
     {
-     
+
     }
     public virtual void OnResume()
     {
-         
+
     }
     /*
     public bool pause = false;
@@ -576,7 +576,7 @@ public class AttackState_1 : StateBase
         {
             Target.isAttacking = false;
             this.Enable = false;
-           // Debug.Log(" 连招  1111 完成");
+            // Debug.Log(" 连招  1111 完成");
             if (Target.atk_level > 1)
             {//下段招数
                 this.stack.PushSingleState(StateBase.Create<AttackState_2>(Target));
@@ -628,7 +628,7 @@ public class AttackState_2 : StateBase
     int tick = 0;
     public AttackState_2()
     {
-      //  Debug.Log(" 连招  222 待命");
+        //  Debug.Log(" 连招  222 待命");
     }
     public override void UpdateMS()
     {
@@ -639,7 +639,7 @@ public class AttackState_2 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-        //    Debug.Log(" 连招  222 超时");
+            //    Debug.Log(" 连招  222 超时");
 
         }
 
@@ -678,14 +678,14 @@ public class AttackState_2 : StateBase
         }
         else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
         {
-          //  Debug.Log("连招   222 完成");
+            //  Debug.Log("连招   222 完成");
 
             Target.isAttacking = false;
             this.Enable = false;
             this.stack.PopSingleState();
             if (Target.atk_level > 2)
             {//下段招数
- 
+
                 this.stack.PushSingleState(StateBase.Create<AttackState_3>(Target));
             }
         }
@@ -725,7 +725,7 @@ public class AttackState_3 : StateBase
     int tick = 0;
     public AttackState_3()
     {
-     //   Debug.Log("连招   3333 待命");
+        //   Debug.Log("连招   3333 待命");
 
     }
     public override void UpdateMS()
@@ -737,7 +737,7 @@ public class AttackState_3 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-          //  Debug.Log("连招   333333 超时");
+            //  Debug.Log("连招   333333 超时");
         }
 
     }
@@ -774,7 +774,7 @@ public class AttackState_3 : StateBase
         {
             Target.isAttacking = false;
             this.Enable = false;
-           // Debug.Log("连招   33333 完成");
+            // Debug.Log("连招   33333 完成");
             this.stack.PopSingleState();
 
 
@@ -795,10 +795,10 @@ public class AttackState_3 : StateBase
 
 
 
-public class SkillState : StateBase
+public class SkillState111 : StateBase
 {
     // 释放技能   share state isAttacking
-
+    //读取配置信息 初始化各个SkillBase 和Stack
     public override StateBase GetState<T>()
     {
         if (typeof(T) == typeof(SkillState))
@@ -808,10 +808,10 @@ public class SkillState : StateBase
         return null;
     }
     public override string GetAnimationName() { return "2110"; }
-    public SkillState()
-    {
+    /*  public SkillState()
+      {
 
-    }
+      }*/
     public override void UpdateMS()
     {
 
@@ -865,11 +865,91 @@ public class SkillState : StateBase
 
     }
 
-
+    ArrayList skill_stacks = new ArrayList();
 
 }
 
 
+
+
+
+
+public class SkillState : StateBase
+{
+    // 释放技能   share state isAttacking
+    //读取配置信息 初始化各个SkillBase 和Stack
+    public override StateBase GetState<T>()
+    {
+        if (typeof(T) == typeof(SkillState))
+        {
+            return this;
+        }
+        return null;
+    }
+    public override string GetAnimationName() { return ""; }
+    public SkillState()
+    {
+
+    }
+    public override void UpdateMS()
+    {
+        s.UpdateMS();
+
+    }
+
+    public override void OnEvent(string type, object userData)
+    {
+        if (type == "skill")
+        {
+            this.OnEvent(Events.ID_BTN_ATTACK, userData);
+        }
+        else if ("SpineComplete" == type)
+        {
+            this.OnEvent(Events.ID_SPINE_COMPLETE, userData);
+        }
+    }
+
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_LAUNCH_SKILL1 && this.Enable == true)
+        {
+            s.OnPush();
+
+        }
+        else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
+        {
+            if (Target.isAttacking)
+            {
+                s.OnSpineCompolete();
+            }
+        }
+    }
+
+    public override void OnEnter()
+    {
+
+        this.stack.AddLocalEventListener(Events.ID_LAUNCH_SKILL1);
+        this.stack.AddLocalEventListener(Events.ID_SPINE_COMPLETE);
+        this.stack.AddLocalEventListener("SpineComplete");
+
+
+        SkillStack s = SkillStack.Create();
+        //   skill_stacks.Add(s);
+        this.s = s;
+        s.host = this.Target;
+        s.parent = this;
+        s.OnEnter();
+        this.Enable = true;
+
+    }
+    public override void OnExit()
+    {
+
+    }
+
+    //  ArrayList skill_stacks = new ArrayList();
+    SkillStack s = null;
+}
 
 
 

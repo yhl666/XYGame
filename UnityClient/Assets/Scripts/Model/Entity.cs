@@ -495,7 +495,7 @@ public class Entity : Model
 
     public string attackingAnimationName = "";
 
-
+    public bool is_spine_loop = true;
     //-----------------   for  config bullet type bu string
     public string bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
     public BulletConfigInfo bullet_atk1_info = null;

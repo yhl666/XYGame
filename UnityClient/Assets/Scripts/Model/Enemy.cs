@@ -194,11 +194,11 @@ public class Enemy : Entity
             s.PushSingleState(StateBase.Create<StandState>(this));
 
         }
-        {
+      /*  {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
             s.PushSingleState(StateBase.Create<SkillState>(this));
-        }
+        }*/
         {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
