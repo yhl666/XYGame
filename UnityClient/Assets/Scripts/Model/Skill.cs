@@ -141,10 +141,10 @@ public sealed class SkillStack : GAObject
     }
     public override void OnEnter()
     {
-      /*  SkillBase s = new Skill_1();
-        s.Target = this.host;
-        this.PushSingleSkill(s);
-        */
+        /*  SkillBase s = new Skill_1();
+          s.Target = this.host;
+          this.PushSingleSkill(s);
+          */
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
 
     }
@@ -166,6 +166,22 @@ public class SkillBase : Model
     public virtual string GetName() { return "SkillBase"; }
     public virtual string GetAnimationName() { return ""; }
     public bool Enable = false;
+
+    public virtual void UpdateMSIdle()
+    {
+
+    }
+
+    //---------helper function
+    protected void PauseAll()
+    {
+        Target.machine.PauseAllStack();
+        this.stack.parent.stack.Resume();
+    }
+    protected void ResumeAll()
+    {
+        Target.machine.ResumeAllStack();
+    }
     public void SetDisable()
     {
         this.Enable = false;
@@ -175,10 +191,8 @@ public class SkillBase : Model
         this.Enable = true;
 
     }
-    public virtual void UpdateMSIdle()
-    {
 
-    }
+    //-----------event
     /// <summary>
     /// 被打断事件
     /// </summary>
@@ -274,7 +288,9 @@ public class Skill2_1 : SkillBase
         info.distance = 10.0f;
         info.validTimes = 0xffff;
         info.isHitDestory = false;
-        BulletMgr.Create(this.Target, "BulletConfig", info);
+
+        Bullet b = BulletMgr.Create(this.Target, "BulletConfig", info);
+        b.y = Target.GetRealY() + 0.0f;
 
     }
     public override void OnExit()
@@ -415,9 +431,188 @@ public class Skill2_2 : SkillBase
     }
 
     private bool is_shifa = true;
-    Counter tick = Counter.Create(80);
+    Counter tick = Counter.Create(100);
     Counter tick1 = Counter.Create(5);
     Bullet b_shifa = null;
 
+}
+
+
+
+
+
+/// <summary>
+///可打断 紧箍咒 范围内的额敌人 击飞并且吸到紧箍咒上方
+/// </summary>
+public class Skill2_3 : SkillBase
+{
+    Bullet bullet = null;
+    public override void OnEnter()
+    {
+
+        Target.machine.PauseAllStack();
+        this.stack.parent.stack.Resume();
+
+        Target.isAttacking = true;
+        this.Enable = true;
+        //开始蓄力
+        Target.attackingAnimationName = "2121";
+
+
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+        info.plistAnimation = "hd/roles/role_2/bullet/role_2_bul_2121/role_2_bul_2121.plist";
+        info.distance = 0.0f;
+        info.distance_atk = 0;
+        info.speed = 0.0f;
+        info.number = 0;
+        info.lastTime = 30;
+        info.isHitDestory = false;
+        bullet = BulletMgr.Create(this.Target, "BulletConfig", info);
+        bullet.x = Target.x + 2.0f;
+        bullet.y = Target.height + Target.y + 0.3f;
+        delta = Target.GetRealY() + 4.0f;
+
+        {
+            ArrayList list = EnemyMgr.ins.GetEnemys();
+            foreach (Entity e in list)
+            {
+                if (e.ClaculateDistance(bullet.x, bullet.y) < 2.0f)
+                {
+                    e.machine.GetState<FallState>().stack.Pause();
+                    this.list.Add(e);
+                }
+            }
+        }
+
+        {
+            ArrayList list = HeroMgr.ins.GetHeros();
+            foreach (Entity e in list)
+            {
+                if (e.team == Target.team) continue;
+                if (e.ClaculateDistance(bullet.x, bullet.y) < 2.0f)
+                {
+                    e.machine.GetState<FallState>().stack.Pause();
+                    this.list.Add(e);
+                }
+            }
+        }
+    }
+    public override void UpdateMS()
+    {
+        if (current > delta) return;
+
+        bullet.scale_x -= 0.04f;
+        bullet.scale_y = bullet.scale_x;
+
+        current += 0.03f;
+        foreach (Entity e in list)
+        {
+            e.y += 0.15f;
+
+            if (Mathf.Abs(e.x - bullet.x) > 0.05f)
+            {
+                if (e.x > bullet.x)
+                {
+                    //敌人在右边
+                    e.x -= 0.12f;
+                }
+                else
+                {
+                    e.x += 0.12f;
+                }
+            }
+        }
+    }
+
+    public override void OnSpineCompolete()
+    {
+
+        Debug.Log("释放冰龙");
+
+        this.OnExit();
+
+
+    }
+    public override void OnExit()
+    {
+        Target.isAttacking = false;
+        current = 0.0f;
+        Target.machine.ResumeAllStack();
+        foreach (Entity e in list)
+        {
+            e.machine.GetState<FallState>().stack.Resume();
+        }
+        bullet.SetInValid();
+        list.Clear();
+        this.Enable = false;
+    }
+    public override void OnPush()
+    {
+        if (Target.isStand == false) return;
+        if (Target.isAttacking) return;
+        if (this.Enable) return;
+
+        this.OnEnter();
+
+    }
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+        this.OnExit();
+
+    }
+    private float delta = 0.0f;
+    private float current = 0.0f;
+    ArrayList list = new ArrayList();
+}
+
+
+
+/// <summary>
+///可打断 回血
+/// </summary>
+public class Skill2_4 : SkillBase
+{
+    public override void OnEnter()
+    {
+
+        this.PauseAll();
+        Target.isAttacking = true;
+        this.Enable = true;
+        //开始蓄力
+        Target.attackingAnimationName = "2110";
+        BulletMgr.Create<Bullet2_1>(Target);
+    }
+    public override void UpdateMS()
+    {
+
+    }
+
+    public override void OnSpineCompolete()
+    {
+        this.OnExit();
+    }
+    public override void OnExit()
+    {
+        this.Enable = false;
+        Target.isAttacking = false;
+        this.ResumeAll();
+    }
+    public override void OnPush()
+    {
+        if (Target.isStand == false) return;
+        if (Target.isAttacking) return;
+        if (this.Enable) return;
+
+        this.OnEnter();
+
+    }
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+        this.OnExit();
+
+    }
 }
 

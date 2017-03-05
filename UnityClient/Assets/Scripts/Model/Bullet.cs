@@ -26,6 +26,8 @@ public class Bullet : Model
 
     public float flipX = -1.0f;
     public float speed = 0.1f;
+    public float scale_x = 1.0f;
+    public float scale_y = 1.0f;
 
     public string prefabsName = "";
     public string plist = "88"; // animation plist file  
@@ -76,6 +78,7 @@ public sealed class BulletConfigInfo
     public ArrayList buffers = new ArrayList();//附加buffer 名字 string
     public Vector2 launch_delta_xy = new Vector2(0.5f, 0.3f);//初始位置位于 角色锚点位置
 
+    public float damage_ratio= 1.0f;//伤害系数
     //   public int realValidTimes = 1;//真实有效次数 ，计算真实命中敌人的次数{比如法术命中玩家3次后失效，否则一直存在}
     public int validTimes = 1;//有效次数    //表示 命中目标后  的 伤害 次数
 
@@ -170,8 +173,9 @@ public sealed class BulletConfig : Bullet
 
                     AttackInfo inf = AttackInfo.Create(owner, h);
                     inf.InitWithCommon();
+                    inf.damage  = (int)( (float)inf.damage* info.damage_ratio);
                     h.TakeAttacked(inf);
-
+                    inf.damage = (int)((float)inf.damage * info.damage_ratio);
                     info.InVokeOnTakeAttack(this);
                     tagForValidTimes = true;
                     foreach (string buffer in info.buffers)
@@ -203,7 +207,7 @@ public sealed class BulletConfig : Bullet
                     AttackInfo inf = AttackInfo.Create(owner, h);
                     inf.InitWithCommon();
                     h.TakeAttacked(inf);
-
+                    inf.damage = (int)((float)inf.damage * info.damage_ratio);
                     info.InVokeOnTakeAttack(this);
                     tagForValidTimes = true;
                     hitNumber++;

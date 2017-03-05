@@ -70,7 +70,7 @@ public class ViewBullet : View
             };
 
 
-        ani.gameObject.transform.position = new Vector3(m.x, m.y  , ani.gameObject.transform.position.z);
+        ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
 
 
 
@@ -104,8 +104,9 @@ public class ViewBullet : View
         {
             ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
 
-            float factor = 0.8f;
-
+            float factor = 0.7f;
+            ani.gameObject.transform.localScale = new Vector3(-m.flipX * factor * m.scale_x,
+                factor* m.scale_y, ani.gameObject.transform.localScale.z);
 
         }
 

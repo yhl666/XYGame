@@ -260,6 +260,8 @@ public sealed class UI_skills : ViewUI
         this.btn_skill1 = GameObject.Find("btn_skill1").GetComponent<Button>();
         this.btn_skill2 = GameObject.Find("btn_skill2").GetComponent<Button>();
         this.btn_skill3 = GameObject.Find("btn_skill3").GetComponent<Button>();
+        this.btn_skill4 = GameObject.Find("btn_skill4").GetComponent<Button>();
+
         /*
    
    
@@ -283,7 +285,10 @@ public sealed class UI_skills : ViewUI
         {
             PublicData.ins.IS_s1 = 3;
         });
-
+        this.btn_skill4.onClick.AddListener(delegate()
+        {
+            PublicData.ins.IS_s1 = 4;
+        });
 
 
         //  this.btn_skill2.gameObject.SetActive(false);
@@ -311,6 +316,7 @@ public sealed class UI_skills : ViewUI
     Button btn_skill1;
     Button btn_skill2;
     Button btn_skill3;
+    Button btn_skill4;
 
 }
 

@@ -967,6 +967,23 @@ public class SkillState : StateBase
 
 
 
+        {
+            SkillStack s = SkillStack.Create();
+            s.host = this.Target;
+            s.parent = this;
+            s.PushSingleSkill(new Skill2_3());
+            this.skill_stacks.Add(s);
+        }
+
+
+        {
+            SkillStack s = SkillStack.Create();
+            s.host = this.Target;
+            s.parent = this;
+            s.PushSingleSkill(new Skill2_4());
+            this.skill_stacks.Add(s);
+        }
+
 
 
         this.Enable = true;
