@@ -29,7 +29,7 @@ public class Enemy : Entity
 
         // 有目标 ，先判断是否在攻击范围内
         float dis = target.ClaculateDistance(x, y + height);
-        if (dis <this.atk_range)
+        if (dis < this.atk_range)
         {
             //攻击范围内
             this.AI_AttackTarget();
@@ -92,7 +92,7 @@ public class Enemy : Entity
         if (cd_atk <= 0)
         {
             //   target.TakeAttack(this);
-          ///  BulletMgr.Create(this, "Bullet444_0");
+            ///  BulletMgr.Create(this, "Bullet444_0");
 
 
             atk = true;
@@ -118,13 +118,13 @@ public class Enemy : Entity
         bulleClassName_atk1 = "Bullet444_0";//普通攻击 1段  的子弹名字
         bulleClassName_s1 = "Bullet444_0"; // 1 号技能 子弹名字
 
-
+        scale = 0.8f;
     }
     // override 
     public override bool Init()
     {
         base.Init();
-    
+
 
         //init state machine
 
@@ -194,18 +194,20 @@ public class Enemy : Entity
             s.PushSingleState(StateBase.Create<StandState>(this));
 
         }
-      /*  {
-            StateStack s = StateStack.Create();
-            this.machine.AddParallelState(s);
-            s.PushSingleState(StateBase.Create<SkillState>(this));
-        }*/
+        /*  {
+              StateStack s = StateStack.Create();
+              this.machine.AddParallelState(s);
+              s.PushSingleState(StateBase.Create<SkillState>(this));
+          }*/
         {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
             s.PushSingleState(StateBase.Create<HurtState>(this));
         }
 
-        this.current_hp = 5;
+        this.current_hp = 3000;
+        this.hp = 5000;
+
         ViewMgr.Create<ViewEnemy>(this);
 
 
@@ -224,11 +226,12 @@ public class Enemy : Entity
 
             //   Bullet b = BulletMgr.Create<Bullet2_1>(this);
 
-        }else if (Events.ID_DIE == type)
+        }
+        else if (Events.ID_DIE == type)
         {
-            if (userData as Enemy ==  this)
+            if (userData as Enemy == this)
             {
-               this.machine.Pause();
+                this.machine.Pause();
                 this.LazyDispose();
             }
         }
@@ -267,9 +270,9 @@ public class Enemy : Entity
             eventDispatcher.PostEvent(Events.ID_BTN_JUMP);
             jump = false;
         }
-        if (s1!=0)
+        if (s1 != 0)
         {
-            eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1,s1);
+            eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1, s1);
             s1 = 0;
         }
 
@@ -299,17 +302,18 @@ public class Enemy221 : Enemy
 
         bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
         bulleClassName_s1 = "Bullet221_0"; // 1 号技能 子弹名字
-        this.bullet_atk1_info =    BulletConfigInfo.Create();
+        this.bullet_atk1_info = BulletConfigInfo.Create();
         bullet_atk1_info.plistAnimation = "";
         bullet_atk1_info.distance = 0.2f;
         bullet_atk1_info.distance_atk = 1f;
-        this.speed *= 0.001f; ;
+        //   this.speed *= 0.001f; ;
+        bullet_atk1_info.AddBuffer("BufferHitBack");
 
         this.atk_range = 1.0f;
- 
+        scale = 0.8f;
 
     }
-  
-   
+
+
 }
 

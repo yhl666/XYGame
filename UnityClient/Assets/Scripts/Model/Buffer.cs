@@ -23,12 +23,14 @@ public class Buffer : Model
     //--for logic
     public Entity target;// target entity
     public Entity owner; // who launch this buffer
-
+    public BufferMgr mgr = null;//reference
     public int tick1 = 0;
     public int MAX_TICK = 80;
+    public int id = 0;
+    public virtual int GetId() { return id; }  //buffer 唯一id
 
-    public virtual int GetId() { return 0; }  //buffe 唯一id
 
+    public virtual string GetName() { return "Buffer"; }
     /// <summary>
     /// then override this remember call base.UpdateMS()
     /// </summary>
@@ -328,7 +330,7 @@ public class BufferEquipTest1 : Buffer
 
 //装备buffer 护体效果 测试
 
-// 持续4秒 吸收100点伤害
+// 持续4秒 吸收100点伤害 免疫击退
 public class BufferEquipTest2 : Buffer
 {
 
@@ -342,7 +344,7 @@ public class BufferEquipTest2 : Buffer
         if (type == Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED)
         {
             AttackInfo info = userData as AttackInfo;
-              
+
 
             if (info.target != this.owner) return;
             //一定几率触发
@@ -352,8 +354,8 @@ public class BufferEquipTest2 : Buffer
                 tick.Reset();
                 this.left_hp = 25;
                 this.show_ui = true;
-                Debug.Log("触发了护体效果吸收" + left_hp+"伤害  Hero剩余血量" + owner.current_hp);
-          
+                Debug.Log("触发了护体效果吸收" + left_hp + "伤害  Hero剩余血量" + owner.current_hp);
+
                 //触发
             }
 
@@ -363,15 +365,24 @@ public class BufferEquipTest2 : Buffer
                 int damage = info.damage;
 
                 this.left_hp -= info.damage;
-                info.damage =0;
+                info.damage = 0;
                 if (this.left_hp < 0)
                 {
                     info.damage = -left_hp;
                     this.ResetBuffer();
                 }
-
+                foreach (string buf in info.buffers_string)
+                {
+                    Debug.Log("   " + buf);
+                    if(buf == "BufferHitBack")
+                    {
+                        Debug.Log("移除击退效果");
+                        info.buffers_string.Remove(buf);
+                        break;
+                    }
+                }
                 //  if (this.left_hp <= 0) left_hp = 0;
-           //     info.damage = -left_hp;
+                //     info.damage = -left_hp;
                 if (info.is_crits)
                 {
                     Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点暴击伤害 剩余血量" + owner.current_hp);
@@ -379,12 +390,12 @@ public class BufferEquipTest2 : Buffer
                 else
                 {
                     Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点伤害 剩余血量" + owner.current_hp);
-              
+
                 }
-          
+
             }
 
-         
+
 
         }
     }
@@ -421,6 +432,129 @@ public class BufferEquipTest2 : Buffer
     private int left_hp = 0;//护罩剩余血量
     private System.Random random = new System.Random(0);
 }
+
+
+
+
+/// <summary>
+/// 减速
+/// </summary>
+public class BufferSpeedSlow : Buffer
+{
+    public float percent = 50.0f;//减速百分比
+    public int time = 120;//默认减速3s
+    private float speed_slow = 0.0f;
+
+    private bool nonsense = true;
+    public override void OnEnter()
+    {
+        //去重
+        {
+            Buffer other = mgr.GetBuffer(this.GetId());
+            if (other != null && other != this && other.GetId() == this.GetId())
+            {
+                other.GetCounter().Reset();
+                this.SetInValid();
+                return;
+            }
+        }
+
+        nonsense = false;
+        base.OnEnter();
+        tick.SetMax(time);
+        speed_slow = percent / 100.0f * this.owner.speed;
+        this.target.speed -= speed_slow;
+        Debug.Log("减速度");
+
+    }
+    public override void UpdateMS()
+    {
+        if (nonsense) return;
+        if (tick.Tick())
+        {
+            return;
+        }
+        this.SetInValid();
+    }
+    public override bool Init()
+    {
+        base.Init();
+        return true;
+    }
+    public override void OnExit()
+    {
+        if (nonsense) return;
+        this.target.speed += speed_slow;
+        Debug.Log("恢复速度");
+
+        base.OnExit();
+    }
+ 
+}
+
+
+
+/// <summary>
+/// 击退
+/// </summary>
+public class BufferHitBack : Buffer
+{
+ 
+    public int time = 15;//默认3s
+    public int dir = 1;
+    public bool nonsense = true;
+    public override void OnEnter()
+    {
+        //去重
+        {
+            Buffer other = mgr.GetBuffer(this.GetId());
+            if (other != null && other != this && other.GetId() == this.GetId())
+            {
+             ///   other.GetCounter().Reset();
+                this.SetInValid();
+                return;
+            }
+        }
+
+        nonsense = false;
+        base.OnEnter();
+        tick.SetMax(time);
+        target.machine.GetState<RunState>().Pause();
+        Debug.Log("击退开始");
+
+    }
+    public override void UpdateMS()
+    {
+        if (nonsense) return;
+ 
+        if (tick.Tick())
+        {
+            target.x_auto -= dir * 0.07f;
+            return;
+        }
+        this.SetInValid();
+    }
+    public override bool Init()
+    {
+        base.Init();
+        this.id = 0xffef1;
+        if(target.flipX>0)
+        {
+            dir = -1;
+        }
+        return true;
+    }
+    public override void OnExit()
+    {
+        if (nonsense) return;
+        Debug.Log("击退结束");
+        target.machine.GetState<RunState>().Resume();
+        base.OnExit();
+    }
+
+}
+
+
 
 
 /// <summary>

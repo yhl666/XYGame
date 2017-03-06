@@ -35,6 +35,14 @@ public class StateBase : GAObject
         this.Enable = true;
 
     }
+    public void Pause()
+    {
+        this.stack.Pause();
+    }
+    public void Resume()
+    {
+        this.stack.Resume();
+    }
     public virtual StateBase GetState<T>() where T : new()
     {
         return null;
@@ -980,7 +988,7 @@ public class SkillState : StateBase
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
-            s.PushSingleSkill(new Skill2_4());
+            s.PushSingleSkill(new Skill2_5());
             this.skill_stacks.Add(s);
         }
 

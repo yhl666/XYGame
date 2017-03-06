@@ -236,8 +236,7 @@ public class Skill2_1 : SkillBase
     {
         tick.Reset();
         tick1.Reset();
-        Target.machine.PauseAllStack();
-        this.stack.parent.stack.Resume();
+        this.PauseAll();
         is_launch_bullet = false;
         is_wait_done = false;
         Target.isAttacking = true;
@@ -478,7 +477,15 @@ public class Skill2_3 : SkillBase
         info.lastTime = 30;
         info.isHitDestory = false;
         bullet = BulletMgr.Create(this.Target, "BulletConfig", info);
-        bullet.x = Target.x + 2.0f;
+        if (Target.flipX<0)
+        {
+            bullet.x = Target.x + 2.0f;
+        }
+        else
+        {
+            bullet.x = Target.x - 2.0f;
+
+        }
         bullet.y = Target.height + Target.y + 0.3f;
         delta = Target.GetRealY() + 4.0f;
 
@@ -625,3 +632,83 @@ public class Skill2_4 : SkillBase
     }
 }
 
+
+
+
+
+/// <summary>
+///可被打断  造成大量范围伤害 并且减速 80
+/// </summary>
+public class Skill2_5 : SkillBase
+{
+    public override void OnEnter()
+    {
+        this.PauseAll();
+
+        Target.isAttacking = true;
+        this.Enable = true;
+        Target.attackingAnimationName = "2210";
+    }
+    public override void UpdateMS()
+    {
+
+    }
+
+    public override void OnSpineCompolete()
+    {
+        Debug.Log("launch ");
+        for (float i = -2.0f; i<2.5f ;i+=0.5f )
+        {
+            if ( Mathf.Abs(i) < 0.01f) continue;
+            BulletConfigInfo info = BulletConfigInfo.Create();
+            info.plistAnimation = "hd/roles/role_2/bullet/role_2_bul_2211/role_2_bul_2211.plist";
+            info.distance_atk = 0.5f;
+            info.distance = 0;
+            info.speed = 0.0f;
+            info.number = 0xfff;
+            info.lastTime = 16;
+            info.isHitDestory = false;
+
+            BufferSpeedSlow buffer=  BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
+            buffer.id = 0xef1;
+            buffer.percent = 80;
+            info.AddBuffer(buffer);
+            var b = BulletMgr.Create(this.Target, "BulletConfig", info);
+            b.y = Target.GetRealY();
+            b.x = Target.x + i;
+        }
+
+
+
+
+
+
+
+
+
+
+        this.OnExit();
+    }
+    public override void OnExit()
+    {
+        this.Enable = false;
+        Target.isAttacking = false;
+
+        this.ResumeAll();
+    }
+    public override void OnPush()
+    {
+        if (Target.isStand == false) return;
+        if (Target.isAttacking) return;
+        if (this.Enable) return;
+
+        this.OnEnter();
+    }
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+        this.OnExit();
+
+    }
+
+}

@@ -75,10 +75,12 @@ public sealed class BulletConfigInfo
     public float speed = 0.1f; // 移动速度
     public float distance = 10.0f;// 移动距离
     public float distance_atk = 1.0f;// 普通，攻击距离
-    public ArrayList buffers = new ArrayList();//附加buffer 名字 string
+    public ArrayList buffers_string = new ArrayList();//附加buffer 名字 string
+    public ArrayList buffers = new ArrayList();//附加的buffer为class
+
     public Vector2 launch_delta_xy = new Vector2(0.5f, 0.3f);//初始位置位于 角色锚点位置
 
-    public float damage_ratio= 1.0f;//伤害系数
+    public float damage_ratio = 1.0f;//伤害系数
     //   public int realValidTimes = 1;//真实有效次数 ，计算真实命中敌人的次数{比如法术命中玩家3次后失效，否则一直存在}
     public int validTimes = 1;//有效次数    //表示 命中目标后  的 伤害 次数
 
@@ -101,8 +103,17 @@ public sealed class BulletConfigInfo
         if (_OnTakeAttack != null) _OnTakeAttack.Invoke(bullet);
     }
 
+    //-------------------helper function
 
+    public void AddBuffer(string buffer)
+    {
+        this.buffers_string.Add(buffer);
+    }
 
+    public void AddBuffer(Buffer buffer)
+    {
+        this.buffers.Add(buffer);
+    }
 
     //----------------------creator
     public static BulletConfigInfo CreateWithJson(string json)
@@ -173,15 +184,27 @@ public sealed class BulletConfig : Bullet
 
                     AttackInfo inf = AttackInfo.Create(owner, h);
                     inf.InitWithCommon();
-                    inf.damage  = (int)( (float)inf.damage* info.damage_ratio);
-                    h.TakeAttacked(inf);
                     inf.damage = (int)((float)inf.damage * info.damage_ratio);
+                    foreach (string buf in info.buffers_string)
+                    {
+                        inf.AddBuffer(buf);
+                    }
+                    foreach (Buffer buf in info.buffers)
+                    {
+                        inf.AddBuffer(buf);
+                    }
+               ///     inf.buffers_string = info.buffers_string;
+                    h.TakeAttacked(inf);
                     info.InVokeOnTakeAttack(this);
                     tagForValidTimes = true;
-                    foreach (string buffer in info.buffers)
+                   /* foreach (string buffer in info.buffers_string)
                     {//add buffer
                         h.AddBuffer(buffer);
                     }
+                    foreach (Buffer buffer in info.buffers)
+                    {//add buffer
+                        h.AddBuffer(buffer);
+                    }*/
                 }
             }
             else
@@ -206,15 +229,29 @@ public sealed class BulletConfig : Bullet
                 {
                     AttackInfo inf = AttackInfo.Create(owner, h);
                     inf.InitWithCommon();
-                    h.TakeAttacked(inf);
                     inf.damage = (int)((float)inf.damage * info.damage_ratio);
+                    foreach (string buf in info.buffers_string)
+                    {
+                        inf.AddBuffer(buf);
+                    }
+                    foreach (Buffer buf in info.buffers)
+                    {
+                        inf.AddBuffer(buf);
+                    }
+                  //  inf.buffers_string = info.buffers_string;
+                    h.TakeAttacked(inf);
+ 
                     info.InVokeOnTakeAttack(this);
                     tagForValidTimes = true;
                     hitNumber++;
-                    foreach (string buffer in info.buffers)
+                 /*   foreach (string buffer in info.buffers_string)
                     {//add buffer
                         h.AddBuffer(buffer);
                     }
+                    foreach (Buffer buffer in info.buffers)
+                    {//add buffer
+                        h.AddBuffer(buffer);
+                    }*/
                 }
             }
             else

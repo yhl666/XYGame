@@ -712,7 +712,14 @@ public sealed class UI_pvpresult : ViewUI
 }
 
 
+public class BattleFlyTextInfo
+{
+    public string txt = "";//显示的内容
+    public Color color = Color.white;// 颜色
+    public Vector2 position_world = Vector2.zero; // 世界坐标
 
+
+}
 
 
 public sealed class UI_buffers : ViewUI
@@ -799,5 +806,45 @@ public sealed class UI_buffers : ViewUI
     ArrayList list_txt = new ArrayList();
     ArrayList list_txt_time = new ArrayList();
     ArrayList list_img_filled = new ArrayList();
+    GameObject panel = null;
+}
+
+
+
+/// <summary>
+/// 漂浮字体 比如血量显示 暴击显示
+/// </summary>
+public sealed class UI_flytext: ViewUI
+{
+
+
+    public override void Update()
+    {
+        base.Update();
+
+      
+
+    }
+
+    public override void OnEvent(int type, object userData)
+    {
+         
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+        this.panel = GameObject.Find("ui_panel_buffers");
+
+ 
+         ///   template_copy   = panel.transform.FindChild("template_txt").gameObject;
+      
+        return true;
+    }
+
+
+
+
+    GameObject template_copy = null;
     GameObject panel = null;
 }

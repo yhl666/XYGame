@@ -36,7 +36,7 @@ public class AttackInfo
         ret.is_crits = is_crits;
         ret.crits_damage = crits_damage;
         ret.atk_func = atk_func;
-        ret.buffers = buffers;
+        ret.buffers_string = buffers_string;
         return ret;
 
     }
@@ -83,9 +83,15 @@ public class AttackInfo
     /// <param name="buf"></param>
     public void AddBuffer(string buf)
     {
+        this.buffers_string.Add(buf);
+    }
+
+    public void AddBuffer(Buffer buf)
+    {
         this.buffers.Add(buf);
     }
     public ArrayList buffers = new ArrayList();
+    public ArrayList buffers_string = new ArrayList();
 }
 
 
@@ -112,6 +118,15 @@ public class Entity : Model
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
+    public Buffer AddBuffer<T>(Entity owner) where T : new()
+    {
+        return this.bufferMgr.Create<T>(owner);
+    }
+
+    public Buffer AddBuffer(string buffer,Entity owner)
+    {
+        return this.bufferMgr.Create(buffer,owner);
+    }
     public Buffer AddBuffer<T>() where T : new()
     {
         return this.bufferMgr.Create<T>();
@@ -120,6 +135,12 @@ public class Entity : Model
     public Buffer AddBuffer(string buffer)
     {
         return this.bufferMgr.Create(buffer);
+    }
+
+    public Buffer AddBuffer(Buffer buffer)
+    {
+        this.bufferMgr.Add(buffer);
+        return buffer;
     }
     /// <summary>
     ///  accpet attacked
@@ -137,7 +158,11 @@ public class Entity : Model
     {
         EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED, info);
 
-        foreach (string buf in info.buffers)
+        foreach (string buf in info.buffers_string)
+        {
+            this.AddBuffer(buf,info.ownner);
+        }
+        foreach (Buffer buf in info.buffers)
         {
             this.AddBuffer(buf);
         }
@@ -227,6 +252,7 @@ public class Entity : Model
     //for dynamic data
     private int _hp = 1000;//气血
     private int _current_hp = 500;//当前气血
+    public int delta_hp = 0;//气血变化差值 可用于UI显示
 
     private int _mp = 500;//魔法
     private int _current_mp = 0;//当前魔法
@@ -357,14 +383,17 @@ public class Entity : Model
         {
             if (value >= _hp)
             {
+                delta_hp = 0;
                 _current_hp = _hp;
             }
             else if (value > 0)
             {
+                delta_hp = value-_current_hp;
                 _current_hp = value;
             }
             else
             {
+                delta_hp =- _current_hp;
                 _current_hp = 0;
             }
         }

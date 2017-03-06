@@ -106,7 +106,7 @@ public class ViewBullet : View
 
             float factor = 0.7f;
             ani.gameObject.transform.localScale = new Vector3(-m.flipX * factor * m.scale_x,
-                factor* m.scale_y, ani.gameObject.transform.localScale.z);
+                factor * m.scale_y, ani.gameObject.transform.localScale.z);
 
         }
 
@@ -226,6 +226,17 @@ public class ViewEntity : View
         spine.AnimationName = name;
 
 
+
+
+        if (m.delta_hp > 0)
+        {
+            //加血
+        }
+        else if (m.delta_hp < 0)
+        {//减血
+
+
+        }
         spine.UpdateMS(Utils.deltaTime);
     }
 

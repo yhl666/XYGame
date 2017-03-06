@@ -114,7 +114,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = randObj.Next(5, 80);
@@ -122,6 +122,8 @@ sealed class BattlePVEHandler : BattleHandlerBase
                e1.x = 5+i*0.1f;
               e1.y = 5;
                 e1.team = 333;
+
+                e1.x = 10;
             }
             /*  for (int i = 0; i < 10; i++)
               {

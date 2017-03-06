@@ -79,9 +79,11 @@ public class BattleHero : Hero
 
         bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
         bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
-      ///  bulleClassName_atk1 = "BulletStateMachineTest";
+        ///  bulleClassName_atk1 = "BulletStateMachineTest";
 
-    bullet_atk1_info = BulletConfigInfo.Create();
+        bullet_atk1_info = BulletConfigInfo.Create();
+        bullet_atk1_info.AddBuffer("BufferHitBack");
+
         ViewMgr.Create<ViewEntity>(this);
 
 
@@ -89,12 +91,12 @@ public class BattleHero : Hero
 
         this.current_hp = 0xffffff;
         this.hp = 0xffffff;
-        this.atk_level = 3;
+        this.atk_level = 1;
 
 
-       DAO.Equip equip =  EquipMgr.ins.GetTestEquip();
+        DAO.Equip equip = EquipMgr.ins.GetTestEquip();
 
-        foreach(string buf in equip.buffers)
+        foreach (string buf in equip.buffers)
         {
             this.AddBuffer(buf);
         }
@@ -156,9 +158,9 @@ public class BattleHero : Hero
             jump = false;
         }
 
-        if (s1!=0)
+        if (s1 != 0)
         {
-            eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1,s1);
+            eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1, s1);
             s1 = 0;
         }
 

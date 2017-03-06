@@ -15,6 +15,8 @@ public sealed class BufferMgr : GAObject
     public void Add(Buffer b)
     {
         this.lists.Add(b);
+        b.mgr = this;
+        b.target = owner;
         b.OnEnter();
     }
     public void Remove(Buffer b)
@@ -52,6 +54,22 @@ public sealed class BufferMgr : GAObject
     public ArrayList GetBuffers()
     {
         return lists;
+    }
+    public Buffer GetBuffer(string name)
+    {
+        foreach (Buffer buf in lists)
+        {
+            if (buf.GetName() == name) return buf;
+        }
+        return null;
+    }
+    public Buffer GetBuffer(int id)
+    {
+        foreach (Buffer buf in lists)
+        {
+            if (buf.GetId() == id) return buf;
+        }
+        return null;
     }
     public bool IsExist(Buffer b)
     {
@@ -93,19 +111,26 @@ public sealed class BufferMgr : GAObject
         return ret;
     }
 
-    public Buffer Create<T>() where T : new()
+    public Buffer Create<T>(Entity owner) where T : new()
     {
-        return InitHelper(new T() as Buffer);
+        return InitHelper(new T() as Buffer,owner);
     }
 
-    
+    //helper function for create Buffer
+    public static T CreateHelper<T>(Entity owner) where T : Buffer, new()
+    {
+        T t = new T();
+        t.owner = owner;
+        t.Init();
+        return t;
+    }
     /// <summary>
     ///  for config able suport
     /// </summary>
     /// <param name="owner"></param>
     /// <param name="_class"> the class name</param>
     /// <returns></returns>
-    public Buffer Create(string _class)
+    public Buffer Create(string _class,Entity owner)
     {
         System.Type t = System.Type.GetType(_class);
         if (t == null)
@@ -113,21 +138,38 @@ public sealed class BufferMgr : GAObject
             Debug.LogError("UnKnown type:" + _class);
             return null;
         }
-        return InitHelper(System.Activator.CreateInstance(t) as Buffer);
+        return InitHelper(System.Activator.CreateInstance(t) as Buffer,owner);
     }
-    private Buffer InitHelper(Buffer ret)
+    private Buffer InitHelper(Buffer ret,Entity owner)
     {
         if (ret == null) return null;
+        ret.target = this.owner;
         ret.owner = owner;
+        ret.mgr = this;
         ret.Init();
         this.Add(ret);
         return ret;
     }
 
+
+    public Buffer Create<T>() where T : new()
+    {
+        return Create<T>(this.owner);
+    }
+
+    public Buffer Create(string _class)
+    {
+        return Create(_class,this.owner);
+    }
+    private Buffer InitHelper(Buffer ret)
+    {
+        return this.InitHelper(ret,this.owner);
+    }
+
     private BufferMgr()
     {
     }
- 
+
     Entity owner = null;
 }
 
