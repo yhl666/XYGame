@@ -3,21 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '32979e4ba6484e817054c10394187283d600d494'
-    oldFile: !uuid '407f2ab5c29adbef6866c26c56502337c521596f'
+    newFile: !uuid '3aef0cd7f65cc59068ebc4957c51124739fdc2be'
+    oldFile: !uuid '32979e4ba6484e817054c10394187283d600d494'
   /UnityClient/Assets:
-    newFile: !uuid '2d13ac0a00c6814b7b353ce82597e4cbdd3716bc'
-    oldFile: !uuid '49434ffc30831953613d3fd6d2f29f7f13abcade'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '9bb62577df0d47f262f1ffd63435aafa0693ca09'
-    oldFile: !uuid 'e38bad329dd030fe750f19f30febb99482f5fa05'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '79662b51b5d014fc0fa7f6cc19b3f99ab223e470'
-    oldFile: !uuid '63a44dd0c4a39d69a97943d1a0b2d437c8eb2bad'
-  /UnityClient/Assets/Resources/Prefabs/Enemy221.prefab:
-    newFile: !uuid 'a12d373a1e3f2ddd9817289b70da3d7e43eef929'
-    oldFile: !uuid '07ed96aa79842d774d050225b50f31ea13c9d3af'
-gitCommitId: !uuid '0931955fab3fec4ab02ee9ad7c2500c1aad01c09'
+    newFile: !uuid '5d4467cefe0a28e858f2b539b18cfb831708cf96'
+    oldFile: !uuid '2d13ac0a00c6814b7b353ce82597e4cbdd3716bc'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'e1ce88e2239aacdf975337aa9fe22332268b7ff1'
+    oldFile: !uuid 'd0f578cf72e522e35d5de0a30057096ffd6f418d'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'c6de6de2139f12891b2e97b8e157d5d5aa420c42'
+    oldFile: !uuid '9c0d6c97779ba9be2b49b5c911f877b24d6fd902'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid '2f1f1ab94f95f85a19767b2480678cb77624f624'
+    oldFile: !uuid 'f6cb4cf21509666135cc5a0a5946db4fc94f1dfb'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid '28d466c8ff634c4ba10e1bcfddedcf8e09896960'
+    oldFile: !uuid 'f4c272ee867f82f3329627d28213942a019b5083'
+  /UnityClient/Assets/Scripts/View/UIBattle.cs:
+    newFile: !uuid 'b62a8a6a48612b4f599f408776c113da9f3eebb5'
+    oldFile: !uuid '6b610f762f59a8818a01e8b8e2dae57d3eda98b4'
+gitCommitId: !uuid '91ed76a82acf19041fcfb4296bbe31137422a037'
 renames: {
   }
-revisionId: 416
+revisionId: 417
