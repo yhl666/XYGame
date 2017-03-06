@@ -200,6 +200,15 @@ public class SkillBase : Model
     {
 
     }
+    public virtual void OnInterrupted(GAObject what)
+    {
+
+    }
+    public virtual void OnInterrupted(object what)
+    {
+
+    }
+
     public virtual void OnSpineCompolete()
     {
 

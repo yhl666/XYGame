@@ -269,8 +269,7 @@ public sealed class UI_skills : ViewUI
               this.btn_skill2 = GameObject.Find("UI_Battle").transform.FindChild("ui_panel_skill").transform.FindChild("btn_skill2").GetComponent<Button>();
               this.btn_skill3 = GameObject.Find("UI_Battle").transform.FindChild("ui_panel_skill").transform.FindChild("btn_skill3").GetComponent<Button>();
       
-         
-         
+           
          */
         this.btn_skill1.onClick.AddListener(delegate()
         {
