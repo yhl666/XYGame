@@ -31,12 +31,15 @@ public class Actions : MonoBehaviour
         this.UpdateMS();
         if (current_time > MAX_TIME)
         {
-            this.OnExit();
-            if (OnComptele != null) OnComptele();
-            GameObject.Destroy(this as Component);
+            this.Dispose();
         }
     }
-
+    public void Dispose()
+    {
+        this.OnExit();
+        if (OnComptele != null) OnComptele();
+        GameObject.Destroy(this as Component);
+    }
     public float current_time = 0.0f;
     public float MAX_TIME = 1.0f;
     public VoidFuncVoid OnComptele = null;

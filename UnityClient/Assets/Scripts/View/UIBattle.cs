@@ -53,7 +53,11 @@ public sealed class UIBattleRoot : ViewUI
             return DATA.EMPTY_STRING;
         }));
 
-
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_combo>(this));
+            return DATA.EMPTY_STRING;
+        }));
 
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
@@ -931,12 +935,12 @@ public sealed class UI_flytext : ViewUI
     private void AddNewFlyText(BattleFlyTextInfo info)
     {
         info.tick = Counter.Create((int)(10));
-        info.txt_txt =((GameObject)( GameObject.Instantiate(template_copy, template_copy.transform.parent))).GetComponent<Text>();
+        info.txt_txt = ((GameObject)(GameObject.Instantiate(template_copy, template_copy.transform.parent))).GetComponent<Text>();
         info.txt_txt.gameObject.SetActive(true);
 
-        Vector3 pos=new Vector3();
-        pos.x=info.position_world_x;
-        pos.y=info.position_world_y;
+        Vector3 pos = new Vector3();
+        pos.x = info.position_world_x;
+        pos.y = info.position_world_y;
         pos.z = info.txt_txt.gameObject.transform.position.z;
         info.txt_txt.color = info.color;
         info.txt_txt.gameObject.transform.position = Camera.main.WorldToScreenPoint(pos); ;
@@ -951,4 +955,84 @@ public sealed class UI_flytext : ViewUI
 
     GameObject template_copy = null;
     GameObject panel = null;
+}
+
+
+
+
+
+public sealed class UI_combo : ViewUI
+{
+
+
+    public override void Update()
+    {
+        base.Update();
+
+        var self = HeroMgr.ins.self;
+        if (self == null) return;
+
+        if (combo_cache == self.combo_time || self.combo_time == 0)
+        {
+            return;
+        }
+        Actions[] action_pre = txt.gameObject.GetComponents<ScaleTo>();
+        if (action_pre.Length > 0) return;
+
+        foreach (Actions a in action_pre)
+        {
+            a.Dispose();
+        }
+
+        Debug.Log("11111111111111111");
+
+        txt.text = "连击X" + self.combo_time.ToString();
+        combo_cache = self.combo_time;
+        tick_hide.Reset();
+        txt.gameObject.SetActive(true);
+        combo_cache = 0;
+
+
+
+        ///  ScaleTo.Create(txt.gameObject, 0.1f, 1.1f).OnComptele = () =>
+        {
+
+            ScaleTo.Create(txt.gameObject, 0.2f, 2.0f).OnComptele = () =>
+            {
+                ScaleTo.Create(txt.gameObject, 0.1f, 1.0f).OnComptele = () =>
+                {
+                    /*   ScaleTo.Create(txt.gameObject, 0.2f, 1.0f).OnComptele = () =>
+                       {
+
+                       };*/
+                };
+            };
+        };
+
+
+
+
+
+    }
+    public override void UpdateMS()
+    {
+        if (tick_hide.Tick())
+        {
+            return;
+        }
+        txt.gameObject.SetActive(false);
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        this.txt = GameObject.Find("combo").GetComponent<Text>();
+
+        return true;
+    }
+
+    private int combo_cache = 0;
+    private Text txt;
+    private Counter tick_hide = Counter.Create(40);
+
 }

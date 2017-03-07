@@ -23,6 +23,14 @@ public class AttackInfo
         AttackInfo ret = new AttackInfo();
         ret.ownner = owner;
         ret.target = target;
+
+
+        ret.atk_func = (object _param) =>
+            {
+                AttackInfo info = _param as AttackInfo;
+                info.ownner.IncreaseCombo();
+            };
+
         return ret;
     }
     /// <summary>
@@ -45,8 +53,9 @@ public class AttackInfo
     }
     public Entity target = null;//为null 标示 群体攻击 为一个Entity 表示单体攻击 //TODO 为数组 表示部分群体攻击
     public Entity ownner = null;
-    public Func<AttackInfo, bool> atk_func = null;
-
+ 
+ //public Func<AttackInfo, bool> atk_func = null;
+    public VoidFuncObject atk_func = null; 
     //---参与数值计算的属性
     public int damage = 0;
     public float crits_damage = 0.0f;
@@ -239,6 +248,15 @@ public class Entity : Model
 
 
     //-------------------------------------------------member
+    public int combo_time = 0;//连击次数
+    public Counter tick_combo = Counter.Create(120);//连击重置定时器
+
+    public void IncreaseCombo(int times=1)
+    {
+        this.combo_time+=times;
+        tick_combo.Reset();
+        Debug.Log("连击" + this.combo_time);
+    }
     public float atk_range = 2.0f;
     // base property
     public float x = 1.0f;
@@ -537,7 +555,13 @@ public class Entity : Model
     {
         machine.UpdateMS();
         bufferMgr.UpdateMS();//self buffer mgr update
-
+        if(tick_combo.Tick())
+        {
+            return;
+        }else
+        {
+            combo_time = 0;
+        }
     }
     public override void OnDispose()
     {
