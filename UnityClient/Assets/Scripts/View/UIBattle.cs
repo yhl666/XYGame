@@ -61,7 +61,11 @@ public sealed class UIBattleRoot : ViewUI
             return DATA.EMPTY_STRING;
         }));
 
-
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_flytext>(this));
+            return DATA.EMPTY_STRING;
+        }));
 
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
@@ -712,16 +716,6 @@ public sealed class UI_pvpresult : ViewUI
 }
 
 
-public class BattleFlyTextInfo
-{
-    public string txt = "";//显示的内容
-    public Color color = Color.white;// 颜色
-    public Vector2 position_world = Vector2.zero; // 世界坐标
-
-
-}
-
-
 public sealed class UI_buffers : ViewUI
 {
 
@@ -810,40 +804,150 @@ public sealed class UI_buffers : ViewUI
 }
 
 
+/// <summary>
+/// 漂浮字体ADT 初始化基本信息（config info）
+/// 其他内容创建者勿动
+/// </summary>
+public class BattleFlyTextInfo : GAObject
+{
+    //---- config info
+    public string txt = "";//显示的内容
+    public Color color = Color.white;// 颜色
+    public float position_world_x = 0.0f; // 世界坐标
+    public float position_world_y = 0.0f; // 世界坐标
+
+    public float time = 1.0f;//持续时间
+
+    public Type type = Type.UP_DOWN;
+
+    //----------const
+    public static Color COLOR_HP_REDUCE = new Color(178.0f / 255.0f, 0, 1.0f, 1.0f);
+    public static Color COLOR_HP_ADD = new Color(0.0f, 1.0f, 149.0f / 255.0f, 1.0f);
+
+
+    public enum Type
+    {
+        UP_DOWN,//往正上方漂浮
+        UNKNOWN = UP_DOWN,
+    }
+    // ------inner  use for UI_flytxt
+
+    public float current_time = 0.0f;
+    public Text txt_txt = null;
+
+    public Counter tick = null;
+
+    public override void UpdateMS()
+    {
+        if (tick.Tick())
+        {
+
+            if (type == Type.UP_DOWN)
+            {
+                this.UpdateMS_With_UP_DOWN();
+            }
+            return;
+        }
+
+        this.SetInValid();
+    }
+
+    private void UpdateMS_With_UP_DOWN()
+    {
+        Vector3 pos = this.txt_txt.gameObject.transform.position;
+
+        float speed = Screen.height / 150.0f;
+        this.txt_txt.gameObject.transform.position = new Vector3(pos.x, pos.y + speed, pos.z);
+
+    }
+    public static BattleFlyTextInfo Create()
+    {
+        BattleFlyTextInfo ret = new BattleFlyTextInfo();
+        return ret;
+    }
+    private BattleFlyTextInfo()
+    {
+
+    }
+    public override void OnDispose()
+    {
+        if (txt_txt != null)
+        {
+            GameObject.Destroy(txt_txt.gameObject);
+        }
+    }
+}
+
+
 
 /// <summary>
 /// 漂浮字体 比如血量显示 暴击显示
 /// </summary>
-public sealed class UI_flytext: ViewUI
+public sealed class UI_flytext : ViewUI
 {
-
-
-    public override void Update()
+    public override void UpdateMS()
     {
-        base.Update();
-
-      
+        foreach (BattleFlyTextInfo info in lists)
+        {
+            info.UpdateMS();
+        }
+        for (int i = 0; i < lists.Count; )
+        {
+            BattleFlyTextInfo b = lists[i] as BattleFlyTextInfo;
+            if (b.IsInValid())
+            {
+                this.lists.Remove(b);
+                b.Dispose();
+            }
+            else
+            {
+                ++i;
+            }
+        }
 
     }
-
     public override void OnEvent(int type, object userData)
     {
-         
+        if (Events.ID_BATTLE_FLYTEXT == type)
+        {
+            //新漂浮字体
+            this.AddNewFlyText(userData as BattleFlyTextInfo);
+        }
     }
 
     public override bool Init()
     {
         base.Init();
-        this.panel = GameObject.Find("ui_panel_buffers");
+        this.panel = GameObject.Find("ui_panel_txts");
 
- 
-         ///   template_copy   = panel.transform.FindChild("template_txt").gameObject;
-      
+        template_copy = panel.transform.FindChild("template_txt").gameObject;
+        template_copy.SetActive(false);
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_FLYTEXT);
         return true;
     }
 
 
+    private void AddNewFlyText(BattleFlyTextInfo info)
+    {
+        info.tick = Counter.Create((int)(10));
+        info.txt_txt =((GameObject)( GameObject.Instantiate(template_copy, template_copy.transform.parent))).GetComponent<Text>();
+        info.txt_txt.gameObject.SetActive(true);
 
+        Vector3 pos=new Vector3();
+        pos.x=info.position_world_x;
+        pos.y=info.position_world_y;
+        pos.z = info.txt_txt.gameObject.transform.position.z;
+        info.txt_txt.color = info.color;
+        info.txt_txt.gameObject.transform.position = Camera.main.WorldToScreenPoint(pos); ;
+        this.lists.Add(info);
+
+
+
+    }
+
+
+    ArrayList lists = new ArrayList();
 
     GameObject template_copy = null;
     GameObject panel = null;

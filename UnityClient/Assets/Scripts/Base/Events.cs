@@ -151,7 +151,9 @@ public sealed class Events : object
     public const int ID_BATTLE_ENEITY_AFTER_TAKEATTACKED = 310;//接受攻击后
     public const int ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED = 311;//接受攻击前
 
- 
+    public const int ID_BATTLE_FLYTEXT = 312;//漂浮字体
+
+
 
     public const int ID_SETTING_CLICKED = 557;
     public const int ID_SETTING_CLOSE_CLICKED = 558;
@@ -196,9 +198,7 @@ public sealed class Events : object
 
 
 
-
-
-
+    
 
 
 

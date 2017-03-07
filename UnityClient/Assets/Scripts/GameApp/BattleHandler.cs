@@ -114,16 +114,16 @@ sealed class BattlePVEHandler : BattleHandlerBase
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         {
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = randObj.Next(5, 80);
                 ;
-               e1.x = 5+i*0.1f;
-              e1.y = 5;
+                ///  e1.x = 5+i*0.1f;   e1.x = 10;
+                e1.y = 5;
                 e1.team = 333;
 
-                e1.x = 10;
+
             }
             /*  for (int i = 0; i < 10; i++)
               {
@@ -323,7 +323,7 @@ public sealed class BattleSyncHandler
             dd.stand = 1;
             PublicData.ins.IS_stand = false;
         }
-        if (PublicData.ins.IS_s1!=0)
+        if (PublicData.ins.IS_s1 != 0)
         {
             dd.s1 = PublicData.ins.IS_s1;
             PublicData.ins.IS_s1 = 0;
@@ -636,7 +636,7 @@ public sealed class BattleSyncHandler
             {
                 hero.atk = true;
             }
-            if (f.s1 !=0)
+            if (f.s1 != 0)
             {
                 hero.s1 = f.s1;
             }

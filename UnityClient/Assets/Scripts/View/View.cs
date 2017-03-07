@@ -228,14 +228,26 @@ public class ViewEntity : View
 
 
 
-        if (m.delta_hp > 0)
+        if (m.delta_hp != 0)
         {
-            //加血
-        }
-        else if (m.delta_hp < 0)
-        {//减血
 
+            BattleFlyTextInfo info = BattleFlyTextInfo.Create();
+            if (m.delta_hp > 0)
+            {
+                //加血
+                info.color = BattleFlyTextInfo.COLOR_HP_ADD;
+            }
+            else if (m.delta_hp < 0)
+            {//减血
 
+                info.color = BattleFlyTextInfo.COLOR_HP_REDUCE;
+            }
+
+            info.txt = m.delta_hp.ToString(); ;
+            info.position_world_x = m.x + UnityEngine.Random.Range(-0.5f, 0.5f);
+            info.position_world_y = m.GetRealY() + 0.8f;
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_FLYTEXT, info);
+            m.delta_hp = 0;
         }
         spine.UpdateMS(Utils.deltaTime);
     }
@@ -354,6 +366,27 @@ public class ViewEnemy : View
 
         spine.AnimationName = name;
 
+        if (m.delta_hp != 0)
+        {
+
+            BattleFlyTextInfo info = BattleFlyTextInfo.Create();
+            if (m.delta_hp > 0)
+            {
+                //加血
+                info.color = BattleFlyTextInfo.COLOR_HP_ADD;
+            }
+            else if (m.delta_hp < 0)
+            {//减血
+
+                info.color = BattleFlyTextInfo.COLOR_HP_REDUCE;
+            }
+
+            info.txt = m.delta_hp.ToString(); ;
+            info.position_world_x = m.x + UnityEngine.Random.Range(-0.5f, 0.5f);
+            info.position_world_y = m.GetRealY() + 0.8f;
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_FLYTEXT, info);
+            m.delta_hp = 0;
+        }
 
         spine.UpdateMS(Utils.deltaTime);
     }

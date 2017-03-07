@@ -98,7 +98,7 @@ public class BattleHero : Hero
 
         foreach (string buf in equip.buffers)
         {
-            this.AddBuffer(buf);
+         //   this.AddBuffer(buf);
         }
 
 
