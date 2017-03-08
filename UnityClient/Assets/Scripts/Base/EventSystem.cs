@@ -38,6 +38,7 @@ public sealed class EventSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        EventDispatcher.ins.Update();
         for (int i = 0; i < list_update.Count; i++)
         {
             (list_update[i] as GAObject).Update();
@@ -47,11 +48,36 @@ public sealed class EventSystem : MonoBehaviour
 
     public void AddEvent_Update(GAObject obj)
     {
-        this.list_update.Add(obj);
+        if (IsExist(obj))
+        {
+            Debug.LogWarning("EventSystem has been in list");
+        }
+        else
+        {
+            this.list_update.Add(obj);
+        }
+    }
+
+    public bool IsExist(GAObject what)
+    {
+        foreach (GAObject obj in list_update)
+        {
+            if (obj == what) return true;
+        }
+        return false;
     }
     public void RemoveEvent_Update(GAObject obj)
     {
-        this.list_update.Remove(obj);
+
+        if (IsExist(obj))
+        {
+            this.list_update.Remove(obj);
+        }
+        else
+        {
+            Debug.LogWarning("EventSystem remove not found");
+        }
+
     }
 
     public void Clear()

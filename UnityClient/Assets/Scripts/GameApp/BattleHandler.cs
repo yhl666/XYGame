@@ -119,7 +119,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = randObj.Next(5, 80);
                 ;
-             //   e1.x = 5+i*0.1f;   e1.x = 10;
+                //   e1.x = 5+i*0.1f;   e1.x = 10;
                 e1.y = 5;
                 e1.team = 333;
 
@@ -145,6 +145,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
                    e1.team = 333;
                }*/
         }
+
 
         return true;
     }
@@ -676,7 +677,7 @@ public sealed class BattleSyncHandler
         this.battleHandler.UpdateMSAfter();
 
         ViewMgr.ins.UpdateMS();
-
+        TimerQueue.ins.TickMS();
 
         if (current_fps < current_max_fps)
         {

@@ -16,7 +16,7 @@ public sealed class EventDispatcher : GAObject
 {
     private EventDispatcher()
     {
-        EventSystem.ins.AddEvent_Update(this);
+      ///  EventSystem.ins.AddEvent_Update(this);
         for (int i = 0; i < Events.MAX_EVENT_LENGTH; i++)
         {
             objs_event[i] = null;
@@ -31,7 +31,8 @@ public sealed class EventDispatcher : GAObject
     public override void OnDispose()
     {
         base.OnDispose();
-        EventSystem.ins.RemoveEvent_Update(this);
+     ////   EventSystem.ins.RemoveEvent_Update(this);
+        TimerQueue.DestroyInstance();
     }
 
 
@@ -253,6 +254,7 @@ public sealed class EventDispatcher : GAObject
     public override void Update()
     {
         this.ProcessOtherThreadFunc();
+        TimerQueue.ins.Tick();
     }
     private ThreadSafeQueue _queue_funcs = new ThreadSafeQueue();
 
@@ -265,7 +267,3 @@ public sealed class EventDispatcher : GAObject
         }
     }
 };
-
-
-
-
