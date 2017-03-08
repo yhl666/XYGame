@@ -3,24 +3,39 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '8b0067ba76cf3e0ad769a6e35199a6544eed673c'
-    oldFile: !uuid '69c24dfab1fd81924ecabc3a909b2887d867db4b'
+    newFile: !uuid 'bc4ddba9ea57c7deee99a83d58b11193920c5bbb'
+    oldFile: !uuid '8b0067ba76cf3e0ad769a6e35199a6544eed673c'
   /UnityClient/Assets:
-    newFile: !uuid '68cee1795eceafbd0a56e65ce8f3ee0b150ac1b5'
-    oldFile: !uuid 'ceb750bcb3706f6d5ab1550def3c157012ff0234'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '0bd69aa54687734623000b729a9bb37c349c24c5'
-    oldFile: !uuid 'e9119c625d595439f70571b417dd27814b58ced6'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '954621c395b1b13309a218d22554ecaa74fde609'
-    oldFile: !uuid '1a009fdf91593cd506a80e8d39aa686ef3111be9'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'c307aa974d1c94fa09e740e60a8c8680f9a196de'
-    oldFile: !uuid '4ec7b7323b71ded008b3f5a31ef47b17bbebcabf'
-  /UnityClient/Assets/Resources/Prefabs/ui/Battle.prefab:
-    newFile: !uuid '1c281a0b1b5b580fafd869cc95cf93cca3828891'
-    oldFile: !uuid 'e54b6fbfc0539759db3a23afd3aa041a1a79be5c'
-gitCommitId: !uuid 'bd20c09388098fafcf4f9b3ce817e487b5b64e03'
+    newFile: !uuid 'c0aded4eda46877d9610bb98adbaec13b1a29ba8'
+    oldFile: !uuid '68cee1795eceafbd0a56e65ce8f3ee0b150ac1b5'
+  /UnityClient/Assets/MapDesigned:
+    newFile: !uuid '4a81a87902d5a095bb77abc42a0925c70741c8b5'
+    oldFile: null
+  /UnityClient/Assets/MapDesigned/Herotest.prefab:
+    newFile: !uuid '24d4fb47002ee018534e5d8ea296014c3a5f1c4c'
+    oldFile: null
+  /UnityClient/Assets/MapDesigned/Herotest.prefab.meta:
+    newFile: !uuid '9d29e8c4d2ce80ba8017197013deda3627a4e902'
+    oldFile: null
+  /UnityClient/Assets/MapDesigned/MapDesigned.unity:
+    newFile: !uuid 'da8f3cda95fe646ceaa02ce33a21a980c66d4cb0'
+    oldFile: null
+  /UnityClient/Assets/MapDesigned/MapDesigned.unity.meta:
+    newFile: !uuid '874302ee6109ab193460e3449e419b04eb18bc7b'
+    oldFile: null
+  /UnityClient/Assets/MapDesigned/MapDesignedSpineController.cs:
+    newFile: !uuid '6b6b721550d67851a0468d3305eeea8613334787'
+    oldFile: null
+  /UnityClient/Assets/MapDesigned/MapDesignedSpineController.cs.meta:
+    newFile: !uuid '32729742ffbbdff5d0cd17cf6d347338aff4e9a6'
+    oldFile: null
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid '353c0969f6629ef657342504c481c24104f943cc'
+    oldFile: !uuid 'e6b6e3c2533c4f82594ab8f8fb0f2128d77baea2'
+  /UnityClient/Assets/Scenes/BattlePVE.unity:
+    newFile: !uuid 'c823b88155308d8dd3104a476b8099e42c9b393c'
+    oldFile: !uuid '66fdcf26d7d74c9fe8adae278ba6f205ff70617a'
+gitCommitId: !uuid 'f35daee11074a653e96212ffc507d919fd7e1136'
 renames: {
   }
-revisionId: 423
+revisionId: 424
