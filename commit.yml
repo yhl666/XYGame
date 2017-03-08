@@ -3,93 +3,234 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '8193862631202c94f6d483084029646a99d7c89b'
-    oldFile: !uuid '15bfc6d422752dd23c601f0d039efdbbb144519e'
+    newFile: !uuid 'e723c89cf134cbe2738ba880b635ebb81ad9af30'
+    oldFile: !uuid '8193862631202c94f6d483084029646a99d7c89b'
   /UnityClient/Assets:
-    newFile: !uuid '5df2025d066487680e73fe93b64d184a1f5cc211'
-    oldFile: !uuid 'd97080870ff24499c5c7c17a11c2f0f1d9eb4aa2'
+    newFile: !uuid '8360505648bbf08c7104d1e1bc181989acc22d4c'
+    oldFile: !uuid '5df2025d066487680e73fe93b64d184a1f5cc211'
+  /UnityClient/Assets/MapDesigned:
+    newFile: !uuid '4e8f66bf4843202e4a1e8c335e6978929bfae63d'
+    oldFile: !uuid '4a81a87902d5a095bb77abc42a0925c70741c8b5'
+  /UnityClient/Assets/MapDesigned.meta:
+    newFile: !uuid '6dbe945c847204731e5d5eafc7a3ac9d5442f460'
+    oldFile: null
+  /UnityClient/Assets/MapDesigned/MapDesignedSpineController.cs:
+    newFile: !uuid 'ac70b68b7e023ff41bf026a06ecf9f9de9d113d8'
+    oldFile: !uuid '6b6b721550d67851a0468d3305eeea8613334787'
+  /UnityClient/Assets/NewBehaviourScript.cs:
+    newFile: !uuid 'abe4e999f4c05ac7c2f3fd2dd8c739f8f1843233'
+    oldFile: !uuid 'eaeb27577b81fc9f6f46ce1096b7aaabdc3bdd74'
+  /UnityClient/Assets/Plugins:
+    newFile: !uuid 'beb49b4974814d01c899d8b12d737cae2b6da587'
+    oldFile: !uuid '1c6e217e9f1f20c23d660cdabce8579784d6cefa'
+  /UnityClient/Assets/Plugins/Spine:
+    newFile: !uuid 'b62fb054857f31ea15ee8b6c2471c49c50622dd1'
+    oldFile: !uuid '680526908f646181bf057660ec66b1b8138a14b8'
+  /UnityClient/Assets/Plugins/Spine/spine-csharp:
+    newFile: !uuid '002ac7f12a73fc24e9cc83ccbb244f4ba422778a'
+    oldFile: !uuid 'b4d3608aee778be734caed9e8dd3453a67eecf72'
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/Properties:
+    newFile: !uuid 'e039c19104eb5e558a7748a86706cc0e218c0ca8'
+    oldFile: !uuid '0f19f8b38bde851dbd574db853c2411fc1006d62'
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/Properties.meta:
+    newFile: !uuid '4d8d066926bfb3820517792fe515545bfe8845b4'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/Properties/AssemblyInfo.cs.meta:
+    newFile: !uuid '1f0579a7882b73ae1770f27637bacd439e815577'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/README.md.meta:
+    newFile: !uuid '18bc4ef3ac481c23318b0af3bdd955087bdda2b9'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/nuget:
+    newFile: !uuid '0cd6de21042a9110b23a37731fcfb0a415f83a0a'
+    oldFile: !uuid '2aaf44018e6bbb4345c27d1cff0908b3dc12bba8'
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/nuget.meta:
+    newFile: !uuid 'cd70e136493b41a034094ebb76f8203e23f4535e'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/nuget/Spine.1.6.18.nuspec.meta:
+    newFile: !uuid '4b17ed487892910583fff598ea50703eb68dd2c6'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/spine-csharp.csproj.meta:
+    newFile: !uuid 'a3c62831995bceb58de87fba74a0f8fbfd22414a'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/spine-csharp.sln.meta:
+    newFile: !uuid 'f886f8bea047f524cd8a929fad370576d9f221a5'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/spine-csharp_xna.csproj.meta:
+    newFile: !uuid '8048e001509da2f861b8c00d019ce6a19dfcc9cb'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src:
+    newFile: !uuid 'c10152b35dbdbe53df7a070a7f249b8de14875a2'
+    oldFile: !uuid '8ac8f1b7274fff456c31c181e3f78dd960a4b152'
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src.meta:
+    newFile: !uuid '7edfda0c95063e643812b76f0c8c2faca6d026b3'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Animation.cs.meta:
+    newFile: !uuid '6a0836fc276326834f4363dadc792c81804a6736'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/AnimationState.cs:
+    newFile: !uuid '8116e6b391159cea5d9abdb9843b69eee752efcc'
+    oldFile: !uuid '3a774b330e7ddf774d1f427904c93d02e21c9e05'
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/AnimationState.cs.meta:
+    newFile: !uuid 'c1b4deae9bc64731de0990fcd7248e7e30ddc3f5'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/AnimationStateData.cs.meta:
+    newFile: !uuid '5772bd62fa4638a0f326629977739848c2168dfe'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Atlas.cs.meta:
+    newFile: !uuid '3a63c5e3d88873ce4a64d9fcf175653b25981b84'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Attachments:
+    newFile: !uuid '7c3642cb09e2f3ea1e9b175cbbe8ed7df8db224e'
+    oldFile: !uuid '3fc0933aab23d6345def7e184b77e416b17fef76'
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Attachments.meta:
+    newFile: !uuid '5cebe9a911f89c8dd928018a363fbd0dc367f135'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Attachments/AtlasAttachmentLoader.cs.meta:
+    newFile: !uuid '26cd9b372349a4e62fed34a8de02e85ebdcca99d'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Attachments/Attachment.cs.meta:
+    newFile: !uuid '373169b04038748acac5a8d46186c55cb52b8947'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Attachments/AttachmentLoader.cs.meta:
+    newFile: !uuid '37f90f4a27942ba59a9ebc20f00c74d1435189f6'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Attachments/AttachmentType.cs.meta:
+    newFile: !uuid '6b5cc87deb0eef066c8b1239a3481abb5bb22ec0'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Attachments/BoundingBoxAttachment.cs.meta:
+    newFile: !uuid '60b4aeca06f83a1a9741d93edc059f3b60a9acaa'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Attachments/MeshAttachment.cs.meta:
+    newFile: !uuid 'c837f92b75e5ee09695a1fbba64a8b6c2a842612'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Attachments/RegionAttachment.cs.meta:
+    newFile: !uuid 'd61aeb12ca5b5fe2f3651e0af0074e4ec54393e4'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Attachments/SkinnedMeshAttachment.cs.meta:
+    newFile: !uuid 'f56746212f3785480dc83bb304d76c2d4423599b'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Bone.cs.meta:
+    newFile: !uuid 'e02a4fa87b7cac9e339d1e7a2fe384b600f89117'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/BoneData.cs.meta:
+    newFile: !uuid '4ee58df18560e659d5e0f45d80068f428428700f'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Event.cs.meta:
+    newFile: !uuid '99f11ab1d110fc3598a080604fda54b7ec608644'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/EventData.cs.meta:
+    newFile: !uuid '84676792883dafe9b02d90c47a1c831f1c646a4c'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/IkConstraint.cs.meta:
+    newFile: !uuid 'c0693e044de1c2d61d4459fe53c070b736bce955'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/IkConstraintData.cs.meta:
+    newFile: !uuid '71ef7faffafb69459dcc5bfef29ecbaaca86ad18'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Json.cs.meta:
+    newFile: !uuid '098a17a2735a552159eecf30f754ac9b2ca70ccc'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Skeleton.cs.meta:
+    newFile: !uuid '0de21a9f1fe7275ab6f2bfa16d3a9677e4202707'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/SkeletonBinary.cs.meta:
+    newFile: !uuid '403d0737fda96eb61b7dfea015e99af2defcb8c7'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/SkeletonBounds.cs.meta:
+    newFile: !uuid 'e2673c075ec3f64761111485b80aad4b981ed58d'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/SkeletonData.cs.meta:
+    newFile: !uuid '9db32c21e61986227c8c4e01ffb5a12eb3a2b661'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/SkeletonJson.cs.meta:
+    newFile: !uuid '03df30353cd2bbf2a13fb9803d77eb776dc6801a'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Skin.cs.meta:
+    newFile: !uuid '6dffc6572b2b0cf73380b61a9832dbf38be4d9f9'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/Slot.cs.meta:
+    newFile: !uuid '741c725c0029163f43b98e807cb1a616e6c23135'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-csharp/src/SlotData.cs.meta:
+    newFile: !uuid 'f1cc30b33e719e551b71a6e73847957ae3184d0d'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-unity:
+    newFile: !uuid '8ae68ac7e9871cf53d439e913b3e0c2c1fae6e03'
+    oldFile: !uuid '9069e76a363091f083c382d9c69ccadfd07336b1'
+  /UnityClient/Assets/Plugins/Spine/spine-unity/Assets:
+    newFile: !uuid '3ffba854ca9dea9e0b292fbbb842fff4b43fd1f6'
+    oldFile: !uuid '8e7395170c900949a8b63c4b0ee3151c07cfe584'
+  /UnityClient/Assets/Plugins/Spine/spine-unity/Assets.meta:
+    newFile: !uuid 'b00387419c12dc673b37d893374743c5e65fef58'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-unity/Assets/spine-unity:
+    newFile: !uuid 'c25cc27e09d44e1eddb797610da76403d933d662'
+    oldFile: !uuid '672d193d8e2de69c77d0ba1c2a4a4f054175a925'
+  /UnityClient/Assets/Plugins/Spine/spine-unity/Assets/spine-unity/Editor:
+    newFile: !uuid '4521b36fd49a23997a9d8875cf7508100257321f'
+    oldFile: !uuid '6ab0e880dd021d9ee732cf34b83e9c5268bed040'
+  /UnityClient/Assets/Plugins/Spine/spine-unity/Assets/spine-unity/Editor/SkeletonBaker.cs:
+    newFile: !uuid '1bd13bdbcb0c40bbd3518e879ca4db8324fff4ab'
+    oldFile: !uuid '74fcc2899badcde8afcfab602fcd74296001d7ca'
+  /UnityClient/Assets/Plugins/Spine/spine-unity/Assets/spine-unity/SkeletonAnimation.cs:
+    newFile: !uuid 'd3fa1eb16baca54db0d97c57d483fdc210a7acd5'
+    oldFile: !uuid '07ebca526c7e0d17c4d2ae8d090821d0643d9dd7'
+  /UnityClient/Assets/Plugins/Spine/spine-unity/README.md.meta:
+    newFile: !uuid 'c0193d6079a85b01b8b04070feadd9cb48e946d0'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-unity/README.pdf.meta:
+    newFile: !uuid '023fedbcff6824064dafc85914d6e45b68081b6c'
+    oldFile: null
+  /UnityClient/Assets/Plugins/Spine/spine-unity/Spine.mdpolicy.meta:
+    newFile: !uuid 'c6bc5d35a1c64ddaa3816ce6d880e1f747d08b8b'
+    oldFile: null
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'b1e70b0157c42976c590fac9c7306de25f769fc0'
-    oldFile: !uuid '0bd69aa54687734623000b729a9bb37c349c24c5'
+    newFile: !uuid '7e254040fee92359b06699abc149a71bcbf5045e'
+    oldFile: !uuid 'b1e70b0157c42976c590fac9c7306de25f769fc0'
   /UnityClient/Assets/Resources/Spine:
-    newFile: !uuid 'b9f3366335dc1f253c456ed520312bba1c15415f'
-    oldFile: !uuid '4059512aa608229c5b064c8cd5f81cb368c84ae7'
+    newFile: !uuid '7542fdd5ba6aab5d67d69894ec1c8c7aa551dbd7'
+    oldFile: !uuid 'b9f3366335dc1f253c456ed520312bba1c15415f'
   /UnityClient/Assets/Resources/Spine/6:
-    newFile: !uuid '9efec63304dd54bcbf539861527fb6f6cc3b384f'
+    newFile: !uuid '87af5205999954272ff104ed8542fd55bcb68f78'
+    oldFile: !uuid '9efec63304dd54bcbf539861527fb6f6cc3b384f'
+  /UnityClient/Assets/Resources/Spine/6.meta:
+    newFile: !uuid '88e85369e8573d571ae392e24902f7e57f6f1b1c'
     oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6.atlas.txt:
-    newFile: !uuid '02d192a37d9eb36a7ed70b9d1ff73bef1d215836'
+  /UnityClient/Assets/Resources/Spine/6/Hero6.prefab:
+    newFile: !uuid 'bd66d5cbe61ce5856ac8fb7b766f17e09efefc12'
     oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6.atlas.txt.meta:
-    newFile: !uuid '3c8ab9973d33bd1f0fe0aa216f0b0d6e06c189ca'
+  /UnityClient/Assets/Resources/Spine/6/Hero6.prefab.meta:
+    newFile: !uuid '46f39d84fb528cdb5c03edcca7684636d04919cb'
     oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6.json:
-    newFile: !uuid '877d7161083f9732291f46fba60b179053396cd1'
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid 'ebfd92fa2bb572f79ac49e3414601fb7e3d81991'
+    oldFile: !uuid '353c0969f6629ef657342504c481c24104f943cc'
+  /UnityClient/Assets/Scenes/Hero6Test.prefab:
+    newFile: !uuid 'b76d0680f06bdce3dd99fd51afbd5e77edaced08'
     oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6.json.meta:
-    newFile: !uuid '9888b6cd36cd3e6d2e4e330a3b2a70372ffd5dee'
+  /UnityClient/Assets/Scenes/Hero6Test.prefab.meta:
+    newFile: !uuid '9e33f11fbf99b1576678ab9ae50f93a517e0918f'
     oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6.png:
-    newFile: !uuid '7de70dd4cd42ee2626ecf8282da1d902b92bcaf3'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6.png.meta:
-    newFile: !uuid '12b950c98419d0bc52dd812ae6556e4c4da7bce1'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/62.png:
-    newFile: !uuid '963fa4737d609ec439798f5f02d4dd3cd5a0d22e'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/62.png.meta:
-    newFile: !uuid '702791162a0b93e6c547b088c0d8a8b03468655c'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/63.png:
-    newFile: !uuid '4c6151d32e482915b73c63ac044ac2f6c3aab723'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/63.png.meta:
-    newFile: !uuid '342fbf790a398d33177eb80c646452c57a4f88c8'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/64.png:
-    newFile: !uuid '38ae41cb8ac27c782258853e8cb79e59977a85c3'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/64.png.meta:
-    newFile: !uuid '3c827efba2fef7e0bf47d4d1cdce1a5e0881527c'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_6.mat:
-    newFile: !uuid 'c09ff1677ed439eda1f302113029f59d2352dbd5'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_6.mat.meta:
-    newFile: !uuid '948544040c44bc39b6b2f6ecee361e3dabe14668'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_62.mat:
-    newFile: !uuid '54aca560b7584cf22193b92d02b1a94689b781cb'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_62.mat.meta:
-    newFile: !uuid '3adcf7225b7868e6b98b3275073a6617ee37e558'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_63.mat:
-    newFile: !uuid '512f3c18228ecc0b43063a2c87217e1a0ee81d08'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_63.mat.meta:
-    newFile: !uuid '2e487ebe51757129ab96522585d7a8ab8e3d65c8'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_64.mat:
-    newFile: !uuid 'a9faf7026d11e0066258fb00470e76488e46964f'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_64.mat.meta:
-    newFile: !uuid '5b47cc3c08e7ba2e343202d03f6b97334cd2d006'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_Atlas.asset:
-    newFile: !uuid '94c792e3550997f01ccea7e7354ab4ed4edbd3c4'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_Atlas.asset.meta:
-    newFile: !uuid '0117230849e274264b2df7d780948e83aea50900'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_SkeletonData.asset:
-    newFile: !uuid '3afc0cc0e4bb744c2fbb0e44f4fd72380033f7ea'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/6/6_SkeletonData.asset.meta:
-    newFile: !uuid '4aa8094c2ee11daa41443a6025c1414f84b85a2b'
-    oldFile: null
-gitCommitId: !uuid '99400931670647010e1d525b81acde4e450ca352'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '9a05bf02fc5666b8880aa15d6df1ecd8d49ea9aa'
+    oldFile: !uuid '69f76f8c270dfaab62332c04133c7509909d4fe4'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'c45925d2d5c9b08bd40402e65974739cdf8d7607'
+    oldFile: !uuid '72c4c418d4082d566b24a5aa32200db6a7611045'
+  /UnityClient/Assets/Scripts/Model/StateMachine.cs:
+    newFile: !uuid '0acce9d1bf1ba0e29806423f6f4c8add47e50d23'
+    oldFile: !uuid 'e85e783b24757b11ae85d275fdc1ad52f0a5ff41'
+  /UnityClient/Assets/Scripts/SpineController.cs:
+    newFile: !uuid 'b4e670f7f1b30ffe33dc3c8343f5d3f86ddabf0c'
+    oldFile: !uuid 'be263f96996e9e0c451408faba8578acdd743228'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid '3498f18c2033f06ac985c12b31aa9b7040b62b60'
+    oldFile: !uuid 'd290aa22fbc36e99ba9607827531441e62b3c00a'
+  /UnityClient/Assets/Scripts/View/View.cs:
+    newFile: !uuid '472f2f6a8455225c31c76c1370feefd32b960b23'
+    oldFile: !uuid '05975ae676e490ab77d02f98809195133c41899c'
+gitCommitId: !uuid '068fd90dbdfaa61340ee3c2dc4bcef71c84ace0d'
 renames: {
   }
-revisionId: 427
+revisionId: 428
