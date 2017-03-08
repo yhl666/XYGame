@@ -35,14 +35,15 @@ public sealed class TimerQueue
 
     }
 
-
     /// <summary>
-    /// 添加一个帧同步定时器
+    ///  添加一个帧同步定时器
     /// </summary>
     /// <param name="fps_delay"></param>
     /// <param name="cb"></param>
+    /// <param name="repeat_times">  <0 will be run forever</param>
     public void AddTimerMS(int fps_delay, VoidFuncVoid cb, int repeat_times = 1)
     {
+        if (repeat_times == 0) return;
         TimerMS time = new TimerMS();
         time.delay = fps_delay;
         time.cb = cb;
@@ -52,6 +53,7 @@ public sealed class TimerQueue
     }
     public void AddTimerMS(float time_delay, VoidFuncVoid cb, int repeat_times = 1)
     {
+        if (repeat_times == 0) return;
         this.AddTimerMS((int)(time_delay / Utils.deltaTime), cb, repeat_times);
     }
     /// <summary>
@@ -59,9 +61,10 @@ public sealed class TimerQueue
     /// </summary>
     /// <param name="time_delay"></param>
     /// <param name="cb"></param>
-    /// <param name="repeat_times"></param>
+    /// <param name="repeat_times">  <0 will be run forever</param>
     public void AddTimer(float time_delay, VoidFuncVoid cb, int repeat_times = 1)
     {
+        if (repeat_times == 0) return;
         Timer time = new Timer();
         time.delay = time_delay;
         time.cb = cb;
@@ -147,8 +150,8 @@ sealed class TimerMS : TimerBase
             cb();
         }
         tick.Reset();
-        repeat_times_current++;
-        if (repeat_times_current >= repeat_times)
+
+        if (++repeat_times_current >= repeat_times && repeat_times >= 0)
         {
             this.SetInValid();
         }
@@ -172,7 +175,6 @@ sealed class TimerMS : TimerBase
 }
 sealed class Timer : TimerBase
 {
-
     public override void Tick()
     {
         if (current < delay)
@@ -185,9 +187,7 @@ sealed class Timer : TimerBase
             cb();
         }
         current = 0.0f;
-
-        repeat_times_current++;
-        if (repeat_times_current >= repeat_times)
+        if (++repeat_times_current >= repeat_times && repeat_times >= 0)
         {
             this.SetInValid();
         }
