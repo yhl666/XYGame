@@ -159,11 +159,10 @@ public static class SkeletonBaker {
 					unusedClipNames.Remove(clip.name);
 				} else {
 					AssetDatabase.AddObjectToAsset(clip, controller);
-#if UNITY_5_0
+
 					controller.AddMotion(clip);
-#else
-					UnityEditorInternal.AnimatorController.AddAnimationClipToController(controller, clip);
-#endif
+
+				////	UnityEditorInternal.AnimatorController.AddAnimationClipToController(controller, clip);
 
 				}
 			}

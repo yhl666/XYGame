@@ -6,7 +6,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
-using Spine.Unity;
+ 
 
 
 public class NewBehaviourScript : MonoBehaviour

@@ -7,7 +7,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-using Spine.Unity;
+ 
 
 //说明
 /*

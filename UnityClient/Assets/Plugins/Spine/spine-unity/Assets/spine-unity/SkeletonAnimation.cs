@@ -36,89 +36,108 @@ using Spine;
 
 [ExecuteInEditMode]
 [AddComponentMenu("Spine/SkeletonAnimation")]
-public class SkeletonAnimation : SkeletonRenderer, ISkeletonAnimation {
-	public float timeScale = 1;
-	public bool loop;
-	public Spine.AnimationState state;
+public class SkeletonAnimation : SkeletonRenderer, ISkeletonAnimation
+{
+    public float timeScale = 1;
+    public bool loop;
+    public Spine.AnimationState state;
 
 
 
-	public event UpdateBonesDelegate UpdateLocal {
-		add { _UpdateLocal += value; }
-		remove { _UpdateLocal -= value; }
-	}
+    public event UpdateBonesDelegate UpdateLocal
+    {
+        add { _UpdateLocal += value; }
+        remove { _UpdateLocal -= value; }
+    }
 
-	public event UpdateBonesDelegate UpdateWorld {
-		add { _UpdateWorld += value; }
-		remove { _UpdateWorld -= value; }
-	}
+    public event UpdateBonesDelegate UpdateWorld
+    {
+        add { _UpdateWorld += value; }
+        remove { _UpdateWorld -= value; }
+    }
 
-	public event UpdateBonesDelegate UpdateComplete {
-		add { _UpdateComplete += value; }
-		remove { _UpdateComplete -= value; }
-	}
+    public event UpdateBonesDelegate UpdateComplete
+    {
+        add { _UpdateComplete += value; }
+        remove { _UpdateComplete -= value; }
+    }
 
-	protected event UpdateBonesDelegate _UpdateLocal;
-	protected event UpdateBonesDelegate _UpdateWorld;
-	protected event UpdateBonesDelegate _UpdateComplete;
+    protected event UpdateBonesDelegate _UpdateLocal;
+    protected event UpdateBonesDelegate _UpdateWorld;
+    protected event UpdateBonesDelegate _UpdateComplete;
 
-	[SerializeField]
-	private String
-		_animationName;
+    [SerializeField]
+    private String
+        _animationName;
 
-	public String AnimationName {
-		get {
-			TrackEntry entry = state.GetCurrent(0);
-			return entry == null ? null : entry.Animation.Name;
-		}
-		set {
-			if (_animationName == value)
-				return;
-			_animationName = value;
-			if (value == null || value.Length == 0)
-				state.ClearTrack(0);
-			else
-				state.SetAnimation(0, value, loop);
-		}
-	}
+    public String AnimationName
+    {
+        get
+        {
+            TrackEntry entry = state.GetCurrent(0);
+            return entry == null ? null : entry.Animation.Name;
+        }
+        set
+        {
+            if (_animationName == value)
+                return;
+            _animationName = value;
+            if (value == null || value.Length == 0)
+                state.ClearTrack(0);
+            else
+                state.SetAnimation(0, value, loop);
+        }
+    }
 
-	public override void Reset () {
-		base.Reset();
-		if (!valid)
-			return;
+    public override void Reset()
+    {
+        base.Reset();
+        if (!valid)
+            return;
 
-		state = new Spine.AnimationState(skeletonDataAsset.GetAnimationStateData());
-		if (_animationName != null && _animationName.Length > 0) {
-			state.SetAnimation(0, _animationName, loop);
-			Update(0);
-		}
-	}
+        state = new Spine.AnimationState(skeletonDataAsset.GetAnimationStateData());
+        if (_animationName != null && _animationName.Length > 0)
+        {
+            state.SetAnimation(0, _animationName, loop);
+            Update(0);
+        }
+    }
 
-	public virtual void Update () {
-		Update(Time.deltaTime);
-	}
+    public virtual void Update()
+    {
+        Update(Time.deltaTime);
+    }
 
-	public virtual void Update (float deltaTime) {
-		if (!valid)
-			return;
+  
+    public void Update(float deltaTime)
+    {
+        //   this.UpdateMS(deltaTime);
+    }
 
-		deltaTime *= timeScale;
-		skeleton.Update(deltaTime);
-		state.Update(deltaTime);
-		state.Apply(skeleton);
+    public virtual void UpdateMS(float deltaTime)
+    {
+        if (!valid)
+            return;
 
-		if (_UpdateLocal != null) 
-			_UpdateLocal(this);
+        deltaTime *= timeScale;
+        skeleton.Update(deltaTime);
+        state.Update(deltaTime);
+        state.Apply(skeleton);
 
-		skeleton.UpdateWorldTransform();
+        if (_UpdateLocal != null)
+            _UpdateLocal(this);
 
-		if (_UpdateWorld != null) { 
-			_UpdateWorld(this);
-			skeleton.UpdateWorldTransform();
-		}
+        skeleton.UpdateWorldTransform();
 
-		if (_UpdateComplete != null) { 
-			_UpdateComplete(this);
-		}
-	}
+        if (_UpdateWorld != null)
+        {
+            _UpdateWorld(this);
+            skeleton.UpdateWorldTransform();
+        }
+
+        if (_UpdateComplete != null)
+        {
+            _UpdateComplete(this);
+        }
+    }
 }

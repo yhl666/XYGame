@@ -6,7 +6,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
-using Spine.Unity;
+ 
 
 /// <summary>
 /// 并行状态机，负责处理维护 每个 状态栈
