@@ -972,7 +972,12 @@ public sealed class UI_combo : ViewUI
         var self = HeroMgr.ins.self;
         if (self == null) return;
 
-        if (combo_cache == self.combo_time || self.combo_time == 0)
+        if (self.combo_time == 0)
+        {
+            combo_cache = 0;
+            return;
+        }
+        if (combo_cache == self.combo_time)
         {
             return;
         }
@@ -983,35 +988,40 @@ public sealed class UI_combo : ViewUI
         {
             a.Dispose();
         }
-
-        Debug.Log("11111111111111111");
-
-        txt.text = "连击X" + self.combo_time.ToString();
         combo_cache = self.combo_time;
+        txt.text = "连击X" + combo_cache.ToString();
+
         tick_hide.Reset();
         txt.gameObject.SetActive(true);
-        combo_cache = 0;
+        /* ScaleTo.Create(txt.gameObject, 0.05f, 1.7f, 0.7f).OnComptele = () =>
+         {
+             ScaleTo.Create(txt.gameObject, 0.01f, 1.9f, 1.9f).OnComptele = () =>
+             {
+                 ScaleTo.Create(txt.gameObject, 0.01f, 1.2f, 1.2f).OnComptele = () =>
+                 {
+                     ScaleTo.Create(txt.gameObject, 0.03f, 1f, 1f).OnComptele = () =>
+                     {
 
+                     };
+                 };
+             };
+         };
 
+         */
 
-        ///  ScaleTo.Create(txt.gameObject, 0.1f, 1.1f).OnComptele = () =>
+        ScaleTo.Create(txt.gameObject, 0.01f, 3.0f, 3.0f).OnComptele = () =>
         {
-
-            ScaleTo.Create(txt.gameObject, 0.2f, 2.0f).OnComptele = () =>
+            ScaleTo.Create(txt.gameObject, 0.03f, 1.9f, 1.9f).OnComptele = () =>
             {
-                ScaleTo.Create(txt.gameObject, 0.1f, 1.0f).OnComptele = () =>
+                ScaleTo.Create(txt.gameObject, 0.02f, 1.2f, 1.2f).OnComptele = () =>
                 {
-                    /*   ScaleTo.Create(txt.gameObject, 0.2f, 1.0f).OnComptele = () =>
-                       {
+                    ScaleTo.Create(txt.gameObject, 0.01f, 1f, 1f).OnComptele = () =>
+                    {
 
-                       };*/
+                    };
                 };
             };
         };
-
-
-
-
 
     }
     public override void UpdateMS()
@@ -1027,7 +1037,7 @@ public sealed class UI_combo : ViewUI
         base.Init();
 
         this.txt = GameObject.Find("combo").GetComponent<Text>();
-
+        txt.gameObject.SetActive(false);
         return true;
     }
 

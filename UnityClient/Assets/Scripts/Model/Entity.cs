@@ -255,6 +255,7 @@ public class Entity : Model
     {
         this.combo_time+=times;
         tick_combo.Reset();
+        if(this == HeroMgr.ins.self)
         Debug.Log("连击" + this.combo_time);
     }
     public float atk_range = 2.0f;
