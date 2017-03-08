@@ -52,12 +52,7 @@ public sealed class TimerQueue
     }
     public void AddTimerMS(float time_delay, VoidFuncVoid cb, int repeat_times = 1)
     {
-        TimerMS time = new TimerMS();
-        time.delay = (int)(time_delay / Utils.deltaTime);
-        time.cb = cb;
-        time.repeat_times = repeat_times;
-        time.Init();
-        list_ms.Add(time);
+        this.AddTimerMS((int)(time_delay / Utils.deltaTime), cb, repeat_times);
     }
     /// <summary>
     /// 添加一个真实时间定时器
@@ -88,7 +83,7 @@ public sealed class TimerQueue
     /// </summary>
     public void Tick()
     {
-        this.Tick(ref list);       
+        this.Tick(ref list);
     }
 
 
