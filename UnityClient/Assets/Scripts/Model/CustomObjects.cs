@@ -14,9 +14,18 @@ public class CustomObject : Model
 {
     public float x = 0.0f;
     public float y = 0.0f;
-
+    public string name = "";
     public bool has_ui = true;
     public bool Enable = true;
+
+    public void LoadWithData(object obj)
+    {
+        this.InitWithData(obj);
+    }
+    public virtual void InitWithData(object obj)
+    {
+
+    }
 }
 
 
@@ -26,7 +35,7 @@ public class CustomObject : Model
 public class TerrainObjectHpPack : CustomObject
 {
     public float distance = 0.5f;
-
+    private float hp_percent = 0.0f;
     public override void UpdateMS()
     {
         if (Enable == false && tick.Tick())
@@ -43,12 +52,21 @@ public class TerrainObjectHpPack : CustomObject
             {
                 this.Enable = false;
                 tick.Reset();
-                hero.current_hp += hero.hp / 2;
+                hero.current_hp +=(int)((float) hero.hp  *  hp_percent/100.0f);
                 return;
             }
         }
     }
 
+    public override void InitWithData(object obj)
+    {
+        TerrainObjectHpPackData data = (TerrainObjectHpPackData)obj;
+        this.hp_percent = data.hp_percent;
+        this.x = data.gameObject.transform.position.x;
+        this.y = data.gameObject.transform.position.y;
+        this.name = "TerrainObjectHpPack";
+        this.distance = data.distance;
+    }
 
     public override bool Init()
     {

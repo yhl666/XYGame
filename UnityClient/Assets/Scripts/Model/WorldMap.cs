@@ -86,7 +86,12 @@ public class WorldMap : Model
     {
         return new Vector2(0, 0);
     }
+    public ArrayList GetCustomObjects()
+    {
+        return custom_objs;
+    }
 
+    protected ArrayList custom_objs = new ArrayList();
     protected ArrayList objs = new ArrayList();
     protected Terrain terrain = null;
     protected TerrainPlatform platform = null;
@@ -174,8 +179,54 @@ public sealed class BattleWorldMap : WorldMap
     {
         base.Init();
 
+        ///---------------------- 初始化地图 地形 和平台
         terrain = ModelMgr.Create<Terrain>();
         platform = ModelMgr.Create<TerrainPlatform>();
+
+
+        //----------------初始化CustomObjects
+        GameObject obj_terrain = GameObject.Find("Terrain");
+        {// -- init revive points
+            Transform[] objs = obj_terrain.transform.FindChild("RevivePoints").GetComponentsInChildren<Transform>();
+            foreach (Transform obj in objs)
+            {
+                CustomObject t = ModelMgr.Create<TerrainObjectRevivePoint>();
+                t.x = obj.position.x;
+                t.y = obj.position.y;
+                t.name = obj.gameObject.name;
+                this.custom_objs.Add(t);
+            }
+        }
+
+
+        {// -- init hp pack
+            Transform[] objs = obj_terrain.transform.FindChild("HpPacks").GetComponentsInChildren<Transform>();
+            foreach (Transform obj in objs)
+            {
+                CustomObject t = ModelMgr.Create<TerrainObjectHpPack>();
+                t.LoadWithData(obj.gameObject.GetComponent<TerrainObjectHpPackData>());
+
+                this.custom_objs.Add(t);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
         return true;
@@ -187,7 +238,7 @@ public sealed class BattleWorldMap : WorldMap
         {
             this.UpdateEntity(userData as Entity);
         }
-   
+
     }
 }
 
@@ -205,11 +256,11 @@ public sealed class LogicWorldMap : WorldMap
     /// <param name="what"></param>
     private void UpdateEntity(Entity what)
     {
-      
+
     }
 
 
- 
+
     public override bool Init()
     {
         base.Init();

@@ -260,7 +260,7 @@ public class TerrainPlatform : TerrainBase
 /// <summary>
 /// 地图上的 平台 地形，
 /// </summary>
-public class TerrainPlatformPVP : TerrainBase
+public class TerrainPlatformPVP : TerrainPlatform
 {
     // 每个地图快 是单独成型的
     public override bool Init()
