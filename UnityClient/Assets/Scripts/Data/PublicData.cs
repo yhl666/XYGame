@@ -36,16 +36,41 @@ public class PublicData : object
 
     private PublicData()
     {
-        //PVE 副本测试修改
-        //测试技能 buffer 等 1个玩家打，对应战斗服BattleServerPVETEST.exe
-        //不需要测试的话直接屏蔽该构造器
+        {
+            //PVE 副本测试修改
+            //测试技能 buffer 等 1个玩家打，对应战斗服BattleServerPVETEST.exe
+            //不需要测试的话直接屏蔽该构造器
 
-        self_user = DAO.User.Create();
-        user_pvp_other = DAO.User.Create();
-        is_pve = true;
-        battle_mode = "pve";
-        self_user.no = 1;
-        user_pvp_other.no = 2;
+            self_user = DAO.User.Create();
+            user_pvp_other = DAO.User.Create();
+            is_pve = true;
+            battle_mode = "pve";
+            self_user.no = 1;
+            user_pvp_other.no = 2;
+        }
+
+
+        {
+
+            self_user = DAO.User.Create();
+            user_pvp_other = DAO.User.Create();
+            is_pve = false;
+            battle_mode = "pvp";
+            is_pvp_friend_ai = true;
+            self_user.no = 1;
+            user_pvp_other.no = 2;
+
+            BattleHero h2 = HeroMgr.Create<BattleHero>();
+            h2.team = 1;
+            h2.no =1;
+            h2.name = "1";
+
+            HeroMgr.ins.self = h2;
+
+
+
+
+        }
     }
 
     public string _game_over_info_string;
