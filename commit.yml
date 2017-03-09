@@ -3,42 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'd884560b6405eadecbb4c2bffc67667532a508cc'
-    oldFile: !uuid '80a2e0ecbadfbec1cc7d5aa9fb813e1a093d42b6'
+    newFile: !uuid '40320439dca9e5a588c63f5489dcc1fee2cb9aac'
+    oldFile: !uuid 'd884560b6405eadecbb4c2bffc67667532a508cc'
   /UnityClient/Assets:
-    newFile: !uuid '62a6d1a1f4820f100cc62c8f6153e2b55e3c210b'
-    oldFile: !uuid '5d86340da9d8653dacb7694f753537450d7442df'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid '930d4cb0086bc1fc07451cc4939282bacdb200c2'
-    oldFile: !uuid '09d275ba4d01f9ba6000b4ae40f5c95594f524bc'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid '2aa95f7de6b27619bd76f2feb08777fa1a337a24'
-    oldFile: !uuid '573be67bb5a1ebe537f6be47e5eb5173da2d2a5f'
-  /UnityClient/Assets/Logic/Scripts/Model:
-    newFile: !uuid 'a0bc168442311888759d8e22acf79adef3162703'
-    oldFile: !uuid '7f40ea0f2d89186c873dfa2e316c8d4e44c11ced'
-  /UnityClient/Assets/Logic/Scripts/Model/EquipMgr.cs:
-    newFile: !uuid '61241295d6668cc7a0c57960252ef595c45a96f7'
-    oldFile: !uuid 'b675fff4010517c970e08dd1df5f6e414fd56765'
-  /UnityClient/Assets/Logic/Scripts/Model/GoodsMgr.cs:
-    newFile: !uuid 'fcaddbf5bb8d4578d13427fba24edef5d0766b9e'
-    oldFile: !uuid '93f95c521e51576d92e7346c2ed31ef9608aca3b'
-  /UnityClient/Assets/Logic/Scripts/View:
-    newFile: !uuid 'ab3ede0eaa4ea1dadeb9c6e09838f65b54a8698c'
-    oldFile: !uuid '1c51e3818071c76008ebaf58afce82e0ea6bec1a'
-  /UnityClient/Assets/Logic/Scripts/View/ViewUI.cs:
-    newFile: !uuid '6e8dd41502b6657434bcc3e41aa6c3a39ed86bb9'
-    oldFile: !uuid '8b737edfb42b7b4a145ad1095c493f1a51dea222'
+    newFile: !uuid '1270420d4c3de0f8664ce2bda512511492e8f8ce'
+    oldFile: !uuid '62a6d1a1f4820f100cc62c8f6153e2b55e3c210b'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid 'f63cb1eff49cbdf6949fd7ef6418407d87f27c41'
-    oldFile: !uuid 'a8e669b83a2808ae773788ecd5928073aa33afe9'
-  /UnityClient/Assets/Scripts/Base:
-    newFile: !uuid '3b9896a094dc13d19807ad8e0b7c329072a3ced6'
-    oldFile: !uuid '3a73d0d7b7d2dc4a48a16179be4323b2ce1a5c41'
-  /UnityClient/Assets/Scripts/Base/TimerQueue.cs:
-    newFile: !uuid 'c8b81f114f9515e93f591918cd44146f62c8d015'
-    oldFile: !uuid '29829526df24a5faea6bb7730ebc5b4c231b944b'
-gitCommitId: !uuid '2c09059bbebfb899a715da711c6380dd701dd85e'
+    newFile: !uuid '830c13b612e40aee0589d9e6b7d076966ed5ba49'
+    oldFile: !uuid 'f63cb1eff49cbdf6949fd7ef6418407d87f27c41'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '2684dfb880840d678ba6026acbbcc06987ccd612'
+    oldFile: !uuid 'c45925d2d5c9b08bd40402e65974739cdf8d7607'
+  /UnityClient/Assets/Scripts/Model/CustomObjects.cs:
+    newFile: !uuid '548bd4f1171b3e03c98884d71fa54e7420fe958a'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/CustomObjects.cs.meta:
+    newFile: !uuid '9f804942a473d1de280fadbf6fadec3cb5887e3f'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/Terrain.cs:
+    newFile: !uuid '0c0ddb297ef49f1f034485d4f030d9d9453df672'
+    oldFile: !uuid 'de913a957c4eb74c9b1b52577d53b4ad52b8a4ac'
+gitCommitId: !uuid 'be41fb6880b53829c45690e542c8654b6f7774cc'
 renames: {
   }
-revisionId: 433
+revisionId: 434
