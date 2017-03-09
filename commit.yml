@@ -3,27 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '40320439dca9e5a588c63f5489dcc1fee2cb9aac'
-    oldFile: !uuid 'd884560b6405eadecbb4c2bffc67667532a508cc'
+    newFile: !uuid '3e18654b2c7a95f9703ce1be6f0ebb5c17a60ada'
+    oldFile: !uuid '40320439dca9e5a588c63f5489dcc1fee2cb9aac'
   /UnityClient/Assets:
-    newFile: !uuid '1270420d4c3de0f8664ce2bda512511492e8f8ce'
-    oldFile: !uuid '62a6d1a1f4820f100cc62c8f6153e2b55e3c210b'
+    newFile: !uuid '012f4055e0c03a3c4a97d36fd56793a7ffffb0b1'
+    oldFile: !uuid '1270420d4c3de0f8664ce2bda512511492e8f8ce'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '830c13b612e40aee0589d9e6b7d076966ed5ba49'
-    oldFile: !uuid 'f63cb1eff49cbdf6949fd7ef6418407d87f27c41'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '2684dfb880840d678ba6026acbbcc06987ccd612'
-    oldFile: !uuid 'c45925d2d5c9b08bd40402e65974739cdf8d7607'
-  /UnityClient/Assets/Scripts/Model/CustomObjects.cs:
-    newFile: !uuid '548bd4f1171b3e03c98884d71fa54e7420fe958a'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Model/CustomObjects.cs.meta:
-    newFile: !uuid '9f804942a473d1de280fadbf6fadec3cb5887e3f'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Model/Terrain.cs:
-    newFile: !uuid '0c0ddb297ef49f1f034485d4f030d9d9453df672'
-    oldFile: !uuid 'de913a957c4eb74c9b1b52577d53b4ad52b8a4ac'
-gitCommitId: !uuid 'be41fb6880b53829c45690e542c8654b6f7774cc'
+    newFile: !uuid 'd1f84f124799c2c52fe9ba8001a77ef3e79531d7'
+    oldFile: !uuid '830c13b612e40aee0589d9e6b7d076966ed5ba49'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid 'f7c67ac22d7ef3ce9fac6fa4217ca50187795226'
+    oldFile: !uuid 'dddf9af899d8a5bb376eb4bbff5d2582d3718710'
+  /UnityClient/Assets/Scripts/Data/PublicData.cs:
+    newFile: !uuid 'c15722c90633ea7b861c90dce0b5dfc7e0bfe529'
+    oldFile: !uuid '54e80bbc532c76559dbccac6c5f97ca605e8398d'
+gitCommitId: !uuid '0e8cf7e728b75aff97a1c6a8962eb78763994200'
 renames: {
   }
-revisionId: 434
+revisionId: 435
