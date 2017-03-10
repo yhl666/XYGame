@@ -3,30 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'e1137eae293420dbad5c59b5f7406f4b643e4712'
-    oldFile: !uuid '7b34f4fe70707f616ceaabd2fd72595d1cd6cdb2'
+    newFile: !uuid '48b0ec9b15e9bcb1d602405a429bb5cfe43c4e18'
+    oldFile: !uuid 'e1137eae293420dbad5c59b5f7406f4b643e4712'
   /UnityClient/Assets:
-    newFile: !uuid 'b2ded6c4c7552a8bc5305e787e08ff0e06db5db4'
-    oldFile: !uuid 'c9fa6eacd183eb74139e93d0cee4484efd6f6d5e'
+    newFile: !uuid '969921952c051ca6ac5a7cf1bb0002843fbd7aa2'
+    oldFile: !uuid 'b2ded6c4c7552a8bc5305e787e08ff0e06db5db4'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '01df884c135e6e959e19ee84ce747e4bb4b10062'
-    oldFile: !uuid '93b36b2dbf1dc8c46e688496b608ab6d2f6d2e69'
-  /UnityClient/Assets/Scripts/Base:
-    newFile: !uuid 'ed034f7a709134138dfd5f42c08096bf1b7cf1cd'
-    oldFile: !uuid '3b9896a094dc13d19807ad8e0b7c329072a3ced6'
-  /UnityClient/Assets/Scripts/Base/Vector.cs:
-    newFile: !uuid '0e8e223eb6deb7019ffe6442b3f91173fbdf8967'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Base/Vector.cs.meta:
-    newFile: !uuid 'f9c95cccf0cfade77adf386394fefb93ce16f187'
-    oldFile: null
+    newFile: !uuid 'e1516b71d4931eb0faf5a4536404403e85144614'
+    oldFile: !uuid '01df884c135e6e959e19ee84ce747e4bb4b10062'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '09ffac4310bc51d9fe139b08c2742d66fb5335d2'
-    oldFile: !uuid 'fb1ded2adfb26d7569c60352313bae7a4972f62f'
+    newFile: !uuid 'cbcf7b7fb0acd328e983ec953b5f61e20dc15f90'
+    oldFile: !uuid '09ffac4310bc51d9fe139b08c2742d66fb5335d2'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid '1805ad21457031bf214e9565334ef8b440e11448'
+    oldFile: !uuid '663e16abc7ae25e4b87be026f68fbf43afc8abc5'
   /UnityClient/Assets/Scripts/Model/Bullet.cs:
-    newFile: !uuid '16ef7165ef2e47466ec1d582f10be4c0256bc940'
-    oldFile: !uuid '9909248bd1646cf406bd17e8133fa6f00bdcc4f0'
-gitCommitId: !uuid '91c2358dd7f3203c84805a1362633e9199feda75'
+    newFile: !uuid '1e90680dc793dff40b426838f8066b884d4749bb'
+    oldFile: !uuid '16ef7165ef2e47466ec1d582f10be4c0256bc940'
+gitCommitId: !uuid 'e574d3c995dfa5089166b566d32c1e0c968aec42'
 renames: {
   }
-revisionId: 442
+revisionId: 443
