@@ -40,5 +40,7 @@ public class DATA
     public const int HERO_ALIVE_TICK = 4800;//2分钟
 
 
+    public const float DEFAULT_JUMP_SPEED = 0.2f;//默认起跳初速度;
+    public const float GRAVITY_RATIO = 0.05f;//默认重力比例
 }
 

@@ -84,6 +84,7 @@ public class StateBase : GAObject
 
 public class JumpState : StateBase
 {
+    private float jump_speed = DATA.DEFAULT_JUMP_SPEED;
     public override StateBase GetState<T>()
     {
         if (typeof(T) == typeof(JumpState))
@@ -96,20 +97,23 @@ public class JumpState : StateBase
     public override string GetAnimationName() { return "jump"; }
     public override void UpdateMS()
     {
-        if (tick > 30)
+        if (jump_speed <= 0.0f)
         {
             Target.isJumping = false;
             if (Target.isStand)
             {
-                tick = 0;
+                jump_speed = DATA.DEFAULT_JUMP_SPEED;
                 this.Enable = false;
             }
         }
         else
         {
-            this.Target.y += 0.1f;
+            //接入重力
+
+            jump_speed -= 9.8f / 40.0f * 0.05f;
+
+            this.Target.y += jump_speed;
             Target.isJumping = true;
-            tick++;
         }
     }
     public override void OnEvent(string type, object userData)
@@ -154,7 +158,6 @@ public class JumpState : StateBase
     {
 
     }
-    private int tick = 0;
 }
 
 
@@ -170,16 +173,18 @@ public class JumpTwiceState : StateBase
         }
         return null;
     }
+    private float jump_speed = DATA.DEFAULT_JUMP_SPEED;
     public override string GetName() { return "JumpTwiceState"; }
     public override void UpdateMS()
     {
-
-        if (tick > 30)
+        if (jump_speed <= 0.0f)
         {
+            Target.isJumping = false;
+
             if (Target.isStand)
             {
                 this.Enable = false;
-                tick = 0;
+                jump_speed = DATA.DEFAULT_JUMP_SPEED;
                 this.stack.PopSingleState();
             }
             else
@@ -190,10 +195,13 @@ public class JumpTwiceState : StateBase
         }
         else
         {
-            this.Target.y += 0.1f;
+            //接入重力
+            jump_speed -= 9.8f / 40.0f * DATA.GRAVITY_RATIO;
+
+            this.Target.y += jump_speed;
             Target.isJumpTwice = true;
-            tick++;
         }
+
     }
     public override void OnEvent(string type, object userData)
     {
@@ -214,7 +222,6 @@ public class JumpTwiceState : StateBase
     {
 
     }
-    private int tick = 0;
 }
 
 
@@ -224,6 +231,9 @@ public class JumpTwiceState : StateBase
 
 public class FallState : StateBase
 {
+    private float fall_speed = 0.0f;
+    private int tick = 0;
+    public float FallDistance = 0.0f;
     public override StateBase GetState<T>()
     {
         if (typeof(T) == typeof(FallState))
@@ -238,16 +248,32 @@ public class FallState : StateBase
         Target.isFalling = false;
         if (Target.isJumping || Target.isJumpTwice)
         {
+            tick = 0;
+            fall_speed = 0.0f;
             return;
         }
         if (Target.isStand && Target.isRunning)
         {
+            tick = 0;
+            fall_speed = 0.0f;
             return;
         }
         if (Target.isStand == false)
         {
-            this.Target.y -= 0.1f;
-            if (Target.y <= 0.0f) Target.y = 0.0f;
+            //重力效果
+            fall_speed = 9.8f / 40.0f * tick * DATA.GRAVITY_RATIO;
+
+            tick++;
+
+            this.Target.y -= fall_speed;
+            FallDistance += fall_speed; // 下落位移
+            if (Target.y <= 0.0f)
+            {
+                Target.y = 0.0f; // 修正位置
+                fall_speed = 0.0f;
+                tick = 0;
+                FallDistance = 0.0f;
+            }
             Target.isFalling = true;
         }
 
