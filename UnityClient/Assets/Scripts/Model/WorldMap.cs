@@ -142,31 +142,34 @@ public sealed class BattleWorldMap : WorldMap
     }
     private bool UpdateWithPlaform(Entity what)
     {
-
-        //  return false;
-
         float x = what.x;
-        float y = 0.0f;
 
-        TerrainBlock block = platform.GetBlock(x);
+        ArrayList blocks = platform.GetBlocks(x);
 
-
-        if (block != null)
+        if (blocks.Count > 0)
         {
-            y = block.height;
-
-            if (y == what.height)
+            float MAX_HEIGHT = 0f;
+            foreach (TerrainBlock block in blocks)
             {
-                return true;
+                float y = block.height;
 
-            }
+                if (y == what.GetRealY())
+                {//平台没变直接放弃处理
+                    return true;
+                }
 
-            //      Debug.Log(what.height + what.y  + "       "  +  y );
-            if (what.height + what.y >= y)
-            {
-                what.height_platform = y;
-                return true;
+                if (what.GetRealY() > y)
+                {
+                    MAX_HEIGHT = Mathf.Max(y, MAX_HEIGHT);
+                }
             }
+            if (MAX_HEIGHT == 0f)
+            {// 没选出比现在更高的平台
+                return false;
+            }
+            what.height_platform = MAX_HEIGHT;
+
+            return true;
         }
         else
         {
@@ -190,14 +193,14 @@ public sealed class BattleWorldMap : WorldMap
         GameObject obj_terrain = GameObject.Find("Terrain");
         {// -- init revive points
             Transform[] objs = obj_terrain.transform.FindChild("RevivePoints").GetComponentsInChildren<Transform>();
-           /* foreach (Transform obj in objs)
-            {
-                CustomObject t = ModelMgr.Create<TerrainObjectRevivePoint>();
-                t.x = obj.position.x;
-                t.y = obj.position.y;
-                t.name = obj.gameObject.name;
-                this.custom_objs.Add(t);
-            }*/
+            /* foreach (Transform obj in objs)
+             {
+                 CustomObject t = ModelMgr.Create<TerrainObjectRevivePoint>();
+                 t.x = obj.position.x;
+                 t.y = obj.position.y;
+                 t.name = obj.gameObject.name;
+                 this.custom_objs.Add(t);
+             }*/
         }
 
 
@@ -209,7 +212,7 @@ public sealed class BattleWorldMap : WorldMap
                 if (data == null) continue;
 
                 CustomObject t = ModelMgr.Create<TerrainObjectHpPack>();
-             
+
                 t.LoadWithData(data);
 
                 this.custom_objs.Add(t);

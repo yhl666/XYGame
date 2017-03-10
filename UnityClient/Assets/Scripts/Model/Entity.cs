@@ -359,25 +359,10 @@ public class Entity : Model
         {
             if (value == _height) return;
 
-            if (isStand == false)
-            {
-                if (this.height + y > value)
-                {
-                    this.y = y + _height - value;
-                }
-                else
-                {
-                    stand = true;
-                    return;
-                }
-            }
-            else if (value > _height)
-            {// 高度变高
-                stand = true;
+            this.y = y + _height - value;
 
-                return;
-            }
             _height = value;
+
         }
     }
     //---------------setter   getter for mp  hp exp

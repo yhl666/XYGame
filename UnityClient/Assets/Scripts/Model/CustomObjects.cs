@@ -26,6 +26,7 @@ public class CustomObject : Model
     {
 
     }
+    protected GameObject view = null;// bind view
 }
 
 
@@ -42,6 +43,7 @@ public class TerrainObjectHpPack : CustomObject
         {//wait for sync
             return;
         }
+        this.view.SetActive(true);
         this.Enable = true;
         ArrayList heros = HeroMgr.ins.GetHeros();
         foreach (Hero hero in heros)
@@ -55,6 +57,7 @@ public class TerrainObjectHpPack : CustomObject
                 int delta= (int)((float) hero.hp  *  hp_percent/100.0f);
                 hero.current_hp +=delta;
                 Debug.LogError("Terrain 血包 回血 " + delta);
+                this.view.SetActive(false);
                 return;
             }
         }
@@ -65,6 +68,7 @@ public class TerrainObjectHpPack : CustomObject
         TerrainObjectHpPackData data = obj as TerrainObjectHpPackData;
         if (data != null)
         {
+            this.view = data.gameObject;
             this.hp_percent = data.hp_percent;
             this.x = data.gameObject.transform.position.x;
             this.y = data.gameObject.transform.position.y;
@@ -72,7 +76,7 @@ public class TerrainObjectHpPack : CustomObject
             this.distance = data.distance;
             this.tick.SetMax((int)(data.cd_time * (float)Utils.fps));
             Debug.Log("TerrainObjectHpPackData  OK ");
-
+            this.view.SetActive(false);
         }
         else
         {

@@ -91,6 +91,25 @@ public class TerrainBase : Model
     }
 
     /// <summary>
+    /// 返回x坐标 对应的地形块
+    /// </summary>
+    /// <param name="block"></param>
+    /// <returns></returns>
+    public ArrayList GetBlocks(float x)
+    {
+        ArrayList ret = new ArrayList();
+        foreach (TerrainBlock block in blocks)
+        {
+            if (block.x_left <= x && block.x_right >= x)
+            {
+                ret.Add(block);
+            }
+        }
+        return ret;
+    }
+
+
+    /// <summary>
     /// 返回当前块  的下一块
     /// </summary>
     /// <param name="block"></param>
@@ -148,6 +167,7 @@ public class TerrainBase : Model
         for (int i = 1; i < objs.Length; i++)
         {
             Transform t = objs[i] as Transform;
+           // Debug.Log("Load Terrain name=" + t.gameObject.name);
             blocks.Add(TerrainBlock.Create(t.position.x, 0, t.position.y, 0,t.gameObject.name));
         }
         //排序   按照X大小 来排序
@@ -230,7 +250,7 @@ public class TerrainPlatform : TerrainBase
             Debug.LogError("Terrain Platform Count error");
             return false;
         }
-        ArrayList blocks = this.Load(objs);
+        ArrayList blocks = this.Load(objs,false);
         //初始化地形 自动化
         for (int i = 0; i < blocks.Count; i += 2)
         {
