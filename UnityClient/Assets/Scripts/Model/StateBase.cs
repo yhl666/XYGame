@@ -565,7 +565,7 @@ public class AttackState_1 : StateBase
         return null;
     }
 
-    public override string GetAnimationName() { return  Target.ani_atk1; }
+    public override string GetAnimationName() { return Target.ani_atk1; }
 
     public AttackState_1()
     {
@@ -670,6 +670,7 @@ public class AttackState_2 : StateBase
 
     bool checkForTimeOut = true;
     int tick = 0;
+    private bool isLaunch = false;
     public AttackState_2()
     {
         //  Debug.Log(" 连招  222 待命");
@@ -706,6 +707,8 @@ public class AttackState_2 : StateBase
 
         if (type == Events.ID_BTN_ATTACK)
         {
+            if (isLaunch) return;
+            isLaunch = true;
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_ATTACK, this.Target);
 
             Target.attackingAnimationName = this.GetAnimationName();
@@ -714,8 +717,8 @@ public class AttackState_2 : StateBase
             Target.isAttacking = true;
 
 
-            //   BulletMgr.Create(this.Target, Target.bulleClassName_atk1, Target.bullet_atk1_info);
-            Target.AddBuffer<BufferLighting>();
+            BulletMgr.Create(this.Target, Target.bulleClassName_atk2, Target.bullet_atk2_info);
+
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
 
@@ -763,7 +766,7 @@ public class AttackState_3 : StateBase
     }
 
 
-    public override string GetAnimationName() { return  Target.ani_atk3; }
+    public override string GetAnimationName() { return Target.ani_atk3; }
 
     bool checkForTimeOut = true;
     int tick = 0;
@@ -810,7 +813,9 @@ public class AttackState_3 : StateBase
             this.Enable = true;
             Target.isAttacking = true;
             this.checkForTimeOut = false;
-            Target.AddBuffer<BufferAssemble>();
+
+
+            BulletMgr.Create(this.Target, Target.bulleClassName_atk3, Target.bullet_atk3_info);
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
         }

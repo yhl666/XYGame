@@ -23,12 +23,12 @@ public class Bullet : Model
     public float x = 0.0f;
     public float y = 0.0f;
     public float distance = 10.0f;
-
+    public float rotate = 0.0f;
     public float flipX = -1.0f;
     public float speed = 0.1f;
     public float scale_x = 1.0f;
     public float scale_y = 1.0f;
-
+    public int frameDelay = 4;
     public string prefabsName = "";
     public string plist = "88"; // animation plist file  
 
@@ -54,7 +54,7 @@ public class Bullet : Model
 
 }
 
-public delegate void OnTakeAttack(Bullet bullet);
+public delegate void OnBulletFunc(Bullet bullet);
 public delegate Vector2 OnMoveFunc(BulletConfig bullet, Vector2 current);
 
 public sealed class BulletConfigInfo
@@ -66,6 +66,7 @@ public sealed class BulletConfigInfo
     public string brief_short = "法术简单描述";
 
     public string plistAnimation = "hd/roles/role_2/bullet/role_2_bul_2001/role_2_bul_2001.plist"; // 子弹 view 的plist 帧动画文件
+    public int frameDelay = 4;//帧动画延时
     public int lastTime = 0; // 持续时间,为0表示 使用距离来标示，不为0 表示 距离和 时间 一起来标示
 
     //   public int deltaTime = 0;//延迟多久才开始 伤害判定
@@ -79,7 +80,7 @@ public sealed class BulletConfigInfo
     public ArrayList buffers = new ArrayList();//附加的buffer为class
 
     public Vector2 launch_delta_xy = new Vector2(0.5f, 0.3f);//初始位置位于 角色锚点位置
-
+    public float rotate = 0.0f;
     public float damage_ratio = 1.0f;//伤害系数
     //   public int realValidTimes = 1;//真实有效次数 ，计算真实命中敌人的次数{比如法术命中玩家3次后失效，否则一直存在}
     public int validTimes = 1;//总有效次数 ，击中物体的 帧次数 ，如果当前帧没有命中任何物体 那么不会计算帧次
@@ -96,13 +97,40 @@ public sealed class BulletConfigInfo
     //lastTime=0 distance_atk=2 validTimes =1,distance=10,buffers="buffer0,buffer1";
 
     //触发攻击时回调
-    public OnTakeAttack _OnTakeAttack = null;
+    public OnBulletFunc _OnTakeAttack = null;
+    public OnBulletFunc _OnLaunch = null; // 创建时回调
+    public OnBulletFunc _OnUpdateMS = null; // 有效帧时间 回调
+    public int onTakeAttackFuncCallTimes = 0xfffffff;//攻击函数回调次数
     public OnMoveFunc _OnMoveFunc = null;
     public void InVokeOnTakeAttack(Bullet bullet)
     {
-        if (_OnTakeAttack != null) _OnTakeAttack.Invoke(bullet);
+        if (_OnTakeAttack != null)
+        {
+            if (current_call_times >= onTakeAttackFuncCallTimes) return;
+            current_call_times++;
+            _OnTakeAttack.Invoke(bullet);
+        }
+
     }
 
+    public void InVokeOnLaunch(Bullet bullet)
+    {
+        if (_OnLaunch != null)
+        {
+            _OnLaunch.Invoke(bullet);
+        }
+
+    }
+
+    public void InVokeOnUpdateMS(Bullet bullet)
+    {
+        if (_OnUpdateMS != null)
+        {
+            _OnUpdateMS.Invoke(bullet);
+        }
+
+    }
+    private int current_call_times = 0;
     //-------------------helper function
 
     public void AddBuffer(string buffer)
@@ -139,33 +167,36 @@ public sealed class BulletConfig : Bullet
 {
     private int tick = 0;
     private int validTimes = 0;
-
     private Vector hasHit = new Vector();//命中物体的集合 ，可判定命中次数
     public override void UpdateMS()
     {
         tick++;
-        float dis = 0.0f;
-        if (info._OnMoveFunc == null)
-        {// default move function
-            dis = flipX * speed;
-            this.x += dis;
-        }
-        else
-        {
-            Vector2 pos_now = new Vector2(this.x, this.y);
-            Vector2 pos_next = info._OnMoveFunc(this,pos_now);
-            dis = Utils.ClaculateDistance(pos_now, pos_next);
-            this.x = pos_next.x;
-            this.y = pos_next.y;
-        }
-        distance -= Mathf.Abs(dis);
-        if (distance <= 0) distance = 0;
 
         if (distance <= 0 && tick > info.lastTime)
         {//both dis and  time done // 时间 和 距离 都 完成，，如果validTime
             this.SetInValid();
             return;
         }
+        if (distance > 0)
+        {
+            float dis = 0.0f;
+            if (info._OnMoveFunc == null)
+            {// default move function
+                dis = flipX * speed;
+                this.x += dis;
+            }
+            else
+            {
+                Vector2 pos_now = new Vector2(this.x, this.y);
+                Vector2 pos_next = info._OnMoveFunc(this, pos_now);
+                dis = Utils.ClaculateDistance(pos_now, pos_next);
+                this.x = pos_next.x;
+                this.y = pos_next.y;
+            }
+            distance -= Mathf.Abs(dis);
+            if (distance <= 0) distance = 0;
+        }
+
         if (validTimes >= info.validTimes)
         {//超过 有效次数 
             if (info.isHitDestory)
@@ -177,7 +208,7 @@ public sealed class BulletConfig : Bullet
                 return;
             }
         }
-
+        info.InVokeOnUpdateMS(this);
         //scan heros
         ArrayList heros = HeroMgr.ins.GetHeros();
         int hitNumber = 0; // 命中怪物数量
@@ -211,6 +242,7 @@ public sealed class BulletConfig : Bullet
                     ///     inf.buffers_string = info.buffers_string;
                     h.TakeAttacked(inf);
                     info.InVokeOnTakeAttack(this);
+
                     hasHit.PushBack(h);
                     tagForValidTimes = true;
                     /* foreach (string buffer in info.buffers_string)
@@ -301,6 +333,7 @@ public sealed class BulletConfig : Bullet
         {
             this.x = owner.x + info.launch_delta_xy.x;
         }
+        info.InVokeOnLaunch(this);
     }
 
     public override bool Init()
@@ -321,6 +354,8 @@ public sealed class BulletConfig : Bullet
         this.plist = info.plistAnimation;
         this.distance = info.distance;
         this.speed = info.speed;
+        this.rotate = info.rotate;
+        this.frameDelay = info.frameDelay;
     }
     public BulletConfigInfo info = null;
 }

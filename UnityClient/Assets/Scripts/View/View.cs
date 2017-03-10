@@ -58,7 +58,7 @@ public class ViewBullet : View
         view_bullet.GetComponent<Animationstor>().file = m.plist;
         ani = view_bullet.GetComponent<Animationstor>();
         ani.Init();
-
+        ani.ani.perFrame = m.frameDelay;
         float factor = 0.7f;
         ani.gameObject.transform.localScale = new Vector3(-m.flipX * factor, factor * ani.gameObject.transform.localScale.y,
 
@@ -72,7 +72,8 @@ public class ViewBullet : View
 
         ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
 
-
+        Vector3 rot = ani.gameObject.transform.localRotation.eulerAngles;
+        ani.gameObject.transform.localRotation = Quaternion.Euler(new Vector3(rot.x, rot.y, m.rotate));
 
         ani.ani.SetLoop(1);
         ani.ani.Run();

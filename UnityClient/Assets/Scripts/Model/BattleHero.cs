@@ -68,7 +68,7 @@ public class BattleHero : Hero
         scale = 0.8f;
         // config
 
-        /* hero 2
+        /* ------------------------------------------hero 2
         this.skin = "#1";
         this.prefabsName = "Prefabs/Hero2";
      
@@ -88,7 +88,7 @@ public class BattleHero : Hero
  
         */
 
-        // hero 6
+        //-------------------- hero 6
         this.skin = "#1";
         this.prefabsName = "Spine/6/Hero6";
 
@@ -102,17 +102,123 @@ public class BattleHero : Hero
         this.ani_atk2 = "6010";
         this.ani_atk3 = "6020";
 
-        bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
-        bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
-        ///  bulleClassName_atk1 = "BulletStateMachineTest";
 
-        bullet_atk1_info = BulletConfigInfo.Create();
-        bullet_atk1_info.AddBuffer("BufferHitBack");
- 
+
+        {
+            bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
+            bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
+            ///  bulleClassName_atk1 = "BulletStateMachineTest";
+
+            BulletConfigInfo info = BulletConfigInfo.Create();
+            bullet_atk1_info = info;
+            info.AddBuffer("BufferHitBack");
+
+            info.launch_delta_xy.x = 1f;
+            info.launch_delta_xy.y = 0f;
+
+            info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6001/role_6_bul_6001.plist";
+            info.rotate = 30.0f;
+            info.distance = 0;
+            info.distance_atk = 1.0f;
+            info.isHitDestory = false;
+            info.number = 0xfff;
+            info.oneHitTimes = 1;
+            info.frameDelay = 4;
+            info.lastTime = 15;
+            info._OnLaunch = (Bullet b) =>
+            {
+
+                if (this.flipX < 0)
+                {
+                    this.x_auto += this.speed * 2;
+                }
+                else
+                {
+                    this.x_auto -= this.speed * 2;
+                }
+            };
+        }
+
+
+        {
+            bulleClassName_atk2 = "BulletConfig"; //"Bullet2_0";//普通攻击 2段  的子弹名字
+            ///  bulleClassName_atk1 = "BulletStateMachineTest";
+
+            BulletConfigInfo info = BulletConfigInfo.Create();
+            bullet_atk2_info = info;
+            info.AddBuffer("BufferHitBack");
+
+            info.launch_delta_xy.x = 1f;
+            info.launch_delta_xy.y = 0f;
+            info.frameDelay = 4;
+            info.distance_atk = 1.0f;
+            info.number = 0xfff;
+            info.isHitDestory = false;
+            info.oneHitTimes = 1;
+            //  info.rotate = -120.0f;
+            info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6011/role_6_bul_6011.plist";
+            /// info.rotate = 30.0f;
+            info.distance = 0;
+            info.lastTime = 15;
+
+            info._OnLaunch = (Bullet b) =>
+                {
+
+                    if (this.flipX < 0)
+                    {
+                        this.x_auto += this.speed * 2;
+                    }
+                    else
+                    {
+                        this.x_auto -= this.speed * 2;
+                    }
+                };
+        }
+
+
+        {
+            bulleClassName_atk3 = "BulletConfig"; //"Bullet2_0";//普通攻击 3段  的子弹名字
+            ///  bulleClassName_atk1 = "BulletStateMachineTest";
+
+            BulletConfigInfo info = BulletConfigInfo.Create();
+            bullet_atk3_info = info;
+            info.AddBuffer("BufferHitBack");
+
+            info.launch_delta_xy.x = 1.3f;
+            info.launch_delta_xy.y = 0f;
+            info.distance_atk = 1.3f;
+            info.number = 0xfff;
+            info.oneHitTimes = 1;
+            info.isHitDestory = false;
+            info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6021/role_6_bul_6021.plist";
+            //    info.rotate = 30.0f;
+            info.distance = 0;
+            info.frameDelay = 4;
+            info.lastTime = 15;
+            info._OnLaunch = (Bullet b) =>
+            {
+
+                if (this.flipX < 0)
+                {
+                    this.x_auto += this.speed * 2;
+                }
+                else
+                {
+                    this.x_auto -= this.speed * 2;
+                }
+            };
+        }
+
+
+
+
+
+
+
+
 
 
         ViewMgr.Create<ViewEntity>(this);
-
 
         this.team = 1;
 
