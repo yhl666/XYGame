@@ -186,13 +186,15 @@ public sealed class BattleWorldMap : WorldMap
         terrain = ModelMgr.Create<Terrain>();
         platform = ModelMgr.Create<TerrainPlatform>();
 
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
 
         //----------------初始化CustomObjects
 
-
         GameObject obj_terrain = GameObject.Find("Terrain");
         {// -- init revive points
-            Transform[] objs = obj_terrain.transform.FindChild("RevivePoints").GetComponentsInChildren<Transform>();
+            Transform p =obj_terrain.transform.FindChild("RevivePoints");
+            if (p == null) return true;
+            Transform[] objs = p.GetComponentsInChildren<Transform>();
             /* foreach (Transform obj in objs)
              {
                  CustomObject t = ModelMgr.Create<TerrainObjectRevivePoint>();
@@ -205,7 +207,10 @@ public sealed class BattleWorldMap : WorldMap
 
 
         {// -- init hp pack
-            Transform[] objs = obj_terrain.transform.FindChild("HpPacks").GetComponentsInChildren<Transform>();
+            Transform p = obj_terrain.transform.FindChild("HpPacks");
+            if (p == null) return true;
+            Transform[] objs =p.GetComponentsInChildren<Transform>();
+        
             foreach (Transform obj in objs)
             {
                 TerrainObjectHpPackData data = obj.gameObject.GetComponent<TerrainObjectHpPackData>();
@@ -234,10 +239,6 @@ public sealed class BattleWorldMap : WorldMap
 
 
 
-
-
-
-        EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
         return true;
     }
 

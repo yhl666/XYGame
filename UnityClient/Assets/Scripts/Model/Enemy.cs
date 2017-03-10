@@ -112,8 +112,8 @@ public class Enemy : Entity
         ani_hurt = "hurt";
         ani_run = "walk";
         ani_stand = "rest";
-        ani_atk = "444000_0";
-        attackingAnimationName = ani_atk;
+        ani_atk1 = "444000_0";
+        attackingAnimationName = ani_atk1;
 
         bulleClassName_atk1 = "Bullet444_0";//普通攻击 1段  的子弹名字
         bulleClassName_s1 = "Bullet444_0"; // 1 号技能 子弹名字
@@ -297,8 +297,8 @@ public class Enemy221 : Enemy
         ani_hurt = "hurt";
         ani_run = "walk";
         ani_stand = "rest";
-        ani_atk = "218010";
-        attackingAnimationName = ani_atk;
+        ani_atk1 = "218010";
+        attackingAnimationName = ani_atk1;
 
         bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
         bulleClassName_s1 = "Bullet221_0"; // 1 号技能 子弹名字

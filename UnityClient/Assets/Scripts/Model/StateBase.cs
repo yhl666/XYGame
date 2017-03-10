@@ -565,7 +565,7 @@ public class AttackState_1 : StateBase
         return null;
     }
 
-    public override string GetAnimationName() { return "2000"; }
+    public override string GetAnimationName() { return  Target.ani_atk1; }
 
     public AttackState_1()
     {
@@ -608,7 +608,7 @@ public class AttackState_1 : StateBase
 
             this.Enable = true;
             Target.isAttacking = true;
-            Target.attackingAnimationName = Target.ani_atk; // this.GetAnimationName();
+            Target.attackingAnimationName = this.GetAnimationName();
             //    BulletMgr.Create<Bullet2_0>(this.Target);
             cd_attack = 40;//2s cd
 
@@ -666,7 +666,7 @@ public class AttackState_2 : StateBase
         return null;
     }
 
-    public override string GetAnimationName() { return "2121"; }
+    public override string GetAnimationName() { return Target.ani_atk2; }
 
     bool checkForTimeOut = true;
     int tick = 0;
@@ -763,7 +763,7 @@ public class AttackState_3 : StateBase
     }
 
 
-    public override string GetAnimationName() { return "2210"; }
+    public override string GetAnimationName() { return  Target.ani_atk3; }
 
     bool checkForTimeOut = true;
     int tick = 0;

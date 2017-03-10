@@ -67,9 +67,11 @@ public class BattleHero : Hero
         base.Init();
         scale = 0.8f;
         // config
+
+        /* hero 2
         this.skin = "#1";
         this.prefabsName = "Prefabs/Hero2";
-
+     
         ani_hurt = "hurt";
         ani_jumpTwice = "doubleJump";
         ani_jump = "jump";
@@ -83,11 +85,31 @@ public class BattleHero : Hero
 
         bullet_atk1_info = BulletConfigInfo.Create();
         bullet_atk1_info.AddBuffer("BufferHitBack");
-     /*   bullet_atk1_info._OnMoveFunc = (BulletConfig b, Vector2 current) =>
-            {
+ 
+        */
 
-                return current;
-            };*/
+        // hero 6
+        this.skin = "#1";
+        this.prefabsName = "Spine/6/Hero6";
+
+        ani_hurt = "hurt";
+        ani_jumpTwice = "doubleJump";
+        ani_jump = "jump";
+        ani_fall = "fall";
+        ani_run = "run";
+        ani_stand = "rest";
+        this.ani_atk1 = "6000";
+        this.ani_atk2 = "6010";
+        this.ani_atk3 = "6020";
+
+        bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
+        bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
+        ///  bulleClassName_atk1 = "BulletStateMachineTest";
+
+        bullet_atk1_info = BulletConfigInfo.Create();
+        bullet_atk1_info.AddBuffer("BufferHitBack");
+ 
+
 
         ViewMgr.Create<ViewEntity>(this);
 
@@ -96,7 +118,7 @@ public class BattleHero : Hero
 
         this.current_hp = 0xffffff;
         this.hp = 0xffffff;
-        this.atk_level = 1;
+        this.atk_level = 3;
 
 
         DAO.Equip equip = EquipMgr.ins.GetTestEquip();

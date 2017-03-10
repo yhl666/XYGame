@@ -516,12 +516,13 @@ public class Entity : Model
     public bool isDie = false; // die state but this will not sunc to other clients
     //public bool right_enable = true;//是否允许右移
     //  public bool left_enable = true;//是否允许左移动
-
+    public string ani_atk3 = "2000";
+    public string ani_atk2 = "2000";
+    public string ani_atk1 = "2000";
     public string ani_stand = "stand";
     public string ani_jump = "jump";
     public string ani_jumpTwice = "doubleJump";
     public string ani_fall = "fall";
-    public string ani_atk = "2000";
     public string ani_run = "run";
     public string ani_hurt = "hurt";
     public string ani_die = "die";
