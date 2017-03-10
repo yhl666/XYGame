@@ -3,42 +3,33 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '33cce2ab29cb97337be562bf794a703c39ad5716'
-    oldFile: !uuid 'c9abb177266480d79fd4c0e13cf29a69efca5779'
+    newFile: !uuid '75754fa5d4b79ee7a8e01f527802d0eae34f4737'
+    oldFile: !uuid '33cce2ab29cb97337be562bf794a703c39ad5716'
   /UnityClient/Assets:
-    newFile: !uuid '93fbbca89303a8dc561d423cbbe93a7c14d6fc00'
-    oldFile: !uuid 'd17c2ce457b8a90b36ab36ce95e14692e3d3ccee'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '11c936cc0571b503e4b9720046d7ae2dc72bfd5b'
-    oldFile: !uuid '6322ad91f390e3d7a4165fb73edd925999212bfb'
-  /UnityClient/Assets/Scenes/BattlePVP.unity:
-    newFile: !uuid '6af095d70a7c28a72b3c8c51cd0fc554a932bfd4'
-    oldFile: !uuid 'eb032c38b521fed967e01cbf88bcb867fb1c2fd5'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '66c777379b476df41722595b99eeea9f56161e66'
-    oldFile: !uuid '417dfb822055dde2f8e351e9c1f7986936148356'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '1f643fd107280b80285daa400e938182b4ddb7b9'
-    oldFile: !uuid 'a27baf13d57f1a0faaad414aefb14132afc3f3cb'
-  /UnityClient/Assets/Scripts/Data/TerrainObjectHpPackData.cs:
-    newFile: !uuid 'adc44f34cb14d4ac93aaaf2d6551541a6ed55e10'
-    oldFile: !uuid 'e14b0a26a0b969a2b2ddb349ec2d7e4315ef0ad1'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '860f85adb0111cbe2a0c78092045d1b0e877f3f3'
-    oldFile: !uuid '6ae48fef2feeb7edb395cb84f95a1226438a5789'
-  /UnityClient/Assets/Scripts/Model/CustomObjects.cs:
-    newFile: !uuid '62f242d90aa5a56c194c0fb7af04596e4070bf33'
-    oldFile: !uuid '284b537a2eb456929690cc15ad1d4969da7c44cf'
-  /UnityClient/Assets/Scripts/Model/WorldMap.cs:
-    newFile: !uuid '73f16ee9de0b4e03c50b6b56fda2838ac2731aa8'
-    oldFile: !uuid '06f44f4799800031c8d9e8154ac13ba953fa225d'
-  /UnityClient/Assets/Scripts/Net:
-    newFile: !uuid '0b4f43fd3b34f7103e9cdf38f6fa07af2ede93db'
-    oldFile: !uuid 'bf3aec99ece1f21665f4692cf67e7d7c763fbc67'
-  /UnityClient/Assets/Scripts/Net/SocketClient.cs:
-    newFile: !uuid '1b16a48cfc4155d7c2dd75ed85dd56a0cae88f6c'
-    oldFile: !uuid '177c7c96f19331242572066d8a3dc86775e92554'
-gitCommitId: !uuid 'aba941626ac3a55f0ff914a498143debe39e3872'
+    newFile: !uuid '2fca61a5585f3ac551ea43ae76ae872bb60d4350'
+    oldFile: !uuid '93fbbca89303a8dc561d423cbbe93a7c14d6fc00'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'e70708931c9032abf864e5f570e4e5446ca9f51d'
+    oldFile: !uuid '38f4a76ece6f0d443396153506402e2936ec88e8'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '50673ef662f24644b6f006c8e013c2ae87114ae1'
+    oldFile: !uuid '954621c395b1b13309a218d22554ecaa74fde609'
+  /UnityClient/Assets/Resources/Prefabs/map:
+    newFile: !uuid '723b8f50947073b0d099bbc46f561938cd146254'
+    oldFile: !uuid '7b364df77e556b86b898808ed1a52a4545066015'
+  /UnityClient/Assets/Resources/Prefabs/map/HpPack.prefab:
+    newFile: !uuid '119ac5848d8d56df8a825d65e76925ea60bdfd5a'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/map/HpPack.prefab.meta:
+    newFile: !uuid '57d41f417cef119e6213e87b585445202c73b4a1'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/map/RevivePoint.prefab:
+    newFile: !uuid '3872da01e3a12a02b85448f86ebe9fb74bb52bde'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/map/RevivePoint.prefab.meta:
+    newFile: !uuid '03fd18498f028e88597c974a44f923a53086f554'
+    oldFile: null
+gitCommitId: !uuid '75d250470066574211caa8ee2f130f727a0042eb'
 renames: {
   }
-revisionId: 439
+revisionId: 440
