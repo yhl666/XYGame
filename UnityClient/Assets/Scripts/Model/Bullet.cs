@@ -82,8 +82,8 @@ public sealed class BulletConfigInfo
 
     public float damage_ratio = 1.0f;//伤害系数
     //   public int realValidTimes = 1;//真实有效次数 ，计算真实命中敌人的次数{比如法术命中玩家3次后失效，否则一直存在}
-    public int validTimes = 1;//有效次数    //表示 命中目标后  的 伤害 次数
-
+    public int validTimes = 1;//总有效次数 ，击中物体的 帧次数 ，如果当前帧没有命中任何物体 那么不会计算帧次
+    public int oneHitTimes = 1;//同一个物体能被命中的次数
     // eg.
 
     //比如 某法术 效果是 持续3秒 原地 2米内 造成2次伤害
@@ -139,6 +139,8 @@ public sealed class BulletConfig : Bullet
 {
     private int tick = 0;
     private int validTimes = 0;
+
+    private Vector hasHit = new Vector();//命中物体的集合 ，可判定命中次数
     public override void UpdateMS()
     {
         tick++;
@@ -180,6 +182,7 @@ public sealed class BulletConfig : Bullet
                 //    Debug.Log("dis = " + diss);
                 if (diss < info.distance_atk)
                 {
+                    if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
                     hitNumber++;
 
                     AttackInfo inf = AttackInfo.Create(owner, h);
@@ -196,6 +199,7 @@ public sealed class BulletConfig : Bullet
                ///     inf.buffers_string = info.buffers_string;
                     h.TakeAttacked(inf);
                     info.InVokeOnTakeAttack(this);
+                    hasHit.PushBack(h);
                     tagForValidTimes = true;
                    /* foreach (string buffer in info.buffers_string)
                     {//add buffer
@@ -227,6 +231,7 @@ public sealed class BulletConfig : Bullet
                 //    Debug.Log("dis = " + diss);
                 if (diss < info.distance_atk)
                 {
+                    if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
                     AttackInfo inf = AttackInfo.Create(owner, h);
                     inf.InitWithCommon();
                     inf.damage = (int)((float)inf.damage * info.damage_ratio);
@@ -242,6 +247,7 @@ public sealed class BulletConfig : Bullet
                     h.TakeAttacked(inf);
  
                     info.InVokeOnTakeAttack(this);
+                    hasHit.PushBack(h);
                     tagForValidTimes = true;
                     hitNumber++;
                  /*   foreach (string buffer in info.buffers_string)
