@@ -55,7 +55,7 @@ public class Bullet : Model
 }
 
 public delegate void OnTakeAttack(Bullet bullet);
-
+public delegate Vector2 OnMoveFunc(BulletConfig bullet, Vector2 current);
 
 public sealed class BulletConfigInfo
 {
@@ -97,7 +97,7 @@ public sealed class BulletConfigInfo
 
     //触发攻击时回调
     public OnTakeAttack _OnTakeAttack = null;
-
+    public OnMoveFunc _OnMoveFunc = null;
     public void InVokeOnTakeAttack(Bullet bullet)
     {
         if (_OnTakeAttack != null) _OnTakeAttack.Invoke(bullet);
@@ -144,8 +144,20 @@ public sealed class BulletConfig : Bullet
     public override void UpdateMS()
     {
         tick++;
-        float dis = flipX * speed;
-        this.x += dis;
+        float dis = 0.0f;
+        if (info._OnMoveFunc == null)
+        {// default move function
+            dis = flipX * speed;
+            this.x += dis;
+        }
+        else
+        {
+            Vector2 pos_now = new Vector2(this.x, this.y);
+            Vector2 pos_next = info._OnMoveFunc(this,pos_now);
+            dis = Utils.ClaculateDistance(pos_now, pos_next);
+            this.x = pos_next.x;
+            this.y = pos_next.y;
+        }
         distance -= Mathf.Abs(dis);
         if (distance <= 0) distance = 0;
 
@@ -196,19 +208,19 @@ public sealed class BulletConfig : Bullet
                     {
                         inf.AddBuffer(buf);
                     }
-               ///     inf.buffers_string = info.buffers_string;
+                    ///     inf.buffers_string = info.buffers_string;
                     h.TakeAttacked(inf);
                     info.InVokeOnTakeAttack(this);
                     hasHit.PushBack(h);
                     tagForValidTimes = true;
-                   /* foreach (string buffer in info.buffers_string)
-                    {//add buffer
-                        h.AddBuffer(buffer);
-                    }
-                    foreach (Buffer buffer in info.buffers)
-                    {//add buffer
-                        h.AddBuffer(buffer);
-                    }*/
+                    /* foreach (string buffer in info.buffers_string)
+                     {//add buffer
+                         h.AddBuffer(buffer);
+                     }
+                     foreach (Buffer buffer in info.buffers)
+                     {//add buffer
+                         h.AddBuffer(buffer);
+                     }*/
                 }
             }
             else
@@ -243,21 +255,21 @@ public sealed class BulletConfig : Bullet
                     {
                         inf.AddBuffer(buf);
                     }
-                  //  inf.buffers_string = info.buffers_string;
+                    //  inf.buffers_string = info.buffers_string;
                     h.TakeAttacked(inf);
- 
+
                     info.InVokeOnTakeAttack(this);
                     hasHit.PushBack(h);
                     tagForValidTimes = true;
                     hitNumber++;
-                 /*   foreach (string buffer in info.buffers_string)
-                    {//add buffer
-                        h.AddBuffer(buffer);
-                    }
-                    foreach (Buffer buffer in info.buffers)
-                    {//add buffer
-                        h.AddBuffer(buffer);
-                    }*/
+                    /*   foreach (string buffer in info.buffers_string)
+                       {//add buffer
+                           h.AddBuffer(buffer);
+                       }
+                       foreach (Buffer buffer in info.buffers)
+                       {//add buffer
+                           h.AddBuffer(buffer);
+                       }*/
                 }
             }
             else

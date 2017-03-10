@@ -83,6 +83,11 @@ public class BattleHero : Hero
 
         bullet_atk1_info = BulletConfigInfo.Create();
         bullet_atk1_info.AddBuffer("BufferHitBack");
+     /*   bullet_atk1_info._OnMoveFunc = (BulletConfig b, Vector2 current) =>
+            {
+
+                return current;
+            };*/
 
         ViewMgr.Create<ViewEntity>(this);
 
