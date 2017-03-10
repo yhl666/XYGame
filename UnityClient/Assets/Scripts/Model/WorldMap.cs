@@ -185,17 +185,19 @@ public sealed class BattleWorldMap : WorldMap
 
 
         //----------------初始化CustomObjects
+
+
         GameObject obj_terrain = GameObject.Find("Terrain");
         {// -- init revive points
             Transform[] objs = obj_terrain.transform.FindChild("RevivePoints").GetComponentsInChildren<Transform>();
-            foreach (Transform obj in objs)
+           /* foreach (Transform obj in objs)
             {
                 CustomObject t = ModelMgr.Create<TerrainObjectRevivePoint>();
                 t.x = obj.position.x;
                 t.y = obj.position.y;
                 t.name = obj.gameObject.name;
                 this.custom_objs.Add(t);
-            }
+            }*/
         }
 
 
@@ -203,8 +205,12 @@ public sealed class BattleWorldMap : WorldMap
             Transform[] objs = obj_terrain.transform.FindChild("HpPacks").GetComponentsInChildren<Transform>();
             foreach (Transform obj in objs)
             {
+                TerrainObjectHpPackData data = obj.gameObject.GetComponent<TerrainObjectHpPackData>();
+                if (data == null) continue;
+
                 CustomObject t = ModelMgr.Create<TerrainObjectHpPack>();
-                t.LoadWithData(obj.gameObject.GetComponent<TerrainObjectHpPackData>());
+             
+                t.LoadWithData(data);
 
                 this.custom_objs.Add(t);
             }

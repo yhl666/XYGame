@@ -382,7 +382,7 @@ public class SockClientWithPVPAIMode : SocketClient
         }
         Thread.Sleep(this._thread_delte);
 
-        while (fps < 2400)//默认一分钟
+        while (fps < 240000)//默认一分钟
         {
             fps++;
             Thread.Sleep(this._thread_delte);

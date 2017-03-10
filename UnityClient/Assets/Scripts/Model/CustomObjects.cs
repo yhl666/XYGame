@@ -52,7 +52,9 @@ public class TerrainObjectHpPack : CustomObject
             {
                 this.Enable = false;
                 tick.Reset();
-                hero.current_hp +=(int)((float) hero.hp  *  hp_percent/100.0f);
+                int delta= (int)((float) hero.hp  *  hp_percent/100.0f);
+                hero.current_hp +=delta;
+                Debug.LogError("Terrain 血包 回血 " + delta);
                 return;
             }
         }
@@ -60,12 +62,22 @@ public class TerrainObjectHpPack : CustomObject
 
     public override void InitWithData(object obj)
     {
-        TerrainObjectHpPackData data = (TerrainObjectHpPackData)obj;
-        this.hp_percent = data.hp_percent;
-        this.x = data.gameObject.transform.position.x;
-        this.y = data.gameObject.transform.position.y;
-        this.name = "TerrainObjectHpPack";
-        this.distance = data.distance;
+        TerrainObjectHpPackData data = obj as TerrainObjectHpPackData;
+        if (data != null)
+        {
+            this.hp_percent = data.hp_percent;
+            this.x = data.gameObject.transform.position.x;
+            this.y = data.gameObject.transform.position.y;
+            this.name = "TerrainObjectHpPack";
+            this.distance = data.distance;
+            this.tick.SetMax((int)(data.cd_time * (float)Utils.fps));
+            Debug.Log("TerrainObjectHpPackData  OK ");
+
+        }
+        else
+        {
+            Debug.LogError("Error of TerrainObjectHpPack data");
+        }
     }
 
     public override bool Init()

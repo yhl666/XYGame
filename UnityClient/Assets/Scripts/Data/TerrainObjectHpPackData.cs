@@ -15,6 +15,9 @@ public class TerrainObjectHpPackData: MonoBehaviour
 
     [SerializeField]
     public float distance = 0.5f;//圆形判定距离
+
+    [SerializeField]
+    public float cd_time = 30.0f;//刷新时间
     void Start()
     {
 
