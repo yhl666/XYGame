@@ -944,6 +944,7 @@ public sealed class UI_flytext : ViewUI
         pos.z = info.txt_txt.gameObject.transform.position.z;
         info.txt_txt.color = info.color;
         info.txt_txt.gameObject.transform.position = Camera.main.WorldToScreenPoint(pos); ;
+        info.txt_txt.text = info.txt;
         this.lists.Add(info);
 
 
