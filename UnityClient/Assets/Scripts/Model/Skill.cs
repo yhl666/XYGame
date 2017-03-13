@@ -223,7 +223,7 @@ public class SkillBase : Model
 
 
 
-
+//-----------------------------------------------------------------------hero 2
 
 
 
@@ -477,7 +477,7 @@ public class Skill2_3 : SkillBase
         info.lastTime = 30;
         info.isHitDestory = false;
         bullet = BulletMgr.Create(this.Target, "BulletConfig", info);
-        if (Target.flipX<0)
+        if (Target.flipX < 0)
         {
             bullet.x = Target.x + 2.0f;
         }
@@ -657,9 +657,9 @@ public class Skill2_5 : SkillBase
     public override void OnSpineCompolete()
     {
         Debug.Log("launch ");
-        for (float i = -2.0f; i<2.5f ;i+=0.5f )
+        for (float i = -2.0f; i < 2.5f; i += 0.5f)
         {
-            if ( Mathf.Abs(i) < 0.01f) continue;
+            if (Mathf.Abs(i) < 0.01f) continue;
             BulletConfigInfo info = BulletConfigInfo.Create();
             info.plistAnimation = "hd/roles/role_2/bullet/role_2_bul_2211/role_2_bul_2211.plist";
             info.distance_atk = 0.5f;
@@ -669,7 +669,7 @@ public class Skill2_5 : SkillBase
             info.lastTime = 16;
             info.isHitDestory = false;
 
-            BufferSpeedSlow buffer=  BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
+            BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
             buffer.id = 0xef1;
             buffer.percent = 80;
             info.AddBuffer(buffer);
@@ -677,15 +677,6 @@ public class Skill2_5 : SkillBase
             b.y = Target.GetRealY();
             b.x = Target.x + i;
         }
-
-
-
-
-
-
-
-
-
 
         this.OnExit();
     }
@@ -711,4 +702,159 @@ public class Skill2_5 : SkillBase
 
     }
 
+}
+
+
+
+
+//-------------------------------------------------------------------------------- hero 6
+/// <summary>
+/// 不可打断 第一段 跳起来打  
+/// </summary>
+public class Skill6_1 : SkillBase
+{
+    public override void OnEnter()
+    {
+
+        this.PauseAll();
+        Target.isAttacking = true;
+        this.Enable = true;
+        //开始蓄力
+        Target.attackingAnimationName = "6110_0";
+        //起跳
+        Target.machine.GetState<JumpState>().Resume();
+        Target.machine.GetState<StandState>().Resume();
+        Target.machine.GetState<FallState>().Resume();
+        Target.jump = true;
+
+    }
+    public override void UpdateMS()
+    {
+        if (count == 0)
+        {
+            Target.x_auto += 0.1f;
+        }
+        else if (count == 1)
+        {
+ 
+         if (tick.Tick())
+         {
+             Target.x_auto += 0.2f;
+             return;
+         }
+
+     
+         Target.is_spine_loop = true;
+         count++;
+         Target.attackingAnimationName = "6110_3";
+
+
+         this.Shoot();
+
+
+        }
+        else if (count == 2)
+        {
+
+        Target.x_auto += 0.02f;
+        }
+    }
+    private void Shoot()
+    {
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitBack");
+
+        info.launch_delta_xy.x = 1.5f;
+        info.launch_delta_xy.y = 0f;
+        info.frameDelay = 4;
+        info.distance_atk = 2.0f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6111/role_6_bul_6111.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 15;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+        BulletMgr.Create(this.Target, "BulletConfig", info);
+       
+    }
+    public override void OnSpineCompolete()
+    {
+        if (count == 0)
+        {
+            //进入阶段二 下跳
+            ++count;
+       
+            Target.is_spine_loop = false;
+            Target.attackingAnimationName = "6110_2";
+        }
+        else if (count == 1)
+        {
+
+          
+           /* Target.is_spine_loop = true;
+            count++;
+            Target.attackingAnimationName = "6110_3";*/
+
+
+
+
+
+        }
+        else/// if (count == 2)
+        {
+
+
+
+ 
+
+ 
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+            this.OnExit();
+        }
+
+    }
+    public override void OnExit()
+    {
+        this.Enable = false;
+        Target.isAttacking = false;
+        count = 0;
+        this.ResumeAll();
+    }
+    public override void OnPush()
+    {
+        if (Target.isStand == false) return;
+        if (Target.isAttacking) return;
+        if (this.Enable) return;
+
+        this.OnEnter();
+
+    }
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+
+
+    }
+    bool is_move_complete = false;
+    int count = 0;
+    Counter tick = Counter.Create(15);
 }

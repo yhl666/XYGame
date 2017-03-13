@@ -993,7 +993,7 @@ public class SkillState : StateBase
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
-            s.PushSingleSkill(new Skill2_1());
+            s.PushSingleSkill(new Skill6_1());
             this.skill_stacks.Add(s);
         }
         {

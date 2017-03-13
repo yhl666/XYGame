@@ -78,6 +78,8 @@ public sealed class BulletConfigInfo
     public float distance_atk = 1.0f;// 普通，攻击距离
     public ArrayList buffers_string = new ArrayList();//附加buffer 名字 string
     public ArrayList buffers = new ArrayList();//附加的buffer为class
+    public float scale_x = 1.0f;//视图缩放大小
+    public float scale_y = 1.0f;//视图缩放大小
 
     public Vector2 launch_delta_xy = new Vector2(0.5f, 0.3f);//初始位置位于 角色锚点位置
     public float rotate = 0.0f;
@@ -356,6 +358,9 @@ public sealed class BulletConfig : Bullet
         this.speed = info.speed;
         this.rotate = info.rotate;
         this.frameDelay = info.frameDelay;
+        this.scale_x = info.scale_x;
+        this.scale_y = info.scale_y;
+
     }
     public BulletConfigInfo info = null;
 }

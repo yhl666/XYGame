@@ -124,6 +124,8 @@ public class BattleHero : Hero
             info.number = 0xfff;
             info.oneHitTimes = 1;
             info.frameDelay = 4;
+            info.scale_x = 1.5f;
+            info.scale_y = 1.5f;
             info.lastTime = 15;
             info._OnLaunch = (Bullet b) =>
             {
@@ -160,7 +162,8 @@ public class BattleHero : Hero
             /// info.rotate = 30.0f;
             info.distance = 0;
             info.lastTime = 15;
-
+            info.scale_x = 1.5f;
+            info.scale_y = 1.5f;
             info._OnLaunch = (Bullet b) =>
                 {
 
@@ -184,11 +187,13 @@ public class BattleHero : Hero
             bullet_atk3_info = info;
             info.AddBuffer("BufferHitBack");
 
-            info.launch_delta_xy.x = 1.3f;
+            info.launch_delta_xy.x = 1f;
             info.launch_delta_xy.y = 0f;
             info.distance_atk = 1.3f;
             info.number = 0xfff;
             info.oneHitTimes = 1;
+            info.scale_x = 1.5f;
+            info.scale_y = 1.5f;
             info.isHitDestory = false;
             info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6021/role_6_bul_6021.plist";
             //    info.rotate = 30.0f;
