@@ -5,6 +5,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public sealed class TimerQueue
 {
@@ -95,7 +96,7 @@ public sealed class TimerQueue
     }
 
 
-    private void Tick(ref ArrayList list)
+    private void Tick(ref List<TimerBase> list)
     {
         foreach (TimerBase timer in list)
         {
@@ -119,8 +120,8 @@ public sealed class TimerQueue
         this.list_ms.Clear();
         this.list.Clear();
     }
-    public ArrayList list_ms = new ArrayList();
-    public ArrayList list = new ArrayList();
+    List<TimerBase> list_ms = new List<TimerBase>();
+    List<TimerBase> list = new List<TimerBase>();
 
 }
 

@@ -51,7 +51,7 @@ public class ClientTestApp : GAObject
     {
         base.OnEnter();
 
-        for (int i = 0; i < 1000000; i++)
+        for (int i = 0; i < 100; i++)
         {
             TimerQueue.ins.AddTimer(10.0f, () =>
             {
