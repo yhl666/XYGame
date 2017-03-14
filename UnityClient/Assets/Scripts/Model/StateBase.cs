@@ -322,7 +322,10 @@ public class RunState : StateBase
     public override void UpdateMS()
     {
         if (moveable == false) return;
-        if (Target.isAttacking && Target.isStand) return;
+        if (enable_atk==false)
+        {
+            if (Target.isAttacking && Target.isStand) return;
+        }
         if (Target.isHurt) return;
         this.Target.x -= (Target.speed * this.Target.flipX);
 
@@ -363,17 +366,31 @@ public class RunState : StateBase
 
 
     }
+    /// <summary>
+    /// 关闭移动但可以 调整方向
+    /// </summary>
     public void DisableMove()
     {
         moveable = false;
     }
+    //开启移动
     public void EnableMove()
     {
         moveable = true;
     }
-
+    /// <summary>
+    /// 开启Attack状态下可移动
+    /// </summary>
+    public void EnableWhenAttack()
+    {
+        enable_atk = true;
+    }
+    public void DisableWhenAttak()
+    {
+        enable_atk = false;
+    }
     public bool moveable = true;
-
+    private bool enable_atk = false;
     public override void OnEnter()
     {
         this.stack.AddLocalEventListener("run_right");
@@ -392,6 +409,7 @@ public class RunState : StateBase
     {
 
     }
+
 }
 
 
@@ -1001,7 +1019,7 @@ public class SkillState : StateBase
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
-            s.PushSingleSkill(new Skill2_2());
+            s.PushSingleSkill(new Skill6_2());
             this.skill_stacks.Add(s);
         }
 
