@@ -741,7 +741,7 @@ public class Skill6_1 : SkillBase
         else if (count == 1)
         {
 
-            if (tick.Tick() && Target.y>0.0f) // 可提前触发
+            if (tick.Tick() && Target.y > 0.0f) // 可提前触发
             {
                 Target.x_auto += 0.2f * -Target.flipX;
                 return;
@@ -919,9 +919,9 @@ public class Skill6_2 : SkillBase
 
         this.PauseAll();
         this.Target.machine.GetState<StandState>().Resume();
-        this.Target.machine.GetState<FallState>().Resume(); 
-
-        RunState  state= this.Target.machine.GetState<RunState>() as RunState;
+        this.Target.machine.GetState<FallState>().Resume();
+        tick.Reset();
+        RunState state = this.Target.machine.GetState<RunState>() as RunState;
         state.Resume();
         state.EnableWhenAttack();
         Target.isAttacking = true;
@@ -936,7 +936,7 @@ public class Skill6_2 : SkillBase
         {
             b.x = Target.x;
             b.y = Target.GetRealY();
-            if(b.IsInValid())
+            if (b.IsInValid())
             {//每次Bullet持续时间为10 fps ， 为结束 继续释放bullet
                 this.Shoot();
             }
@@ -966,11 +966,11 @@ public class Skill6_2 : SkillBase
         info.lastTime = 10;
         info.scale_x = 2f;
         info.scale_y = 2f;
-        b=BulletMgr.Create(this.Target, "BulletConfig", info);
+        b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
     public override void OnSpineCompolete()
     {
-      ///  this.stack.PopSingleSkill();
+        ///  this.stack.PopSingleSkill();
 
     }
     public override void OnExit()
@@ -978,6 +978,7 @@ public class Skill6_2 : SkillBase
         b.SetInValid();
         this.Enable = false;
         Target.isAttacking = false;
+        tick.Reset();
         Target.is_spine_loop = true;
         RunState state = this.Target.machine.GetState<RunState>() as RunState;
         state.DisableWhenAttak();
@@ -1045,7 +1046,7 @@ public class Skill6_2_2 : SkillBase
         info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6121/role_6_bul_6121.plist";
         /// info.rotate = 30.0f;
         info.distance = 2.0f;
-    info.lastTime = 0;
+        info.lastTime = 0;
         info.scale_x = 2f;
         info.scale_y = 2f;
         BulletMgr.Create(this.Target, "BulletConfig", info);
@@ -1080,3 +1081,166 @@ public class Skill6_2_2 : SkillBase
 }
 
 
+
+
+/// <summary>
+/// 不可打断  连砍2次
+/// </summary>
+public class Skill6_3 : SkillBase
+{
+    public override void OnEnter()
+    {
+        this.PauseAll();
+
+        Target.isAttacking = true;
+        this.Enable = true;
+        count = 0;
+        Target.attackingAnimationName = "6140_0";
+        tick.Reset();
+        this.Shoot();
+        Target.is_spine_loop = true;
+
+    }
+    public override void UpdateMS()
+    {
+        if (tick.Tick())
+        {
+            return;
+        }
+        count++;
+        if (count > 1) return;
+
+        this.Shoot();
+
+    }
+    private void Shoot()
+    {
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitBack");
+
+        info.launch_delta_xy.x = 1.5f;
+        info.launch_delta_xy.y = -0.2f;
+        info.frameDelay = 4;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.damage_ratio = 1.5f;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6111/role_6_bul_6111.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 10;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+        BulletMgr.Create(this.Target, "BulletConfig", info);
+    }
+    public override void OnSpineCompolete()
+    {
+        ///  this.stack.PopSingleSkill();
+        this.OnExit();
+    }
+    public override void OnExit()
+    {
+        this.Enable = false;
+        Target.isAttacking = false;
+        count = 0;
+        tick.Reset();
+        this.ResumeAll();
+
+        this.stack.PushSingleSkill(new Skill6_3_2());
+    }
+    public override void OnPush()
+    {
+        if (Target.isStand == false) return;
+        if (Target.isAttacking) return;
+        if (this.Enable) return;
+
+        this.OnEnter();
+
+    }
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+    }
+    int count = 0;
+    Counter tick = Counter.Create(17);//释放第二次
+}
+
+
+
+/// <summary>
+/// 6_3的第二段连招  反手猛的一招 击飞很远 不可打断
+/// </summary>
+
+public class Skill6_3_2 : SkillBase
+{
+    public override void OnEnter()
+    {
+
+        this.PauseAll();
+        Target.isAttacking = true;
+        this.Enable = true;
+        Target.attackingAnimationName = "6140_1";
+        this.Shoot();
+
+    }
+    public override void UpdateMS()
+    {
+
+    }
+    private void Shoot()
+    {
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitBack");
+
+        info.launch_delta_xy.x = 0.5f;
+        info.launch_delta_xy.y = 0f;
+        info.frameDelay = 3;
+        info.distance_atk = 2.0f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.damage_ratio = 1.5f;
+        info.speed *= 1.5f;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6143/role_6_bul_6143.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 2.0f;
+        info.lastTime = 0;
+        info.scale_x = 1.5f;
+        info.scale_y = 1.5f;
+        BulletMgr.Create(this.Target, "BulletConfig", info);
+
+    }
+    public override void OnSpineCompolete()
+    {
+        this.stack.PopSingleSkill();
+
+    }
+    public override void OnExit()
+    {
+        this.Enable = false;
+        Target.isAttacking = false;
+        Target.is_spine_loop = true;
+        this.ResumeAll();
+
+    }
+    public override void OnPush()
+    {
+        if (Target.isStand == false) return;
+        if (Target.isAttacking) return;
+        if (this.Enable) return;
+
+        this.OnEnter();
+
+    }
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+    }
+
+}
