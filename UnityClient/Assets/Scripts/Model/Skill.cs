@@ -719,44 +719,43 @@ public class Skill6_1 : SkillBase
         this.PauseAll();
         Target.isAttacking = true;
         this.Enable = true;
-        //开始蓄力
         Target.attackingAnimationName = "6110_0";
         //起跳
         Target.machine.GetState<JumpState>().Resume();
         Target.machine.GetState<StandState>().Resume();
         Target.machine.GetState<FallState>().Resume();
         Target.jump = true;
-
+        Target.is_spine_loop = false;
     }
     public override void UpdateMS()
     {
         if (count == 0)
         {
-            Target.x_auto += 0.1f;
+            //  if(tick1.Tick())
+            {
+                Target.x_auto += 0.1f * -Target.flipX;
+                return;
+            }
+
         }
         else if (count == 1)
         {
- 
-         if (tick.Tick())
-         {
-             Target.x_auto += 0.2f;
-             return;
-         }
 
-     
-         Target.is_spine_loop = true;
-         count++;
-         Target.attackingAnimationName = "6110_3";
+            if (tick.Tick() && Target.stand == false)
+            {
+                Target.x_auto += 0.2f * -Target.flipX;
+                return;
+            }
 
+            count++;
+            Target.attackingAnimationName = "6110_3";
 
-         this.Shoot();
-
+            this.Shoot();
 
         }
         else if (count == 2)
         {
-
-        Target.x_auto += 0.02f;
+            Target.x_auto += 0.02f * -Target.flipX;
         }
     }
     private void Shoot()
@@ -781,7 +780,7 @@ public class Skill6_1 : SkillBase
         info.scale_x = 2f;
         info.scale_y = 2f;
         BulletMgr.Create(this.Target, "BulletConfig", info);
-       
+
     }
     public override void OnSpineCompolete()
     {
@@ -789,46 +788,18 @@ public class Skill6_1 : SkillBase
         {
             //进入阶段二 下跳
             ++count;
-       
-            Target.is_spine_loop = false;
+
             Target.attackingAnimationName = "6110_2";
         }
         else if (count == 1)
         {
 
-          
-           /* Target.is_spine_loop = true;
-            count++;
-            Target.attackingAnimationName = "6110_3";*/
-
-
-
-
-
         }
         else/// if (count == 2)
         {
-
-
-
- 
-
- 
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
             this.OnExit();
+            this.stack.PushSingleSkill(new Skill6_1_2());
+
         }
 
     }
@@ -836,8 +807,10 @@ public class Skill6_1 : SkillBase
     {
         this.Enable = false;
         Target.isAttacking = false;
+        Target.is_spine_loop = true;
         count = 0;
         this.ResumeAll();
+
     }
     public override void OnPush()
     {
@@ -851,10 +824,82 @@ public class Skill6_1 : SkillBase
     public override void OnInterrupted(AttackInfo info)
     {
 
-
-
     }
     bool is_move_complete = false;
     int count = 0;
-    Counter tick = Counter.Create(15);
+    Counter tick = Counter.Create(15);//位移
+    Counter tick1 = Counter.Create(15);// 起跳
+}
+
+
+/// <summary>
+/// 6_1 的第二段连招  反手猛的一招 击飞很远 不可打断
+/// </summary>
+
+public class Skill6_1_2 : SkillBase
+{
+    public override void OnEnter()
+    {
+
+        this.PauseAll();
+        Target.isAttacking = true;
+        this.Enable = true;
+        Target.attackingAnimationName = "6010";
+        this.Shoot();
+
+    }
+    public override void UpdateMS()
+    {
+
+    }
+    private void Shoot()
+    {
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitBack");
+
+        info.launch_delta_xy.x = 1.5f;
+        info.launch_delta_xy.y = -0.2f;
+        info.frameDelay = 4;
+        info.distance_atk = 2.0f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6112/role_6_bul_6112.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 15;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+        BulletMgr.Create(this.Target, "BulletConfig", info);
+
+    }
+    public override void OnSpineCompolete()
+    {
+        this.stack.PopSingleSkill();
+
+    }
+    public override void OnExit()
+    {
+        this.Enable = false;
+        Target.isAttacking = false;
+        Target.is_spine_loop = true;
+        this.ResumeAll();
+
+    }
+    public override void OnPush()
+    {
+        if (Target.isStand == false) return;
+        if (Target.isAttacking) return;
+        if (this.Enable) return;
+
+        this.OnEnter();
+
+    }
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+    }
 }
