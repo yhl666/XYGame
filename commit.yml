@@ -2,13 +2,22 @@
 branches: {
   }
 fileChange:
-  /Room:
-    newFile: !uuid 'a7d790ac2c69a2dcfc50e7f67fef67063b7b388e'
-    oldFile: !uuid '9a7aa6a2ada3acad1f7050e994060f798829e59b'
-  /Room/room-20.log:
-    newFile: !uuid '1cba390036aaf46f3ed27af34f13cf05e0279155'
-    oldFile: !uuid 'cd0e2297e7c349b47211161c63be59aae120cea8'
-gitCommitId: !uuid 'bedaf56256b3c56021d3c9f3ca474c838316082d'
+  /UnityClient:
+    newFile: !uuid '234cef6b7f0ff2d1624c7d133410dc08557f8bbe'
+    oldFile: !uuid 'a84f2908210f3664eb34bc8ca9ca7ff017e536fc'
+  /UnityClient/Assets:
+    newFile: !uuid '4e535c4ebec110fce0d46bfb2c285e4ef34611d9'
+    oldFile: !uuid 'eb038f07bcbadc1a6d534e95376370b1e37d90ea'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'a786765d3abf64c51dcb5c5d5479b1c6b6a20f69'
+    oldFile: !uuid '9bdc54eed3e627be8752c2d806c0b9e8ef9e0911'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '528e934c035e450a552403853c12a7834f9e27d7'
+    oldFile: !uuid 'b4cadb69794115ec1c4a62c68e088d1b5ad16bc7'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid 'a0c63c858c28541c26152f6aae8de0b13415d217'
+    oldFile: !uuid 'b647b769573111788cfc35e2d61347f79cee2882'
+gitCommitId: !uuid 'a02e863688e5901445eace03c9fe8e8a6bb41b4e'
 renames: {
   }
-revisionId: 451
+revisionId: 452
