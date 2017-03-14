@@ -741,7 +741,7 @@ public class Skill6_1 : SkillBase
         else if (count == 1)
         {
 
-            if (tick.Tick() && Target.stand == false)
+            if (tick.Tick() && Target.y>0.0f) // 可提前触发
             {
                 Target.x_auto += 0.2f * -Target.flipX;
                 return;
@@ -766,7 +766,7 @@ public class Skill6_1 : SkillBase
         info.AddBuffer("BufferHitBack");
 
         info.launch_delta_xy.x = 1.5f;
-        info.launch_delta_xy.y = 0f;
+        info.launch_delta_xy.y = -0.2f;
         info.frameDelay = 4;
         info.distance_atk = 2.0f;
         info.number = 0xfff;
@@ -865,6 +865,7 @@ public class Skill6_1_2 : SkillBase
         info.distance_atk = 2.0f;
         info.number = 0xfff;
         info.isHitDestory = false;
+        info.damage_ratio = 1.5f;
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
         info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6112/role_6_bul_6112.plist";
