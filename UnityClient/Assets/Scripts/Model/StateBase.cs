@@ -137,6 +137,7 @@ public class JumpState : StateBase
         }
 
         this.Enable = true;
+        jump_speed = DATA.DEFAULT_JUMP_SPEED;
         //  this.OnEnter();
 
     }
