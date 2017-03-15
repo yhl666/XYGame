@@ -56,7 +56,7 @@ public sealed class FileCache
         Debug.Log("FileCache: " + ins.hash.Count + " in Cache");
         foreach (DictionaryEntry kv in ins.hash)
         {
-            Debug.Log("FileCache: " + kv.Key);
+            Debug.Log("FileCache: " + kv.Key + " Size=" + (kv.Value as string).Length * sizeof (char));
 
         }
     }
