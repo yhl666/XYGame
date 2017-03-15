@@ -82,8 +82,9 @@ public sealed class FileCache
         }
         return _ins;
     }
-
-
+    public static void DestroyInstance()
+    {
+        _ins.Clear();
+        _ins = null;
+    }
 }
-
-

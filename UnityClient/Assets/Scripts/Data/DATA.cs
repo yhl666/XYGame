@@ -10,6 +10,12 @@ using System.Collections;
 
 public class DATA
 {
+    public static void Init()
+    {
+        var path = DATA.dataPath;
+    }
+    public static string dataPath = Application.dataPath;
+
 
     public const string UI_PREFABS_FILE_BATTLE = "Prefabs/ui/Battle";
 
@@ -42,5 +48,7 @@ public class DATA
 
     public const float DEFAULT_JUMP_SPEED = 0.2f;//默认起跳初速度;
     public const float GRAVITY_RATIO = 0.05f;//默认重力比例
+
+
 }
 

@@ -62,7 +62,21 @@ sealed class BattleKeyboardInputHandler
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            for (int i = 0; i < 3; i++)
+            {
+                AsyncQueue.ins.Enqueue(() =>
+                {
+                    Files f = Files.Create("88.xml");/// FileCache.ins.GetFiles("1.txt");
 
+                    return f;
+                },
+          (object res) =>
+          {
+              Files f = res as Files;
+              Debug.Log("ok");
+          });
+
+            }
             PublicData.ins.IS_jump = true;
 
         }
@@ -114,13 +128,13 @@ sealed class BattlePVEHandler : BattleHandlerBase
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         {
-            for (int i = 0; i <2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = randObj.Next(5, 20);
                 ;
                 //   e1.x = 5+i*0.1f;   
-           ///   e1.x = 55555;
+                ///   e1.x = 55555;
                 e1.y = 5;
                 e1.team = 333;
 

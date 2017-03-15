@@ -205,12 +205,11 @@ public class SocketClient : object
             {
                 Debug.Log("连接已经断开" + e.Message);
                 this.isConnected = false;
-                EventDispatcher.ins.AddFuncToMainThread(new Func<int>(() =>
+                EventDispatcher.ins.AddFuncToMainThread(() =>
                     {
                         EventDispatcher.ins.PostEvent(Events.ID_NET_DISCONNECT);
 
-                        return 0;
-                    }));
+                    });
 
 
                 return;
@@ -429,7 +428,7 @@ public class SockClientEmpty : SocketClient
 
     public override void AddSendMsg(string msg)
     {
-        
+
     }
 
     public override bool Startup()
@@ -446,15 +445,15 @@ public class SockClientEmpty : SocketClient
 
     private void InitThread()
     {
- 
-    
+
+
     }
 
 
     private void ThreadFunction_Recv()
     {
 
-       
+
     }
 
     public void SetPlayeSpeed(int sp)

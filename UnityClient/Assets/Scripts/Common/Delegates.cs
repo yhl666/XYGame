@@ -10,4 +10,4 @@ public delegate void VoidFuncVoid();
 public delegate void VoidFuncObject(object obj);
 public delegate void VoidFuncString(string str);
 public delegate void VoidFuncRpc(string msg, VoidFuncString cb);
-
+public delegate object ObjectFuncVoid();

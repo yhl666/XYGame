@@ -16,7 +16,7 @@ public sealed class EventDispatcher : GAObject
 {
     private EventDispatcher()
     {
-      ///  EventSystem.ins.AddEvent_Update(this);
+        ///  EventSystem.ins.AddEvent_Update(this);
         for (int i = 0; i < Events.MAX_EVENT_LENGTH; i++)
         {
             objs_event[i] = null;
@@ -31,7 +31,7 @@ public sealed class EventDispatcher : GAObject
     public override void OnDispose()
     {
         base.OnDispose();
-     ////   EventSystem.ins.RemoveEvent_Update(this);
+        ////   EventSystem.ins.RemoveEvent_Update(this);
         TimerQueue.DestroyInstance();
     }
 
@@ -233,7 +233,7 @@ public sealed class EventDispatcher : GAObject
 
     }
 
-    public void AddFuncToMainThread(Func<int> func)
+    public void AddFuncToMainThread(VoidFuncVoid func)
     {
         this._queue_funcs.Enqueue(func);
     }
@@ -244,7 +244,7 @@ public sealed class EventDispatcher : GAObject
 
         while (_queue_funcs.UnSafeEmpty() == false)
         {
-            Func<int> func = _queue_funcs.UnSafeDequeue() as Func<int>;
+            VoidFuncVoid func = _queue_funcs.UnSafeDequeue() as VoidFuncVoid;
             func();
         }
 

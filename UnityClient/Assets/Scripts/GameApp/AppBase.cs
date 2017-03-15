@@ -9,6 +9,10 @@ using System.Collections;
 
 public class AppBase : GAObject
 {
+    public AppBase()
+    {
+        DATA.Init();
+    }
     public WorldMap GetCurrentWorldMap()
     {
         return this.worldMap;

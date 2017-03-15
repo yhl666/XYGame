@@ -37,7 +37,7 @@ public class Files
     public static Files Create(string file)
     {
         Files ret = new Files();
-        ret.file = Application.dataPath + "/Resources/" + file;
+        ret.file = DATA.dataPath + "/Resources/" + file;
         if (ret.OpenFile())
         {
             ret.Init();
