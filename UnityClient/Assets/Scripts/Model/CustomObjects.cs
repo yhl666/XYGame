@@ -136,8 +136,6 @@ public class TerrainObjectTransform : CustomObject
         {
             return;
         }
-
-        Debug.Log("   2222222222");
         this.Enable = true;
         ArrayList heros = HeroMgr.ins.GetHeros();
         foreach (Hero hero in heros)
@@ -149,7 +147,6 @@ public class TerrainObjectTransform : CustomObject
               //强制位移 到顶点
                 hero.x = next_point.x;
                 hero.y = next_point.y;
-                Debug.Log(" transform 111111111");
             }
         }
     }
