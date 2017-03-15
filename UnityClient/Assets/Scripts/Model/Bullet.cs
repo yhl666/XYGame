@@ -362,6 +362,10 @@ public sealed class BulletConfig : Bullet
         this.scale_y = info.scale_y;
 
     }
+    public static BulletConfog CreateWithJson(string json)
+    {
+            
+    }
     public BulletConfigInfo info = null;
 }
 
