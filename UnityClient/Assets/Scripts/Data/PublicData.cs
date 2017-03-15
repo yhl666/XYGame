@@ -50,7 +50,7 @@ public class PublicData : object
         }
 
 
-        {/*
+        {
 
             self_user = DAO.User.Create();
             user_pvp_other = DAO.User.Create();
@@ -67,8 +67,7 @@ public class PublicData : object
 
             HeroMgr.ins.self = h2;
 
-            */
-
+  
 
         }
     }

@@ -20,6 +20,7 @@ public class CustomObject : Model
 
     public void LoadWithData(object obj)
     {
+        if (obj == null) return;
         this.InitWithData(obj);
     }
     public virtual void InitWithData(object obj)
@@ -128,33 +129,44 @@ public class TerrainObjectRevivePoint : CustomObject
 public class TerrainObjectTransform : CustomObject
 {
     public float distance = 0.5f;
-
+    public Vector2 next_point;
     public override void UpdateMS()
     {
         if (Enable == false )
         {
             return;
         }
+
+        Debug.Log("   2222222222");
         this.Enable = true;
         ArrayList heros = HeroMgr.ins.GetHeros();
         foreach (Hero hero in heros)
         {
-            if (this.y < hero.GetRealY()) continue;
+       ///     if (this.y < hero.GetRealY()-0.5) continue;
 
             if (hero.ClaculateDistance(x, y) < distance)
             {//传送点范围内
               //强制位移 到顶点
-
-                
+                hero.x = next_point.x;
+                hero.y = next_point.y;
+                Debug.Log(" transform 111111111");
             }
         }
     }
 
+    public override void InitWithData(object obj)
+    {
+        TerrainObjectTransformData data = obj as TerrainObjectTransformData;
+        this.next_point = new Vector2(data.next_point.transform.position.x, data.next_point.transform.position.y);
 
+        this.x = data.gameObject.transform.position.x;
+        this.y = data.gameObject.transform.position.y;
+
+    }
     public override bool Init()
     {
         base.Init();
-        this.Enable = false;
+        this.Enable = true;
         this.has_ui = false;
         return true;
     }

@@ -227,6 +227,23 @@ public sealed class BattleWorldMap : WorldMap
 
 
 
+        {// -- init  transform
+            Transform p = obj_terrain.transform.FindChild("Transform");
+            if (p == null) return true;
+            Transform[] objs = p.GetComponentsInChildren<Transform>();
+
+            foreach (Transform obj in objs)
+            {
+                TerrainObjectTransformData data = obj.gameObject.GetComponent<TerrainObjectTransformData>();
+                if (data == null) continue;
+
+                CustomObject t = ModelMgr.Create<TerrainObjectTransform>();
+
+                t.LoadWithData(data);
+
+                this.custom_objs.Add(t);
+            }
+        }
 
 
 
