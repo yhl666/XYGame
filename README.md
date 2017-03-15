@@ -46,7 +46,8 @@
 6.添加对Lua实现部分逻辑的支持详见class LuaBuffer 还可以用可配置化的逻辑比如class BulletConfig(出于性能考虑暂不大面积使用lua)
 7.实现混合状态机详见StateMachine.cs和StateBase.cs
 8.添加对地图地形的可视化编辑 详见 Terrain.cs 和 WorldMap.cs 战斗场景结构
-9.等等
+9.AsyncQueue 异步任务队列，文件和FileCache
+等等
 
 #---------------------------------------已实现的玩法---------------------------
 1.好友系统，日常好友管理（添加，PVP，删除，等）
