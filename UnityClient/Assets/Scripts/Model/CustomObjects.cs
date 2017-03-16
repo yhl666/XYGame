@@ -164,7 +164,7 @@ public class TerrainObjectTransform : CustomObject
         if (data.next_point == null) return;
 
         this.next_point = new Vector2(data.next_point.transform.localPosition.x, data.next_point.transform.localPosition.y);
-
+        this.tick.SetMax(data.cd);
         this.x = data.gameObject.transform.localPosition.x;
         this.y = data.gameObject.transform.localPosition.y;
         this.has_init = true;
@@ -176,5 +176,5 @@ public class TerrainObjectTransform : CustomObject
         this.has_ui = false;
         return true;
     }
-    Counter tick = Counter.Create(40);
+    Counter tick = Counter.Create(40); //cd for transform
 }
