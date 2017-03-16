@@ -142,6 +142,30 @@ public sealed class BattleWorldMap : WorldMap
     }
     private bool UpdateWithPlaform(Entity what)
     {
+        {
+            var pair = what.GetTagPair("terrain_limit");
+            if (pair == null)
+            {//未找到
+
+            }
+            else
+            {
+                var block = pair.value as TerrainBlock;
+
+                if (what.x < block.x_left)
+                {
+                    what.x = block.x_left;
+                }
+                else if (what.x > block.x_right)
+                {
+                    what.x = block.x_right;
+                }
+
+                what.height_platform = block.height;
+
+                return true;
+            }
+        }
         float x = what.x;
 
         ArrayList blocks = platform.GetBlocks(x);
@@ -149,8 +173,38 @@ public sealed class BattleWorldMap : WorldMap
         if (blocks.Count > 0)
         {
             float MAX_HEIGHT = 0f;
+            TerrainBlock current_block = null;
             foreach (TerrainBlock block in blocks)
             {
+
+                if (block.name == "limit")
+                {
+                    if (what.HasTag("terrain_limit") == false)
+                    {//未上来
+                        if (what.GetRealY() >= block.height - 0.5f)
+                        {
+                            if (Mathf.Abs(what.x - block.x_left) < 0.1f)
+                            {
+                                what.x = block.x_left;
+
+                            }
+                            else if (Mathf.Abs(what.x - block.x_right) < 0.1f)
+                            {
+                                what.x = block.x_right;
+                            }
+                        }
+
+                        if (what.GetRealY() >= block.height - 1f)
+                        {
+                            if (what.x > block.x_left && what.x < block.x_right)
+                            {
+                                what.SetRealY(block.height - 1f);
+                            }
+                        }
+
+                        continue;
+                    }
+                }
                 float y = block.height;
 
                 if (y == what.GetRealY())
@@ -161,12 +215,14 @@ public sealed class BattleWorldMap : WorldMap
                 if (what.GetRealY() > y)
                 {
                     MAX_HEIGHT = Mathf.Max(y, MAX_HEIGHT);
+                    current_block = block;
                 }
             }
             if (MAX_HEIGHT == 0f)
             {// 没选出比现在更高的平台
                 return false;
             }
+
             what.height_platform = MAX_HEIGHT;
 
             return true;
@@ -192,7 +248,7 @@ public sealed class BattleWorldMap : WorldMap
 
         GameObject obj_terrain = GameObject.Find("Terrain");
         {// -- init revive points
-            Transform p =obj_terrain.transform.FindChild("RevivePoints");
+            Transform p = obj_terrain.transform.FindChild("RevivePoints");
             if (p == null) return true;
             Transform[] objs = p.GetComponentsInChildren<Transform>();
             /* foreach (Transform obj in objs)
@@ -209,8 +265,8 @@ public sealed class BattleWorldMap : WorldMap
         {// -- init hp pack
             Transform p = obj_terrain.transform.FindChild("HpPacks");
             if (p == null) return true;
-            Transform[] objs =p.GetComponentsInChildren<Transform>();
-        
+            Transform[] objs = p.GetComponentsInChildren<Transform>();
+
             foreach (Transform obj in objs)
             {
                 TerrainObjectHpPackData data = obj.gameObject.GetComponent<TerrainObjectHpPackData>();

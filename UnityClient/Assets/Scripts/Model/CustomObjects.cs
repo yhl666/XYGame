@@ -55,8 +55,8 @@ public class TerrainObjectHpPack : CustomObject
             {
                 this.Enable = false;
                 tick.Reset();
-                int delta= (int)((float) hero.hp  *  hp_percent/100.0f);
-                hero.current_hp +=delta;
+                int delta = (int)((float)hero.hp * hp_percent / 100.0f);
+                hero.current_hp += delta;
                 Debug.LogError("Terrain 血包 回血 " + delta);
                 this.view.SetActive(false);
                 return;
@@ -113,7 +113,7 @@ public class TerrainObjectRevivePoint : CustomObject
     }
     public override void UpdateMS()
     {
-       
+
     }
 }
 
@@ -130,9 +130,14 @@ public class TerrainObjectTransform : CustomObject
 {
     public float distance = 0.5f;
     public Vector2 next_point;
+    private bool has_init = false;
     public override void UpdateMS()
     {
-        if (Enable == false )
+        if (Enable == false || has_init == false)
+        {
+            return;
+        }
+        if (tick.Tick())
         {
             return;
         }
@@ -140,13 +145,15 @@ public class TerrainObjectTransform : CustomObject
         ArrayList heros = HeroMgr.ins.GetHeros();
         foreach (Hero hero in heros)
         {
-       ///     if (this.y < hero.GetRealY()-0.5) continue;
+            ///     if (this.y < hero.GetRealY()-0.5) continue;
 
             if (hero.ClaculateDistance(x, y) < distance)
             {//传送点范围内
-              //强制位移 到顶点
+                //强制位移 到顶点
                 hero.x = next_point.x;
-                hero.y = next_point.y;
+                hero.SetRealY(next_point.y);
+                tick.Reset();
+                hero.AddTag("terrain_limit", AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetTerrainPlatform().GetBlock("limit"));
             }
         }
     }
@@ -154,11 +161,13 @@ public class TerrainObjectTransform : CustomObject
     public override void InitWithData(object obj)
     {
         TerrainObjectTransformData data = obj as TerrainObjectTransformData;
-        this.next_point = new Vector2(data.next_point.transform.position.x, data.next_point.transform.position.y);
+        if (data.next_point == null) return;
 
-        this.x = data.gameObject.transform.position.x;
-        this.y = data.gameObject.transform.position.y;
+        this.next_point = new Vector2(data.next_point.transform.localPosition.x, data.next_point.transform.localPosition.y);
 
+        this.x = data.gameObject.transform.localPosition.x;
+        this.y = data.gameObject.transform.localPosition.y;
+        this.has_init = true;
     }
     public override bool Init()
     {
@@ -167,4 +176,5 @@ public class TerrainObjectTransform : CustomObject
         this.has_ui = false;
         return true;
     }
+    Counter tick = Counter.Create(40);
 }

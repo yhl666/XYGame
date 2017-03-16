@@ -110,6 +110,35 @@ public class TerrainBase : Model
 
 
     /// <summary>
+    /// 返回x坐标 对应的地形块
+    /// </summary>
+    /// <param name="block"></param>
+    /// <returns></returns>
+    public ArrayList GetBlocks(string tag)
+    {
+        ArrayList ret = new ArrayList();
+        foreach (TerrainBlock block in blocks)
+        {
+            if (block.name == tag)
+            {
+                ret.Add(block);
+            }
+        }
+        return ret;
+    }
+    public TerrainBlock GetBlock(string tag)
+    {
+        foreach (TerrainBlock block in blocks)
+        {
+            if (block.name == tag)
+            {
+                return block;
+            }
+        }
+        return null;
+    }
+
+    /// <summary>
     /// 返回当前块  的下一块
     /// </summary>
     /// <param name="block"></param>

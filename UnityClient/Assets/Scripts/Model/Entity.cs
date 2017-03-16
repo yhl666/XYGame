@@ -145,7 +145,67 @@ public class Entity : Model
     {
         return this.bufferMgr.Create(buffer);
     }
-
+    /// <summary>
+    /// 添加，通过tag ， 逻辑 来自定义标示
+    /// 不去重 ，谨慎使用
+    /// </summary>
+    /// <param name="tag"></param>
+    public void AddTag(string tag , object userData=null)
+    {
+        Pair<string, object> obj = new Pair<string, object>();
+        obj.key = tag;
+        obj.value = userData;
+        tags.Add(obj);
+    }
+    /// <summary>
+    /// 是否拥有，通过tag ， 逻辑 来自定义标示
+    /// 不去重 ，谨慎使用
+    /// </summary>
+    /// <param name="tag"></param>
+    /// <returns></returns>
+    public bool HasTag(string tag)
+    {
+        foreach( Pair<string,object> str in tags)
+        {
+            if (str.key == tag) return true;
+        }
+        return false;
+    }
+    /// <summary>
+    /// Tag 对应的userData，通过tag ， 逻辑 来自定义标示
+    /// 不去重 ，谨慎使用
+    /// </summary>
+    /// <param name="tag"></param>
+    /// <returns></returns>
+    public Pair<string,object> GetTagPair(string tag)
+    {
+        foreach (Pair<string, object> str in tags)
+        {
+            if (str.key == tag) return str;
+        }
+        return null;
+    }
+    /// <summary>
+    /// 删除，通过tag ， 逻辑 来自定义标示
+    /// 不去重 ，谨慎使用
+    /// </summary>
+    /// <param name="tag"></param>
+    public void RemoveTag(string tag)
+    {
+        foreach (Pair<string, object> str in tags)
+        {
+            if (str.key == tag)
+            {
+                tags.Remove(str);
+                return;
+            }
+        }
+    }
+    public void ClearTags()
+    {
+        this.tags.Clear();
+    }
+    private ArrayList tags = new ArrayList();// 状态标记变量
     public Buffer AddBuffer(Buffer buffer)
     {
         this.bufferMgr.Add(buffer);
@@ -219,7 +279,11 @@ public class Entity : Model
     {
         return Utils.ClaculateDistance(new Vector2(this.x, this.y + this.height), new Vector2(x, y));
     }
-
+    public void SetRealY(float y)
+    {
+        this._height = 0.0f;
+        this.y = y;
+    }
     public float GetRealY()
     {
         return this.y + height;

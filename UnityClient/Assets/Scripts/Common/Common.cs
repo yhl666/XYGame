@@ -5,7 +5,7 @@
  */
 using UnityEngine;
 using System.Collections;
-
+using System;
 
 public sealed class TranslateDataPack : object
 {
@@ -87,7 +87,11 @@ public class StableSort
 }
 
 
-
+public class Pair<T1, T2>
+{
+    public T1 key;
+    public T2 value;
+}
 
 public class Counter
 {
@@ -98,8 +102,8 @@ public class Counter
     public bool Tick()
     {
         tick++;
-        if (tick < max) {  return true; }
-        tick = 0;
+        if (tick < max) { return true; }
+        //   tick = 0;
         return false;
     }
 
