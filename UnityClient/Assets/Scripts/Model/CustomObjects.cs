@@ -154,6 +154,7 @@ public class TerrainObjectTransform : CustomObject
                 hero.SetRealY(next_point.y);
                 tick.Reset();
                 hero.AddTag("terrain_limit", AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetTerrainPlatform().GetBlock("limit"));
+                //TODO 死亡后 移除
             }
         }
     }
