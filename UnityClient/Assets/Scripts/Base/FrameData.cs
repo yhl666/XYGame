@@ -20,7 +20,7 @@ public sealed class FrameData : object
     public int atk = 0;//atk
     public int s1 = 0;//skill 1
     public int stand = 0;//stand
-
+    public int revive = 0;//revive point
 
     private FrameData()
     {
@@ -41,6 +41,8 @@ public sealed class FrameData : object
         s += "atk:" + atk.ToString() + ",";
         s += "s1:" + s1.ToString() + ",";
         s += "stand:" + stand.ToString() + ",";
+        s += "revive:" + revive.ToString() + ",";
+
         return s;
 
     }
@@ -57,6 +59,7 @@ public sealed class FrameData : object
             if (atk != 0) s += "atk:" + atk.ToString() + ",";
             if (s1 != 0) s += "s1:" + s1.ToString() + ",";
             if (stand != 0) s += "stand:" + stand.ToString() + ",";
+            if (revive != 0) s += "revive:" + revive.ToString() + ",";
         }
         else
         {
@@ -67,6 +70,8 @@ public sealed class FrameData : object
             s += "atk:" + atk.ToString() + ",";
             s += "s1:" + s1.ToString() + ",";
             s += "stand:" + stand.ToString() + ",";
+            s += "revive:" + revive.ToString() + ",";
+
         }
         return s;
 
@@ -172,6 +177,10 @@ public sealed class FrameData : object
                 if (k == "stand")
                 {
                     stand = int.Parse(v);
+                }
+                if(k =="revive")
+                {
+                    revive = int.Parse(v);
                 }
             }
 

@@ -80,15 +80,14 @@ class BattleHandlerBase : GAObject
     }
     public virtual void UpdateMSAfter()
     {
-        if (HeroMgr.ins.self.current_hp <= 0)
-        {
-            app.AddSendMsg("cmd:over");
-        }
-        if (PublicData.ins.is_pve && EnemyMgr.ins.GetEnemyCount() <= 0)
-        {
-            app.AddSendMsg("cmd:over");
-        }
-
+        /*  if (HeroMgr.ins.self.current_hp <= 0)
+          {
+              app.AddSendMsg("cmd:Over");
+          }
+          if (PublicData.ins.is_pve && EnemyMgr.ins.GetEnemyCount() <= 0)
+          {
+              app.AddSendMsg("cmd:Over");
+          }*/
     }
 
 
@@ -193,7 +192,7 @@ public sealed class BattleSyncHandler
     public void AddRecvMsg(string msg)
     {
         _recvQueue.Enqueue(msg);
-        ///  Debug.Log("[LOG]:Recv:  " + msg);
+        Debug.Log("[LOG]:Recv:  " + msg);
     }
 
     public void AddRecvMsgUnSafe(string msg)
@@ -290,7 +289,6 @@ public sealed class BattleSyncHandler
 
         // 处理玩家输入信息，（当前在帧里）
         //   _recvQueue.UnLock();
-
         FrameData dd = FrameData.Create();
         dd.no = HeroMgr.ins.me_no;
         //分析玩家操作
@@ -327,6 +325,11 @@ public sealed class BattleSyncHandler
         {
             dd.s1 = PublicData.ins.IS_s1;
             PublicData.ins.IS_s1 = 0;
+        }
+        if (PublicData.ins.IS_revive_point != 0)
+        {
+            dd.revive = PublicData.ins.IS_revive_point;
+            PublicData.ins.IS_revive_point = 0;
         }
 
         app.Send(dd.toUploadJson());
@@ -549,7 +552,10 @@ public sealed class BattleSyncHandler
                 }
             }
         }
+        else if (cmd == "revive")
+        {
 
+        }
         else
         {
             Debug.LogError("ProcessWithCustomData:UnKnow cmd=" + cmd);
@@ -640,7 +646,12 @@ public sealed class BattleSyncHandler
             {
                 hero.s1 = f.s1;
             }
-
+            if (f.revive != 0)
+            {
+                BufferRevive b = new BufferRevive();
+                b.point_index = f.revive;
+                hero.AddBuffer(b);
+            }
 
             /*  if (f.no == 0) continue;
            

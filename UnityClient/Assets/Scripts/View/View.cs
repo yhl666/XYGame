@@ -7,7 +7,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
- 
+
 
 //说明
 /*
@@ -142,6 +142,7 @@ public class ViewEntity : View
         this.transform = obj.GetComponent<Transform>();
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_REVIVE);
 
         //init event
 
@@ -167,10 +168,16 @@ public class ViewEntity : View
 
     public override void OnEvent(int type, object userData)
     {
+        Entity mm = userData as Entity;
+        if (mm != m) return;
+
         if (type == Events.ID_DIE)
         {
-            if (userData as Entity == m)
-                this.SetInValid();
+            this.obj.SetActive(false);
+        }
+        else if (type == Events.ID_REVIVE)
+        {
+            this.obj.SetActive(true);
         }
     }
 
@@ -192,7 +199,8 @@ public class ViewEntity : View
         //优先级匹配，状态可能组合，但是动画只有一个
         if (m.isDie)
         {
-            //  name = m.ani_die;
+
+            ///    name = m.ani_die;
         }
         else if (m.isHurt)
         {

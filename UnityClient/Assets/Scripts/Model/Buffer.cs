@@ -374,7 +374,7 @@ public class BufferEquipTest2 : Buffer
                 foreach (string buf in info.buffers_string)
                 {
                     Debug.Log("   " + buf);
-                    if(buf == "BufferHitBack")
+                    if (buf == "BufferHitBack")
                     {
                         Debug.Log("移除击退效果");
                         info.buffers_string.Remove(buf);
@@ -489,7 +489,7 @@ public class BufferSpeedSlow : Buffer
 
         base.OnExit();
     }
- 
+
 }
 
 
@@ -499,7 +499,7 @@ public class BufferSpeedSlow : Buffer
 /// </summary>
 public class BufferHitBack : Buffer
 {
- 
+
     public int time = 15;//默认3s
     public int dir = 1;
     public bool nonsense = true;
@@ -510,7 +510,7 @@ public class BufferHitBack : Buffer
             Buffer other = mgr.GetBuffer(this.GetId());
             if (other != null && other != this && other.GetId() == this.GetId())
             {
-             ///   other.GetCounter().Reset();
+                ///   other.GetCounter().Reset();
                 this.SetInValid();
                 return;
             }
@@ -526,7 +526,7 @@ public class BufferHitBack : Buffer
     public override void UpdateMS()
     {
         if (nonsense) return;
- 
+
         if (tick.Tick())
         {
             target.x_auto -= dir * 0.07f;
@@ -538,7 +538,7 @@ public class BufferHitBack : Buffer
     {
         base.Init();
         this.id = 0xffef1;
-        if(target.flipX>0)
+        if (target.flipX > 0)
         {
             dir = -1;
         }
@@ -553,6 +553,61 @@ public class BufferHitBack : Buffer
     }
 
 }
+
+
+
+
+
+
+/// <summary>
+///立刻复活Buffer
+/// </summary>
+public class BufferRevive : Buffer
+{
+    public int point_index = 0;
+    public override void OnEnter()
+    {
+        target.current_hp = target.hp;
+        target.isDie = false;
+        target.machine.Resume();
+
+        ArrayList points = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetCustomObjects<TerrainObjectRevivePoint>();
+
+        TerrainObjectRevivePoint p = points[point_index - 1] as TerrainObjectRevivePoint;
+
+
+        target.x = p.x;
+        target.SetRealY ( p.y);
+
+
+        EventDispatcher.ins.PostEvent(Events.ID_REVIVE, target);
+        this.SetInValid();
+        Debug.Log("复活 " + p.x + "   " + p.y);
+    }
+    public override void UpdateMS()
+    {
+
+    }
+    public override bool Init()
+    {
+        base.Init();
+        return true;
+    }
+
+    public override void OnEvent(int type, object userData)
+    {
+
+    }
+    public override void OnExit()
+    {
+        base.OnExit();
+    }
+
+}
+
+
+
+
 
 
 

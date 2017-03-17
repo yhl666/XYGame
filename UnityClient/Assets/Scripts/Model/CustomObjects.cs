@@ -104,7 +104,6 @@ public class TerrainObjectHpPack : CustomObject
 /// </summary>
 public class TerrainObjectRevivePoint : CustomObject
 {
-
     public override bool Init()
     {
         base.Init();
@@ -114,6 +113,13 @@ public class TerrainObjectRevivePoint : CustomObject
     public override void UpdateMS()
     {
 
+    }
+    public override void InitWithData(object obj)
+    {
+        TerrainObjectRevivePointData data = obj as TerrainObjectRevivePointData;
+        this.x = data.gameObject.transform.localPosition.x;
+        this.y = data.gameObject.transform.localPosition.y;
+        this.name = data.gameObject.name;
     }
 }
 

@@ -94,8 +94,7 @@ public class PublicData : object
     public bool IS_atk = false;//atk
     public int IS_s1 = 0;//skill 1
     public bool IS_stand = false;//stand
-
-
+    public int IS_revive_point = 0;
     public IGiantGame game = null;
 
 

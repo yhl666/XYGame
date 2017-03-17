@@ -13,6 +13,19 @@ public sealed class TranslateDataPack : object
 
     public string data;//for frame data
     public ArrayList customs = new ArrayList(); // for custom data
+    public int GetInt(int index)
+    {
+        return int.Parse(customs[index] as string);
+    }
+    public float GetFloat(int index)
+    {
+        return float.Parse(customs[index] as string);
+    }
+    public string GetString(int index)
+    {
+        return  customs[index] as string;
+    }
+
     public static TranslateDataPack Decode(string msg)
     {
         TranslateDataPack ret = new TranslateDataPack();
@@ -103,7 +116,7 @@ public class Counter
     {
         tick++;
         if (tick < max) { return true; }
-        //   tick = 0;
+    //    tick = 0;
         return false;
     }
 
@@ -131,7 +144,7 @@ public class Counter
     }
     public int GetCurrent()
     {
-        return this.tick;
+        return tick;
     }
     private Counter() { }
     private int tick;

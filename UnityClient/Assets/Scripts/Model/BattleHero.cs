@@ -227,7 +227,7 @@ public class BattleHero : Hero
 
         this.team = 1;
 
-        this.current_hp = 0xffffff;
+        this.current_hp = 20;
         this.hp = 0xffffff;
         this.atk_level = 3;
 
@@ -255,13 +255,19 @@ public class BattleHero : Hero
             //   Bullet b = BulletMgr.Create<Bullet2_1>(this);
 
         }
+
+
     }
     public override void UpdateMS()
     {
 
         if (this.isDie)
         {
-            this.machine.Pause(); return;
+            this.machine.Pause();
+
+         ///   EventDispatcher.ins.PostEvent(Events.ID_DIE, this);
+            
+            return;
         }
         if (this.enable_pvp_ai)
         {
@@ -375,12 +381,17 @@ public class BattleHero : Hero
     }
     public virtual void AI_AttackTarget()
     {
+        if (target.isDie)
+        {
+            target = null;
+            stand = true;
+            return;
+        }
         if (cd_atk <= 0)
         {
+
             //   target.TakeAttack(this);
             BulletMgr.Create(this, this.bulleClassName_atk1, this.bullet_atk1_info);
-
-
             atk = true;
             cd_atk = 80;// 2S
         }

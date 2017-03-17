@@ -543,6 +543,7 @@ public class DieState : StateBase
         {
             this.Enable = false;
             Target.isDie = true;
+            EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
         }
 
     }
@@ -557,7 +558,7 @@ public class DieState : StateBase
     {
         if (type == "SpineComplete")
         {
-            if (this.Enable == false)
+            if (this.Enable == false && Target.isDie)
             {
                 EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
             }

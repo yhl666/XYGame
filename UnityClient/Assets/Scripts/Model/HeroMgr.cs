@@ -81,12 +81,27 @@ public sealed class HeroMgr : GAObject
         }
     }
 
-
-    public ArrayList GetHeros()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="includeDie"> 是否包含死亡的Hero</param>
+    /// <returns></returns>
+    public ArrayList GetHeros(bool includeDie=false)
     {
-        return lists;
+        if (includeDie)
+        {
+            return lists;
+        }
+        ArrayList ret = new ArrayList();
+        foreach(Hero h in lists)
+        {
+            if(false == h.isDie)
+            {
+                ret.Add(h);
+            }
+        }
+        return ret;
     }
-
     public Hero GetHero(int no)
     {
         foreach (Hero hero in lists)

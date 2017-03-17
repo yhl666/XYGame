@@ -81,7 +81,11 @@ public sealed class UIBattleRoot : ViewUI
             this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
             return DATA.EMPTY_STRING;
         }));
-
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_die>(this));
+            return DATA.EMPTY_STRING;
+        }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_buffers>(this));
@@ -1045,5 +1049,106 @@ public sealed class UI_combo : ViewUI
     private int combo_cache = 0;
     private Text txt;
     private Counter tick_hide = Counter.Create(40);
+
+}
+
+
+
+public sealed class UI_die : ViewUI
+{
+    private bool isDie = false;
+    Counter tick = Counter.Create(120); // 30  s
+    public override void Update()
+    {
+
+    }
+    public override void OnEvent(int type, object userData)
+    {
+        if (PublicData.ins.is_pve) return;
+        if (type == Events.ID_DIE)
+        {
+            if (userData as Hero != HeroMgr.ins.self)
+            {
+                return;
+            }
+            this.panel.SetActive(true);
+            txt_info.text = "角色已死亡，复活倒计时";
+            isDie = true;
+            tick.Reset();
+            Debug.Log(" UI has die");
+
+        }
+    }
+    public override void UpdateMS()
+    {
+        if (PublicData.ins.is_pve) return;
+        if (isDie == false) return;
+        if (tick.Tick())
+        {
+            float t = (float)(tick.GetMax() - tick.GetCurrent())/ 40.0f;
+            int time = (int)t;
+            txt_info.text = "角色已死亡，复活剩余时间:" + time.ToString() + " 秒";
+            return;
+        }
+        txt_info.text = "请选择复活点，复活角色";
+
+
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        this.panel = GameObject.Find("ui_panel_die");
+
+        this.btn_p1 = panel.transform.FindChild("btn_p1").GetComponent<Button>();
+        this.btn_p2 = panel.transform.FindChild("btn_p2").GetComponent<Button>();
+        this.btn_p3 = panel.transform.FindChild("btn_p3").GetComponent<Button>();
+        this.btn_p4 = panel.transform.FindChild("btn_p4").GetComponent<Button>();
+        this.txt_info = panel.transform.FindChild("info").GetComponent<Text>();
+
+
+        this.btn_p1.onClick.AddListener(() =>
+        {
+            this.OnClick(1);
+        });
+        this.btn_p2.onClick.AddListener(() =>
+        {
+            this.OnClick(2);
+        });
+        this.btn_p3.onClick.AddListener(() =>
+        {
+            this.OnClick(3);
+        });
+        this.btn_p4.onClick.AddListener(() =>
+        {
+            this.OnClick(4);
+        });
+
+ 
+ 
+        EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
+
+        this.panel.SetActive(false);
+
+        return true;
+    }
+    private void OnClick(int index)
+    {
+        if(tick.IsMax())
+        {
+            ///执行复活动作
+            Debug.Log("POINT " + index);
+            this.panel.SetActive(false);
+            PublicData.ins.IS_revive_point = index;
+        }
+    }
+
+    GameObject panel = null;
+    Text txt_info = null;
+
+    Button btn_p1 = null;
+    Button btn_p2 = null;
+    Button btn_p3 = null;
+    Button btn_p4 = null;
 
 }

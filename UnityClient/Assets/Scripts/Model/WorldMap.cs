@@ -5,7 +5,7 @@
  */
 using UnityEngine;
 using System.Collections;
-
+using System;
 public class WorldMap : Model
 {
 
@@ -90,8 +90,31 @@ public class WorldMap : Model
     {
         return custom_objs;
     }
+    public ArrayList GetCustomObjects<T>() where T : CustomObject
+    {
+        Type t = typeof(T);
+        if (t == typeof(TerrainObjectRevivePoint))
+        {
+            return custom_objs_revivepoints;
+        }
+
+        ArrayList ret = new ArrayList();
+        foreach (CustomObject obj1 in custom_objs)
+        {
+            if ( obj1.GetType() == t)
+            {
+                ret.Add(obj1);
+            }
+        }
+        return ret;
+    }
+    public ArrayList GetRevivePoints()
+    {
+        return custom_objs_revivepoints;
+    }
 
     protected ArrayList custom_objs = new ArrayList();
+    protected ArrayList custom_objs_revivepoints = new ArrayList();
     protected ArrayList objs = new ArrayList();
     protected Terrain terrain = null;
     protected TerrainPlatform platform = null;
@@ -251,14 +274,17 @@ public sealed class BattleWorldMap : WorldMap
             Transform p = obj_terrain.transform.FindChild("RevivePoints");
             if (p == null) return true;
             Transform[] objs = p.GetComponentsInChildren<Transform>();
-            /* foreach (Transform obj in objs)
-             {
-                 CustomObject t = ModelMgr.Create<TerrainObjectRevivePoint>();
-                 t.x = obj.position.x;
-                 t.y = obj.position.y;
-                 t.name = obj.gameObject.name;
-                 this.custom_objs.Add(t);
-             }*/
+            foreach (Transform obj in objs)
+            {
+                TerrainObjectRevivePointData data = obj.gameObject.GetComponent<TerrainObjectRevivePointData>();
+                if (data == null) continue;
+
+                CustomObject t = ModelMgr.Create<TerrainObjectRevivePoint>();
+                t.LoadWithData(data);
+                this.custom_objs_revivepoints.Add(t);
+                this.custom_objs.Add(t);
+
+            }
         }
 
 
@@ -301,17 +327,6 @@ public sealed class BattleWorldMap : WorldMap
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
         return true;
     }
 
@@ -324,11 +339,6 @@ public sealed class BattleWorldMap : WorldMap
 
     }
 }
-
-
-
-
-
 
 
 public sealed class LogicWorldMap : WorldMap
