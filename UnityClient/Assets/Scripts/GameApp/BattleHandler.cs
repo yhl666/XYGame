@@ -192,7 +192,7 @@ public sealed class BattleSyncHandler
     public void AddRecvMsg(string msg)
     {
         _recvQueue.Enqueue(msg);
-        Debug.Log("[LOG]:Recv:  " + msg);
+    ///    Debug.Log("[LOG]:Recv:  " + msg);
     }
 
     public void AddRecvMsgUnSafe(string msg)

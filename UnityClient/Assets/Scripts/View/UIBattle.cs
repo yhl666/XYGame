@@ -1075,8 +1075,6 @@ public sealed class UI_die : ViewUI
             txt_info.text = "角色已死亡，复活倒计时";
             isDie = true;
             tick.Reset();
-            Debug.Log(" UI has die");
-
         }
     }
     public override void UpdateMS()
@@ -1137,7 +1135,7 @@ public sealed class UI_die : ViewUI
         if(tick.IsMax())
         {
             ///执行复活动作
-            Debug.Log("POINT " + index);
+      ///      Debug.Log("POINT " + index);
             this.panel.SetActive(false);
             PublicData.ins.IS_revive_point = index;
         }
