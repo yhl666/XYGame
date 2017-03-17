@@ -53,9 +53,9 @@ public class AttackInfo
     }
     public Entity target = null;//为null 标示 群体攻击 为一个Entity 表示单体攻击 //TODO 为数组 表示部分群体攻击
     public Entity ownner = null;
- 
- //public Func<AttackInfo, bool> atk_func = null;
-    public VoidFuncObject atk_func = null; 
+
+    //public Func<AttackInfo, bool> atk_func = null;
+    public VoidFuncObject atk_func = null;
     //---参与数值计算的属性
     public int damage = 0;
     public float crits_damage = 0.0f;
@@ -132,9 +132,9 @@ public class Entity : Model
         return this.bufferMgr.Create<T>(owner);
     }
 
-    public Buffer AddBuffer(string buffer,Entity owner)
+    public Buffer AddBuffer(string buffer, Entity owner)
     {
-        return this.bufferMgr.Create(buffer,owner);
+        return this.bufferMgr.Create(buffer, owner);
     }
     public Buffer AddBuffer<T>() where T : new()
     {
@@ -150,7 +150,7 @@ public class Entity : Model
     /// 不去重 ，谨慎使用
     /// </summary>
     /// <param name="tag"></param>
-    public void AddTag(string tag , object userData=null)
+    public void AddTag(string tag, object userData = null)
     {
         Pair<string, object> obj = new Pair<string, object>();
         obj.key = tag;
@@ -165,7 +165,7 @@ public class Entity : Model
     /// <returns></returns>
     public bool HasTag(string tag)
     {
-        foreach( Pair<string,object> str in tags)
+        foreach (Pair<string, object> str in tags)
         {
             if (str.key == tag) return true;
         }
@@ -177,7 +177,7 @@ public class Entity : Model
     /// </summary>
     /// <param name="tag"></param>
     /// <returns></returns>
-    public Pair<string,object> GetTagPair(string tag)
+    public Pair<string, object> GetTagPair(string tag)
     {
         foreach (Pair<string, object> str in tags)
         {
@@ -198,6 +198,25 @@ public class Entity : Model
             {
                 tags.Remove(str);
                 return;
+            }
+        }
+    }
+    /// <summary>
+    /// remove all  pair by tag
+    /// </summary>
+    /// <param name="tag"></param>
+    public void RemoveTags(string tag)
+    {
+        for (int i = 0; i < tags.Count; )
+        {
+            string b = tags[i] as string;
+            if (b == tag)
+            {
+                tags.Remove(b);
+            }
+            else
+            {
+                ++i;
             }
         }
     }
@@ -229,7 +248,7 @@ public class Entity : Model
 
         foreach (string buf in info.buffers_string)
         {
-            this.AddBuffer(buf,info.ownner);
+            this.AddBuffer(buf, info.ownner);
         }
         foreach (Buffer buf in info.buffers)
         {
@@ -315,12 +334,12 @@ public class Entity : Model
     public int combo_time = 0;//连击次数
     public Counter tick_combo = Counter.Create(120);//连击重置定时器
 
-    public void IncreaseCombo(int times=1)
+    public void IncreaseCombo(int times = 1)
     {
-        this.combo_time+=times;
+        this.combo_time += times;
         tick_combo.Reset();
-        if(this == HeroMgr.ins.self)
-        Debug.Log("连击" + this.combo_time);
+        if (this == HeroMgr.ins.self)
+            Debug.Log("连击" + this.combo_time);
     }
     public float atk_range = 2.0f;
     // base property
@@ -456,12 +475,12 @@ public class Entity : Model
             }
             else if (value > 0)
             {
-                delta_hp = value-_current_hp;
+                delta_hp = value - _current_hp;
                 _current_hp = value;
             }
             else
             {
-                delta_hp =- _current_hp;
+                delta_hp = -_current_hp;
                 _current_hp = 0;
             }
         }
@@ -614,10 +633,11 @@ public class Entity : Model
     {
         machine.UpdateMS();
         bufferMgr.UpdateMS();//self buffer mgr update
-        if(tick_combo.Tick())
+        if (tick_combo.Tick())
         {
             return;
-        }else
+        }
+        else
         {
             combo_time = 0;
         }
