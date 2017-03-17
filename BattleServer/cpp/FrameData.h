@@ -23,7 +23,7 @@ public:
 	int atk = 0;//atk
 	int s1 = 0;//skill 1
 	int stand = 0;//stand
-
+	int revive = 0;//revive point
 
 public:
 
@@ -83,13 +83,13 @@ public:
 		TranslateDataPack *ret = new TranslateDataPack;
 
 		if (msg == "")
-		{ 
-			ret->Release(); 
-			return nullptr; 
-		}
-		if (msg.size() < 4) 
 		{
-			ret->Release(); 
+			ret->Release();
+			return nullptr;
+		}
+		if (msg.size() < 4)
+		{
+			ret->Release();
 			return nullptr;
 		}// illegal 
 

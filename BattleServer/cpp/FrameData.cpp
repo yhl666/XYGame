@@ -78,7 +78,12 @@ string  FrameData::toJson(bool skip)
 		ret += Utils::itos(stand);
 		ret.append(",");
 	}
-
+	if ((skip  && revive != 0) || !skip)
+	{
+		ret.append("revive:");
+		ret += Utils::itos(revive);
+		ret.append(",");
+	}
 	return ret;
 }
 
@@ -169,7 +174,13 @@ void  FrameData::Parse()
 			this->s1 = std::stoi(str);
 		}
 	}
-
+	{
+		string &str = kv["revive"];
+		if (str != "")
+		{
+			this->revive = std::stoi(str);
+		}
+	}
 
 }
 
