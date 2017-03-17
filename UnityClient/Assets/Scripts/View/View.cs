@@ -202,13 +202,13 @@ public class ViewEntity : View
 
             ///    name = m.ani_die;
         }
-        else if (m.isHurt)
-        {
-            name = m.ani_hurt;
-        }
         else if (m.isAttacking)
         {
             name = m.attackingAnimationName;
+        }
+        else if (m.isHurt)
+        {
+            name = m.ani_hurt;
         }
         else if (m.isJumpTwice)
         {

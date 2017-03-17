@@ -227,7 +227,7 @@ public class BattleHero : Hero
 
         this.team = 1;
 
-        this.current_hp = 20;
+        this.current_hp = 0xffffff;
         this.hp = 0xffffff;
         this.atk_level = 3;
 
@@ -263,10 +263,17 @@ public class BattleHero : Hero
 
         if (this.isDie)
         {
+            if(enable_pvp_ai)
+            {
+                BufferRevive b = new BufferRevive();
+                b.point_index = 1;
+                this.AddBuffer(b);
+                return;
+            }
             this.machine.Pause();
 
-         ///   EventDispatcher.ins.PostEvent(Events.ID_DIE, this);
-            
+            ///   EventDispatcher.ins.PostEvent(Events.ID_DIE, this);
+
             return;
         }
         if (this.enable_pvp_ai)
