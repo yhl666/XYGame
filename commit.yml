@@ -3,90 +3,33 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'd55f3ed931cedbe05ef21289cf8afbb58d9e1e01'
-    oldFile: !uuid 'b1cd647a0ea1871af63dad88f8de4e584b6b1320'
+    newFile: !uuid 'c1f0a40de36489156420c1bbdecd1324cc656dfc'
+    oldFile: !uuid 'd55f3ed931cedbe05ef21289cf8afbb58d9e1e01'
   /UnityClient/Assets:
-    newFile: !uuid '973ffd3d2acb60e1ccf167c1401a76a750e743fc'
-    oldFile: !uuid '165091a4eed610af5f855e6f2d9fcf987afece21'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'f74110afbc76cb229a0bd7200563bf9f70de8a71'
-    oldFile: !uuid '98d51fa4d748b37b3f1b0339ac4e289c54054597'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'd0d8fea324e9f0371cb4225a7efeb17cb9d68af6'
-    oldFile: !uuid '670689d8af5524a6949e4425cd9518d3b2015bf1'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'd2d4edc2d27558d598368b19f145d28d2f377828'
-    oldFile: !uuid 'c307aa974d1c94fa09e740e60a8c8680f9a196de'
-  /UnityClient/Assets/Resources/Prefabs/ui/Battle.prefab:
-    newFile: !uuid 'b1cbc6f21d0d9abf2893ec294e92fddfff6fd327'
-    oldFile: !uuid '1c281a0b1b5b580fafd869cc95cf93cca3828891'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '11bee9ae8ff877deec7433bab7b0256aa732025b'
-    oldFile: !uuid '284ea67915e682e10b19018e10501516354d8335'
-  /UnityClient/Assets/Scenes/BattlePVP.unity:
-    newFile: !uuid '7f1d436cff59712cf51a2798909ad5e9051fcae4'
-    oldFile: !uuid 'c07dae05de9f1a586cc85299b192ed8ba9278b65'
+    newFile: !uuid '96fbbecd5eff094d9d2cba58e9281750aec101e8'
+    oldFile: !uuid '973ffd3d2acb60e1ccf167c1401a76a750e743fc'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid 'b9a9481c3f8a9b4d9ec5873c33055408f4113367'
-    oldFile: !uuid 'df5a78f5151866ca8ccac57081b892d734b1b168'
-  /UnityClient/Assets/Scripts/Base:
-    newFile: !uuid '9f50f487a2df21dae2944bd10d8227fad3a21375'
-    oldFile: !uuid '6ef2224fef06bb2b23cccb92d8ba0adf7807722a'
-  /UnityClient/Assets/Scripts/Base/Events.cs:
-    newFile: !uuid '0f68358132727a880ff5d95aa2cbb67976027c57'
-    oldFile: !uuid '98d39f505b9490f2f150d569ac6327728d089ad6'
-  /UnityClient/Assets/Scripts/Base/FrameData.cs:
-    newFile: !uuid '564264cee4975bbadab92dcd310fe16128ce2f5f'
-    oldFile: !uuid '0dc7b3feca93c4c4fe0359754c5cf6f43281cbfa'
-  /UnityClient/Assets/Scripts/Common:
-    newFile: !uuid 'b706ed7465078c7763773e15966c3d96470b3351'
-    oldFile: !uuid '26f58c2991e52fede1a47e816670a5b4b1050234'
-  /UnityClient/Assets/Scripts/Common/Common.cs:
-    newFile: !uuid '71c499d38e210b33dfa4ca999ce5d867dcf29ebc'
-    oldFile: !uuid 'd0836c4840c563bfb47ae8419bbcc3c75163702e'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '8a60de6126f94eb12a9cd92241c34a8b66123ba4'
-    oldFile: !uuid '78a3ede8985c1f00b3b060b73db5ce4778aae9f4'
-  /UnityClient/Assets/Scripts/Data/PublicData.cs:
-    newFile: !uuid '850b2d9899cb9d0192bf9358f5ffb83781d67aa2'
-    oldFile: !uuid 'c4e7c45b04ec68e589c4afdd1b2e1e11c1565d61'
+    newFile: !uuid '48ce4cc805fe766fc148fe7fc159ef58f4e36229'
+    oldFile: !uuid 'b9a9481c3f8a9b4d9ec5873c33055408f4113367'
   /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid '5d29601470a1f7869a36c8dfea7e789db04b1bd9'
-    oldFile: !uuid 'c1ed19a8d30de5eea6ca6e6a9a143cc44031eea1'
+    newFile: !uuid '3bfa09457520eb218de6c549f192b956cc58464d'
+    oldFile: !uuid '5d29601470a1f7869a36c8dfea7e789db04b1bd9'
   /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
-    newFile: !uuid '400c3a10739f2ea297577541ecd1f7730f929612'
-    oldFile: !uuid '9521771ec9f7dd01d2016812cfd77c9a2bb3318d'
+    newFile: !uuid '8adeaeb7bdf4296882f871eb90a5d3231cbfd9cc'
+    oldFile: !uuid '400c3a10739f2ea297577541ecd1f7730f929612'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'd42c1702245f0adedfaaafbcb6b6a8461454957c'
-    oldFile: !uuid 'dcf129b6acb073bf07efb8c05ff9f45220649c80'
-  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
-    newFile: !uuid '5d2d51a7cd2bdcf93ec044466f9af1df88654d3c'
-    oldFile: !uuid '45c8c23f669a8caff5da57836e2495c31cb1f1a8'
+    newFile: !uuid 'dbcb60b351fac2f2c5be80b3f74ae4687194285b'
+    oldFile: !uuid 'd42c1702245f0adedfaaafbcb6b6a8461454957c'
   /UnityClient/Assets/Scripts/Model/Buffer.cs:
-    newFile: !uuid 'ff966a117c73d04f764f1240d837c21e6951126f'
-    oldFile: !uuid '30fa96a70c31dcd687dc552682ea798d30c9a1e0'
-  /UnityClient/Assets/Scripts/Model/CustomObjects.cs:
-    newFile: !uuid '47edd95fd278fbc1b567d07f85efcd62599a10d4'
-    oldFile: !uuid 'fff08f46bf3dff4804919603d325223c42849914'
-  /UnityClient/Assets/Scripts/Model/HeroMgr.cs:
-    newFile: !uuid '2ac0323d9692b63a647a4fd820d232320a825eff'
-    oldFile: !uuid 'd0f18b67453802a4d9c9990982454517c9d33c1b'
-  /UnityClient/Assets/Scripts/Model/StateBase.cs:
-    newFile: !uuid '4395e3a80acc648197b49cd84f539943623c41e5'
-    oldFile: !uuid '98d2bf576bcdd553d9189ab89adaea9fb0599a08'
-  /UnityClient/Assets/Scripts/Model/WorldMap.cs:
-    newFile: !uuid '42f08e78de3895858db14b7a4c4baaa125b6f239'
-    oldFile: !uuid '2304ba2989534fd03a99789b718a7fa09d53e62a'
+    newFile: !uuid 'd43526f11f9485ef2ed0dc7dc622f985af724eb4'
+    oldFile: !uuid 'ff966a117c73d04f764f1240d837c21e6951126f'
   /UnityClient/Assets/Scripts/View:
-    newFile: !uuid '292980f72d00df827e2d4f6d922dbdb16ba6d814'
-    oldFile: !uuid '4de9b7ced4a17cf8f8e90fac5deb97f98227ac3b'
+    newFile: !uuid '50df222c290859f816eb5474eea8191c879aa702'
+    oldFile: !uuid '292980f72d00df827e2d4f6d922dbdb16ba6d814'
   /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid '3bccce5dd00abaedea237c35b4c9a8f869972643'
-    oldFile: !uuid '514338f5220af82ba51c62fb2d95c2d6d8b1e2ac'
-  /UnityClient/Assets/Scripts/View/View.cs:
-    newFile: !uuid 'c3d6e52b8a37f3142e012199de9f77ac22939685'
-    oldFile: !uuid '3a6a3b86042d353d2954f74c50af3e142ab3dd9b'
-gitCommitId: !uuid '779b1e0811b45aa8843bcf31423316311050ab00'
+    newFile: !uuid '1904ab82c67ccdc1f64b025de9d55c45af839dc2'
+    oldFile: !uuid '3bccce5dd00abaedea237c35b4c9a8f869972643'
+gitCommitId: !uuid 'e4c4447bb50ac968cce0069acd0eba22505febfa'
 renames: {
   }
-revisionId: 475
+revisionId: 476
