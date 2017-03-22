@@ -3,21 +3,30 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'bfb1c9355b6b8eff6c0b2f50ed0d50c5909bf91a'
-    oldFile: !uuid 'a70190ab0b854bcedf9876cec3c399a5c72aadee'
+    newFile: !uuid '738cbc66121fbf856aebb3d58188d44aa590d3ee'
+    oldFile: !uuid 'bfb1c9355b6b8eff6c0b2f50ed0d50c5909bf91a'
   /UnityClient/Assets:
-    newFile: !uuid 'a2efedcbb370232748ea94a1282c2bc88c2f6090'
-    oldFile: !uuid '15d9d838c72f78cc02ea6894676cada0ec97e4e9'
+    newFile: !uuid 'ecf83fbdbb45c5748f3999cc10d28a4ac7f2cb45'
+    oldFile: !uuid 'a2efedcbb370232748ea94a1282c2bc88c2f6090'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '0eac5be12fee8b1175d3916fb6bb19aaa3356145'
-    oldFile: !uuid '28da760cb684bd72df6f58c0efec7991f149ca7a'
+    newFile: !uuid 'd5ca4de73a15d9e4fa30a189f5fd9399971790f4'
+    oldFile: !uuid '0eac5be12fee8b1175d3916fb6bb19aaa3356145'
+  /UnityClient/Assets/Scripts/Common:
+    newFile: !uuid '8c27dda4e7838a3307deb83c8c000e584d8c3d67'
+    oldFile: !uuid '6bc05628fb08e09b196b9dea2029220f9b3b3c6b'
+  /UnityClient/Assets/Scripts/Common/Delegates.cs:
+    newFile: !uuid 'fc2efde6521f324a1f2ed9035647c4268aa0be95'
+    oldFile: !uuid '2fc20ebcc96c511c78f198edae4f05b39fbaa0c8'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '6c05b3b1ab6b92edd98da31efba58ac3e243d2ec'
-    oldFile: !uuid 'fc7bcba8c200617e0faf10364ea86fbe1a3068e9'
+    newFile: !uuid '1f820b497f035878751bbdfb529144c44d5db7db'
+    oldFile: !uuid '6c05b3b1ab6b92edd98da31efba58ac3e243d2ec'
   /UnityClient/Assets/Scripts/Model/Buffer.cs:
-    newFile: !uuid '8dc517b8e656199c641c130cd5f1c5c906184324'
-    oldFile: !uuid '2989302cefd58b10596351b789edff72c52c7efa'
-gitCommitId: !uuid 'fe56918e04e8e77ed6ef8be451efb31b5588d5cd'
+    newFile: !uuid 'f14805b56ed319ada5ddcd11dea7164eaf3be34a'
+    oldFile: !uuid '8dc517b8e656199c641c130cd5f1c5c906184324'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid 'd2b449ba41f93be9779a4f426e762a51be1ea8b0'
+    oldFile: !uuid '784ea26905f105688a480ceb7aa9d418f9951b3d'
+gitCommitId: !uuid 'a8fdc232d958cfb32d7f30ecda095bb5fe0745d6'
 renames: {
   }
-revisionId: 482
+revisionId: 483
