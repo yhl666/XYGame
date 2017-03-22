@@ -678,7 +678,7 @@ public class BufferSpin : Buffer
 
     public override string GetName()
     {
-        return "BufferDizziness";
+        return "BufferSpin";
     }
     public override void OnEnter()
     {
