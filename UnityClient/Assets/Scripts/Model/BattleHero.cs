@@ -112,6 +112,7 @@ public class BattleHero : Hero
             BulletConfigInfo info = BulletConfigInfo.Create();
             bullet_atk1_info = info;
             info.AddBuffer("BufferHitBack");
+            info.AddBuffer("BufferDizziness");
 
             info.launch_delta_xy.x = 1f;
             info.launch_delta_xy.y = 0f;
@@ -238,7 +239,6 @@ public class BattleHero : Hero
         {
             this.AddBuffer(buf);
         }
-        this.AddBuffer<BufferNegativeUnbeatable>();
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
         return true;
     }

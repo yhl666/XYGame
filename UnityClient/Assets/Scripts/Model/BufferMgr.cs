@@ -14,9 +14,20 @@ public sealed class BufferMgr : GAObject
 {
     public void Add(Buffer b)
     {
+        //处理唯一性
+        if (b.isOnlyOne)
+        {
+            Buffer has = GetBuffer(b.GetName());
+            if ( has!= null)
+            {
+                has.OnMerge(b);
+                return;
+            }
+        }
+        // 处理冲突
         foreach (Buffer buffer in lists)
         {
-            if(buffer.OnAddBuffer(b))
+            if (buffer.IsConflict(b))
             {
                 //冲突 ， 不添加
                 return;
@@ -121,7 +132,7 @@ public sealed class BufferMgr : GAObject
 
     public Buffer Create<T>(Entity owner) where T : new()
     {
-        return InitHelper(new T() as Buffer,owner);
+        return InitHelper(new T() as Buffer, owner);
     }
 
     //helper function for create Buffer
@@ -138,7 +149,7 @@ public sealed class BufferMgr : GAObject
     /// <param name="owner"></param>
     /// <param name="_class"> the class name</param>
     /// <returns></returns>
-    public Buffer Create(string _class,Entity owner)
+    public Buffer Create(string _class, Entity owner)
     {
         System.Type t = System.Type.GetType(_class);
         if (t == null)
@@ -146,9 +157,9 @@ public sealed class BufferMgr : GAObject
             Debug.LogError("UnKnown type:" + _class);
             return null;
         }
-        return InitHelper(System.Activator.CreateInstance(t) as Buffer,owner);
+        return InitHelper(System.Activator.CreateInstance(t) as Buffer, owner);
     }
-    private Buffer InitHelper(Buffer ret,Entity owner)
+    private Buffer InitHelper(Buffer ret, Entity owner)
     {
         if (ret == null) return null;
         ret.target = this.owner;
@@ -167,11 +178,11 @@ public sealed class BufferMgr : GAObject
 
     public Buffer Create(string _class)
     {
-        return Create(_class,this.owner);
+        return Create(_class, this.owner);
     }
     private Buffer InitHelper(Buffer ret)
     {
-        return this.InitHelper(ret,this.owner);
+        return this.InitHelper(ret, this.owner);
     }
 
     private BufferMgr()

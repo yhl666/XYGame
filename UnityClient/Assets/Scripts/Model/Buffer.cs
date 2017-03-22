@@ -26,9 +26,11 @@ public class Buffer : Model
     public int tick1 = 0;
     public int MAX_TICK = 80;
     public int id = 0;
+    public bool isOnlyOne = false;//buffer是否是唯一
     public virtual int GetId() { return id; }  //buffer 唯一id
 
-
+ 
+  
     public virtual string GetName() { return "Buffer"; }
     /// <summary>
     /// then override this remember call base.UpdateMS()
@@ -62,10 +64,18 @@ public class Buffer : Model
     /// </summary>
     /// <param name="what"></param>
     /// <returns></returns>
-    public virtual bool OnAddBuffer(Buffer what)
+    public bool IsConflict(Buffer what)
     {// 读取 buffer 冲突 配置表
 
         return ConfigTables.BufferConflict.IsConflict(this, what);
+    }
+    /// <summary>
+    /// 当Buffer为唯一时 一样的buffer添加后 触发合并事件
+    /// </summary>
+    /// <param name="other"></param>
+    public virtual void OnMerge(Buffer other)
+    {
+
     }
     public override void OnExit()
     {
@@ -653,6 +663,47 @@ public class BufferNegativeUnbeatable : Buffer
 }
 
 
+/// <summary>
+/// 眩晕
+/// </summary>
+public class BufferDizziness : Buffer
+{
+    float time = 3.0f;//持续时间
+
+    public override string GetName()
+    {
+        return "BufferDizziness";
+    }
+    public override void OnEnter()
+    {
+        target.eventDispatcher.PostEvent("SpineComplete");
+
+        this.SetLastTime(time);
+        target.machine.Pause();
+        target.isStand = true;
+        target.isHurt = false;
+        target.isAttacking = false;
+   
+    }
+    public override void OnExit()
+    {
+        target.machine.Resume();
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
+    public override void UpdateMS()
+    {
+        base.UpdateMS();
+    }
+
+
+
+
+}
 
 
 /// <summary>
