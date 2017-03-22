@@ -936,7 +936,7 @@ public class Skill6_2 : SkillBase
         buffer.percent = -130;
         buffer.time = Utils.fpsi * 5;
         Target.AddBuffer(buffer);
- 
+
 
     }
     public override void UpdateMS()
@@ -1283,14 +1283,22 @@ public class Skill62_1 : SkillBase
         this.Shoot();
 
 
+        {
+            BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
+            buffer.id = 0xef2;
+            buffer.percent = -30;
+            buffer.time = Utils.fpsi * 2;
+            Target.AddBuffer(buffer);
+        }
+        {
 
-        BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
-        buffer.id = 0xef2;
-        buffer.percent = -30;
-        buffer.time = Utils.fpsi * 2;
-        Target.AddBuffer(buffer);
 
 
+            BufferNegativeUnbeatable buffer = BufferMgr.CreateHelper<BufferNegativeUnbeatable>(Target);
+            buffer.MAX_TICK = Utils.fpsi * 2;
+            Target.AddBuffer(buffer);
+
+        }
     }
     public override void UpdateMS()
     {

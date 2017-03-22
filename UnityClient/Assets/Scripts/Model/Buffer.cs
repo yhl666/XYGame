@@ -662,7 +662,7 @@ public class BufferNegativeUnbeatable : Buffer
     }
     public override void UpdateMS()
     {
-
+        base.UpdateMS();
     }
 
 
@@ -699,7 +699,7 @@ public class BufferSpin : Buffer
     }
     public override void OnMerge(Buffer other)
     {
-        
+
     }
     public override void OnExit()
     {
@@ -744,6 +744,48 @@ public class BufferSpin : Buffer
 
 
 
+
+}
+
+
+/// <summary>
+/// 可配置 buffer
+/// </summary>
+public class BufferConfig : Buffer
+{
+    public HashTable kvs = HashTable.Create();
+    public string Name = "BufferConfig";
+    public override string GetName()
+    {
+        return Name;
+    }
+    public override void OnEnter()
+    {
+        if (_OnEnter != null)
+        {
+            _OnEnter(this);
+        }
+    }
+    public override bool Init()
+    {
+        base.Init();
+        if (_OnInit != null)
+        {
+            _OnInit(this);
+        }
+        return true;
+    }
+    public override void UpdateMS()
+    {
+        if (_OnUpdateMS != null)
+        {
+            _OnUpdateMS(this);
+        }
+    }
+    public VoidFuncN<Buffer> _OnUpdateMS = null;
+    public VoidFuncN<Buffer> _OnEnter = null;
+    public VoidFuncN<Buffer> _OnExit = null;
+    public VoidFuncN<Buffer> _OnInit = null;
 
 }
 
