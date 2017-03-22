@@ -192,24 +192,32 @@ public sealed class UI_joystick : ViewUI
              */
         this.btn_jump.onClick.AddListener(delegate()
         {
+            if (PublicData.ins.inputAble == false) return;
+
             this.On_BtnClicked(Events.ID_BTN_JUMP);
             PublicData.ins.IS_jump = true;
         });
         this.btn_atk.onClick.AddListener(delegate()
         {
             //  this.On_BtnClicked(Events.ID_BTN_ATTACK);
+            if (PublicData.ins.inputAble == false) return;
+
             PublicData.ins.IS_atk = true;
         });
         this.btn_left.onOver = () =>
         {
             //    EventDispatcher.ins.PostEvent(Events.ID_BTN_LEFT);
             //  HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent(Events.ID_BTN_LEFT);
+            if (PublicData.ins.inputAble == false) return;
+
             PublicData.ins.IS_left = true;
         };
         this.btn_left.onExit = () =>
         {
             //  EventDispatcher.ins.PostEvent(Events.ID_STAND);
             //    HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent(Events.ID_STAND);
+            if (PublicData.ins.inputAble == false) return;
+
             PublicData.ins.IS_stand = true;
         };
 
@@ -217,12 +225,17 @@ public sealed class UI_joystick : ViewUI
         {
             //   HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent(Events.ID_BTN_RIGHT);
             //   EventDispatcher.ins.PostEvent(Events.ID_BTN_RIGHT);
+            if (PublicData.ins.inputAble == false) return;
+
             PublicData.ins.IS_right = true;
         };
         this.btn_right.onExit = () =>
         {
             //  EventDispatcher.ins.PostEvent(Events.ID_STAND);
             //  HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent(Events.ID_STAND);
+
+            if (PublicData.ins.inputAble == false) return;
+
             PublicData.ins.IS_stand = true;
         };
 

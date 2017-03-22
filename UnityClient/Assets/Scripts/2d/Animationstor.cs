@@ -23,12 +23,12 @@ public class Animationstor : MonoBehaviour
 
     public void UpdateMS()
     {
-       /* if (ani == null)
+        if (ani == null)
         {
             this.Init();
         }
         if (ani != null)
-            ani.UpdateMS();*/
+            ani.UpdateMS();
     }
 
     void OnDestroy()

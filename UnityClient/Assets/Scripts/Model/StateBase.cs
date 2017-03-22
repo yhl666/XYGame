@@ -151,6 +151,11 @@ public class JumpState : StateBase
         this.stack.id = StateStack.ID_JUMP;
 
     }
+    public override void OnPause()
+    {
+        this.Enable = false;
+        Target.isJumping = false;
+    }
     public override void OnExit()
     {
 
@@ -202,6 +207,10 @@ public class JumpTwiceState : StateBase
             this.Target.y += jump_speed;
             Target.isJumpTwice = true;
         }
+
+    }
+    public override void OnPause()
+    {
 
     }
     public override void OnEvent(string type, object userData)
@@ -293,6 +302,10 @@ public class FallState : StateBase
     {
         this.Enable = true;
     }
+    public override void OnPause()
+    {
+
+    }
     public override void OnExit()
     {
 
@@ -322,7 +335,7 @@ public class RunState : StateBase
     public override void UpdateMS()
     {
         if (moveable == false) return;
-        if (enable_atk==false)
+        if (enable_atk == false)
         {
             if (Target.isAttacking && Target.isStand) return;
         }
@@ -405,6 +418,10 @@ public class RunState : StateBase
         this.stack.id = StateStack.ID_RUN;
 
     }
+    public override void OnPause()
+    {
+
+    }
     public override void OnExit()
     {
 
@@ -440,7 +457,14 @@ public class StandState : StateBase
         }
 
     }
+    public override void OnPause()
+    {
 
+    }
+    public override void OnResume()
+    {
+     
+    }
     public override void OnEnter()
     {
 
@@ -484,7 +508,16 @@ public class HurtState : StateBase
             Target.isHurt = false;
         }
     }
+    public override void OnPause()
+    {
+        this.Enable = false;
+        tick = 0;
+        Target.isHurt = false;
+    }
+    public override void OnResume()
+    {
 
+    }
     public override void OnEnter()
     {
 
@@ -547,7 +580,14 @@ public class DieState : StateBase
         }
 
     }
+    public override void OnPause()
+    {
 
+    }
+    public override void OnResume()
+    {
+
+    }
     public override void OnEnter()
     {
 
@@ -584,7 +624,15 @@ public class AttackState_1 : StateBase
         }
         return null;
     }
+    public override void OnPause()
+    {
+        Target.isAttacking = false;
+        this.Enable = false;
+    }
+    public override void OnResume()
+    {
 
+    }
     public override string GetAnimationName() { return Target.ani_atk1; }
 
     public AttackState_1()
@@ -758,7 +806,19 @@ public class AttackState_2 : StateBase
         }
     }
 
+    public override void OnPause()
+    {
+        if(this.Enable)
+        {
+            this.stack.PopSingleState();
+        }
+        Target.isAttacking = false;
+        this.Enable = false;
+    }
+    public override void OnResume()
+    {
 
+    }
     public override void OnEnter()
     {
         this.Enable = true;
@@ -850,7 +910,19 @@ public class AttackState_3 : StateBase
         }
     }
 
+    public override void OnPause()
+    {
+        if (this.Enable)
+        {
+            this.stack.PopSingleState();
+        }
+        Target.isAttacking = false;
+        this.Enable = false;
+    }
+    public override void OnResume()
+    {
 
+    }
     public override void OnEnter()
     {
         this.Enable = true;

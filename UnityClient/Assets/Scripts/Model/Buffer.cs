@@ -14,6 +14,12 @@ public class Buffer : Model
     public string brief = "";
     public string name = "";
     public string icon = "hd/interface/items/502154.png";
+
+
+    //--------for view
+    public string plist = "";
+    public bool has_view = false;
+    public float scale = 0.7f;
     public Counter GetCounter()
     {
         return tick;
@@ -29,8 +35,8 @@ public class Buffer : Model
     public bool isOnlyOne = false;//buffer是否是唯一
     public virtual int GetId() { return id; }  //buffer 唯一id
 
- 
-  
+
+
     public virtual string GetName() { return "Buffer"; }
     /// <summary>
     /// then override this remember call base.UpdateMS()
@@ -677,27 +683,63 @@ public class BufferDizziness : Buffer
     public override void OnEnter()
     {
         target.eventDispatcher.PostEvent("SpineComplete");
-
         this.SetLastTime(time);
-        target.machine.Pause();
-        target.isStand = true;
-        target.isHurt = false;
-        target.isAttacking = false;
-   
+        target.machine.PauseAllStack();
+
+        if (target as Hero == HeroMgr.ins.self)
+        {
+            PublicData.ins.inputAble = false;
+        }
+        target.machine.GetState<RunState>().SetDisable();
+        target.machine.GetState<FallState>().Resume();
+        target.machine.GetState<StandState>().Resume();
+
+
+
+    }
+    public override void OnMerge(Buffer other)
+    {
+        
     }
     public override void OnExit()
     {
-        target.machine.Resume();
+        target.machine.ResumeAllStack();
+        if (target as Hero == HeroMgr.ins.self)
+        {
+            PublicData.ins.inputAble = true;
+        }
     }
     public override bool Init()
     {
         base.Init();
+        isOnlyOne = true;
+        has_view = true;
+        plist = "hd/buff/buff_200564/buff_200564.plist";
+        plist = "88";
+
 
         return true;
     }
     public override void UpdateMS()
     {
         base.UpdateMS();
+        //reset all cmd
+        target.atk = false;
+        target.left = false;
+        target.right = false;
+        target.jump = false;
+        target.s1 = 0;
+        /*
+        target.isAttacking = false;
+   
+       
+    ///    target.isStand = false;
+        target.isRunning = false;
+        target.isJumpTwice = false;
+        target.isDie = false;*/
+        target.isJumping = false;
+        target.isHurt = false;
+        target.isRunning = false;
     }
 
 

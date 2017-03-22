@@ -71,7 +71,7 @@ public class PublicData : object
 
         }
     }
-
+    public bool inputAble = true;
     public string _game_over_info_string;
 
     public ArrayList _recv_last_game;

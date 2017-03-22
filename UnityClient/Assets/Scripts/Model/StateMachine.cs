@@ -90,9 +90,19 @@ public sealed class StateMachine : GAObject
     {
         pause = false;
     }
+    public bool IsPause()
+    {
+        return pause;
+    }
+    public bool IsAllStackPause()
+    {
+        return pause_all;
+    }
+    private bool pause_all = false;
 
     public void PauseAllStack()
     {
+        pause_all = true;
         foreach (StateStack s in states)
         {
             s.Pause();
@@ -100,6 +110,7 @@ public sealed class StateMachine : GAObject
     }
     public void ResumeAllStack()
     {
+        pause_all = false;
         foreach (StateStack s in states)
         {
             s.Resume();

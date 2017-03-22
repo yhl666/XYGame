@@ -33,6 +33,11 @@ public sealed class BufferMgr : GAObject
                 return;
             }
         }
+        if (b.has_view && b.plist != "")
+        {
+            ViewMgr.Create<ViewBuffer>(b);
+        }
+
         this.lists.Add(b);
         b.mgr = this;
         b.target = owner;
@@ -167,6 +172,8 @@ public sealed class BufferMgr : GAObject
         ret.mgr = this;
         ret.Init();
         this.Add(ret);
+
+    
         return ret;
     }
 

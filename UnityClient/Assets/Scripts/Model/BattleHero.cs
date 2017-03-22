@@ -262,7 +262,7 @@ public class BattleHero : Hero
 
         if (this.isDie)
         {
-            if(enable_pvp_ai)
+            if (enable_pvp_ai)
             {
                 BufferRevive b = new BufferRevive();
                 b.point_index = 1;
@@ -281,40 +281,42 @@ public class BattleHero : Hero
         }
 
         //process  input status
-        if (atk)
-        {
-            eventDispatcher.PostEvent(Events.ID_BTN_ATTACK);
-            atk = false;
-        }
-        if (stand)
-        {
-            eventDispatcher.PostEvent(Events.ID_STAND);
-            stand = false;
-        }
-        if (left)
-        {
-            eventDispatcher.PostEvent(Events.ID_BTN_LEFT);
-            left = false;
-        }
 
-        if (right)
+        if (this.machine.IsAllStackPause() == false)
         {
-            eventDispatcher.PostEvent(Events.ID_BTN_RIGHT);
-            right = false;
-        }
-        if (jump)
-        {
-            eventDispatcher.PostEvent(Events.ID_BTN_JUMP);
-            jump = false;
-        }
+            if (atk)
+            {
+                eventDispatcher.PostEvent(Events.ID_BTN_ATTACK);
+                atk = false;
+            }
+            if (stand)
+            {
+                eventDispatcher.PostEvent(Events.ID_STAND);
+                stand = false;
+            }
+            if (left)
+            {
+                eventDispatcher.PostEvent(Events.ID_BTN_LEFT);
+                left = false;
+            }
 
-        if (s1 != 0)
-        {
-            eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1, s1);
-            s1 = 0;
+            if (right)
+            {
+                eventDispatcher.PostEvent(Events.ID_BTN_RIGHT);
+                right = false;
+            }
+            if (jump)
+            {
+                eventDispatcher.PostEvent(Events.ID_BTN_JUMP);
+                jump = false;
+            }
+
+            if (s1 != 0)
+            {
+                eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1, s1);
+                s1 = 0;
+            }
         }
-
-
         base.UpdateMS();
 
         if (team == 1)
@@ -397,7 +399,7 @@ public class BattleHero : Hero
         {
 
             //   target.TakeAttack(this);
-            BulletMgr.Create(this, this.bulleClassName_atk1, this.bullet_atk1_info);
+        //    BulletMgr.Create(this, this.bulleClassName_atk1, this.bullet_atk1_info);
             atk = true;
             cd_atk = 80;// 2S
         }

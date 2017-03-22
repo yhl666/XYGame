@@ -35,6 +35,8 @@ sealed class BattleKeyboardInputHandler
 
     public void Update()
     {
+        if (PublicData.ins.inputAble == false) return;
+
         if (Input.GetKey(KeyCode.A))
         {
             PublicData.ins.IS_left = true;

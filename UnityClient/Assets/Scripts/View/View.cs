@@ -409,26 +409,29 @@ public class ViewEnemy : View
 
 
 
-public class ViewBuffer2_1 : View
+public class ViewBuffer : View
 {
     public override bool Init()
     {
         base.Init();
-        m = model as Buffer2_1;
-        /*   view_bullet = PrefabsMgr.Load("Prefabs/Animations");
-           view_bullet.GetComponent<Animationstor>().file = m.plist;
-           ani = view_bullet.GetComponent<Animationstor>();
+        m = model as Buffer;
+        view_bullet = PrefabsMgr.Load("Prefabs/Animations");
+        view_bullet.GetComponent<Animationstor>().file = m.plist;
+        ani = view_bullet.GetComponent<Animationstor>();
 
-           ani.gameObject.transform.localScale = new Vector3(ani.gameObject.transform.localScale.x,
-                 -m.flipX,
-                ani.gameObject.transform.localScale.z);
-           */
+        ani.Init();
+        ani.ani.Run();
+
+        ani.ani.SetLoop(0xffffff);
+        ani.gameObject.transform.localScale = new Vector3(m.scale, m.scale, ani.gameObject.transform.localScale.z);
+
+
         return true;
     }
 
     public override void OnDispose()
     {
-        //  GameObject.DestroyImmediate(view_bullet);
+        GameObject.Destroy(view_bullet);
     }
 
 
@@ -437,17 +440,17 @@ public class ViewBuffer2_1 : View
         if (m.IsInValid())
         {
             this.SetInValid();
-
-
         }
-        //   ani.ani.UpdateMS();
+  
+          ani.ani.UpdateMS();
 
         //  ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
-
+        ani.gameObject.transform.position = new Vector3(m.target.x, m.target.GetRealY()+0.7f, ani.gameObject.transform.position.z);
+    
     }
     private GameObject view_bullet;
     private Animationstor ani;
-    private Buffer2_1 m = null;
+    private Buffer m = null;
 
 }
 
