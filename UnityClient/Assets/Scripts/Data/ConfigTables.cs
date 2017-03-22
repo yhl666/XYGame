@@ -19,11 +19,18 @@ namespace ConfigTables
                 Init();
             }
 
-            string s = kv.Get(a.GetName());
-            if (s.IndexOf(b.GetName()) == -1) return false;
+            return IsConflict(a.GetName(), b.GetName());
+        }
+        public static bool IsConflict(string a ,string b )
+        {
+            if (kv == null)
+            {
+                Init();
+            }
+            string s = kv.Get(a);
+            if (s.IndexOf(b) == -1) return false;
             return true;
         }
-
         public static void Init()
         {//TODO init with config table
             kv = HashTable.Create();
@@ -34,14 +41,7 @@ namespace ConfigTables
         static HashTable kv = null;
     }
 
-
-
-
-
-
-
-
-
+ 
 
 
 

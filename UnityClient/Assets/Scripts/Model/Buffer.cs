@@ -672,7 +672,7 @@ public class BufferNegativeUnbeatable : Buffer
 /// <summary>
 /// 眩晕
 /// </summary>
-public class BufferDizziness : Buffer
+public class BufferSpin : Buffer
 {
     float time = 3.0f;//持续时间
 
