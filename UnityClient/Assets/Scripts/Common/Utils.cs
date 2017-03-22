@@ -143,7 +143,13 @@ public sealed class Utils
             return 40.0f;
         }
     }
-
+    public static int fpsi
+    {
+        get
+        {
+            return 40;
+        }
+    }
     public static void  SetTargetFPS(int fps)
     {
          Application.targetFrameRate = fps;

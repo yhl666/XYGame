@@ -126,6 +126,10 @@ public class Counter
         ret.max = max;
         return ret;
     }
+    public void TickMax()
+    {
+
+    }
     public void Reset()
     {
         this.tick = 0;

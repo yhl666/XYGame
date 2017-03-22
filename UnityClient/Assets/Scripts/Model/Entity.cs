@@ -230,6 +230,11 @@ public class Entity : Model
         this.bufferMgr.Add(buffer);
         return buffer;
     }
+    public Buffer RemoveBuffer(Buffer buffer)
+    {
+        this.bufferMgr.Remove(buffer);
+        return buffer;
+    }
     /// <summary>
     ///  accpet attacked
     /// </summary>

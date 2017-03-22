@@ -6,7 +6,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 public class Buffer : Model
 {
 
@@ -56,6 +55,17 @@ public class Buffer : Model
     public virtual bool IsComplete()
     {
         return (tick1 > MAX_TICK);
+    }
+    /// <summary>
+    /// 如果冲突 返回 true ，添加buffer 事件
+    /// 用于处理buffer 之间的冲突
+    /// </summary>
+    /// <param name="what"></param>
+    /// <returns></returns>
+    public virtual bool OnAddBuffer(Buffer what)
+    {// 读取 buffer 冲突 配置表
+
+        return ConfigTables.BufferConflict.IsConflict(this, what);
     }
     public override void OnExit()
     {
@@ -373,7 +383,6 @@ public class BufferEquipTest2 : Buffer
                 }
                 foreach (string buf in info.buffers_string)
                 {
-                    Debug.Log("   " + buf);
                     if (buf == "BufferHitBack")
                     {
                         Debug.Log("移除击退效果");
@@ -441,6 +450,10 @@ public class BufferEquipTest2 : Buffer
 /// </summary>
 public class BufferSpeedSlow : Buffer
 {
+    public override string GetName()
+    {
+        return "BufferSpeedSlow";
+    }
     public float percent = 50.0f;//减速百分比
     public int time = 120;//默认减速3s
     private float speed_slow = 0.0f;
@@ -499,7 +512,10 @@ public class BufferSpeedSlow : Buffer
 /// </summary>
 public class BufferHitBack : Buffer
 {
-
+    public override string GetName()
+    {
+        return "BufferHitBack";
+    }
     public int time = 15;//默认3s
     public int dir = 1;
     public bool nonsense = true;
@@ -564,6 +580,11 @@ public class BufferHitBack : Buffer
 /// </summary>
 public class BufferRevive : Buffer
 {
+    public override string GetName()
+    {
+        return "BufferRevive";
+    }
+
     public int point_index = 0;
     public override void OnEnter()
     {
@@ -576,11 +597,11 @@ public class BufferRevive : Buffer
         TerrainObjectRevivePoint p = points[point_index - 1] as TerrainObjectRevivePoint;
 
         target.x = p.x;
-        target.SetRealY ( p.y);
+        target.SetRealY(p.y);
 
         EventDispatcher.ins.PostEvent(Events.ID_REVIVE, target);
         this.SetInValid();
-   ///     Debug.Log("复活 " + p.x + "   " + p.y);
+        ///     Debug.Log("复活 " + p.x + "   " + p.y);
     }
     public override void UpdateMS()
     {
@@ -605,7 +626,31 @@ public class BufferRevive : Buffer
 
 
 
+/// <summary>
+/// 免疫控制技能 buffer
+/// </summary>
+public class BufferNegativeUnbeatable : Buffer
+{
+    public override string GetName()
+    {
+        return "BufferNegativeUnbeatable";
+    }
+    public override void OnEnter()
+    {
+        base.OnEnter();
 
+    }
+    public override bool Init()
+    {
+        return base.Init();
+    }
+    public override void UpdateMS()
+    {
+
+    }
+
+
+}
 
 
 

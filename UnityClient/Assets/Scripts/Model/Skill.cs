@@ -929,6 +929,15 @@ public class Skill6_2 : SkillBase
         Target.attackingAnimationName = "6100_2";
         this.Shoot();
 
+
+
+        BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
+        buffer.id = 0xef2;
+        buffer.percent = -130;
+        buffer.time = Utils.fpsi * 5;
+        Target.AddBuffer(buffer);
+ 
+
     }
     public override void UpdateMS()
     {
@@ -1243,4 +1252,122 @@ public class Skill6_3_2 : SkillBase
 
     }
 
+}
+
+
+
+
+
+/// <summary>
+/// 形态2 技能1
+/// 人物动画6100_2，无特效，判定范围为人物边框，持续2秒，
+/// 除切换取消和终结技取消外无法停止，释放期间可以移动(控制免疫)，并且移动速度增加30%，cd15s。
+/// </summary>
+public class Skill62_1 : SkillBase
+{
+    Counter cd = Counter.Create(15 * 40);
+    Counter tick = Counter.Create(80);
+    public override void OnEnter()
+    {
+        cd.Reset();
+        this.PauseAll();
+        this.Target.machine.GetState<StandState>().Resume();
+        this.Target.machine.GetState<FallState>().Resume();
+        tick.Reset();
+        RunState state = this.Target.machine.GetState<RunState>() as RunState;
+        state.Resume();
+        state.EnableWhenAttack();
+        Target.isAttacking = true;
+        this.Enable = true;
+        Target.attackingAnimationName = "6100_2";
+        this.Shoot();
+
+
+
+        BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
+        buffer.id = 0xef2;
+        buffer.percent = -30;
+        buffer.time = Utils.fpsi * 2;
+        Target.AddBuffer(buffer);
+
+
+    }
+    public override void UpdateMS()
+    {
+        cd.Tick();
+        if (tick.Tick())
+        {
+            b.x = Target.x;
+            b.y = Target.GetRealY();
+            if (b.IsInValid())
+            {//每次Bullet持续时间为10 fps ， 为结束 继续释放bullet
+                this.Shoot();
+            }
+            return;
+        }
+        this.OnExit();
+    }
+    public override void UpdateMSIdle()
+    {
+        cd.Tick();
+    }
+    private void Shoot()
+    {
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitBack");
+
+        info.launch_delta_xy.x = 1.5f;
+        info.launch_delta_xy.y = -0.2f;
+        info.frameDelay = 4;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.damage_ratio = 1.5f;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6122/role_6_bul_6122.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 10;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+        b = BulletMgr.Create(this.Target, "BulletConfig", info);
+    }
+    public override void OnSpineCompolete()
+    {
+        ///  this.stack.PopSingleSkill();
+
+    }
+    public override void OnExit()
+    {
+        b.SetInValid();
+        this.Enable = false;
+        Target.isAttacking = false;
+        tick.Reset();
+        Target.is_spine_loop = true;
+        RunState state = this.Target.machine.GetState<RunState>() as RunState;
+        state.DisableWhenAttak();
+        this.ResumeAll();
+
+        this.stack.PushSingleSkill(new Skill6_2_2());
+
+
+    }
+    public override void OnPush()
+    {
+        if (cd.IsMax() == false) return;
+        if (Target.isStand == false) return;
+        if (Target.isAttacking) return;
+        if (this.Enable) return;
+
+        this.OnEnter();
+
+    }
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+    }
+    Bullet b = null;
 }

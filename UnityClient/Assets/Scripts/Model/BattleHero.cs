@@ -238,8 +238,7 @@ public class BattleHero : Hero
         {
             this.AddBuffer(buf);
         }
-
-
+        this.AddBuffer<BufferNegativeUnbeatable>();
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
         return true;
     }

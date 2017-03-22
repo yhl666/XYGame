@@ -14,6 +14,14 @@ public sealed class BufferMgr : GAObject
 {
     public void Add(Buffer b)
     {
+        foreach (Buffer buffer in lists)
+        {
+            if(buffer.OnAddBuffer(b))
+            {
+                //冲突 ， 不添加
+                return;
+            }
+        }
         this.lists.Add(b);
         b.mgr = this;
         b.target = owner;
