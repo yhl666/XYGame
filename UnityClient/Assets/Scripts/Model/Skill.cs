@@ -1256,8 +1256,6 @@ public class Skill6_3_2 : SkillBase
 
 
 
-
-
 /// <summary>
 /// 形态2 技能1
 /// 人物动画6100_2，无特效，判定范围为人物边框，持续2秒，
@@ -1265,7 +1263,7 @@ public class Skill6_3_2 : SkillBase
 /// </summary>
 public class Skill62_1 : SkillBase
 {
-    Counter cd = Counter.Create(15 * 40);
+    Counter cd = Counter.Create(1 * 40);
     Counter tick = Counter.Create(80);
     public override void OnEnter()
     {
@@ -1291,13 +1289,9 @@ public class Skill62_1 : SkillBase
             Target.AddBuffer(buffer);
         }
         {
-
-
-
             BufferNegativeUnbeatable buffer = BufferMgr.CreateHelper<BufferNegativeUnbeatable>(Target);
             buffer.MAX_TICK = Utils.fpsi * 2;
             Target.AddBuffer(buffer);
-
         }
     }
     public override void UpdateMS()
@@ -1359,10 +1353,11 @@ public class Skill62_1 : SkillBase
         state.DisableWhenAttak();
         this.ResumeAll();
 
-        this.stack.PushSingleSkill(new Skill6_2_2());
+        /// this.stack.PushSingleSkill(new Skill6_2_2());
 
 
     }
+ 
     public override void OnPush()
     {
         if (cd.IsMax() == false) return;
@@ -1372,6 +1367,13 @@ public class Skill62_1 : SkillBase
 
         this.OnEnter();
 
+    }
+    public override bool Init()
+    {
+        base.Init();
+        cd.TickMax();
+     
+        return true;
     }
     public override void OnInterrupted(AttackInfo info)
     {

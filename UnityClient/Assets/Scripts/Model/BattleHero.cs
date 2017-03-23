@@ -282,7 +282,7 @@ public class BattleHero : Hero
 
         //process  input status
 
-        if (this.machine.IsAllStackPause() == false)
+      ////  if (this.machine.IsAllStackPause() == false)
         {
             if (atk)
             {

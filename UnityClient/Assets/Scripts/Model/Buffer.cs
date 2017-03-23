@@ -72,8 +72,12 @@ public class Buffer : Model
     /// <returns></returns>
     public bool IsConflict(Buffer what)
     {// 读取 buffer 冲突 配置表
-
-        return ConfigTables.BufferConflict.IsConflict(this, what);
+        bool ret = ConfigTables.BufferConflict.IsConflict(this, what);
+        /*  if(ret)
+          {
+              Debug.LogError(this.GetName() + "  Conflict   " + what.GetName());
+          }*/
+        return ret;
     }
     /// <summary>
     /// 当Buffer为唯一时 一样的buffer添加后 触发合并事件
@@ -682,6 +686,8 @@ public class BufferSpin : Buffer
     }
     public override void OnEnter()
     {
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
+
         target.eventDispatcher.PostEvent("SpineComplete");
         this.SetLastTime(time);
         target.machine.PauseAllStack();
@@ -708,6 +714,7 @@ public class BufferSpin : Buffer
         {
             PublicData.ins.inputAble = true;
         }
+        EventDispatcher.ins.RemoveEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
     }
     public override bool Init()
     {
@@ -716,19 +723,17 @@ public class BufferSpin : Buffer
         has_view = true;
         plist = "hd/buff/buff_200564/buff_200564.plist";
         plist = "88";
-
-
+     
         return true;
+    }
+    public override void OnDispose()
+    {
+       
     }
     public override void UpdateMS()
     {
         base.UpdateMS();
-        //reset all cmd
-        target.atk = false;
-        target.left = false;
-        target.right = false;
-        target.jump = false;
-        target.s1 = 0;
+
         /*
         target.isAttacking = false;
    
@@ -742,7 +747,20 @@ public class BufferSpin : Buffer
         target.isRunning = false;
     }
 
-
+    public override void OnEvent(int type, object userData)
+    {
+        if (this.IsInValid()) return;
+        if (type == Events.ID_BEFORE_ONEENTITY_UPDATEMS)
+        {
+            if (userData as Entity != this.target) return;
+            //reset all cmd
+            target.atk = false;
+            target.left = false;
+            target.right = false;
+            target.jump = false;
+            target.s1 = 0;
+        }
+    }
 
 
 }

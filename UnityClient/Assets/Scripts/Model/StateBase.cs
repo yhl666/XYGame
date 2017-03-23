@@ -337,7 +337,10 @@ public class RunState : StateBase
         if (moveable == false) return;
         if (enable_atk == false)
         {
-            if (Target.isAttacking && Target.isStand) return;
+            if (Target.isAttacking && Target.isStand)
+            {
+                return;
+            }
         }
         if (Target.isHurt) return;
         this.Target.x -= (Target.speed * this.Target.flipX);
@@ -369,12 +372,10 @@ public class RunState : StateBase
         else if (type == Events.ID_BTN_LEFT)
         {
             Target.flipX = 1.0f; this.Enable = true;
-
         }
         else if (type == Events.ID_BTN_RIGHT)
         {
             Target.flipX = -1.0f; this.Enable = true;
-
         }
 
 
@@ -463,7 +464,7 @@ public class StandState : StateBase
     }
     public override void OnResume()
     {
-     
+
     }
     public override void OnEnter()
     {
@@ -626,7 +627,10 @@ public class AttackState_1 : StateBase
     }
     public override void OnPause()
     {
-        Target.isAttacking = false;
+        if (this.Enable)
+        {
+            Target.isAttacking = false;
+        }
         this.Enable = false;
     }
     public override void OnResume()
@@ -808,11 +812,12 @@ public class AttackState_2 : StateBase
 
     public override void OnPause()
     {
-        if(this.Enable)
+        if (this.Enable)
         {
             this.stack.PopSingleState();
+            Target.isAttacking = false;
         }
-        Target.isAttacking = false;
+
         this.Enable = false;
     }
     public override void OnResume()
@@ -915,8 +920,9 @@ public class AttackState_3 : StateBase
         if (this.Enable)
         {
             this.stack.PopSingleState();
+            Target.isAttacking = false;
         }
-        Target.isAttacking = false;
+
         this.Enable = false;
     }
     public override void OnResume()

@@ -128,7 +128,7 @@ public class Counter
     }
     public void TickMax()
     {
-
+        this.tick = max;
     }
     public void Reset()
     {
