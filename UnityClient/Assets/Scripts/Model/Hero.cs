@@ -24,6 +24,10 @@ public class Hero : Entity
     {
         this.enable_pvp_ai = e;
     }
+    public virtual void AI_UpdateMSWithAI()
+    {
+      
+    }
     public DAO.User user = null;
     public string name_head;
     protected bool enable_pvp_ai = false;

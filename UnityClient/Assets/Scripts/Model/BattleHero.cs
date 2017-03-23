@@ -277,12 +277,12 @@ public class BattleHero : Hero
         }
         if (this.enable_pvp_ai)
         {
-            this.AI_UpdateMSWithAI();
+            ///   this.AI_UpdateMSWithAI();
         }
 
         //process  input status
 
-      ////  if (this.machine.IsAllStackPause() == false)
+        ////  if (this.machine.IsAllStackPause() == false)
         {
             if (atk)
             {
@@ -330,8 +330,9 @@ public class BattleHero : Hero
     Hero target = null;
 
     private int cd_atk = 0;
-    public virtual void AI_UpdateMSWithAI()
+    public override void AI_UpdateMSWithAI()
     {
+        if (false == enable_pvp_ai) return;
         cd_atk--;
 
         //如果目标非法，那么寻找另外一个目标
@@ -399,7 +400,7 @@ public class BattleHero : Hero
         {
 
             //   target.TakeAttack(this);
-        //    BulletMgr.Create(this, this.bulleClassName_atk1, this.bullet_atk1_info);
+            //    BulletMgr.Create(this, this.bulleClassName_atk1, this.bullet_atk1_info);
             atk = true;
             cd_atk = 80;// 2S
         }
