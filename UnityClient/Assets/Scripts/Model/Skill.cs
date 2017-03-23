@@ -1357,7 +1357,7 @@ public class Skill62_1 : SkillBase
 
 
     }
- 
+
     public override void OnPush()
     {
         if (cd.IsMax() == false) return;
@@ -1372,7 +1372,7 @@ public class Skill62_1 : SkillBase
     {
         base.Init();
         cd.TickMax();
-     
+
         return true;
     }
     public override void OnInterrupted(AttackInfo info)
@@ -1381,3 +1381,279 @@ public class Skill62_1 : SkillBase
     }
     Bullet b = null;
 }
+
+
+
+
+/// <summary>
+/// 形态2 技能2
+/// </summary>
+public class Skill62_2 : SkillBase
+{
+    Counter cd = Counter.Create(1 * 40);
+    Counter tick = Counter.Create(10);
+    bool has_shoot = false;
+    public override void OnEnter()
+    {
+        cd.Reset();
+        this.PauseAll();
+        tick.Reset();
+        has_shoot = false;
+        this.Target.machine.GetState<StandState>().Resume();
+        this.Target.machine.GetState<FallState>().Resume();
+        Target.isAttacking = true;
+        this.Enable = true;
+        Target.is_spine_loop = false;
+        Target.attackingAnimationName = "6130_1";
+
+
+    }
+    public override void UpdateMS()
+    {
+        if (tick.Tick() == false && has_shoot == false)
+        {
+            this.Shoot();
+            has_shoot = true;
+        }
+        if (cd.Tick())
+        {
+            return;
+        }
+
+    }
+    public override void UpdateMSIdle()
+    {
+        cd.Tick();
+    }
+    private void Shoot()
+    {
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitFly");
+
+        info.launch_delta_xy.x = 1.5f;
+        info.launch_delta_xy.y = -0.2f;
+        info.frameDelay = 4;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.damage_ratio = 1.5f;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6224/role_6_bul_6224.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 10;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+        b = BulletMgr.Create(this.Target, "BulletConfig", info);
+    }
+    public override void OnSpineCompolete()
+    {
+        ///  this.stack.PopSingleSkill();
+
+        this.OnExit();
+    }
+    public override void OnExit()
+    {
+        b.SetInValid();
+        this.Enable = false;
+        Target.isAttacking = false;
+        Target.is_spine_loop = true;
+        this.ResumeAll();
+
+        /// this.stack.PushSingleSkill(new Skill6_2_2())
+
+    }
+
+    public override void OnPush()
+    {
+        if (cd.IsMax() == false) return;
+        if (Target.isStand == false) return;
+        if (Target.isAttacking) return;
+        if (this.Enable) return;
+
+        this.OnEnter();
+
+    }
+    public override bool Init()
+    {
+        base.Init();
+        cd.TickMax();
+
+        return true;
+    }
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+    }
+    Bullet b = null;
+}
+
+
+
+
+
+
+/// <summary>
+/// 形态2 技能3
+/// 起跳 在快速砍向 地面
+/// </summary>
+public class Skill62_3 : SkillBase
+{
+    Counter cd = Counter.Create(1 * 40);
+    Counter tick1 = Counter.Create(10);
+    bool has_shoot = false;
+    public override void OnEnter()
+    {
+        cd.Reset();
+        this.PauseAll();
+        tick1.Reset();
+        jump_speed = DATA.DEFAULT_JUMP_SPEED * 1f;
+        has_shoot = false;
+        this.Target.machine.GetState<StandState>().Resume();
+        this.Target.machine.GetState<FallState>().Resume();
+        Target.isAttacking = true;
+        this.Enable = true;
+        Target.is_spine_loop = false;
+        Target.attackingAnimationName = "6140_1";
+
+
+    }
+
+    private float jump_speed = DATA.DEFAULT_JUMP_SPEED * 1f;
+    public override void UpdateMS()
+    {
+        ///  Target.x_auto += Target.flipX * -0.05f;
+        if (tick1.Tick())
+        {//阶段1 起跳
+
+
+            if (jump_speed <= 0.0f)
+            {
+                tick1.TickMax();
+
+                BulletConfigInfo info = BulletConfigInfo.Create();
+
+                /// info.AddBuffer("BufferHitFly");
+
+                info.launch_delta_xy.x = 1.5f;
+                info.launch_delta_xy.y = -0.2f;
+                info.frameDelay = 3;
+                info.distance_atk = 1.5f;
+                info.number = 0xfff;
+                info.isHitDestory = true;
+                info.damage_ratio = 1.5f;
+                info.oneHitTimes = 1;
+                //  info.rotate = -120.0f;
+                ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
+
+                info.plistAnimation = "";
+                /// info.rotate = 30.0f;
+                info.distance = 0;
+                info.lastTime = 10;
+                info.scale_x = 2f;
+                info.scale_y = 2f;
+
+                Bullet b = BulletMgr.Create(this.Target, "BulletConfig", info);
+
+
+            }
+            else
+            {
+                //接入重力
+
+                jump_speed -= 9.8f / 40.0f * 0.1f;
+                ///   current_height += jump_speed;
+                this.Target.y += jump_speed;
+            }
+
+
+
+        }
+
+        if (Target.y <= 0 && has_shoot == false)
+        {
+            this.Shoot();
+            has_shoot = true;
+        }
+
+        if (cd.Tick())
+        {
+            return;
+        }
+
+    }
+    public override void UpdateMSIdle()
+    {
+        cd.Tick();
+    }
+    private void Shoot()
+    {
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitFly");
+
+        info.launch_delta_xy.x = 1.5f;
+        info.launch_delta_xy.y = -0.2f;
+        info.frameDelay = 3;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.damage_ratio = 1.5f;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
+
+        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 10;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+        b = BulletMgr.Create(this.Target, "BulletConfig", info);
+    }
+    public override void OnSpineCompolete()
+    {
+        ///  this.stack.PopSingleSkill();
+        ///  this.Shoot();
+        this.OnExit();
+    }
+    public override void OnExit()
+    {
+
+        this.Enable = false;
+        Target.isAttacking = false;
+        Target.is_spine_loop = true;
+        this.ResumeAll();
+
+        /// this.stack.PushSingleSkill(new Skill6_2_2())
+
+    }
+
+    public override void OnPush()
+    {
+        if (cd.IsMax() == false) return;
+      ///  if (Target.isStand == false) return;
+        if (Target.isAttacking) return;
+        if (this.Enable) return;
+
+        this.OnEnter();
+
+    }
+    public override bool Init()
+    {
+        base.Init();
+        cd.TickMax();
+
+        return true;
+    }
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+    }
+    Bullet b = null;
+}
+

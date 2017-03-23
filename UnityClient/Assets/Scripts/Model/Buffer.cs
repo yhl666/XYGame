@@ -592,6 +592,89 @@ public class BufferHitBack : Buffer
 
 
 
+/// <summary>
+/// 击飞
+/// </summary>
+public class BufferHitFly : Buffer
+{
+    public override string GetName()
+    {
+        return "BufferHitFly";
+    }
+    public int time = 15;//默认3s
+    public float height = 2.0f;
+    public float current_height = 0.0f;
+    public float speed = 7.0f;
+    public override void OnEnter()
+    {
+        this.isOnlyOne = true;
+
+        base.OnEnter();
+        tick.SetMax(5);
+        target.machine.PauseAllStack();
+        target.machine.GetState<HurtState>().Resume();
+        Debug.Log("击飞开始");
+
+    }
+    public override void UpdateMS()
+    {
+        if (current_height > height)
+        {
+            this.SetInValid();
+            return;
+        }
+
+      //  target.y += 0.05f;
+      //  current_height += 0.05f;
+
+ 
+
+
+        if (jump_speed <= 0.0f)
+        {
+            if(tick.Tick())
+            {
+
+                return;
+            }
+            this.SetInValid();
+        }
+        else
+        {
+            //接入重力
+
+            jump_speed -= 9.8f / 40.0f * 0.05f;
+         ///   current_height += jump_speed;
+            this.target.y += jump_speed;
+        }
+
+
+
+
+
+
+
+    }
+    private float jump_speed = DATA.DEFAULT_JUMP_SPEED*1.0f;
+
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
+    public override void OnExit()
+    {
+
+        target.machine.ResumeAllStack();
+        base.OnExit();
+        Debug.Log("击飞结束");
+
+    }
+
+}
+
+
 
 
 
@@ -723,12 +806,12 @@ public class BufferSpin : Buffer
         has_view = true;
         plist = "hd/buff/buff_200564/buff_200564.plist";
         plist = "88";
-     
+
         return true;
     }
     public override void OnDispose()
     {
-       
+
     }
     public override void UpdateMS()
     {

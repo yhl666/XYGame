@@ -390,6 +390,8 @@ public class BattleHero : Hero
     }
     public virtual void AI_AttackTarget()
     {
+        stand = true;
+        return;
         if (target.isDie)
         {
             target = null;
