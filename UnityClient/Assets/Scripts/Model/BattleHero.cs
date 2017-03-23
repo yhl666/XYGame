@@ -384,7 +384,7 @@ public class BattleHero : Hero
         }
         else
         {
-            //玩家在左方
+            //玩家在左方 
             left = true;
         }
     }

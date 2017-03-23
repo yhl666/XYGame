@@ -33,7 +33,7 @@ namespace ConfigTables
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static bool IsConflict(string a ,string b )
+        public static bool IsConflict(string a, string b)
         {
             if (kv == null)
             {
@@ -52,22 +52,32 @@ namespace ConfigTables
 
             //状态抵抗技能冲突  击退 眩晕
             kv["BufferNegativeUnbeatable"] = "BufferHitBack,BufferSpin";
-     
+
         }
         static HashTable kv = null;
     }
 
- 
 
 
+    /// <summary>
+    /// Skill 配置表 
+    /// </summary>
+    public static class Skill
+    {
 
+        /// <summary>
+        /// lazy init
+        /// </summary>
+        public static void Init()
+        {//TODO init with config table
+            kv = HashTable<HashTable>.Create<HashTable>();
 
+            //状态抵抗技能冲突  击退 眩晕
+            kv["Skill62_1"] = Json.Decode("time:0,");
 
-
-
-
-
-
+        }
+        static HashTable<HashTable> kv = null;
+    }
 
 
 
