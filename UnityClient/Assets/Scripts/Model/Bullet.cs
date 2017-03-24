@@ -32,6 +32,27 @@ public class Bullet : Model
     public string prefabsName = "";
     public string plist = "88"; // animation plist file  
 
+
+    public Vector2 bounds_size = new Vector2(0.5f, 1.0f);
+    public BoundsImpl bounds
+    {
+        get
+        {
+            this.SyncBounds();
+            return _bounds;
+        }
+        set
+        {
+            this._bounds = value;
+        }
+    }
+
+    private BoundsImpl _bounds = null;
+    public void SyncBounds()
+    {
+        this._bounds.center = new Vector3(this.x, this.y, BoundsImpl.DEFAULT_Z);
+        this._bounds.size = new Vector3(this.bounds_size.x, this.bounds_size.y, BoundsImpl.DEFAULT_Z);
+    }
     public virtual void OnComplete()
     {
         //for view to call when animation done
@@ -49,9 +70,17 @@ public class Bullet : Model
     public override bool Init()
     {
         base.Init();
+        this._bounds = BoundsImpl.Create();
         return true;
     }
 
+}
+public enum ColliderType
+{
+    Box, // 3D 盒子
+    Sphere,//3D 球
+    Circle, // 2D 圆
+    Rect,//2D 矩形
 }
 
 public delegate void OnBulletFunc(Bullet bullet);
@@ -68,7 +97,7 @@ public sealed class BulletConfigInfo
     public string plistAnimation = "hd/roles/role_2/bullet/role_2_bul_2001/role_2_bul_2001.plist"; // 子弹 view 的plist 帧动画文件
     public int frameDelay = 4;//帧动画延时
     public int lastTime = 0; // 持续时间,为0表示 使用距离来标示，不为0 表示 距离和 时间 一起来标示
-
+    public Vector2 collider_size = new Vector2(1.0f, 1.0f);
     //   public int deltaTime = 0;//延迟多久才开始 伤害判定
     public bool isHitDestory = true;//命中即可销毁
     //  public Vector2 range;//攻击范围
@@ -104,6 +133,8 @@ public sealed class BulletConfigInfo
     public OnBulletFunc _OnUpdateMS = null; // 有效帧时间 回调
     public int onTakeAttackFuncCallTimes = 0xfffffff;//攻击函数回调次数
     public OnMoveFunc _OnMoveFunc = null;
+
+    public ColliderType collider_type = ColliderType.Rect;
     public void InVokeOnTakeAttack(Bullet bullet)
     {
         if (_OnTakeAttack != null)
@@ -223,9 +254,17 @@ public sealed class BulletConfig : Bullet
 
             if (h.team != owner.team)
             {
-                float diss = h.ClaculateDistance(x, y);
-                //    Debug.Log("dis = " + diss);
-                if (diss < info.distance_atk)
+                bool hit = false;
+                if (info.collider_type == ColliderType.Rect)
+                {
+                    hit = h.IsCast(this.bounds);
+                }
+                else if (ColliderType.Circle == info.collider_type)
+                {
+                    //    Debug.Log("dis = " + diss);
+                    hit = h.ClaculateDistance(x, y) < info.distance_atk;
+                }
+                if (hit)
                 {
                     if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
                     hitNumber++;
@@ -273,9 +312,17 @@ public sealed class BulletConfig : Bullet
 
             if (h.team != owner.team)
             {
-                float diss = h.ClaculateDistance(x, y);
-                //    Debug.Log("dis = " + diss);
-                if (diss < info.distance_atk)
+                bool hit = false;
+                if (info.collider_type == ColliderType.Rect)
+                {
+                    hit = h.IsCast(this.bounds);
+                }
+                else if (ColliderType.Circle == info.collider_type)
+                {
+                    //    Debug.Log("dis = " + diss);
+                    hit = h.ClaculateDistance(x, y) < info.distance_atk;
+                }
+                if (hit)
                 {
                     if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
                     AttackInfo inf = AttackInfo.Create(owner, h);

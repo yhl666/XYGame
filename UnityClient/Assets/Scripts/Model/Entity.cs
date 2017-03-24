@@ -276,6 +276,31 @@ public class Entity : Model
 
 
     public System.Random _random = new System.Random(0);
+
+
+    //-----------------------------------------------physics-------------------------
+
+    public bool IsCast(Entity other)
+    {
+        this.SyncBounds();
+        bool ret = this.bounds.Intersects(other.bounds);
+        return ret;
+    }
+
+    public bool IsCast(BoundsImpl other)
+    {
+        this.SyncBounds();
+        bool ret = this.bounds.Intersects(other);
+        return ret;
+    }
+
+    public bool IsContains(float x ,float y)
+    {
+        this.SyncBounds();
+        return this.bounds.Contains(new Vector2(x, y));
+    }
+
+
     //--------------------------------------------------some helper function
 
     /// <summary>
@@ -372,6 +397,27 @@ public class Entity : Model
     public bool isInOneTerrainRight = false;
 
     public float scale = 1.0f;//view scale
+
+    public Vector2 bounds_size = new Vector2(0.5f, 1.0f);
+    public BoundsImpl bounds
+    {
+        get
+        {
+            this.SyncBounds();
+            return _bounds;
+        }
+        set
+        {
+            this._bounds = value;
+        }
+    }
+
+    private BoundsImpl _bounds = null;
+    public void SyncBounds()
+    {
+        this._bounds.center = new Vector3(this.x, this.y, BoundsImpl.DEFAULT_Z);
+        this._bounds.size = new Vector3(this.bounds_size.x, this.bounds_size.y, BoundsImpl.DEFAULT_Z);
+    }
     /// <summary>
     /// 设置x坐标，自动处理 地形撞墙等
     /// </summary>
@@ -640,13 +686,16 @@ public class Entity : Model
         bufferMgr.UpdateMS();//self buffer mgr update
         if (tick_combo.Tick())
         {
-            return;
+
         }
         else
         {
             combo_time = 0;
         }
+
     }
+
+
     public override void OnDispose()
     {
         base.OnDispose();
@@ -669,7 +718,7 @@ public class Entity : Model
     public override bool Init()
     {
         base.Init();
-
+        bounds = BoundsImpl.Create(new Vector2(0f, 0f), new Vector2(0.5f, 1f));
         _machine = StateMachine.Create(this);
         _eventDispatcher = EventDispatcher.Create("Entity");
         _bufferMgr = BufferMgr.Create(this);
