@@ -3,21 +3,15 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '5246e65e4b1660bf9d3f06c1f093ff048044cdf9'
-    oldFile: !uuid 'b18600057439f3a640cff0dbfbeca52c023d0208'
+    newFile: !uuid '7974fcd3f1f3335a878cbe2b49d9457702a49a77'
+    oldFile: !uuid '5246e65e4b1660bf9d3f06c1f093ff048044cdf9'
   /UnityClient/Assets:
-    newFile: !uuid '735229b35416efadad792fbb0c9c0810291c5c80'
-    oldFile: !uuid '35c80c93179cae8949b32adc3d66a0f830fd93f5'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'fcd933900ba163d2880fe676e86686a93d6bd869'
-    oldFile: !uuid '6d5ebe674ef95331d1be12e01a03303131adb9cb'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '52b22f77f23ce5d3e2b89da31a03dd16934c5d0e'
-    oldFile: !uuid '80cf40abf871ad47e4cc8c78ef8f7888015ae3d5'
-  /UnityClient/Assets/Scripts/Model/Bullet.cs:
-    newFile: !uuid '84f5d7c3ee6c3bbf8f42ffc4ca56b650b52c1fbe'
-    oldFile: !uuid '731800e81ba5f0bfc598bf9ce423652d21d25373'
-gitCommitId: !uuid 'e2b872294ae3b015dcb3f95059b6966edd4905b8'
+    newFile: !uuid '428823000c95f84dc8b66f812d0698d1a60a6378'
+    oldFile: !uuid '735229b35416efadad792fbb0c9c0810291c5c80'
+  /UnityClient/Assets/ClientTestApp.cs:
+    newFile: !uuid 'ec0eea7518d9a6776b8cb1bfb3577ddc60eeec6e'
+    oldFile: !uuid '8151440e84529936404fdc57b0b947931d4f9dc2'
+gitCommitId: !uuid '692b4aa67a8a00f5c26e99af599998a4a4037504'
 renames: {
   }
-revisionId: 490
+revisionId: 491
