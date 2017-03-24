@@ -3,24 +3,30 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'b12ec8cd3d715297bd3008bd7dadf9ddac1b2ebf'
-    oldFile: !uuid '78cb19c1a1eeae0510657e606aa605719eab2306'
+    newFile: !uuid '1941a037e67e7981e65f92084ca810db9595b1c2'
+    oldFile: !uuid 'b12ec8cd3d715297bd3008bd7dadf9ddac1b2ebf'
   /UnityClient/Assets:
-    newFile: !uuid '5a4d9058f03f2d35453704d89f965a0e4b4c4ccb'
-    oldFile: !uuid 'a0488a01b524bd3eab16792067fffacd9156cf10'
+    newFile: !uuid '9709fac2ec0a1f68d14a58a0ebdc63daa9a7c442'
+    oldFile: !uuid '5a4d9058f03f2d35453704d89f965a0e4b4c4ccb'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '1390da2787b8cb6e7e30136343e70e9c7c816f9a'
-    oldFile: !uuid 'fcd933900ba163d2880fe676e86686a93d6bd869'
+    newFile: !uuid '5afbbdc78781f5496d589063f0f9890a72977c61'
+    oldFile: !uuid '1390da2787b8cb6e7e30136343e70e9c7c816f9a'
   /UnityClient/Assets/Scripts/Base:
-    newFile: !uuid '296f33feb02e445a4eec91719a2c3cebc0eaa5a9'
-    oldFile: !uuid '761c3e299c2efd9c1ff802461547665513ea8840'
+    newFile: !uuid 'b4f04088afbb2d340da232e922727f492b164f84'
+    oldFile: !uuid '296f33feb02e445a4eec91719a2c3cebc0eaa5a9'
   /UnityClient/Assets/Scripts/Base/Physics:
-    newFile: !uuid '5d5a45aabd9f9c253c20a940146ae780edbea4dc'
-    oldFile: !uuid '2847af9cdb7347d636833bcdeb384cd8126ba0bd'
+    newFile: !uuid '35e848d59080221dae69c3e71975b0bb3a526ef7'
+    oldFile: !uuid '5d5a45aabd9f9c253c20a940146ae780edbea4dc'
   /UnityClient/Assets/Scripts/Base/Physics/Bounds.cs:
-    newFile: !uuid 'e63bb26d056521992782e7094f6336aad33cff95'
-    oldFile: !uuid 'c7ca9d144e539b4c536c71efd800136a09b97d21'
-gitCommitId: !uuid 'f35806ce33254057a90019df189f4a45ac5216ff'
+    newFile: !uuid '20cf3a95037853e19b46accbe9f37e8e722d73fe'
+    oldFile: !uuid 'e63bb26d056521992782e7094f6336aad33cff95'
+  /UnityClient/Assets/Scripts/Base/Physics/Ray.cs:
+    newFile: !uuid 'a0af41dde7cba4023f2dcc817138f525f69b87da'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Base/Physics/Ray.cs.meta:
+    newFile: !uuid '223045261afee07d39f014efe2c80e69e7347f98'
+    oldFile: null
+gitCommitId: !uuid '63c6df151a9d191a7bef46304ef972dfb616ddc5'
 renames: {
   }
-revisionId: 493
+revisionId: 494
