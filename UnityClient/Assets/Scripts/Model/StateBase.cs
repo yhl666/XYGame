@@ -1079,6 +1079,18 @@ public class SkillState : StateBase
             }
         }
     }
+    public void PushOnInterrupted(SkillBase who)
+    {
+
+        foreach (SkillStack s in skill_stacks)
+        {
+            if (s.ProcessOnInterrupted(who))
+            {//只允许打断一个技能
+                return;
+            }
+        }
+    }
+
 
     public override void OnEnter()
     {

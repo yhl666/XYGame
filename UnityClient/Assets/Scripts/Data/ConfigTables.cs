@@ -80,6 +80,56 @@ namespace ConfigTables
     }
 
 
+    /// <summary>
+    /// skill 冲突表
+    /// </summary>
+    public static class SkillConflict
+    {
+        /// <summary>
+        /// a的冲突表中是否有b
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool IsConflict(SkillBase a, SkillBase b)
+        {
+            if (kv == null)
+            {
+                Init();
+            }
+
+            return IsConflict(a.GetName(), b.GetName());
+        }
+        /// <summary>
+        /// a的打断列表 是否有 b，，，
+        /// a是否能打断b
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool IsConflict(string a, string b)
+        {
+            if (kv == null)
+            {
+                Init();
+            }
+            string s = kv.Get(a);
+            if (s.IndexOf(b) == -1) return false;
+            return true;
+        }
+        /// <summary>
+        /// lazy init
+        /// </summary>
+        public static void Init()
+        {//TODO init with config table
+            kv = HashTable.Create();
+
+
+            kv["Skill62_1"] = "Skill62_2,Skill62_3,";
+            //key    是否能打断  values    
+        }
+        static HashTable kv = null;
+    }
 
 
 

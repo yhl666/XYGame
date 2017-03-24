@@ -43,7 +43,25 @@ public sealed class SkillStack : GAObject
     {
 
     }
-
+    /// <summary>
+    /// who 打断请求发起者
+    /// </summary>
+    /// <param name="who"></param>
+    public bool ProcessOnInterrupted(SkillBase who)
+    {
+        SkillBase s = stacks.Peek() as SkillBase;//
+        if (s.Enable == false) return false;
+        if (ConfigTables.SkillConflict.IsConflict(who.GetName(), s.GetName()))
+        {
+            bool ret = s.OnInterrupted(who);//向被打断者 发起打断请求
+            if (ret)
+            {//打断成功
+                who.OnAcceptInterrupted(s);
+                return true;
+            }
+        }
+        return false;
+    }
     public void PushSingleSkill(SkillBase s)
     {//单行状态机
         s.stack = this;
@@ -139,6 +157,10 @@ public sealed class SkillStack : GAObject
     {
         this.enable = b;
     }
+    public void PushOnInterrupted(SkillBase who)
+    {
+        this.parent.PushOnInterrupted(who);
+    }
     public override void OnEnter()
     {
         /*  SkillBase s = new Skill_1();
@@ -154,7 +176,7 @@ public sealed class SkillStack : GAObject
     public SkillBase _current_state = null;
     public bool pause = false;
     public Entity host = null;
-    public StateBase parent = null;
+    public SkillState parent = null;
 }
 
 
@@ -192,7 +214,7 @@ public class SkillBase : Model
 
     }
 
-    //-----------event
+    //-----------异步 event
     /// <summary>
     /// 被打断事件
     /// </summary>
@@ -208,15 +230,51 @@ public class SkillBase : Model
     {
 
     }
-
+    /// <summary>
+    /// 响应被其他技能打断事件
+    /// 返回true表示打断成功（允许打断的情况下要处理自己的OnExit）
+    /// 返回false 表示打断失败
+    /// 可用于复杂逻辑下的打断请求处理
+    /// </summary>
+    /// <param name="what"></param>
+    /// <returns></returns>
+    public virtual bool OnInterrupted(SkillBase what)
+    {
+        return false;
+    }
+    /// <summary>
+    /// 动画完成回调
+    /// </summary>
     public virtual void OnSpineCompolete()
     {
 
     }
+    /// <summary>
+    /// 技能绑定的按钮被点击后触发
+    /// </summary>
     public virtual void OnPush()
     {
 
     }
+
+    /// <summary>
+    ///  打断发起者  打断成功后的回调
+    /// </summary>
+    /// <param name="who"> 被打断的skill</param>
+    public virtual void OnAcceptInterrupted(SkillBase who)
+    {
+
+    }
+    /// <summary>
+    ///技能需要打断的时候调用此接口
+    ///发起打断事件
+    /// </summary>
+    /// <param name="who"></param>
+    public void PushOnInterrupted()
+    {
+        this.stack.PushOnInterrupted(this);
+    }
+
 }
 
 
@@ -1263,6 +1321,11 @@ public class Skill6_3_2 : SkillBase
 /// </summary>
 public class Skill62_1 : SkillBase
 {
+    public override string GetName()
+    {
+        return "Skill62_1";
+    }
+    Bullet b = null;
     Counter cd = Counter.Create(1 * 40);
     Counter tick = Counter.Create(80);
     public override void OnEnter()
@@ -1357,14 +1420,22 @@ public class Skill62_1 : SkillBase
 
 
     }
-
+    public override void OnAcceptInterrupted(SkillBase who)
+    {
+        if (this.Enable) return;
+        this.OnEnter();
+    }
     public override void OnPush()
     {
         if (cd.IsMax() == false) return;
         if (Target.isStand == false) return;
-        if (Target.isAttacking) return;
         if (this.Enable) return;
 
+        if (Target.isAttacking)
+        {
+            this.PushOnInterrupted();
+            return;
+        }
         this.OnEnter();
 
     }
@@ -1375,11 +1446,14 @@ public class Skill62_1 : SkillBase
 
         return true;
     }
-    public override void OnInterrupted(AttackInfo info)
+    public override bool OnInterrupted(SkillBase who)
     {
-
+        if (this.Enable)
+            this.OnExit();
+        return true;
+        return false;
     }
-    Bullet b = null;
+
 }
 
 
@@ -1390,6 +1464,11 @@ public class Skill62_1 : SkillBase
 /// </summary>
 public class Skill62_2 : SkillBase
 {
+    public override string GetName()
+    {
+        return "Skill62_2";
+    }
+
     Counter cd = Counter.Create(1 * 40);
     Counter tick = Counter.Create(10);
     bool has_shoot = false;
@@ -1457,7 +1536,11 @@ public class Skill62_2 : SkillBase
     }
     public override void OnExit()
     {
-        b.SetInValid();
+        if (b != null)
+        {
+            b.SetInValid();
+            b = null;
+        }
         this.Enable = false;
         Target.isAttacking = false;
         Target.is_spine_loop = true;
@@ -1467,16 +1550,7 @@ public class Skill62_2 : SkillBase
 
     }
 
-    public override void OnPush()
-    {
-        if (cd.IsMax() == false) return;
-        if (Target.isStand == false) return;
-        if (Target.isAttacking) return;
-        if (this.Enable) return;
 
-        this.OnEnter();
-
-    }
     public override bool Init()
     {
         base.Init();
@@ -1484,8 +1558,30 @@ public class Skill62_2 : SkillBase
 
         return true;
     }
-    public override void OnInterrupted(AttackInfo info)
+    public override bool OnInterrupted(SkillBase who)
     {
+        if (this.Enable)
+            this.OnExit();
+        return true;
+        return false;
+    }
+    public override void OnAcceptInterrupted(SkillBase who)
+    {
+        if (this.Enable) return;
+        this.OnEnter();
+    }
+    public override void OnPush()
+    {
+        if (cd.IsMax() == false) return;
+        if (Target.isStand == false) return;
+        if (this.Enable) return;
+
+        if (Target.isAttacking)
+        {
+            this.PushOnInterrupted();
+            return;
+        }
+        this.OnEnter();
 
     }
     Bullet b = null;
@@ -1502,6 +1598,11 @@ public class Skill62_2 : SkillBase
 /// </summary>
 public class Skill62_3 : SkillBase
 {
+    public override string GetName()
+    {
+        return "Skill62_3";
+    }
+
     Counter cd = Counter.Create(1 * 40);
     Counter tick1 = Counter.Create(10);
     bool has_shoot = false;
@@ -1636,7 +1737,7 @@ public class Skill62_3 : SkillBase
     public override void OnPush()
     {
         if (cd.IsMax() == false) return;
-      ///  if (Target.isStand == false) return;
+        ///  if (Target.isStand == false) return;
         if (Target.isAttacking) return;
         if (this.Enable) return;
 

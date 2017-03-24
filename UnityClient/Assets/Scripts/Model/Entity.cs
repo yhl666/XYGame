@@ -293,7 +293,12 @@ public class Entity : Model
         bool ret = this.bounds.Intersects(other);
         return ret;
     }
-
+    public bool IsCast(RayImpl ray)
+    {
+        this.SyncBounds();
+        bool ret = this.bounds.IntersectRayImpl(ray);
+        return ret;
+    }
     public bool IsContains(float x ,float y)
     {
         this.SyncBounds();
@@ -368,8 +373,6 @@ public class Entity : Model
     {
         this.combo_time += times;
         tick_combo.Reset();
-        if (this == HeroMgr.ins.self)
-            Debug.Log("连击" + this.combo_time);
     }
     public float atk_range = 2.0f;
     // base property
