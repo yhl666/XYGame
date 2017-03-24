@@ -37,6 +37,8 @@ public class ClientTestApp : GAObject
 
 
 
+    GameObject obj_a = null;
+    GameObject obj_b = null;
 
     public override bool Init()
     {
@@ -60,7 +62,11 @@ public class ClientTestApp : GAObject
             });
 
         }
+        obj_a = GameObject.Instantiate(GameObject.Find("GameObject"));
+        obj_b = GameObject.Instantiate(GameObject.Find("GameObject"));
 
+
+    
     }
     public override void OnDispose()
     {
@@ -77,7 +83,13 @@ public class ClientTestApp : GAObject
     {
         EventDispatcher.ins.Update();
 
+        BoundsImpl a = BoundsImpl.Create(new Vector2(obj_a.transform.position.x, obj_a.transform.position.y), new Vector2(1, 1));
+        BoundsImpl b = BoundsImpl.Create(new Vector2(obj_b.transform.position.x, obj_b.transform.position.y), new Vector2(1, 1));
 
+        if (a.Intersects(b))
+        {
+            Debug.Log("cast");
+        }
     }
 
 
