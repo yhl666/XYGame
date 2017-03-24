@@ -97,7 +97,7 @@ public sealed class BulletConfigInfo
     public string plistAnimation = "hd/roles/role_2/bullet/role_2_bul_2001/role_2_bul_2001.plist"; // 子弹 view 的plist 帧动画文件
     public int frameDelay = 4;//帧动画延时
     public int lastTime = 0; // 持续时间,为0表示 使用距离来标示，不为0 表示 距离和 时间 一起来标示
-    public Vector2 collider_size = new Vector2(1.0f, 1.0f);
+
     //   public int deltaTime = 0;//延迟多久才开始 伤害判定
     public bool isHitDestory = true;//命中即可销毁
     //  public Vector2 range;//攻击范围
@@ -135,6 +135,7 @@ public sealed class BulletConfigInfo
     public OnMoveFunc _OnMoveFunc = null;
 
     public ColliderType collider_type = ColliderType.Rect;
+    public Vector2 collider_size = new Vector2(1.0f, 1.0f);
     public void InVokeOnTakeAttack(Bullet bullet)
     {
         if (_OnTakeAttack != null)
@@ -407,7 +408,7 @@ public sealed class BulletConfig : Bullet
         this.frameDelay = info.frameDelay;
         this.scale_x = info.scale_x;
         this.scale_y = info.scale_y;
-
+        this.bounds_size = info.collider_size;
     }
     public static BulletConfig CreateWithJson(string json)
     {
