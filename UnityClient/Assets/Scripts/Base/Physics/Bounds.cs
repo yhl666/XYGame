@@ -121,7 +121,10 @@ public class BoundsImpl
             impl.size = value;
         }
     }
- 
+    public override int GetHashCode()
+    {
+        return impl.GetHashCode();
+    }
     public bool Contains(Vector3 point)
     {
         return impl.Contains(point);
