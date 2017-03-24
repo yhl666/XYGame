@@ -133,13 +133,13 @@ public class BoundsImpl
     {
         return impl.Contains(new Vector3(point.x, point.y, 0f));
     }
-    public bool IntersectRay(Ray ray)
+    public bool IntersectRayImpl(RayImpl ray)
     {
-        return impl.IntersectRay(ray);
+        return impl.IntersectRay(ray.impl);
     }
-    public bool IntersectRay(Ray ray, out float distance)
+    public bool IntersectRayImpl(RayImpl ray, out float distance)
     {
-        return impl.IntersectRay(ray, out distance);
+        return impl.IntersectRay(ray.impl, out distance);
     }
     public bool Intersects(BoundsImpl bounds)
     {
