@@ -279,10 +279,28 @@ public class Entity : Model
 
 
     //-----------------------------------------------physics-------------------------
+    public Vector2 bounds_size = new Vector2(0.5f, 1.0f);
+    public BoundsImpl bounds
+    {
+        get
+        {
+            this.SyncBounds();
+            return _bounds;
+        }
+        set
+        {
+            this._bounds = value;
+        }
+    }
 
+    private BoundsImpl _bounds = null;
+    public void SyncBounds()
+    {
+        this._bounds.center = new Vector3(this.x, this.GetRealY(), BoundsImpl.DEFAULT_Z);
+        this._bounds.size = new Vector3(this.bounds_size.x, this.bounds_size.y, BoundsImpl.DEFAULT_Z);
+    }
     public bool IsCast(Entity other)
     {
-        this.SyncBounds();
         bool ret = this.bounds.Intersects(other.bounds);
         return ret;
     }
@@ -291,17 +309,16 @@ public class Entity : Model
     {
         this.SyncBounds();
         bool ret = this.bounds.Intersects(other);
+        Debug.Log(  this.GetRealY() + "   self.center.y=" + _bounds.center.y + "  other.center.y=" + other.center.y);
         return ret;
     }
     public bool IsCast(RayImpl ray)
     {
-        this.SyncBounds();
         bool ret = this.bounds.IntersectRayImpl(ray);
         return ret;
     }
     public bool IsContains(float x ,float y)
     {
-        this.SyncBounds();
         return this.bounds.Contains(new Vector2(x, y));
     }
 
@@ -401,26 +418,7 @@ public class Entity : Model
 
     public float scale = 1.0f;//view scale
 
-    public Vector2 bounds_size = new Vector2(0.5f, 1.0f);
-    public BoundsImpl bounds
-    {
-        get
-        {
-            this.SyncBounds();
-            return _bounds;
-        }
-        set
-        {
-            this._bounds = value;
-        }
-    }
 
-    private BoundsImpl _bounds = null;
-    public void SyncBounds()
-    {
-        this._bounds.center = new Vector3(this.x, this.y, BoundsImpl.DEFAULT_Z);
-        this._bounds.size = new Vector3(this.bounds_size.x, this.bounds_size.y, BoundsImpl.DEFAULT_Z);
-    }
     /// <summary>
     /// 设置x坐标，自动处理 地形撞墙等
     /// </summary>

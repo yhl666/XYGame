@@ -1396,6 +1396,7 @@ public class Skill62_1 : SkillBase
         /// info.rotate = 30.0f;
         info.distance = 0;
         info.lastTime = 10;
+        info.collider_size = new Vector2(3f, 0.5f);
         info.scale_x = 2f;
         info.scale_y = 2f;
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
