@@ -115,3 +115,71 @@ public class ScaleBy : ScaleTo
 
     }
 }
+
+
+public class FadeOut:Actions
+{
+    public float current_a=1.0f;
+    SpriteRenderer target = null;
+    float speed = 0.0f;
+    Color origned;
+    public override void UpdateMS()
+    {
+        Color orign = target.color;
+        current_a -= speed;
+        target.color = new Color(orign.r, orign.g, orign.b, current_a);
+    }
+
+    public static Actions Create(SpriteRenderer target, float time )
+    {
+        FadeOut action = target.gameObject.AddComponent<FadeOut>();
+        action.MAX_TIME = time;
+        action.target = target;
+        action.speed = time / 60.0f* target.color.a;
+        return action;
+    }
+    public override void OnExit()
+    {
+        //修正
+        target.color = new Color(origned.r, origned.g, origned.b, 0f);
+    }
+    public override void OnEnter()
+    {
+        origned = target.color;
+    }
+
+}
+
+public class FadeIn : Actions
+{
+    public float current_a = 0.0f;
+    SpriteRenderer target = null;
+    float speed = 0.0f;
+    Color origned;
+    public override void UpdateMS()
+    {
+        Color orign = target.color;
+        current_a += speed;
+        target.color = new Color(orign.r, orign.g, orign.b, current_a);
+    }
+
+    public static Actions Create(SpriteRenderer target, float time)
+    {
+        FadeIn action = target.gameObject.AddComponent<FadeIn>();
+        action.MAX_TIME = time;
+        action.target = target;
+        action.speed = time / 60.0f ;
+        return action;
+    }
+
+    public override void OnExit()
+    {
+        //修正
+        target.color = new Color(origned.r, origned.g, origned.b, 1.0f);
+    }
+    public override void OnEnter()
+    {
+        origned = target.color;
+    }
+
+}
