@@ -1867,13 +1867,11 @@ public class Skill6_Final : SkillBase
         if (this.is_1_Hit == true && this.level == 1)
         {
             // 1段命中  释放2段
-            this.Shoot();
             Target.attackingAnimationName = "6240_0";
             this.level++;
         }
         else if (this.level == 2)
         {//3段
-            this.Shoot();
             Target.attackingAnimationName = "6240_1";
             this.level++;
         }
