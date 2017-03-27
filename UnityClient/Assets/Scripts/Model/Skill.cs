@@ -1759,3 +1759,186 @@ public class Skill62_3 : SkillBase
     Bullet b = null;
 }
 
+
+
+
+/// <summary>
+/// 6 终结技
+/// </summary>
+public class Skill6_Final : SkillBase
+{
+    public override string GetName()
+    {
+        return "Skill6_Final";
+    }
+
+    Counter cd = Counter.Create(1 * 40);
+    Counter tick = Counter.Create(10);
+    bool has_shoot = false;
+    public override void OnEnter()
+    {
+        cd.Reset();
+        this.PauseAll();
+        this.level = 1;
+        tick.Reset();
+        has_shoot = false;
+        this.Target.machine.GetState<StandState>().Resume();
+        this.Target.machine.GetState<FallState>().Resume();
+        Target.isAttacking = true;
+        this.Enable = true;
+        Target.is_spine_loop = false;
+        Target.attackingAnimationName = "6000";
+
+        TimerQueue.ins.AddTimerMSI((int)5, () =>
+        {
+            this.Shoot();
+        });
+    }
+    public override void UpdateMS()
+    {
+        cd.Tick();
+
+        if (this.level == 0)
+        {
+
+        }
+        else if (this.level == 1)
+        {
+            //第一阶段
+            if (is_1_Hit == true)
+            {
+                //this.level = 2;
+            }
+        }
+        else if (this.level == 2)
+        {
+
+        }
+        else if (this.level == 3)
+        {
+
+        }
+
+
+    }
+    public override void UpdateMSIdle()
+    {
+        cd.Tick();
+    }
+    bool is_1_Hit = false;
+    int level = 0;
+    private void Shoot()
+    {
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitFly");
+
+        info.launch_delta_xy.x = 1.5f;
+        info.launch_delta_xy.y = -0.2f;
+        info.frameDelay = 4;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.damage_ratio = 1.5f;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6224/role_6_bul_6224.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 10;
+        info.scale_x = 2f;
+        info._OnTakeAttack = (Bullet b1) =>
+            {
+                this.is_1_Hit = true;
+
+            };
+        info.scale_y = 2f;
+        b = BulletMgr.Create(this.Target, "BulletConfig", info);
+    }
+    public override void OnSpineCompolete()
+    {
+        ///  this.stack.PopSingleSkill();
+        if (this.is_1_Hit == false && this.level == 1)
+        {//1段 为命中
+            this.OnExit();
+            return;
+        }
+        if (this.is_1_Hit == true && this.level == 1)
+        {
+            // 1段命中  释放2段
+            this.Shoot();
+            Target.attackingAnimationName = "6240_0";
+            this.level++;
+        }
+        else if (this.level == 2)
+        {//3段
+            this.Shoot();
+            Target.attackingAnimationName = "6240_1";
+            this.level++;
+        }
+        else if (this.level == 3)
+        {//4段
+            this.Shoot();
+            Target.attackingAnimationName = "6240_2";
+            this.level++;
+        }
+        else
+        {
+            this.OnExit();
+        }
+    }
+    public override void OnExit()
+    {
+        if (b != null)
+        {
+            b.SetInValid();
+            b = null;
+        }
+        this.Enable = false;
+        Target.isAttacking = false;
+        Target.is_spine_loop = true;
+        this.ResumeAll();
+        this.level = 0;
+        this.is_1_Hit = false;
+        /// this.stack.PushSingleSkill(new Skill6_2_2())
+
+    }
+
+
+    public override bool Init()
+    {
+        base.Init();
+        cd.TickMax();
+
+        return true;
+    }
+    public override bool OnInterrupted(SkillBase who)
+    {
+        if (this.Enable)
+            this.OnExit();
+        return true;
+        return false;
+    }
+    public override void OnAcceptInterrupted(SkillBase who)
+    {
+        if (this.Enable) return;
+        this.OnEnter();
+    }
+    public override void OnPush()
+    {
+        if (cd.IsMax() == false) return;
+        if (Target.isStand == false) return;
+        if (this.Enable) return;
+
+        if (Target.isAttacking)
+        {
+            this.PushOnInterrupted();
+            return;
+        }
+        this.OnEnter();
+
+    }
+    Bullet b = null;
+}
+

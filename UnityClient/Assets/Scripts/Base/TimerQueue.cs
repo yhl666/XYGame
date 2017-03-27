@@ -47,7 +47,7 @@ public sealed class TimerQueue
     /// <param name="fps_delay"></param>
     /// <param name="cb"></param>
     /// <param name="repeat_times">  <0 will be run forever</param>
-    public void AddTimerMS(int fps_delay, VoidFuncVoid cb, int repeat_times = 1)
+    public void AddTimerMSI(int fps_delay, VoidFuncVoid cb, int repeat_times = 1)
     {
         if (repeat_times == 0) return;
         TimerMS time = new TimerMS();
@@ -60,7 +60,7 @@ public sealed class TimerQueue
     public void AddTimerMS(float time_delay, VoidFuncVoid cb, int repeat_times = 1)
     {
         if (repeat_times == 0) return;
-        this.AddTimerMS((int)(time_delay / Utils.deltaTime), cb, repeat_times);
+        this.AddTimerMSI((int)(time_delay / Utils.deltaTime), cb, repeat_times);
     }
     /// <summary>
     /// 添加一个真实时间定时器
