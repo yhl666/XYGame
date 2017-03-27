@@ -10,8 +10,21 @@ using System;
 
 public class CameraFollow : MonoBehaviour
 {
+    public static CameraFollow ins = null;
+    void Awake()
+    {
+        ins = this;
+    }
+    void Start()
+    {
+        ins = this;
+        orthographicSize = this.GetComponent<Camera>().orthographicSize;
+        obj_bg_static = GameObject.Find("bg_static");
+        obj_bg = GameObject.Find("Terrain/bg");
+    }
     void LateUpdate()
     {
+        if (_enable == false) return;
         if (AppMgr.GetCurrentApp() == null) return;
         Hero hero = HeroMgr.ins.GetSelfHero();
         if (hero == null) return;
@@ -105,4 +118,52 @@ public class CameraFollow : MonoBehaviour
 
 
     }
+
+
+    /// <summary>
+    /// 开始Hero特写
+    /// </summary>
+    public void ShowHeroFinal()
+    {
+        _enable = false;
+      ///  obj_bg.SetActive(false);
+    ///   obj_bg_static.SetActive(false);
+        delta = 1.0f;
+        Hero self = HeroMgr.ins.self;
+        pos_pre = this.transform.position;
+        this.transform.position = new Vector3(self.x+1.0f, self.y+1.0f, this.transform.position.z);
+        UIBattleRoot.ins.Hide();
+
+        FadeOut.Create(obj_bg_static.GetComponent<SpriteRenderer>(), 1.0f);
+        FadeOut.Create(obj_bg.GetComponent<SpriteRenderer>(), 1.0f);
+    }
+    public void HideHeroFinal()
+    {
+        _enable = true;
+        UIBattleRoot.ins.Show();
+        this.transform.position = pos_pre;
+      //  obj_bg.SetActive(true);
+      //  obj_bg_static.SetActive(true);
+        this.GetComponent<Camera>().orthographicSize = orthographicSize;
+        FadeIn.Create(obj_bg_static.GetComponent<SpriteRenderer>(), 0f);
+        FadeIn.Create(obj_bg.GetComponent<SpriteRenderer>(), 0f);
+    }
+
+    void Update()
+    {
+        if (_enable == false)
+        {
+            if (this.GetComponent<Camera>().orthographicSize > 2.0f)
+            {
+                delta -= 0.01f;
+                this.GetComponent<Camera>().orthographicSize =  orthographicSize*delta ;
+            }
+        }
+    }
+    float delta = 1.0f;
+    Vector3 pos_pre;
+    GameObject obj_bg = null;
+    GameObject obj_bg_static = null;
+    float orthographicSize;
+    bool _enable = true;
 }

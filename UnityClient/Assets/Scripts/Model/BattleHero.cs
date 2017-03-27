@@ -404,7 +404,7 @@ public class BattleHero : Hero
             //   target.TakeAttack(this);
             //    BulletMgr.Create(this, this.bulleClassName_atk1, this.bullet_atk1_info);
           //  atk = true;
-            s1 = 4;
+         ///   s1 = 4;
             cd_atk = 80;// 2S
         }
         else

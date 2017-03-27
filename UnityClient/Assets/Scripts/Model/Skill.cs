@@ -1875,6 +1875,9 @@ public class Skill6_Final : SkillBase
             // 1段命中  释放2段
             Target.attackingAnimationName = "6240_0";
             this.level++;
+
+            CameraFollow.ins.ShowHeroFinal();
+
         }
         else if (this.level == 2)
         {//3段
@@ -1906,6 +1909,10 @@ public class Skill6_Final : SkillBase
         Target.is_spine_loop = true;
         this.ResumeAll();
         this.level = 0;
+        if(is_1_Hit)
+        {
+            CameraFollow.ins.HideHeroFinal();
+        }
         this.is_1_Hit = false;
         /// this.stack.PushSingleSkill(new Skill6_2_2())
 

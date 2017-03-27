@@ -11,6 +11,19 @@ using System;
 
 public sealed class UIBattleRoot : ViewUI
 {
+    public static UIBattleRoot ins = null;
+    public UIBattleRoot()
+    {
+        ins = this;
+    }
+    public void Hide()
+    {
+        this._ui_root.SetActive(false);
+    }
+    public void Show()
+    {
+        this._ui_root.SetActive(true);
+    }
 
     public override void Update()
     {
@@ -1096,7 +1109,7 @@ public sealed class UI_die : ViewUI
         if (isDie == false) return;
         if (tick.Tick())
         {
-            float t = (float)(tick.GetMax() - tick.GetCurrent())/ 40.0f;
+            float t = (float)(tick.GetMax() - tick.GetCurrent()) / 40.0f;
             int time = (int)t;
             txt_info.text = "角色已死亡，复活剩余时间:" + time.ToString() + " 秒";
             return;
@@ -1135,8 +1148,8 @@ public sealed class UI_die : ViewUI
             this.OnClick(4);
         });
 
- 
- 
+
+
         EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
 
         this.panel.SetActive(false);
@@ -1145,10 +1158,10 @@ public sealed class UI_die : ViewUI
     }
     private void OnClick(int index)
     {
-        if(tick.IsMax())
+        if (tick.IsMax())
         {
             ///执行复活动作
-      ///      Debug.Log("POINT " + index);
+            ///      Debug.Log("POINT " + index);
             this.panel.SetActive(false);
             PublicData.ins.IS_revive_point = index;
         }
