@@ -1090,7 +1090,15 @@ public class SkillState : StateBase
             }
         }
     }
+    public void PushOnInterruptedForce(SkillBase who)
+    {
 
+        foreach (SkillStack s in skill_stacks)
+        {
+            s.ProcessOnInterruptedForce(who);
+          
+        }
+    }
 
     public override void OnEnter()
     {

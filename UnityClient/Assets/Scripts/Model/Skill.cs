@@ -62,6 +62,17 @@ public sealed class SkillStack : GAObject
         }
         return false;
     }
+    /// <summary>
+    /// 强制去打断 可用于状态切换
+    /// </summary>
+    /// <param name="who"></param>
+    /// <returns></returns>
+    public bool ProcessOnInterruptedForce(SkillBase who)
+    {
+        //todo
+        return false;
+
+    }
     public void PushSingleSkill(SkillBase s)
     {//单行状态机
         s.stack = this;
@@ -160,6 +171,14 @@ public sealed class SkillStack : GAObject
     public void PushOnInterrupted(SkillBase who)
     {
         this.parent.PushOnInterrupted(who);
+    }
+    /// <summary>
+    /// 强制取消所有技能
+    /// </summary>
+    /// <param name="who"></param>
+    public void PushOnInterruptedForce(SkillBase who)
+    {
+        this.parent.PushOnInterruptedForce(who);
     }
     public override void OnEnter()
     {
