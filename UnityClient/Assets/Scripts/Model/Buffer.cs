@@ -624,15 +624,15 @@ public class BufferHitFly : Buffer
             return;
         }
 
-      //  target.y += 0.05f;
-      //  current_height += 0.05f;
+        //  target.y += 0.05f;
+        //  current_height += 0.05f;
 
- 
+
 
 
         if (jump_speed <= 0.0f)
         {
-            if(tick.Tick())
+            if (tick.Tick())
             {
 
                 return;
@@ -644,7 +644,7 @@ public class BufferHitFly : Buffer
             //接入重力
 
             jump_speed -= 9.8f / 40.0f * 0.05f;
-         ///   current_height += jump_speed;
+            ///   current_height += jump_speed;
             this.target.y += jump_speed;
         }
 
@@ -655,7 +655,7 @@ public class BufferHitFly : Buffer
 
 
     }
-    private float jump_speed = DATA.DEFAULT_JUMP_SPEED*1.0f;
+    private float jump_speed = DATA.DEFAULT_JUMP_SPEED * 1.0f;
 
     public override bool Init()
     {
@@ -758,6 +758,52 @@ public class BufferNegativeUnbeatable : Buffer
 
 
 /// <summary>
+/// 无敌Buffer  免疫任何伤害 任何控制技能  
+/// </summary>
+public class BufferGod : Buffer
+{
+    public override string GetName()
+    {
+        return "BufferGod";
+    }
+    public override void OnEnter()
+    {
+        base.OnEnter();
+
+    }
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED)
+        {
+            AttackInfo info = userData as AttackInfo;
+
+            if (info.target != this.owner) return;
+            //吸收伤害 去掉buffer
+            info.buffers.Clear();
+            info.buffers_string.Clear();
+            info.damage = 0;
+
+        }
+    }
+    public override bool Init()
+    {
+        base.Init();
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+        return true;
+    }
+    public override void OnExit()
+    {
+        EventDispatcher.ins.RemoveEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+    }
+    public override void UpdateMS()
+    {
+        base.UpdateMS();
+    }
+
+
+}
+
+/// <summary>
 ///  6号终结技  敌人控制状态下的Buffer
 /// </summary>
 public class Buffer6_Final : Buffer
@@ -769,11 +815,11 @@ public class Buffer6_Final : Buffer
     public override void OnEnter()
     {
         base.OnEnter();
-     
+
         target.machine.PauseAllStack();
-      ///   target.machine.Pause();
-         target.isHurt = true;
-         target.is_spine_loop = true;
+        ///   target.machine.Pause();
+        target.isHurt = true;
+        target.is_spine_loop = true;
     }
     public override bool Init()
     {
@@ -781,13 +827,13 @@ public class Buffer6_Final : Buffer
     }
     public override void UpdateMS()
     {
-  
+
     }
     public override void OnExit()
     {
         target.isHurt = false;
         target.isStand = true;
-    //    target.machine.Resume();
+        //    target.machine.Resume();
         target.machine.ResumeAllStack();
     }
 

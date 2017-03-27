@@ -1775,6 +1775,7 @@ public class Skill6_Final : SkillBase
     Counter cd = Counter.Create(1 * 40);
     Counter tick = Counter.Create(10);
     bool has_shoot = false;
+    Buffer buf_god = null;
     public override void OnEnter()
     {
         cd.Reset();
@@ -1788,7 +1789,7 @@ public class Skill6_Final : SkillBase
         this.Enable = true;
         Target.is_spine_loop = false;
         Target.attackingAnimationName = "6000";
-
+        buf_god = Target.AddBuffer<BufferGod>();//添加无敌buffer
         TimerQueue.ins.AddTimerMSI((int)5, () =>
         {
             this.Shoot();
@@ -1832,7 +1833,7 @@ public class Skill6_Final : SkillBase
 
         BulletConfigInfo info = BulletConfigInfo.Create();
 
-     ///   info.AddBuffer("BufferHitFly");
+        ///   info.AddBuffer("BufferHitFly");
 
         info.launch_delta_xy.x = 1.5f;
         info.launch_delta_xy.y = -0.2f;
@@ -1903,13 +1904,15 @@ public class Skill6_Final : SkillBase
             b = null;
         }
         if (buf != null) buf.SetInValid();
+        if (buf_god != null) buf_god.SetInValid();
+        buf_god = null;
         buf = null;
         this.Enable = false;
         Target.isAttacking = false;
         Target.is_spine_loop = true;
         this.ResumeAll();
         this.level = 0;
-        if(is_1_Hit)
+        if (is_1_Hit)
         {
             CameraFollow.ins.HideHeroFinal();
         }
