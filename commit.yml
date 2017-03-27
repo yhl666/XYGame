@@ -3,21 +3,33 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '18324657d661081fed3656d1b3378c1153e3b516'
-    oldFile: !uuid 'fbfb176081af1a0936849625b3336b83eb352882'
+    newFile: !uuid 'bc1f9b5f7c079f8c21a754698c2118d6aaf58934'
+    oldFile: !uuid '18324657d661081fed3656d1b3378c1153e3b516'
   /UnityClient/Assets:
-    newFile: !uuid 'ce44fd49ac243348754ec034772c44c7a9c6996a'
-    oldFile: !uuid '7bff19efb631c84458152aa5f93c7156b4ffe084'
+    newFile: !uuid 'a2a51035a1e7d53278f5ed015c2ab5a8718893c9'
+    oldFile: !uuid 'ce44fd49ac243348754ec034772c44c7a9c6996a'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '1068f292db950896c4c916d868a5070204fd08d4'
-    oldFile: !uuid '474ede8a3ad9034f000468a13b6fa5a2d27f89c9'
-  /UnityClient/Assets/Scripts/2d:
-    newFile: !uuid 'cc6175151f7a8c0f68b996388cef54915096dae9'
-    oldFile: !uuid '8b7029a41b7f08381f6bb4bb39319f4077c49628'
-  /UnityClient/Assets/Scripts/2d/Actions.cs:
-    newFile: !uuid '86178ecf24ebd233ecd50f17a79ab2203cc7b64d'
-    oldFile: !uuid '0edd83833baaba7046a8e37cbd90af279b673ee1'
-gitCommitId: !uuid '0e2a13ca7546b1e28b5eed126af2b93ff2fd7743'
+    newFile: !uuid 'c9426727490bd15298b46c5e95e581556f97afb8'
+    oldFile: !uuid '1068f292db950896c4c916d868a5070204fd08d4'
+  /UnityClient/Assets/Scripts/CameraFollow.cs:
+    newFile: !uuid 'dea01deff43f02ae1f7b15ca6c00d38bb71136cd'
+    oldFile: !uuid 'c643ff8134b97323c130941d3603435a2e088b05'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '39d81a2763e460ae1a8ad7cc3d31c9ced81e15eb'
+    oldFile: !uuid '462873a058109e1444f11e3d2b4d9e13cdd7154c'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid '2a2c7ee5e8e26ce327aa13461ed4f3f4e91b33c1'
+    oldFile: !uuid 'bd838468c2923a3996b11ac2660059ba3b887611'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid '1638c0401238e2eb032e9dcf636b185380469beb'
+    oldFile: !uuid '72a91b8a2f50e2edbcc132d77f8595b8a17a3064'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid '7f9f97d8fb50a2c8a95cea59c98b18b898a66422'
+    oldFile: !uuid 'd460de48ee859b68c8470a0f288585ced13a6149'
+  /UnityClient/Assets/Scripts/View/UIBattle.cs:
+    newFile: !uuid '0ac10b2d41586de3378d8afe38dfff504bb242dd'
+    oldFile: !uuid '5fce2ced5624fa5ca9af6e62a164404d7ba3a678'
+gitCommitId: !uuid '5ee55b9e5be2f6e6bcfa4b8a08d35828093fedaf'
 renames: {
   }
-revisionId: 502
+revisionId: 503
