@@ -83,7 +83,7 @@ public enum ColliderType
     Rect,//2D 矩形
 }
 
-public delegate void OnBulletFunc(Bullet bullet);
+public delegate void OnBulletFunc(Bullet bullet,object userData = null);
 public delegate Vector2 OnMoveFunc(BulletConfig bullet, Vector2 current);
 
 public sealed class BulletConfigInfo
@@ -136,13 +136,13 @@ public sealed class BulletConfigInfo
 
     public ColliderType collider_type = ColliderType.Rect;
     public Vector2 collider_size = new Vector2(1.0f, 1.0f);
-    public void InVokeOnTakeAttack(Bullet bullet)
+    public void InVokeOnTakeAttack(Bullet bullet,object userData=null)
     {
         if (_OnTakeAttack != null)
         {
             if (current_call_times >= onTakeAttackFuncCallTimes) return;
             current_call_times++;
-            _OnTakeAttack.Invoke(bullet);
+            _OnTakeAttack.Invoke(bullet,userData);
         }
 
     }
@@ -283,7 +283,7 @@ public sealed class BulletConfig : Bullet
                     }
                     ///     inf.buffers_string = info.buffers_string;
                     h.TakeAttacked(inf);
-                    info.InVokeOnTakeAttack(this);
+                    info.InVokeOnTakeAttack(this,h);
 
                     hasHit.PushBack(h);
                     tagForValidTimes = true;

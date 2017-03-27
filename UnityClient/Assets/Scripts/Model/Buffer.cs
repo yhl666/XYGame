@@ -756,6 +756,45 @@ public class BufferNegativeUnbeatable : Buffer
 }
 
 
+
+/// <summary>
+///  6号终结技  敌人控制状态下的Buffer
+/// </summary>
+public class Buffer6_Final : Buffer
+{
+    public override string GetName()
+    {
+        return "Buffer6_Final";
+    }
+    public override void OnEnter()
+    {
+        base.OnEnter();
+     
+        target.machine.PauseAllStack();
+      ///   target.machine.Pause();
+         target.isHurt = true;
+         target.is_spine_loop = true;
+    }
+    public override bool Init()
+    {
+        return base.Init();
+    }
+    public override void UpdateMS()
+    {
+  
+    }
+    public override void OnExit()
+    {
+        target.isHurt = false;
+        target.isStand = true;
+    //    target.machine.Resume();
+        target.machine.ResumeAllStack();
+    }
+
+}
+
+
+
 /// <summary>
 /// 眩晕
 /// </summary>

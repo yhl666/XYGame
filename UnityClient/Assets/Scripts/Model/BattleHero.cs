@@ -128,7 +128,7 @@ public class BattleHero : Hero
             info.scale_x = 1.5f;
             info.scale_y = 1.5f;
             info.lastTime = 15;
-            info._OnLaunch = (Bullet b) =>
+            info._OnLaunch = (Bullet b,object userData) =>
             {
 
                 if (this.flipX < 0)
@@ -165,7 +165,7 @@ public class BattleHero : Hero
             info.lastTime = 15;
             info.scale_x = 1.5f;
             info.scale_y = 1.5f;
-            info._OnLaunch = (Bullet b) =>
+            info._OnLaunch = (Bullet b, object userData) =>
                 {
 
                     if (this.flipX < 0)
@@ -201,7 +201,7 @@ public class BattleHero : Hero
             info.distance = 0;
             info.frameDelay = 4;
             info.lastTime = 15;
-            info._OnLaunch = (Bullet b) =>
+            info._OnLaunch = (Bullet b, object userData) =>
             {
 
                 if (this.flipX < 0)
@@ -390,8 +390,8 @@ public class BattleHero : Hero
     }
     public virtual void AI_AttackTarget()
     {
-        stand = true;
-        return;
+      //  stand = true;
+        //return;
         if (target.isDie)
         {
             target = null;
@@ -403,7 +403,8 @@ public class BattleHero : Hero
 
             //   target.TakeAttack(this);
             //    BulletMgr.Create(this, this.bulleClassName_atk1, this.bullet_atk1_info);
-            atk = true;
+          //  atk = true;
+            s1 = 4;
             cd_atk = 80;// 2S
         }
         else

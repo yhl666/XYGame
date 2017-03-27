@@ -309,7 +309,6 @@ public class Entity : Model
     {
         this.SyncBounds();
         bool ret = this.bounds.Intersects(other);
-        Debug.Log(  this.GetRealY() + "   self.center.y=" + _bounds.center.y + "  other.center.y=" + other.center.y);
         return ret;
     }
     public bool IsCast(RayImpl ray)

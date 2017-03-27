@@ -1832,7 +1832,7 @@ public class Skill6_Final : SkillBase
 
         BulletConfigInfo info = BulletConfigInfo.Create();
 
-        info.AddBuffer("BufferHitFly");
+     ///   info.AddBuffer("BufferHitFly");
 
         info.launch_delta_xy.x = 1.5f;
         info.launch_delta_xy.y = -0.2f;
@@ -1848,14 +1848,20 @@ public class Skill6_Final : SkillBase
         info.distance = 0;
         info.lastTime = 10;
         info.scale_x = 2f;
-        info._OnTakeAttack = (Bullet b1) =>
+        info._OnTakeAttack = (Bullet b1, object userData) =>
             {
                 this.is_1_Hit = true;
+                if (this.level == 1)
+                {
+                    Entity h = userData as Entity;
+                    this.buf = h.AddBuffer<Buffer6_Final>();
 
+                }
             };
         info.scale_y = 2f;
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
+    Buffer buf = null;
     public override void OnSpineCompolete()
     {
         ///  this.stack.PopSingleSkill();
@@ -1893,6 +1899,8 @@ public class Skill6_Final : SkillBase
             b.SetInValid();
             b = null;
         }
+        if (buf != null) buf.SetInValid();
+        buf = null;
         this.Enable = false;
         Target.isAttacking = false;
         Target.is_spine_loop = true;

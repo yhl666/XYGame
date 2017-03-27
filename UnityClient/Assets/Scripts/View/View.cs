@@ -209,7 +209,6 @@ public class ViewEntity : View
         else if (m.isHurt)
         {
             name = m.ani_hurt;
-            Debug.Log("play hurt");
         }
         else if (m.isJumpTwice)
         {
