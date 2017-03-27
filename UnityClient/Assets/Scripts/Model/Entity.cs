@@ -632,7 +632,7 @@ public class Entity : Model
     public int atk_level = 1;//基本攻击连招段数 默认不连招
     // for static data
     public float speed = 0.05f;//移动速度
-
+    public float spine_time_scale = 1.0f;//骨骼动画播放速率比
 
     //for view 
     public string prefabsName = "Prefabs/Entity"; // default

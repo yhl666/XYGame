@@ -209,6 +209,7 @@ public class ViewEntity : View
         else if (m.isHurt)
         {
             name = m.ani_hurt;
+            Debug.Log("play hurt");
         }
         else if (m.isJumpTwice)
         {
@@ -258,7 +259,7 @@ public class ViewEntity : View
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_FLYTEXT, info);
             m.delta_hp = 0;
         }
-        spine.UpdateMS(Utils.deltaTime);
+        spine.UpdateMS(Utils.deltaTime* m.spine_time_scale);
     }
 
 
@@ -397,7 +398,7 @@ public class ViewEnemy : View
             m.delta_hp = 0;
         }
 
-        spine.UpdateMS(Utils.deltaTime);
+        spine.UpdateMS(Utils.deltaTime * m.spine_time_scale);
     }
 
 
