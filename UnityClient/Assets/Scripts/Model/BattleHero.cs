@@ -98,9 +98,9 @@ public class BattleHero : Hero
         ani_fall = "fall";
         ani_run = "run";
         ani_stand = "rest";
-        this.ani_atk1 = "6000";
-        this.ani_atk2 = "6010";
-        this.ani_atk3 = "6020";
+        this.ani_atk1 = AttackState6_Data.ins.level1_animation_name;// "6000";
+        this.ani_atk2 = AttackState6_Data.ins.level2_animation_name; //"6010";
+        this.ani_atk3 = AttackState6_Data.ins.level3_animation_name;// "6020";
 
 
 
@@ -114,10 +114,11 @@ public class BattleHero : Hero
             info.AddBuffer("BufferHitBack");
             info.AddBuffer("BufferSpin");
 
-            info.launch_delta_xy.x = 1f;
-            info.launch_delta_xy.y = 0f;
-
-            info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6001/role_6_bul_6001.plist";
+            info.launch_delta_xy.x = AttackState6_Data.ins.level1_delta_xy.x; //; 1f;
+            info.launch_delta_xy.y = AttackState6_Data.ins.level1_delta_xy.x; ;// 0f;
+            info.collider_size = AttackState6_Data.ins.level1_hit_rect;
+            info.plistAnimation = AttackState6_Data.ins.level1_hit_animation_name; ;// "hd/roles/role_6/bullet/role_6_bul_6001/role_6_bul_6001.plist";
+            info.damage_ratio = AttackState6_Data.ins.level1_damage_ratio;
             info.rotate = 30.0f;
             info.distance = 0;
             info.distance_atk = 1.0f;
@@ -128,16 +129,17 @@ public class BattleHero : Hero
             info.scale_x = 1.5f;
             info.scale_y = 1.5f;
             info.lastTime = 15;
-            info._OnLaunch = (Bullet b,object userData) =>
+
+            info._OnLaunch = (Bullet b, object userData) =>
             {
 
                 if (this.flipX < 0)
                 {
-                    this.x_auto += this.speed * 2;
+                    this.x_auto +=AttackState6_Data.ins.level1_move_x ; //this.speed * 2;
                 }
                 else
                 {
-                    this.x_auto -= this.speed * 2;
+                    this.x_auto -= AttackState6_Data.ins.level1_move_x;// this.speed * 2;
                 }
             };
         }
@@ -165,16 +167,24 @@ public class BattleHero : Hero
             info.lastTime = 15;
             info.scale_x = 1.5f;
             info.scale_y = 1.5f;
+
+
+            info.launch_delta_xy.x = AttackState6_Data.ins.level2_delta_xy.x; //; 1f;
+            info.launch_delta_xy.y = AttackState6_Data.ins.level2_delta_xy.x; ;// 0f;
+            info.collider_size = AttackState6_Data.ins.level2_hit_rect;
+            info.plistAnimation = AttackState6_Data.ins.level2_hit_animation_name; ;
+            info.damage_ratio = AttackState6_Data.ins.level2_damage_ratio;
+
             info._OnLaunch = (Bullet b, object userData) =>
                 {
 
                     if (this.flipX < 0)
                     {
-                        this.x_auto += this.speed * 2;
+                        this.x_auto += AttackState6_Data.ins.level2_move_x; //this.speed * 2;
                     }
                     else
                     {
-                        this.x_auto -= this.speed * 2;
+                        this.x_auto -= AttackState6_Data.ins.level2_move_x;/// this.speed * 2;
                     }
                 };
         }
@@ -201,16 +211,23 @@ public class BattleHero : Hero
             info.distance = 0;
             info.frameDelay = 4;
             info.lastTime = 15;
+
+            info.launch_delta_xy.x = AttackState6_Data.ins.level3_delta_xy.x; //; 1f;
+            info.launch_delta_xy.y = AttackState6_Data.ins.level3_delta_xy.x; ;// 0f;
+            info.collider_size = AttackState6_Data.ins.level3_hit_rect;
+            info.plistAnimation = AttackState6_Data.ins.level3_hit_animation_name; ;// 
+            info.damage_ratio = AttackState6_Data.ins.level3_damage_ratio;
+
             info._OnLaunch = (Bullet b, object userData) =>
             {
 
                 if (this.flipX < 0)
                 {
-                    this.x_auto += this.speed * 2;
+                    this.x_auto += AttackState6_Data.ins.level3_move_x; //this.speed * 2;
                 }
                 else
                 {
-                    this.x_auto -= this.speed * 2;
+                    this.x_auto -= AttackState6_Data.ins.level3_move_x; //this.speed * 2;
                 }
             };
         }
@@ -390,7 +407,7 @@ public class BattleHero : Hero
     }
     public virtual void AI_AttackTarget()
     {
-      //  stand = true;
+        //  stand = true;
         //return;
         if (target.isDie)
         {
@@ -403,8 +420,8 @@ public class BattleHero : Hero
 
             //   target.TakeAttack(this);
             //    BulletMgr.Create(this, this.bulleClassName_atk1, this.bullet_atk1_info);
-          //  atk = true;
-         ///   s1 = 4;
+            //  atk = true;
+            ///   s1 = 4;
             cd_atk = 80;// 2S
         }
         else

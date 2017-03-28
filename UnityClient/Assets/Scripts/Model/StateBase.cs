@@ -617,7 +617,7 @@ public class AttackState_1 : StateBase
 {//普通 攻击 连招1
 
     private int cd_attack = 0;
-    Counter tick_cancel = Counter.Create(5);//可取消tick
+    Counter tick_cancel = Counter.Create(AttackState6_Data.ins.level1_cancel);//可取消tick
     public override StateBase GetState<T>()
     {
         if (typeof(T) == typeof(AttackState_1))
@@ -677,13 +677,14 @@ public class AttackState_1 : StateBase
             ///  this.Target.AddBuffer<BufferFlashMove>();
             if (cd_attack > 0) return;
             tick_cancel.Reset();
+            tick_cancel.SetMax(AttackState6_Data.ins.level1_cancel);
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_ATTACK, this.Target);
 
             this.Enable = true;
             Target.isAttacking = true;
             Target.attackingAnimationName = this.GetAnimationName();
             //    BulletMgr.Create<Bullet2_0>(this.Target);
-            cd_attack = 40;//2s cd
+            cd_attack = AttackState6_Data.ins.level1_cd;//2s cd
 
             BulletMgr.Create(this.Target, Target.bulleClassName_atk1, Target.bullet_atk1_info);
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
@@ -739,7 +740,7 @@ public class AttackState_1 : StateBase
 
 public class AttackState_2 : StateBase
 {//普通 攻击 连招2
-    Counter tick_cancel = Counter.Create(5);//可取消tick
+    Counter tick_cancel = Counter.Create(AttackState6_Data.ins.level2_cancel);//可取消tick
     public override StateBase GetState<T>()
     {
         if (typeof(T) == typeof(AttackState_2))
@@ -763,7 +764,7 @@ public class AttackState_2 : StateBase
         tick_cancel.Tick();
         if (checkForTimeOut == false) return;
         tick++;
-        if (tick > 60)
+        if (tick > AttackState6_Data.ins.level2_timeout)
         {//time out
             tick = 0;
             this.Enable = false;
@@ -800,7 +801,7 @@ public class AttackState_2 : StateBase
             this.Enable = true;
             Target.isAttacking = true;
             tick_cancel.Reset();
-
+            tick_cancel.SetMax(AttackState6_Data.ins.level2_cancel);
             BulletMgr.Create(this.Target, Target.bulleClassName_atk2, Target.bullet_atk2_info);
 
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
@@ -861,7 +862,7 @@ public class AttackState_2 : StateBase
 
 public class AttackState_3 : StateBase
 {//普通 攻击 连招3
-    Counter tick_cancel = Counter.Create(5);//可取消tick
+    Counter tick_cancel = Counter.Create(AttackState6_Data.ins.level3_cancel);//可取消tick
     public override StateBase GetState<T>()
     {
         if (typeof(T) == typeof(AttackState_3))
@@ -886,7 +887,7 @@ public class AttackState_3 : StateBase
         tick_cancel.Tick();
         if (this.checkForTimeOut == false) return;
         tick++;
-        if (tick > 60)
+        if (tick > AttackState6_Data.ins.level3_timeout)
         {//time out
             tick = 0;
             this.Enable = false;
@@ -921,6 +922,7 @@ public class AttackState_3 : StateBase
             Target.isAttacking = true;
             this.checkForTimeOut = false;
             tick_cancel.Reset();
+            tick_cancel.SetMax(AttackState6_Data.ins.level3_cancel);
             BulletMgr.Create(this.Target, Target.bulleClassName_atk3, Target.bullet_atk3_info);
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
