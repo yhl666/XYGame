@@ -1423,6 +1423,7 @@ public class Skill62_1 : SkillBase
         tick_cancel.SetMax(Skill62_1_Data.ins.cancel);
 
         cd.Reset();
+        tick_cancel.Reset();
         this.PauseAll();
         this.Target.machine.GetState<StandState>().Resume();
         this.Target.machine.GetState<FallState>().Resume();
@@ -1576,7 +1577,7 @@ public class Skill62_2 : SkillBase
         tick_cancel.SetMax(Skill62_2_Data.ins.cancel);
         cd.SetMax(Skill62_2_Data.ins.cd);
         tick.SetMax(Skill62_2_Data.ins.tick_delay);
-
+        tick_cancel.Reset();
         cd.Reset();
         this.PauseAll();
         tick.Reset();
@@ -1722,7 +1723,7 @@ public class Skill62_3 : SkillBase
         cd.SetMax(Skill62_3_Data.ins.cd);
         tick1.SetMax(Skill62_3_Data.ins.start_jump);
         tick_cancel.SetMax(Skill62_3_Data.ins.cancel);
-
+        tick_cancel.Reset();
         cd.Reset();
         this.PauseAll();
         tick1.Reset();
