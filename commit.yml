@@ -2,22 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'ae8dcc274f4ecdd35acc4048814ac4a81faa57e3'
-    oldFile: !uuid 'f42a08591f3d3b2e76a5637fc21f8b760f19b47c'
-  /UnityClient/Assets:
-    newFile: !uuid 'cf2815e9070322b3f01be3ce212d9e7783d23ba0'
-    oldFile: !uuid 'ab614b90f0a78886f2742bc4c78ed5039bd8c56a'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'f48dea4e55ac42df898ef872e5d2f8e7f6acbbe7'
-    oldFile: !uuid 'd470a30dfd19fefa0d10128c89ed9d23fa6539e8'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '4fe99def09973e2dea7718eaf283cc7c8454e150'
-    oldFile: !uuid '37cc21dae6d7f7fb3472636e0f6f3f7c4614d2fe'
-  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
-    newFile: !uuid '6bc25f78ee43c0f6eb4c06f9fac6246f8dee7c19'
-    oldFile: !uuid '24162bb7f7710fdcccaa58e48b0ff1d9ba064aee'
-gitCommitId: !uuid '8acc69d90e14b54f7b3c8fb1f51f1ba5289b60c3'
+  /策划文档:
+    newFile: !uuid 'bba2db97e78ff55db88cb70b362da44252feae4f'
+    oldFile: !uuid 'e93dea014e46346a907cfbd4d9b4558f25293c40'
+  /策划文档/pve地图 .docx:
+    newFile: !uuid '42bc528f368e41c2312c22b001b9d670dcf69867'
+    oldFile: null
+gitCommitId: !uuid '58f944c659a59d416417c582260b7fed81c6d35f'
 renames: {
   }
-revisionId: 545
+revisionId: 546
