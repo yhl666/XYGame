@@ -2,13 +2,16 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid '83e90441ae9ec42a3e5f43b21f99968eede2d00f'
-    oldFile: !uuid 'db4b3bab5851778839437461b2f947228b6e0b89'
-  /工作日志/说明.txt:
-    newFile: !uuid 'ce780b46a0dca426354c6619daf69357a898f309'
-    oldFile: !uuid '6bcc698c52922dfc07cd8cee95ccb7a34b02b062'
-gitCommitId: !uuid '784afa2ef8753ed5b12df66c362c8bfdeb9744cc'
+  /UnityClient:
+    newFile: !uuid 'f622bf0057e360447f03e86c09550f7225fb7304'
+    oldFile: !uuid '2e3de422f29e1a7ae91bdc5e2f8587521cc9ce04'
+  /UnityClient/ProjectSettings:
+    newFile: !uuid '7eb5f281856906f6e4ea355f9fc707efe37f7e9f'
+    oldFile: !uuid 'c5e488b1d46092bc7c603a0d9842865cbbc2f779'
+  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
+    newFile: !uuid '13dc45af8c53e284b8b127f6cb1621c20f352a20'
+    oldFile: !uuid '896e05c7ba70f5a05b05b1d92005bf5b140535c5'
+gitCommitId: !uuid 'b301399e4471a3e12745db30e56e437a5bb75a54'
 renames: {
   }
-revisionId: 538
+revisionId: 539
