@@ -617,6 +617,7 @@ public class AttackState_1 : StateBase
 {//普通 攻击 连招1
 
     private int cd_attack = 0;
+    Counter tick_cancel = Counter.Create(5);//可取消tick
     public override StateBase GetState<T>()
     {
         if (typeof(T) == typeof(AttackState_1))
@@ -648,7 +649,7 @@ public class AttackState_1 : StateBase
     {
         //    Target.isAttacking = true;
         cd_attack--;
-
+        tick_cancel.Tick();
     }
     public override void UpdateMSIdle()
     {
@@ -675,7 +676,7 @@ public class AttackState_1 : StateBase
         {
             ///  this.Target.AddBuffer<BufferFlashMove>();
             if (cd_attack > 0) return;
-
+            tick_cancel.Reset();
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_ATTACK, this.Target);
 
             this.Enable = true;
@@ -688,7 +689,7 @@ public class AttackState_1 : StateBase
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
         }
-        else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
+        else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
             Target.isAttacking = false;
             this.Enable = false;
@@ -738,6 +739,7 @@ public class AttackState_1 : StateBase
 
 public class AttackState_2 : StateBase
 {//普通 攻击 连招2
+    Counter tick_cancel = Counter.Create(5);//可取消tick
     public override StateBase GetState<T>()
     {
         if (typeof(T) == typeof(AttackState_2))
@@ -758,6 +760,7 @@ public class AttackState_2 : StateBase
     }
     public override void UpdateMS()
     {
+        tick_cancel.Tick();
         if (checkForTimeOut == false) return;
         tick++;
         if (tick > 60)
@@ -796,7 +799,7 @@ public class AttackState_2 : StateBase
             ///   this.checkForTimeOut = false;
             this.Enable = true;
             Target.isAttacking = true;
-
+            tick_cancel.Reset();
 
             BulletMgr.Create(this.Target, Target.bulleClassName_atk2, Target.bullet_atk2_info);
 
@@ -804,7 +807,7 @@ public class AttackState_2 : StateBase
 
 
         }
-        else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
+        else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
             //  Debug.Log("连招   222 完成");
 
@@ -858,6 +861,7 @@ public class AttackState_2 : StateBase
 
 public class AttackState_3 : StateBase
 {//普通 攻击 连招3
+    Counter tick_cancel = Counter.Create(5);//可取消tick
     public override StateBase GetState<T>()
     {
         if (typeof(T) == typeof(AttackState_3))
@@ -879,6 +883,7 @@ public class AttackState_3 : StateBase
     }
     public override void UpdateMS()
     {
+        tick_cancel.Tick();
         if (this.checkForTimeOut == false) return;
         tick++;
         if (tick > 60)
@@ -915,12 +920,12 @@ public class AttackState_3 : StateBase
             this.Enable = true;
             Target.isAttacking = true;
             this.checkForTimeOut = false;
-
+            tick_cancel.Reset();
             BulletMgr.Create(this.Target, Target.bulleClassName_atk3, Target.bullet_atk3_info);
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
         }
-        else if (this.Enable == true && Events.ID_SPINE_COMPLETE == type)
+        else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
             Target.isAttacking = false;
             this.Enable = false;
