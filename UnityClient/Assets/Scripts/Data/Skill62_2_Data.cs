@@ -10,6 +10,8 @@ public class Skill62_2_Data : MonoBehaviour
 {
 
     //common
+    public string cancelable_skill;//能取消（打断）的技能名字， 逗号隔开
+
     public int cd; // cd ，单位 帧数
     public float damage_ratio; // 伤害比例 1.5 表示为基础伤害的 1.5倍
     public Vector2 hit_rect; // 伤害 判定框大小 ，，判定框中心为角色正中心

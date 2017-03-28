@@ -125,8 +125,11 @@ namespace ConfigTables
             kv = HashTable.Create();
 
 
-            kv["Skill62_1"] = "Skill62_2,Skill62_3,";
-            kv["Skill62_2"] = "Skill62_1,Skill62_3,";
+            kv["Skill62_1"] = Skill62_1_Data.ins.cancelable_skill;// ; "Skill62_2,Skill62_3,";
+            kv["Skill62_2"] = Skill62_2_Data.ins.cancelable_skill;// ; "Skill62_2,Skill62_3,";
+            kv["Skill62_3"] = Skill62_3_Data.ins.cancelable_skill;// ; "Skill62_2,Skill62_3,";
+
+            
 
 
             //key    是否能打断  values    

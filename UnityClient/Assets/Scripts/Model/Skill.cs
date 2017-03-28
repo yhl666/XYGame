@@ -1705,7 +1705,7 @@ public class Skill62_3 : SkillBase
         return "Skill62_3";
     }
 
-    Counter cd = Counter.Create( Skill62_3_Data.ins.cd);
+    Counter cd = Counter.Create(Skill62_3_Data.ins.cd);
     Counter tick1 = Counter.Create(Skill62_3_Data.ins.start_jump);
     Counter tick_cancel = Counter.Create(Skill62_3_Data.ins.cancel);
     bool has_shoot = false;
@@ -1800,8 +1800,8 @@ public class Skill62_3 : SkillBase
 
         info.AddBuffer("BufferHitFly");
 
-       // info.launch_delta_xy.x = 1.5f;
-      //  info.launch_delta_xy.y = -0.2f;
+        // info.launch_delta_xy.x = 1.5f;
+        //  info.launch_delta_xy.y = -0.2f;
         info.frameDelay = 3;
         info.distance_atk = 1.5f;
         info.number = 0xfff;
@@ -1810,13 +1810,13 @@ public class Skill62_3 : SkillBase
         //  info.rotate = -120.0f;
         ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
 
-      //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
+        //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
         /// info.rotate = 30.0f;
         info.distance = 0;
         info.lastTime = 10;
         info.scale_x = 2f;
         info.scale_y = 2f;
- 
+
         info.launch_delta_xy.x = Skill62_3_Data.ins.delta_xy.x;// 1.5f;
         info.launch_delta_xy.y = Skill62_3_Data.ins.delta_xy.y;// -0.2f;
         info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
@@ -1894,7 +1894,7 @@ public class Skill6_Final : SkillBase
         return "Skill6_Final";
     }
 
-    Counter cd = Counter.Create(1 * 40);
+    Counter cd = Counter.Create(Skill6_Final_Data.ins.cd);
     Counter tick = Counter.Create(10);
     bool has_shoot = false;
     Buffer buf_god = null;
@@ -1910,9 +1910,9 @@ public class Skill6_Final : SkillBase
         Target.isAttacking = true;
         this.Enable = true;
         Target.is_spine_loop = false;
-        Target.attackingAnimationName = "6000";
+        Target.attackingAnimationName = Skill6_Final_Data.ins.level1_animation_name;// "6000";
         buf_god = Target.AddBuffer<BufferGod>();//添加无敌buffer
-        TimerQueue.ins.AddTimerMSI((int)5, () =>
+        TimerQueue.ins.AddTimerMSI((int)Skill6_Final_Data.ins.level1_hit_delay, () =>
         {
             this.Shoot();
         });
@@ -1957,16 +1957,17 @@ public class Skill6_Final : SkillBase
 
         ///   info.AddBuffer("BufferHitFly");
 
-        info.launch_delta_xy.x = 1.5f;
-        info.launch_delta_xy.y = -0.2f;
+        info.launch_delta_xy.x = Skill6_Final_Data.ins.level1_delta_xy.x;// 1.5f;
+        info.launch_delta_xy.y = Skill6_Final_Data.ins.level1_delta_xy.y;//-0.2f;
+
         info.frameDelay = 4;
         info.distance_atk = 1.5f;
         info.number = 0xfff;
         info.isHitDestory = false;
-        info.damage_ratio = 1.5f;
+        info.damage_ratio = Skill6_Final_Data.ins.level1_damage_ratio;//1.5f;
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
-        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6224/role_6_bul_6224.plist";
+        info.plistAnimation = Skill6_Final_Data.ins.level1_hit_animation_name;// "hd/roles/role_6/bullet/role_6_bul_6224/role_6_bul_6224.plist";
         /// info.rotate = 30.0f;
         info.distance = 0;
         info.lastTime = 10;
@@ -1981,6 +1982,44 @@ public class Skill6_Final : SkillBase
 
                 }
             };
+        info.collider_size = Skill6_Final_Data.ins.level1_hit_rect;
+        info.scale_y = 2f;
+        b = BulletMgr.Create(this.Target, "BulletConfig", info);
+    }
+
+    private void ShootFinal()
+    {
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        ///   info.AddBuffer("BufferHitFly");
+
+        info.launch_delta_xy.x = Skill6_Final_Data.ins.level4_delta_xy.x;// 1.5f;
+        info.launch_delta_xy.y = Skill6_Final_Data.ins.level4_delta_xy.y;//-0.2f;
+
+        info.frameDelay = 4;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.damage_ratio = Skill6_Final_Data.ins.level4_damage_ratio;//1.5f;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = Skill6_Final_Data.ins.level4_hit_animation_name;// "hd/roles/role_6/bullet/role_6_bul_6224/role_6_bul_6224.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 10;
+        info.scale_x = 2f;
+        info._OnTakeAttack = (Bullet b1, object userData) =>
+        {
+            this.is_1_Hit = true;
+            if (this.level == 1)
+            {
+                Entity h = userData as Entity;
+                this.buf = h.AddBuffer<Buffer6_Final>();
+
+            }
+        };
+        info.collider_size = Skill6_Final_Data.ins.level4_hit_rect;
         info.scale_y = 2f;
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
@@ -1996,7 +2035,7 @@ public class Skill6_Final : SkillBase
         if (this.is_1_Hit == true && this.level == 1)
         {
             // 1段命中  释放2段
-            Target.attackingAnimationName = "6240_0";
+            Target.attackingAnimationName = Skill6_Final_Data.ins.level2_animation_name;//"6240_0";
             this.level++;
 
             CameraFollow.ins.ShowHeroFinal();
@@ -2004,13 +2043,13 @@ public class Skill6_Final : SkillBase
         }
         else if (this.level == 2)
         {//3段
-            Target.attackingAnimationName = "6240_1";
+            Target.attackingAnimationName = Skill6_Final_Data.ins.level3_animation_name;// "6240_1";
             this.level++;
         }
         else if (this.level == 3)
         {//4段
-            this.Shoot();
-            Target.attackingAnimationName = "6240_2";
+            this.ShootFinal();
+            Target.attackingAnimationName = Skill6_Final_Data.ins.level4_animation_name; //"6240_2";
             this.level++;
         }
         else

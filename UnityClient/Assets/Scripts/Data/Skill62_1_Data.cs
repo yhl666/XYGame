@@ -10,6 +10,8 @@ using System.Collections;
 public class Skill62_1_Data : MonoBehaviour
 {
     //common
+    public string cancelable_skill;//能取消（打断）的技能名字， 逗号隔开
+
     public int cd; // cd ，单位 帧数
     public int last_time;//持续时间 单位 帧数
     public float damage_ratio; // 伤害比例 1.5 表示为基础伤害的 1.5倍
