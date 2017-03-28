@@ -1092,14 +1092,42 @@ public class SkillState : StateBase
     }
     public void PushOnInterruptedForce(SkillBase who)
     {
-
+        bool has_one_false = false; // 存在强制打断失败否
         foreach (SkillStack s in skill_stacks)
         {
-            s.ProcessOnInterruptedForce(who);
-          
+            if (s.ProcessOnInterruptedForce(who) == false)
+            {
+                has_one_false = true;
+            }
         }
     }
-
+    /// <summary>
+    /// 请求切换技能组
+    /// </summary>
+    /// <param name="who"></param>
+    public void PushChangeSkillGroup(SkillBase who)
+    {
+        foreach (SkillStack s in skill_stacks)
+        {
+            s.ProcessChangeSkillGroupOut(who);
+        }
+        if (skill_stacks == skill_stacks1)
+        {
+            skill_stacks = skill_stacks2;
+        }
+        else if (skill_stacks == skill_stacks2)
+        {
+            skill_stacks = skill_stacks1;
+        }
+        else
+        {
+            Debug.LogError("Unknow skill group");
+        }
+        foreach (SkillStack s in skill_stacks)
+        {
+            s.ProcessChangeSkillGroupIn(who);
+        }
+    }
     public override void OnEnter()
     {
 
@@ -1107,52 +1135,93 @@ public class SkillState : StateBase
         this.stack.AddLocalEventListener(Events.ID_SPINE_COMPLETE);
         this.stack.AddLocalEventListener("SpineComplete");
 
+
+        ///---------------------------------技能组 2
         {
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
             s.PushSingleSkill(new Skill62_1());
-            this.skill_stacks.Add(s);
+            this.skill_stacks2.Add(s);
         }
         {
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
             s.PushSingleSkill(new Skill62_2());
-            this.skill_stacks.Add(s);
+            this.skill_stacks2.Add(s);
         }
-
-
-
         {
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
             s.PushSingleSkill(new Skill62_3());
-            this.skill_stacks.Add(s);
+            this.skill_stacks2.Add(s);
         }
-
-
         {
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
             s.PushSingleSkill(new Skill6_Final());
-            this.skill_stacks.Add(s);
+            this.skill_stacks2.Add(s);
+        }
+        {
+            SkillStack s = SkillStack.Create();
+            s.host = this.Target;
+            s.parent = this;
+            s.PushSingleSkill(new SkillForceCancel());
+            this.skill_stacks2.Add(s);
+        }
+
+        ///---------------------------------技能组 1
+        {
+            SkillStack s = SkillStack.Create();
+            s.host = this.Target;
+            s.parent = this;
+            s.PushSingleSkill(new Skill61_1());
+            this.skill_stacks1.Add(s);
+        }
+        {
+            SkillStack s = SkillStack.Create();
+            s.host = this.Target;
+            s.parent = this;
+            s.PushSingleSkill(new Skill61_2());
+            this.skill_stacks1.Add(s);
+        }
+        {
+            SkillStack s = SkillStack.Create();
+            s.host = this.Target;
+            s.parent = this;
+            s.PushSingleSkill(new Skill61_3());
+            this.skill_stacks1.Add(s);
+        }
+        {
+            SkillStack s = SkillStack.Create();
+            s.host = this.Target;
+            s.parent = this;
+            s.PushSingleSkill(new Skill6_Final());
+            this.skill_stacks1.Add(s);
+        }
+        {
+            SkillStack s = SkillStack.Create();
+            s.host = this.Target;
+            s.parent = this;
+            s.PushSingleSkill(new SkillForceCancel());
+            this.skill_stacks1.Add(s);
         }
 
 
-
         this.Enable = true;
-
+        skill_stacks = skill_stacks2; // 默认技能组2
     }
     public override void OnExit()
     {
 
     }
 
-    ArrayList skill_stacks = new ArrayList();
-
+    ArrayList skill_stacks1 = new ArrayList();
+    ArrayList skill_stacks2 = new ArrayList();
+    ArrayList skill_stacks = null;
 
 }
 

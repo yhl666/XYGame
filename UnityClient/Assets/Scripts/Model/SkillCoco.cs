@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class Skill5_1:SkillBase
+public class Skill61_1:SkillBase
 {
     Counter counter=Counter.Create(400);
     public override void OnEnter()
@@ -85,7 +85,7 @@ public class Skill5_1:SkillBase
 /// <summary>
 ///可被打断 角色施法 出一个伤害移动的伤害范围， 再次按下触发 一颗雷从天而降 造成大量伤害
 /// </summary>
-public class Skill5_3 : SkillBase
+public class Skill61_3 : SkillBase
 {
     public override void OnEnter()
     {
@@ -190,7 +190,7 @@ public class Skill5_3 : SkillBase
 
 }
 
-public class Skill5_2 : SkillBase
+public class Skill61_2 : SkillBase
 {
     Counter counter = Counter.Create(400);
     public override void OnEnter()

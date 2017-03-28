@@ -66,12 +66,26 @@ public sealed class SkillStack : GAObject
     /// 强制去打断 可用于状态切换
     /// </summary>
     /// <param name="who"></param>
-    /// <returns></returns>
+    /// <returns>允许强制打断返回true</returns>
     public bool ProcessOnInterruptedForce(SkillBase who)
     {
-        //todo
-        return false;
+        SkillBase s = stacks.Peek() as SkillBase;//
+        if (s.Enable == false) return true;
 
+        bool ret = s.OnInterruptedForce(who);//向被打断者 发起打断请求
+        return ret;
+    }
+    public void ProcessChangeSkillGroupOut(SkillBase who)
+    {
+        SkillBase s = stacks.Peek() as SkillBase;//
+
+        s.OnChangeSkillGroupOut(who);// 技能组切出消息  
+    }
+    public void ProcessChangeSkillGroupIn(SkillBase who)
+    {
+        SkillBase s = stacks.Peek() as SkillBase;//
+
+        s.OnChangeSkillGroupIn(who);//   技能组切入消息
     }
     public void PushSingleSkill(SkillBase s)
     {//单行状态机
@@ -180,6 +194,14 @@ public sealed class SkillStack : GAObject
     {
         this.parent.PushOnInterruptedForce(who);
     }
+    /// <summary>
+    /// 请求切换技能组
+    /// </summary>
+    /// <param name="who"></param>
+    public void PushChangeSkillGroup(SkillBase who)
+    {
+        this.parent.PushChangeSkillGroup(who);
+    }
     public override void OnEnter()
     {
         /*  SkillBase s = new Skill_1();
@@ -261,6 +283,24 @@ public class SkillBase : Model
     {
         return false;
     }
+    public virtual bool OnInterruptedForce(SkillBase what)
+    {//强制取消，可用于比如切换取消
+        this.OnExit();
+        return true;
+    }
+    /// <summary>
+    /// 技能组切出 事件
+    /// Enable=false 也会受到
+    /// </summary>
+    /// <param name="who"></param>
+    public virtual void OnChangeSkillGroupOut(SkillBase who)
+    {
+
+    }
+    public virtual void OnChangeSkillGroupIn(SkillBase who)
+    {
+
+    }
     /// <summary>
     /// 动画完成回调
     /// </summary>
@@ -293,7 +333,20 @@ public class SkillBase : Model
     {
         this.stack.PushOnInterrupted(this);
     }
-
+    /// <summary>
+    /// 请求强制打断
+    /// </summary>
+    public void PushOnInterruptedForce()
+    {
+        this.stack.PushOnInterruptedForce(this);
+    }
+    /// <summary>
+    /// 请求 切换 技能组
+    /// </summary>
+    public void PushChangeSkillGroup()
+    {
+        this.stack.PushChangeSkillGroup(this);
+    }
 }
 
 
@@ -1977,3 +2030,56 @@ public class Skill6_Final : SkillBase
     Bullet b = null;
 }
 
+
+
+
+
+/// <summary>
+/// 切换取消技能
+/// </summary>
+public class SkillForceCancel : SkillBase
+{
+    public override string GetName()
+    {
+        return "SkillForceCancel";
+    }
+
+    public override void OnEnter()
+    {
+        Target.isAttacking = false;
+        this.Enable = true;
+    }
+    public override void UpdateMS()
+    {
+
+    }
+    public override void UpdateMSIdle()
+    {
+
+    }
+
+    public override void OnExit()
+    {
+
+
+    }
+
+
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
+
+    public override void OnAcceptInterrupted(SkillBase who)
+    {
+        this.OnEnter();
+    }
+    public override void OnPush()
+    {
+        this.PushOnInterruptedForce();
+        this.PushChangeSkillGroup();
+    }
+
+}
