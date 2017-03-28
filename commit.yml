@@ -2,31 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '2e3de422f29e1a7ae91bdc5e2f8587521cc9ce04'
-    oldFile: !uuid 'c5a538dd2fc1589289eaf9bc1c8c3ae0f8171802'
-  /UnityClient/Assets:
-    newFile: !uuid '5cc8e7f4872bb1c4f2937adbcf281be4ca78fab3'
-    oldFile: !uuid 'eadbb41094442cd7bbb322af2b49ae4d68b4f3d5'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '725a5f24a6c66b81afdc4d027c67adb3805edc77'
-    oldFile: !uuid '84cdec9f70cbc89b24ebbe4d052738ffc4aad669'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'ea21c701899ca05e20fcf5e2e9bdee771fabe334'
-    oldFile: !uuid '775bb6acfa2f2c99a320d9fce7bb782c61c65aa2'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '55a983a8148d2bda5012131db53d72f715a29160'
-    oldFile: !uuid 'f3a1c480c4565a71c40e1afa70d5647a92b57903'
-  /UnityClient/Assets/Resources/Prefabs/data/形态1.prefab:
-    newFile: !uuid 'ee3f907c5896b23155c4320748212a31d74a0c44'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/形态1.prefab.meta:
-    newFile: !uuid 'b8d204fe939b61c46c6b297014a674df96829b8c'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性配置表.prefab:
-    newFile: !uuid 'cf331dbea3b42356593e070b2c9a420880c6c36a'
-    oldFile: !uuid 'd7f674573cabb1380644247a6d9baf77cc306c24'
-gitCommitId: !uuid 'c976b6597c95e6ec4e12f3e980c8f1b8664e0e51'
+  /策划文档:
+    newFile: !uuid 'e93dea014e46346a907cfbd4d9b4558f25293c40'
+    oldFile: !uuid 'bbc6cbc3e22a5074f66080409671945ab2e9c756'
+  /策划文档/计划安排.xlsx:
+    newFile: !uuid '7171da86dd58c664ac46326deb7b7f02e1bd5786'
+    oldFile: !uuid '01fdd6bf19dbc1b2e2d993765569aae214a15f10'
+gitCommitId: !uuid '0b163b348a8d7cace98c905de9a2e35eb4045a88'
 renames: {
   }
-revisionId: 532
+revisionId: 533
