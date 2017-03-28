@@ -1418,6 +1418,10 @@ public class Skill62_1 : SkillBase
 
     public override void OnEnter()
     {
+        cd.SetMax(Skill62_1_Data.ins.cd);
+        tick.SetMax(Skill62_1_Data.ins.last_time);
+        tick_cancel.SetMax(Skill62_1_Data.ins.cancel);
+
         cd.Reset();
         this.PauseAll();
         this.Target.machine.GetState<StandState>().Resume();
@@ -1569,6 +1573,10 @@ public class Skill62_2 : SkillBase
     bool has_shoot = false;
     public override void OnEnter()
     {
+        tick_cancel.SetMax(Skill62_2_Data.ins.cancel);
+        cd.SetMax(Skill62_2_Data.ins.cd);
+        tick.SetMax(Skill62_2_Data.ins.tick_delay);
+
         cd.Reset();
         this.PauseAll();
         tick.Reset();
@@ -1711,6 +1719,10 @@ public class Skill62_3 : SkillBase
     bool has_shoot = false;
     public override void OnEnter()
     {
+        cd.SetMax(Skill62_3_Data.ins.cd);
+        tick1.SetMax(Skill62_3_Data.ins.start_jump);
+        tick_cancel.SetMax(Skill62_3_Data.ins.cancel);
+
         cd.Reset();
         this.PauseAll();
         tick1.Reset();
@@ -1900,6 +1912,8 @@ public class Skill6_Final : SkillBase
     Buffer buf_god = null;
     public override void OnEnter()
     {
+        cd.SetMax(Skill6_Final_Data.ins.cd);
+
         cd.Reset();
         this.PauseAll();
         this.level = 1;
