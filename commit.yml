@@ -3,24 +3,18 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '620b917264334bba345ebabcccf1fd3257ef9673'
-    oldFile: !uuid '7346b684c2e7816ed06fd4d73da21726b1e77196'
+    newFile: !uuid 'fec788045887af975c5c8c3f10e82f1932d04214'
+    oldFile: !uuid '620b917264334bba345ebabcccf1fd3257ef9673'
   /UnityClient/Assets:
-    newFile: !uuid 'd4e2197d42306c9d360336a6b33ad42a8d92ca64'
-    oldFile: !uuid 'e0ca1f664334a296e86a7d67e2a6ea9b831320ad'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '63cd9dd62862a3c929e7020ca4edf8a0c952df28'
-    oldFile: !uuid 'ed42e6691dd44cbb4b6965b9668e2c2dbf6c2639'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '09b4f2ff37252454b356fe6097721c35a8fb0994'
-    oldFile: !uuid '6fbb9103668a91b891d853d1350eb897cd277ac2'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '2dd5375d830e33626332739152dbb0730aec9b61'
-    oldFile: !uuid '0240be4f70af8782350e46dee06424ea77e30e6d'
-  /UnityClient/Assets/Resources/Prefabs/data/形态1.prefab.meta:
-    newFile: null
-    oldFile: !uuid 'b8d204fe939b61c46c6b297014a674df96829b8c'
-gitCommitId: !uuid '2ae324a21c3d6aa2e3690809f274732f493b5a58'
+    newFile: !uuid 'cd2fee561313c2c9a4c4196370423df8b2070988'
+    oldFile: !uuid 'd4e2197d42306c9d360336a6b33ad42a8d92ca64'
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid 'a6ee58889fca8f870b8c0b0e1e7cf3139efcbcfc'
+    oldFile: !uuid '76e568924260a12b8772dd9e2128ce3318135efa'
+  /UnityClient/Assets/Scenes/BattlePVP.unity:
+    newFile: !uuid '576ffce880aa00c1e2f7668e447ed387c1dbfa9b'
+    oldFile: !uuid 'a90d3addad24d31ad2858cdfb3c430517fb60a0a'
+gitCommitId: !uuid '385bbb3ce34ef4ba450a81cad483d3b6bd235580'
 renames: {
   }
-revisionId: 542
+revisionId: 543
