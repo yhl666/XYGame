@@ -3,21 +3,48 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '90e42733090a6b0db0d139f24d9c3b39060180f3'
-    oldFile: !uuid 'a3fc8456e89bb3e37dfe5bb61f0050661b5b6b62'
+    newFile: !uuid '01705de94f06fb92cf75789f218ec1e3cb80b785'
+    oldFile: !uuid '90e42733090a6b0db0d139f24d9c3b39060180f3'
   /UnityClient/Assets:
-    newFile: !uuid '7c39e221e67c0848724f9e44aefc6aae9c49b2ce'
-    oldFile: !uuid 'd9bbd5593874a7223a582492c0255ec4daf533fc'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '6c43e8f883c9edbb6e18ae495a2060d073c07567'
-    oldFile: !uuid 'badebe8b90688508981528cd91abc2e6e0251907'
-  /UnityClient/Assets/Scenes/BattlePVE.unity:
-    newFile: !uuid 'f73ffd166fb17b147bf31ca3365f7b27240af5d5'
-    oldFile: !uuid '375a3c293ddacc5897242a127994cd7bd4a6452a'
-  /UnityClient/Assets/Scenes/BattlePVP.unity:
-    newFile: !uuid '903435dcddc14a4a467e7797000148037d3d1635'
-    oldFile: !uuid '99741780ff8612833132a36866195f0e3474e636'
-gitCommitId: !uuid '41d868ff53052659020844f99e8546574e9d3940'
+    newFile: !uuid 'd184fe76cb8771ff9edc1aaba2a196ddcddc33e7'
+    oldFile: !uuid '7c39e221e67c0848724f9e44aefc6aae9c49b2ce'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '802627e46f5597f3715aab74e4b188f345aa971d'
+    oldFile: !uuid '48b9cfecd547c061e2c0788caa0dcc0812cf58ce'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid '431019b957d0dbf90b5e5f2e185d9fa4bc92dc28'
+    oldFile: !uuid 'ec08c8d85ec4b16cb4d4262bccf6f94b788e9773'
+  /UnityClient/Assets/Scripts/Data/ConfigTables.cs:
+    newFile: !uuid '698dc661fed11e0fcee6d686934d0070566010ae'
+    oldFile: !uuid '7c212bb87a9827b0fe02a4fc0af8aa62042c4769'
+  /UnityClient/Assets/Scripts/Data/Skill62_1_Data.cs:
+    newFile: !uuid 'f9500d441e5cd387198edfdd391f85fb07670e8d'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/Skill62_1_Data.cs.meta:
+    newFile: !uuid 'e0ead3ec3957b95bfeaa7fc100d85e3d5c41889b'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/Skill62_2_Data.cs:
+    newFile: !uuid '808f0c720b162d353b86f3e63771a74c5e202051'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/Skill62_2_Data.cs.meta:
+    newFile: !uuid '93edf20be60174b1aa318e307c36d208bce1f47d'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/Skill62_3_Data.cs:
+    newFile: !uuid 'cda5391a74a69f4dcc955e5edf955d63e4dfd05d'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/Skill62_3_Data.cs.meta:
+    newFile: !uuid 'f15f2c504e7747596192f0b8cb4b23055a63f19c'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '4dfe124636539fcdc1d76b0e3b09cedfbb4758f8'
+    oldFile: !uuid 'bae285dc88382aad0d666983175df6a3d1ec3ba2'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid '9f22a99cee53e174a3800a8606cc2afb44673b4e'
+    oldFile: !uuid '9e31b1549812e591c6e65f5f1d316211034effb5'
+  /UnityClient/Assets/Scripts/Model/SkillCoco.cs.meta:
+    newFile: !uuid 'cf452e01a73eeabaeeaca5469219ba3c20f8042c'
+    oldFile: null
+gitCommitId: !uuid 'a787d81ea46a89194d7364eee89a7d5915d695ad'
 renames: {
   }
-revisionId: 517
+revisionId: 518
