@@ -3,39 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '7346b684c2e7816ed06fd4d73da21726b1e77196'
-    oldFile: !uuid 'be8355c3f6ae4c2175ccd2ddc515cca0970fd031'
+    newFile: !uuid '620b917264334bba345ebabcccf1fd3257ef9673'
+    oldFile: !uuid '7346b684c2e7816ed06fd4d73da21726b1e77196'
   /UnityClient/Assets:
-    newFile: !uuid 'e0ca1f664334a296e86a7d67e2a6ea9b831320ad'
-    oldFile: !uuid 'ec7585a73525aa3aa4a9577a4dd80387afad14bb'
+    newFile: !uuid 'd4e2197d42306c9d360336a6b33ad42a8d92ca64'
+    oldFile: !uuid 'e0ca1f664334a296e86a7d67e2a6ea9b831320ad'
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'ed42e6691dd44cbb4b6965b9668e2c2dbf6c2639'
-    oldFile: !uuid 'b2bb4ba27b96e9846f87a63a9cc4551325b77352'
+    newFile: !uuid '63cd9dd62862a3c929e7020ca4edf8a0c952df28'
+    oldFile: !uuid 'ed42e6691dd44cbb4b6965b9668e2c2dbf6c2639'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '6fbb9103668a91b891d853d1350eb897cd277ac2'
-    oldFile: !uuid '6033de37d4d788ffedcce52cd4832fd26777d70e'
+    newFile: !uuid '09b4f2ff37252454b356fe6097721c35a8fb0994'
+    oldFile: !uuid '6fbb9103668a91b891d853d1350eb897cd277ac2'
   /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '0240be4f70af8782350e46dee06424ea77e30e6d'
-    oldFile: !uuid '283a7446c74ced8de9ac2130c46ed78e983000da'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
-    newFile: !uuid '9b3e7c7df06ca8e364e6abdcc3be05a3a2fa8ff1'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab.meta:
-    newFile: !uuid '3d50d947ccff313b332d2e08e326398b002e4654'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
-    newFile: !uuid 'af8b6a57023199ea0dd1b4f02eecf5b5f797b5b2'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab.meta:
-    newFile: !uuid 'dd7d1d376616d0d35afd01d3bae1a4e40ecbdc12'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/普通攻击.prefab:
-    newFile: !uuid '0ddfef2ba6c007db8f57b8eb2830d570d28c8e35'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/普通攻击.prefab.meta:
-    newFile: !uuid 'a1240938274568dc1c73c5b9078f47c5a40304c7'
-    oldFile: null
-gitCommitId: !uuid '20d1d1f4684eafef95715ba5d36303187fed0bb6'
+    newFile: !uuid '2dd5375d830e33626332739152dbb0730aec9b61'
+    oldFile: !uuid '0240be4f70af8782350e46dee06424ea77e30e6d'
+  /UnityClient/Assets/Resources/Prefabs/data/形态1.prefab.meta:
+    newFile: null
+    oldFile: !uuid 'b8d204fe939b61c46c6b297014a674df96829b8c'
+gitCommitId: !uuid '2ae324a21c3d6aa2e3690809f274732f493b5a58'
 renames: {
   }
-revisionId: 541
+revisionId: 542
