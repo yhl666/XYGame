@@ -2,16 +2,22 @@
 branches: {
   }
 fileChange:
-  /策划文档:
-    newFile: !uuid '5c4bffb70434c3951097fceae4622064377dc321'
-    oldFile: !uuid 'f4cd60b0a7d9a527fe13c389d87f854c5013525e'
-  /策划文档/BOSS技能.xlsx:
-    newFile: !uuid 'a089480c28f215fc423a961d08baac5c1747e733'
+  /UnityClient:
+    newFile: !uuid '17ddc8a6a45c5d69013a69f10e77739f6f6f8f3a'
+    oldFile: !uuid 'f48e360f305d90b7f4a9b7d36bd33d5fa14b1459'
+  /UnityClient/Assets:
+    newFile: !uuid '835c1fc381fcefd4340f8dca79c75742c21c2571'
+    oldFile: !uuid 'da4728923b83a73de569b664ec09720154b89307'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'a0cc4268c875bcc68746b4d060fc783fb344f400'
+    oldFile: !uuid 'a81f358c2c800cc902e4e1193e8a9d7a275421fd'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '3759b5289d61e7c7c0831f939cfcd5a82ca5d25d'
+    oldFile: !uuid '0e0393462f925d0deaf6d7236f3341814ea56051'
+  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
+    newFile: !uuid 'e7dc233219d7d0f9057c9db3ef15c6c23309617d'
     oldFile: null
-  /策划文档/小怪配置.xlsx:
-    newFile: !uuid '70a493fe515922f2f395792c8c2f4d59f95bc842'
-    oldFile: null
-gitCommitId: !uuid '124a795aa660fc31386eee0f043fbc5186ff20a1'
+gitCommitId: !uuid 'e25b31a5f09a7deb025bc7f14d710eee18314f66'
 renames: {
   }
-revisionId: 506
+revisionId: 507
