@@ -2,40 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '48ef04a36b28d89955acc17126030e193bce1c58'
-    oldFile: !uuid '4e18860f3f4e01d346ca75a9aa077526db53c8fa'
-  /UnityClient/Assets:
-    newFile: !uuid 'edd494a1501623645c387022620b41c930b46d96'
-    oldFile: !uuid '6026c4bcd2b661e5eca9f59aa94ae69d957f61c2'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'd470a30dfd19fefa0d10128c89ed9d23fa6539e8'
-    oldFile: !uuid '0420341ace5c23c55fa330d99792bd018f793370'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '339f101a0420117c21efa301da965a95ddbc4681'
-    oldFile: !uuid 'e63957580f76f94d808138f47bb45dcfac495f1a'
-  /UnityClient/Assets/Scripts/Data/ConfigTables.cs:
-    newFile: !uuid '89dcd8b4761eb4a848cc59cf9369307a33332047'
-    oldFile: !uuid 'f72fc688e9212dcde64c7ccf7e55bc9f40233aa8'
-  /UnityClient/Assets/Scripts/Data/Skill61_1_Data.cs:
-    newFile: !uuid '602cc1a1f95e14b929b80b1878a946504e4d4cd0'
+  /策划文档:
+    newFile: !uuid 'bbc6cbc3e22a5074f66080409671945ab2e9c756'
+    oldFile: !uuid 'bee4e7b916d84bd844369df2b497bf83b1a86cb5'
+  /策划文档/计划安排.xlsx:
+    newFile: !uuid '01fdd6bf19dbc1b2e2d993765569aae214a15f10'
     oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_1_Data.cs.meta:
-    newFile: !uuid '1d0b97b9c31ddc1cddc8c83621abf32a60a551d4'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data.cs:
-    newFile: !uuid 'fbc163741a7706c601168eb68a39a47b17e61aa1'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data.cs.meta:
-    newFile: !uuid '69dc5cf570c1c0220ef0b4b835b1932a40832a7d'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_3_Data.cs:
-    newFile: !uuid 'd141e6771f26aad0a30ad7ce2cc30214aeaa266e'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_3_Data.cs.meta:
-    newFile: !uuid '8d6c96f9403115d60ffc91d1e3d66674a0f174d6'
-    oldFile: null
-gitCommitId: !uuid '74c9fbafbbd86ce2cef451b2960d868c5f1992f1'
+gitCommitId: !uuid '477c11e2f88a8f4dddd93fe42ff27a6e7c66da04'
 renames: {
   }
-revisionId: 529
+revisionId: 530
