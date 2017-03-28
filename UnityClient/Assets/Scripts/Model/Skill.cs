@@ -223,7 +223,6 @@ public sealed class SkillStack : GAObject
 
 public class SkillBase : Model
 {
-
     public Entity Target = null; // reference
     public SkillStack stack = null;//reference
     public virtual string GetName() { return "SkillBase"; }
@@ -1413,8 +1412,10 @@ public class Skill62_1 : SkillBase
         return "Skill62_1";
     }
     Bullet b = null;
-    Counter cd = Counter.Create(1 * 40);
-    Counter tick = Counter.Create(80);
+    Counter cd = Counter.Create(Skill62_1_Data.ins.cd);
+    Counter tick = Counter.Create(Skill62_1_Data.ins.last_time);
+    Counter tick_cancel = Counter.Create(Skill62_1_Data.ins.cancel);
+
     public override void OnEnter()
     {
         cd.Reset();
@@ -1427,26 +1428,27 @@ public class Skill62_1 : SkillBase
         state.EnableWhenAttack();
         Target.isAttacking = true;
         this.Enable = true;
-        Target.attackingAnimationName = "6100_2";
+        Target.attackingAnimationName = Skill62_1_Data.ins.animation_name; // "6100_2";
         this.Shoot();
 
 
         {
             BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
             buffer.id = 0xef2;
-            buffer.percent = -30;
-            buffer.time = Utils.fpsi * 2;
+            buffer.percent = -Skill62_1_Data.ins.added_speed_percent;
+            buffer.time = Skill62_1_Data.ins.last_time;
             Target.AddBuffer(buffer);
         }
         {
             BufferNegativeUnbeatable buffer = BufferMgr.CreateHelper<BufferNegativeUnbeatable>(Target);
-            buffer.MAX_TICK = Utils.fpsi * 2;
+            buffer.MAX_TICK = Skill62_1_Data.ins.last_time;
             Target.AddBuffer(buffer);
         }
     }
     public override void UpdateMS()
     {
         cd.Tick();
+        tick_cancel.Tick();
         if (tick.Tick())
         {
             b.x = Target.x;
@@ -1476,14 +1478,14 @@ public class Skill62_1 : SkillBase
         info.distance_atk = 1.5f;
         info.number = 0xfff;
         info.isHitDestory = false;
-        info.damage_ratio = 1.5f;
+        info.damage_ratio = Skill62_1_Data.ins.damage_ratio;
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
         info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6122/role_6_bul_6122.plist";
         /// info.rotate = 30.0f;
         info.distance = 0;
         info.lastTime = 10;
-        info.collider_size = new Vector2(3f, 0.5f);
+        info.collider_size = Skill62_1_Data.ins.hit_rect;
         info.scale_x = 2f;
         info.scale_y = 2f;
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
@@ -1535,14 +1537,15 @@ public class Skill62_1 : SkillBase
     {
         base.Init();
         cd.TickMax();
-
         return true;
     }
     public override bool OnInterrupted(SkillBase who)
     {
-        if (this.Enable)
+        if (this.Enable && tick_cancel.IsMax())
+        {
             this.OnExit();
-        return true;
+            return true;
+        }
         return false;
     }
 
@@ -1560,9 +1563,9 @@ public class Skill62_2 : SkillBase
     {
         return "Skill62_2";
     }
-
-    Counter cd = Counter.Create(1 * 40);
-    Counter tick = Counter.Create(10);
+    Counter tick_cancel = Counter.Create(Skill62_2_Data.ins.cancel);
+    Counter cd = Counter.Create(Skill62_2_Data.ins.cd);
+    Counter tick = Counter.Create(Skill62_2_Data.ins.tick_delay);
     bool has_shoot = false;
     public override void OnEnter()
     {
@@ -1575,12 +1578,13 @@ public class Skill62_2 : SkillBase
         Target.isAttacking = true;
         this.Enable = true;
         Target.is_spine_loop = false;
-        Target.attackingAnimationName = "6130_1";
+        Target.attackingAnimationName = Skill62_2_Data.ins.animation_name;//"6130_1";
 
 
     }
     public override void UpdateMS()
     {
+        tick_cancel.Tick();
         if (tick.Tick() == false && has_shoot == false)
         {
             this.Shoot();
@@ -1603,21 +1607,22 @@ public class Skill62_2 : SkillBase
 
         info.AddBuffer("BufferHitFly");
 
-        info.launch_delta_xy.x = 1.5f;
-        info.launch_delta_xy.y = -0.2f;
+        info.launch_delta_xy.x = Skill62_2_Data.ins.delta_xy.x;// 1.5f;
+        info.launch_delta_xy.y = Skill62_2_Data.ins.delta_xy.y;// -0.2f;
         info.frameDelay = 4;
         info.distance_atk = 1.5f;
         info.number = 0xfff;
         info.isHitDestory = false;
-        info.damage_ratio = 1.5f;
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
-        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6224/role_6_bul_6224.plist";
+        info.plistAnimation = Skill62_2_Data.ins.hit_animation_name;
         /// info.rotate = 30.0f;
         info.distance = 0;
         info.lastTime = 10;
         info.scale_x = 2f;
         info.scale_y = 2f;
+        info.damage_ratio = Skill62_2_Data.ins.damage_ratio;
+        info.collider_size = Skill62_2_Data.ins.hit_rect;
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
     public override void OnSpineCompolete()
@@ -1647,14 +1652,16 @@ public class Skill62_2 : SkillBase
     {
         base.Init();
         cd.TickMax();
-
         return true;
     }
+
     public override bool OnInterrupted(SkillBase who)
     {
-        if (this.Enable)
+        if (this.Enable && tick_cancel.IsMax())
+        {
             this.OnExit();
-        return true;
+            return true;
+        }
         return false;
     }
     public override void OnAcceptInterrupted(SkillBase who)
@@ -1698,27 +1705,28 @@ public class Skill62_3 : SkillBase
         return "Skill62_3";
     }
 
-    Counter cd = Counter.Create(1 * 40);
-    Counter tick1 = Counter.Create(10);
+    Counter cd = Counter.Create( Skill62_3_Data.ins.cd);
+    Counter tick1 = Counter.Create(Skill62_3_Data.ins.start_jump);
+    Counter tick_cancel = Counter.Create(Skill62_3_Data.ins.cancel);
     bool has_shoot = false;
     public override void OnEnter()
     {
         cd.Reset();
         this.PauseAll();
         tick1.Reset();
-        jump_speed = DATA.DEFAULT_JUMP_SPEED * 1f;
+        jump_speed = Skill62_3_Data.ins.jump_speed;// DATA.DEFAULT_JUMP_SPEED * 1f;
         has_shoot = false;
         this.Target.machine.GetState<StandState>().Resume();
         this.Target.machine.GetState<FallState>().Resume();
         Target.isAttacking = true;
         this.Enable = true;
         Target.is_spine_loop = false;
-        Target.attackingAnimationName = "6140_1";
+        Target.attackingAnimationName = Skill62_3_Data.ins.animation_name;//// "6140_1";
 
 
     }
 
-    private float jump_speed = DATA.DEFAULT_JUMP_SPEED * 1f;
+    private float jump_speed = Skill62_3_Data.ins.jump_speed;  // DATA.DEFAULT_JUMP_SPEED * 1f;
     public override void UpdateMS()
     {
         ///  Target.x_auto += Target.flipX * -0.05f;
@@ -1760,7 +1768,7 @@ public class Skill62_3 : SkillBase
             {
                 //接入重力
 
-                jump_speed -= 9.8f / 40.0f * 0.1f;
+                jump_speed -= 9.8f / 40.0f * 0.1f * Skill62_3_Data.ins.gravity_ratio;
                 ///   current_height += jump_speed;
                 this.Target.y += jump_speed;
             }
@@ -1792,23 +1800,30 @@ public class Skill62_3 : SkillBase
 
         info.AddBuffer("BufferHitFly");
 
-        info.launch_delta_xy.x = 1.5f;
-        info.launch_delta_xy.y = -0.2f;
+       // info.launch_delta_xy.x = 1.5f;
+      //  info.launch_delta_xy.y = -0.2f;
         info.frameDelay = 3;
         info.distance_atk = 1.5f;
         info.number = 0xfff;
         info.isHitDestory = false;
-        info.damage_ratio = 1.5f;
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
         ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
 
-        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
+      //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
         /// info.rotate = 30.0f;
         info.distance = 0;
         info.lastTime = 10;
         info.scale_x = 2f;
         info.scale_y = 2f;
+ 
+        info.launch_delta_xy.x = Skill62_3_Data.ins.delta_xy.x;// 1.5f;
+        info.launch_delta_xy.y = Skill62_3_Data.ins.delta_xy.y;// -0.2f;
+        info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
+        info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
+        info.collider_size = Skill62_3_Data.ins.hit_rect;
+
+
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
     public override void OnSpineCompolete()
@@ -1839,7 +1854,7 @@ public class Skill62_3 : SkillBase
         {
             this.PushOnInterruptAttackSate(); //强制打断 普通技能
         }
-        
+
         this.OnEnter();
 
     }
@@ -1847,12 +1862,21 @@ public class Skill62_3 : SkillBase
     {
         base.Init();
         cd.TickMax();
-
         return true;
     }
+
     public override void OnInterrupted(AttackInfo info)
     {
 
+    }
+    public override bool OnInterrupted(SkillBase who)
+    {
+        if (this.Enable && tick_cancel.IsMax())
+        {
+            this.OnExit();
+            return true;
+        }
+        return false;
     }
     Bullet b = null;
 }
@@ -2049,7 +2073,7 @@ public class Skill6_Final : SkillBase
         {
             this.PushOnInterruptAttackSate(); //强制打断 普通技能
         }
-        
+
         if (Target.isAttacking)
         {
             this.PushOnInterrupted();

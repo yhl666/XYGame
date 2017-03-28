@@ -126,6 +126,9 @@ namespace ConfigTables
 
 
             kv["Skill62_1"] = "Skill62_2,Skill62_3,";
+            kv["Skill62_2"] = "Skill62_1,Skill62_3,";
+
+
             //key    是否能打断  values    
         }
         static HashTable kv = null;
