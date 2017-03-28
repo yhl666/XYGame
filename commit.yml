@@ -2,16 +2,22 @@
 branches: {
   }
 fileChange:
-  /策划文档:
-    newFile: !uuid 'bee4e7b916d84bd844369df2b497bf83b1a86cb5'
-    oldFile: !uuid 'c3dc1bf32f10d4210457310a84724dad3fdf9707'
-  /策划文档/pvp2.png:
-    newFile: !uuid '66342723f3b34671c1fd2cfdf9ba477573a75c4a'
-    oldFile: null
-  /策划文档/pvp2.tmx:
-    newFile: !uuid '364099cd9691a9b1418df8d2aaef5e54d4f6a62e'
-    oldFile: null
-gitCommitId: !uuid 'dd01c11be2e2cf4d53c4d73dcfa88287d8cc39df'
+  /UnityClient:
+    newFile: !uuid '90e42733090a6b0db0d139f24d9c3b39060180f3'
+    oldFile: !uuid 'a3fc8456e89bb3e37dfe5bb61f0050661b5b6b62'
+  /UnityClient/Assets:
+    newFile: !uuid '7c39e221e67c0848724f9e44aefc6aae9c49b2ce'
+    oldFile: !uuid 'd9bbd5593874a7223a582492c0255ec4daf533fc'
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid '6c43e8f883c9edbb6e18ae495a2060d073c07567'
+    oldFile: !uuid 'badebe8b90688508981528cd91abc2e6e0251907'
+  /UnityClient/Assets/Scenes/BattlePVE.unity:
+    newFile: !uuid 'f73ffd166fb17b147bf31ca3365f7b27240af5d5'
+    oldFile: !uuid '375a3c293ddacc5897242a127994cd7bd4a6452a'
+  /UnityClient/Assets/Scenes/BattlePVP.unity:
+    newFile: !uuid '903435dcddc14a4a467e7797000148037d3d1635'
+    oldFile: !uuid '99741780ff8612833132a36866195f0e3474e636'
+gitCommitId: !uuid '41d868ff53052659020844f99e8546574e9d3940'
 renames: {
   }
-revisionId: 516
+revisionId: 517
