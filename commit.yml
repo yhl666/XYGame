@@ -2,25 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'f48e360f305d90b7f4a9b7d36bd33d5fa14b1459'
-    oldFile: !uuid 'ec99dbbd7caaffeacb36a731ed58c919a0ba4181'
-  /UnityClient/Assets:
-    newFile: !uuid 'da4728923b83a73de569b664ec09720154b89307'
-    oldFile: !uuid '51c6c14fefdf348b8dc730d8e2cc5653482b6a4a'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'a81f358c2c800cc902e4e1193e8a9d7a275421fd'
-    oldFile: !uuid '32f714aededb859690ef9a48595e7445addc55fe'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '0e0393462f925d0deaf6d7236f3341814ea56051'
-    oldFile: !uuid '33e45b69313711fe320d371dc6626ec005c639a5'
-  /UnityClient/Assets/Scripts/Model/Skill.cs:
-    newFile: !uuid 'dd5fb1af9426e465124a0686a19c0a2e1e28df16'
-    oldFile: !uuid 'f1e4238e3fb317094562d247f6ea743783475bcc'
-  /UnityClient/Assets/Scripts/Model/StateBase.cs:
-    newFile: !uuid '444a17757d9f9793f79274c2fe4974f23cb67fb7'
-    oldFile: !uuid 'f01b2237bd8b4835e4482d141dfcb35c8036e41c'
-gitCommitId: !uuid 'f79fa4b6a26ecca8b94858fce7d066cf69ef2226'
+  /策划文档:
+    newFile: !uuid '5c4bffb70434c3951097fceae4622064377dc321'
+    oldFile: !uuid 'f4cd60b0a7d9a527fe13c389d87f854c5013525e'
+  /策划文档/BOSS技能.xlsx:
+    newFile: !uuid 'a089480c28f215fc423a961d08baac5c1747e733'
+    oldFile: null
+  /策划文档/小怪配置.xlsx:
+    newFile: !uuid '70a493fe515922f2f395792c8c2f4d59f95bc842'
+    oldFile: null
+gitCommitId: !uuid '124a795aa660fc31386eee0f043fbc5186ff20a1'
 renames: {
   }
-revisionId: 505
+revisionId: 506
