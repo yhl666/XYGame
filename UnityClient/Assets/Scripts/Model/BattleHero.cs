@@ -115,7 +115,7 @@ public class BattleHero : Hero
             info.AddBuffer("BufferSpin");
 
             info.launch_delta_xy.x = AttackState6_Data.ins.level1_delta_xy.x; //; 1f;
-            info.launch_delta_xy.y = AttackState6_Data.ins.level1_delta_xy.x; ;// 0f;
+            info.launch_delta_xy.y = AttackState6_Data.ins.level1_delta_xy.y; ;// 0f;
             info.collider_size = AttackState6_Data.ins.level1_hit_rect;
             info.plistAnimation = AttackState6_Data.ins.level1_hit_animation_name; ;// "hd/roles/role_6/bullet/role_6_bul_6001/role_6_bul_6001.plist";
             info.damage_ratio = AttackState6_Data.ins.level1_damage_ratio;
@@ -170,7 +170,7 @@ public class BattleHero : Hero
 
 
             info.launch_delta_xy.x = AttackState6_Data.ins.level2_delta_xy.x; //; 1f;
-            info.launch_delta_xy.y = AttackState6_Data.ins.level2_delta_xy.x; ;// 0f;
+            info.launch_delta_xy.y = AttackState6_Data.ins.level2_delta_xy.y; ;// 0f;
             info.collider_size = AttackState6_Data.ins.level2_hit_rect;
             info.plistAnimation = AttackState6_Data.ins.level2_hit_animation_name; ;
             info.damage_ratio = AttackState6_Data.ins.level2_damage_ratio;
@@ -213,7 +213,7 @@ public class BattleHero : Hero
             info.lastTime = 15;
 
             info.launch_delta_xy.x = AttackState6_Data.ins.level3_delta_xy.x; //; 1f;
-            info.launch_delta_xy.y = AttackState6_Data.ins.level3_delta_xy.x; ;// 0f;
+            info.launch_delta_xy.y = AttackState6_Data.ins.level3_delta_xy.y; ;// 0f;
             info.collider_size = AttackState6_Data.ins.level3_hit_rect;
             info.plistAnimation = AttackState6_Data.ins.level3_hit_animation_name; ;// 
             info.damage_ratio = AttackState6_Data.ins.level3_damage_ratio;
