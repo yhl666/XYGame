@@ -2,22 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'fad1499ba00f589645ed0dbcb872b4ec1748ffd3'
-    oldFile: !uuid '86927ff8738b76dc325e81cb3e3d1aea15a5b2f8'
-  /UnityClient/Assets:
-    newFile: !uuid '279e1083fcb20fa6929230db25775b390ad8bfad'
-    oldFile: !uuid '5fc09b649fb7143edcea19b6ca4e6179e1449631'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'a9588e3ca106f5786beb41fa97e13235764aa0dc'
-    oldFile: !uuid 'a8c83f35fce50fb9e57ac13cb359685674b72626'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid 'be294f70cc935f128d3a2258d3be2fce1224c50c'
-    oldFile: !uuid 'f375b9dc11e1f90480c5458027c0332f8e432bc4'
-  /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
-    newFile: !uuid 'ad0ff7ff6545a07f846a08323b3cf3c7489ecf9e'
-    oldFile: !uuid '56e1ee6dfae2d667d27ccb03efad891f08e196f0'
-gitCommitId: !uuid 'b9134df4eec8c152e8589602eebe84fbe39ab65a'
+  /策划文档:
+    newFile: !uuid 'f4ed14f15f749003c223a8c87ea1a662a651f3e4'
+    oldFile: !uuid '5c4bffb70434c3951097fceae4622064377dc321'
+  /策划文档/demo连击.docx:
+    newFile: !uuid '59dc070c954749a74916bede71bbfe8ab2e154e1'
+    oldFile: !uuid 'bf002be5c6283ad00f949807cb2f61b0d8d08a54'
+gitCommitId: !uuid 'b85c8973fe91ea18ce35be38eba38ce71c5eeae8'
 renames: {
   }
-revisionId: 511
+revisionId: 512
