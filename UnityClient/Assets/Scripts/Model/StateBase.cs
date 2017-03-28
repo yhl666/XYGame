@@ -699,6 +699,14 @@ public class AttackState_1 : StateBase
             }
 
         }
+        else if (this.Enable == true && Events.ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE == type)
+        {//请求打断
+            SkillBase skill = userData as SkillBase;
+            if (skill.Target != this.Target) return;
+            Debug.LogError("atk state cancel");
+            Target.isAttacking = false;
+            this.Enable = false;
+        }
 
 
 
@@ -715,6 +723,7 @@ public class AttackState_1 : StateBase
         this.stack.AddLocalEventListener(Events.ID_SPINE_COMPLETE);
 
         this.stack.AddLocalEventListener(Events.ID_BTN_ATTACK);
+        this.stack.AddEventListener(Events.ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE);
 
         this.stack.id = StateStack.ID_ATTACK;
 
@@ -808,6 +817,14 @@ public class AttackState_2 : StateBase
                 this.stack.PushSingleState(StateBase.Create<AttackState_3>(Target));
             }
         }
+        else if (this.Enable == true && Events.ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE == type)
+        {//请求打断
+            SkillBase skill = userData as SkillBase;
+            if (skill.Target != this.Target) return;
+            Target.isAttacking = false;
+            this.Enable = false;
+            this.stack.PopSingleState();
+        }
     }
 
     public override void OnPause()
@@ -899,7 +916,6 @@ public class AttackState_3 : StateBase
             Target.isAttacking = true;
             this.checkForTimeOut = false;
 
-
             BulletMgr.Create(this.Target, Target.bulleClassName_atk3, Target.bullet_atk3_info);
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
@@ -911,7 +927,14 @@ public class AttackState_3 : StateBase
             // Debug.Log("连招   33333 完成");
             this.stack.PopSingleState();
 
-
+        }
+        else if (this.Enable == true && Events.ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE == type)
+        {//请求打断
+            SkillBase skill = userData as SkillBase;
+            if (skill.Target != this.Target) return;
+            Target.isAttacking = false;
+            this.Enable = false;
+            this.stack.PopSingleState();
         }
     }
 

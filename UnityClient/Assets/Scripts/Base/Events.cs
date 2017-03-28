@@ -129,8 +129,8 @@ public sealed class Events : object
 
 
     //-------------------------BATTLE
-  
-   
+
+
     public const int ID_TOWN_BTN_BATTLE_LEAVE_QUEUE_CLICKED = 301;//退出随机匹配1v1队列按钮
     public const int ID_TOWN_BTN_BATTLE_ENTER_QUEUE_CLICKED = 302;//进入随机匹配1v1队列按钮
 
@@ -152,7 +152,8 @@ public sealed class Events : object
     public const int ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED = 311;//接受攻击前
 
     public const int ID_BATTLE_FLYTEXT = 312;//漂浮字体
-
+    //  public const int ID_BATTLE_PushOnInterruptAttackSate = 313; //请求打断普通攻击
+    public const int ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE = 313; //请求打断普通攻击
 
 
     public const int ID_SETTING_CLICKED = 557;
@@ -198,7 +199,7 @@ public sealed class Events : object
 
 
 
-    
+
 
 
 

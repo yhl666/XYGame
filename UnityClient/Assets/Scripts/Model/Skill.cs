@@ -327,6 +327,8 @@ public class SkillBase : Model
     /// <summary>
     ///技能需要打断的时候调用此接口
     ///发起打断事件
+    ///
+    /// 代理方式处理
     /// </summary>
     /// <param name="who"></param>
     public void PushOnInterrupted()
@@ -334,7 +336,9 @@ public class SkillBase : Model
         this.stack.PushOnInterrupted(this);
     }
     /// <summary>
-    /// 请求强制打断
+    /// 请求强制打断所有技能
+    /// 
+    /// 代理方式处理
     /// </summary>
     public void PushOnInterruptedForce()
     {
@@ -342,10 +346,21 @@ public class SkillBase : Model
     }
     /// <summary>
     /// 请求 切换 技能组
+    /// 
+    /// 代理方式处理
     /// </summary>
     public void PushChangeSkillGroup()
     {
         this.stack.PushChangeSkillGroup(this);
+    }
+    /// <summary>
+    /// 请求打断普通攻击
+    /// 
+    /// 消息方式处理
+    /// </summary>
+    public void PushOnInterruptAttackSate()
+    {//消息形式 发起打断普通攻击
+        EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE, this);
     }
 }
 
@@ -1506,6 +1521,10 @@ public class Skill62_1 : SkillBase
 
         if (Target.isAttacking)
         {
+            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+        }
+        if (Target.isAttacking)
+        {
             this.PushOnInterrupted();
             return;
         }
@@ -1648,7 +1667,10 @@ public class Skill62_2 : SkillBase
         if (cd.IsMax() == false) return;
         if (Target.isStand == false) return;
         if (this.Enable) return;
-
+        if (Target.isAttacking)
+        {
+            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+        }
         if (Target.isAttacking)
         {
             this.PushOnInterrupted();
@@ -1810,10 +1832,14 @@ public class Skill62_3 : SkillBase
     public override void OnPush()
     {
         if (cd.IsMax() == false) return;
-        ///  if (Target.isStand == false) return;
-        if (Target.isAttacking) return;
         if (this.Enable) return;
 
+        ///  if (Target.isStand == false) return;
+        if (Target.isAttacking)
+        {
+            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+        }
+        
         this.OnEnter();
 
     }
@@ -2008,6 +2034,7 @@ public class Skill6_Final : SkillBase
         return true;
         return false;
     }
+
     public override void OnAcceptInterrupted(SkillBase who)
     {
         if (this.Enable) return;
@@ -2018,7 +2045,11 @@ public class Skill6_Final : SkillBase
         if (cd.IsMax() == false) return;
         if (Target.isStand == false) return;
         if (this.Enable) return;
-
+        if (Target.isAttacking)
+        {
+            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+        }
+        
         if (Target.isAttacking)
         {
             this.PushOnInterrupted();
@@ -2078,8 +2109,9 @@ public class SkillForceCancel : SkillBase
     }
     public override void OnPush()
     {
-        this.PushOnInterruptedForce();
-        this.PushChangeSkillGroup();
+        this.PushOnInterruptedForce();//强制打断所有技能
+        this.PushChangeSkillGroup();//切换技能组
+        this.PushOnInterruptAttackSate(); //强制打断 普通技能
     }
 
 }
