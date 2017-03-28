@@ -2,13 +2,22 @@
 branches: {
   }
 fileChange:
-  /策划文档:
-    newFile: !uuid 'c3dc1bf32f10d4210457310a84724dad3fdf9707'
-    oldFile: !uuid 'fb42fa53b12dbb17a8d872bcb47280a344dcf67a'
-  /策划文档/pvp地图.docx:
-    newFile: !uuid 'd5a8ebe775bafe9399af9e1d36a506c192db157e'
-    oldFile: !uuid '0c0266a8046216140694f7e3d7448d3bd962e3be'
-gitCommitId: !uuid '337d0ccfc8dd8883a32999628b64a4fbb46d4881'
+  /UnityClient:
+    newFile: !uuid 'a3fc8456e89bb3e37dfe5bb61f0050661b5b6b62'
+    oldFile: !uuid 'fad1499ba00f589645ed0dbcb872b4ec1748ffd3'
+  /UnityClient/Assets:
+    newFile: !uuid 'd9bbd5593874a7223a582492c0255ec4daf533fc'
+    oldFile: !uuid '279e1083fcb20fa6929230db25775b390ad8bfad'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '48b9cfecd547c061e2c0788caa0dcc0812cf58ce'
+    oldFile: !uuid 'a9588e3ca106f5786beb41fa97e13235764aa0dc'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'bae285dc88382aad0d666983175df6a3d1ec3ba2'
+    oldFile: !uuid 'c9cfc0fb9cc1ad24237c56e73babcc855590c675'
+  /UnityClient/Assets/Scripts/Model/StateBase.cs:
+    newFile: !uuid '22703444e69d9342b5ef18dc244df40f1ddddf5a'
+    oldFile: !uuid 'b917b3aae18e91660e0b35318185217aaed1b706'
+gitCommitId: !uuid '146a835f3595115ec2964515b21016ffeff23963'
 renames: {
   }
-revisionId: 514
+revisionId: 515
