@@ -3,18 +3,30 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'c5a538dd2fc1589289eaf9bc1c8c3ae0f8171802'
-    oldFile: !uuid '48ef04a36b28d89955acc17126030e193bce1c58'
+    newFile: !uuid '2e3de422f29e1a7ae91bdc5e2f8587521cc9ce04'
+    oldFile: !uuid 'c5a538dd2fc1589289eaf9bc1c8c3ae0f8171802'
   /UnityClient/Assets:
-    newFile: !uuid 'eadbb41094442cd7bbb322af2b49ae4d68b4f3d5'
-    oldFile: !uuid 'edd494a1501623645c387022620b41c930b46d96'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '76e568924260a12b8772dd9e2128ce3318135efa'
-    oldFile: !uuid '4f09817660216fe02b4f59614d06a2eafa5bc3ba'
-  /UnityClient/Assets/Scenes/BattlePVP.unity:
-    newFile: !uuid 'a90d3addad24d31ad2858cdfb3c430517fb60a0a'
-    oldFile: !uuid '565fa283ad4540e25d0c4292ff9da7e7e19e9822'
-gitCommitId: !uuid '9ae4c3c20e1eff9f0c02da8bd9dbf5fdd47aab9e'
+    newFile: !uuid '5cc8e7f4872bb1c4f2937adbcf281be4ca78fab3'
+    oldFile: !uuid 'eadbb41094442cd7bbb322af2b49ae4d68b4f3d5'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '725a5f24a6c66b81afdc4d027c67adb3805edc77'
+    oldFile: !uuid '84cdec9f70cbc89b24ebbe4d052738ffc4aad669'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'ea21c701899ca05e20fcf5e2e9bdee771fabe334'
+    oldFile: !uuid '775bb6acfa2f2c99a320d9fce7bb782c61c65aa2'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '55a983a8148d2bda5012131db53d72f715a29160'
+    oldFile: !uuid 'f3a1c480c4565a71c40e1afa70d5647a92b57903'
+  /UnityClient/Assets/Resources/Prefabs/data/形态1.prefab:
+    newFile: !uuid 'ee3f907c5896b23155c4320748212a31d74a0c44'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/形态1.prefab.meta:
+    newFile: !uuid 'b8d204fe939b61c46c6b297014a674df96829b8c'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性配置表.prefab:
+    newFile: !uuid 'cf331dbea3b42356593e070b2c9a420880c6c36a'
+    oldFile: !uuid 'd7f674573cabb1380644247a6d9baf77cc306c24'
+gitCommitId: !uuid 'c976b6597c95e6ec4e12f3e980c8f1b8664e0e51'
 renames: {
   }
-revisionId: 531
+revisionId: 532
