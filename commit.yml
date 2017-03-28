@@ -3,12 +3,12 @@ branches: {
   }
 fileChange:
   /策划文档:
-    newFile: !uuid 'fb42fa53b12dbb17a8d872bcb47280a344dcf67a'
-    oldFile: !uuid 'f4ed14f15f749003c223a8c87ea1a662a651f3e4'
-  /策划文档/demo连击.docx:
-    newFile: !uuid '98bedc49dd8ddf91a04eecacd432fdf08ef0ff48'
-    oldFile: !uuid '59dc070c954749a74916bede71bbfe8ab2e154e1'
-gitCommitId: !uuid '03621404a4cd8e8768ad1e7c1965150837adda38'
+    newFile: !uuid 'c3dc1bf32f10d4210457310a84724dad3fdf9707'
+    oldFile: !uuid 'fb42fa53b12dbb17a8d872bcb47280a344dcf67a'
+  /策划文档/pvp地图.docx:
+    newFile: !uuid 'd5a8ebe775bafe9399af9e1d36a506c192db157e'
+    oldFile: !uuid '0c0266a8046216140694f7e3d7448d3bd962e3be'
+gitCommitId: !uuid '337d0ccfc8dd8883a32999628b64a4fbb46d4881'
 renames: {
   }
-revisionId: 513
+revisionId: 514
