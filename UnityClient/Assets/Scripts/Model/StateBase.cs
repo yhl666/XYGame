@@ -848,7 +848,7 @@ public class AttackState_2 : StateBase
     public override void OnEnter()
     {
         this.Enable = true;
-
+        tick_cancel.Reset();
         this.stack.id = StateStack.ID_ATTACK;
     }
     public override void OnExit()
@@ -962,6 +962,7 @@ public class AttackState_3 : StateBase
     public override void OnEnter()
     {
         this.Enable = true;
+        tick_cancel.Reset();
     }
     public override void OnExit()
     {
