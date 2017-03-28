@@ -857,7 +857,7 @@ public class BufferSpin : Buffer
         EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
 
         target.eventDispatcher.PostEvent("SpineComplete");
-        this.SetLastTime(time);
+       
         target.machine.PauseAllStack();
 
         if (target as Hero == HeroMgr.ins.self)
@@ -891,7 +891,7 @@ public class BufferSpin : Buffer
         has_view = true;
         plist = "hd/buff/buff_200564/buff_200564.plist";
         plist = "88";
-
+        this.SetLastTime(time);
         return true;
     }
     public override void OnDispose()
