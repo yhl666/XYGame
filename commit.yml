@@ -2,22 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'a3fc8456e89bb3e37dfe5bb61f0050661b5b6b62'
-    oldFile: !uuid 'fad1499ba00f589645ed0dbcb872b4ec1748ffd3'
-  /UnityClient/Assets:
-    newFile: !uuid 'd9bbd5593874a7223a582492c0255ec4daf533fc'
-    oldFile: !uuid '279e1083fcb20fa6929230db25775b390ad8bfad'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '48b9cfecd547c061e2c0788caa0dcc0812cf58ce'
-    oldFile: !uuid 'a9588e3ca106f5786beb41fa97e13235764aa0dc'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'bae285dc88382aad0d666983175df6a3d1ec3ba2'
-    oldFile: !uuid 'c9cfc0fb9cc1ad24237c56e73babcc855590c675'
-  /UnityClient/Assets/Scripts/Model/StateBase.cs:
-    newFile: !uuid '22703444e69d9342b5ef18dc244df40f1ddddf5a'
-    oldFile: !uuid 'b917b3aae18e91660e0b35318185217aaed1b706'
-gitCommitId: !uuid '146a835f3595115ec2964515b21016ffeff23963'
+  /策划文档:
+    newFile: !uuid 'bee4e7b916d84bd844369df2b497bf83b1a86cb5'
+    oldFile: !uuid 'c3dc1bf32f10d4210457310a84724dad3fdf9707'
+  /策划文档/pvp2.png:
+    newFile: !uuid '66342723f3b34671c1fd2cfdf9ba477573a75c4a'
+    oldFile: null
+  /策划文档/pvp2.tmx:
+    newFile: !uuid '364099cd9691a9b1418df8d2aaef5e54d4f6a62e'
+    oldFile: null
+gitCommitId: !uuid 'dd01c11be2e2cf4d53c4d73dcfa88287d8cc39df'
 renames: {
   }
-revisionId: 515
+revisionId: 516
