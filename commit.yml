@@ -2,19 +2,55 @@
 branches: {
   }
 fileChange:
-  /设计文档:
-    newFile: !uuid '7b4e0d2c76c7f1fa231cab7736214ae9aacd7567'
-    oldFile: !uuid '24746d11ee541c228dbbac9da9e9a32565b69a40'
-  /设计文档/PVE地图1.png:
-    newFile: !uuid 'e5cfc9f83a29fd7577d94feb9b5750745820a8ed'
+  /UnityClient:
+    newFile: !uuid '38753f02c8d7edd358e8800659435a2be9e987e4'
+    oldFile: !uuid 'a8d9b91b6818fe54f4b4ad62c11d5f5a94e637c1'
+  /UnityClient/Assets:
+    newFile: !uuid '246542d3e10de500a7a8d521f81542428b320276'
+    oldFile: !uuid '03d42b413fabf2edfba45852c4442f6be6bd3cb6'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'd76d03cd33fde8e1466c1c514ab492deec9febd9'
+    oldFile: !uuid '09a5381103ea52eeb56fdba17d639e229dcf0262'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'd5c3a7fbb7e3e3b8d71de819d8c4db5695f3858a'
+    oldFile: !uuid 'c879dce5bf78e06cad14f3a0e195a0da9b245ec9'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '4957cee32958fbcd4cfe9990f002339e55d9a70c'
+    oldFile: !uuid 'a16c3e0e4e7cf682c51652628675bf2dd2c464ce'
+  /UnityClient/Assets/Resources/Prefabs/data/普通攻击配置表.prefab:
+    newFile: !uuid '6f0b20b72fcb06b44fcd3b146a3bfc780e2c17a7'
     oldFile: null
-  /设计文档/PVE地图2.png:
-    newFile: !uuid '8a6527a3defe6d710b65785ab091bd46dd551815'
+  /UnityClient/Assets/Resources/Prefabs/data/普通攻击配置表.prefab.meta:
+    newFile: !uuid 'f682cd63ea247884c131feb33ea3f02268d35d0c'
     oldFile: null
-  /设计文档/PVE背景图.png:
-    newFile: !uuid '44505554436518e22836acae62bf7471bd69fe58'
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid '007a4acac1fb32ec1c49bf5ef1bfd6245fd606d7'
+    oldFile: !uuid '6c43e8f883c9edbb6e18ae495a2060d073c07567'
+  /UnityClient/Assets/Scenes/BattlePVP.unity:
+    newFile: !uuid '927de5d5a3468bd3615c51edbcd224c95f5ef77b'
+    oldFile: !uuid '903435dcddc14a4a467e7797000148037d3d1635'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'fb1c6c4282ced0668288136e938fe053edce72a7'
+    oldFile: !uuid '2dc630521131d43f88606c1390a154f7a42f4324'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid 'e63957580f76f94d808138f47bb45dcfac495f1a'
+    oldFile: !uuid '5cb97b3598ef687b4dce1b0eb08d5c6d04c4fe36'
+  /UnityClient/Assets/Scripts/Data/AttackState6_Data.cs:
+    newFile: !uuid '6f7536f08a18a7abeebba8d4346b78affbe7feb9'
     oldFile: null
-gitCommitId: !uuid 'ef46bccf7bd494b3bc0d9c3c76c4ed0502664dc7'
+  /UnityClient/Assets/Scripts/Data/AttackState6_Data.cs.meta:
+    newFile: !uuid '7405aaf3f6b512f9e9a3c98ad8fc3e30b250952b'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '983efd0b38a4d8216147643fe0fb19b470b980b7'
+    oldFile: !uuid '1510c6627a85cefd26734d95832b954a131ce19e'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid '24162bb7f7710fdcccaa58e48b0ff1d9ba064aee'
+    oldFile: !uuid '2a2c7ee5e8e26ce327aa13461ed4f3f4e91b33c1'
+  /UnityClient/Assets/Scripts/Model/StateBase.cs:
+    newFile: !uuid 'f1df5960196662929e85cf7b2c64b767d0a6c212'
+    oldFile: !uuid '22703444e69d9342b5ef18dc244df40f1ddddf5a'
+gitCommitId: !uuid 'cc92b3fa8843e988b3dc017b1ac559df63475c69'
 renames: {
   }
-revisionId: 522
+revisionId: 523
