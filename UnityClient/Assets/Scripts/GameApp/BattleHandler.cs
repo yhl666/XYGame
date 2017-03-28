@@ -56,16 +56,48 @@ sealed class BattleKeyboardInputHandler
             PublicData.ins.IS_stand = true;
             PublicData.ins.IS_right = false;// fix 
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-
-            PublicData.ins.IS_atk = true;
-        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PublicData.ins.IS_jump = true;
         }
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            PublicData.ins.IS_s1 = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            PublicData.ins.IS_s1 = 2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            PublicData.ins.IS_s1 = 3;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            PublicData.ins.IS_s1 = 4;
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            PublicData.ins.IS_atk = true;
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            PublicData.ins.IS_s1 = 5;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PublicData.ins.IS_atk = true;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            PublicData.ins.IS_s1 = 5;
+        }
+
+
     }
 }
 
@@ -194,7 +226,7 @@ public sealed class BattleSyncHandler
     public void AddRecvMsg(string msg)
     {
         _recvQueue.Enqueue(msg);
-    ///    Debug.Log("[LOG]:Recv:  " + msg);
+        ///    Debug.Log("[LOG]:Recv:  " + msg);
     }
 
     public void AddRecvMsgUnSafe(string msg)
