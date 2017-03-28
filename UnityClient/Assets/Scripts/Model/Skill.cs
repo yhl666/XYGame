@@ -2156,6 +2156,7 @@ public class SkillForceCancel : SkillBase
     public override void OnEnter()
     {
         Target.isAttacking = false;
+        Target.AddBuffer<BufferForceCancel>();
         this.Enable = true;
     }
     public override void UpdateMS()
@@ -2190,6 +2191,8 @@ public class SkillForceCancel : SkillBase
         this.PushOnInterruptedForce();//强制打断所有技能
         this.PushChangeSkillGroup();//切换技能组
         this.PushOnInterruptAttackSate(); //强制打断 普通技能
+        this.OnEnter();
+        this.OnExit();
     }
 
 }

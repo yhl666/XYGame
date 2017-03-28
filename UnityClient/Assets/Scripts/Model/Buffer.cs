@@ -840,6 +840,38 @@ public class Buffer6_Final : Buffer
 }
 
 
+/// <summary>
+///   
+/// </summary>
+public class BufferForceCancel : Buffer
+{
+    public override string GetName()
+    {
+        return "BufferForceCancel";
+    }
+    public override void OnEnter()
+    {
+        base.OnEnter();
+  
+    }
+    public override bool Init()
+    {
+          base.Init();
+          has_view = true;
+          plist = "hd/magic_weapons/bullet/bul_5000131/bul_5000131.plist";
+          this.SetLastTime(0.2f);
+          return true;
+    }
+    public override void UpdateMS()
+    {
+        base.UpdateMS();
+    }
+    public override void OnExit()
+    {
+
+    }
+
+}
 
 /// <summary>
 /// 眩晕
@@ -857,7 +889,7 @@ public class BufferSpin : Buffer
         EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
 
         target.eventDispatcher.PostEvent("SpineComplete");
-       
+
         target.machine.PauseAllStack();
 
         if (target as Hero == HeroMgr.ins.self)
