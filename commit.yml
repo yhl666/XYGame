@@ -3,24 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'a9f9326a112509deb60ea5d49e29d3309b9aef11'
-    oldFile: !uuid 'dac3d475934fd5f10a30052e351ca4b223606de4'
+    newFile: !uuid '4e18860f3f4e01d346ca75a9aa077526db53c8fa'
+    oldFile: !uuid 'a9f9326a112509deb60ea5d49e29d3309b9aef11'
   /UnityClient/Assets:
-    newFile: !uuid 'cdf7904067f70f3480a790c926ba75ffac1b42a5'
-    oldFile: !uuid '7b26cad069810369bab7353c5245d339c36c1173'
+    newFile: !uuid '6026c4bcd2b661e5eca9f59aa94ae69d957f61c2'
+    oldFile: !uuid 'cdf7904067f70f3480a790c926ba75ffac1b42a5'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '2943b7b9278b1fe8e162bfd44600b70d13c977da'
-    oldFile: !uuid '0337dd307a5e924cb8d652c23b4e3440449c1394'
+    newFile: !uuid '0420341ace5c23c55fa330d99792bd018f793370'
+    oldFile: !uuid '2943b7b9278b1fe8e162bfd44600b70d13c977da'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'ec9b4134b517fc62691280e2d6b2b77977398222'
-    oldFile: !uuid 'd909178bfc2d4d4c040ac2509780fff0c7cd963b'
-  /UnityClient/Assets/Scripts/Model/Buffer.cs:
-    newFile: !uuid 'e956f9700347d131362e227eb8a0b0bbe9d7a2a4'
-    oldFile: !uuid '77fb4ad60def8e5af6c061785c6c4e87ece0854a'
-  /UnityClient/Assets/Scripts/Model/Skill.cs:
-    newFile: !uuid 'efb0184f42b5d028643aec99204ed3556354a707'
-    oldFile: !uuid 'b98d34674334c0c34776fc6a921c470f0b882055'
-gitCommitId: !uuid '285e3d1ecf846cc2176bed602c4500de925582f5'
+    newFile: !uuid '37cc21dae6d7f7fb3472636e0f6f3f7c4614d2fe'
+    oldFile: !uuid 'ec9b4134b517fc62691280e2d6b2b77977398222'
+  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
+    newFile: !uuid '70b8a40c75a4ad1ed0bc5f9f15b9fae0d860f10e'
+    oldFile: !uuid '9612f8532a713220437d860c9caec9dbbcc9592c'
+  /UnityClient/Assets/Scripts/Model/SkillCoco.cs.meta:
+    newFile: !uuid 'bf171569e6fd5d5f0da8bdf4d0f29136d738c8ce'
+    oldFile: !uuid 'cf452e01a73eeabaeeaca5469219ba3c20f8042c'
+gitCommitId: !uuid '65aea5b814525052f7e0a92b8c38ebd1584256f1'
 renames: {
   }
-revisionId: 527
+revisionId: 528
