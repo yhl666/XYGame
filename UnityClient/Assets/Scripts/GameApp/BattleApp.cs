@@ -465,9 +465,7 @@ public sealed class BattleApp : AppBase
 
 
 
-        ViewMgr.ins.Dispose();
-        //   BallsMgr.ins.Dispose();
-        //   FoodsMgr.ins.Dispose();
+        ViewMgr.DestroyInstance();
         ModelMgr.DestroyInstance();
         EventDispatcher.DestroyInstance();
         AutoReleasePool.DestroyInstance();
