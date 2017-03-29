@@ -2,16 +2,97 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid '72391f01c5bef09043e3997c994053da88d78d26'
-    oldFile: !uuid '83e90441ae9ec42a3e5f43b21f99968eede2d00f'
-  /工作日志/任务列表:
-    newFile: !uuid '2595bd75e566b9434d8eb5d7077c15879b1df0c4'
-    oldFile: !uuid 'b289aecf9a2864a00500584492ac19fe6ba65c6a'
-  /工作日志/任务列表/1.txt:
-    newFile: !uuid '57eee0cb008af2af5b2a0be2041a9261949ea7d4'
-    oldFile: null
-gitCommitId: !uuid '161e979908896c626884b44725b6066a9bed8686'
+  /UnityClient:
+    newFile: !uuid '9feb25861cab445fddb18c885f39b0ce4e110373'
+    oldFile: !uuid 'ae8dcc274f4ecdd35acc4048814ac4a81faa57e3'
+  /UnityClient/Assets:
+    newFile: !uuid '36365963a99ac11ca5f09affee871e4197d9d7b7'
+    oldFile: !uuid 'cf2815e9070322b3f01be3ce212d9e7783d23ba0'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid '9117f8bb6a4166bcf42bbeddd3b2c560dd93cc7c'
+    oldFile: !uuid '930d4cb0086bc1fc07451cc4939282bacdb200c2'
+  /UnityClient/Assets/Logic/Scripts:
+    newFile: !uuid '44b3e9e9f79e88694209dd51de171cb7bd888124'
+    oldFile: !uuid '2aa95f7de6b27619bd76f2feb08777fa1a337a24'
+  /UnityClient/Assets/Logic/Scripts/Model:
+    newFile: !uuid 'fd4c69dd122cf4f904cbfd5b032e091db81d2e4b'
+    oldFile: !uuid 'a0bc168442311888759d8e22acf79adef3162703'
+  /UnityClient/Assets/Logic/Scripts/Model/EquipMgr.cs:
+    newFile: !uuid '6fcc09982ffb0f0ab2ff1c2d6e011c4bfc911cbd'
+    oldFile: !uuid '61241295d6668cc7a0c57960252ef595c45a96f7'
+  /UnityClient/Assets/Logic/Scripts/Model/GoodsMgr.cs:
+    newFile: !uuid '8739657cff3f39babeb87c3c5b93a971c34bbe36'
+    oldFile: !uuid 'fcaddbf5bb8d4578d13427fba24edef5d0766b9e'
+  /UnityClient/Assets/Logic/Scripts/Net:
+    newFile: !uuid '35748beab161f5f7c92ce97912bb11227c2ca57b'
+    oldFile: !uuid 'e437818bcad2d210d82fc8e3783058e222816816'
+  /UnityClient/Assets/Logic/Scripts/Net/RpcClient.cs:
+    newFile: !uuid 'ff4a392bc847607a49f288562a0f804e99de982f'
+    oldFile: !uuid '377543d6395bea94b70d30221d365ace6d7f1195'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '1a17ebd16fbbbb9d56aa78e8d400ec939763606f'
+    oldFile: !uuid 'f48dea4e55ac42df898ef872e5d2f8e7f6acbbe7'
+  /UnityClient/Assets/Scripts/2d:
+    newFile: !uuid '5f7e5efb6f0c71202156371973c25f46c14b7565'
+    oldFile: !uuid 'cc6175151f7a8c0f68b996388cef54915096dae9'
+  /UnityClient/Assets/Scripts/2d/AnimationsCache.cs:
+    newFile: !uuid '0d857883f6133a4f1723f7f46a0dd519f8eb8dfe'
+    oldFile: !uuid 'b71b2f464894c334d5fc6467e168d48509ad8dde'
+  /UnityClient/Assets/Scripts/2d/SpriteFrameCache.cs:
+    newFile: !uuid 'b28db5bd97668718b749c2bb602a17808cf2f9cf'
+    oldFile: !uuid '8ead1d64f7b214a6eed387766ed441d2637d1193'
+  /UnityClient/Assets/Scripts/Base:
+    newFile: !uuid '42021a966cd849f6d9db369edc8893132803cda8'
+    oldFile: !uuid '309e1cd3efaab879ba350c14709681e9fc16e0e3'
+  /UnityClient/Assets/Scripts/Base/AsyncQueue.cs:
+    newFile: !uuid 'eb2a16af7ff67acba3ed0f99db01317ceee49b67'
+    oldFile: !uuid '74d9f9a9b968cd84c3a48fc2aeb565468960fe19'
+  /UnityClient/Assets/Scripts/Base/AutoReleasePool.cs:
+    newFile: !uuid 'acb890042afa75ec08ce80814041e31090de8cc1'
+    oldFile: !uuid '2a889afe419a257935ca1799585c0225daaab6d4'
+  /UnityClient/Assets/Scripts/Base/FileCache.cs:
+    newFile: !uuid '70134f3264a17eff7b0cb44eb78b552a42e78934'
+    oldFile: !uuid '6ecf2633ae87029018aa4a2f396bdc5d412067c7'
+  /UnityClient/Assets/Scripts/Base/GAObject.cs:
+    newFile: !uuid '2d134d53af75ca7a362ef9bc891f7ae4a81889d6'
+    oldFile: !uuid '5ba0a23781db4b309442aa9bfadb051dd6da3689'
+  /UnityClient/Assets/Scripts/Base/TimerQueue.cs:
+    newFile: !uuid '9a20e433316f02b48b71b213aad08b2c3b241fbf'
+    oldFile: !uuid 'f90c37d54b2af0371c3f06ce6fe4aceaf2b19d78'
+  /UnityClient/Assets/Scripts/Extensions:
+    newFile: !uuid '08df9e973f28bf0d8106a421ce39b01d7257bc16'
+    oldFile: !uuid '24218ab44c15b1f248c0cf886d65a44a6f6ab7ff'
+  /UnityClient/Assets/Scripts/Extensions/GameBoxExtension.cs:
+    newFile: !uuid 'b3b5ce1a7d2d24dfe23787e121f8d819a07cdbe3'
+    oldFile: !uuid 'b2f8ca8630755e121822ce81220ea047e29da40a'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid '442dbdb5f27baad75db30f818e0423df5236fb2f'
+    oldFile: !uuid 'be294f70cc935f128d3a2258d3be2fce1224c50c'
+  /UnityClient/Assets/Scripts/GameApp/AppMgr.cs:
+    newFile: !uuid '76896ee76cb215aaa9f1ab0bfe75ca6e93d9832b'
+    oldFile: !uuid '8a3d1321b4309ed5b08cf4461c79ee4ce883a7df'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '1ce95b0971186313c520f1812682a287532c014e'
+    oldFile: !uuid '4fe99def09973e2dea7718eaf283cc7c8454e150'
+  /UnityClient/Assets/Scripts/Model/BulletMgr.cs:
+    newFile: !uuid '5f6585953a14b70e26532c851d879e2ab0f21c7c'
+    oldFile: !uuid 'df67c3c5fe25d961e36c3a06fb876b9444f60972'
+  /UnityClient/Assets/Scripts/Model/EnemyMgr.cs:
+    newFile: !uuid 'ac6c0d6510e2165feb4187d65bfe48bd85abc918'
+    oldFile: !uuid 'e3d990242d3bbbfd1c28f616726e850c781f4274'
+  /UnityClient/Assets/Scripts/Model/HeroMgr.cs:
+    newFile: !uuid 'f8a733bbc6377918abbe7bd046c1068e36596be4'
+    oldFile: !uuid '39a244f3f1ba17c601a4e34ed766ad44319032ec'
+  /UnityClient/Assets/Scripts/Model/ModelMgr.cs:
+    newFile: !uuid '109bf85c59db9697264adfc16862dd34b3059563'
+    oldFile: !uuid 'b7db6fb8c8dd4c021deb7132d8ed31bb966e873b'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'e21504c35b17e8dbf582659cdbd3047910ecfb57'
+    oldFile: !uuid '6d8ece6f7347bdc55c796d83061ad016525acd83'
+  /UnityClient/Assets/Scripts/View/ViewMgr.cs:
+    newFile: !uuid 'aa8bb0ecca12af50c9fbb8f0d83da1dbde5283ea'
+    oldFile: !uuid '551b2a92f0e265ec42f91f84f90d845ab3b13a0a'
+gitCommitId: !uuid '7776c6094f8ac7c9e4280af7eed7058b1622d71b'
 renames: {
   }
-revisionId: 547
+revisionId: 548
