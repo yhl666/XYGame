@@ -173,7 +173,7 @@ public class SingletonGAObject<T> : GAObject where T : GAObject, new()
     {
         get
         {
-            return Singleton<T>.GetInstance();
+            return  GetInstance();
         }
     }
 

@@ -468,7 +468,7 @@ public sealed class BattleApp : AppBase
         ViewMgr.ins.Dispose();
         //   BallsMgr.ins.Dispose();
         //   FoodsMgr.ins.Dispose();
-        ModelMgr.ins.Dispose();
+        ModelMgr.DestroyInstance();
         EventDispatcher.DestroyInstance();
         AutoReleasePool.DestroyInstance();
         if (this.socket != null)

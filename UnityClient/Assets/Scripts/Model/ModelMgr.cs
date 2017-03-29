@@ -22,11 +22,11 @@ public sealed class ModelMgr : SingletonGAObject<ModelMgr>
     public override void OnDispose()
     {
 
-        this.lists.Clear(); base.OnDispose();
+        this.lists.Clear();
         BulletMgr.DestroyInstance();
         HeroMgr.DestroyInstance();
         EnemyMgr.DestroyInstance();
- 
+        base.OnDispose();
     }
     public void Add(Model b)
     {
@@ -47,7 +47,7 @@ public sealed class ModelMgr : SingletonGAObject<ModelMgr>
         BulletMgr.ins.UpdateMS();
         HeroMgr.ins.UpdateMS();
         EnemyMgr.ins.UpdateMS();
- 
+
         foreach (Model b in lists)
         {
             // if (b.IsValid()) 
