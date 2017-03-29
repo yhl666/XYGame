@@ -24,28 +24,8 @@ using GameBox.Service.GiantLightServer;
 /// 游戏本身层次服装
 /// RpcMgr是对GameBox的封装
 /// </summary>
-public class RpcClient
+public class RpcClient :Singleton<RpcClient>
 {
-    public static RpcClient ins
-    {
-        get
-        {
-            return RpcClient.GetInstance();
-        }
-    }
-
-    private static RpcClient _ins = null;
-
-    public static RpcClient GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new RpcClient();
-        }
-        return _ins;
-    }
-
-
 
     /// <summary>
     /// 发起一个rpc请求

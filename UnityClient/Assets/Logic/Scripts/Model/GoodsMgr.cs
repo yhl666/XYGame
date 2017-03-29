@@ -10,7 +10,7 @@ using DAO;
 /// <summary>
 ///  sub mgr of GoodsMgr
 /// </summary>
-public sealed class GoodsMgr : GAObject
+public sealed class GoodsMgr :  SingletonGAObject<GoodsMgr>
 {
     public void Add(Goods obj)
     {
@@ -25,7 +25,6 @@ public sealed class GoodsMgr : GAObject
     public override void OnDispose()
     {
         this.lists.Clear();
-        _ins = null;
     }
     public void Remove(int no)
     {
@@ -51,26 +50,6 @@ public sealed class GoodsMgr : GAObject
 
 
     ArrayList lists = new ArrayList();
-
-    public static GoodsMgr ins
-    {
-        get
-        {
-            return GoodsMgr.GetInstance();
-        }
-    }
-
-    private static GoodsMgr _ins = null;
-
-    public static GoodsMgr GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new GoodsMgr();
-        }
-        return _ins;
-    }
-
 
 }
 

@@ -10,7 +10,7 @@ using DAO;
 /// <summary>
 ///  sub mgr of EquipMgr
 /// </summary>
-public sealed class EquipMgr : GAObject
+public sealed class EquipMgr :  SingletonGAObject<EquipMgr>
 {
     public void Add(Equip obj)
     {
@@ -25,7 +25,6 @@ public sealed class EquipMgr : GAObject
     public override void OnDispose()
     {
         this.lists.Clear();
-        _ins = null;
     }
     public void Remove(int no)
     {
@@ -51,25 +50,7 @@ public sealed class EquipMgr : GAObject
 
 
     ArrayList lists = new ArrayList();
-
-    public static EquipMgr ins
-    {
-        get
-        {
-            return EquipMgr.GetInstance();
-        }
-    }
-
-    private static EquipMgr _ins = null;
-
-    public static EquipMgr GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new EquipMgr();
-        }
-        return _ins;
-    }
+ 
     public DAO.Equip GetTestEquip()
     {
         DAO.Equip dao = DAO.Equip.Create();
@@ -89,7 +70,7 @@ public sealed class EquipMgr : GAObject
         return dao;
     }
 
-    private EquipMgr()
+    public EquipMgr()
     {
         for (int i = 1300; i < 1308; i++)
         {

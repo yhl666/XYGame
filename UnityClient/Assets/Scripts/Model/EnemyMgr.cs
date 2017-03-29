@@ -10,7 +10,7 @@ using System.Collections;
 /// <summary>
 ///  sub mgr of ModelMgr
 /// </summary>
-public sealed class EnemyMgr : GAObject
+public sealed class EnemyMgr :  SingletonGAObject<EnemyMgr>
 {
     public static Enemy Create<T>() where T : new()
     {
@@ -33,10 +33,7 @@ public sealed class EnemyMgr : GAObject
     }
     public override void OnDispose()
     {
-
         this.lists.Clear();
- 
-        _ins = null;
     }
     public override void UpdateMS()
     {
@@ -81,26 +78,6 @@ public sealed class EnemyMgr : GAObject
         return lists.Count;
     }
     ArrayList lists = new ArrayList();
-
-    public static EnemyMgr ins
-    {
-        get
-        {
-            return EnemyMgr.GetInstance();
-        }
-    }
-
-    private static EnemyMgr _ins = null;
-
-    public static EnemyMgr GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new EnemyMgr();
-        }
-        return _ins;
-    }
-
 
 }
 

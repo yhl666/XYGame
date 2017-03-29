@@ -7,27 +7,8 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class AppMgr : GAObject
+public class AppMgr :  SingletonGAObject<AppMgr>
 {
-    public static AppMgr ins
-    {
-        get
-        {
-            return AppMgr.GetInstance();
-        }
-    }
-
-    private static AppMgr _ins = null;
-
-    public static AppMgr GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new AppMgr();
-            _ins.Init();
-        }
-        return _ins;
-    }
 
     //------------------------------------override 
     public override bool Init()
@@ -49,7 +30,6 @@ public class AppMgr : GAObject
     public override void OnDispose()
     {
         base.OnDispose();
-        _ins = null;
     }
     public override void OnEvent(int type, object userData)
     {

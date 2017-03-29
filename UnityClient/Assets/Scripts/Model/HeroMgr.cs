@@ -10,7 +10,7 @@ using System.Collections;
 /// <summary>
 ///  sub mgr of ModelMgr
 /// </summary>
-public sealed class HeroMgr : GAObject
+public sealed class HeroMgr :  SingletonGAObject<HeroMgr>
 {
     public Hero self = null;
     public int me_no = 0;
@@ -37,11 +37,9 @@ public sealed class HeroMgr : GAObject
 
     public override void OnDispose()
     {
-
         this.lists.Clear();
         self = null;
         me_no = 0;
-        _ins = null;
     }
     public void Remove(int b)
     {
@@ -114,26 +112,6 @@ public sealed class HeroMgr : GAObject
 
 
     ArrayList lists = new ArrayList();
-
-    public static HeroMgr ins
-    {
-        get
-        {
-            return HeroMgr.GetInstance();
-        }
-    }
-
-    private static HeroMgr _ins = null;
-
-    public static HeroMgr GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new HeroMgr();
-        }
-        return _ins;
-    }
-
 
 }
 

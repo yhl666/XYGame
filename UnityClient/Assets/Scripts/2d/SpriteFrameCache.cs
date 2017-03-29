@@ -13,7 +13,7 @@ using System;
 ///  sprite frame cache 
 ///   note this will create a  deep copy  SpriteFrame when you get it by name
 /// </summary>
-public sealed class SpriteFrameCache
+public sealed class SpriteFrameCache:Singleton<SpriteFrameCache>
 {
     public void AddSpriteFrame(string name, SpriteFrame sp)
     {
@@ -300,10 +300,7 @@ public sealed class SpriteFrameCache
         hash.Clear();
         hash_plist_sprieFrame.Clear();
     }
-    private SpriteFrameCache()
-    {
-
-    }
+ 
 
 
     public static void PrintCacheStatus()
@@ -318,25 +315,6 @@ public sealed class SpriteFrameCache
 
     private Hashtable hash = new Hashtable();//sprite frame name ---- spriteframe
     private Hashtable hash_plist_sprieFrame = new Hashtable(); //  sprite plist file  -----  spriteframe's name (string) ArrayList
-
-    public static SpriteFrameCache ins
-    {
-        get
-        {
-            return SpriteFrameCache.GetInstance();
-        }
-    }
-
-    private static SpriteFrameCache _ins = null;
-
-    public static SpriteFrameCache GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new SpriteFrameCache();
-        }
-        return _ins;
-    }
 
 }
 

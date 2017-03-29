@@ -11,7 +11,7 @@ using System.Collections.Generic;
 /// <summary>
 ///  animation cache 
 /// </summary>
-public sealed class AnimationsCache
+public sealed class AnimationsCache:Singleton<AnimationsCache>
 {
     public Animations AddAnimatons(string name, Animations ani)
     {
@@ -53,10 +53,6 @@ public sealed class AnimationsCache
     {
         hash.Clear();
     }
-    private AnimationsCache()
-    {
-
-    }
     public static void PrintCacheStatus()
     {
         Debug.Log("AnimationsCache: " + ins.hash.Count + " in Cache");
@@ -68,27 +64,6 @@ public sealed class AnimationsCache
     }
 
     private Hashtable hash = new Hashtable();
-
-
-    public static AnimationsCache ins
-    {
-        get
-        {
-            return AnimationsCache.GetInstance();
-        }
-    }
-
-    private static AnimationsCache _ins = null;
-
-    public static AnimationsCache GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new AnimationsCache();
-        }
-        return _ins;
-    }
-
 
 }
 

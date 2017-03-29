@@ -137,10 +137,60 @@ public class GAObject : IDisposable
         Debug.Log(this.GetType().ToString() + ":" + what);
     }
 
-
-
-
-
 };
 
 
+public class Singleton<T> where T : new()
+{
+    public static T ins
+    {
+        get
+        {
+            return Singleton<T>.GetInstance();
+        }
+    }
+
+    private static T _ins = default(T);
+
+    public static T GetInstance()
+    {
+        if (_ins == null)
+        {
+            _ins = new T();
+        }
+        return _ins;
+    }
+    public static void DestroyInstance()
+    {
+        _ins = default(T);
+    }
+}
+
+
+public class SingletonGAObject<T> : GAObject where T : GAObject, new()
+{
+    public static T ins
+    {
+        get
+        {
+            return Singleton<T>.GetInstance();
+        }
+    }
+
+    private static T _ins = null;
+
+    public static T GetInstance()
+    {
+        if (_ins == null)
+        {
+            _ins = new T();
+            _ins.Init();
+        }
+        return _ins;
+    }
+    public static void DestroyInstance()
+    {
+        _ins.Dispose();
+        _ins = null;
+    }
+}

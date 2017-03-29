@@ -294,7 +294,7 @@ namespace inner
     /// @brief  接管GiantLightScene的PushRequest 和 PushResponse
     /// 所有RPC 注册 请求 都用该类 提供的接口
     /// </summary>
-    public class RpcMgr
+    public class RpcMgr :Singleton<RpcMgr>
     {
 
         /// <summary>
@@ -435,23 +435,7 @@ namespace inner
         {
             this.requests.Remove(wrapper);
         }
-        private RpcMgr()
-        {
-            _ins = this;
-        }
-        public static RpcMgr ins
-        {
-            get
-            {
-                if (_ins == null)
-                {
-                    _ins = new RpcMgr();
-                }
-                return _ins;
-            }
-        }
-
-        private static RpcMgr _ins = null;
+     
         Hashtable services = new Hashtable();
 
         List<RequestWrapper> requests = new List<RequestWrapper>();

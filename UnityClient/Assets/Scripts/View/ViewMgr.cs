@@ -7,27 +7,8 @@ using UnityEngine;
 using System.Collections;
 
 
-public sealed class ViewMgr : GAObject
+public sealed class ViewMgr : SingletonGAObject<ViewMgr>
 {
-    public static ViewMgr ins
-    {
-        get
-        {
-            return ViewMgr.GetInstance();
-        }
-    }
-
-    private static ViewMgr _ins = null;
-
-    public static ViewMgr GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new ViewMgr();
-        }
-        return _ins;
-    }
-
 
     public void Add(View view)
     {
@@ -91,20 +72,14 @@ public sealed class ViewMgr : GAObject
 
     public override void OnDispose()
     {
-
-        this._views.Clear(); base.OnDispose();
-    }
-
-    public override void OnExit()
-    {
         for (int i = 0; i < _views.Count; i++)
         {
             (_views[i] as View).Dispose();
         }
-        _ins._views.Clear();
-        _ins = null;
-        base.OnExit();
+        _views.Clear();
+        base.OnDispose();
     }
+
 
     public static View Create<T>(Model m) where T : new()
     {

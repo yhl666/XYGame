@@ -7,40 +7,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public sealed class TimerQueue
+public sealed class TimerQueue :Singleton<TimerQueue>
 {
-    public static void DestroyInstance()
-    {
-        if (_ins != null)
-        {
-            _ins.Clear();
-            _ins = null;
-        }
-    }
-    public static TimerQueue ins
-    {
-        get
-        {
-            return TimerQueue.GetInstance();
-        }
-    }
-
-    private static TimerQueue _ins = null;
-
-    public static TimerQueue GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new TimerQueue();
-        }
-        return _ins;
-    }
-
-    private TimerQueue()
-    {
-
-    }
-
     /// <summary>
     ///  添加一个帧同步定时器
     /// </summary>

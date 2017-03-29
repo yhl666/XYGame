@@ -22,7 +22,7 @@ sealed class AsyncQueueInfo
 /// 异步任务队列
 /// 全局唯一 可不用DestroyInstance
 /// </summary>
-public sealed class AsyncQueue
+public sealed class AsyncQueue :Singleton<AsyncQueue>
 {
     public void Enqueue(ObjectFuncVoid task, VoidFuncObject func_cb = null, bool InMainThread = true)
     {
@@ -33,7 +33,7 @@ public sealed class AsyncQueue
         this._queue.Enqueue(info);
     }
 
-    private AsyncQueue()
+    public AsyncQueue()
     {
         this.thread = new Thread(new ThreadStart(this.ThreadFunc));
 
@@ -92,27 +92,4 @@ public sealed class AsyncQueue
     private Thread thread = null;
     private ThreadSafeQueue _queue = new ThreadSafeQueue();
 
-    public static AsyncQueue ins
-    {
-        get
-        {
-            return AsyncQueue.GetInstance();
-        }
-    }
-
-    private static AsyncQueue _ins = null;
-
-    public static AsyncQueue GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new AsyncQueue();
-        }
-        return _ins;
-    }
-    public static void DestroyInstance()
-    {
-        _ins.Dispose();
-        _ins = null;
-    }
 }

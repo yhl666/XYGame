@@ -11,7 +11,7 @@ using System.Collections.Generic;
 /// <summary>
 ///  FILE cache 
 /// </summary>
-public sealed class FileCache
+public sealed class FileCache :Singleton<FileCache>
 {
     public Files AddFiles(string name, Files f)
     {
@@ -47,10 +47,7 @@ public sealed class FileCache
     {
         hash.Clear();
     }
-    private FileCache()
-    {
-
-    }
+ 
     public static void PrintCacheStatus()
     {
         Debug.Log("FileCache: " + ins.hash.Count + " in Cache");
@@ -63,28 +60,5 @@ public sealed class FileCache
 
     private Hashtable hash = new Hashtable();
 
-
-    public static FileCache ins
-    {
-        get
-        {
-            return FileCache.GetInstance();
-        }
-    }
-
-    private static FileCache _ins = null;
-
-    public static FileCache GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new FileCache();
-        }
-        return _ins;
-    }
-    public static void DestroyInstance()
-    {
-        _ins.Clear();
-        _ins = null;
-    }
+ 
 }

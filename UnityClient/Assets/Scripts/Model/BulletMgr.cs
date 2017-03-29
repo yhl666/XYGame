@@ -7,7 +7,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public sealed class BulletMgr : GAObject
+public sealed class BulletMgr : SingletonGAObject<BulletMgr>
 {
     public static Bullet Create<T>(Entity owner, BulletConfigInfo info = null) where T : new()
     {
@@ -41,11 +41,11 @@ public sealed class BulletMgr : GAObject
         }
         ret.Init();
         BulletMgr.ins.Add(ret);
- 
+
 
         if (ret.plist != "")
         {
-           ViewMgr.Create<ViewBullet>(ret);
+            ViewMgr.Create<ViewBullet>(ret);
         }
         return ret;
     }
@@ -67,7 +67,6 @@ public sealed class BulletMgr : GAObject
     {
 
         this.lists.Clear();
-        _ins = null;
     }
     public override void UpdateMS()
     {
@@ -101,23 +100,5 @@ public sealed class BulletMgr : GAObject
 
     ArrayList lists = new ArrayList();
 
-    public static BulletMgr ins
-    {
-        get
-        {
-            return BulletMgr.GetInstance();
-        }
-    }
-
-    private static BulletMgr _ins = null;
-
-    public static BulletMgr GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new BulletMgr();
-        }
-        return _ins;
-    }
 
 }

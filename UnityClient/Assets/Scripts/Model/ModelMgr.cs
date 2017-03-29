@@ -9,7 +9,7 @@ using System.Collections;
 /// <summary>
 ///  manage and call all sub mgr(such as HeroMgr EnemyMgr and BulletMgr)  and model
 /// </summary>
-public sealed class ModelMgr : GAObject
+public sealed class ModelMgr : SingletonGAObject<ModelMgr>
 {
     public static T Create<T>() where T : new()
     {
@@ -23,9 +23,9 @@ public sealed class ModelMgr : GAObject
     {
 
         this.lists.Clear(); base.OnDispose();
-        BulletMgr.ins.Dispose();
-        HeroMgr.ins.Dispose();
-        EnemyMgr.ins.Dispose();
+        BulletMgr.DestroyInstance();
+        HeroMgr.DestroyInstance();
+        EnemyMgr.DestroyInstance();
  
     }
     public void Add(Model b)
@@ -73,24 +73,6 @@ public sealed class ModelMgr : GAObject
 
     ArrayList lists = new ArrayList();
 
-    public static ModelMgr ins
-    {
-        get
-        {
-            return ModelMgr.GetInstance();
-        }
-    }
-
-    private static ModelMgr _ins = null;
-
-    public static ModelMgr GetInstance()
-    {
-        if (_ins == null)
-        {
-            _ins = new ModelMgr();
-        }
-        return _ins;
-    }
 }
 
 
