@@ -135,7 +135,7 @@ public class GAObject : IDisposable
 
 
 
-    ///----------------------- some helper function--------------
+    ///--------------------------------------------------------- some helper function--------------
 
     public void log(string what)
     {
@@ -189,6 +189,24 @@ public class GAObject : IDisposable
     }
 
     static Vector track_list = new Vector();
+
+
+    public static GAObject Create(string _class_name)
+    {
+        System.Type t = System.Type.GetType(_class_name);
+        if (t == null)
+        {
+            Debug.LogError("UnKnown type:" + _class_name);
+            return null;
+        }
+        if (t.IsSubclassOf(t_static))
+        {
+            Debug.LogError("class " + _class_name + " not the subclass of GAObject");
+            return null;
+        }
+        return (System.Activator.CreateInstance(t) as GAObject);
+    }
+    static System.Type t_static = typeof(GAObject);
 };
 
 

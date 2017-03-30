@@ -150,9 +150,9 @@ public sealed class Utils
             return 40;
         }
     }
-    public static void  SetTargetFPS(int fps)
+    public static void SetTargetFPS(int fps)
     {
-         Application.targetFrameRate = fps;
+        Application.targetFrameRate = fps;
     }
 
     /// <summary>
@@ -190,5 +190,17 @@ public sealed class Utils
     public Vector3 ConvertToUnityPosition(Vector3 p)
     {
         return new Vector3(p.x / 100.0f, p.y / 100.0f, p.z);
+    }
+
+
+    public static object Create(string _class_name)
+    {
+        System.Type t = System.Type.GetType(_class_name);
+        if (t == null)
+        {
+            Debug.LogError("UnKnown type:" + _class_name);
+            return null;
+        }
+        return (System.Activator.CreateInstance(t));
     }
 }
