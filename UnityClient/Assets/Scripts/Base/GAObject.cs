@@ -172,7 +172,7 @@ public class GAObject : IDisposable
         {
             GAObject obj = track_list[i] as GAObject;
             Type t = obj.GetType();
-            if ((t != obj) && (subClass && t != typeT))
+            if ((t != typeT) && (subClass && t != typeT))
             {
                 if (t.IsSubclassOf(typeT) == false && typeT.IsSubclassOf(t) == false)
                 {
