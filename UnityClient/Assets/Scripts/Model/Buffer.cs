@@ -561,7 +561,7 @@ public class BufferHitBack : Buffer
         base.OnEnter();
         tick.SetMax(time);
         target.machine.GetState<RunState>().Pause();
-        Debug.Log("击退开始");
+      //  Debug.Log("击退开始");
 
     }
     public override void UpdateMS()
@@ -591,7 +591,7 @@ public class BufferHitBack : Buffer
     public override void OnExit()
     {
         if (nonsense) return;
-        Debug.Log("击退结束");
+      ///  Debug.Log("击退结束");
         target.machine.GetState<RunState>().Resume();
         base.OnExit();
     }
@@ -946,8 +946,7 @@ public class BufferSpin : Buffer
         has_view = true;
         plist = "hd/buff/buff_200564/buff_200564.plist";
         plist = "88";
-
-
+;
         show_ui = true;
         icon = "hd/interface/items/503079.png";
         brief = "眩晕";
@@ -976,6 +975,7 @@ public class BufferSpin : Buffer
             target.isJumping = false;
             target.isHurt = false;
             target.isRunning = false;
+            return;
         }
         this.SetInValid();
     }

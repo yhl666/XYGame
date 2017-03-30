@@ -88,152 +88,193 @@ public class BattleHero : Hero
  
         */
 
-        //-------------------- hero 6
-        this.skin = "#1";
-        this.prefabsName = "Spine/6/Hero6";
-
-        ani_hurt = "hurt";
-        ani_jumpTwice = "doubleJump";
-        ani_jump = "jump";
-        ani_fall = "fall";
-        ani_run = "run";
-        ani_stand = "rest";
-        this.ani_atk1 = AttackState6_Data.ins.level1_animation_name;// "6000";
-        this.ani_atk2 = AttackState6_Data.ins.level2_animation_name; //"6010";
-        this.ani_atk3 = AttackState6_Data.ins.level3_animation_name;// "6020";
+ 
 
 
-
+        if(type == "2")
         {
-            bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
-            bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
-            ///  bulleClassName_atk1 = "BulletStateMachineTest";
+            this.atk_level = 1;
+            this.skin = "#1";
+            this.prefabsName = "Prefabs/Hero2";
 
-            BulletConfigInfo info = BulletConfigInfo.Create();
-            bullet_atk1_info = info;
-            info.AddBuffer("BufferHitBack");
-            info.AddBuffer("BufferSpin");
+            ani_hurt = "hurt";
+            ani_jumpTwice = "doubleJump";
+            ani_jump = "jump";
+            ani_fall = "fall";
+            ani_run = "run";
+            ani_stand = "stand";
 
-            info.launch_delta_xy.x = AttackState6_Data.ins.level1_delta_xy.x; //; 1f;
-            info.launch_delta_xy.y = AttackState6_Data.ins.level1_delta_xy.y; ;// 0f;
-            info.collider_size = AttackState6_Data.ins.level1_hit_rect;
-            info.plistAnimation = AttackState6_Data.ins.level1_hit_animation_name; ;// "hd/roles/role_6/bullet/role_6_bul_6001/role_6_bul_6001.plist";
-            info.damage_ratio = AttackState6_Data.ins.level1_damage_ratio;
-            info.rotate = 30.0f;
-            info.distance = 0;
-            info.distance_atk = 1.0f;
-            info.isHitDestory = false;
-            info.number = 0xfff;
-            info.oneHitTimes = 1;
-            info.frameDelay = 4;
-            info.scale_x = 1.5f;
-            info.scale_y = 1.5f;
-            info.lastTime = 15;
-
-            info._OnLaunch = (Bullet b, object userData) =>
             {
+                bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
+                bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
+                ///  bulleClassName_atk1 = "BulletStateMachineTest";
 
-                if (this.flipX < 0)
-                {
-                    this.x_auto +=AttackState6_Data.ins.level1_move_x ; //this.speed * 2;
-                }
-                else
-                {
-                    this.x_auto -= AttackState6_Data.ins.level1_move_x;// this.speed * 2;
-                }
-            };
+                BulletConfigInfo info = BulletConfigInfo.Create();
+                bullet_atk1_info = info;
+                info.AddBuffer("BufferSpin");
+                info.AddBuffer("BufferHitBack");
+          
+                info.isHitDestory = true;
+                info.number = 1;
+                info.oneHitTimes = 1;
+                info.frameDelay = 4;
+
+                info.lastTime = 15;
+
+            }
+
+
+
         }
-
-
+        else if (type == "6")
         {
-            bulleClassName_atk2 = "BulletConfig"; //"Bullet2_0";//普通攻击 2段  的子弹名字
-            ///  bulleClassName_atk1 = "BulletStateMachineTest";
+            //-------------------- hero 6
+            this.skin = "#1";
+            this.atk_level = 3;
+            this.prefabsName = ConfigTables.Hero.Get(type)["prefab"];//;"Spine/6/Hero6";
 
-            BulletConfigInfo info = BulletConfigInfo.Create();
-            bullet_atk2_info = info;
-            info.AddBuffer("BufferHitBack");
-
-            info.launch_delta_xy.x = 1f;
-            info.launch_delta_xy.y = 0f;
-            info.frameDelay = 4;
-            info.distance_atk = 1.0f;
-            info.number = 0xfff;
-            info.isHitDestory = false;
-            info.oneHitTimes = 1;
-            //  info.rotate = -120.0f;
-            info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6011/role_6_bul_6011.plist";
-            /// info.rotate = 30.0f;
-            info.distance = 0;
-            info.lastTime = 15;
-            info.scale_x = 1.5f;
-            info.scale_y = 1.5f;
+            ani_hurt = "hurt";
+            ani_jumpTwice = "doubleJump";
+            ani_jump = "jump";
+            ani_fall = "fall";
+            ani_run = "run";
+            ani_stand = "rest";
+            this.ani_atk1 = AttackState6_Data.ins.level1_animation_name;// "6000";
+            this.ani_atk2 = AttackState6_Data.ins.level2_animation_name; //"6010";
+            this.ani_atk3 = AttackState6_Data.ins.level3_animation_name;// "6020";
 
 
-            info.launch_delta_xy.x = AttackState6_Data.ins.level2_delta_xy.x; //; 1f;
-            info.launch_delta_xy.y = AttackState6_Data.ins.level2_delta_xy.y; ;// 0f;
-            info.collider_size = AttackState6_Data.ins.level2_hit_rect;
-            info.plistAnimation = AttackState6_Data.ins.level2_hit_animation_name; ;
-            info.damage_ratio = AttackState6_Data.ins.level2_damage_ratio;
 
-            info._OnLaunch = (Bullet b, object userData) =>
+            {
+                bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
+                bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
+                ///  bulleClassName_atk1 = "BulletStateMachineTest";
+
+                BulletConfigInfo info = BulletConfigInfo.Create();
+                bullet_atk1_info = info;
+                info.AddBuffer("BufferHitBack");
+                info.AddBuffer("BufferSpin");
+
+                info.launch_delta_xy.x = AttackState6_Data.ins.level1_delta_xy.x; //; 1f;
+                info.launch_delta_xy.y = AttackState6_Data.ins.level1_delta_xy.y; ;// 0f;
+                info.collider_size = AttackState6_Data.ins.level1_hit_rect;
+                info.plistAnimation = AttackState6_Data.ins.level1_hit_animation_name; ;// "hd/roles/role_6/bullet/role_6_bul_6001/role_6_bul_6001.plist";
+                info.damage_ratio = AttackState6_Data.ins.level1_damage_ratio;
+                info.rotate = 30.0f;
+                info.distance = 0;
+                info.distance_atk = 1.0f;
+                info.isHitDestory = false;
+                info.number = 0xfff;
+                info.oneHitTimes = 1;
+                info.frameDelay = 4;
+                info.scale_x = 1.5f;
+                info.scale_y = 1.5f;
+                info.lastTime = 15;
+
+                info._OnLaunch = (Bullet b, object userData) =>
                 {
 
                     if (this.flipX < 0)
                     {
-                        this.x_auto += AttackState6_Data.ins.level2_move_x; //this.speed * 2;
+                        this.x_auto += AttackState6_Data.ins.level1_move_x; //this.speed * 2;
                     }
                     else
                     {
-                        this.x_auto -= AttackState6_Data.ins.level2_move_x;/// this.speed * 2;
+                        this.x_auto -= AttackState6_Data.ins.level1_move_x;// this.speed * 2;
                     }
                 };
-        }
+            }
 
 
-        {
-            bulleClassName_atk3 = "BulletConfig"; //"Bullet2_0";//普通攻击 3段  的子弹名字
-            ///  bulleClassName_atk1 = "BulletStateMachineTest";
-
-            BulletConfigInfo info = BulletConfigInfo.Create();
-            bullet_atk3_info = info;
-            info.AddBuffer("BufferHitBack");
-
-            info.launch_delta_xy.x = 1f;
-            info.launch_delta_xy.y = 0f;
-            info.distance_atk = 1.3f;
-            info.number = 0xfff;
-            info.oneHitTimes = 1;
-            info.scale_x = 1.5f;
-            info.scale_y = 1.5f;
-            info.isHitDestory = false;
-            info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6021/role_6_bul_6021.plist";
-            //    info.rotate = 30.0f;
-            info.distance = 0;
-            info.frameDelay = 4;
-            info.lastTime = 15;
-
-            info.launch_delta_xy.x = AttackState6_Data.ins.level3_delta_xy.x; //; 1f;
-            info.launch_delta_xy.y = AttackState6_Data.ins.level3_delta_xy.y; ;// 0f;
-            info.collider_size = AttackState6_Data.ins.level3_hit_rect;
-            info.plistAnimation = AttackState6_Data.ins.level3_hit_animation_name; ;// 
-            info.damage_ratio = AttackState6_Data.ins.level3_damage_ratio;
-
-            info._OnLaunch = (Bullet b, object userData) =>
             {
+                bulleClassName_atk2 = "BulletConfig"; //"Bullet2_0";//普通攻击 2段  的子弹名字
+                ///  bulleClassName_atk1 = "BulletStateMachineTest";
 
-                if (this.flipX < 0)
+                BulletConfigInfo info = BulletConfigInfo.Create();
+                bullet_atk2_info = info;
+                info.AddBuffer("BufferHitBack");
+
+                info.launch_delta_xy.x = 1f;
+                info.launch_delta_xy.y = 0f;
+                info.frameDelay = 4;
+                info.distance_atk = 1.0f;
+                info.number = 0xfff;
+                info.isHitDestory = false;
+                info.oneHitTimes = 1;
+                //  info.rotate = -120.0f;
+                info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6011/role_6_bul_6011.plist";
+                /// info.rotate = 30.0f;
+                info.distance = 0;
+                info.lastTime = 15;
+                info.scale_x = 1.5f;
+                info.scale_y = 1.5f;
+
+
+                info.launch_delta_xy.x = AttackState6_Data.ins.level2_delta_xy.x; //; 1f;
+                info.launch_delta_xy.y = AttackState6_Data.ins.level2_delta_xy.y; ;// 0f;
+                info.collider_size = AttackState6_Data.ins.level2_hit_rect;
+                info.plistAnimation = AttackState6_Data.ins.level2_hit_animation_name; ;
+                info.damage_ratio = AttackState6_Data.ins.level2_damage_ratio;
+
+                info._OnLaunch = (Bullet b, object userData) =>
+                    {
+
+                        if (this.flipX < 0)
+                        {
+                            this.x_auto += AttackState6_Data.ins.level2_move_x; //this.speed * 2;
+                        }
+                        else
+                        {
+                            this.x_auto -= AttackState6_Data.ins.level2_move_x;/// this.speed * 2;
+                        }
+                    };
+            }
+
+
+            {
+                bulleClassName_atk3 = "BulletConfig"; //"Bullet2_0";//普通攻击 3段  的子弹名字
+                ///  bulleClassName_atk1 = "BulletStateMachineTest";
+
+                BulletConfigInfo info = BulletConfigInfo.Create();
+                bullet_atk3_info = info;
+                info.AddBuffer("BufferHitBack");
+
+                info.launch_delta_xy.x = 1f;
+                info.launch_delta_xy.y = 0f;
+                info.distance_atk = 1.3f;
+                info.number = 0xfff;
+                info.oneHitTimes = 1;
+                info.scale_x = 1.5f;
+                info.scale_y = 1.5f;
+                info.isHitDestory = false;
+                info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6021/role_6_bul_6021.plist";
+                //    info.rotate = 30.0f;
+                info.distance = 0;
+                info.frameDelay = 4;
+                info.lastTime = 15;
+
+                info.launch_delta_xy.x = AttackState6_Data.ins.level3_delta_xy.x; //; 1f;
+                info.launch_delta_xy.y = AttackState6_Data.ins.level3_delta_xy.y; ;// 0f;
+                info.collider_size = AttackState6_Data.ins.level3_hit_rect;
+                info.plistAnimation = AttackState6_Data.ins.level3_hit_animation_name; ;// 
+                info.damage_ratio = AttackState6_Data.ins.level3_damage_ratio;
+
+                info._OnLaunch = (Bullet b, object userData) =>
                 {
-                    this.x_auto += AttackState6_Data.ins.level3_move_x; //this.speed * 2;
-                }
-                else
-                {
-                    this.x_auto -= AttackState6_Data.ins.level3_move_x; //this.speed * 2;
-                }
-            };
+
+                    if (this.flipX < 0)
+                    {
+                        this.x_auto += AttackState6_Data.ins.level3_move_x; //this.speed * 2;
+                    }
+                    else
+                    {
+                        this.x_auto -= AttackState6_Data.ins.level3_move_x; //this.speed * 2;
+                    }
+                };
+            }
+
+
         }
-
-
-
 
 
 
@@ -247,7 +288,6 @@ public class BattleHero : Hero
 
         this.current_hp = 0xffffff;
         this.hp = 0xffffff;
-        this.atk_level = 3;
 
 
         DAO.Equip equip = EquipMgr.ins.GetTestEquip();

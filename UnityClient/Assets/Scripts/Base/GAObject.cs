@@ -199,12 +199,16 @@ public class GAObject : IDisposable
             Debug.LogError("UnKnown type:" + _class_name);
             return null;
         }
-        if (t.IsSubclassOf(t_static))
+        if (t.IsSubclassOf(t_static)==false)
         {
             Debug.LogError("class " + _class_name + " not the subclass of GAObject");
             return null;
         }
         return (System.Activator.CreateInstance(t) as GAObject);
+    }
+    public static T Create<T>(string _class_name) where T : GAObject, new()
+    {
+        return Create(_class_name) as T;
     }
     static System.Type t_static = typeof(GAObject);
 };

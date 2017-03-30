@@ -694,7 +694,8 @@ public class AttackState_1 : StateBase
         {
             Target.isAttacking = false;
             this.Enable = false;
-            // Debug.Log(" 连招  1111 完成");
+            ///  Debug.Log(" 连招  1111 完成  "  );
+
             if (Target.atk_level > 1)
             {//下段招数
                 this.stack.PushSingleState(StateBase.Create<AttackState_2>(Target));
@@ -705,7 +706,6 @@ public class AttackState_1 : StateBase
         {//请求打断
             SkillBase skill = userData as SkillBase;
             if (skill.Target != this.Target) return;
-            Debug.LogError("atk state cancel");
             Target.isAttacking = false;
             this.Enable = false;
         }
@@ -757,7 +757,7 @@ public class AttackState_2 : StateBase
     private bool isLaunch = false;
     public AttackState_2()
     {
-        //  Debug.Log(" 连招  222 待命");
+        //   Debug.Log(" 连招  222 待命");
     }
     public override void UpdateMS()
     {
@@ -1168,79 +1168,28 @@ public class SkillState : StateBase
 
 
         ///---------------------------------技能组 2
+        string type = Target.type;
+        ArrayList skills = ConfigTables.Hero.GetSkillsList(type);
+
+        for (int i = 0; i < skills.Count / 2; i++)
         {
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
-            s.PushSingleSkill(new Skill62_1());
+            s.PushSingleSkill(GAObject.Create<SkillBase>(skills[i] as string));
             this.skill_stacks2.Add(s);
         }
-        {
-            SkillStack s = SkillStack.Create();
-            s.host = this.Target;
-            s.parent = this;
-            s.PushSingleSkill(new Skill62_2());
-            this.skill_stacks2.Add(s);
-        }
-        {
-            SkillStack s = SkillStack.Create();
-            s.host = this.Target;
-            s.parent = this;
-            s.PushSingleSkill(new Skill62_3());
-            this.skill_stacks2.Add(s);
-        }
-        {
-            SkillStack s = SkillStack.Create();
-            s.host = this.Target;
-            s.parent = this;
-            s.PushSingleSkill(new Skill6_Final());
-            this.skill_stacks2.Add(s);
-        }
-        {
-            SkillStack s = SkillStack.Create();
-            s.host = this.Target;
-            s.parent = this;
-            s.PushSingleSkill(new SkillForceCancel());
-            this.skill_stacks2.Add(s);
-        }
+
 
         ///---------------------------------技能组 1
+        for (int i = skills.Count / 2; i < skills.Count; i++)
         {
             SkillStack s = SkillStack.Create();
             s.host = this.Target;
             s.parent = this;
-            s.PushSingleSkill(new Skill61_1());
+            s.PushSingleSkill(GAObject.Create<SkillBase>(skills[i] as string));
             this.skill_stacks1.Add(s);
         }
-        {
-            SkillStack s = SkillStack.Create();
-            s.host = this.Target;
-            s.parent = this;
-            s.PushSingleSkill(new Skill61_2());
-            this.skill_stacks1.Add(s);
-        }
-        {
-            SkillStack s = SkillStack.Create();
-            s.host = this.Target;
-            s.parent = this;
-            s.PushSingleSkill(new Skill61_3());
-            this.skill_stacks1.Add(s);
-        }
-        {
-            SkillStack s = SkillStack.Create();
-            s.host = this.Target;
-            s.parent = this;
-            s.PushSingleSkill(new Skill6_Final());
-            this.skill_stacks1.Add(s);
-        }
-        {
-            SkillStack s = SkillStack.Create();
-            s.host = this.Target;
-            s.parent = this;
-            s.PushSingleSkill(new SkillForceCancel());
-            this.skill_stacks1.Add(s);
-        }
-
 
         this.Enable = true;
         skill_stacks = skill_stacks2; // 默认技能组2

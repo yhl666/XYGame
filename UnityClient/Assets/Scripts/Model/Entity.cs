@@ -636,7 +636,7 @@ public class Entity : Model
     //for view 
     public string prefabsName = "Prefabs/Entity"; // default
     public string skin = "default";
-
+    public string type = "2";
 
 
     // for state machine
