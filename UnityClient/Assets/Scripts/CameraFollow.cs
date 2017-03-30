@@ -131,7 +131,7 @@ public class CameraFollow : MonoBehaviour
         delta = 1.0f;
         Hero self = HeroMgr.ins.self;
         pos_pre = this.transform.position;
-        this.transform.position = new Vector3(self.x+1.0f, self.y+1.0f, this.transform.position.z);
+        this.transform.position = new Vector3(self.x+1.0f, self.GetRealY()+1.0f, this.transform.position.z);
         UIBattleRoot.ins.Hide();
 
         FadeOut.Create(obj_bg_static.GetComponent<SpriteRenderer>(), 1.0f);

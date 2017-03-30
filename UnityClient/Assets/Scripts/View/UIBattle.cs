@@ -776,15 +776,30 @@ public sealed class UI_buffers : ViewUI
             if (index > MAX_BUFFER_SHOW) break;
 
             (list_panel[index] as GameObject).SetActive(true);
+            if (buffer.enable_time)
+            {
+                Counter t = buffer.GetCounter();
 
-            Counter t = buffer.GetCounter();
+                float current = t.GetCurrent();
+                float max = t.GetMax();
+                (list_img_filled[index] as Image).fillAmount = current / max;
+                float timef = ((max - current) / (float)Config.MAX_FPS);
 
-            float current = t.GetCurrent();
-            float max = t.GetMax();
-            (list_img_filled[index] as Image).fillAmount = current / max;
-
-            int time = (int)((max - current) / Config.MAX_FPS);
-            (list_txt_time[index] as Text).text = time.ToString();
+                int time = (int)((max - current) / Config.MAX_FPS);
+                if (timef < 1.0f)
+                {
+                    (list_txt_time[index] as Text).text = timef.ToString("0.0");
+                }
+                else
+                {
+                    (list_txt_time[index] as Text).text = time.ToString();
+                }
+            }
+            else
+            {
+                (list_img_filled[index] as Image).fillAmount = 0;
+                (list_txt_time[index] as Text).text = "";
+            }
             (list_txt[index] as Text).text = buffer.brief;
             Sprite sp = SpriteFrameCache.ins.GetSpriteFrameAuto(buffer.icon).sprite;
             (list_img[index] as Image).sprite = sp;
@@ -831,7 +846,7 @@ public sealed class UI_buffers : ViewUI
         return true;
     }
 
-    Counter tick = Counter.Create(10);
+    Counter tick = Counter.Create(0);
     private const int MAX_BUFFER_SHOW = 7;
     ArrayList list_panel = new ArrayList();//GameObject
     ArrayList list_img = new ArrayList();

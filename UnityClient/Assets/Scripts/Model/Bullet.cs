@@ -340,7 +340,7 @@ public sealed class BulletConfig : Bullet
                     //  inf.buffers_string = info.buffers_string;
                     h.TakeAttacked(inf);
 
-                    info.InVokeOnTakeAttack(this);
+                    info.InVokeOnTakeAttack(this,h);
                     hasHit.PushBack(h);
                     tagForValidTimes = true;
                     hitNumber++;

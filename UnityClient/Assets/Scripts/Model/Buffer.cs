@@ -11,6 +11,7 @@ public class Buffer : Model
 
     //----for ui
     public bool show_ui = false;
+    public bool enable_time = true;//buffer 显示时间否,时间信息由 tick提供
     public string brief = "";
     public string name = "";
     public string icon = "hd/interface/items/502154.png";
@@ -379,7 +380,7 @@ public class BufferEquipTest2 : Buffer
             if (info.target != this.owner) return;
             //一定几率触发
 
-            if (random.Next(0, 100) < 30)
+            if (random.Next(0, 100) < 10)
             {
                 tick.Reset();
                 this.left_hp = 25;
@@ -512,6 +513,10 @@ public class BufferSpeedSlow : Buffer
     public override bool Init()
     {
         base.Init();
+        show_ui = true;
+        icon = "hd/interface/items/503079.png";
+        brief = "移动" + percent.ToString() +"%";
+        enable_time = false;
         return true;
     }
     public override void OnExit()
@@ -578,6 +583,9 @@ public class BufferHitBack : Buffer
         {
             dir = -1;
         }
+        show_ui = true;
+        icon = "hd/interface/items/503079.png";
+        brief = "击退" ;
         return true;
     }
     public override void OnExit()
@@ -660,7 +668,9 @@ public class BufferHitFly : Buffer
     public override bool Init()
     {
         base.Init();
-
+        show_ui = true;
+        icon = "hd/interface/items/503079.png";
+        brief = "击飞";
         return true;
     }
     public override void OnExit()
@@ -745,11 +755,18 @@ public class BufferNegativeUnbeatable : Buffer
     }
     public override bool Init()
     {
-        return base.Init();
+
+          base.Init();
+          show_ui = true;
+          icon = "hd/interface/items/503079.png";
+          brief = "状态抵抗";
+          return true;
     }
     public override void UpdateMS()
     {
         base.UpdateMS();
+        tick.SetMax(MAX_TICK);
+        tick.Tick();
     }
 
 
@@ -789,6 +806,10 @@ public class BufferGod : Buffer
     {
         base.Init();
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+        show_ui = true;
+        icon = "hd/interface/items/503079.png";
+        brief = "无敌";
+        enable_time = false;
         return true;
     }
     public override void OnExit()
@@ -798,6 +819,8 @@ public class BufferGod : Buffer
     public override void UpdateMS()
     {
         base.UpdateMS();
+        tick.SetMax(MAX_TICK);
+        tick.Tick();
     }
 
 
@@ -923,7 +946,13 @@ public class BufferSpin : Buffer
         has_view = true;
         plist = "hd/buff/buff_200564/buff_200564.plist";
         plist = "88";
+
+
+        show_ui = true;
+        icon = "hd/interface/items/503079.png";
+        brief = "眩晕";
         this.SetLastTime(time);
+        tick.SetMax(MAX_TICK);
         return true;
     }
     public override void OnDispose()
@@ -932,19 +961,23 @@ public class BufferSpin : Buffer
     }
     public override void UpdateMS()
     {
-        base.UpdateMS();
+        if (tick.Tick())
+        {
+            //  base.UpdateMS();
 
-        /*
-        target.isAttacking = false;
+            /*
+            target.isAttacking = false;
    
        
-    ///    target.isStand = false;
-        target.isRunning = false;
-        target.isJumpTwice = false;
-        target.isDie = false;*/
-        target.isJumping = false;
-        target.isHurt = false;
-        target.isRunning = false;
+        ///    target.isStand = false;
+            target.isRunning = false;
+            target.isJumpTwice = false;
+            target.isDie = false;*/
+            target.isJumping = false;
+            target.isHurt = false;
+            target.isRunning = false;
+        }
+        this.SetInValid();
     }
 
     public override void OnEvent(int type, object userData)

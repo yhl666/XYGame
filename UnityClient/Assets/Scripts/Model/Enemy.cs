@@ -316,6 +316,7 @@ public class Enemy221 : Enemy
         bullet_atk1_info.distance_atk = 1f;
         //   this.speed *= 0.001f; ;
         bullet_atk1_info.AddBuffer("BufferHitBack");
+        bullet_atk1_info.AddBuffer("BufferSpin");
 
         this.atk_range = 1.0f;
         scale = 0.8f;
