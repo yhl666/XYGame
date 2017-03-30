@@ -3,27 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '78afcdd8500317409f414bc11b0633d4da3d3807'
-    oldFile: !uuid 'b463f8a68875fc37977f0ae7d65dc70e38836573'
+    newFile: !uuid '623ed55a9ea4a9a246e7fbd782138f7b1300757d'
+    oldFile: !uuid '78afcdd8500317409f414bc11b0633d4da3d3807'
   /UnityClient/Assets:
-    newFile: !uuid '795641805f9d6e1bdc9c6f46379a3b5744c1950c'
-    oldFile: !uuid 'c67392317e970c83a2ded2644555d97fb62c9941'
+    newFile: !uuid '161f70a660bd4985783654a354f4e88130e6a341'
+    oldFile: !uuid '795641805f9d6e1bdc9c6f46379a3b5744c1950c'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '1b39f1b190f16f7a5bdbe8aea752894ab3d65fed'
-    oldFile: !uuid '265db27ae08ff72bb10eac1cd666ae70c13cb08f'
+    newFile: !uuid '435a590a7d1550206106d995fc29d95878044c07'
+    oldFile: !uuid '1b39f1b190f16f7a5bdbe8aea752894ab3d65fed'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '983ec5a1be60bc8e65b856bfc7ad64e59868ea06'
-    oldFile: !uuid 'ae31e02ff880ccacc1a3f2f25f74f5733a50b825'
+    newFile: !uuid '6fc315178fc782d5d6ab0e83a9d51403529ab169'
+    oldFile: !uuid '983ec5a1be60bc8e65b856bfc7ad64e59868ea06'
   /UnityClient/Assets/Scripts/Model/Buffer.cs:
-    newFile: !uuid '4b107f6ebd618dc9747a682c422f1ba01919b143'
-    oldFile: !uuid '89177319b4cc4aed2d3bbb1b5862570fdd33ff97'
-  /UnityClient/Assets/Scripts/Model/Bullet.cs:
-    newFile: !uuid 'c94298cee89e5ef7e60ac564ed50ff9d74d8856c'
-    oldFile: !uuid 'b578ef787db3627e928e9522a1f57f1da0ae1d23'
-  /UnityClient/Assets/Scripts/Model/Skill.cs:
-    newFile: !uuid 'fc99f40ab347d3d59e588d51a82b80028fd7cadd'
-    oldFile: !uuid 'efb0184f42b5d028643aec99204ed3556354a707'
-gitCommitId: !uuid '0db9b634182a55cb304a339fe2ea417a386d6d2f'
+    newFile: !uuid '1c7a3a14b005b075d7664db903175a1791d2f776'
+    oldFile: !uuid '4b107f6ebd618dc9747a682c422f1ba01919b143'
+gitCommitId: !uuid '44eed1bd60218bbd9d875dc92129f8c85a941180'
 renames: {
   }
-revisionId: 561
+revisionId: 562
