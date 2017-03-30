@@ -86,7 +86,7 @@ public class Buffer : Model
     /// <param name="other"></param>
     public virtual void OnMerge(Buffer other)
     {
-
+        tick.Reset();//默认Buffer计时重置
     }
     public override void OnExit()
     {
@@ -515,7 +515,7 @@ public class BufferSpeedSlow : Buffer
         base.Init();
         show_ui = true;
         icon = "hd/interface/items/503079.png";
-        brief = "移动" + percent.ToString() +"%";
+        brief = "移动" + percent.ToString() + "%";
         enable_time = false;
         return true;
     }
@@ -561,7 +561,7 @@ public class BufferHitBack : Buffer
         base.OnEnter();
         tick.SetMax(time);
         target.machine.GetState<RunState>().Pause();
-      //  Debug.Log("击退开始");
+        //  Debug.Log("击退开始");
 
     }
     public override void UpdateMS()
@@ -585,13 +585,13 @@ public class BufferHitBack : Buffer
         }
         show_ui = true;
         icon = "hd/interface/items/503079.png";
-        brief = "击退" ;
+        brief = "击退";
         return true;
     }
     public override void OnExit()
     {
         if (nonsense) return;
-      ///  Debug.Log("击退结束");
+        ///  Debug.Log("击退结束");
         target.machine.GetState<RunState>().Resume();
         base.OnExit();
     }
@@ -756,11 +756,11 @@ public class BufferNegativeUnbeatable : Buffer
     public override bool Init()
     {
 
-          base.Init();
-          show_ui = true;
-          icon = "hd/interface/items/503079.png";
-          brief = "状态抵抗";
-          return true;
+        base.Init();
+        show_ui = true;
+        icon = "hd/interface/items/503079.png";
+        brief = "状态抵抗";
+        return true;
     }
     public override void UpdateMS()
     {
@@ -875,15 +875,15 @@ public class BufferForceCancel : Buffer
     public override void OnEnter()
     {
         base.OnEnter();
-  
+
     }
     public override bool Init()
     {
-          base.Init();
-          has_view = true;
-          plist = "hd/magic_weapons/bullet/bul_5000131/bul_5000131.plist";
-          this.SetLastTime(0.2f);
-          return true;
+        base.Init();
+        has_view = true;
+        plist = "hd/magic_weapons/bullet/bul_5000131/bul_5000131.plist";
+        this.SetLastTime(0.2f);
+        return true;
     }
     public override void UpdateMS()
     {
@@ -926,10 +926,6 @@ public class BufferSpin : Buffer
 
 
     }
-    public override void OnMerge(Buffer other)
-    {
-
-    }
     public override void OnExit()
     {
         target.machine.ResumeAllStack();
@@ -946,7 +942,7 @@ public class BufferSpin : Buffer
         has_view = true;
         plist = "hd/buff/buff_200564/buff_200564.plist";
         plist = "88";
-;
+        ;
         show_ui = true;
         icon = "hd/interface/items/503079.png";
         brief = "眩晕";
@@ -954,6 +950,7 @@ public class BufferSpin : Buffer
         tick.SetMax(MAX_TICK);
         return true;
     }
+ 
     public override void OnDispose()
     {
 
