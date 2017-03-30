@@ -62,36 +62,12 @@ public class BattleHero : Hero
             s.PushSingleState(StateBase.Create<HurtState>(this));
         }
     }
-    public override bool Init()
+
+    public override void OnSwitchTypeTo(string type)
     {
-        base.Init();
-        scale = 0.8f;
-        // config
-
-        /* ------------------------------------------hero 2
-        this.skin = "#1";
-        this.prefabsName = "Prefabs/Hero2";
-     
-        ani_hurt = "hurt";
-        ani_jumpTwice = "doubleJump";
-        ani_jump = "jump";
-        ani_fall = "fall";
-        ani_run = "run";
-        ani_stand = "stand";
-
-        bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
-        bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
-        ///  bulleClassName_atk1 = "BulletStateMachineTest";
-
-        bullet_atk1_info = BulletConfigInfo.Create();
-        bullet_atk1_info.AddBuffer("BufferHitBack");
- 
-        */
-
- 
 
 
-        if(type == "2")
+        if (type == "2")
         {
             this.atk_level = 1;
             this.skin = "#1";
@@ -113,7 +89,7 @@ public class BattleHero : Hero
                 bullet_atk1_info = info;
                 info.AddBuffer("BufferSpin");
                 info.AddBuffer("BufferHitBack");
-          
+
                 info.isHitDestory = true;
                 info.number = 1;
                 info.oneHitTimes = 1;
@@ -217,17 +193,17 @@ public class BattleHero : Hero
                 info.damage_ratio = AttackState6_Data.ins.level2_damage_ratio;
 
                 info._OnLaunch = (Bullet b, object userData) =>
-                    {
+                {
 
-                        if (this.flipX < 0)
-                        {
-                            this.x_auto += AttackState6_Data.ins.level2_move_x; //this.speed * 2;
-                        }
-                        else
-                        {
-                            this.x_auto -= AttackState6_Data.ins.level2_move_x;/// this.speed * 2;
-                        }
-                    };
+                    if (this.flipX < 0)
+                    {
+                        this.x_auto += AttackState6_Data.ins.level2_move_x; //this.speed * 2;
+                    }
+                    else
+                    {
+                        this.x_auto -= AttackState6_Data.ins.level2_move_x;/// this.speed * 2;
+                    }
+                };
             }
 
 
@@ -280,7 +256,34 @@ public class BattleHero : Hero
 
 
 
+    }
+    public override bool Init()
+    {
+        base.Init();
+        scale = 0.8f;
+        // config
 
+        /* ------------------------------------------hero 2
+        this.skin = "#1";
+        this.prefabsName = "Prefabs/Hero2";
+     
+        ani_hurt = "hurt";
+        ani_jumpTwice = "doubleJump";
+        ani_jump = "jump";
+        ani_fall = "fall";
+        ani_run = "run";
+        ani_stand = "stand";
+
+        bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
+        bulleClassName_s1 = "Bullet2_1"; // 1 号技能 子弹名字
+        ///  bulleClassName_atk1 = "BulletStateMachineTest";
+
+        bullet_atk1_info = BulletConfigInfo.Create();
+        bullet_atk1_info.AddBuffer("BufferHitBack");
+ 
+        */
+
+        this.SwitchTypeTo(type);
 
         ViewMgr.Create<ViewEntity>(this);
 

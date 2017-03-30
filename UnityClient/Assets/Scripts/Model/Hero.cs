@@ -28,6 +28,15 @@ public class Hero : Entity
     {
       
     }
+    public void SwitchTypeTo(string type)
+    {
+        this.OnSwitchTypeTo(type);
+        this.type = type;
+    }
+    public virtual void OnSwitchTypeTo(string type)
+    {
+
+    }
     public DAO.User user = null;
     public string name_head;
     protected bool enable_pvp_ai = false;
