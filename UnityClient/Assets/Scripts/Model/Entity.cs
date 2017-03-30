@@ -316,7 +316,7 @@ public class Entity : Model
         bool ret = this.bounds.IntersectRayImpl(ray);
         return ret;
     }
-    public bool IsContains(float x ,float y)
+    public bool IsContains(float x, float y)
     {
         return this.bounds.Contains(new Vector2(x, y));
     }
@@ -394,6 +394,8 @@ public class Entity : Model
     // base property
     public float x = 1.0f;
     public float y = 0.0f;
+    public float z = 0.0f;
+
     public int no = 0;//临时识别编号 比如战斗
     public string id = ""; // 唯一id
     public float flipX = -1.0f;//默认面向右边
