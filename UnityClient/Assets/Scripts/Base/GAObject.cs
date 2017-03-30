@@ -52,10 +52,12 @@ public class GAObject : IDisposable
     /// <returns></returns>
     public virtual bool Init()
     {
-        track_list.PushBack(this);
         return true;
     }
-
+    public GAObject()
+    {
+        track_list.PushBack(this);
+    }
     public virtual void OnEvent(string type, object userData)
     {
 
