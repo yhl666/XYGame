@@ -52,6 +52,7 @@ public class GAObject : IDisposable
     /// <returns></returns>
     public virtual bool Init()
     {
+        track_list.PushBack(this);
         return true;
     }
 
@@ -95,6 +96,7 @@ public class GAObject : IDisposable
     /// </summary>
     public void Dispose()
     {
+        track_list.Remove(this);
         this.OnDispose();
     }
 
@@ -103,6 +105,7 @@ public class GAObject : IDisposable
     /// </summary>
     public void LazyDispose()
     {
+        track_list.Remove(this);
         AutoReleasePool.ins.AddObject(this);
     }
 
@@ -137,6 +140,53 @@ public class GAObject : IDisposable
         Debug.Log(this.GetType().ToString() + ":" + what);
     }
 
+    public static void PrintMemoryTrack()
+    {
+        Debug.LogWarning("[GAObject MemoryTrack]:------------Start------------");
+
+        int count = track_list.Count();
+
+        for (int i = 0; i < count; i++)
+        {
+            GAObject obj = track_list[i] as GAObject;
+            Debug.LogWarning(string.Format("[GAObject MemoryTrack]: class {0} alive in HashCode:{1}", obj.GetType().ToString(), obj.GetHashCode()));
+        }
+
+        Debug.LogWarning(string.Format("[GAObject MemoryTrack]: {0} GAObject alive", count));
+        Debug.LogWarning("[GAObject MemoryTrack]:------------End------------");
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="subClass">是否输出继承关系的类</param>
+    public static void PrintMemoryTrack<T>(bool subClass = true)
+    {
+        int count = track_list.Count();
+        int c = 0;
+        Type typeT = typeof(T);
+        Debug.LogWarning("[GAObject MemoryTrack Of Type=" + typeT.ToString() + "]:------------Start------------");
+        for (int i = 0; i < count; i++)
+        {
+            GAObject obj = track_list[i] as GAObject;
+            Type t = obj.GetType();
+            if (subClass && t != typeT)
+            {
+                if (t.IsSubclassOf(typeT) == false && typeT.IsSubclassOf(t) == false)
+                {
+                    continue;
+                }
+
+            }
+            ++c;
+            Debug.LogWarning(string.Format("[GAObject MemoryTrack]: class {0} alive in HashCode:{1}", obj.GetType().ToString(), obj.GetHashCode()));
+        }
+
+        Debug.LogWarning(string.Format("[GAObject MemoryTrack Of Type]: {0} GAObject  Of Type(" + typeT.ToString() + ") alive", c));
+        Debug.LogWarning("[GAObject MemoryTrack Of Type=" + typeT.ToString() + "]:------------End------------");
+    }
+
+    static Vector track_list = new Vector();
 };
 
 
@@ -173,7 +223,7 @@ public class SingletonGAObject<T> : GAObject where T : GAObject, new()
     {
         get
         {
-            return  GetInstance();
+            return GetInstance();
         }
     }
 

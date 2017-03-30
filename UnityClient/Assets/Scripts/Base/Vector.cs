@@ -56,6 +56,10 @@ public class Vector
     {
         list.Clear();
     }
+    public int Count()
+    {
+        return list.Count;
+    }
     public Vector Clone()
     {
         Vector ret = new Vector();
