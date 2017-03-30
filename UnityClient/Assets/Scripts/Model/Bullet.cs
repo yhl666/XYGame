@@ -546,13 +546,11 @@ public class Bullet2_1 : Bullet
     public override void OnExit()
     {
         base.OnExit();
-        Debug.Log(" exit");
 
     }
     public override void OnDispose()
     {
         base.OnDispose();
-        Debug.Log(" dispose");
 
     }
     public override void OnComplete()

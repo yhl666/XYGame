@@ -427,7 +427,7 @@ public class Skill2_1 : SkillBase
     {
         if (is_wait_done == false) return;
 
-        Debug.Log("释放冰龙");
+  //      Debug.Log("释放冰龙");
         // this.Enable = false;
         //  Target.isAttacking = false;
         is_launch_bullet = true;
@@ -531,8 +531,6 @@ public class Skill2_2 : SkillBase
     public override void OnSpineCompolete()
     {
         if (is_shifa) return;
-
-        Debug.Log("释放伤害");
 
         BulletConfigInfo info = BulletConfigInfo.Create();
         info.plistAnimation = "hd/roles/role_5/bullet/role_5_bul_5246/role_5_bul_5246.plist";
@@ -688,10 +686,7 @@ public class Skill2_3 : SkillBase
     public override void OnSpineCompolete()
     {
 
-        Debug.Log("释放冰龙");
-
         this.OnExit();
-
 
     }
     public override void OnExit()
@@ -800,7 +795,6 @@ public class Skill2_5 : SkillBase
 
     public override void OnSpineCompolete()
     {
-        Debug.Log("launch ");
         for (float i = -2.0f; i < 2.5f; i += 0.5f)
         {
             if (Mathf.Abs(i) < 0.01f) continue;

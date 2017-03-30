@@ -498,7 +498,6 @@ public class BufferSpeedSlow : Buffer
         tick.SetMax(time);
         speed_slow = percent / 100.0f * this.owner.speed;
         this.target.speed -= speed_slow;
-        Debug.Log("减速度");
 
     }
     public override void UpdateMS()
