@@ -522,7 +522,6 @@ public class BufferSpeedSlow : Buffer
     {
         if (nonsense) return;
         this.target.speed += speed_slow;
-        Debug.Log("恢复速度");
 
         base.OnExit();
     }
