@@ -88,6 +88,7 @@ public class PublicData : object
     public DAO.User self_user = null;
 
     // for frame sync  input status
+    public int IS_dir = -1;// direction 0-360
     public bool IS_left = false;//left
     public bool IS_right = false;//right
     public bool IS_jump = false;//jump

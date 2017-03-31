@@ -21,7 +21,7 @@ public sealed class FrameData : object
     public int s1 = 0;//skill 1
     public int stand = 0;//stand
     public int revive = 0;//revive point
-
+    public int dir = 0;
     private FrameData()
     {
 
@@ -34,6 +34,7 @@ public sealed class FrameData : object
 
         s += "no:" + no.ToString() + ",";
         s += "fps:" + fps.ToString() + ",";
+        s += "dir:" + dir.ToString() + ",";
 
         s += "left:" + left.ToString() + ",";
         s += "right:" + right.ToString() + ",";
@@ -53,6 +54,7 @@ public sealed class FrameData : object
         //转换为 上传服务器的json数据，不包含fps等非关键信息，节省流量
         if (skip)
         {
+            s += "dir:" + dir.ToString() + ",";
             if (left != 0) s += "left:" + left.ToString() + ",";
             if (right != 0) s += "right:" + right.ToString() + ",";
             if (jump != 0) s += "jump:" + jump.ToString() + ",";
@@ -63,6 +65,7 @@ public sealed class FrameData : object
         }
         else
         {
+            s += "dir:" + dir.ToString() + ",";
             s += "no:" + no.ToString() + ",";
             s += "left:" + left.ToString() + ",";
             s += "right:" + right.ToString() + ",";
@@ -178,9 +181,13 @@ public sealed class FrameData : object
                 {
                     stand = int.Parse(v);
                 }
-                if(k =="revive")
+                if (k == "revive")
                 {
                     revive = int.Parse(v);
+                }
+                if (k == "dir")
+                {
+                    dir = int.Parse(v);
                 }
             }
 

@@ -29,7 +29,7 @@ public class Model : GAObject
 
 
 
-public class DirInput : Model
+public sealed class DirInput : Model
 {
     public int dir
     {
@@ -46,7 +46,6 @@ public class DirInput : Model
     private float _x = 0.0f;
     private float _y = 0.0f;
     private int _dir = -1;
-    private int _no = 0;
 
     public float rotateZ_arrow;
     public float x_center;
@@ -153,10 +152,10 @@ public class DirInput : Model
 
     void OnTouchEnded(float x, float y)
     {
-
         this._enable = false;
         //  dir = -1;
         SetPosition(pos_began);
+        PublicData.ins.IS_dir = -1;
     }
 
     private Vector2 ConvertToUIVector2(Vector2 pos)
@@ -249,7 +248,7 @@ public class DirInput : Model
             rotateZ_arrow = degree_total - 270.0f;
             this.dir = dir;
             this.Degree = (int)degree_total;
-
+            PublicData.ins.IS_dir = this.Degree;
         }
         else
         {
@@ -313,25 +312,13 @@ public class DirInput : Model
 
     }
 
-    public float GetCurrentMousePositionX()
+    float GetCurrentMousePositionX()
     {
         return Input.mousePosition.x;///(Screen.width / 1136f) / 2f;
     }
-    public float GetCurrentMousePositionY()
+    float GetCurrentMousePositionY()
     {
         return Input.mousePosition.y;/// /(Screen.height / 640f)/2f;
-    }
-    public int GetDirection()
-    {
-        return dir;
-    }
-    public int GetDirectionDegree()
-    {
-        return this.Degree;
-    }
-    public void SetEnable(bool b)
-    {
-
     }
     public bool _enable = false;
 
