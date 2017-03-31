@@ -52,22 +52,22 @@ public class PublicData : object
 
         {
 
-         /*   self_user = DAO.User.Create();
-            user_pvp_other = DAO.User.Create();
-            is_pve = false;
-            battle_mode = "pvp";
-            is_pvp_friend_ai = true;
-            self_user.no = 1;
-            user_pvp_other.no = 2;
+            /*   self_user = DAO.User.Create();
+               user_pvp_other = DAO.User.Create();
+               is_pve = false;
+               battle_mode = "pvp";
+               is_pvp_friend_ai = true;
+               self_user.no = 1;
+               user_pvp_other.no = 2;
 
-            BattleHero h2 = HeroMgr.Create<BattleHero>();
-            h2.team = 1;
-            h2.no =1;
-            h2.name = "1";
+               BattleHero h2 = HeroMgr.Create<BattleHero>();
+               h2.team = 1;
+               h2.no =1;
+               h2.name = "1";
 
-            HeroMgr.ins.self = h2;
-            */
-  
+               HeroMgr.ins.self = h2;
+               */
+
 
         }
     }
@@ -88,7 +88,7 @@ public class PublicData : object
     public DAO.User self_user = null;
 
     // for frame sync  input status
-    public int IS_dir = -1;// direction 0-360
+    public int IS_dir = -1;// direction 0-360  if cancel move dir will be -1 or <0
     public bool IS_left = false;//left
     public bool IS_right = false;//right
     public bool IS_jump = false;//jump
