@@ -155,6 +155,9 @@ public sealed class Events : object
     //  public const int ID_BATTLE_PushOnInterruptAttackSate = 313; //请求打断普通攻击
     public const int ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE = 313; //请求打断普通攻击
 
+    public const int ID_DISABLE_DIRINPUT = 314;//禁止摇杆
+    public const int ID_ABLE_DIRINPUT = 315;//开启摇杆
+
 
     public const int ID_SETTING_CLICKED = 557;
     public const int ID_SETTING_CLOSE_CLICKED = 558;

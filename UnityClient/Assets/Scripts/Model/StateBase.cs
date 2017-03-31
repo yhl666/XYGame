@@ -1301,6 +1301,98 @@ public class RunXYState : StateBase
 
 
 
+/// <summary>
+///  2.5D 的 run状态
+///  view will transform 3d  to 2.5d view
+/// </summary>
+public class RunXZState : StateBase
+{
+    public override StateBase GetState<T>()
+    {
+        if (typeof(T) == typeof(RunXZState))
+        {
+            return this;
+        }
+        return null;
+    }
+    public override string GetName() { return "RunXZState"; }
+    public RunXZState()
+    {
+
+    }
+    public override void UpdateMS()
+    {
+
+        float distance = Target.ClaculateDistance(x, y);
+        //modify x and z  . y is jumping
+        //  Debug.Log(" distance : " + distance);
+        if (distance < 0.06f || (x == Target.x && y== Target.z))
+        {
+            this.Enable = false;
+            Target.isStand = true;
+            Target.isRunning = false;
+
+            return;
+        }
+        else
+        {
+            Target.isStand = false;
+            Target.isRunning = true;
+        }
+
+        float speed = Target.speed;
+
+        float dd = degree * DATA.ONE_DEGREE;//一度的弧度
+
+        float z_delta = Mathf.Sin(dd);
+        float x_delta = Mathf.Cos(dd);
+        Target.z = Target.z + speed * z_delta;
+        Target.x = Target.x + speed * x_delta;
+
+    }
+
+
+    public override void OnEvent(int type, object userData)
+    {
+
+        this.Enable = true;
+        Vector2 pos = (Vector2)userData;
+
+        this.x = pos.x;
+        this.y = pos.y;
+        if (x > Target.x)
+        {//面向右边
+            Target.flipX = -1.0f;
+        }
+        else
+        {//面向左边
+            Target.flipX = 1.0f;
+        }
+
+        if (this.y >= 2.4f) this.y = 2.4f;
+
+        degree = Utils.GetDegree(new Vector2(Target.x, Target.y), new Vector2(x, y));
+
+    }
+
+
+    public override void OnEnter()
+    {
+        this.stack.AddLocalEventListener(Events.ID_LOGIC_NEW_POSITION);
+        Target.isRunning = false;
+        Target.isStand = true;
+
+    }
+    public override void OnExit()
+    {
+
+    }
+    float x;
+    float y;
+    float degree;
+}
+
+
 
 public class LuaInterfaceState : StateBase
 {

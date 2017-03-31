@@ -18,7 +18,7 @@ public class DATA
 
 
     public const string UI_PREFABS_FILE_BATTLE = "Prefabs/ui/Battle";
-
+    public const string UI_PREFABS_FILE_DIRINPUT = "Prefabs/ui/DirInput";
     public const string UI_PREFABS_FILE_PUBLIC = "Prefabs/ui/Public";
     public const string UI_PREFABS_FILE_LOGIN = "Prefabs/ui/Login";
 

@@ -104,6 +104,12 @@ public sealed class UIBattleRoot : ViewUI
             this._ui_child.Add(ViewUI.Create<UI_buffers>(this));
             return DATA.EMPTY_STRING;
         }));
+
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_dirInput>(this));
+            return DATA.EMPTY_STRING;
+        }));
         return true;
     }
 
@@ -1195,3 +1201,90 @@ public sealed class UI_die : ViewUI
     Button btn_p4 = null;
 
 }
+
+
+
+
+
+public class UI_dirInput : ViewUI
+{
+    public override void OnEvent(string type, object userData)
+    {
+
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        //  this.ui.SetActive(_enable);
+
+
+        Hero self = HeroMgr.ins.self;
+        /* if (!self.alive)
+         {//死亡后不显示摇杆
+             this.model._enable = false;
+         }*/
+
+        if (this.ui.activeSelf != model._enable)
+        {
+            this.ui.SetActive(model._enable);
+        }
+
+        if (model._enable)
+        {
+            //比例变换
+            float factor_x = 1f / (Screen.width / 1136f);
+            float factor_y = 1f / (Screen.height / 640f);
+            this.img_arrow.transform.localPosition = new Vector3(model.x_arrow * factor_x, factor_y * model.y_arrow, this.img_arrow.transform.localPosition.z);
+
+            this.img_arrow.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, model.rotateZ_arrow));
+
+            this.img_center.transform.localPosition = new Vector3(model.x_center * factor_x, factor_y * model.y_center, this.img_center.transform.localPosition.z);
+
+            //  this.img_bg.transform.localPosition = new Vector3(model.x_bg , model.y_bg, this.img_bg.transform.localPosition.z);   
+            this.img_bg.transform.localPosition = new Vector3(model.x_bg * factor_x, model.y_bg * factor_y, this.img_bg.transform.localPosition.z);
+
+        }
+
+    }
+
+    public override bool Init()
+    {
+
+        this.ui = PrefabsMgr.Load(DATA.UI_PREFABS_FILE_DIRINPUT);
+        ///  this.ui.transform.parent = this._ui_root.transform;
+        DirInput m = ModelMgr.Create<DirInput>() as DirInput;
+
+
+        this.BindModel(m);
+
+
+        base.Init();
+
+        //   this.ui = GameObject.Find("DirectionInput");
+        this.model = base._model as DirInput;
+
+
+        this.img_bg = this.ui.transform.FindChild("DirectionInput/bg").GetComponent<Image>();
+        this.img_arrow = this.ui.transform.FindChild("DirectionInput/bg/arrow").GetComponent<Image>();
+        this.img_center = this.ui.transform.FindChild("DirectionInput/center").GetComponent<Image>();
+
+        // EventDispatcher.ins.AddEventListener(this, "ok");
+        return true;
+    }
+
+    public override void OnExit()
+    {
+        PrefabsMgr.Destroy(this.ui);
+        base.OnExit();
+    }
+
+    private GameObject ui;
+    //  private bool _enable_cache = false;
+    private Image img_arrow;
+    private Image img_bg;
+    private Image img_center;
+    private DirInput model;
+}
+
+

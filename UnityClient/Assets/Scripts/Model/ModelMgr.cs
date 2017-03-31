@@ -69,6 +69,35 @@ public sealed class ModelMgr : SingletonGAObject<ModelMgr>
         }
         EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
     }
+    public override void Update()
+    {
+      ///  EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLMODEL_UPDATEMS);
+
+        BulletMgr.ins.Update();
+        HeroMgr.ins.Update();
+        EnemyMgr.ins.Update();
+
+        foreach (Model b in lists)
+        {
+            // if (b.IsValid()) 
+
+            { b.Update(); }
+        }
+
+    /*    for (int i = 0; i < lists.Count; )
+        {
+            Model b = lists[i] as Model;
+            if (b.IsInValid())
+            {
+                this.Remove(b);
+            }
+            else
+            {
+                ++i;
+            }
+        }*/
+      ////  EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
+    }
 
 
     ArrayList lists = new ArrayList();
