@@ -112,7 +112,7 @@ public class Entity : Model
 {
 
     //---------------for player input state and frame sync
-
+    public int dir = -1;
     public bool left = false;//left
     public bool right = false;//right
     public bool jump = false;//jump

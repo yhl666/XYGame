@@ -365,6 +365,11 @@ public sealed class BattleSyncHandler
             dd.revive = PublicData.ins.IS_revive_point;
             PublicData.ins.IS_revive_point = 0;
         }
+        if (PublicData.ins.IS_dir > 0) // default -1
+        {
+            dd.dir = PublicData.ins.IS_dir;
+            PublicData.ins.IS_dir = -1;
+        }
 
         app.Send(dd.toUploadJson());
         //   Debug.Log("upload " + dd.toUploadJson());
@@ -686,7 +691,7 @@ public sealed class BattleSyncHandler
                 b.point_index = f.revive;
                 hero.AddBuffer(b);
             }
-
+            hero.dir = f.dir;
             /*  if (f.no == 0) continue;
            
               if (f.op == -1)

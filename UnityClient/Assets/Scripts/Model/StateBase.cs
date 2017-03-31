@@ -431,6 +431,161 @@ public class RunState : StateBase
 }
 
 
+
+
+public class RunXZState : StateBase
+{
+    public override StateBase GetState<T>()
+    {
+        if (typeof(T) == typeof(RunXZState))
+        {
+            return this;
+        }
+        return null;
+    }
+    public override string GetName() { return "RunXZState"; }
+    public RunXZState()
+    {
+
+    }
+
+    public override void UpdateMS()
+    {
+        Target.isRunning = false;
+        if (moveable == false) return;
+        if (enable_atk == false)
+        {
+            if (Target.isAttacking && Target.isStand)
+            {
+                return;
+            }
+        }
+        if (Target.isHurt) return;
+
+        if (Target.dir == -1)
+        {
+            return;
+        }
+
+      //  if (Target.isFalling == true) return;
+    ///    if (Target.isJumping == true) return;
+
+        Target.isRunning = true;
+
+        if (Target.dir > 90 && Target.dir < 270)
+        { //left
+            Target.flipX = 1.0f;
+        }
+        else
+        {//right
+            Target.flipX = -1.0f;
+        }
+
+
+
+        {
+            ///   float  degree = Utils.GetDegree(new Vector2(Target.x, Target.y), new Vector2(x, y));
+            //   float distance = Target.ClaculateDistance(x, y);
+            //modify x and z  . y is jumping
+            //  Debug.Log(" distance : " + distance);
+            /*    if (distance < 0.06f || (x == Target.x && y == Target.z))
+                {
+                    this.Enable = false;
+                    Target.isStand = true;
+                    Target.isRunning = false;
+
+                    return;
+                }
+                else
+                {
+                    Target.isStand = false;
+                    Target.isRunning = true;
+                }
+                */
+            float speed = Target.speed;
+
+            float dd = Target.dir * DATA.ONE_DEGREE;//一度的弧度
+
+            float z_delta = Mathf.Sin(dd);
+            float x_delta = Mathf.Cos(dd);
+            Target.z = Target.z + speed * z_delta;
+            Target.x = Target.x + speed * x_delta;
+
+
+
+
+        }
+
+    }
+    public override void OnEvent(string type, object userData)
+    {
+
+
+
+    }
+
+    public override void OnEvent(int type, object userData)
+    {
+
+
+    }
+    /// <summary>
+    /// 关闭移动但可以 调整方向
+    /// </summary>
+    public void DisableMove()
+    {
+        moveable = false;
+    }
+    //开启移动
+    public void EnableMove()
+    {
+        moveable = true;
+    }
+    /// <summary>
+    /// 开启Attack状态下可移动
+    /// </summary>
+    public void EnableWhenAttack()
+    {
+        enable_atk = true;
+    }
+    public void DisableWhenAttak()
+    {
+        enable_atk = false;
+    }
+    public bool moveable = true;
+    private bool enable_atk = false;
+    public override void OnEnter()
+    {
+        this.stack.AddLocalEventListener("run_right");
+        this.stack.AddLocalEventListener("run_left");
+        this.stack.AddLocalEventListener("stand");
+
+        this.stack.AddLocalEventListener(Events.ID_BTN_LEFT);
+        this.stack.AddLocalEventListener(Events.ID_BTN_RIGHT);
+        this.stack.AddLocalEventListener(Events.ID_STAND);
+
+
+        this.stack.id = StateStack.ID_RUN;
+        this.Enable = true;
+    }
+    public override void OnPause()
+    {
+
+    }
+    public override void OnExit()
+    {
+
+    }
+
+}
+
+
+
+
+
+
+
+
 public class StandState : StateBase
 {
     public override StateBase GetState<T>()
@@ -1298,99 +1453,6 @@ public class RunXYState : StateBase
 }
 
 
-
-
-
-/// <summary>
-///  2.5D 的 run状态
-///  view will transform 3d  to 2.5d view
-/// </summary>
-public class RunXZState : StateBase
-{
-    public override StateBase GetState<T>()
-    {
-        if (typeof(T) == typeof(RunXZState))
-        {
-            return this;
-        }
-        return null;
-    }
-    public override string GetName() { return "RunXZState"; }
-    public RunXZState()
-    {
-
-    }
-    public override void UpdateMS()
-    {
-
-        float distance = Target.ClaculateDistance(x, y);
-        //modify x and z  . y is jumping
-        //  Debug.Log(" distance : " + distance);
-        if (distance < 0.06f || (x == Target.x && y== Target.z))
-        {
-            this.Enable = false;
-            Target.isStand = true;
-            Target.isRunning = false;
-
-            return;
-        }
-        else
-        {
-            Target.isStand = false;
-            Target.isRunning = true;
-        }
-
-        float speed = Target.speed;
-
-        float dd = degree * DATA.ONE_DEGREE;//一度的弧度
-
-        float z_delta = Mathf.Sin(dd);
-        float x_delta = Mathf.Cos(dd);
-        Target.z = Target.z + speed * z_delta;
-        Target.x = Target.x + speed * x_delta;
-
-    }
-
-
-    public override void OnEvent(int type, object userData)
-    {
-
-        this.Enable = true;
-        Vector2 pos = (Vector2)userData;
-
-        this.x = pos.x;
-        this.y = pos.y;
-        if (x > Target.x)
-        {//面向右边
-            Target.flipX = -1.0f;
-        }
-        else
-        {//面向左边
-            Target.flipX = 1.0f;
-        }
-
-        if (this.y >= 2.4f) this.y = 2.4f;
-
-        degree = Utils.GetDegree(new Vector2(Target.x, Target.y), new Vector2(x, y));
-
-    }
-
-
-    public override void OnEnter()
-    {
-        this.stack.AddLocalEventListener(Events.ID_LOGIC_NEW_POSITION);
-        Target.isRunning = false;
-        Target.isStand = true;
-
-    }
-    public override void OnExit()
-    {
-
-    }
-    float x;
-    float y;
-    float degree;
-}
 
 
 

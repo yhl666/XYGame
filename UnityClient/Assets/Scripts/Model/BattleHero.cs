@@ -29,10 +29,15 @@ public class BattleHero : Hero
         {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
+            ///  s.PushSingleState(StateBase.Create<RunState>(this));
+            s.PushSingleState(StateBase.Create<RunXZState>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
             s.PushSingleState(StateBase.Create<RunState>(this));
 
         }
-
         {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
@@ -375,6 +380,11 @@ public class BattleHero : Hero
             {
                 eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1, s1);
                 s1 = 0;
+            }
+            if (dir != -1)
+            {
+
+                /// this will be clean when do not recv dir
             }
         }
         base.UpdateMS();

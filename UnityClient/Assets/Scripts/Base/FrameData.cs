@@ -21,7 +21,7 @@ public sealed class FrameData : object
     public int s1 = 0;//skill 1
     public int stand = 0;//stand
     public int revive = 0;//revive point
-    public int dir = 0;
+    public int dir = -1;
     private FrameData()
     {
 

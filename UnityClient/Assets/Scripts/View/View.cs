@@ -191,7 +191,14 @@ public class ViewEntity : View
 
 
         this.obj.name = m.no.ToString();
-        transform.position = new Vector3(m.x, m.y + m.height, transform.position.z);
+        if (Config.VIEW_MODE == ViewMode.M25D)
+        {
+            transform.position = new Vector3(m.x, m.y + m.height + m.z, transform.position.z); // y和 z 的混合比例 默认为 1：1 45度视角
+        }
+        else
+        {
+            transform.position = new Vector3(m.x, m.y + m.height, transform.position.z);
+        }
         float factor = m.scale;
         transform.localScale = new Vector3(m.flipX * factor, factor, factor);
 
@@ -258,7 +265,7 @@ public class ViewEntity : View
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_FLYTEXT, info);
             m.delta_hp = 0;
         }
-        spine.UpdateMS(Utils.deltaTime* m.spine_time_scale);
+        spine.UpdateMS(Utils.deltaTime * m.spine_time_scale);
     }
 
 
@@ -441,12 +448,12 @@ public class ViewBuffer : View
         {
             this.SetInValid();
         }
-  
-          ani.ani.UpdateMS();
+
+        ani.ani.UpdateMS();
 
         //  ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
-        ani.gameObject.transform.position = new Vector3(m.target.x, m.target.GetRealY()+0.7f, ani.gameObject.transform.position.z);
-    
+        ani.gameObject.transform.position = new Vector3(m.target.x, m.target.GetRealY() + 0.7f, ani.gameObject.transform.position.z);
+
     }
     private GameObject view_bullet;
     private Animationstor ani;
