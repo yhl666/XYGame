@@ -24,6 +24,7 @@ public:
 	int s1 = 0;//skill 1
 	int stand = 0;//stand
 	int revive = 0;//revive point
+	int dir = -1;
 
 public:
 

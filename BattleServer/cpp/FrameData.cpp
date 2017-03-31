@@ -84,6 +84,12 @@ string  FrameData::toJson(bool skip)
 		ret += Utils::itos(revive);
 		ret.append(",");
 	}
+	if ((skip  && dir != -1) || !skip)
+	{
+		ret.append("dir:");
+		ret += Utils::itos(dir);
+		ret.append(",");
+	}
 	return ret;
 }
 
@@ -181,7 +187,13 @@ void  FrameData::Parse()
 			this->revive = std::stoi(str);
 		}
 	}
-
+	{
+		string &str = kv["dir"];
+		if (str != "")
+		{
+			this->dir = std::stoi(str);
+		}
+	}
 }
 
 
