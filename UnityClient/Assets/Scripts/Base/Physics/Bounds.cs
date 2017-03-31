@@ -15,7 +15,7 @@ public class BoundsImpl
 {
     Bounds impl;
 
-    public const float DEFAULT_Z = 1.0f;
+    public const float DEFAULT_Z = 0.1f;
     private BoundsImpl(Vector3 center, Vector3 size)
     {
         impl = new Bounds(center, size);

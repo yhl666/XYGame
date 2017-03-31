@@ -279,7 +279,7 @@ public class Entity : Model
 
 
     //-----------------------------------------------physics-------------------------
-    public Vector2 bounds_size = new Vector2(0.5f, 1.0f);
+    public Vector3 bounds_size = new Vector3(0.5f, 1.0f, 0.1f);
     public BoundsImpl bounds
     {
         get
@@ -296,8 +296,8 @@ public class Entity : Model
     private BoundsImpl _bounds = null;
     public void SyncBounds()
     {
-        this._bounds.center = new Vector3(this.x, this.GetRealY(), BoundsImpl.DEFAULT_Z);
-        this._bounds.size = new Vector3(this.bounds_size.x, this.bounds_size.y, BoundsImpl.DEFAULT_Z);
+        this._bounds.center = new Vector3(this.x, this.GetRealY(), this.z);
+        this._bounds.size = new Vector3(this.bounds_size.x, this.bounds_size.y, this.bounds_size.z);
     }
     public bool IsCast(Entity other)
     {
@@ -343,12 +343,13 @@ public class Entity : Model
     }
     public float ClaculateDistance(Entity other)
     {
-        return this.ClaculateDistance(other.x, other.y);
+        return 0f;/// this.ClaculateDistance(other.x, other.y);
     }
-    public float ClaculateDistance(float x, float y)
+    public float ClaculateDistance(float x, float y,float z = 0f)
     {
-        return Utils.ClaculateDistance(new Vector2(this.x, this.y + this.height), new Vector2(x, y));
+        return Utils.ClaculateDistance(new Vector3(this.x, this.y + this.height,this.z), new Vector3(x, y,z));
     }
+
     public void SetRealY(float y)
     {
         this._height = 0.0f;
@@ -357,6 +358,22 @@ public class Entity : Model
     public float GetRealY()
     {
         return this.y + height;
+    }
+    /// <summary>
+    /// // y和 z 的混合比例 默认为 1：1 45度视角
+    /// </summary>
+    /// <returns></returns>
+    public float GetReal25DY()
+    {
+        return (this.y + this.height + this.z);
+    }
+    /// <summary>
+    /// 返回包含 海拔的 位置
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetRealPosVector3()
+    {
+        return new Vector3(this.x, this.GetRealY(), this.z);
     }
     //------------------------------------------------------some event 
     /// <summary>
@@ -392,9 +409,8 @@ public class Entity : Model
     }
     public float atk_range = 2.0f;
     // base property
-    public float x = 1.0f;
-    public float y = 0.0f;
-    public float z = 0.0f;
+
+    public Vector3 pos = new Vector3(1f, 0f, 0f); //坐标 不包含海拔高度
 
     public int no = 0;//临时识别编号 比如战斗
     public string id = ""; // 唯一id
@@ -420,6 +436,39 @@ public class Entity : Model
     public float scale = 1.0f;//view scale
 
 
+    public float x
+    {
+        set
+        {
+            pos.x = value;
+        }
+        get
+        {
+            return pos.x;
+        }
+    }
+    public float y
+    {
+        set
+        {
+            pos.y = value;
+        }
+        get
+        {
+            return pos.y;
+        }
+    }
+    public float z
+    {
+        set
+        {
+            pos.z = value;
+        }
+        get
+        {
+            return pos.z;
+        }
+    }
     /// <summary>
     /// 设置x坐标，自动处理 地形撞墙等
     /// </summary>
@@ -720,7 +769,7 @@ public class Entity : Model
     public override bool Init()
     {
         base.Init();
-        bounds = BoundsImpl.Create(new Vector2(0f, 0f), new Vector2(0.5f, 1f));
+        bounds = BoundsImpl.Create(new Vector3(0f, 0f, 0f), new Vector3(0.5f, 1f, 0.2f));
         _machine = StateMachine.Create(this);
         _eventDispatcher = EventDispatcher.Create("Entity");
         _bufferMgr = BufferMgr.Create(this);

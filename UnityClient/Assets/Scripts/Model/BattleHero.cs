@@ -136,8 +136,10 @@ public class BattleHero : Hero
                 info.AddBuffer("BufferHitBack");
                 info.AddBuffer("BufferSpin");
 
-                info.launch_delta_xy.x = AttackState6_Data.ins.level1_delta_xy.x; //; 1f;
-                info.launch_delta_xy.y = AttackState6_Data.ins.level1_delta_xy.y; ;// 0f;
+                info.launch_delta_xyz.x = AttackState6_Data.ins.level1_delta_xyz.x; //; 1f;
+                info.launch_delta_xyz.y = AttackState6_Data.ins.level1_delta_xyz.y; ;// 0f;
+                info.launch_delta_xyz.z = AttackState6_Data.ins.level1_delta_xyz.z; ;// 0f;
+
                 info.collider_size = AttackState6_Data.ins.level1_hit_rect;
                 info.plistAnimation = AttackState6_Data.ins.level1_hit_animation_name; ;// "hd/roles/role_6/bullet/role_6_bul_6001/role_6_bul_6001.plist";
                 info.damage_ratio = AttackState6_Data.ins.level1_damage_ratio;
@@ -175,8 +177,7 @@ public class BattleHero : Hero
                 bullet_atk2_info = info;
                 info.AddBuffer("BufferHitBack");
 
-                info.launch_delta_xy.x = 1f;
-                info.launch_delta_xy.y = 0f;
+            
                 info.frameDelay = 4;
                 info.distance_atk = 1.0f;
                 info.number = 0xfff;
@@ -191,8 +192,9 @@ public class BattleHero : Hero
                 info.scale_y = 1.5f;
 
 
-                info.launch_delta_xy.x = AttackState6_Data.ins.level2_delta_xy.x; //; 1f;
-                info.launch_delta_xy.y = AttackState6_Data.ins.level2_delta_xy.y; ;// 0f;
+                info.launch_delta_xyz.x = AttackState6_Data.ins.level2_delta_xyz.x; //; 1f;
+                info.launch_delta_xyz.y = AttackState6_Data.ins.level2_delta_xyz.y; ;// 0f;
+                info.launch_delta_xyz.z = AttackState6_Data.ins.level2_delta_xyz.z;
                 info.collider_size = AttackState6_Data.ins.level2_hit_rect;
                 info.plistAnimation = AttackState6_Data.ins.level2_hit_animation_name; ;
                 info.damage_ratio = AttackState6_Data.ins.level2_damage_ratio;
@@ -220,8 +222,8 @@ public class BattleHero : Hero
                 bullet_atk3_info = info;
                 info.AddBuffer("BufferHitBack");
 
-                info.launch_delta_xy.x = 1f;
-                info.launch_delta_xy.y = 0f;
+             ///   info.launch_delta_xy.x = 1f;
+           //     info.launch_delta_xy.y = 0f;
                 info.distance_atk = 1.3f;
                 info.number = 0xfff;
                 info.oneHitTimes = 1;
@@ -234,8 +236,10 @@ public class BattleHero : Hero
                 info.frameDelay = 4;
                 info.lastTime = 15;
 
-                info.launch_delta_xy.x = AttackState6_Data.ins.level3_delta_xy.x; //; 1f;
-                info.launch_delta_xy.y = AttackState6_Data.ins.level3_delta_xy.y; ;// 0f;
+                info.launch_delta_xyz.x = AttackState6_Data.ins.level3_delta_xyz.x; //; 1f;
+                info.launch_delta_xyz.y = AttackState6_Data.ins.level3_delta_xyz.y; ;// 0f;
+                info.launch_delta_xyz.z = AttackState6_Data.ins.level3_delta_xyz.z; ;// 0f;
+
                 info.collider_size = AttackState6_Data.ins.level3_hit_rect;
                 info.plistAnimation = AttackState6_Data.ins.level3_hit_animation_name; ;// 
                 info.damage_ratio = AttackState6_Data.ins.level3_damage_ratio;

@@ -34,9 +34,9 @@ public class Skill61_1 : SkillBase
         info.collider_size = Skill61_1_Data.ins.hit_rect;
 
 
-        info.launch_delta_xy.x = Skill61_1_Data.ins.PositionVector2.x;
+        info.launch_delta_xyz.x = Skill61_1_Data.ins.PositionVector2.x;
 
-        info.launch_delta_xy.y = Skill61_1_Data.ins.PositionVector2.y;
+        info.launch_delta_xyz.y = Skill61_1_Data.ins.PositionVector2.y;
         info.frameDelay = 4;
         info.distance_atk = 2.0f;
         info.number = 0xfff;
@@ -150,8 +150,8 @@ public class Skill61_2 : SkillBase
         BulletConfigInfo info = BulletConfigInfo.Create();
 
         info.AddBuffer("BufferHitBack");
-        info.launch_delta_xy.x = 0;
-        info.launch_delta_xy.y = 0;
+        info.launch_delta_xyz.x = 0;
+        info.launch_delta_xyz.y = 0;
         info.frameDelay = 4;
         info.distance_atk = 2.0f;
         info.number = 0xfff;

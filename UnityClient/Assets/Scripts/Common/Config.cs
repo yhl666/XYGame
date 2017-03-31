@@ -9,6 +9,7 @@ using System.Collections;
 /// <summary>
 /// 摄像机视角 类型，游戏本身 3D系统构建
 /// 只是摄像机视角类型区别
+/// 2.5D模式下  高度Y轴表示，
 /// </summary>
  public enum ViewMode
  {

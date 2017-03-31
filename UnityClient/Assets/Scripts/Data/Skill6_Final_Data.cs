@@ -22,10 +22,10 @@ public class Skill6_Final_Data : MonoBehaviour
 
     //---------以下是 第一阶段 的配置信息
     public float level1_damage_ratio; // 伤害比例 1.5 表示为基础伤害的 1.5倍
-    public Vector2 level1_hit_rect; // 伤害 判定框大小 ，，判定框中心为角色正中心
+    public Vector3 level1_hit_rect; // 伤害 判定框大小 ，，判定框中心为角色正中心
     public string level1_animation_name;// 技能角色动画名称
     public string level1_hit_animation_name;// 子弹动画名字
-    public Vector2 level1_delta_xy; // 伤害判定 初试偏移量 中心点为角色中心点
+    public Vector3 level1_delta_xyz; // 伤害判定 初试偏移量 中心点为角色中心点
     public int level1_hit_delay; // 第一次hit评定延时 单位 帧数
     //--- 以下是第二阶段（在第一阶段命中后 触发）
     public string level2_animation_name;// 技能角色动画名称
@@ -36,10 +36,10 @@ public class Skill6_Final_Data : MonoBehaviour
 
     //---以下是 第四阶段 （最后一击） 配置信息
     public float level4_damage_ratio; // 伤害比例 1.5 表示为基础伤害的 1.5倍
-    public Vector2 level4_hit_rect; // 伤害 判定框大小 ，，判定框中心为角色正中心
+    public Vector3 level4_hit_rect; // 伤害 判定框大小 ，，判定框中心为角色正中心
     public string level4_animation_name;// 技能角色动画名称
     public string level4_hit_animation_name;// 子弹动画名字
-    public Vector2 level4_delta_xy; // 伤害判定 初试偏移量 中心点为角色中心点
+    public Vector3 level4_delta_xyz; // 伤害判定 初试偏移量 中心点为角色中心点
  
 
 

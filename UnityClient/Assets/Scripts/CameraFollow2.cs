@@ -17,9 +17,9 @@ public class CameraFollow2 : MonoBehaviour
         Hero hero = HeroMgr.ins.GetSelfHero();
         if (hero == null) return;
         Vector3 pos= this.transform.position ;
-        pos.y = hero.z+ hero.y;
+    ///    pos.y = hero.z+ hero.y;
         pos.x = hero.x;
-        pos.z = -20f;
+     ///   pos.z = -20f;
         this.transform.position = pos;
       
 

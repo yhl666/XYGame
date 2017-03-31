@@ -103,7 +103,7 @@ public class ViewBullet : View
           }
           else*/
         {
-            ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
+            ani.gameObject.transform.position = new Vector3(m.x, Utils.ConvertYZToView25DY(m.y, m.z), ani.gameObject.transform.position.z);
 
             float factor = 0.7f;
             ani.gameObject.transform.localScale = new Vector3(-m.flipX * factor * m.scale_x,
@@ -193,11 +193,11 @@ public class ViewEntity : View
         this.obj.name = m.no.ToString();
         if (Config.VIEW_MODE == ViewMode.M25D)
         {
-            transform.position = new Vector3(m.x, m.y + m.height + m.z, transform.position.z); // y和 z 的混合比例 默认为 1：1 45度视角
+            transform.position = new Vector3(m.x, m.GetReal25DY(), transform.position.z);
         }
         else
         {
-            transform.position = new Vector3(m.x, m.y + m.height, transform.position.z);
+            transform.position = new Vector3(m.x, m.GetRealY(), transform.position.z);
         }
         float factor = m.scale;
         transform.localScale = new Vector3(m.flipX * factor, factor, factor);
@@ -341,7 +341,7 @@ public class ViewEnemy : View
 
 
         this.obj.name = m.no.ToString();
-        transform.position = new Vector3(m.x, m.y + m.height, transform.position.z);
+        transform.position = new Vector3(m.x, m.GetReal25DY(), transform.position.z);
         float factor = m.scale;
         transform.localScale = new Vector3(m.flipX * factor, factor, factor);
 

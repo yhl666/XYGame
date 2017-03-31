@@ -23,10 +23,32 @@ public sealed class Utils
 
     public static float ClaculateDistance(Vector2 v1, Vector2 v2)
     {
-
         float dx = v1.x - v2.x;
         float dy = v1.y - v2.y;
         return Mathf.Sqrt(dx * dx + dy * dy);
+    }
+    public static float ClaculateDistance(Vector3 v1, Vector3 v2)
+    {
+        return Vector3.Distance(v1, v2);
+    }
+    public static float ClaculateDistance(Vector2 v1, Vector3 v2)
+    {
+        return Vector3.Distance(new Vector3(v1.x, v1.y, v2.z), v2);
+    }
+    public static float ClaculateDistance(Vector3 v1, Vector2 v2)
+    {
+        return Vector3.Distance(v1, new Vector3(v2.x, v2.y, v1.z));
+    }
+  
+    /// <summary>
+    /// y和 z 的混合比例 默认为 1：1 45度视角
+    /// </summary>
+    /// <param name="y"></param>
+    /// <param name="z"></param>
+    /// <returns></returns>
+    public static float ConvertYZToView25DY(float y, float z)
+    {
+        return (y + z);
     }
 
 

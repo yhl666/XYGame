@@ -507,7 +507,7 @@ public class Skill2_2 : SkillBase
         info.distance = 7;
         info.speed *= 0.5f;
         info.number = 0;
-        info.launch_delta_xy.y = Target.height;
+        info.launch_delta_xyz.y = Target.height;
         b_shifa = BulletMgr.Create(this.Target, "BulletConfig", info);
         b_shifa.y = Target.height;
 
@@ -540,8 +540,8 @@ public class Skill2_2 : SkillBase
         info.number = 999;
         info.lastTime = 20;
         ///   info.deltaTime = 15;
-        info.launch_delta_xy.x = b_shifa.x;
-        info.launch_delta_xy.y = b_shifa.y;
+        info.launch_delta_xyz.x = b_shifa.x;
+        info.launch_delta_xyz.y = b_shifa.y;
         info.isHitDestory = false;
         Bullet b = BulletMgr.Create(this.Target, "BulletConfig", info);
         b.y = b_shifa.y;
@@ -903,8 +903,8 @@ public class Skill6_1 : SkillBase
 
         info.AddBuffer("BufferHitBack");
 
-        info.launch_delta_xy.x = 1.5f;
-        info.launch_delta_xy.y = -0.2f;
+        info.launch_delta_xyz.x = 1.5f;
+        info.launch_delta_xyz.y = -0.2f;
         info.frameDelay = 4;
         info.distance_atk = 2.0f;
         info.number = 0xfff;
@@ -997,8 +997,8 @@ public class Skill6_1_2 : SkillBase
 
         info.AddBuffer("BufferHitBack");
 
-        info.launch_delta_xy.x = 1.5f;
-        info.launch_delta_xy.y = -0.2f;
+        info.launch_delta_xyz.x = 1.5f;
+        info.launch_delta_xyz.y = -0.2f;
         info.frameDelay = 4;
         info.distance_atk = 2.0f;
         info.number = 0xfff;
@@ -1098,8 +1098,8 @@ public class Skill6_2 : SkillBase
 
         info.AddBuffer("BufferHitBack");
 
-        info.launch_delta_xy.x = 1.5f;
-        info.launch_delta_xy.y = -0.2f;
+        info.launch_delta_xyz.x = 1.5f;
+        info.launch_delta_xyz.y = -0.2f;
         info.frameDelay = 4;
         info.distance_atk = 1.5f;
         info.number = 0xfff;
@@ -1180,8 +1180,8 @@ public class Skill6_2_2 : SkillBase
 
         info.AddBuffer("BufferHitBack");
 
-        info.launch_delta_xy.x = 0.5f;
-        info.launch_delta_xy.y = 0f;
+        info.launch_delta_xyz.x = 0.5f;
+        info.launch_delta_xyz.y = 0f;
         info.frameDelay = 3;
         info.distance_atk = 2.0f;
         info.number = 0xfff;
@@ -1266,8 +1266,8 @@ public class Skill6_3 : SkillBase
 
         info.AddBuffer("BufferHitBack");
 
-        info.launch_delta_xy.x = 1.5f;
-        info.launch_delta_xy.y = -0.2f;
+        info.launch_delta_xyz.x = 1.5f;
+        info.launch_delta_xyz.y = -0.2f;
         info.frameDelay = 4;
         info.distance_atk = 1.5f;
         info.number = 0xfff;
@@ -1344,8 +1344,8 @@ public class Skill6_3_2 : SkillBase
 
         info.AddBuffer("BufferHitBack");
 
-        info.launch_delta_xy.x = 0.5f;
-        info.launch_delta_xy.y = 0f;
+        info.launch_delta_xyz.x = 0.5f;
+        info.launch_delta_xyz.y = 0f;
         info.frameDelay = 3;
         info.distance_atk = 2.0f;
         info.number = 0xfff;
@@ -1471,8 +1471,8 @@ public class Skill62_1 : SkillBase
 
         info.AddBuffer("BufferHitBack");
 
-        info.launch_delta_xy.x = 1.5f;
-        info.launch_delta_xy.y = -0.2f;
+        info.launch_delta_xyz.x = 1.5f;
+        info.launch_delta_xyz.y = -0.2f;
         info.frameDelay = 4;
         info.distance_atk = 1.5f;
         info.number = 0xfff;
@@ -1610,8 +1610,10 @@ public class Skill62_2 : SkillBase
 
         info.AddBuffer("BufferHitFly");
 
-        info.launch_delta_xy.x = Skill62_2_Data.ins.delta_xy.x;// 1.5f;
-        info.launch_delta_xy.y = Skill62_2_Data.ins.delta_xy.y;// -0.2f;
+        info.launch_delta_xyz.x = Skill62_2_Data.ins.delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = Skill62_2_Data.ins.delta_xyz.y;// -0.2f;
+        info.launch_delta_xyz.z = Skill62_2_Data.ins.delta_xyz.z;// -0.2f;
+
         info.frameDelay = 4;
         info.distance_atk = 1.5f;
         info.number = 0xfff;
@@ -1749,8 +1751,8 @@ public class Skill62_3 : SkillBase
 
                 /// info.AddBuffer("BufferHitFly");
 
-                info.launch_delta_xy.x = 1.5f;
-                info.launch_delta_xy.y = -0.2f;
+                info.launch_delta_xyz.x = 1.5f;
+                info.launch_delta_xyz.y = -0.2f;
                 info.frameDelay = 3;
                 info.distance_atk = 1.5f;
                 info.number = 0xfff;
@@ -1824,8 +1826,10 @@ public class Skill62_3 : SkillBase
         info.scale_x = 2f;
         info.scale_y = 2f;
 
-        info.launch_delta_xy.x = Skill62_3_Data.ins.delta_xy.x;// 1.5f;
-        info.launch_delta_xy.y = Skill62_3_Data.ins.delta_xy.y;// -0.2f;
+        info.launch_delta_xyz.x = Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
+        info.launch_delta_xyz.z = Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+
         info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
         info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
         info.collider_size = Skill62_3_Data.ins.hit_rect;
@@ -1966,8 +1970,9 @@ public class Skill6_Final : SkillBase
 
         ///   info.AddBuffer("BufferHitFly");
 
-        info.launch_delta_xy.x = Skill6_Final_Data.ins.level1_delta_xy.x;// 1.5f;
-        info.launch_delta_xy.y = Skill6_Final_Data.ins.level1_delta_xy.y;//-0.2f;
+        info.launch_delta_xyz.x = Skill6_Final_Data.ins.level1_delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = Skill6_Final_Data.ins.level1_delta_xyz.y;//-0.2f;
+        info.launch_delta_xyz.z = Skill6_Final_Data.ins.level1_delta_xyz.z;//-0.2f;
 
         info.frameDelay = 4;
         info.distance_atk = 1.5f;
@@ -2003,8 +2008,9 @@ public class Skill6_Final : SkillBase
 
         ///   info.AddBuffer("BufferHitFly");
 
-        info.launch_delta_xy.x = Skill6_Final_Data.ins.level4_delta_xy.x;// 1.5f;
-        info.launch_delta_xy.y = Skill6_Final_Data.ins.level4_delta_xy.y;//-0.2f;
+        info.launch_delta_xyz.x = Skill6_Final_Data.ins.level4_delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = Skill6_Final_Data.ins.level4_delta_xyz.y;//-0.2f;
+        info.launch_delta_xyz.z = Skill6_Final_Data.ins.level4_delta_xyz.z;//-0.2f;
 
         info.frameDelay = 4;
         info.distance_atk = 1.5f;

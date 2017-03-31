@@ -22,6 +22,7 @@ public class Bullet : Model
 
     public float x = 0.0f;
     public float y = 0.0f;
+    public float z = 0.0f;
     public float distance = 10.0f;
     public float rotate = 0.0f;
     public float flipX = -1.0f;
@@ -33,7 +34,7 @@ public class Bullet : Model
     public string plist = "88"; // animation plist file  
 
 
-    public Vector2 bounds_size = new Vector2(0.5f, 1.0f);
+    public Vector3 bounds_size = new Vector3(0.5f, 1.0f, 0.2f);
     public BoundsImpl bounds
     {
         get
@@ -50,8 +51,8 @@ public class Bullet : Model
     private BoundsImpl _bounds = null;
     public void SyncBounds()
     {
-        this._bounds.center = new Vector3(this.x, this.y, BoundsImpl.DEFAULT_Z);
-        this._bounds.size = new Vector3(this.bounds_size.x, this.bounds_size.y, BoundsImpl.DEFAULT_Z);
+        this._bounds.center = new Vector3(this.x, this.y, this.z);
+        this._bounds.size = new Vector3(this.bounds_size.x, this.bounds_size.y, this.bounds_size.z);
     }
     public virtual void OnComplete()
     {
@@ -83,7 +84,7 @@ public enum ColliderType
     Rect,//2D 矩形
 }
 
-public delegate void OnBulletFunc(Bullet bullet,object userData = null);
+public delegate void OnBulletFunc(Bullet bullet, object userData = null);
 public delegate Vector2 OnMoveFunc(BulletConfig bullet, Vector2 current);
 
 public sealed class BulletConfigInfo
@@ -110,7 +111,7 @@ public sealed class BulletConfigInfo
     public float scale_x = 1.0f;//视图缩放大小
     public float scale_y = 1.0f;//视图缩放大小
 
-    public Vector2 launch_delta_xy = new Vector2(0.5f, 0.3f);//初始位置位于 角色锚点位置
+    public Vector3 launch_delta_xyz = new Vector3(0.5f, 0.3f, 0f);//初始位置位于 角色锚点位置
     public float rotate = 0.0f;
     public float damage_ratio = 1.0f;//伤害系数
     //   public int realValidTimes = 1;//真实有效次数 ，计算真实命中敌人的次数{比如法术命中玩家3次后失效，否则一直存在}
@@ -135,14 +136,14 @@ public sealed class BulletConfigInfo
     public OnMoveFunc _OnMoveFunc = null;
 
     public ColliderType collider_type = ColliderType.Rect;
-    public Vector2 collider_size = new Vector2(1.0f, 1.0f);
-    public void InVokeOnTakeAttack(Bullet bullet,object userData=null)
+    public Vector3 collider_size = new Vector3(1.0f, 1.0f, 0.2f);
+    public void InVokeOnTakeAttack(Bullet bullet, object userData = null)
     {
         if (_OnTakeAttack != null)
         {
             if (current_call_times >= onTakeAttackFuncCallTimes) return;
             current_call_times++;
-            _OnTakeAttack.Invoke(bullet,userData);
+            _OnTakeAttack.Invoke(bullet, userData);
         }
 
     }
@@ -283,7 +284,7 @@ public sealed class BulletConfig : Bullet
                     }
                     ///     inf.buffers_string = info.buffers_string;
                     h.TakeAttacked(inf);
-                    info.InVokeOnTakeAttack(this,h);
+                    info.InVokeOnTakeAttack(this, h);
 
                     hasHit.PushBack(h);
                     tagForValidTimes = true;
@@ -340,7 +341,7 @@ public sealed class BulletConfig : Bullet
                     //  inf.buffers_string = info.buffers_string;
                     h.TakeAttacked(inf);
 
-                    info.InVokeOnTakeAttack(this,h);
+                    info.InVokeOnTakeAttack(this, h);
                     hasHit.PushBack(h);
                     tagForValidTimes = true;
                     hitNumber++;
@@ -373,15 +374,18 @@ public sealed class BulletConfig : Bullet
     {
         base.OnEnter();
 
-        this.y = owner.y + owner.height + info.launch_delta_xy.y;
+        this.y = owner.y + owner.height + info.launch_delta_xyz.y;
+
+        this.z = owner.z + info.launch_delta_xyz.z;
+
         this.flipX = -owner.flipX;
         if (this.flipX < 0)
         {
-            this.x = owner.x - info.launch_delta_xy.x;
+            this.x = owner.x - info.launch_delta_xyz.x;
         }
         else
         {
-            this.x = owner.x + info.launch_delta_xy.x;
+            this.x = owner.x + info.launch_delta_xyz.x;
         }
         info.InVokeOnLaunch(this);
     }
