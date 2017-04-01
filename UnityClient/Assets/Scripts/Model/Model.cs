@@ -257,6 +257,11 @@ public sealed class DirInput : Model
     public override void Update()
     {
         if (enable) return;
+        if (HeroMgr.ins.self != null && HeroMgr.ins.self.isDie)
+        {
+            _enable = false;
+            return;
+        }
         /*   Ball self = BallsMgr.ins.GetSelfBalls();
            if(self.alive)
            {

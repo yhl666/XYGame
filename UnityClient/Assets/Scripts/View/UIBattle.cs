@@ -90,12 +90,12 @@ public sealed class UIBattleRoot : ViewUI
         }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
-            // this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
+            this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
             return DATA.EMPTY_STRING;
         }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
-            //   this._ui_child.Add(ViewUI.Create<UI_die>(this));
+            this._ui_child.Add(ViewUI.Create<UI_die>(this));
             return DATA.EMPTY_STRING;
         }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
@@ -635,7 +635,7 @@ public sealed class UI_pvpresult : ViewUI
         base.Init();
 
         this.panel = GameObject.Find("ui_panel_result");
-
+        this.panel.transform.localScale = new Vector3(1f, 1f, 1f);
         this.btn_return = panel.transform.FindChild("btn_return").GetComponent<Button>();
         this.btn_video = panel.transform.FindChild("btn_video").GetComponent<Button>();
         this.txt_result = panel.transform.FindChild("txt_result").GetComponent<Text>();
@@ -1014,7 +1014,7 @@ public sealed class UI_die : ViewUI
     }
     public override void OnEvent(int type, object userData)
     {
-        if (PublicData.ins.is_pve) return;
+        ///  if (PublicData.ins.is_pve) return;
         if (type == Events.ID_DIE)
         {
             if (userData as Hero != HeroMgr.ins.self)
@@ -1029,8 +1029,8 @@ public sealed class UI_die : ViewUI
     }
     public override void UpdateMS()
     {
-        if (PublicData.ins.is_pve) return;
-        if (isDie == false) return;
+        ///   if (PublicData.ins.is_pve) return;
+        if (HeroMgr.ins.self != null && HeroMgr.ins.self.isDie == false) return;
         if (tick.Tick())
         {
             float t = (float)(tick.GetMax() - tick.GetCurrent()) / 40.0f;
@@ -1038,6 +1038,8 @@ public sealed class UI_die : ViewUI
             txt_info.text = "角色已死亡，复活剩余时间:" + time.ToString() + " 秒";
             return;
         }
+        OnClick(1);
+        return;
         txt_info.text = "请选择复活点，复活角色";
 
     }
@@ -1046,13 +1048,17 @@ public sealed class UI_die : ViewUI
         base.Init();
 
         this.panel = GameObject.Find("ui_panel_die");
-
+        this.panel.transform.localScale = new Vector3(1f, 1f, 1f);
         this.btn_p1 = panel.transform.FindChild("btn_p1").GetComponent<Button>();
         this.btn_p2 = panel.transform.FindChild("btn_p2").GetComponent<Button>();
         this.btn_p3 = panel.transform.FindChild("btn_p3").GetComponent<Button>();
         this.btn_p4 = panel.transform.FindChild("btn_p4").GetComponent<Button>();
         this.txt_info = panel.transform.FindChild("info").GetComponent<Text>();
 
+        this.btn_p1.gameObject.SetActive(false);
+        this.btn_p2.gameObject.SetActive(false);
+        this.btn_p3.gameObject.SetActive(false);
+        this.btn_p4.gameObject.SetActive(false);
 
         this.btn_p1.onClick.AddListener(() =>
         {

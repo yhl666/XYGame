@@ -450,8 +450,8 @@ public class RunXZState : StateBase
             return;
         }
 
-      //  if (Target.isFalling == true) return;
-    ///    if (Target.isJumping == true) return;
+        //  if (Target.isFalling == true) return;
+        ///    if (Target.isJumping == true) return;
 
         Target.isRunning = true;
 
@@ -695,8 +695,11 @@ public class DieState : StateBase
             this.Enable = false;
             Target.isDie = true;
             EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
+            if (Target != HeroMgr.ins.self as Entity)
+            {
+                EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + Target.name + "死亡");
+            }
         }
-
     }
     public override void OnPause()
     {

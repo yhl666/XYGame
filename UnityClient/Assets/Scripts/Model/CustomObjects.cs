@@ -49,9 +49,9 @@ public class TerrainObjectHpPack : CustomObject
         ArrayList heros = HeroMgr.ins.GetHeros();
         foreach (Hero hero in heros)
         {
-            if (this.y < hero.GetRealY()) continue;
-
-            if (hero.ClaculateDistance(x, y) < distance)
+          ///  if (this.y < hero.GetRealY()) continue;
+            float dis = hero.ClaculateDistance(x, 0,y);
+            if (dis < distance)
             {
                 this.Enable = false;
                 tick.Reset();

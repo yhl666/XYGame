@@ -651,10 +651,12 @@ public class BufferRevive : Buffer
         TerrainObjectRevivePoint p = points[point_index - 1] as TerrainObjectRevivePoint;
 
         target.x = p.x;
-        target.SetRealY(p.y);
-
+        target.SetRealY(0);
+        target.z = p.y;
         EventDispatcher.ins.PostEvent(Events.ID_REVIVE, target);
         this.SetInValid();
+        EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + target.no + "已复活");
+
         ///     Debug.Log("复活 " + p.x + "   " + p.y);
     }
     public override void UpdateMS()
