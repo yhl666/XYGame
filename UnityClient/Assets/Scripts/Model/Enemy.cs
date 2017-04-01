@@ -29,7 +29,7 @@ public class Enemy : Entity
 
         // 有目标 ，先判断是否在攻击范围内
         float dis = target.ClaculateDistance( this);
-        Debug.Log(dis);
+   //     Debug.Log(dis);
         if (dis < this.atk_range)
         {
             //攻击范围内

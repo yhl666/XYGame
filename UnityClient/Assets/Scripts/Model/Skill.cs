@@ -427,7 +427,7 @@ public class Skill2_1 : SkillBase
     {
         if (is_wait_done == false) return;
 
-  //      Debug.Log("释放冰龙");
+        //      Debug.Log("释放冰龙");
         // this.Enable = false;
         //  Target.isAttacking = false;
         is_launch_bullet = true;
@@ -1422,9 +1422,16 @@ public class Skill62_1 : SkillBase
         this.Target.machine.GetState<StandState>().Resume();
         this.Target.machine.GetState<FallState>().Resume();
         tick.Reset();
-        RunState state = this.Target.machine.GetState<RunState>() as RunState;
-        state.Resume();
-        state.EnableWhenAttack();
+        {
+            RunState state = this.Target.machine.GetState<RunState>() as RunState;
+            state.Resume();
+            state.EnableWhenAttack();
+        }
+        {
+            RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
+            state.Resume();
+            state.EnableWhenAttack();
+        }
         Target.isAttacking = true;
         this.Enable = true;
         Target.attackingAnimationName = Skill62_1_Data.ins.animation_name; // "6100_2";

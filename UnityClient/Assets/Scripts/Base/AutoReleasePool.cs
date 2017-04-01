@@ -22,7 +22,7 @@ public sealed class AutoReleasePool:Singleton<AutoReleasePool>
     {
         if (list.Contains(obj))
         {
-            Debug.LogWarning("AutoReleasePool:Obj has been in pool");
+            Debug.LogWarning("AutoReleasePool:Obj has been in pool Type: class " + obj.GetType().ToString());
             return;
         }
         list.Add(obj);

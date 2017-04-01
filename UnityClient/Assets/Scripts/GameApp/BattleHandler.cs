@@ -177,7 +177,8 @@ sealed class BattlePVEHandler : BattleHandlerBase
                    e1.team = 333;
                }*/
         }
-
+        HeroMgr.ins.self.z = 3f;
+        HeroMgr.ins.self.x = 8f;
 
         return true;
     }
