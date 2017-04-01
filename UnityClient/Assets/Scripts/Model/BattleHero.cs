@@ -177,7 +177,7 @@ public class BattleHero : Hero
                 bullet_atk2_info = info;
                 info.AddBuffer("BufferHitBack");
 
-            
+
                 info.frameDelay = 4;
                 info.distance_atk = 1.0f;
                 info.number = 0xfff;
@@ -222,8 +222,8 @@ public class BattleHero : Hero
                 bullet_atk3_info = info;
                 info.AddBuffer("BufferHitBack");
 
-             ///   info.launch_delta_xy.x = 1f;
-           //     info.launch_delta_xy.y = 0f;
+                ///   info.launch_delta_xy.x = 1f;
+                //     info.launch_delta_xy.y = 0f;
                 info.distance_atk = 1.3f;
                 info.number = 0xfff;
                 info.oneHitTimes = 1;
@@ -450,7 +450,7 @@ public class BattleHero : Hero
 
 
     public virtual void AI_MoveToTarget()
-    {
+    {/*
         if (this.x < target.x)
         {
             //玩家在右方
@@ -461,6 +461,11 @@ public class BattleHero : Hero
             //玩家在左方 
             left = true;
         }
+
+ */
+
+        dir = (int)Utils.GetAngle(this.pos, target.pos);
+
     }
     public virtual void AI_AttackTarget()
     {

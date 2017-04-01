@@ -343,7 +343,7 @@ public class Entity : Model
     }
     public float ClaculateDistance(Entity other)
     {
-        return 0f;/// this.ClaculateDistance(other.x, other.y);
+        return   this.ClaculateDistance(other.x, other.y,other.z);
     }
     public float ClaculateDistance(float x, float y,float z = 0f)
     {
@@ -379,7 +379,7 @@ public class Entity : Model
     /// <summary>
     /// 血量为0 时触发
     /// </summary>
-    public void OmEmptyHp()
+    public void OnEmptyHp()
     {
 
     }
@@ -687,7 +687,7 @@ public class Entity : Model
     //for view 
     public string prefabsName = "Prefabs/Entity"; // default
     public string skin = "default";
-    public string type = "2";
+    public string type = "6";
 
 
     // for state machine

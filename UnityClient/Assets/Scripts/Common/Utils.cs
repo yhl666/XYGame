@@ -39,7 +39,7 @@ public sealed class Utils
     {
         return Vector3.Distance(v1, new Vector3(v2.x, v2.y, v1.z));
     }
-  
+
     /// <summary>
     /// y和 z 的混合比例 默认为 1：1 45度视角
     /// </summary>
@@ -65,6 +65,10 @@ public sealed class Utils
 
     }
 
+    public static float GetAngle(Vector3 from, Vector3 to)
+    {
+        return GetDegree(new Vector2(from.x, from.z), new Vector2(to.x, to.z));
+    }
 
     /// <summary>
     ///   0-360

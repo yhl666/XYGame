@@ -28,10 +28,12 @@ public class Enemy : Entity
         if (isHurt) return;
 
         // 有目标 ，先判断是否在攻击范围内
-        float dis = target.ClaculateDistance(x, y + height);
+        float dis = target.ClaculateDistance( this);
+        Debug.Log(dis);
         if (dis < this.atk_range)
         {
             //攻击范围内
+            dir = -1;
             this.AI_AttackTarget();
         }
         else
@@ -60,32 +62,33 @@ public class Enemy : Entity
 
     public virtual void AI_MoveToTarget()
     {
-        if (this.x < target.x)
-        {
-            //玩家在右方
-            right = true;
-            if (this.isInOneTerrainRight == true)
-            {
-                if (this.GetRealY() < target.GetRealY())
-                {
-                    this.jump = true;
-                }
-            }
-        }
-        else
-        {
-            //玩家在左方
-            left = true;
-            if (this.isInOneTerrainRight == false)
-            {
-                if (this.GetRealY() < target.GetRealY())
-                {
-                    this.jump = true;
-                }
-            }
-        }
+        /*  if (this.x < target.x)
+          {
+              //玩家在右方
+              right = true;
+              if (this.isInOneTerrainRight == true)
+              {
+                  if (this.GetRealY() < target.GetRealY())
+                  {
+                      this.jump = true;
+                  }
+              }
+          }
+          else
+          {
+              //玩家在左方
+              left = true;
+              if (this.isInOneTerrainRight == false)
+              {
+                  if (this.GetRealY() < target.GetRealY())
+                  {
+                      this.jump = true;
+                  }
+              }
+          }
+          */
 
-
+        dir = (int)Utils.GetAngle(this.pos,target.pos);
     }
     public virtual void AI_AttackTarget()
     {
@@ -176,7 +179,7 @@ public class Enemy : Entity
         {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
-            s.PushSingleState(StateBase.Create<RunState>(this));
+            s.PushSingleState(StateBase.Create<RunXZState>(this));
 
         }
 
@@ -217,7 +220,7 @@ public class Enemy : Entity
         this.hp = 5000;
 
         ViewMgr.Create<ViewEnemy>(this);
-
+        this.speed *= 0.5f;
 
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
         EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
@@ -315,8 +318,8 @@ public class Enemy221 : Enemy
         bullet_atk1_info.distance = 0.2f;
         bullet_atk1_info.distance_atk = 1f;
         //   this.speed *= 0.001f; ;
-        bullet_atk1_info.AddBuffer("BufferHitBack");
-    ///    bullet_atk1_info.AddBuffer("BufferSpin");
+      ///  bullet_atk1_info.AddBuffer("BufferHitBack");
+        ///    bullet_atk1_info.AddBuffer("BufferSpin");
 
         this.atk_range = 1.0f;
         scale = 0.8f;

@@ -130,10 +130,10 @@ public sealed class BattleWorldMap : WorldMap
     private void UpdateEntity(Entity what)
     {
         //   
-        if (false == this.UpdateWithPlaform(what))
+        /*if (false == this.UpdateWithPlaform(what))
         {
             this.UpdateWithTerrain(what);
-        }
+        }*/
     }
 
 
