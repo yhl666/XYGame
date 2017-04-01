@@ -3,18 +3,66 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '6761643bb1cb769a11cb3c967fa4b67772782e96'
-    oldFile: !uuid '7f60a564347da100860d614c784a1cd233b3686b'
+    newFile: !uuid '8132f5a705331fe79e206b74690e08ab38d8fbe4'
+    oldFile: !uuid '6761643bb1cb769a11cb3c967fa4b67772782e96'
   /UnityClient/Assets:
-    newFile: !uuid '3a8d72e94c83790a3a345d7390b7859b750f3c35'
-    oldFile: !uuid '79d3f1c449b8df3725225cc47b1454532f733852'
+    newFile: !uuid '9fec504039957379bd306cd6eefa16d29402a441'
+    oldFile: !uuid '3a8d72e94c83790a3a345d7390b7859b750f3c35'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'f894ac50abf593a42f983315311d88e6df674509'
+    oldFile: !uuid '85d7938928b80d035f094bd79ae37b8d89d83d45'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'd307214e7b53051f2cfb18bcbca189eac0535664'
+    oldFile: !uuid 'c23679e403cb77bbe0c26a177fe58afe10071ba6'
+  /UnityClient/Assets/Resources/Prefabs/map:
+    newFile: !uuid 'be3efbc221accf305b2b736460abd6ae357bb8c7'
+    oldFile: !uuid '367706a3e8b72e257b3f9f920a4b775cf871b2bc'
+  /UnityClient/Assets/Resources/Prefabs/map/HpPack.prefab:
+    newFile: !uuid '6b880c0bb38aea42d69dd71f6e3197b78c00eaaa'
+    oldFile: !uuid '119ac5848d8d56df8a825d65e76925ea60bdfd5a'
+  /UnityClient/Assets/Resources/Prefabs/map/RevivePoint.prefab:
+    newFile: !uuid '06e3a8e73dab04e2a90abe6c7fab2b8d06bde7b4'
+    oldFile: !uuid '3872da01e3a12a02b85448f86ebe9fb74bb52bde'
   /UnityClient/Assets/Scenes:
-    newFile: !uuid 'bfba9bdfbdd58165e7227e179f6953cdae01a5e5'
-    oldFile: !uuid '29b0cd36b0de5d84b19c59b6b3dc83f4c19e08d7'
+    newFile: !uuid '70b43182f3ed6cf8fa52d44b31ee3e9707b2c52c'
+    oldFile: !uuid 'bfba9bdfbdd58165e7227e179f6953cdae01a5e5'
   /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid '3cc5b8ed28f8e4382162e44f975ad9bed506ce94'
-    oldFile: !uuid '1d2f4bd2e82b02a242c3ef4719ca1088ac3b0f5e'
-gitCommitId: !uuid '1426e136014c5c2e38f13d6f4109712d7f0ff9a4'
+    newFile: !uuid '7355e90f3490017dee07649bb9f2bcbf7b26204e'
+    oldFile: !uuid '3cc5b8ed28f8e4382162e44f975ad9bed506ce94'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '4622f08725ef820b209f9991f1f85f46b77ba8e4'
+    oldFile: !uuid '5f05d6d98aaa29cd4d0a3d4c500bd157eca738c4'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid '966af89cbf8da32a730a374448fbd8423a285689'
+    oldFile: !uuid 'c3461dda19c7c3c49ad5df9cd7474b3daa59cec3'
+  /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
+    newFile: !uuid '01449b8999ac90bf64179b1d8ee25f5b755a661e'
+    oldFile: !uuid 'bbd739b5760635b92a94fb101d55a52e5df948ee'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '009fe028b57d3443f9e6566b1bbdbbfcb8efd384'
+    oldFile: !uuid '4c3324d7563ca6aef5bc39e3cac33b5287e8019a'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid '6f376725152c5536a35685823556b22dd6af1ad5'
+    oldFile: !uuid '93778d520ae2ba5b57045580d8c6dc897e70eb5c'
+  /UnityClient/Assets/Scripts/Model/Buffer.cs:
+    newFile: !uuid '909df94a41c171edce7b4899e157cc9e0021627d'
+    oldFile: !uuid '13e9b6608a535e383132d5f5ae81605987f8ff1d'
+  /UnityClient/Assets/Scripts/Model/CustomObjects.cs:
+    newFile: !uuid '9c096c96114f6501871830236b3ec83035563145'
+    oldFile: !uuid '7c7c1345282a088cde1dd80a9173708de2613eb2'
+  /UnityClient/Assets/Scripts/Model/Model.cs:
+    newFile: !uuid '79b80cd16120c8270734a519cfd7e6fe0b6ca803'
+    oldFile: !uuid 'fd36b92cd7e9b0d80b8a581864ae30fbfed20ebd'
+  /UnityClient/Assets/Scripts/Model/StateBase.cs:
+    newFile: !uuid 'b7c2e5f0da132e7550a2c6c3889346c1a47e62cb'
+    oldFile: !uuid '10c7422fcc7039f713149fd387a3fd1e2e987324'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'baa459655592aeb0403d15bb8036f6ee477046e1'
+    oldFile: !uuid '538900658c7a566c7cc5fac780461a153b06aa70'
+  /UnityClient/Assets/Scripts/View/UIBattle.cs:
+    newFile: !uuid '6b0ad3e0a127e521cfd0d471c34673657d7e4723'
+    oldFile: !uuid '1afd96e195785eaa4e83df61af64bfdd96873046'
+gitCommitId: !uuid '0f169f98ab710291c26483ed5c3ef325d393d7d9'
 renames: {
   }
-revisionId: 586
+revisionId: 587
