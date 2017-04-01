@@ -247,6 +247,9 @@ public class Terrain : TerrainBase
         limit_y_down = map_range.transform.FindChild("Point_limit_y_down").transform.position.y;
         limit_y_up = map_range.transform.FindChild("Point_limit_y_up").transform.position.y;
 
+        limit_z_down = map_range.transform.FindChild("Point_limit_z_down").transform.position.y;
+        limit_z_up = map_range.transform.FindChild("Point_limit_z_up").transform.position.y;
+
         return true;
     }
 
@@ -255,6 +258,8 @@ public class Terrain : TerrainBase
     public float limit_x_right = 0.0f;//地图右边界
     public float limit_y_up = 0.0f;// 地图上边界
     public float limit_y_down = 0.0f;//地图下边界
+    public float limit_z_up = 0.0f;// 地图上边界
+    public float limit_z_down = 0.0f;//地图下边界
 
 
 

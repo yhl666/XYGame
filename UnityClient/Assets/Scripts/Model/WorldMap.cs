@@ -101,7 +101,7 @@ public class WorldMap : Model
         ArrayList ret = new ArrayList();
         foreach (CustomObject obj1 in custom_objs)
         {
-            if ( obj1.GetType() == t)
+            if (obj1.GetType() == t)
             {
                 ret.Add(obj1);
             }
@@ -134,8 +134,94 @@ public sealed class BattleWorldMap : WorldMap
         {
             this.UpdateWithTerrain(what);
         }*/
-    }
 
+        //边界控制，通过控制dir
+        if (what.dir < 0) return;
+        //上边界
+        if (what.GetReal25DY() > terrain.limit_z_up)
+        {
+            if (what.dir < 180)
+            {
+                if (what.dir > 90 && what.dir < 270)
+                {
+                    what.dir = 180;
+                }
+                else
+                {
+                    what.dir = 0;
+                }
+            }
+        }
+        //下边界
+        if (what.GetReal25DY() < terrain.limit_z_down)
+        {
+            if (what.dir > 180)
+            {
+                if (what.dir > 90 && what.dir < 270)
+                {
+                    what.dir = 180;
+                }
+                else
+                {
+                    what.dir = 0;
+                }
+            }
+        }
+        /*
+           //左边界
+           if (what.x < terrain.limit_x_left)
+           {
+               if (what.dir > 90 && what.dir < 270)
+               {
+                   if (what.dir > 90 && what.dir < 180)
+                   {
+                       what.dir = 90;
+                   }
+                   else
+                   {
+                       what.dir = 270;
+                   }
+               }
+               else
+               {
+
+               }
+           }
+           //右边界
+           if (what.x > terrain.limit_x_right)
+           {
+               if (what.dir > 90 && what.dir < 270)
+               {
+               }
+               else
+               {
+                   if (what.dir < 90)
+                   {
+                       what.dir = 90;
+                   }
+                   else
+                   {
+                       what.dir = 270;
+                   }
+               }
+
+           }*/
+
+
+    }
+    private void UpdateEntityAfter(Entity what)
+    {
+        if (what.x < terrain.limit_x_left)
+        {
+            what.x = terrain.limit_x_left;
+        }
+        //右边界
+        if (what.x > terrain.limit_x_right)
+        {
+            what.x = terrain.limit_x_right;
+
+        }
+    }
 
     /// <summary>
     ///  更新地形，更新  Entity的海拔高度
@@ -266,6 +352,7 @@ public sealed class BattleWorldMap : WorldMap
         platform = ModelMgr.Create<TerrainPlatform>();
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_AFTER_ONEENTITY_UPDATEMS);
 
         //----------------初始化CustomObjects
 
@@ -335,6 +422,12 @@ public sealed class BattleWorldMap : WorldMap
         if (Events.ID_BEFORE_ONEENTITY_UPDATEMS == type)
         {
             this.UpdateEntity(userData as Entity);
+        }
+        else if (type == Events.ID_AFTER_ONEENTITY_UPDATEMS)
+        {
+            this.UpdateEntityAfter(userData as Entity);
+
+
         }
 
     }

@@ -91,12 +91,12 @@ public sealed class UIBattleRoot : ViewUI
         }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
-           // this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
+            // this._ui_child.Add(ViewUI.Create<UI_pvpresult>(this));
             return DATA.EMPTY_STRING;
         }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
-         //   this._ui_child.Add(ViewUI.Create<UI_die>(this));
+            //   this._ui_child.Add(ViewUI.Create<UI_die>(this));
             return DATA.EMPTY_STRING;
         }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
@@ -108,6 +108,12 @@ public sealed class UIBattleRoot : ViewUI
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_dirInput>(this));
+            return DATA.EMPTY_STRING;
+        }));
+
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_smallmap>(this));
             return DATA.EMPTY_STRING;
         }));
         return true;
@@ -1287,4 +1293,102 @@ public class UI_dirInput : ViewUI
     private DirInput model;
 }
 
+
+
+
+public sealed class UI_smallmap : ViewUI
+{
+
+
+    public override void Update()
+    {
+        base.Update();
+
+        Terrain terrain = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetTerrain();
+
+        //更新enemy 信息
+        ArrayList enemys = EnemyMgr.ins.GetEnemys();
+        if (enemys.Count > list_ememy.Count)
+        {
+            for (int ii = list_ememy.Count; ii < enemys.Count; ii++)
+            {
+                list_ememy.Add(GameObject.Instantiate(template_enemy, template_enemy.transform.parent));
+            }
+        }
+        int i = 0;
+        for (i = 0; i < enemys.Count; i++)
+        {
+            Entity e = enemys[i] as Entity;
+            GameObject obj = list_ememy[i] as GameObject;
+            obj.SetActive(true);
+            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.GetReal25DY() / (terrain.limit_y_up - terrain.limit_y_down));
+        }
+        for (; i < list_ememy.Count; i++)
+        {
+            GameObject obj = list_ememy[i] as GameObject;
+            obj.SetActive(false);
+        }
+
+
+        //更新hero 信息
+        ArrayList heros = HeroMgr.ins.GetHeros();
+        if (heros.Count > list_hero.Count)
+        {
+            for (int ii = list_hero.Count; ii < heros.Count; ii++)
+            {
+                list_hero.Add(GameObject.Instantiate(template_hero2, template_hero2.transform.parent));
+            }
+        }
+        i = 0;
+        for (i = 0; i < heros.Count; i++)
+        {
+            Entity e = heros[i] as Entity;
+            GameObject obj = list_hero[i] as GameObject;
+            obj.SetActive(true);
+            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.GetReal25DY() / (terrain.limit_y_up - terrain.limit_y_down));
+        }
+        for (; i < list_hero.Count; i++)
+        {
+            GameObject obj = list_hero[i] as GameObject;
+            obj.SetActive(false);
+        }
+    }
+    private void SetPosition(GameObject obj, float x_ratio, float y_ratio)
+    {   //小地图背景 大小是 200*100
+
+        float x = (1136f - 200f) + (x_ratio * 200f);
+        float y = (640f - 100f) + (y_ratio * 100f);
+
+        x *= Config.SCREEN_SCALE_X;
+        y *= Config.SCREEN_SCALE_Y;
+        obj.transform.position = new Vector3(x, y, 0);
+    }
+    public override void UpdateMS()
+    {
+
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        this._ui = GameObject.Find("UI_Battle/ui_panel_smallmap");
+        this.img_bg = _ui.transform.FindChild("bg").GetComponent<Image>();
+        this.template_hero2 = _ui.transform.FindChild("hero2_template").gameObject;
+        this.template_hero2.SetActive(false);
+
+        this.template_enemy = _ui.transform.FindChild("enemy_template").gameObject;
+        this.template_enemy.SetActive(false);
+
+        return true;
+    }
+
+    ArrayList list_ememy = new ArrayList();
+    ArrayList list_hero = new ArrayList();
+
+    GameObject template_hero2 = null;
+    GameObject template_enemy = null;
+
+
+    Image img_bg = null;
+}
 
