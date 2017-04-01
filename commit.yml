@@ -2,16 +2,19 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid '1c4e817dd74d21951121eb2dff757a24b1830de6'
-    oldFile: !uuid '23527a7d77a43861d4adba47da14b2c54559c25a'
-  /工作日志/策划:
-    newFile: !uuid '5dfc9625fd326c126ec9dd636ee0670d2fa7e259'
-    oldFile: !uuid '7301e39613515760d519733e4e5cf6ceee6ec671'
-  /工作日志/策划/任务5.txt:
-    newFile: !uuid 'c71addf017575dac032f7ba0671bdd41a567da29'
+  /设计文档:
+    newFile: !uuid 'a65c2fc12a856eadbe65a2631953a2bfa1189e94'
+    oldFile: !uuid '7b4e0d2c76c7f1fa231cab7736214ae9aacd7567'
+  /设计文档/草地1.jpg:
+    newFile: !uuid '011f8e352aba3baa41656f7eabb667a21992ec0f'
     oldFile: null
-gitCommitId: !uuid 'ce8c410a643c9d223cf6f2c2c86e4fd12cc512ad'
+  /设计文档/草地2.jpg:
+    newFile: !uuid 'fd11402cb000bcdad2edd5bd1c7813d9d82a3388'
+    oldFile: null
+  /设计文档/草地3.jpg:
+    newFile: !uuid 'f260dfdb6bd0ee11c328eae2d69806754ec1cf09'
+    oldFile: null
+gitCommitId: !uuid '5dd4f039eb5a55a03c68d11faf110d42ba93f8fc'
 renames: {
   }
-revisionId: 578
+revisionId: 579
