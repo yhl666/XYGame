@@ -2,22 +2,13 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid 'fc3ae1f98fce6869483c6a358513fa9a51692b9a'
-    oldFile: !uuid '72391f01c5bef09043e3997c994053da88d78d26'
-  /工作日志/策划:
-    newFile: !uuid '8483c881e1c519499805f56b99717b82859f18a4'
-    oldFile: !uuid '081688f84a583dc11ccbfdc90a419f8a3ba2b6cb'
-  /工作日志/策划/任务2.txt:
-    newFile: !uuid '903a57a07f78389bdaec2fe7c0df90c9f0140658'
-    oldFile: null
-  /工作日志/策划/任务3.txt:
-    newFile: !uuid 'a59cd214eab250aaee2c4f9632f5e039bf52b370'
-    oldFile: null
-  /工作日志/策划/任务4.txt:
-    newFile: !uuid '96693355630225a6b73e205a169f94ce7d18c3ab'
-    oldFile: null
-gitCommitId: !uuid '5a59f476d475abfe6c9db0b052c31129b8fca149'
+  /策划文档:
+    newFile: !uuid '3a03dc4537bf559961304c44bb2d263929d08c81'
+    oldFile: !uuid '7449e49348f3691235a867ddb84bc611bce17e62'
+  /策划文档/技能2.0.docx:
+    newFile: !uuid '291846f442da62ffb36e39257a536caf35168b32'
+    oldFile: !uuid '3e833e5f138c80f7a33e55b444f05af445527403'
+gitCommitId: !uuid '7eb7645428da6f4cf0dbe823a1b3eb6ca3057f35'
 renames: {
   }
-revisionId: 573
+revisionId: 574
