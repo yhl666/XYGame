@@ -1,0 +1,69 @@
+
+213.png
+size: 256,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+pet_213/pet_213_sk_eff_210040_0
+  rotate: false
+  xy: 2, 18
+  size: 99, 108
+  orig: 173, 109
+  offset: 37, 1
+  index: -1
+pet_213/qunbai
+  rotate: false
+  xy: 209, 99
+  size: 31, 27
+  orig: 85, 85
+  offset: 27, 29
+  index: -1
+pet_213/shenti
+  rotate: false
+  xy: 103, 29
+  size: 32, 38
+  orig: 85, 85
+  offset: 26, 24
+  index: -1
+pet_213/shou
+  rotate: false
+  xy: 137, 2
+  size: 28, 29
+  orig: 85, 85
+  offset: 28, 28
+  index: -1
+pet_213/shouwan
+  rotate: false
+  xy: 137, 33
+  size: 27, 34
+  orig: 85, 85
+  offset: 29, 26
+  index: -1
+pet_213/tou
+  rotate: false
+  xy: 103, 69
+  size: 67, 57
+  orig: 85, 85
+  offset: 9, 14
+  index: -1
+pet_213/xiaotui
+  rotate: false
+  xy: 172, 97
+  size: 35, 29
+  orig: 85, 85
+  offset: 25, 28
+  index: -1
+pet_213/yaodai
+  rotate: false
+  xy: 172, 79
+  size: 36, 16
+  orig: 85, 85
+  offset: 24, 35
+  index: -1
+pet_213/yq
+  rotate: true
+  xy: 210, 79
+  size: 18, 23
+  orig: 18, 23
+  offset: 0, 0
+  index: -1

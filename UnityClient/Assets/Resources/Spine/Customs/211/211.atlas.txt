@@ -1,0 +1,69 @@
+
+211.png
+size: 128,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+pet_211/jiao
+  rotate: false
+  xy: 95, 49
+  size: 14, 13
+  orig: 85, 85
+  offset: 35, 36
+  index: -1
+pet_211/leishui
+  rotate: false
+  xy: 79, 45
+  size: 14, 17
+  orig: 85, 85
+  offset: 35, 34
+  index: -1
+pet_211/qunbai
+  rotate: false
+  xy: 43, 3
+  size: 10, 10
+  orig: 85, 85
+  offset: 37, 38
+  index: -1
+pet_211/shenti
+  rotate: false
+  xy: 59, 42
+  size: 18, 20
+  orig: 85, 85
+  offset: 33, 33
+  index: -1
+pet_211/shou
+  rotate: true
+  xy: 2, 2
+  size: 11, 17
+  orig: 85, 85
+  offset: 37, 34
+  index: -1
+pet_211/shouwan
+  rotate: false
+  xy: 111, 50
+  size: 12, 12
+  orig: 85, 85
+  offset: 35, 35
+  index: -1
+pet_211/tou
+  rotate: false
+  xy: 2, 15
+  size: 55, 47
+  orig: 85, 85
+  offset: 15, 19
+  index: -1
+pet_211/weiba
+  rotate: true
+  xy: 59, 19
+  size: 21, 12
+  orig: 85, 85
+  offset: 32, 37
+  index: -1
+pet_211/yaodai
+  rotate: false
+  xy: 21, 6
+  size: 20, 7
+  orig: 85, 85
+  offset: 32, 39
+  index: -1

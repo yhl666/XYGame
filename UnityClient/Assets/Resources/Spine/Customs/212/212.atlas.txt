@@ -1,0 +1,62 @@
+
+212.png
+size: 256,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+pet_211/leishui
+  rotate: true
+  xy: 62, 8
+  size: 14, 17
+  orig: 85, 85
+  offset: 35, 34
+  index: -1
+pet_212/qunbai
+  rotate: false
+  xy: 118, 30
+  size: 18, 18
+  orig: 85, 85
+  offset: 33, 34
+  index: -1
+pet_212/shenti
+  rotate: false
+  xy: 89, 29
+  size: 27, 33
+  orig: 85, 85
+  offset: 29, 26
+  index: -1
+pet_212/shou
+  rotate: false
+  xy: 116, 2
+  size: 24, 25
+  orig: 85, 85
+  offset: 30, 30
+  index: -1
+pet_212/shouwan
+  rotate: false
+  xy: 62, 24
+  size: 25, 38
+  orig: 85, 85
+  offset: 30, 24
+  index: -1
+pet_212/tou
+  rotate: false
+  xy: 2, 9
+  size: 58, 53
+  orig: 85, 85
+  offset: 13, 16
+  index: -1
+pet_212/xiaotui
+  rotate: false
+  xy: 89, 2
+  size: 25, 25
+  orig: 85, 85
+  offset: 32, 30
+  index: -1
+pet_212/yaodai
+  rotate: false
+  xy: 118, 50
+  size: 31, 12
+  orig: 85, 85
+  offset: 27, 37
+  index: -1

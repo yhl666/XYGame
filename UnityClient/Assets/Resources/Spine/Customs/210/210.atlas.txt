@@ -1,0 +1,48 @@
+
+210.png
+size: 64,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+pet_210/leishui
+  rotate: false
+  xy: 37, 9
+  size: 8, 10
+  orig: 70, 70
+  offset: 24, 26
+  index: -1
+pet_210/shengqi
+  rotate: false
+  xy: 47, 43
+  size: 14, 14
+  orig: 70, 70
+  offset: 28, 25
+  index: -1
+pet_210/tou
+  rotate: false
+  xy: 2, 21
+  size: 43, 36
+  orig: 70, 70
+  offset: 15, 16
+  index: -1
+pet_210/weiba
+  rotate: true
+  xy: 2, 2
+  size: 17, 33
+  orig: 70, 70
+  offset: 28, 19
+  index: -1
+pet_210/zuiba_chui
+  rotate: false
+  xy: 47, 34
+  size: 8, 7
+  orig: 70, 70
+  offset: 29, 26
+  index: -1
+pet_210/zuiba_da
+  rotate: false
+  xy: 47, 25
+  size: 8, 7
+  orig: 70, 70
+  offset: 30, 29
+  index: -1
