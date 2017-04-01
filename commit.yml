@@ -2,37 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '1b239a64669ecc9e99426f3f08ae8245f09b1b0a'
-    oldFile: !uuid '8c5b41da910fee18a1c2a742d80681c5ad87008d'
-  /UnityClient/Assets:
-    newFile: !uuid 'bb9b438550d9dd835173d6fffc6e43bcecca26c9'
-    oldFile: !uuid 'ad92f4ee4de1c790c43d3aa7aced7a5760e28153'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'aea81948e5a0b5894ea221211d30ce12cc6f06fd'
-    oldFile: !uuid 'c5ae5f74160b32d256e745078607b86b2ed985d1'
-  /UnityClient/Assets/Scripts/Common:
-    newFile: !uuid '54fa2a40ca25cf384a6e1f6bbc2ea36794dd83de'
-    oldFile: !uuid 'f76b3641afeff315a08d6b81f5350317922e7554'
-  /UnityClient/Assets/Scripts/Common/Utils.cs:
-    newFile: !uuid 'fb5bfa47e89f8d234c2fdd2a8bf31d8916bad5bc'
-    oldFile: !uuid '2f761c5469f946ada990bbbf01f2fe1ffcd8bd6f'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '81d964505081ed6e798cf2e8db9be621a8afcbee'
-    oldFile: !uuid 'e671a39da72aefa0b0608ec9f89af8f95a5705ab'
-  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
-    newFile: !uuid '457ed3cf0a6e274739f056419b944a54423fe9a0'
-    oldFile: !uuid 'ac91f66184721c0f3936036302d8947478d7d3a6'
-  /UnityClient/Assets/Scripts/Model/Enemy.cs:
-    newFile: !uuid '4a87fb8962fefb19e1791b983d94bd5f5a127454'
-    oldFile: !uuid '797d9610b4ab8bce30f3387132af8654e1beda48'
-  /UnityClient/Assets/Scripts/Model/Entity.cs:
-    newFile: !uuid 'dae8efe3f9d0bfa021e6f2d7cf190eb0152951e0'
-    oldFile: !uuid 'f80ed2433d70b67ed87315cea4b6208980b34e5d'
-  /UnityClient/Assets/Scripts/Model/WorldMap.cs:
-    newFile: !uuid 'a9f0b0d48cb6dd9c07f7054e39433e9070702e64'
-    oldFile: !uuid '42f08e78de3895858db14b7a4c4baaa125b6f239'
-gitCommitId: !uuid '3789ab1d10eda3f965c2ff39b952357ac6d89a26'
+  /策划文档:
+    newFile: !uuid '7449e49348f3691235a867ddb84bc611bce17e62'
+    oldFile: !uuid 'bba2db97e78ff55db88cb70b362da44252feae4f'
+  /策划文档/怪物v2.0.docx:
+    newFile: !uuid '2a4faca2dcf623ff734047047ccdd3b9d481c445'
+    oldFile: null
+  /策划文档/技能2.0.docx:
+    newFile: !uuid '3e833e5f138c80f7a33e55b444f05af445527403'
+    oldFile: null
+gitCommitId: !uuid '57422c14db19ad1619b833a76a62eca58fdc09e2'
 renames: {
   }
-revisionId: 571
+revisionId: 572
