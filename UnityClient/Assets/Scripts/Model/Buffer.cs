@@ -16,7 +16,6 @@ public class Buffer : Model
     public string name = "";
     public string icon = "hd/interface/items/502154.png";
 
-
     //--------for view
     public string plist = "";
     public bool has_view = false;
@@ -113,7 +112,6 @@ public class Buffer : Model
 }
 
 
-
 public class Buffer1 : Buffer
 {//持续伤害buffer
 
@@ -139,8 +137,6 @@ public class Buffer1 : Buffer
     }
 }
 
-
-
 public class Buffer2 : Buffer
 {//  无敌 2s，buffer
 
@@ -164,18 +160,12 @@ public class Buffer2 : Buffer
         }
         this.MAX_TICK = 80;
     }
-
-
     public override void OnExit()
     {
         base.OnExit();
         target.attackAble = true;
     }
 }
-
-
-
-
 
 public class Buffer3 : Buffer
 {// 眩晕  2s，buffer
@@ -205,7 +195,6 @@ public class Buffer3 : Buffer
         this.MAX_TICK = 80;
     }
 
-
     public override void OnExit()
     {
         base.OnExit();
@@ -215,10 +204,6 @@ public class Buffer3 : Buffer
           */
     }
 }
-
-
-
-
 
 public class Buffer2_1 : Buffer
 {//持续回血
@@ -231,7 +216,6 @@ public class Buffer2_1 : Buffer
         if (IsComplete() == false)
         {
             target.current_hp += 1;
-
         }
     }
     public override void OnEnter()
@@ -257,8 +241,6 @@ public class Buffer2_1 : Buffer
     }
 }
 
-
-
 public class BufferFlashMove : Buffer
 {//闪现一段距离
 
@@ -279,20 +261,14 @@ public class BufferFlashMove : Buffer
     }
 }
 
-
-
 //装备buffer 屠龙效果 测试
 
 //一定几率触发Buffer 攻击力+10 暴击率+10% 最多叠加5次 持续10 s
 public class BufferEquipTest1 : Buffer
 {
-
     public override void OnEnter()
     {
         base.OnEnter();
-
-
-
     }
     public override void OnEvent(int type, object userData)
     {
@@ -315,9 +291,7 @@ public class BufferEquipTest1 : Buffer
                 this.owner.crits_ratio += add_crits;
                 Debug.Log("触发了屠龙效果" + this._level + " 伤害增加" + add_damage + "  暴击率增加" + add_crits);
                 this.brief = "屠龙x" + this._level;
-
             }
-
         }
     }
     public override void UpdateMS()
@@ -356,15 +330,11 @@ public class BufferEquipTest1 : Buffer
 }
 
 
-
-
-
 //装备buffer 护体效果 测试
 
 // 持续4秒 吸收100点伤害 免疫击退
 public class BufferEquipTest2 : Buffer
 {
-
     public override void OnEnter()
     {
         base.OnEnter();
@@ -389,7 +359,6 @@ public class BufferEquipTest2 : Buffer
 
                 //触发
             }
-
 
             if (left_hp > 0)
             {
@@ -424,9 +393,6 @@ public class BufferEquipTest2 : Buffer
                 }
 
             }
-
-
-
         }
     }
     public override void UpdateMS()
@@ -463,9 +429,6 @@ public class BufferEquipTest2 : Buffer
     private System.Random random = new System.Random(0);
 }
 
-
-
-
 /// <summary>
 /// 减速
 /// </summary>
@@ -498,7 +461,6 @@ public class BufferSpeedSlow : Buffer
         tick.SetMax(time);
         speed_slow = percent / 100.0f * this.owner.speed;
         this.target.speed -= speed_slow;
-
     }
     public override void UpdateMS()
     {
@@ -527,7 +489,6 @@ public class BufferSpeedSlow : Buffer
     }
 
 }
-
 
 
 /// <summary>
@@ -596,8 +557,6 @@ public class BufferHitBack : Buffer
 
 }
 
-
-
 /// <summary>
 /// 击飞
 /// </summary>
@@ -632,10 +591,6 @@ public class BufferHitFly : Buffer
 
         //  target.y += 0.05f;
         //  current_height += 0.05f;
-
-
-
-
         if (jump_speed <= 0.0f)
         {
             if (tick.Tick())
@@ -654,12 +609,6 @@ public class BufferHitFly : Buffer
             this.target.y += jump_speed;
         }
 
-
-
-
-
-
-
     }
     private float jump_speed = DATA.DEFAULT_JUMP_SPEED * 1.0f;
 
@@ -673,18 +622,12 @@ public class BufferHitFly : Buffer
     }
     public override void OnExit()
     {
-
         target.machine.ResumeAllStack();
         base.OnExit();
         Debug.Log("击飞结束");
-
     }
 
 }
-
-
-
-
 
 /// <summary>
 ///立刻复活Buffer
@@ -735,8 +678,6 @@ public class BufferRevive : Buffer
 
 }
 
-
-
 /// <summary>
 /// 免疫控制技能 buffer
 /// </summary>
@@ -767,9 +708,7 @@ public class BufferNegativeUnbeatable : Buffer
         tick.Tick();
     }
 
-
 }
-
 
 
 /// <summary>
@@ -797,7 +736,6 @@ public class BufferGod : Buffer
             info.buffers.Clear();
             info.buffers_string.Clear();
             info.damage = 0;
-
         }
     }
     public override bool Init()
@@ -820,8 +758,6 @@ public class BufferGod : Buffer
         tick.SetMax(MAX_TICK);
         tick.Tick();
     }
-
-
 }
 
 /// <summary>
@@ -859,7 +795,6 @@ public class Buffer6_Final : Buffer
     }
 
 }
-
 
 /// <summary>
 ///   
@@ -920,9 +855,6 @@ public class BufferSpin : Buffer
         target.machine.GetState<RunState>().SetDisable();
         target.machine.GetState<FallState>().Resume();
         target.machine.GetState<StandState>().Resume();
-
-
-
     }
     public override void OnExit()
     {
@@ -948,7 +880,7 @@ public class BufferSpin : Buffer
         tick.SetMax(MAX_TICK);
         return true;
     }
- 
+
     public override void OnDispose()
     {
 
@@ -989,8 +921,6 @@ public class BufferSpin : Buffer
             target.s1 = 0;
         }
     }
-
-
 }
 
 
@@ -1044,6 +974,4 @@ public class Buffer_LuaInterface : Buffer
 {
 
 
-
 }
-

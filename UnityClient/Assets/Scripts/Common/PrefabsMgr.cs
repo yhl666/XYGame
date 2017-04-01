@@ -6,7 +6,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 public sealed class PrefabsMgr
 {
     public static GameObject Load(string asset)
@@ -22,7 +21,6 @@ public sealed class PrefabsMgr
         return obj;
     }
 
-
     public static void Destroy(GameObject obj)
     {
         UnityEngine.Object.Destroy(obj);
@@ -34,5 +32,3 @@ public sealed class PrefabsMgr
     }
 
 }
-
-

@@ -469,8 +469,6 @@ public class Bullet2_0 : Bullet
             }
         }
 
-
-
         //scan enemy
         ArrayList enemys = EnemyMgr.ins.GetEnemys();
         foreach (Enemy h in enemys)
@@ -523,7 +521,6 @@ public class Bullet2_0 : Bullet
         this.plist = "hd/roles/role_2/bullet/role_2_bul_2001/role_2_bul_2001.plist";
         return true;
     }
-
 }
 
 
@@ -533,7 +530,6 @@ public class Bullet2_0 : Bullet
 /// </summary>
 public class Bullet2_1 : Bullet
 {
-
     public override void UpdateMS()
     {
 
@@ -570,21 +566,17 @@ public class Bullet2_1 : Bullet
     }
 }
 
-
-
 /// <summary>
 /// enemy 444  的0 号 普通攻击技能
 /// </summary>
 public class Bullet444_0 : Bullet2_0
 {
-
     public override bool Init()
     {
         base.Init();
         this.plist = "hd/enemies/enemy_444/bullet/enemy_444_bul_444001/enemy_444_bul_444001.plist";
         return true;
     }
-
 }
 
 
@@ -596,8 +588,6 @@ public class Bullet221_0 : Bullet
 
     public override void UpdateMS()
     {
-
-
     }
 
     public override void OnEnter()
@@ -627,12 +617,6 @@ public class Bullet221_0 : Bullet
 }
 
 
-
-
-
-
-
-
 /// <summary>
 
 /// </summary>
@@ -649,42 +633,32 @@ public class BulletStateMachineTest : Bullet
             owner.isAttacking = false;
             owner.machine.GetState<FallState>().stack.Resume();
             owner.x_auto += 0.05f;
-
-
             return;
         }
 
         // process with oover;
-
         owner.machine.ResumeAllStack();
-
         this.SetInValid();
     }
 
     public override void OnEnter()
     {
-
-
     }
 
     public override void OnExit()
     {
         base.OnExit();
         Debug.Log(" exit");
-
     }
     public override void OnDispose()
     {
         base.OnDispose();
         Debug.Log(" dispose");
-
     }
 
     public override bool Init()
     {
         this.plist = "";
-
         return true;
     }Counter tick1 = Counter.Create(120);//3s
 }
-

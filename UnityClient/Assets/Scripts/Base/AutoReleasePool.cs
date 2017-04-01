@@ -6,8 +6,6 @@
 using UnityEngine;
 using System.Collections;
 
-
-
 /// <summary>
 /// 提供了 全局托管脏数据的清理
 /// </summary>

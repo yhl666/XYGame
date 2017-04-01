@@ -370,10 +370,8 @@ public sealed class BattleWorldMap : WorldMap
                 t.LoadWithData(data);
                 this.custom_objs_revivepoints.Add(t);
                 this.custom_objs.Add(t);
-
             }
         }
-
 
         {// -- init hp pack
             Transform p = obj_terrain.transform.FindChild("HpPacks");
@@ -393,9 +391,6 @@ public sealed class BattleWorldMap : WorldMap
             }
         }
 
-
-
-
         {// -- init  transform
             Transform p = obj_terrain.transform.FindChild("Transform");
             if (p == null) return true;
@@ -413,10 +408,8 @@ public sealed class BattleWorldMap : WorldMap
                 this.custom_objs.Add(t);
             }
         }
-
         return true;
     }
-
     public override void OnEvent(int type, object userData)
     {
         if (Events.ID_BEFORE_ONEENTITY_UPDATEMS == type)
@@ -426,13 +419,10 @@ public sealed class BattleWorldMap : WorldMap
         else if (type == Events.ID_AFTER_ONEENTITY_UPDATEMS)
         {
             this.UpdateEntityAfter(userData as Entity);
-
-
         }
 
     }
 }
-
 
 public sealed class LogicWorldMap : WorldMap
 {
@@ -444,9 +434,6 @@ public sealed class LogicWorldMap : WorldMap
     {
 
     }
-
-
-
     public override bool Init()
     {
         base.Init();

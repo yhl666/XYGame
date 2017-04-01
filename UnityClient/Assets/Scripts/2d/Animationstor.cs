@@ -8,8 +8,6 @@ using System.Collections;
 
 public class Animationstor : MonoBehaviour
 {
-
-
     [SerializeField]
     public string file;
 
@@ -35,9 +33,6 @@ public class Animationstor : MonoBehaviour
     {
         if (ani != null)
             ani.Dispose();
-
-
-
     }
     public bool Init()
     {

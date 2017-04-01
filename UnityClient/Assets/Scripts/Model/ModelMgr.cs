@@ -99,9 +99,6 @@ public sealed class ModelMgr : SingletonGAObject<ModelMgr>
       ////  EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
     }
 
-
     ArrayList lists = new ArrayList();
 
 }
-
-

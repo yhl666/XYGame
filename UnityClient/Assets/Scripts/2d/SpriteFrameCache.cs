@@ -8,7 +8,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-
 /// <summary>
 ///  sprite frame cache 
 ///   note this will create a  deep copy  SpriteFrame when you get it by name
@@ -24,7 +23,6 @@ public sealed class SpriteFrameCache:Singleton<SpriteFrameCache>
         }
         hash.Add(name, sp);
     }
-
 
     public SpriteFrame AddSpriteFrameWithPng(string png)
     {
@@ -68,7 +66,6 @@ public sealed class SpriteFrameCache:Singleton<SpriteFrameCache>
             hash.Remove(name);
         }
     }
-
 
     public void RemoveSpriteFrameWithFile(string plist)
     {
@@ -145,9 +142,6 @@ public sealed class SpriteFrameCache:Singleton<SpriteFrameCache>
         metaData.size = PlistDictionary.ParseVector2(meta["size"] as string);
         metaData.smartupdate = meta["smartupdate"] as string;
         metaData.textureFileName = meta["textureFileName"] as string;
-
-
-
         // init  texture2d and sprite
 
         string name = metaData.realTextureFileName.Substring(0, metaData.realTextureFileName.Length - 4);
@@ -210,7 +204,6 @@ public sealed class SpriteFrameCache:Singleton<SpriteFrameCache>
 
                  */
 
-
             ///-------------------way 2 to process rotate
 
             ////process rotate for texture2D
@@ -249,11 +242,7 @@ public sealed class SpriteFrameCache:Singleton<SpriteFrameCache>
             Sprite sp = null;
             Rect rect = new Rect(new Vector2(0, 0), new Vector2(tex.width, tex.height));
 
-
             sp = Sprite.Create(tex, rect, new Vector2(0.5f, 0f));
-
-
-
 
             sp.name = frame.name;
 
@@ -269,7 +258,6 @@ public sealed class SpriteFrameCache:Singleton<SpriteFrameCache>
 
         }
 
-
         //add to plist hash table
         if (hash_plist_sprieFrame.Contains(dic.plist))
         {
@@ -279,8 +267,6 @@ public sealed class SpriteFrameCache:Singleton<SpriteFrameCache>
         {
             hash_plist_sprieFrame.Add(dic.plist, spriteFrameNames);
         }
-
-
 
         //cache 内部 是 SpriteFrame 的唯一引用
         //get 获取的始终是 SpriteFrame的Clone 对象
@@ -300,8 +286,6 @@ public sealed class SpriteFrameCache:Singleton<SpriteFrameCache>
         hash.Clear();
         hash_plist_sprieFrame.Clear();
     }
- 
-
 
     public static void PrintCacheStatus()
     {

@@ -8,8 +8,6 @@ using System.Collections;
 
 public class BattleHero : Hero
 {
-
-
     public override void InitStateMachine()
     {
         base.InitStateMachine();
@@ -104,8 +102,6 @@ public class BattleHero : Hero
 
             }
 
-
-
         }
         else if (type == "6")
         {
@@ -123,8 +119,6 @@ public class BattleHero : Hero
             this.ani_atk1 = AttackState6_Data.ins.level1_animation_name;// "6000";
             this.ani_atk2 = AttackState6_Data.ins.level2_animation_name; //"6010";
             this.ani_atk3 = AttackState6_Data.ins.level3_animation_name;// "6020";
-
-
 
             {
                 bulleClassName_atk1 = "BulletConfig"; //"Bullet2_0";//普通攻击 1段  的子弹名字
@@ -260,11 +254,6 @@ public class BattleHero : Hero
 
 
         }
-
-
-
-
-
     }
     public override bool Init()
     {
@@ -323,7 +312,6 @@ public class BattleHero : Hero
             //   Bullet b = BulletMgr.Create<Bullet2_1>(this);
 
         }
-
 
     }
     public override void UpdateMS()
@@ -400,7 +388,6 @@ public class BattleHero : Hero
 
     }
 
-
     Hero target = null;
 
     private int cd_atk = 0;
@@ -444,10 +431,8 @@ public class BattleHero : Hero
                 target = h;
                 minDis = dis;
             }
-
         }
     }
-
 
     public virtual void AI_MoveToTarget()
     {/*
@@ -463,7 +448,6 @@ public class BattleHero : Hero
         }
 
  */
-
         dir = (int)Utils.GetAngle(this.pos, target.pos);
 
     }
@@ -491,7 +475,4 @@ public class BattleHero : Hero
             stand = true;
         }
     }
-
-
-
 }

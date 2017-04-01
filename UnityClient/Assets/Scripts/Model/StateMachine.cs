@@ -116,9 +116,6 @@ public sealed class StateMachine : GAObject
             s.Resume();
         }
     }
-
-
-
     public StateBase GetState<T>() where T : new()
     {
         foreach (StateStack s in states)
@@ -222,7 +219,6 @@ public sealed class StateStack : GAObject
         return null;
     }
 
-
     public void AddEventListener(string what)
     {
         EventDispatcher.ins.AddEventListener(this, what);
@@ -262,4 +258,3 @@ public sealed class StateStack : GAObject
     public bool pause = false;
     public Entity host = null;
 }
-

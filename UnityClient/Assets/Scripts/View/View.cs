@@ -7,8 +7,6 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-
-
 //说明
 /*
  Model 和View 并不是一一对应关系，可能有的View绑定了model 有的没有，
@@ -46,8 +44,6 @@ public class View : GAObject
     }
 }
 
-
-
 public class ViewBullet : View
 {
     public override bool Init()
@@ -68,7 +64,6 @@ public class ViewBullet : View
             {
                 m.OnComplete();
             };
-
 
         ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
 
@@ -118,17 +113,12 @@ public class ViewBullet : View
 
 }
 
-
-
 public class ViewEntity : View
 {
-
     public override void OnDispose()
     {
         GameObject.DestroyImmediate(obj);
     }
-
-
 
     public override bool Init()
     {
@@ -152,7 +142,6 @@ public class ViewEntity : View
             m.eventDispatcher.PostEvent("SpineComplete", spine.AnimationName);
 
         };
-
 
         spine.state._OnEnd = () =>
         {//
@@ -241,9 +230,6 @@ public class ViewEntity : View
 
         spine.AnimationName = name;
 
-
-
-
         if (m.delta_hp != 0)
         {
 
@@ -268,13 +254,11 @@ public class ViewEntity : View
         spine.UpdateMS(Utils.deltaTime * m.spine_time_scale);
     }
 
-
     SkeletonAnimation spine = null;
     Transform transform = null;
     GameObject obj = null;
     Entity m = null;
 }
-
 
 
 public class ViewEnemy : View
@@ -284,9 +268,6 @@ public class ViewEnemy : View
     {
         GameObject.DestroyImmediate(obj);
     }
-
-
-
     public override bool Init()
     {
         base.Init();
@@ -308,8 +289,6 @@ public class ViewEnemy : View
             m.eventDispatcher.PostEvent("SpineComplete", spine.AnimationName);
 
         };
-
-
         spine.state._OnEnd = () =>
         {//
             // Debug.Log("end");
@@ -338,8 +317,6 @@ public class ViewEnemy : View
             this.SetInValid();
             return;
         }
-
-
         this.obj.name = m.no.ToString();
         transform.position = new Vector3(m.x, m.GetReal25DY(), transform.position.z);
         float factor = m.scale;
@@ -407,14 +384,11 @@ public class ViewEnemy : View
         spine.UpdateMS(Utils.deltaTime * m.spine_time_scale);
     }
 
-
     SkeletonAnimation spine = null;
     Transform transform = null;
     GameObject obj = null;
     Entity m = null;
 }
-
-
 
 public class ViewBuffer : View
 {
@@ -431,8 +405,6 @@ public class ViewBuffer : View
 
         ani.ani.SetLoop(0xffffff);
         ani.gameObject.transform.localScale = new Vector3(m.scale, m.scale, ani.gameObject.transform.localScale.z);
-
-
         return true;
     }
 
@@ -460,6 +432,3 @@ public class ViewBuffer : View
     private Buffer m = null;
 
 }
-
-
-

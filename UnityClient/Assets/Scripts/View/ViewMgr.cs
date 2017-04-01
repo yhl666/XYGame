@@ -6,16 +6,13 @@
 using UnityEngine;
 using System.Collections;
 
-
 public sealed class ViewMgr : SingletonGAObject<ViewMgr>
 {
-
     public void Add(View view)
     {
         this._views.Add(view);
         view.OnEnter();
     }
-
 
     public void Remove(View view)
     {
@@ -80,7 +77,6 @@ public sealed class ViewMgr : SingletonGAObject<ViewMgr>
         base.OnDispose();
     }
 
-
     public static View Create<T>(Model m) where T : new()
     {
         View v = new T() as View;
@@ -90,4 +86,3 @@ public sealed class ViewMgr : SingletonGAObject<ViewMgr>
     }
     private ArrayList _views = new ArrayList();
 }
-

@@ -363,10 +363,6 @@ public class SkillBase : Model
     }
 }
 
-
-
-
-
 //-----------------------------------------------------------------------hero 2
 
 
@@ -477,10 +473,6 @@ public class Skill2_1 : SkillBase
 
 }
 
-
-
-
-
 /// <summary>
 ///可被打断 角色施法 出一个伤害移动的伤害范围， 再次按下触发 一颗雷从天而降 造成大量伤害
 /// </summary>
@@ -510,9 +502,6 @@ public class Skill2_2 : SkillBase
         info.launch_delta_xyz.y = Target.height;
         b_shifa = BulletMgr.Create(this.Target, "BulletConfig", info);
         b_shifa.y = Target.height;
-
-
-
     }
     public override void UpdateMS()
     {
@@ -586,9 +575,6 @@ public class Skill2_2 : SkillBase
     Bullet b_shifa = null;
 
 }
-
-
-
 
 
 /// <summary>
@@ -771,10 +757,6 @@ public class Skill2_4 : SkillBase
     }
 }
 
-
-
-
-
 /// <summary>
 ///可被打断  造成大量范围伤害 并且减速 80
 /// </summary>
@@ -841,8 +823,6 @@ public class Skill2_5 : SkillBase
     }
 
 }
-
-
 
 
 //-------------------------------------------------------------------------------- hero 6
@@ -1044,8 +1024,6 @@ public class Skill6_1_2 : SkillBase
 }
 
 
-
-
 /// <summary>
 /// 不可打断  快速旋转左右移动 2S  内造成8 次hit伤害
 /// </summary>
@@ -1074,8 +1052,6 @@ public class Skill6_2 : SkillBase
         buffer.percent = -130;
         buffer.time = Utils.fpsi * 5;
         Target.AddBuffer(buffer);
-
-
     }
     public override void UpdateMS()
     {
@@ -1093,7 +1069,6 @@ public class Skill6_2 : SkillBase
     }
     private void Shoot()
     {
-
         BulletConfigInfo info = BulletConfigInfo.Create();
 
         info.AddBuffer("BufferHitBack");
@@ -1132,8 +1107,6 @@ public class Skill6_2 : SkillBase
         this.ResumeAll();
 
         this.stack.PushSingleSkill(new Skill6_2_2());
-
-
     }
     public override void OnPush()
     {
@@ -1150,7 +1123,6 @@ public class Skill6_2 : SkillBase
     }
     Bullet b = null;
 }
-
 
 
 /// <summary>
@@ -1226,8 +1198,6 @@ public class Skill6_2_2 : SkillBase
 
     }
 }
-
-
 
 
 /// <summary>
@@ -1315,8 +1285,6 @@ public class Skill6_3 : SkillBase
     Counter tick = Counter.Create(17);//释放第二次
 }
 
-
-
 /// <summary>
 /// 6_3的第二段连招  反手猛的一招 击飞很远 不可打断
 /// </summary>
@@ -1391,8 +1359,6 @@ public class Skill6_3_2 : SkillBase
     }
 
 }
-
-
 
 /// <summary>
 /// 形态2 技能1
@@ -1557,9 +1523,6 @@ public class Skill62_1 : SkillBase
 
 }
 
-
-
-
 /// <summary>
 /// 形态2 技能2
 /// </summary>
@@ -1589,8 +1552,6 @@ public class Skill62_2 : SkillBase
         this.Enable = true;
         Target.is_spine_loop = false;
         Target.attackingAnimationName = Skill62_2_Data.ins.animation_name;//"6130_1";
-
-
     }
     public override void UpdateMS()
     {
@@ -1658,8 +1619,6 @@ public class Skill62_2 : SkillBase
         /// this.stack.PushSingleSkill(new Skill6_2_2())
 
     }
-
-
     public override bool Init()
     {
         base.Init();
@@ -1702,10 +1661,6 @@ public class Skill62_2 : SkillBase
 }
 
 
-
-
-
-
 /// <summary>
 /// 形态2 技能3
 /// 起跳 在快速砍向 地面
@@ -1738,8 +1693,6 @@ public class Skill62_3 : SkillBase
         this.Enable = true;
         Target.is_spine_loop = false;
         Target.attackingAnimationName = Skill62_3_Data.ins.animation_name;//// "6140_1";
-
-
     }
 
     private float jump_speed = Skill62_3_Data.ins.jump_speed;  // DATA.DEFAULT_JUMP_SPEED * 1f;
@@ -1788,9 +1741,6 @@ public class Skill62_3 : SkillBase
                 ///   current_height += jump_speed;
                 this.Target.y += jump_speed;
             }
-
-
-
         }
 
         if (Target.y <= 0 && has_shoot == false)
@@ -1811,7 +1761,6 @@ public class Skill62_3 : SkillBase
     }
     private void Shoot()
     {
-
         BulletConfigInfo info = BulletConfigInfo.Create();
 
         info.AddBuffer("BufferHitFly");
@@ -1841,7 +1790,6 @@ public class Skill62_3 : SkillBase
         info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
         info.collider_size = Skill62_3_Data.ins.hit_rect;
 
-
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
     public override void OnSpineCompolete()
@@ -1861,7 +1809,6 @@ public class Skill62_3 : SkillBase
         /// this.stack.PushSingleSkill(new Skill6_2_2())
 
     }
-
     public override void OnPush()
     {
         if (cd.IsMax() == false) return;
@@ -1872,9 +1819,7 @@ public class Skill62_3 : SkillBase
         {
             this.PushOnInterruptAttackSate(); //强制打断 普通技能
         }
-
         this.OnEnter();
-
     }
     public override bool Init()
     {
@@ -1898,8 +1843,6 @@ public class Skill62_3 : SkillBase
     }
     Bullet b = null;
 }
-
-
 
 
 /// <summary>
@@ -1961,8 +1904,6 @@ public class Skill6_Final : SkillBase
         {
 
         }
-
-
     }
     public override void UpdateMSIdle()
     {
@@ -2103,8 +2044,6 @@ public class Skill6_Final : SkillBase
         /// this.stack.PushSingleSkill(new Skill6_2_2())
 
     }
-
-
     public override bool Init()
     {
         base.Init();
@@ -2146,10 +2085,6 @@ public class Skill6_Final : SkillBase
     Bullet b = null;
 }
 
-
-
-
-
 /// <summary>
 /// 切换取消技能
 /// </summary>
@@ -2178,14 +2113,11 @@ public class SkillForceCancel : SkillBase
     public override void OnExit()
     {
 
-
     }
-
 
     public override bool Init()
     {
         base.Init();
-
         return true;
     }
 

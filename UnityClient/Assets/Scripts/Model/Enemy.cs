@@ -6,8 +6,6 @@
 using UnityEngine;
 using System.Collections;
 
-
-
 public class Enemy : Entity
 {
     //--------------------------------接入通用  AI ，自定义可继承并且override  AI接口函数
@@ -58,8 +56,6 @@ public class Enemy : Entity
 
         }
     }
-
-
     public virtual void AI_MoveToTarget()
     {
         /*  if (this.x < target.x)
@@ -106,7 +102,6 @@ public class Enemy : Entity
             stand = true;
         }
     }
-
 
     public override void InitInfo()
     {
@@ -161,9 +156,6 @@ public class Enemy : Entity
          }
          */
 
-
-
-
         {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
@@ -201,10 +193,6 @@ public class Enemy : Entity
             s.PushSingleState(StateBase.Create<StandState>(this));
 
         }
-
-
-
-
         /*  {
               StateStack s = StateStack.Create();
               this.machine.AddParallelState(s);
@@ -287,16 +275,10 @@ public class Enemy : Entity
             s1 = 0;
         }
 
-
         base.UpdateMS();
-
     }
 
 }
-
-
-
-
 public class Enemy221 : Enemy
 {
 
@@ -323,9 +305,6 @@ public class Enemy221 : Enemy
 
         this.atk_range = 1.0f;
         scale = 0.8f;
-
     }
 
-
 }
-

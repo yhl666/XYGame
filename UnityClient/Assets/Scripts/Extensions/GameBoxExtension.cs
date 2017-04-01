@@ -79,32 +79,21 @@ public class GiantLightSceneExtensionTest : GiantLightSceneExtension
         }));
 
     }
-
-
     public override void Update(float delta)
     {
         base.Update(delta);
     }
-
 
     public override void Exit(IGiantGame game)
     {
         base.Exit(game);
     }
 
-
-
-
 }
-
-
 
 //----------------------------------------------------------------------------------
 //                                            Extension
 // ----------------------------------------------------------------------------------
-
-
-
 
 /// <summary>
 /// 该场景接管了 GiantLightScene，想用该扩展，请把场景继承自 GiantLightSceneExtension
@@ -117,7 +106,6 @@ public class GiantLightSceneExtension : GiantLightScene
         inner.RpcMgr.ins.OnChangeScene(this);
 
     }
-
 
     public override void Update(float delta)
     {
@@ -132,7 +120,6 @@ public class GiantLightSceneExtension : GiantLightScene
 
     }
 
-
     public override sealed bool PushResponse(uint id, byte[] content)
     {
         return inner.RpcMgr.ins.PushResponse(id, content);
@@ -142,8 +129,6 @@ public class GiantLightSceneExtension : GiantLightScene
         return inner.RpcMgr.ins.PushRequest(id, service, method, content);
     }
 }
-
-
 
 
 /// <summary>
@@ -195,17 +180,11 @@ public class RpcService : GAObject
 
          ///   Debug.Log("call func in new");
         }
-
-
         func(msg, cb);
-
     }
-
-
 
     private Hashtable methods = new Hashtable();
 }
-
 
 
 /*
@@ -216,8 +195,6 @@ public class RpcService : GAObject
 
 namespace inner
 {
-
-
     /// <summary>
     /// RPC 请求
     /// </summary>
@@ -387,9 +364,6 @@ namespace inner
                 rpc = Activator.CreateInstance(t) as RpcService;
                 services.Add(service, rpc);
             }
-
-
-
 
             string msg = ByteConverter.BytesToProtoBuf<rpc.EnterRoomMsg>(content, 0, content.Length).peer_name;
       

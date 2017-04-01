@@ -142,7 +142,6 @@ public class JumpState : StateBase
 
     }
 
-
     public override void OnEnter()
     {
         this.Enable = false;
@@ -165,9 +164,6 @@ public class JumpState : StateBase
 
     }
 }
-
-
-
 
 public class JumpTwiceState : StateBase
 {
@@ -216,7 +212,6 @@ public class JumpTwiceState : StateBase
     public override void OnEvent(string type, object userData)
     {
 
-
     }
     public override void OnEnter()
     {
@@ -233,11 +228,6 @@ public class JumpTwiceState : StateBase
 
     }
 }
-
-
-
-
-
 
 public class FallState : StateBase
 {
@@ -351,8 +341,6 @@ public class RunState : StateBase
     public override void OnEvent(string type, object userData)
     {
 
-
-
     }
 
     public override void OnEvent(int type, object userData)
@@ -377,7 +365,6 @@ public class RunState : StateBase
         {
             Target.flipX = -1.0f; this.Enable = true;
         }
-
 
     }
     /// <summary>
@@ -415,7 +402,6 @@ public class RunState : StateBase
         this.stack.AddLocalEventListener(Events.ID_BTN_RIGHT);
         this.stack.AddLocalEventListener(Events.ID_STAND);
 
-
         this.stack.id = StateStack.ID_RUN;
 
     }
@@ -429,9 +415,6 @@ public class RunState : StateBase
     }
 
 }
-
-
-
 
 public class RunXZState : StateBase
 {
@@ -481,8 +464,6 @@ public class RunXZState : StateBase
             Target.flipX = -1.0f;
         }
 
-
-
         {
             ///   float  degree = Utils.GetDegree(new Vector2(Target.x, Target.y), new Vector2(x, y));
             //   float distance = Target.ClaculateDistance(x, y);
@@ -511,22 +492,16 @@ public class RunXZState : StateBase
             Target.z = Target.z + speed * z_delta;
             Target.x = Target.x + speed * x_delta;
 
-
-
-
         }
 
     }
     public override void OnEvent(string type, object userData)
     {
 
-
-
     }
 
     public override void OnEvent(int type, object userData)
     {
-
 
     }
     /// <summary>
@@ -564,7 +539,6 @@ public class RunXZState : StateBase
         this.stack.AddLocalEventListener(Events.ID_BTN_RIGHT);
         this.stack.AddLocalEventListener(Events.ID_STAND);
 
-
         this.stack.id = StateStack.ID_RUN;
         this.Enable = true;
     }
@@ -578,12 +552,6 @@ public class RunXZState : StateBase
     }
 
 }
-
-
-
-
-
-
 
 
 public class StandState : StateBase
@@ -611,7 +579,6 @@ public class StandState : StateBase
         {
             Target.isStand = false;
         }
-
     }
     public override void OnPause()
     {
@@ -636,7 +603,6 @@ public class StandState : StateBase
 
     }
 }
-
 
 public class HurtState : StateBase
 {
@@ -696,8 +662,6 @@ public class HurtState : StateBase
                 tick = 0;
             }
         }
-
-
     }
     public override void OnExit()
     {
@@ -706,8 +670,6 @@ public class HurtState : StateBase
     private int tick = 0;
     private int MAX_TICK = 10; // 0.5s
 }
-
-
 
 
 public class DieState : StateBase
@@ -759,7 +721,6 @@ public class DieState : StateBase
                 EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
             }
         }
-
     }
     public override void OnExit()
     {
@@ -864,13 +825,7 @@ public class AttackState_1 : StateBase
             Target.isAttacking = false;
             this.Enable = false;
         }
-
-
-
-
     }
-
-
 
     public override void OnEnter()
     {
@@ -961,7 +916,6 @@ public class AttackState_2 : StateBase
 
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
-
         }
         else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
@@ -1026,8 +980,6 @@ public class AttackState_3 : StateBase
         }
         return null;
     }
-
-
     public override string GetAnimationName() { return Target.ani_atk3; }
 
     bool checkForTimeOut = true;
@@ -1062,8 +1014,6 @@ public class AttackState_3 : StateBase
             this.OnEvent(Events.ID_SPINE_COMPLETE, userData);
         }
     }
-
-
     public override void OnEvent(int type, object userData)
     {
         if (Target.isHurt) return;
@@ -1099,7 +1049,6 @@ public class AttackState_3 : StateBase
             this.stack.PopSingleState();
         }
     }
-
     public override void OnPause()
     {
         if (this.Enable)
@@ -1126,8 +1075,6 @@ public class AttackState_3 : StateBase
 
 }
 
-
-
 public class SkillState111 : StateBase
 {
     // 释放技能   share state isAttacking
@@ -1147,7 +1094,6 @@ public class SkillState111 : StateBase
       }*/
     public override void UpdateMS()
     {
-
 
     }
     public override void OnEvent(string type, object userData)
@@ -1180,9 +1126,6 @@ public class SkillState111 : StateBase
             this.Enable = false;
         }
 
-
-
-
     }
 
     public override void OnEnter()
@@ -1201,10 +1144,6 @@ public class SkillState111 : StateBase
     ArrayList skill_stacks = new ArrayList();
 
 }
-
-
-
-
 
 
 public class SkillState : StateBase
@@ -1231,7 +1170,6 @@ public class SkillState : StateBase
             s.UpdateMS();
         }
     }
-
     public override void OnEvent(string type, object userData)
     {
         if (type == "skill")
@@ -1361,7 +1299,6 @@ public class SkillState : StateBase
 }
 
 
-
 /// <summary>
 /// 主场景点击操作 状态
 /// </summary>
@@ -1408,7 +1345,6 @@ public class RunXYState : StateBase
         float x_delta = Mathf.Cos(dd);
         Target.y = Target.y + speed * y_delta;
         Target.x = Target.x + speed * x_delta;
-
     }
 
 
@@ -1434,8 +1370,6 @@ public class RunXYState : StateBase
         degree = Utils.GetDegree(new Vector2(Target.x, Target.y), new Vector2(x, y));
 
     }
-
-
     public override void OnEnter()
     {
         this.stack.AddLocalEventListener(Events.ID_LOGIC_NEW_POSITION);
@@ -1451,11 +1385,6 @@ public class RunXYState : StateBase
     float y;
     float degree;
 }
-
-
-
-
-
 public class LuaInterfaceState : StateBase
 {
     // lua 超类 状态接口，每个接口函数 配置对应的函数

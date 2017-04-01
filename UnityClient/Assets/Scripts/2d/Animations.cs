@@ -9,7 +9,6 @@ using System;
 using System.Collections;
 
 
-
 /// <summary>
 /// frame animaton res from cocos2dx
 /// </summary>
@@ -30,7 +29,6 @@ public sealed class Animations : GAObject
     public int perFrame = 3;
     public int index = 0;
     public string name;
-
 
     public void SetPerFrameDelay(int perFrame)
     {
@@ -142,7 +140,6 @@ public sealed class Animations : GAObject
         ret.target = target;
         return ret;
     }
-
 
     public static Animations Create(SpriteRenderer target = null)
     {

@@ -59,7 +59,6 @@ public class TerrainBlock : IComparer
     { }
 }
 
-
 public class TerrainBase : Model
 {
     /// <summary>
@@ -108,7 +107,6 @@ public class TerrainBase : Model
         return ret;
     }
 
-
     /// <summary>
     /// 返回x坐标 对应的地形块
     /// </summary>
@@ -156,8 +154,6 @@ public class TerrainBase : Model
     {
         return this.GetBlockWithIndex(block.index - 1);
     }
-
-
     /// <summary>
     /// 返回 index 指定的 地形块 0序开始
     /// </summary>
@@ -261,8 +257,6 @@ public class Terrain : TerrainBase
     public float limit_z_up = 0.0f;// 地图上边界
     public float limit_z_down = 0.0f;//地图下边界
 
-
-
 }
 
 
@@ -292,24 +286,12 @@ public class TerrainPlatform : TerrainBase
             TerrainBlock p2 = blocks[i + 1] as TerrainBlock;
 
             this.blocks.Add(TerrainBlock.Create(p1.x_left, p2.x_left, p1.height, this.blocks.Count,p1.name));
-
         }
 
         Debug.Log("TerrainPlatform Init  Point Count=" + (objs.Length - 1));
-
         return true;
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 /// <summary>
 /// 地图上的 平台 地形，
@@ -337,7 +319,6 @@ public class TerrainPlatformPVP : TerrainPlatform
             TerrainBlock p2 = blocks[i + 1] as TerrainBlock;
 
             this.blocks.Add(TerrainBlock.Create(p1.x_left, p2.x_left, p1.height, this.blocks.Count, p1.name));
-
         }
 
         Debug.Log("TerrainPlatform Init  Point Count=" + (objs.Length - 1));
@@ -345,4 +326,3 @@ public class TerrainPlatformPVP : TerrainPlatform
         return true;
     }
 }
-

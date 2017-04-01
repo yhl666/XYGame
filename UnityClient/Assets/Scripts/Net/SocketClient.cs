@@ -10,8 +10,6 @@ using System.Net.Sockets;
 using System.Timers;
 using System;
 
-
-
 public class SocketClient : object
 {
 

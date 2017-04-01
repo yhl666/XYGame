@@ -81,7 +81,6 @@ public sealed class HashTable
 
 public sealed class HashTable<T>/// where T : class,new()
 {
-
     public static HashTable<T> Create<T>()
     {
         HashTable<T> ret = new HashTable<T>();

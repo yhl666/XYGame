@@ -10,8 +10,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 
-
-
 [AddComponentMenu("Extensions/GAButton")]
 public sealed class GAButton : Selectable, IPointerDownHandler, IPointerExitHandler, IPointerUpHandler
 {

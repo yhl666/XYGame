@@ -34,7 +34,6 @@ public sealed class HeroMgr :  SingletonGAObject<HeroMgr>
         b.LazyDispose();
     }
 
-
     public override void OnDispose()
     {
         this.lists.Clear();
@@ -47,7 +46,6 @@ public sealed class HeroMgr :  SingletonGAObject<HeroMgr>
         if (hero == null) return;
         this.Remove(hero);
     }
-
 
     public Hero GetSelfHero()
     {
@@ -79,7 +77,6 @@ public sealed class HeroMgr :  SingletonGAObject<HeroMgr>
             }
         }
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -109,11 +106,6 @@ public sealed class HeroMgr :  SingletonGAObject<HeroMgr>
         }
         return null;
     }
-
-
     ArrayList lists = new ArrayList();
 
 }
-
-
-

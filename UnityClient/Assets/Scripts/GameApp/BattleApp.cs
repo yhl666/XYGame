@@ -8,7 +8,6 @@ using System.Collections;
 using System;
 using System.Threading;
 
-
 public sealed class BattleApp : AppBase
 {
 
@@ -90,8 +89,6 @@ public sealed class BattleApp : AppBase
 
           }*/
     }
-
-
     public override void OnEvent(int type, object userData)
     {
         if (type == Events.ID_EXIT)
@@ -129,8 +126,6 @@ public sealed class BattleApp : AppBase
 
            }*/
     }
-
-
     private void ReConnect()
     {
         /* this.InitNet(true);
@@ -138,7 +133,6 @@ public sealed class BattleApp : AppBase
          string info = "cmd:reconnect:" + this.current_fps + ":" + HeroMgr.ins.GetSelfHero().no;
          Debug.Log(info);
          this.socket.AddSendMsg(info);*/
-
 
     }
 
@@ -168,9 +162,6 @@ public sealed class BattleApp : AppBase
             ///    Debug.Log("Read From File:      " + str);
             this.AddRecvMsg(str.Substring(0, str.Length - 1));
         }
-
-
-
     }
     public void InitNet(bool isReConnect = false)
     {
@@ -228,31 +219,20 @@ public sealed class BattleApp : AppBase
             */
 
                 this.socket.AddSendMsg("cmd:new_pvp_friend:" + PublicData.ins.self_user.no.ToString() + ":" + PublicData.ins.pvp_room_no + ":" + PublicData.ins.pvp_room_max);
-
-
             }
             else if (PublicData.ins.is_pvp_friend_ai)
             {
-
                 this.socket.AddSendMsg("cmd:new:" + PublicData.GetInstance().player_name);
-
-
-
             }
             else
             {
                 this.socket.AddSendMsg("cmd:new_pvp_friend:1" + ":1" + ":1");
-
             }
         }
-
-
     }
-
 
     public override void Update()
     {
-
         if (PublicData.ins.is_client_server)
         {
             ClientServerApp.ins.UpdateMS();
@@ -261,8 +241,6 @@ public sealed class BattleApp : AppBase
         this.Process();
         AutoReleasePool.ins.Clear(); // 没帧数结束 清理一次， 逻辑帧 Process内部已处理
     }
-
-
 
     private void ProcessWithGameOver()
     {
@@ -421,10 +399,6 @@ public sealed class BattleApp : AppBase
         }
     }
 
-
-
-
-
     /*
      * mode =0 is normal;
      * mode =1 is video mode
@@ -444,13 +418,9 @@ public sealed class BattleApp : AppBase
 
     public bool isOver = false;
 
-
-
     private SocketClient socket;
 
-
     public System.Random randObj;
-
 
     public override void OnDispose()
     {
@@ -461,9 +431,6 @@ public sealed class BattleApp : AppBase
         PublicData.ins.is_pvp_friend_ai = false;
         PublicData.ins.is_pvp_friend = false;
         ///   PublicData.ins.isVideoMode = false;
-
-
-
 
         ViewMgr.DestroyInstance();
         ModelMgr.DestroyInstance();
@@ -484,10 +451,6 @@ public sealed class BattleApp : AppBase
 
         base.OnExit();
 
-
-
-
-
         if (PublicData.ins.is_client_server)
         {
             SceneMgr.Load("ClientServerScene");
@@ -495,4 +458,3 @@ public sealed class BattleApp : AppBase
         }
     }
 }
-

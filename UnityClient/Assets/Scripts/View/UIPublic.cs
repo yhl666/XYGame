@@ -11,7 +11,6 @@ using System.Threading;
 
 public sealed class UIPublicRoot : ViewUI
 {
-
     public override void Update()
     {
         base.Update();
@@ -31,11 +30,8 @@ public sealed class UIPublicRoot : ViewUI
                 this._ui_child.Add(ViewUI.Create<UI_pushmsg>(this));
                 this._ui_child.Add(ViewUI.Create<UI_globaldialog>(this));
 
-
                 return DATA.EMPTY_STRING;
             }));
-
-
         return true;
     }
 
@@ -67,8 +63,6 @@ public sealed class UI_loading : ViewUI
                 } break;
         }
     }
-
-
     public override void OnEvent(int type, object userData)
     {
         switch (type)
@@ -113,10 +107,7 @@ public sealed class UI_loading : ViewUI
                     this.txt.text = userData as string;
                 } break;
         }
-
-
     }
-
 
     public override void Update()
     {
@@ -169,8 +160,6 @@ public sealed class UI_loading : ViewUI
         this.txt = GameObject.Find("load_txt").GetComponent<Text>();
         this.img = GameObject.Find("load_img").GetComponent<Image>();
 
-
-
         EventDispatcher.ins.AddEventListener(this, "loading");
         EventDispatcher.ins.AddEventListener(this, "loadingOK");
         EventDispatcher.ins.AddEventListener(this, "addAsync");
@@ -182,12 +171,9 @@ public sealed class UI_loading : ViewUI
         EventDispatcher.ins.AddEventListener(this, Events.ID_LOADING_HIDE);
         EventDispatcher.ins.AddEventListener(this, Events.ID_LOADING_SYNC_STRING);
 
-
         this._ui.SetActive(_enable);
         return true;
     }
-
-
     private Queue funcs = new Queue();
     private Text txt;
     private Image img;
@@ -196,7 +182,6 @@ public sealed class UI_loading : ViewUI
     private int MAX_COUNT = 0;
 
 }
-
 
 
 public sealed class UI_pushmsg : ViewUI
@@ -208,8 +193,6 @@ public sealed class UI_pushmsg : ViewUI
         base.Update();
 
         if (tick.Tick()) return;
-
-
         this.img_bg.SetActive(false);
 
     }
@@ -238,7 +221,6 @@ public sealed class UI_pushmsg : ViewUI
 
         this.txt = GameObject.Find("txt_pushmsg").GetComponent<Text>();
         this.img_bg = GameObject.Find("img_pushmsg");
-
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_PUBLIC_PUSH_MSG);
         this.img_bg.SetActive(false);
@@ -286,9 +268,6 @@ public sealed class UI_wait : ViewUI
 
     public override void Update()
     {
-
-
-
     }
 
     public override bool Init()
@@ -362,9 +341,6 @@ public sealed class UI_push_msg : ViewUI
 */
 
 
-
-
-
 public sealed class GlobalDialogInfo
 {
     public VoidFuncVoid _OnYes = null;
@@ -378,17 +354,11 @@ public sealed class GlobalDialogInfo
 
 }
 
-
 public sealed class UI_globaldialog : ViewUI
 {
-
-
     public override void Update()
     {
         base.Update();
-
-
-
     }
     public override void OnEvent(int type, object userData)
     {
@@ -403,7 +373,6 @@ public sealed class UI_globaldialog : ViewUI
             this.txt_btn_no.text = info.btn_no_txt;
             this.txt_btn_yes.text = info.btn_yes_txt;
         }
-
     }
     public override bool Init()
     {
@@ -417,7 +386,7 @@ public sealed class UI_globaldialog : ViewUI
 
         this.txt_btn_yes = btn_yes.transform.FindChild("txt").GetComponent<Text>();
         this.txt_btn_no = btn_yes.transform.FindChild("txt").GetComponent<Text>();
-    
+
 
         this.btn_yes.onClick.AddListener(() =>
         {
@@ -464,4 +433,3 @@ public sealed class UI_globaldialog : ViewUI
     private GlobalDialogInfo info = null;
 
 }
-

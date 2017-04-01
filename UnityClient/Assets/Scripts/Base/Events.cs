@@ -11,11 +11,7 @@ public sealed class Events : object
 {//数组实现hash  事件，提高效率
     public static int MAX_EVENT_LENGTH = 1000;//最大事件长度
 
-
-
     //------------------------------------  global event--------------------------------------
-
-
 
     public const int ID_BATTLE_START = 0;//战斗开始
     public const int ID_BATTLE_END = 1;// 战斗结束
@@ -34,9 +30,6 @@ public sealed class Events : object
     public const int ID_NET_DISCONNECT = 16;//网络断开连接
     public const int ID_EXIT = 17;//游戏退出
 
-
-
-
     public const int ID_START = 18;
     public const int ID_GAMEOVER = 19;
     public const int ID_NET_ERROR = 20;
@@ -51,8 +44,6 @@ public sealed class Events : object
     public const int ID_LOADING_SHOW = 29;// 显示加载界面
     public const int ID_LOADING_HIDE = 30;// 隐藏加载界面，tip: 界面加载完成会自动关闭  可用此消息手动打开关闭界面显示
     public const int ID_LOADING_SYNC_STRING = 31;// 更新 loading界面的提示信息，默认显示加载中xxxxx
-
-
 
     public const int ID_BEFORE_ALLMODEL_UPDATEMS = 32;//在所有Model 帧同步运算前 在ModelMgr 里面触发
     public const int ID_AFTER_ALLMODEL_UPDATEMS = 33;//在所有Model 帧同步运算后
@@ -77,8 +68,6 @@ public sealed class Events : object
     public const int ID_AFTER_ALLVIEW_UPDATE = 45;//在所有View Unity 更新后
 
     public const int ID_LOGIC_NEW_POSITION = 46;//主场景 新目标点事件
-
-
 
     public const int ID_BTN_LOGIN = 47;
     public const int ID_BTN_REGISTER = 48;
@@ -125,7 +114,6 @@ public sealed class Events : object
     public const int ID_TOWN_EQUIPSYSTEM_BTN_OTHER_SHOW_CLICKED = 100;//其他界面通知UI显示，UI再负责自己的APP 显示派发
     public const int ID_TOWN_EQUIPSYSTEM_BTN_SHOW_CLICKED = 101;
     public const int ID_TOWN_EQUIPSYSTEM_BTN_CLOSE_CLICKED = 102;
-
 
 
     //-------------------------BATTLE
@@ -190,25 +178,12 @@ public sealed class Events : object
     public const int ID_INFO_BACKPACK_UNSHOW = 514;
 
 
-
     public const int ID_BTN_LOGOUT = 588;
 
     public const int ID_TOWN_PVP_QUEUE_RESULT = 72;//  匹配结果消息
     public const int ID_BATTLE_EXIT = 73;//退出战斗
     public const int ID_DIE = 74;
     public const int ID_REVIVE = 75;
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -224,8 +199,6 @@ public sealed class Events : object
      public const int ID_DISABLE_ATTACK = 104;//attack state
      public const int ID_ENABLE_ATTACK = 105;// attack
      */
-
-
 
 
     //----------------------------------------user event -------------------------------------------------------

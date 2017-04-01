@@ -8,7 +8,6 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-
 // 支持2重消息方式，持久化 和监听一次。
 //支持2种消息数据结构，string 和 Event.XXXXXX  (int)
 
@@ -34,7 +33,6 @@ public sealed class EventDispatcher : GAObject
         ////   EventSystem.ins.RemoveEvent_Update(this);
         TimerQueue.DestroyInstance();
     }
-
 
     public static EventDispatcher ins
     {
@@ -82,7 +80,6 @@ public sealed class EventDispatcher : GAObject
         return ret;
     }
 
-
     public void PostEvent(string type, object userdata = null)
     {
         if (objs.ContainsKey(type))
@@ -97,11 +94,6 @@ public sealed class EventDispatcher : GAObject
             }
         }
     }
-
-
-
-
-
 
     public void PostEventOnce(string type, object userdata = null)
     {
@@ -118,9 +110,6 @@ public sealed class EventDispatcher : GAObject
         }
 
     }
-
-
-
     public void PostEvent(int type, object userdata = null)
     {
 
@@ -152,7 +141,6 @@ public sealed class EventDispatcher : GAObject
         }
 
     }
-
 
     public void AddEventListener(GAObject target, string type)
     {
@@ -219,10 +207,6 @@ public sealed class EventDispatcher : GAObject
 
         list.Remove(target);
     }
-
-
-
-
 
     public void Clear()
     {

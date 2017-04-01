@@ -22,10 +22,6 @@ using System.IO;
 /// by css
 /// 
 /// </summary>
-
-
-
-
 ///------------------------------------------------for plist parser
 
 /// <summary>
@@ -128,8 +124,6 @@ sealed class PlistDictionary : Dictionary<string, object>
         {
             throw new Exception(" error");
         }
-
-
 
         ret.x = int.Parse(values[0]);
         ret.y = int.Parse(values[1]);

@@ -58,8 +58,6 @@ public sealed class TranslateDataPack : object
     }
 }
 
-
-
 public class McmpBalls : IComparer
 {
     public int Compare(object x, object y)
@@ -75,8 +73,6 @@ public class McmpBalls : IComparer
     }
 
 };
-
-
 
 
 public class StableSort

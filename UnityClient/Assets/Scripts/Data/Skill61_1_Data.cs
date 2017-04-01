@@ -21,8 +21,6 @@ public class Skill61_1_Data : MonoBehaviour
     public float spinTime;//眩晕时间
 
 
-
-
     public static Skill61_1_Data ins = null;
     void Awake()
     {

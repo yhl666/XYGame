@@ -39,9 +39,6 @@ public class AnimationstorTest : MonoBehaviour
     {
         if (ani != null)
             ani.Dispose();
-
-
-
     }
     public bool Init()
     {

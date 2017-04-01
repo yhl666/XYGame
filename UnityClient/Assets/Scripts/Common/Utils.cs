@@ -9,8 +9,6 @@ using System.IO;
 
 public sealed class Utils
 {
-
-
     public static void Log(string s)
     {
         /*  StreamWriter file = new StreamWriter("log.txt", true);
@@ -56,13 +54,8 @@ public sealed class Utils
 
     public static string SkipWhite(string str)
     {
-
         string ret = "";
-
-
         return ret;
-
-
     }
 
     public static float GetAngle(Vector3 from, Vector3 to)
@@ -217,7 +210,6 @@ public sealed class Utils
     {
         return new Vector3(p.x / 100.0f, p.y / 100.0f, p.z);
     }
-
 
     public static object Create(string _class_name)
     {

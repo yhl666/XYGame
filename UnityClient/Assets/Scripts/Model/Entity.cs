@@ -7,9 +7,6 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-
-
-
 public class AttackInfo
 {
     /// <summary>
@@ -102,10 +99,6 @@ public class AttackInfo
     public ArrayList buffers = new ArrayList();
     public ArrayList buffers_string = new ArrayList();
 }
-
-
-
-
 
 
 public class Entity : Model
@@ -395,9 +388,6 @@ public class Entity : Model
     /// 
 
 
-
-
-
     //-------------------------------------------------member
     public int combo_time = 0;//连击次数
     public Counter tick_combo = Counter.Create(120);//连击重置定时器
@@ -434,8 +424,6 @@ public class Entity : Model
     public bool isInOneTerrainRight = false;
 
     public float scale = 1.0f;//view scale
-
-
     public float x
     {
         set
@@ -537,7 +525,6 @@ public class Entity : Model
         }
     }
 
-
     public float height_platform
     {
         set
@@ -589,10 +576,6 @@ public class Entity : Model
     }
     public float CalculateHeight(float x)
     {
-
-
-
-
         return 0.0f;
     }
     public int mp
@@ -629,8 +612,6 @@ public class Entity : Model
             }
         }
     }
-
-
     public int exp
     {
         get
@@ -667,7 +648,6 @@ public class Entity : Model
 
     //-----------------------end of setter getter if hp mp exp
 
-
     public int level = 0;//等级
 
     public string name = "测试玩家";//名字
@@ -688,7 +668,6 @@ public class Entity : Model
     public string prefabsName = "Prefabs/Entity"; // default
     public string skin = "default";
     public string type = "6";
-
 
     // for state machine
     public bool isStand = true;
@@ -723,13 +702,7 @@ public class Entity : Model
     public string bulleClassName_atk3 = "BulletConfig";//普通攻击 1段  的子弹名字
     public BulletConfigInfo bullet_atk3_info = null;
 
-
-
-
-
     public string bulleClassName_s1 = "BulletConfig"; // 1 号技能 子弹名字
-
-
 
     public override void UpdateMS()
     {
@@ -745,8 +718,6 @@ public class Entity : Model
         }
 
     }
-
-
     public override void OnDispose()
     {
         base.OnDispose();
@@ -794,5 +765,3 @@ public class Entity : Model
     public BufferMgr bufferMgr { get { return _bufferMgr; } }
 
 }
-
-

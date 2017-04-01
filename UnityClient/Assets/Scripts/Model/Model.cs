@@ -27,8 +27,6 @@ public class Model : GAObject
 
 }
 
-
-
 public sealed class DirInput : Model
 {
     public int dir
@@ -63,10 +61,7 @@ public sealed class DirInput : Model
     public override void UpdateMS()
     {
         base.UpdateMS();
-
-
     }
-
     public override bool Init()
     {
         base.Init();
@@ -259,7 +254,6 @@ public sealed class DirInput : Model
 
         }
     }
-
     public override void Update()
     {
         if (enable) return;
@@ -311,7 +305,6 @@ public sealed class DirInput : Model
         } while (false);
 
     }
-
     float GetCurrentMousePositionX()
     {
         return Input.mousePosition.x;///(Screen.width / 1136f) / 2f;
@@ -321,6 +314,4 @@ public sealed class DirInput : Model
         return Input.mousePosition.y;/// /(Screen.height / 640f)/2f;
     }
     public bool _enable = false;
-
-
 }

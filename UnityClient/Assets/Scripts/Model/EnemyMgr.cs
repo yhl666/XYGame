@@ -80,6 +80,3 @@ public sealed class EnemyMgr :  SingletonGAObject<EnemyMgr>
     ArrayList lists = new ArrayList();
 
 }
-
-
-

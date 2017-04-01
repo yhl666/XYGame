@@ -12,20 +12,14 @@ namespace Services
 {
     public class BattlePVP : RpcService
     {
-
         public void PushResult(string msg, VoidFuncString cb)
         {
             cb("ret:ok,");
 
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_RETULT, msg);
         }
-
     }
-
-
-
 }
-
 
 /// <summary>
 /// 处理玩家键盘 输入信息
@@ -97,7 +91,6 @@ sealed class BattleKeyboardInputHandler
             PublicData.ins.IS_s1 = 5;
         }
 
-
     }
 }
 
@@ -123,8 +116,6 @@ class BattleHandlerBase : GAObject
               app.AddSendMsg("cmd:Over");
           }*/
     }
-
-
     public override bool Init()
     {
         return base.Init();
@@ -155,7 +146,6 @@ sealed class BattlePVEHandler : BattleHandlerBase
                 ///   e1.x = 55555;
                 e1.y = 5;
                 e1.team = 333;
-
 
             }
             /*  for (int i = 0; i < 10; i++)
@@ -270,9 +260,6 @@ public sealed class BattleSyncHandler
         {
             app.isStart = false;
         }
-
-
-
 
         bool _need_send = false;
         //  _recvQueue.Lock();
@@ -742,4 +729,3 @@ public sealed class BattleSyncHandler
     }
 
 }
-

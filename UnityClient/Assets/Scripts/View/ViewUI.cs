@@ -74,5 +74,3 @@ public class ViewUI : View
     protected GameObject _ui = null;
     protected bool _enable = false;
 }
-
-

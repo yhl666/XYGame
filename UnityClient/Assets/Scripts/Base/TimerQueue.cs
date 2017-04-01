@@ -62,8 +62,6 @@ public sealed class TimerQueue :Singleton<TimerQueue>
     {
         this.Tick(ref list);
     }
-
-
     private void Tick(ref List<TimerBase> list)
     {
         foreach (TimerBase timer in list)
@@ -94,7 +92,6 @@ public sealed class TimerQueue :Singleton<TimerQueue>
 }
 
 
-
 class TimerBase : GAObject
 {
     public virtual void Tick()
@@ -106,8 +103,6 @@ class TimerBase : GAObject
     public int repeat_times = 1;
     protected int repeat_times_current = 0;
 }
-
-
 
 
 
@@ -165,7 +160,6 @@ sealed class Timer : TimerBase
         {
             this.SetInValid();
         }
-
     }
 
     public override bool Init()

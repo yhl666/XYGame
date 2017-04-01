@@ -95,9 +95,6 @@ public class TerrainObjectHpPack : CustomObject
     Counter tick = Counter.Create((int)(30.0f * Utils.fps));
 }
 
-
-
-
 /// <summary>
 /// 复活点
 /// 只提供复活数据真正的逻辑在Entity里面做
@@ -122,9 +119,6 @@ public class TerrainObjectRevivePoint : CustomObject
         this.name = data.gameObject.name;
     }
 }
-
-
-
 
 
 /// <summary>
@@ -164,7 +158,6 @@ public class TerrainObjectTransform : CustomObject
             }
         }
     }
-
     public override void InitWithData(object obj)
     {
         TerrainObjectTransformData data = obj as TerrainObjectTransformData;

@@ -8,7 +8,6 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-
 public sealed class UIBattleRoot : ViewUI
 {
     public static UIBattleRoot ins = null;
@@ -130,17 +129,13 @@ public sealed class UIBattleRoot : ViewUI
 
 }
 
-
-
 public sealed class UI_btn_child : ViewUI
 {
-
     public override void Update()
     {
         base.Update();
 
     }
-
     public override void OnEvent(int type, object userData)
     {
         /* if (type == Event.ID_CHAT_BTN_close || type == Event.ID_CHAT_BTN_send)
@@ -159,13 +154,8 @@ public sealed class UI_btn_child : ViewUI
             this.On_BtnClicked();
         });
 
-
-
-
         return true;
     }
-
-
 
     private void On_BtnClicked()
     {
@@ -176,15 +166,12 @@ public sealed class UI_btn_child : ViewUI
 }
 
 
-
-
 public sealed class UI_joystick : ViewUI
 {
 
     public override void Update()
     {
         base.Update();
-
 
     }
 
@@ -267,8 +254,6 @@ public sealed class UI_joystick : ViewUI
         return true;
     }
 
-
-
     private void On_BtnClicked(int e)
     {
         //   EventDispatcher.ins.PostEvent(e);
@@ -284,21 +269,12 @@ public sealed class UI_joystick : ViewUI
 }
 
 
-
-
-
-
-
 public sealed class UI_skills : ViewUI
 {
-
     public override void Update()
     {
         base.Update();
-
-
     }
-
     public override void OnEvent(int type, object userData)
     {
 
@@ -312,7 +288,6 @@ public sealed class UI_skills : ViewUI
         this.btn_skill3 = GameObject.Find("btn_skill3").GetComponent<Button>();
         this.btn_skill4 = GameObject.Find("btn_skill4").GetComponent<Button>();
         this.btn_skill5 = GameObject.Find("btn_skill5").GetComponent<Button>();
-
         /*
    
    
@@ -320,7 +295,7 @@ public sealed class UI_skills : ViewUI
               this.btn_skill2 = GameObject.Find("UI_Battle").transform.FindChild("ui_panel_skill").transform.FindChild("btn_skill2").GetComponent<Button>();
               this.btn_skill3 = GameObject.Find("UI_Battle").transform.FindChild("ui_panel_skill").transform.FindChild("btn_skill3").GetComponent<Button>();
       
-           
+        
          */
         this.btn_skill1.onClick.AddListener(delegate()
         {
@@ -350,7 +325,6 @@ public sealed class UI_skills : ViewUI
     }
 
 
-
     private void On_BtnClicked(int e)
     {
         Debug.Log(" skill ckicled" + e);
@@ -360,11 +334,8 @@ public sealed class UI_skills : ViewUI
 
             ///  EventDispatcher.ins.PostEvent(Events.ID_LAUNCH_SKILL1);
             ///    HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent(Events.ID_LAUNCH_SKILL1);
-
-
         }
     }
-
 
     Button btn_skill1;
     Button btn_skill2;
@@ -372,15 +343,8 @@ public sealed class UI_skills : ViewUI
     Button btn_skill4;
     Button btn_skill5;//切换取消 按钮
 }
-
-
-
-
-
-
 public sealed class UI_heroInfo : ViewUI
 {
-
     public override void UpdateMS()
     {
         base.UpdateMS();
@@ -391,6 +355,15 @@ public sealed class UI_heroInfo : ViewUI
             if (m == null) return;
 
         }
+        txt_info1.text = m.no + " LV:" + m.level;
+        txt_exp1.text = m.current_exp + "/" + m.exp;
+        txt_hp1.text = m.current_hp + "/" + m.hp;
+        txt_mp1.text = m.current_mp + "/" + m.mp;
+
+        img_hp1.transform.localScale = new Vector3(m.current_hp * 1.0f / m.hp, 1.0f, 1.0f);
+        img_mp1.transform.localScale = new Vector3(m.current_mp * 1.0f / m.mp, 1.0f, 1.0f);
+        img_exp1.transform.localScale = new Vector3(m.current_exp * 1.0f / m.exp, 1.0f, 1.0f);
+
         if (m2 == null)
         {
             if (m2 != null) return;
@@ -410,17 +383,6 @@ public sealed class UI_heroInfo : ViewUI
             }
         }
 
-
-        txt_info1.text = m.no + " LV:" + m.level;
-        txt_exp1.text = m.current_exp + "/" + m.exp;
-        txt_hp1.text = m.current_hp + "/" + m.hp;
-        txt_mp1.text = m.current_mp + "/" + m.mp;
-
-        img_hp1.transform.localScale = new Vector3(m.current_hp * 1.0f / m.hp, 1.0f, 1.0f);
-        img_mp1.transform.localScale = new Vector3(m.current_mp * 1.0f / m.mp, 1.0f, 1.0f);
-        img_exp1.transform.localScale = new Vector3(m.current_exp * 1.0f / m.exp, 1.0f, 1.0f);
-
-
         if (m2 != null)
         {
 
@@ -432,10 +394,6 @@ public sealed class UI_heroInfo : ViewUI
             img_hp2.transform.localScale = new Vector3(m2.current_hp * 1.0f / m2.hp, 1.0f, 1.0f);
             img_mp2.transform.localScale = new Vector3(m2.current_mp * 1.0f / m2.mp, 1.0f, 1.0f);
             img_exp2.transform.localScale = new Vector3(m2.current_exp * 1.0f / m2.exp, 1.0f, 1.0f);
-
-
-
-
         }
 
     }
@@ -459,7 +417,6 @@ public sealed class UI_heroInfo : ViewUI
         panel1 = GameObject.Find("panel_hero");
         panel2 = GameObject.Find("panel_hero2");
 
-
         // init member
         this.img_hp1 = panel1.transform.FindChild("hero_img_hp").GetComponent<Image>();
         this.img_mp1 = panel1.transform.FindChild("hero_img_mp").GetComponent<Image>();
@@ -481,11 +438,6 @@ public sealed class UI_heroInfo : ViewUI
         this.txt_exp2 = panel2.transform.FindChild("hero_txt_exp").GetComponent<Text>();
         this.txt_info2 = panel2.transform.FindChild("hero_txt_info").GetComponent<Text>();
 
-
-
-
-
-
         //init state
         txt_hp1.text = "0/0";
         txt_mp1.text = "0/0";
@@ -505,8 +457,6 @@ public sealed class UI_heroInfo : ViewUI
         return true;
     }
 
-
-
     private void On_BtnClicked(int e)
     {
         Debug.Log(" skill ckicled" + e);
@@ -516,11 +466,8 @@ public sealed class UI_heroInfo : ViewUI
 
             EventDispatcher.ins.PostEvent(Events.ID_LAUNCH_SKILL1);
 
-
-
         }
     }
-
 
     Hero m = null;
     Hero m2 = null;
@@ -534,9 +481,6 @@ public sealed class UI_heroInfo : ViewUI
     Image img_exp1;
     Image img_icon1;
 
-
-
-
     Text txt_hp2;
     Text txt_mp2;
     Text txt_exp2;
@@ -547,30 +491,14 @@ public sealed class UI_heroInfo : ViewUI
     Image img_exp2;
     Image img_icon2;
 
-
-
-
-
-
-
-
-
     GameObject panel1 = null;
     GameObject panel2 = null;
 
     GameObject parent;// parent is ui_panel_hero_info
 }
 
-
-
-
-
-
-
 public sealed class UI_xy : ViewUI
 {
-
-
     public override void Update()
     {
         base.Update();
@@ -591,12 +519,9 @@ public sealed class UI_xy : ViewUI
         return true;
     }
 
-
     private Text txt;
 
 }
-
-
 
 public sealed class UI_fpsms : ViewUI
 {
@@ -628,17 +553,13 @@ public sealed class UI_fpsms : ViewUI
         return true;
     }
 
-
     private Text txt;
     private float _fps = 0.0f;
     private int counter = 0;
     private bool isVideoMode = false;
 }
-
-
 public sealed class UI_frame : ViewUI
 {
-
     public override void Update()
     {
         base.Update();
@@ -671,7 +592,6 @@ public sealed class UI_frame : ViewUI
         txt.text = " 时间: " + s_min + ":" + s_sec + "   " + string.Format(DATA.UI_FRAME, cur);
 
     }
-
     public override bool Init()
     {
         base.Init();
@@ -681,7 +601,6 @@ public sealed class UI_frame : ViewUI
         return true;
     }
 
-
     private Text txt;
 
 }
@@ -689,7 +608,6 @@ public sealed class UI_frame : ViewUI
 
 public sealed class UI_pvpresult : ViewUI
 {
-
     public override void Update()
     {
 
@@ -710,7 +628,6 @@ public sealed class UI_pvpresult : ViewUI
 
             HashTable kv = Json.Decode(res);
             this.txt_result.text = kv["msg"];
-
         }
     }
     public override bool Init()
@@ -722,8 +639,6 @@ public sealed class UI_pvpresult : ViewUI
         this.btn_return = panel.transform.FindChild("btn_return").GetComponent<Button>();
         this.btn_video = panel.transform.FindChild("btn_video").GetComponent<Button>();
         this.txt_result = panel.transform.FindChild("txt_result").GetComponent<Text>();
-
-
 
         this.btn_return.onClick.AddListener(() =>
          {
@@ -758,18 +673,14 @@ public sealed class UI_pvpresult : ViewUI
         return true;
     }
 
-
     GameObject panel = null;
     Button btn_return = null;
     Button btn_video = null;
     Text txt_result = null;
 }
 
-
 public sealed class UI_buffers : ViewUI
 {
-
-
     public override void Update()
     {
         base.Update();
@@ -889,7 +800,6 @@ public class BattleFlyTextInfo : GAObject
     public static Color COLOR_HP_REDUCE = new Color(178.0f / 255.0f, 0, 1.0f, 1.0f);
     public static Color COLOR_HP_ADD = new Color(0.0f, 1.0f, 149.0f / 255.0f, 1.0f);
 
-
     public enum Type
     {
         UP_DOWN,//往正上方漂浮
@@ -943,8 +853,6 @@ public class BattleFlyTextInfo : GAObject
     }
 }
 
-
-
 /// <summary>
 /// 漂浮字体 比如血量显示 暴击显示
 /// </summary>
@@ -969,7 +877,6 @@ public sealed class UI_flytext : ViewUI
                 ++i;
             }
         }
-
     }
     public override void OnEvent(int type, object userData)
     {
@@ -991,8 +898,6 @@ public sealed class UI_flytext : ViewUI
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_FLYTEXT);
         return true;
     }
-
-
     private void AddNewFlyText(BattleFlyTextInfo info)
     {
         info.tick = Counter.Create((int)(10));
@@ -1008,25 +913,15 @@ public sealed class UI_flytext : ViewUI
         info.txt_txt.text = info.txt;
         this.lists.Add(info);
 
-
-
     }
-
-
     ArrayList lists = new ArrayList();
 
     GameObject template_copy = null;
     GameObject panel = null;
 }
 
-
-
-
-
 public sealed class UI_combo : ViewUI
 {
-
-
     public override void Update()
     {
         base.Update();
@@ -1109,8 +1004,6 @@ public sealed class UI_combo : ViewUI
 
 }
 
-
-
 public sealed class UI_die : ViewUI
 {
     private bool isDie = false;
@@ -1147,7 +1040,6 @@ public sealed class UI_die : ViewUI
         }
         txt_info.text = "请选择复活点，复活角色";
 
-
     }
     public override bool Init()
     {
@@ -1179,8 +1071,6 @@ public sealed class UI_die : ViewUI
             this.OnClick(4);
         });
 
-
-
         EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
 
         this.panel.SetActive(false);
@@ -1208,17 +1098,12 @@ public sealed class UI_die : ViewUI
 
 }
 
-
-
-
-
 public class UI_dirInput : ViewUI
 {
     public override void OnEvent(string type, object userData)
     {
 
     }
-
     public override void Update()
     {
         base.Update();
@@ -1251,9 +1136,7 @@ public class UI_dirInput : ViewUI
             this.img_bg.transform.localPosition = new Vector3(model.x_bg * factor_x, model.y_bg * factor_y, this.img_bg.transform.localPosition.z);
 
         }
-
     }
-
     public override bool Init()
     {
 
@@ -1293,12 +1176,8 @@ public class UI_dirInput : ViewUI
     private DirInput model;
 }
 
-
-
-
 public sealed class UI_smallmap : ViewUI
 {
-
 
     public override void Update()
     {
@@ -1321,14 +1200,13 @@ public sealed class UI_smallmap : ViewUI
             Entity e = enemys[i] as Entity;
             GameObject obj = list_ememy[i] as GameObject;
             obj.SetActive(true);
-            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.z/terrain.limit_z_up );
+            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.z / terrain.limit_z_up);
         }
         for (; i < list_ememy.Count; i++)
         {
             GameObject obj = list_ememy[i] as GameObject;
             obj.SetActive(false);
         }
-
 
         //更新hero 信息
         ArrayList heros = HeroMgr.ins.GetHeros();
@@ -1345,7 +1223,7 @@ public sealed class UI_smallmap : ViewUI
             Entity e = heros[i] as Entity;
             GameObject obj = list_hero[i] as GameObject;
             obj.SetActive(true);
-            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.z / terrain.limit_z_up );
+            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.z / terrain.limit_z_up);
         }
         for (; i < list_hero.Count; i++)
         {
@@ -1388,7 +1266,5 @@ public sealed class UI_smallmap : ViewUI
     GameObject template_hero2 = null;
     GameObject template_enemy = null;
 
-
     Image img_bg = null;
 }
-

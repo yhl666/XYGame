@@ -15,9 +15,6 @@ sealed class AsyncQueueInfo
     public bool InMainThread = true;
 }
 
-
-
-
 /// <summary>
 /// 异步任务队列
 /// 全局唯一 可不用DestroyInstance

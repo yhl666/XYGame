@@ -7,7 +7,6 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-
 public class CameraFollow : MonoBehaviour
 {
     public static CameraFollow ins = null;
@@ -89,10 +88,6 @@ public class CameraFollow : MonoBehaviour
 
         var bg = GameObject.Find("bg_static");
 
-
-
-
-
         //静态 背景 图 滚动
         var sp = bg.GetComponent<SpriteRenderer>().sprite;
 
@@ -114,11 +109,7 @@ public class CameraFollow : MonoBehaviour
           this.transform.position.x + HALF - percent * MAX,//起始位置加上起始偏移量，  减去比例大小
          this.transform.position.y
          , bg.transform.position.z);
-
-
-
     }
-
 
     /// <summary>
     /// 开始Hero特写

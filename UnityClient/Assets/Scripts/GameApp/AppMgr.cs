@@ -35,8 +35,6 @@ public class AppMgr :  SingletonGAObject<AppMgr>
     {
 
     }
-
-
     public override void Update()
     {
         base.Update();
@@ -52,8 +50,6 @@ public class AppMgr :  SingletonGAObject<AppMgr>
         AutoReleasePool.ins.Clear();
 
     }
-
-
 
     // ----------------controller 
 
@@ -84,7 +80,6 @@ public class AppMgr :  SingletonGAObject<AppMgr>
     {
 
     }
-
     public static AppBase Create<T>() where T : new()
     {
         AppBase ret = new T() as AppBase;
@@ -128,7 +123,6 @@ public class AppMgr :  SingletonGAObject<AppMgr>
         current_app = null;
     }
 
- 
     private static AppBase current_app = null;
     private Stack stack = new Stack();
     private ArrayList paralles = new ArrayList();

@@ -7,7 +7,6 @@ using UnityEngine;
 using System.Collections;
 using System.Threading;
 
-
 public sealed class ThreadSafeQueue : object
 {
     public void Enqueue(object obj)
@@ -55,10 +54,6 @@ public sealed class ThreadSafeQueue : object
         _mutex.ReleaseMutex();
     }
 
-
-
-
-
     //un safe
 
     public void Lock()
@@ -100,14 +95,11 @@ public sealed class ThreadSafeQueue : object
         _queue.Clear();
     }
 
-
     public ThreadSafeQueue()
     {
         _queue = new Queue();
         _mutex = new Mutex();
     }
-
-
     private Queue _queue;
     public Mutex _mutex;
 };

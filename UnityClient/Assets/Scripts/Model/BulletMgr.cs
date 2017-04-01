@@ -95,10 +95,5 @@ public sealed class BulletMgr : SingletonGAObject<BulletMgr>
         }
         EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLBULLET_UPDATEMS);
     }
-
-
-
     ArrayList lists = new ArrayList();
-
-
 }

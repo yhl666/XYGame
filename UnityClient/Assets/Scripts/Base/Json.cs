@@ -40,7 +40,6 @@ public class Json
             }
 
         }
-
         return ret;
     }
 
@@ -59,8 +58,6 @@ public class Json
         }
         return ret;
     }
-
-
 
     public static ArrayList MultiDecode(string json)
     {
@@ -81,8 +78,6 @@ public class Json
         if (ret.Count == 0) return null;
         return ret;
     }
-
-
 
     /// <summary>
     /// 打包hash table 到json

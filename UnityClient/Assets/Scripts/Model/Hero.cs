@@ -14,7 +14,6 @@ public class Hero : Entity
 
         return true;
     }
-
     public override void UpdateMS()
     {
 
@@ -41,5 +40,3 @@ public class Hero : Entity
     public string name_head;
     protected bool enable_pvp_ai = false;
 }
-
-

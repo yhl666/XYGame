@@ -104,8 +104,6 @@ public sealed class BufferMgr : GAObject
         return false;
     }
 
-
-
     ArrayList lists = new ArrayList();
 
     /*   public static BufferMgr ins
@@ -198,4 +196,3 @@ public sealed class BufferMgr : GAObject
 
     Entity owner = null;
 }
-

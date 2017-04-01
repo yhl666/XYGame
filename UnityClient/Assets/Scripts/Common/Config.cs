@@ -29,9 +29,7 @@ public class Config : object
 
     public const int MAX_NETSOCKET_BUFFER_SIZE = 500;
 
-
     public const int MAX_FRAME_COUNT = 60000;
-
 
     public const int MAX_FPS = 40;
 
@@ -44,6 +42,3 @@ public class Config : object
     public static float SCREEN_SCALE_Y = Screen.height / 640f;
 
 };
-
-
-

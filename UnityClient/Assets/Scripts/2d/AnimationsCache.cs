@@ -33,7 +33,6 @@ public sealed class AnimationsCache:Singleton<AnimationsCache>
         return null;
     }
 
-
     /// <summary>
     ///  add animations with plist file 
     /// </summary>
@@ -42,12 +41,7 @@ public sealed class AnimationsCache:Singleton<AnimationsCache>
     {
         // parse plist file
 
-
-
-
-
     }
-
 
     public void Clear()
     {
@@ -66,5 +60,3 @@ public sealed class AnimationsCache:Singleton<AnimationsCache>
     private Hashtable hash = new Hashtable();
 
 }
-
-

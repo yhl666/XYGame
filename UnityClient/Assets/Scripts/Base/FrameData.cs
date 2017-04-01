@@ -25,7 +25,6 @@ public sealed class FrameData : object
     private FrameData()
     {
 
-
     }
 
     public string toJson()
@@ -98,8 +97,6 @@ public sealed class FrameData : object
         }
         return null;
     }
-
-
     public static ArrayList CreateWithMultiJson(string json)
     {
 
@@ -144,7 +141,6 @@ public sealed class FrameData : object
             {
                 v = json.Substring(last, i - last);
                 last = i + 1;
-
 
                 if (k == "left")
                 {

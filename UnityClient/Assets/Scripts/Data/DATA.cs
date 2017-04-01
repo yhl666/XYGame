@@ -24,9 +24,6 @@ public class DATA
 
     public const string UI_LOADING = "加载中 {0}%  {1}";
 
-
-
-
     public const string UI_DEATH_ALIVE_TIME = "复活剩余时间:{0} 秒";
     public const string UI_PLAYING_VIDEOMODE = "播放录像中";
     public const string UI_WAIT_INFO_DEFAULT = "等待中";
