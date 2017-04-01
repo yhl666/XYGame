@@ -18,7 +18,7 @@ public sealed class BufferMgr : GAObject
         if (b.isOnlyOne)
         {
             Buffer has = GetBuffer(b.GetName());
-            if ( has!= null)
+            if (has != null)
             {
                 has.OnMerge(b);
                 return;
@@ -49,7 +49,33 @@ public sealed class BufferMgr : GAObject
         b.OnExit();
         b.LazyDispose();
     }
-
+    public void Clear()
+    {
+        foreach (Buffer buf in lists)
+        {
+            if (buf.clearAble == false) continue;
+            buf.OnExit();
+            buf.LazyDispose();
+        }
+        this.lists.Clear();
+    }
+    public void ClearClearAble()
+    {
+        for (int i = 0; i < lists.Count; )
+        {
+            Buffer b = lists[i] as Buffer;
+            if (b.clearAble)
+            {
+                this.Remove(b);
+                b.OnExit();
+                b.LazyDispose();
+            }
+            else
+            {
+                ++i;
+            }
+        }
+    }
     public override void UpdateMS()
     {
         foreach (Buffer b in lists)
@@ -171,7 +197,7 @@ public sealed class BufferMgr : GAObject
         ret.Init();
         this.Add(ret);
 
-    
+
         return ret;
     }
 

@@ -694,6 +694,7 @@ public class DieState : StateBase
         {
             this.Enable = false;
             Target.isDie = true;
+            Target.bufferMgr.ClearClearAble();//清除所有Buffer
             EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
             if (Target != HeroMgr.ins.self as Entity)
             {

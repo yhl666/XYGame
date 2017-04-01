@@ -385,7 +385,7 @@ public class Skill2_1 : SkillBase
         Target.attackingAnimationName = "2200_0";
         Target.is_spine_loop = false;
 
-        RunState run = (Target.machine.GetState<RunState>() as RunState);
+        RunXZState run = (Target.machine.GetState<RunXZState>() as RunXZState);
         run.stack.Resume();
         run.DisableMove();
     }
@@ -447,7 +447,7 @@ public class Skill2_1 : SkillBase
         Target.isAttacking = false;
         Target.is_spine_loop = true;
         Target.machine.ResumeAllStack();
-        RunState run = (Target.machine.GetState<RunState>() as RunState);
+        RunXZState run = (Target.machine.GetState<RunXZState>() as RunXZState);
         run.EnableMove();
     }
     public override void OnPush()
@@ -1037,7 +1037,7 @@ public class Skill6_2 : SkillBase
         this.Target.machine.GetState<StandState>().Resume();
         this.Target.machine.GetState<FallState>().Resume();
         tick.Reset();
-        RunState state = this.Target.machine.GetState<RunState>() as RunState;
+        RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
         state.Resume();
         state.EnableWhenAttack();
         Target.isAttacking = true;
@@ -1102,7 +1102,7 @@ public class Skill6_2 : SkillBase
         Target.isAttacking = false;
         tick.Reset();
         Target.is_spine_loop = true;
-        RunState state = this.Target.machine.GetState<RunState>() as RunState;
+        RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
         state.DisableWhenAttak();
         this.ResumeAll();
 
@@ -1389,7 +1389,7 @@ public class Skill62_1 : SkillBase
         this.Target.machine.GetState<FallState>().Resume();
         tick.Reset();
         {
-            RunState state = this.Target.machine.GetState<RunState>() as RunState;
+            RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
             state.Resume();
             state.EnableWhenAttack();
         }
@@ -1474,7 +1474,7 @@ public class Skill62_1 : SkillBase
         Target.isAttacking = false;
         tick.Reset();
         Target.is_spine_loop = true;
-        RunState state = this.Target.machine.GetState<RunState>() as RunState;
+        RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
         state.DisableWhenAttak();
         this.ResumeAll();
 

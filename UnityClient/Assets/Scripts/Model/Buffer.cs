@@ -33,6 +33,7 @@ public class Buffer : Model
     public int MAX_TICK = 80;
     public int id = 0;
     public bool isOnlyOne = false;//buffer是否是唯一
+    public bool clearAble = true;//可被清除，比如死亡后 一些武器Buffer 不可清除
     public virtual int GetId() { return id; }  //buffer 唯一id
 
 
@@ -318,7 +319,7 @@ public class BufferEquipTest1 : Buffer
     {
         base.Init();
         this.icon = "hd/interface/items/503063.png";
-
+        clearAble = false;
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_ATTACK);
         this.target = this.owner;
         tick.SetMax(1600);//40 s
@@ -417,7 +418,7 @@ public class BufferEquipTest2 : Buffer
     {
         base.Init();
         this.icon = "hd/interface/items/503119.png";
-
+        clearAble = false;
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
         this.target = this.owner;
         this.brief = "护体";
@@ -519,7 +520,7 @@ public class BufferHitBack : Buffer
         nonsense = false;
         base.OnEnter();
         tick.SetMax(time);
-        target.machine.GetState<RunState>().Pause();
+        target.machine.GetState<RunXZState>().Pause();
         //  Debug.Log("击退开始");
 
     }
@@ -551,7 +552,7 @@ public class BufferHitBack : Buffer
     {
         if (nonsense) return;
         ///  Debug.Log("击退结束");
-        target.machine.GetState<RunState>().Resume();
+        target.machine.GetState<RunXZState>().Resume();
         base.OnExit();
     }
 
@@ -854,7 +855,7 @@ public class BufferSpin : Buffer
         {
             PublicData.ins.inputAble = false;
         }
-        target.machine.GetState<RunState>().SetDisable();
+        target.machine.GetState<RunXZState>().SetDisable();
         target.machine.GetState<FallState>().Resume();
         target.machine.GetState<StandState>().Resume();
     }
