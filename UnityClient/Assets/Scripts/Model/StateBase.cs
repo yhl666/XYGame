@@ -696,7 +696,7 @@ public class DieState : StateBase
             Target.isDie = true;
             Target.bufferMgr.ClearClearAble();//清除所有Buffer
             EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
-            if (Target != HeroMgr.ins.self as Entity)
+            if (Target != HeroMgr.ins.self as Entity && (Target as Enemy) ==null)
             {
                 EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + Target.name + "死亡");
             }

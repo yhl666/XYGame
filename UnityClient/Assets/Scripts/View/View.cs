@@ -424,7 +424,7 @@ public class ViewBuffer : View
         ani.ani.UpdateMS();
 
         //  ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
-        ani.gameObject.transform.position = new Vector3(m.target.x, m.target.GetRealY() + 0.7f, ani.gameObject.transform.position.z);
+        ani.gameObject.transform.position = new Vector3(m.target.x, m.target.GetReal25DY() + 0.7f, ani.gameObject.transform.position.z);
 
     }
     private GameObject view_bullet;
