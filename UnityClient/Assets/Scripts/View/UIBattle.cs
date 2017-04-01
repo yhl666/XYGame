@@ -1321,7 +1321,7 @@ public sealed class UI_smallmap : ViewUI
             Entity e = enemys[i] as Entity;
             GameObject obj = list_ememy[i] as GameObject;
             obj.SetActive(true);
-            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.GetReal25DY() / (terrain.limit_y_up - terrain.limit_y_down));
+            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.z/terrain.limit_z_up );
         }
         for (; i < list_ememy.Count; i++)
         {
@@ -1345,7 +1345,7 @@ public sealed class UI_smallmap : ViewUI
             Entity e = heros[i] as Entity;
             GameObject obj = list_hero[i] as GameObject;
             obj.SetActive(true);
-            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.GetReal25DY() / (terrain.limit_y_up - terrain.limit_y_down));
+            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.z / terrain.limit_z_up );
         }
         for (; i < list_hero.Count; i++)
         {
