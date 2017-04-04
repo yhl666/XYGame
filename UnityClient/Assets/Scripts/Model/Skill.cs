@@ -225,6 +225,7 @@ public class SkillBase : Model
 {
     public Entity Target = null; // reference
     public SkillStack stack = null;//reference
+    public int level = 0;
     public virtual string GetName() { return "SkillBase"; }
     public virtual string GetAnimationName() { return ""; }
     public bool Enable = false;
@@ -314,7 +315,23 @@ public class SkillBase : Model
     {
 
     }
+    /// <summary>
+    /// 请求升级
+    /// </summary>
+    public bool PushLevelUp()
+    {
+        this.OnLevelUp(this.level + 1);// 默认升级规则为一级一级提升
+        ++this.level;
+        return true;
+    }
+    /// <summary>
+    /// 技能升级事件 
+    /// </summary>
+    /// <param name="target_level">this.level当前等级 ，target_level 下一段等级</param>
+    public void OnLevelUp(int target_level)
+    {
 
+    }
     /// <summary>
     ///  打断发起者  打断成功后的回调
     /// </summary>
