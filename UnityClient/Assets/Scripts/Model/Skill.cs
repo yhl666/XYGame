@@ -225,7 +225,7 @@ public class SkillBase : Model
 {
     public Entity Target = null; // reference
     public SkillStack stack = null;//reference
-    public int level = 1;
+    public int level = 2;
     public virtual string GetName() { return "SkillBase"; }
     public virtual string GetAnimationName() { return ""; }
     public bool Enable = false;
@@ -1534,12 +1534,12 @@ public class Skill62_1 : SkillBase
 
         if (Target.isAttacking)
         {
-           /// this.PushOnInterruptAttackSate(); //强制打断 普通技能
+            /// this.PushOnInterruptAttackSate(); //强制打断 普通技能
         }
         if (Target.isAttacking)
         {
-          ///  this.PushOnInterrupted();
-           /// return;
+            ///  this.PushOnInterrupted();
+            /// return;
         }
         this.OnEnter();
 
@@ -1725,7 +1725,7 @@ public class Skill62_2 : SkillBase
         tick.SetMax(time);
         tick.Reset();
         cd.Reset();
-        buf =   BufferMgr.CreateHelper<BufferSkill62_2>(Target);
+        buf = BufferMgr.CreateHelper<BufferSkill62_2>(Target);
         buf.time = time;
         Target.AddBuffer(buf);
         this.Enable = true;
@@ -1789,11 +1789,11 @@ public class Skill62_2 : SkillBase
     }
     public override void OnSpineComplete()
     {
- 
+
     }
     public override void OnExit()
     {
-        if(buf!=null)
+        if (buf != null)
         {
             buf.SetInValid();
             buf = null;
@@ -1864,7 +1864,7 @@ public class Skill62_3 : SkillBase
         this.Target.machine.GetState<FallState>().Resume();
         Target.isAttacking = true;
         this.Enable = true;
-        Target.is_spine_loop = false;
+        Target.is_spine_loop = true;
         Target.attackingAnimationName = Skill62_3_Data.ins.animation_name;//// "6140_1";
     }
 
@@ -1936,8 +1936,13 @@ public class Skill62_3 : SkillBase
     {
         BulletConfigInfo info = BulletConfigInfo.Create();
 
-        info.AddBuffer("BufferHitFly");
-
+        info.AddBuffer("BufferHitBack");
+        if (level == 2)
+        {
+            BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
+            buf.SetLastTime(Skill62_3_Data.ins.spin_time);
+            info.AddBuffer(buf);
+        }
         // info.launch_delta_xy.x = 1.5f;
         //  info.launch_delta_xy.y = -0.2f;
         info.frameDelay = 3;
@@ -1950,8 +1955,8 @@ public class Skill62_3 : SkillBase
 
         //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
         /// info.rotate = 30.0f;
-        info.distance = 0;
-        info.lastTime = 10;
+        info.distance = 2f;
+        ///   info.lastTime = 10;
         info.scale_x = 2f;
         info.scale_y = 2f;
 
@@ -1961,19 +1966,30 @@ public class Skill62_3 : SkillBase
 
         info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
         info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
-        info.collider_size = Skill62_3_Data.ins.hit_rect;
 
+        if (level == 1)
+        {
+            //长方
+            info.collider_size = Skill62_3_Data.ins.hit_rect;
+            info.collider_type = ColliderType.Box;
+        }
+        else if (level == 2)
+        {
+            info.collider_type = ColliderType.Sector;
+            info.sector_angle = Skill62_3_Data.ins.sector_angle;
+            info.sector_radius = Skill62_3_Data.ins.sector_radius;
+        }
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
     public override void OnSpineComplete()
     {
         ///  this.stack.PopSingleSkill();
         ///  this.Shoot();
-        this.OnExit();
+        if (this.Enable)
+            this.OnExit();
     }
     public override void OnExit()
     {
-
         this.Enable = false;
         Target.isAttacking = false;
         Target.is_spine_loop = true;
@@ -1984,13 +2000,23 @@ public class Skill62_3 : SkillBase
     }
     public override void OnPush()
     {
-        if (cd.IsMax() == false) return;
-        if (this.Enable) return;
-
+        if (cd.IsMax() == false)
+        {
+            Debug.LogError("cdddd");
+            return;
+        }
+        if (this.Enable || Target.isAttacking)
+        {
+            return;
+        }
+        if (Target.isJumping == false && Target.isJumpTwice == false)
+        {
+            ///   return;
+        }
         ///  if (Target.isStand == false) return;
         if (Target.isAttacking)
         {
-            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+            /// this.PushOnInterruptAttackSate(); //强制打断 普通技能
         }
         this.OnEnter();
     }
@@ -2007,11 +2033,6 @@ public class Skill62_3 : SkillBase
     }
     public override bool OnInterrupted(SkillBase who)
     {
-        if (this.Enable && tick_cancel.IsMax())
-        {
-            this.OnExit();
-            return true;
-        }
         return false;
     }
     Bullet b = null;

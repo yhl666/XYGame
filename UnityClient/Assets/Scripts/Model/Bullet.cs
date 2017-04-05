@@ -82,9 +82,10 @@ public enum ColliderType
     Sphere,//3D 球
     Circle, // 2D 圆
     Rect,//2D 矩形
+    Sector,//2D扇形
 }
 
-public  enum DamageType
+public enum DamageType
 {
     RATIO,// 比例伤害
     REAL,//真实伤害
@@ -126,6 +127,8 @@ public sealed class BulletConfigInfo
     public int validTimes = 1;//总有效次数 ，击中物体的 帧次数 ，如果当前帧没有命中任何物体 那么不会计算帧次
     public int oneHitTimes = 1;//同一个物体能被命中的次数
 
+    public int sector_angle;//扇形评定框 角度
+    public float sector_radius; // 扇形 评定半径
     public DamageType damage_type = DamageType.RATIO;//伤害类型 默认为 比例伤害
 
     // eg.
@@ -268,7 +271,7 @@ public sealed class BulletConfig : Bullet
             if (h.team != owner.team)
             {
                 bool hit = false;
-                if (info.collider_type == ColliderType.Rect)
+                if (info.collider_type == ColliderType.Rect || info.collider_type == ColliderType.Box)
                 {
                     hit = h.IsCast(this.bounds);
                 }
@@ -277,12 +280,51 @@ public sealed class BulletConfig : Bullet
                     //    Debug.Log("dis = " + diss);
                     hit = h.ClaculateDistance(x, y) < info.distance_atk;
                 }
+                else if (ColliderType.Sector == info.collider_type)
+                {
+                    //扇形评定框
+                    do
+                    {
+                        int base_angle = 0;//评定角度
+                        if (this.flipX < 0)//往左边走
+                        {
+                            if (this.x < h.x) break; // 目标在右边 跳过
+                            base_angle = 180;
+                        }
+                        else
+                        {
+                            if (this.x >= h.x) break; // 目标在左边 跳过
+                            base_angle = 0;
+                        }
+                        if (h.ClaculateDistance(x, h.y, z) < info.sector_radius)
+                        {//范围内
+                            int degree = (int)Utils.GetAngle(new Vector3(x, h.y, z), new Vector3(h.x, h.y, h.z));
+                            int angle = info.sector_angle;//扇形大小 
+
+                            int delta = base_angle - angle / 2;
+
+                            while (delta < 0)
+                            {
+                                delta += 360;
+                            }
+                            while (degree - delta < 0)
+                            {
+                                degree += 360;
+                            }
+                            if (angle >= degree - delta)
+                            {
+                                hit = true;
+                            }
+                        }
+                    }
+                    while (false);
+                }
                 if (hit)
                 {
                     if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
                     hitNumber++;
 
-                    AttackInfo inf = AttackInfo.Create(owner, h,info.damage_type);
+                    AttackInfo inf = AttackInfo.Create(owner, h, info.damage_type);
                     if (info.damage_type == DamageType.RATIO)
                     {
                         inf.InitWithCommon();
@@ -337,7 +379,7 @@ public sealed class BulletConfig : Bullet
             if (h.team != owner.team)
             {
                 bool hit = false;
-                if (info.collider_type == ColliderType.Rect)
+                if (info.collider_type == ColliderType.Rect || info.collider_type == ColliderType.Box)
                 {
                     hit = h.IsCast(this.bounds);
                 }
@@ -345,6 +387,45 @@ public sealed class BulletConfig : Bullet
                 {
                     //    Debug.Log("dis = " + diss);
                     hit = h.ClaculateDistance(x, y) < info.distance_atk;
+                }
+                else if (ColliderType.Sector == info.collider_type)
+                {
+                    //扇形评定框
+                    do
+                    {
+                        int base_angle = 0;//评定角度
+                        if (this.flipX < 0)//往左边走
+                        {
+                            if (this.x < h.x) break; // 目标在右边 跳过
+                            base_angle = 180;
+                        }
+                        else
+                        {
+                            if (this.x >= h.x) break; // 目标在左边 跳过
+                            base_angle = 0;
+                        }
+                        if (h.ClaculateDistance(x, h.y, z) < info.sector_radius)
+                        {//范围内
+                            int degree = (int)Utils.GetAngle(new Vector3(x, h.y, z), new Vector3(h.x, h.y, h.z));
+                            int angle = info.sector_angle;//扇形大小 
+
+                            int delta = base_angle - angle / 2;
+
+                            while (delta < 0)
+                            {
+                                delta += 360;
+                            }
+                            while (degree - delta < 0)
+                            {
+                                degree += 360;
+                            }
+                            if (angle >= degree - delta)
+                            {
+                                hit = true;
+                            }
+                        }
+                    }
+                    while (false);
                 }
                 if (hit)
                 {

@@ -204,7 +204,6 @@ public sealed class EventDispatcher : GAObject
             return;
         }
         ArrayList list = objs_event[type] as ArrayList;
-
         list.Remove(target);
     }
 
