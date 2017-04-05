@@ -3,15 +3,15 @@ branches: {
   }
 fileChange:
   /工作日志:
-    newFile: !uuid '9cbaa3b5a8dcc92056dce1eb22abb600c9351cc2'
-    oldFile: !uuid '94ea7a7bd45818f2549e81e7138e1fd69e2feda0'
+    newFile: !uuid '6f42865f54529ab74c577331b2b209eb7c9aeacd'
+    oldFile: !uuid '9cbaa3b5a8dcc92056dce1eb22abb600c9351cc2'
   /工作日志/策划:
-    newFile: !uuid '1ce24ca2ae9f8b630e5b2a805afdca96e9b0371b'
-    oldFile: !uuid '5dfc9625fd326c126ec9dd636ee0670d2fa7e259'
-  /工作日志/策划/任务2.txt:
-    newFile: !uuid 'd034ecbba308875fdc03e2dc3ab01e13b6914e01'
-    oldFile: !uuid '903a57a07f78389bdaec2fe7c0df90c9f0140658'
-gitCommitId: !uuid 'a01fd6db84afa39cd579ceee72c113141200ebf7'
+    newFile: !uuid 'b0fcb978e5d63e3aaa2fba5245005f4ffd1a9b21'
+    oldFile: !uuid '1ce24ca2ae9f8b630e5b2a805afdca96e9b0371b'
+  /工作日志/策划/任务3.txt:
+    newFile: !uuid 'addf9208be5d3db949654756c7240d5f2cac541a'
+    oldFile: !uuid 'd1afede0a40a520d5ce31d0d4886f70749c39265'
+gitCommitId: !uuid '4ba90ea46e27c50672e349824c1c2a1e9c2e8784'
 renames: {
   }
-revisionId: 606
+revisionId: 607
