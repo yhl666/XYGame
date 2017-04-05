@@ -15,13 +15,12 @@ public class AttackInfo
     /// <param name="owner"></param>
     /// <param name="target"></param>
     /// <returns></returns>
-    public static AttackInfo Create(Entity owner, Entity target)
+    public static AttackInfo Create(Entity owner, Entity target, DamageType type = DamageType.RATIO)
     {
         AttackInfo ret = new AttackInfo();
+        ret.type = type;
         ret.ownner = owner;
         ret.target = target;
-
-
         ret.atk_func = (object _param) =>
             {
                 AttackInfo info = _param as AttackInfo;
@@ -58,7 +57,7 @@ public class AttackInfo
     public float crits_damage = 0.0f;
     public bool is_crits = false;
 
-
+    public DamageType type = DamageType.RATIO;
     /// <summary>
     /// 调用攻击函数接口
     /// </summary>
@@ -265,8 +264,16 @@ public class Entity : Model
 
         EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_TAKEATTACKED, info);
     }
-
-
+    /// <summary>
+    /// 是否存活
+    /// </summary>
+    public bool IsAlive
+    {
+        get
+        {
+            return _current_hp > 0;
+        }
+    }
 
     public System.Random _random = new System.Random(0);
 
@@ -336,11 +343,11 @@ public class Entity : Model
     }
     public float ClaculateDistance(Entity other)
     {
-        return   this.ClaculateDistance(other.x, other.y,other.z);
+        return this.ClaculateDistance(other.x, other.y, other.z);
     }
-    public float ClaculateDistance(float x, float y,float z = 0f)
+    public float ClaculateDistance(float x, float y, float z = 0f)
     {
-        return Utils.ClaculateDistance(new Vector3(this.x, this.y + this.height,this.z), new Vector3(x, y,z));
+        return Utils.ClaculateDistance(new Vector3(this.x, this.y + this.height, this.z), new Vector3(x, y, z));
     }
 
     public void SetRealY(float y)

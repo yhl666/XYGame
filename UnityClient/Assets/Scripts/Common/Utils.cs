@@ -62,6 +62,10 @@ public sealed class Utils
     {
         return GetDegree(new Vector2(from.x, from.z), new Vector2(to.x, to.z));
     }
+    public static int GetAngle(Entity from, Entity to)
+    {
+        return (int)GetAngle(from.pos, to.pos);
+    }
 
     /// <summary>
     ///   0-360

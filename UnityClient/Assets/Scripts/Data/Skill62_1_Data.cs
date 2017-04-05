@@ -20,8 +20,8 @@ public class Skill62_1_Data : MonoBehaviour
     public string animation_name;// 技能角色动画名称
     //special
     public float added_speed_percent;//速度提成百分比，，10 表示提升10% 120 表示提升120%
-
-
+    public float attach_distance;//吸附效果 距离在多少时结束  
+    public float attach_last_time;//吸附效果持续时间
 
     public static Skill62_1_Data ins = null;
     void Awake()

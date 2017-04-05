@@ -501,62 +501,130 @@ public class BufferHitBack : Buffer
     {
         return "BufferHitBack";
     }
-    public int time = 15;//默认3s
-    public int dir = 1;
-    public bool nonsense = true;
+    /*  public int time = 15;//默认3s
+      public int dir = 1;
+      public bool nonsense = true;
+      public override void OnEnter()
+      {
+          //去重
+          {
+              Buffer other = mgr.GetBuffer(this.GetId());
+              if (other != null && other != this && other.GetId() == this.GetId())
+              {
+                  ///   other.GetCounter().Reset();
+                  this.SetInValid();
+                  return;
+              }
+          }
+
+          nonsense = false;
+          base.OnEnter();
+          tick.SetMax(time);
+          target.machine.GetState<RunXZState>().Pause();
+          //  Debug.Log("击退开始");
+
+      }
+      public override void UpdateMS()
+      {
+          if (nonsense) return;
+
+          if (tick.Tick())
+          {
+              target.x_auto -= dir * 0.07f;
+              return;
+          }
+          this.SetInValid();
+      }
+      public override bool Init()
+      {
+          base.Init();
+          this.id = 0xffef1;
+          if (target.flipX > 0)
+          {
+              dir = -1;
+          }
+          show_ui = true;
+          icon = "hd/interface/items/503079.png";
+          brief = "击退";
+          return true;
+      }
+      public override void OnExit()
+      {
+          if (nonsense) return;
+          ///  Debug.Log("击退结束");
+          target.machine.GetState<RunXZState>().Resume();
+          base.OnExit();
+      }
+      */
+}
+
+
+
+/// <summary>
+/// 吸附 移动（强制移动到Entity）
+/// </summary>
+public class BufferAttachTo : Buffer
+{
+    public Entity to = null;
+    public float distance = 0.0f;
+    public override string GetName()
+    {
+        return "BufferAttachTo";
+    }
+
     public override void OnEnter()
     {
-        //去重
-        {
-            Buffer other = mgr.GetBuffer(this.GetId());
-            if (other != null && other != this && other.GetId() == this.GetId())
-            {
-                ///   other.GetCounter().Reset();
-                this.SetInValid();
-                return;
-            }
-        }
-
-        nonsense = false;
         base.OnEnter();
-        tick.SetMax(time);
-        target.machine.GetState<RunXZState>().Pause();
-        //  Debug.Log("击退开始");
-
     }
     public override void UpdateMS()
     {
-        if (nonsense) return;
+        base.UpdateMS();
 
-        if (tick.Tick())
+        if (target.ClaculateDistance(to) <= distance)
         {
-            target.x_auto -= dir * 0.07f;
+            this.SetInValid();
             return;
         }
-        this.SetInValid();
+        int dir = Utils.GetAngle(target, to);
+
+        // code copy from RunXZState
+        float speed = target.speed * 2f;
+
+        float dd = dir * DATA.ONE_DEGREE;//一度的弧度
+
+        float z_delta = Mathf.Sin(dd);
+        float x_delta = Mathf.Cos(dd);
+        target.z = target.z + speed * z_delta;
+        target.x = target.x + speed * x_delta;
+
+        if (dir > 90 && dir < 270)
+        { //left
+            target.flipX = 1.0f;
+        }
+        else
+        {//right
+            target.flipX = -1.0f;
+        }
     }
     public override bool Init()
     {
         base.Init();
-        this.id = 0xffef1;
-        if (target.flipX > 0)
-        {
-            dir = -1;
-        }
+        base.isOnlyOne = true;
         show_ui = true;
         icon = "hd/interface/items/503079.png";
-        brief = "击退";
+        brief = "不可移动";
+
         return true;
     }
     public override void OnExit()
     {
-        if (nonsense) return;
-        ///  Debug.Log("击退结束");
-        target.machine.GetState<RunXZState>().Resume();
         base.OnExit();
     }
 
 }
+
+
+
 
 /// <summary>
 /// 击飞
@@ -713,6 +781,40 @@ public class BufferNegativeUnbeatable : Buffer
 
 }
 
+
+/// <summary>
+///  火焰UI效果
+/// </summary>
+public class BufferSkill62_2 : Buffer
+{
+    public override string GetName()
+    {
+        return "BufferSkill62_2";
+    }
+    public int time = 40;
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        tick.SetMax(time);
+    }
+    public override bool Init()
+    {
+        base.Init();
+        show_ui = true;
+        icon = "hd/interface/items/503063.png";
+        brief = "烈焰斗篷";
+        return true;
+    }
+    public override void UpdateMS()
+    {
+        if (tick.Tick())
+        {
+            return;
+        }
+        tick.Reset();
+    }
+
+}
 
 /// <summary>
 /// 无敌Buffer  免疫任何伤害 任何控制技能  

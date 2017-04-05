@@ -1202,7 +1202,7 @@ public class SkillState : StateBase
             {
                 foreach (SkillStack s in skill_stacks)
                 {
-                    s.OnSpineCompolete();
+                    s.OnSpineComplete();
                 }
             }
         }

@@ -247,7 +247,7 @@ public class ViewEntity : View
 
             info.txt = m.delta_hp.ToString(); ;
             info.position_world_x = m.x + UnityEngine.Random.Range(-0.5f, 0.5f);
-            info.position_world_y = m.GetRealY() + 0.8f;
+            info.position_world_y = m.GetReal25DY() + 0.8f;
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_FLYTEXT, info);
             m.delta_hp = 0;
         }
@@ -376,7 +376,7 @@ public class ViewEnemy : View
 
             info.txt = m.delta_hp.ToString(); ;
             info.position_world_x = m.x + UnityEngine.Random.Range(-0.5f, 0.5f);
-            info.position_world_y = m.GetRealY() + 0.8f;
+            info.position_world_y = m.GetReal25DY() + 0.8f;
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_FLYTEXT, info);
             m.delta_hp = 0;
         }

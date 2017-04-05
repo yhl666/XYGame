@@ -53,7 +53,7 @@ public class Skill61_1 : SkillBase
         BulletMgr.Create(this.Target, "BulletConfig", info);
     }
 
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         this.OnExit();
     }
@@ -173,7 +173,7 @@ public class Skill61_2 : SkillBase
         //bullet.y = Target.y;
     }
 
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         this.OnExit();
     }
@@ -326,7 +326,7 @@ public class Skill61_3 : SkillBase
         cd.Tick();
     }
 
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         this.OnExit();
     }

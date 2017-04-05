@@ -84,6 +84,13 @@ public enum ColliderType
     Rect,//2D 矩形
 }
 
+public  enum DamageType
+{
+    RATIO,// 比例伤害
+    REAL,//真实伤害
+    MIXED,//混合伤害
+}
+
 public delegate void OnBulletFunc(Bullet bullet, object userData = null);
 public delegate Vector2 OnMoveFunc(BulletConfig bullet, Vector2 current);
 
@@ -114,9 +121,13 @@ public sealed class BulletConfigInfo
     public Vector3 launch_delta_xyz = new Vector3(0.5f, 0.3f, 0f);//初始位置位于 角色锚点位置
     public float rotate = 0.0f;
     public float damage_ratio = 1.0f;//伤害系数
+    public float damage_real = 0.0f;//真实伤害数值
     //   public int realValidTimes = 1;//真实有效次数 ，计算真实命中敌人的次数{比如法术命中玩家3次后失效，否则一直存在}
     public int validTimes = 1;//总有效次数 ，击中物体的 帧次数 ，如果当前帧没有命中任何物体 那么不会计算帧次
     public int oneHitTimes = 1;//同一个物体能被命中的次数
+
+    public DamageType damage_type = DamageType.RATIO;//伤害类型 默认为 比例伤害
+
     // eg.
 
     //比如 某法术 效果是 持续3秒 原地 2米内 造成2次伤害
@@ -271,9 +282,20 @@ public sealed class BulletConfig : Bullet
                     if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
                     hitNumber++;
 
-                    AttackInfo inf = AttackInfo.Create(owner, h);
-                    inf.InitWithCommon();
-                    inf.damage = (int)((float)inf.damage * info.damage_ratio);
+                    AttackInfo inf = AttackInfo.Create(owner, h,info.damage_type);
+                    if (info.damage_type == DamageType.RATIO)
+                    {
+                        inf.InitWithCommon();
+                        inf.damage = (int)((float)inf.damage * info.damage_ratio);
+                    }
+                    else if (info.damage_type == DamageType.REAL)
+                    {
+                        inf.damage = (int)info.damage_real;
+                    }
+                    else
+                    {
+                        Debug.LogError("unsuport damage type");
+                    }
                     foreach (string buf in info.buffers_string)
                     {
                         inf.AddBuffer(buf);
@@ -327,9 +349,21 @@ public sealed class BulletConfig : Bullet
                 if (hit)
                 {
                     if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
-                    AttackInfo inf = AttackInfo.Create(owner, h);
-                    inf.InitWithCommon();
-                    inf.damage = (int)((float)inf.damage * info.damage_ratio);
+
+                    AttackInfo inf = AttackInfo.Create(owner, h, info.damage_type);
+                    if (info.damage_type == DamageType.RATIO)
+                    {
+                        inf.InitWithCommon();
+                        inf.damage = (int)((float)inf.damage * info.damage_ratio);
+                    }
+                    else if (info.damage_type == DamageType.REAL)
+                    {
+                        inf.damage = (int)info.damage_real;
+                    }
+                    else
+                    {
+                        Debug.LogError("unsuport damage type");
+                    }
                     foreach (string buf in info.buffers_string)
                     {
                         inf.AddBuffer(buf);

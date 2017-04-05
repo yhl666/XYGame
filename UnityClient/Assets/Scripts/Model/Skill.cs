@@ -116,12 +116,12 @@ public sealed class SkillStack : GAObject
             s.UpdateMSIdle();
         }
     }
-    public void OnSpineCompolete()
+    public void OnSpineComplete()
     {
         SkillBase s = stacks.Peek() as SkillBase;
         if (s.Enable)
         {
-            s.OnSpineCompolete();
+            s.OnSpineComplete();
         }
     }
 
@@ -225,7 +225,7 @@ public class SkillBase : Model
 {
     public Entity Target = null; // reference
     public SkillStack stack = null;//reference
-    public int level = 0;
+    public int level = 1;
     public virtual string GetName() { return "SkillBase"; }
     public virtual string GetAnimationName() { return ""; }
     public bool Enable = false;
@@ -304,7 +304,7 @@ public class SkillBase : Model
     /// <summary>
     /// 动画完成回调
     /// </summary>
-    public virtual void OnSpineCompolete()
+    public virtual void OnSpineComplete()
     {
 
     }
@@ -328,7 +328,7 @@ public class SkillBase : Model
     /// 技能升级事件 
     /// </summary>
     /// <param name="target_level">this.level当前等级 ，target_level 下一段等级</param>
-    public void OnLevelUp(int target_level)
+    public virtual void OnLevelUp(int target_level)
     {
 
     }
@@ -436,7 +436,7 @@ public class Skill2_1 : SkillBase
         }
     }
 
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         if (is_wait_done == false) return;
 
@@ -534,7 +534,7 @@ public class Skill2_2 : SkillBase
         }
     }
 
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         if (is_shifa) return;
 
@@ -686,7 +686,7 @@ public class Skill2_3 : SkillBase
         }
     }
 
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
 
         this.OnExit();
@@ -747,7 +747,7 @@ public class Skill2_4 : SkillBase
 
     }
 
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         this.OnExit();
     }
@@ -792,7 +792,7 @@ public class Skill2_5 : SkillBase
 
     }
 
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         for (float i = -2.0f; i < 2.5f; i += 0.5f)
         {
@@ -917,7 +917,7 @@ public class Skill6_1 : SkillBase
         BulletMgr.Create(this.Target, "BulletConfig", info);
 
     }
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         if (count == 0)
         {
@@ -1012,7 +1012,7 @@ public class Skill6_1_2 : SkillBase
         BulletMgr.Create(this.Target, "BulletConfig", info);
 
     }
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         this.stack.PopSingleSkill();
 
@@ -1107,7 +1107,7 @@ public class Skill6_2 : SkillBase
         info.scale_y = 2f;
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         ///  this.stack.PopSingleSkill();
 
@@ -1188,7 +1188,7 @@ public class Skill6_2_2 : SkillBase
         BulletMgr.Create(this.Target, "BulletConfig", info);
 
     }
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         this.stack.PopSingleSkill();
 
@@ -1270,7 +1270,7 @@ public class Skill6_3 : SkillBase
         info.scale_y = 2f;
         BulletMgr.Create(this.Target, "BulletConfig", info);
     }
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         ///  this.stack.PopSingleSkill();
         this.OnExit();
@@ -1348,7 +1348,7 @@ public class Skill6_3_2 : SkillBase
         BulletMgr.Create(this.Target, "BulletConfig", info);
 
     }
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         this.stack.PopSingleSkill();
 
@@ -1393,6 +1393,11 @@ public class Skill62_1 : SkillBase
     Counter tick = Counter.Create(Skill62_1_Data.ins.last_time);
     Counter tick_cancel = Counter.Create(Skill62_1_Data.ins.cancel);
 
+    public override void OnLevelUp(int target_level)
+    {
+
+
+    }
     public override void OnEnter()
     {
         cd.SetMax(Skill62_1_Data.ins.cd);
@@ -1420,13 +1425,14 @@ public class Skill62_1 : SkillBase
         Target.attackingAnimationName = Skill62_1_Data.ins.animation_name; // "6100_2";
         this.Shoot();
 
-
+        if (level == 2)
         {
+
             BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
-            buffer.id = 0xef2;
             buffer.percent = -Skill62_1_Data.ins.added_speed_percent;
             buffer.time = Skill62_1_Data.ins.last_time;
             Target.AddBuffer(buffer);
+
         }
         {
             BufferNegativeUnbeatable buffer = BufferMgr.CreateHelper<BufferNegativeUnbeatable>(Target);
@@ -1441,7 +1447,7 @@ public class Skill62_1 : SkillBase
         if (tick.Tick())
         {
             b.x = Target.x;
-            b.y = Target.GetRealY();
+            b.z = Target.z;
             if (b.IsInValid())
             {//每次Bullet持续时间为10 fps ， 为结束 继续释放bullet
                 this.Shoot();
@@ -1477,9 +1483,25 @@ public class Skill62_1 : SkillBase
         info.collider_size = Skill62_1_Data.ins.hit_rect;
         info.scale_x = 2f;
         info.scale_y = 2f;
+
+        if (level == 2)
+        {
+            info._OnTakeAttack = (Bullet b1, object userdata) =>
+                {
+                    Entity target = userdata as Entity;
+
+                    BufferAttachTo buffer = BufferMgr.CreateHelper<BufferAttachTo>(Target);
+                    buffer.to = Target;
+                    buffer.distance = Skill62_1_Data.ins.attach_distance;
+                    target.AddBuffer(buffer);
+                    buffer.SetLastTime(Skill62_1_Data.ins.attach_last_time);
+                };
+        }
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
+
+
     }
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         ///  this.stack.PopSingleSkill();
 
@@ -1512,12 +1534,12 @@ public class Skill62_1 : SkillBase
 
         if (Target.isAttacking)
         {
-            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+           /// this.PushOnInterruptAttackSate(); //强制打断 普通技能
         }
         if (Target.isAttacking)
         {
-            this.PushOnInterrupted();
-            return;
+          ///  this.PushOnInterrupted();
+           /// return;
         }
         this.OnEnter();
 
@@ -1539,9 +1561,11 @@ public class Skill62_1 : SkillBase
     }
 
 }
-
+/*
 /// <summary>
 /// 形态2 技能2
+/// 
+/// 人物动画6130_1 ，无特效，可以把敌人击飞至2倍角色高度，且滞空时间足够角色跳起衔接技能3，判定位置为人物剑的位置。Cd6s。
 /// </summary>
 public class Skill62_2 : SkillBase
 {
@@ -1615,7 +1639,7 @@ public class Skill62_2 : SkillBase
         info.collider_size = Skill62_2_Data.ins.hit_rect;
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         ///  this.stack.PopSingleSkill();
 
@@ -1676,6 +1700,138 @@ public class Skill62_2 : SkillBase
     }
     Bullet b = null;
 }
+*/
+
+
+/// <summary>
+/// 形态2 技能2 重做版本
+/// 
+/// 为开启/关闭型技能，开启时，每秒损失20（可调）点生命，对范围（可调）内敌人造成每秒100点伤害，升级后，不再造成生命损失
+/// </summary>
+public class Skill62_2 : SkillBase
+{
+    public override string GetName()
+    {
+        return "Skill62_2";
+    }
+    BufferSkill62_2 buf = null;
+    Counter cd = Counter.Create(Skill62_2_Data.ins.cd);
+    Counter tick = Counter.Create(40);
+    bool has_shoot = false;
+    public override void OnEnter()
+    {
+        cd.SetMax(Skill62_2_Data.ins.cd);
+        int time = (int)(Skill62_2_Data.ins.time * Utils.fps);
+        tick.SetMax(time);
+        tick.Reset();
+        cd.Reset();
+        buf =   BufferMgr.CreateHelper<BufferSkill62_2>(Target);
+        buf.time = time;
+        Target.AddBuffer(buf);
+        this.Enable = true;
+    }
+    public override void UpdateMS()
+    {
+        if (Target.current_hp <= Skill62_2_Data.ins.hp_reduce)
+        {
+            this.OnExit();
+            return;
+        }
+        if (tick.Tick() == false)
+        {
+            this.Shoot();
+            tick.Reset();
+        }
+        if (cd.Tick())
+        {
+            return;
+        }
+    }
+    public override void UpdateMSIdle()
+    {
+        cd.Tick();
+    }
+    private void Shoot()
+    {
+        if (level == 1)
+        {
+            Target.current_hp -= Skill62_2_Data.ins.hp_reduce;
+        }
+        BulletConfigInfo info = BulletConfigInfo.Create();
+        info.launch_delta_xyz.x = Skill62_2_Data.ins.delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = Skill62_2_Data.ins.delta_xyz.y;// -0.2f;
+        info.launch_delta_xyz.z = Skill62_2_Data.ins.delta_xyz.z;// -0.2f;
+        info.damage_type = DamageType.REAL;
+        info.frameDelay = 4;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.oneHitTimes = 1;
+        info.damage_real = Skill62_2_Data.ins.damage;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = Skill62_2_Data.ins.hit_animation_name;
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 10;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+        info.collider_size = Skill62_2_Data.ins.hit_rect;
+
+        info._OnUpdateMS = (Bullet bb, object userdata) =>
+              {
+                  bb.x = Target.x + Skill62_2_Data.ins.delta_xyz.x;
+                  bb.y = Target.y + Skill62_2_Data.ins.delta_xyz.y;
+                  bb.z = Target.z + Skill62_2_Data.ins.delta_xyz.z;
+              };
+
+
+        Bullet b = BulletMgr.Create(this.Target, "BulletConfig", info);
+    }
+    public override void OnSpineComplete()
+    {
+ 
+    }
+    public override void OnExit()
+    {
+        if(buf!=null)
+        {
+            buf.SetInValid();
+            buf = null;
+        }
+        this.Enable = false;
+        Debug.Log("exit  xxx");
+    }
+    public override bool Init()
+    {
+        base.Init();
+        cd.TickMax();
+        tick.Reset();
+        return true;
+    }
+
+    public override bool OnInterrupted(SkillBase who)
+    {
+        return false;
+    }
+    public override void OnAcceptInterrupted(SkillBase who)
+    {
+        if (this.Enable) return;
+        this.OnEnter();
+    }
+    public override void OnPush()
+    {
+        if (this.Enable)
+        {
+            this.OnExit();
+            return;
+        }
+
+        this.OnEnter();
+    }
+
+}
+
+
 
 
 /// <summary>
@@ -1809,7 +1965,7 @@ public class Skill62_3 : SkillBase
 
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         ///  this.stack.PopSingleSkill();
         ///  this.Shoot();
@@ -2004,7 +2160,7 @@ public class Skill6_Final : SkillBase
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
     }
     Buffer buf = null;
-    public override void OnSpineCompolete()
+    public override void OnSpineComplete()
     {
         ///  this.stack.PopSingleSkill();
         if (this.is_1_Hit == false && this.level == 1)

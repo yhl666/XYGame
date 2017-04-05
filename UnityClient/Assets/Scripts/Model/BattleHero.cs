@@ -287,7 +287,7 @@ public class BattleHero : Hero
 
         this.team = 1;
 
-        this.current_hp = 10;
+        this.current_hp = 500;
         this.hp = 0xffffff;
 
 
