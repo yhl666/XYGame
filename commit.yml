@@ -3,54 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '10aefbe871f54859f29b4bad054d3ec55ff2f31a'
-    oldFile: !uuid '6ce42bffa443f419c0cce9309c21384c7f2a20b5'
+    newFile: !uuid '375bd02717480c5c59cb68d7d92f930919a5eef9'
+    oldFile: !uuid '10aefbe871f54859f29b4bad054d3ec55ff2f31a'
   /UnityClient/Assets:
-    newFile: !uuid '2627584b42da0b21450d654e7be2cbccc83d9fa3'
-    oldFile: !uuid '49eed01465200bd02104406d09747c5d979cd61e'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '8744d536a1d6ad24862c4d378ea2065bfef9a801'
-    oldFile: !uuid '9ee0fb454fc5a8d15a4658e568184a30e8e75f71'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '9ac52f6d53792f436a60cc20e466948beeedaed5'
-    oldFile: !uuid '5745591b7ef67a590cdd5ba7898e6f05766daceb'
-  /UnityClient/Assets/Scripts/Data/Skill61_1_Data_V1.cs:
-    newFile: !uuid '80ce68a7612c1054ae2945419fa551540de2fbe1'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_1_Data_V1.cs.meta:
-    newFile: !uuid 'f4f2fc317b7d148624efc942a9374bb04d157b59'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_1_Data_V2.cs:
-    newFile: !uuid '7e63e6eaab4fb57a9de14336d9bf0496fa24acf2'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_1_Data_V2.cs.meta:
-    newFile: !uuid '8775b8d99fb72b55cd84f5fc56198e654a223c26'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_1_Data_V3.cs:
-    newFile: !uuid '54702d7ec0ea78c797d4952624fca6c56de6f8e4'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_1_Data_V3.cs.meta:
-    newFile: !uuid 'b4adb948294f0197b3e06cd2b01d8dc956d42fae'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data_V1.cs:
-    newFile: !uuid '39c46427af40e99bf0464b2e1b061abb8c1933b7'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data_V1.cs.meta:
-    newFile: !uuid 'ba845fa068df80e738787edc2a3fb95fa254aa96'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data_V2.cs:
-    newFile: !uuid '73c265a329a1cf28bee829875258db5c87b9e0ff'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data_V2.cs.meta:
-    newFile: !uuid 'c3b72fe07e8243533b6488c5c3b8eb22c508837a'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data_V3.cs:
-    newFile: !uuid 'c3e6494b5d9a41dd9a4181b945bede5c5752bb42'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data_V3.cs.meta:
-    newFile: !uuid 'b3a0fdb9fe8ebecc3141cc04c404a46d7dadbbcd'
-    oldFile: null
-gitCommitId: !uuid '547efc6c1f93e4a728786a1f3e476ba5a62e61cd'
+    newFile: !uuid '72d90ae7cc48536a2858b72a9e0b13fae2319ca2'
+    oldFile: !uuid '2627584b42da0b21450d654e7be2cbccc83d9fa3'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '73e735c3a11fc9379b486b7a975526c6b8f3c60d'
+    oldFile: !uuid '81ee158f1a38f6b65a946f9f8691f7e565ff9908'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '3f79aafec2ed9f1976631e15084ef6a0b9d60032'
+    oldFile: !uuid 'df5e970576dc475198f46cd26b3c1424e7489961'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '6ba80b0682994f58ffbfe136fee481448056ecaa'
+    oldFile: !uuid '1f082dd1f7f625119e7caefb4ec59212b0971d7b'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
+    newFile: !uuid '1dafadb97ed1c093e050e69cf411558ca9bae154'
+    oldFile: !uuid '603c35598dc2aabfe15abc6c76c437b9c925b1dd'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab.meta:
+    newFile: !uuid '9b94d92b44033cf70697c75f00725aa009350b52'
+    oldFile: !uuid '3d50d947ccff313b332d2e08e326398b002e4654'
+gitCommitId: !uuid 'e09f3ae11105b58affcf8219c9ecab768d7804f8'
 renames: {
   }
-revisionId: 600
+revisionId: 601
