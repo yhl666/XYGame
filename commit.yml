@@ -2,28 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '7137ee0748d10f0267ff86a51c650924794c2790'
-    oldFile: !uuid '88fabde10fcdcf476af2db475da5f71c262c2491'
-  /UnityClient/Assets:
-    newFile: !uuid 'c81df60696d7bb065e395af09a4a3fd85ecd95f2'
-    oldFile: !uuid '72fef23adf4d5e4b33d6ac72e39f01ce398c10be'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'ba198a23ea7a2b0ed2d37a4f99818a896a2c95c6'
-    oldFile: !uuid '347a58f549bd7b5ea2bb1b7b53d43fc7df8b00d5'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '99c226f73b56a50bcb2472d01021ad09d12fa085'
-    oldFile: !uuid 'ebf1fff175015b8771f0b252e89ffe2bfc652b49'
-  /UnityClient/Assets/Scripts/Model/Buffer.cs:
-    newFile: !uuid '80bc75bbf9c564d3ec5406efc35f584428055ae0'
-    oldFile: !uuid 'fb2ee53b7ef35edb4a45beb48e938e6028de4a55'
-  /UnityClient/Assets/Scripts/Model/Bullet.cs:
-    newFile: !uuid '31a6f0e241de041b65faa147d838ff14e2da1261'
-    oldFile: !uuid '01fa46280043c2efdb775acfd5cb2733a8a47459'
-  /UnityClient/Assets/Scripts/Model/Skill.cs:
-    newFile: !uuid 'cab38b4a5397a5d2f1b11a249aa611757aa74681'
-    oldFile: !uuid 'ce4bf4dd6f7c42de6dcafe038f58d5988c8f068a'
-gitCommitId: !uuid '169b015b55dfa017848b5609ce203cbd8ab3bcd0'
+  /工作日志:
+    newFile: !uuid '94ea7a7bd45818f2549e81e7138e1fd69e2feda0'
+    oldFile: !uuid 'cbb119a5b454c24cb786a8a8689ecf9216498f52'
+  /工作日志/BUG处理:
+    newFile: !uuid 'ca54ff9c0fa4d5ba2293981f2f4d403f32b6f375'
+    oldFile: !uuid 'c5778200a4910ac7f19a47bb67f3c05ab22a1c38'
+  /工作日志/BUG处理/001处理.txt:
+    newFile: !uuid '098008c59c0b5e252fe90406164aaea6c2ffcfb7'
+    oldFile: !uuid 'e69de29bb2d1d6434b8b29ae775ad8c2e48c5391'
+gitCommitId: !uuid '7717a287617d188574d8ad6fbf05b19bce072445'
 renames: {
   }
-revisionId: 604
+revisionId: 605
