@@ -2,25 +2,37 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid 'cbb119a5b454c24cb786a8a8689ecf9216498f52'
-    oldFile: !uuid '1c4e817dd74d21951121eb2dff757a24b1830de6'
-  /工作日志/BUG处理:
-    newFile: !uuid 'c5778200a4910ac7f19a47bb67f3c05ab22a1c38'
-    oldFile: null
-  /工作日志/BUG处理/001处理.txt:
-    newFile: !uuid 'e69de29bb2d1d6434b8b29ae775ad8c2e48c5391'
-    oldFile: null
-  /工作日志/BUG提交:
-    newFile: !uuid '788dbd47d599bc296e806674a28eafcc9b9798e4'
-    oldFile: null
-  /工作日志/BUG提交/001.txt:
-    newFile: !uuid '4ee577b0eb68d372c9561bfe3baf557d31df2a1e'
-    oldFile: null
-  /工作日志/BUG提交/002.txt:
-    newFile: !uuid '5dce6fc3051e5056b99f386b0acf6b82e4c9fd89'
-    oldFile: null
-gitCommitId: !uuid 'c960679932cf3baa863d42956870068faf09fafb'
+  /UnityClient:
+    newFile: !uuid '88fabde10fcdcf476af2db475da5f71c262c2491'
+    oldFile: !uuid '375bd02717480c5c59cb68d7d92f930919a5eef9'
+  /UnityClient/Assets:
+    newFile: !uuid '72fef23adf4d5e4b33d6ac72e39f01ce398c10be'
+    oldFile: !uuid '72d90ae7cc48536a2858b72a9e0b13fae2319ca2'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '347a58f549bd7b5ea2bb1b7b53d43fc7df8b00d5'
+    oldFile: !uuid '8744d536a1d6ad24862c4d378ea2065bfef9a801'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid 'becb29d3b2761fa4cdb3e0e6a2035dc4f302c641'
+    oldFile: !uuid '9ac52f6d53792f436a60cc20e466948beeedaed5'
+  /UnityClient/Assets/Scripts/Data/ConfigTables.cs:
+    newFile: !uuid '5c7ca1ec91f55d826921a0a989109160e642b551'
+    oldFile: !uuid '506df685d291be945fb93669fcea7b9d7701f281'
+  /UnityClient/Assets/Scripts/Data/Skill62_2_Data.cs:
+    newFile: !uuid '2c433a0eeeb0367254d6d2f437bc19ae5c25326f'
+    oldFile: !uuid 'b8935605ed9bafa0a5983ddd6be129d1cdde41cf'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'ebf1fff175015b8771f0b252e89ffe2bfc652b49'
+    oldFile: !uuid '6cb2843b48b7d5ee49a8bc2cb492c8bcad43cc68'
+  /UnityClient/Assets/Scripts/Model/Buffer.cs:
+    newFile: !uuid 'fb2ee53b7ef35edb4a45beb48e938e6028de4a55'
+    oldFile: !uuid '2131c24e48b22c65212154bfa1fa7ea01d965145'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid 'ce4bf4dd6f7c42de6dcafe038f58d5988c8f068a'
+    oldFile: !uuid '289807d502abf87aee2841ba6dc0580a4dc161a2'
+  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
+    newFile: !uuid '4b976a8d9aa6028f3200d75e9db1120b8959ebf2'
+    oldFile: !uuid '6f05d08517c36610ead034f60c69617648b6fede'
+gitCommitId: !uuid '52ade4bc1780d2eed4057fd7e16ed189f141bf63'
 renames: {
   }
-revisionId: 602
+revisionId: 603
