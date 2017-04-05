@@ -2206,6 +2206,7 @@ public class Skill62_2_v2 : SkillBase
         return "Skill62_2";
     }
     BufferSkill62_2 buf = null;
+    BulletConfig bu_hide = null;
     Counter cd = Counter.Create(Skill62_2_Data.ins.cd);
     Counter tick = Counter.Create(40);
     bool has_shoot = false;
@@ -2220,6 +2221,46 @@ public class Skill62_2_v2 : SkillBase
         buf.time = time;
         Target.AddBuffer(buf);
         this.Enable = true;
+
+      
+
+
+
+        //特效
+        BulletConfigInfo info = BulletConfigInfo.Create();
+        info.launch_delta_xyz.x = Skill62_2_Data.ins.delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = Skill62_2_Data.ins.delta_xyz.y;// -0.2f;
+        info.launch_delta_xyz.z = Skill62_2_Data.ins.delta_xyz.z;// -0.2f;
+        info.damage_type = DamageType.REAL;
+        info.frameDelay = 4;
+        info.distance_atk = 1.5f;
+        info.number = 0;
+        info.isHitDestory = false;
+        info.oneHitTimes = 1;
+        info.damage_real = Skill62_2_Data.ins.damage;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = Skill62_2_Data.ins.hit_animation_name;
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 0xffff;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+        info.collider_size = Skill62_2_Data.ins.hit_rect;
+
+        info._OnUpdateMS = (Bullet bb, object userdata) =>
+        {
+            bb.x = Target.x + Skill62_2_Data.ins.delta_xyz.x;
+            bb.y = Target.y + Skill62_2_Data.ins.delta_xyz.y;
+            bb.z = Target.z + Skill62_2_Data.ins.delta_xyz.z;
+            bu_hide.tick = 0;
+        };
+
+        bu_hide = BulletMgr.Create(this.Target, "BulletConfig", info) as BulletConfig;
+
+
+
+
+
     }
     public override void UpdateMS()
     {
@@ -2260,7 +2301,7 @@ public class Skill62_2_v2 : SkillBase
         info.oneHitTimes = 1;
         info.damage_real = Skill62_2_Data.ins.damage;
         //  info.rotate = -120.0f;
-        info.plistAnimation = Skill62_2_Data.ins.hit_animation_name;
+        info.plistAnimation = "";// Skill62_2_Data.ins.hit_animation_name;
         /// info.rotate = 30.0f;
         info.distance = 0;
         info.lastTime = 10;
@@ -2288,6 +2329,11 @@ public class Skill62_2_v2 : SkillBase
         {
             buf.SetInValid();
             buf = null;
+        }
+        if (bu_hide != null)
+        {
+            bu_hide.SetInValid();
+            bu_hide = null;
         }
         this.Enable = false;
     }
@@ -2490,7 +2536,6 @@ public class Skill62_3_v2 : SkillBase
     {
         if (cd.IsMax() == false)
         {
-            Debug.LogError("cdddd");
             return;
         }
         if (this.Enable || Target.isAttacking)

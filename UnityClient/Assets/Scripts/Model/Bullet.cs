@@ -214,7 +214,7 @@ public sealed class BulletConfigInfo
 /// </summary>
 public sealed class BulletConfig : Bullet
 {
-    private int tick = 0;
+    public int tick = 0;
     private int validTimes = 0;
     private Vector hasHit = new Vector();//命中物体的集合 ，可判定命中次数
     public override void UpdateMS()

@@ -792,6 +792,8 @@ public class BufferSkill62_2 : Buffer
         show_ui = true;
         icon = "hd/interface/items/503063.png";
         brief = "烈焰斗篷";
+      //  has_view = true;
+    //    plist = "hd/roles/role_6/bullet/role_6_bul_6241/role_6_bul_6241.plist";
         return true;
     }
     public override void UpdateMS()
