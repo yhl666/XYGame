@@ -2,22 +2,19 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '6ce42bffa443f419c0cce9309c21384c7f2a20b5'
-    oldFile: !uuid 'bd323c7e1ba737bd3f66c74e9ea1459ce04569a0'
-  /UnityClient/Assets:
-    newFile: !uuid '49eed01465200bd02104406d09747c5d979cd61e'
-    oldFile: !uuid 'cd0394e07cb7ada9911713a8241fdc43633dd3a6'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '9ee0fb454fc5a8d15a4658e568184a30e8e75f71'
-    oldFile: !uuid 'c1103ec10bdc19959945c09d9ce5917eb8511eff'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '6cb2843b48b7d5ee49a8bc2cb492c8bcad43cc68'
-    oldFile: !uuid 'e1f1d8a8c31157a171455e0ad3d2bdd9a3ae18b4'
-  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
-    newFile: !uuid '6f05d08517c36610ead034f60c69617648b6fede'
-    oldFile: !uuid 'af5131fe06949758c3977258a35ce8e770663b00'
-gitCommitId: !uuid '7e3cbbfb9bca93ec335090134e61ffed0d1ee70a'
+  /BattleServer:
+    newFile: !uuid '33c3124d88dfb2902a5bf8c801e49cbceb60e835'
+    oldFile: !uuid '3d3d22811461d636463910e5da3548424dbd2b08'
+  /BattleServer/Release:
+    newFile: !uuid 'e1b2d08f9de01fa0463b37cefb6009494fdb80b6'
+    oldFile: !uuid 'b7a4c260d4c1363ade4dfce50a461a5332a5baed'
+  /BattleServer/Release/BattleServer.exe:
+    newFile: !uuid '3614f889d5e58b841cadeb5243bfb7bbba6a85fd'
+    oldFile: !uuid '26043e35504f66d499a25b0eca99d0b3f874e4f5'
+  /BattleServer/Release/BattleServerPVETEST.exe:
+    newFile: !uuid '75d597eee39ff125f903d42b44512e3cbf724ea8'
+    oldFile: !uuid 'c4d64dd5acc96e127f52592572189c37946adc2c'
+gitCommitId: !uuid 'c0b72a8554c9775706b415776144062a7ff89189'
 renames: {
   }
-revisionId: 598
+revisionId: 599
