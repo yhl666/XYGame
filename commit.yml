@@ -2,28 +2,25 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '375bd02717480c5c59cb68d7d92f930919a5eef9'
-    oldFile: !uuid '10aefbe871f54859f29b4bad054d3ec55ff2f31a'
-  /UnityClient/Assets:
-    newFile: !uuid '72d90ae7cc48536a2858b72a9e0b13fae2319ca2'
-    oldFile: !uuid '2627584b42da0b21450d654e7be2cbccc83d9fa3'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '73e735c3a11fc9379b486b7a975526c6b8f3c60d'
-    oldFile: !uuid '81ee158f1a38f6b65a946f9f8691f7e565ff9908'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '3f79aafec2ed9f1976631e15084ef6a0b9d60032'
-    oldFile: !uuid 'df5e970576dc475198f46cd26b3c1424e7489961'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '6ba80b0682994f58ffbfe136fee481448056ecaa'
-    oldFile: !uuid '1f082dd1f7f625119e7caefb4ec59212b0971d7b'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
-    newFile: !uuid '1dafadb97ed1c093e050e69cf411558ca9bae154'
-    oldFile: !uuid '603c35598dc2aabfe15abc6c76c437b9c925b1dd'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab.meta:
-    newFile: !uuid '9b94d92b44033cf70697c75f00725aa009350b52'
-    oldFile: !uuid '3d50d947ccff313b332d2e08e326398b002e4654'
-gitCommitId: !uuid 'e09f3ae11105b58affcf8219c9ecab768d7804f8'
+  /工作日志:
+    newFile: !uuid 'cbb119a5b454c24cb786a8a8689ecf9216498f52'
+    oldFile: !uuid '1c4e817dd74d21951121eb2dff757a24b1830de6'
+  /工作日志/BUG处理:
+    newFile: !uuid 'c5778200a4910ac7f19a47bb67f3c05ab22a1c38'
+    oldFile: null
+  /工作日志/BUG处理/001处理.txt:
+    newFile: !uuid 'e69de29bb2d1d6434b8b29ae775ad8c2e48c5391'
+    oldFile: null
+  /工作日志/BUG提交:
+    newFile: !uuid '788dbd47d599bc296e806674a28eafcc9b9798e4'
+    oldFile: null
+  /工作日志/BUG提交/001.txt:
+    newFile: !uuid '4ee577b0eb68d372c9561bfe3baf557d31df2a1e'
+    oldFile: null
+  /工作日志/BUG提交/002.txt:
+    newFile: !uuid '5dce6fc3051e5056b99f386b0acf6b82e4c9fd89'
+    oldFile: null
+gitCommitId: !uuid 'c960679932cf3baa863d42956870068faf09fafb'
 renames: {
   }
-revisionId: 601
+revisionId: 602
