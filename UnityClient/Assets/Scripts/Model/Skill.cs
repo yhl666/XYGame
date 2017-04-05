@@ -1799,7 +1799,6 @@ public class Skill62_2 : SkillBase
             buf = null;
         }
         this.Enable = false;
-        Debug.Log("exit  xxx");
     }
     public override bool Init()
     {
