@@ -2010,7 +2010,7 @@ public class Skill62_3 : SkillBase
         }
         if (Target.isJumping == false && Target.isJumpTwice == false)
         {
-            ///   return;
+            return;
         }
         ///  if (Target.isStand == false) return;
         if (Target.isAttacking)
