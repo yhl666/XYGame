@@ -443,21 +443,8 @@ public class BufferSpeedSlow : Buffer
     public int time = 120;//默认减速3s
     private float speed_slow = 0.0f;
 
-    private bool nonsense = true;
     public override void OnEnter()
     {
-        //去重
-        {
-            Buffer other = mgr.GetBuffer(this.GetId());
-            if (other != null && other != this && other.GetId() == this.GetId())
-            {
-                other.GetCounter().Reset();
-                this.SetInValid();
-                return;
-            }
-        }
-
-        nonsense = false;
         base.OnEnter();
         tick.SetMax(time);
         speed_slow = percent / 100.0f * this.owner.speed;
@@ -465,7 +452,6 @@ public class BufferSpeedSlow : Buffer
     }
     public override void UpdateMS()
     {
-        if (nonsense) return;
         if (tick.Tick())
         {
             return;
@@ -479,16 +465,19 @@ public class BufferSpeedSlow : Buffer
         icon = "hd/interface/items/503079.png";
         brief = "移动" + percent.ToString() + "%";
         enable_time = false;
+        isOnlyOne = true;
         return true;
+    }
+    public override void OnMerge(Buffer other)
+    {
+        tick.Reset();
     }
     public override void OnExit()
     {
-        if (nonsense) return;
         this.target.speed += speed_slow;
 
         base.OnExit();
     }
-
 }
 
 
@@ -939,16 +928,14 @@ public class BufferForceCancel : Buffer
 /// </summary>
 public class BufferSpin : Buffer
 {
-    float time = 3.0f;//持续时间
-
     public override string GetName()
     {
         return "BufferSpin";
     }
     public override void OnEnter()
     {
-        EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
-
+   
+        tick.SetMax(MAX_TICK);
         target.eventDispatcher.PostEvent("SpineComplete");
 
         target.machine.PauseAllStack();
@@ -968,6 +955,7 @@ public class BufferSpin : Buffer
         {
             PublicData.ins.inputAble = true;
         }
+        target.machine.GetState<RunXZState>().SetEnable();
         EventDispatcher.ins.RemoveEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
     }
     public override bool Init()
@@ -977,12 +965,11 @@ public class BufferSpin : Buffer
         has_view = true;
         plist = "hd/buff/buff_200564/buff_200564.plist";
         plist = "88";
-        ;
         show_ui = true;
         icon = "hd/interface/items/503079.png";
         brief = "眩晕";
-        this.SetLastTime(time);
         tick.SetMax(MAX_TICK);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
         return true;
     }
 
