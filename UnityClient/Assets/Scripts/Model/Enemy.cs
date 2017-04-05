@@ -10,13 +10,11 @@ public class Enemy : Entity
 {
     //--------------------------------接入通用  AI ，自定义可继承并且override  AI接口函数
     //TODO use behavior Tree to process AI
-    Hero target = null;
-
-    private int cd_atk = 0;
+    protected Hero target = null;
+    public float target_distance = 3.0f;//仇恨范围
+    protected Counter cd = Counter.Create(80);
     public virtual void AI_UpdateMSWithAI()
     {
-        cd_atk--;
-
         //如果目标非法，那么寻找另外一个目标
         if (target == null || target.IsInValid())
         {
@@ -26,8 +24,8 @@ public class Enemy : Entity
         if (isHurt) return;
 
         // 有目标 ，先判断是否在攻击范围内
-        float dis = target.ClaculateDistance( this);
-   //     Debug.Log(dis);
+        float dis = target.ClaculateDistance(this);
+        //     Debug.Log(dis);
         if (dis < this.atk_range)
         {
             //攻击范围内
@@ -84,18 +82,16 @@ public class Enemy : Entity
           }
           */
 
-        dir = (int)Utils.GetAngle(this.pos,target.pos);
+        dir = (int)Utils.GetAngle(this.pos, target.pos);
     }
     public virtual void AI_AttackTarget()
     {
-        if (cd_atk <= 0)
+        if (cd.IsMax())
         {
             //   target.TakeAttack(this);
             ///  BulletMgr.Create(this, "Bullet444_0");
-
-
             atk = true;
-            cd_atk = 80;// 2S
+            cd.Reset();
         }
         else
         {
@@ -235,8 +231,10 @@ public class Enemy : Entity
             }
         }
     }
+
     public override void UpdateMS()
     {
+        cd.Tick();
         ///   this.AI_UpdateMSWithAI();
         ///   
         if (this.isDie)
@@ -278,11 +276,36 @@ public class Enemy : Entity
         base.UpdateMS();
     }
 
+    //------------------------------------AI helper function
+    public bool HasTowner()
+    {
+        return true;
+    }
+    public void SearchNewTower()
+    {
+
+    }
+    /// <summary>
+    /// 搜索最近的玩家
+    /// </summary>
+    public void SearchNearestTarget()
+    {
+        ArrayList heros = HeroMgr.ins.GetHeros();
+        float minDis = float.MaxValue;
+
+        foreach (Hero h in heros)
+        {//找出一个最近的玩家 作为锁定目标
+            float dis = h.ClaculateDistance(x, y);
+            if (dis < minDis)
+            {
+                target = h;
+                minDis = dis;
+            }
+        }
+    }
 }
 public class Enemy221 : Enemy
 {
-
-
     public override void InitInfo()
     {
         this.prefabsName = "Prefabs/Enemy221";
@@ -300,11 +323,62 @@ public class Enemy221 : Enemy
         bullet_atk1_info.distance = 0.2f;
         bullet_atk1_info.distance_atk = 1f;
         //   this.speed *= 0.001f; ;
-      ///  bullet_atk1_info.AddBuffer("BufferHitBack");
+        ///  bullet_atk1_info.AddBuffer("BufferHitBack");
         //     bullet_atk1_info.AddBuffer("BufferSpin");
 
         this.atk_range = 1.0f;
         scale = 0.8f;
     }
 
+}
+
+/// <summary>
+/// 小怪1
+/// </summary>
+public class Enemy1 : Enemy
+{
+    public override void InitInfo()
+    {
+        this.prefabsName = "Prefabs/Enemy221";
+        this.skin = "baihu4";
+        ani_hurt = "hurt";
+        ani_run = "walk";
+        ani_stand = "rest";
+        ani_atk1 = "218010";
+        attackingAnimationName = ani_atk1;
+
+        bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
+        bulleClassName_s1 = "Bullet221_0"; // 1 号技能 子弹名字
+        this.bullet_atk1_info = BulletConfigInfo.Create();
+        bullet_atk1_info.plistAnimation = "";
+        bullet_atk1_info.distance = 0.2f;
+        bullet_atk1_info.distance_atk = 1f;
+        //   this.speed *= 0.001f; ;
+        ///  bullet_atk1_info.AddBuffer("BufferHitBack");
+        //     bullet_atk1_info.AddBuffer("BufferSpin");
+
+        this.atk_range = 1.0f;
+        scale = 0.8f;
+    }
+
+
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
+
+    public override void AI_UpdateMSWithAI()
+    {
+        if(HasTowner())
+        {
+
+        }
+        else
+        {
+            SearchNearestTarget();
+            return;
+        }
+    }
 }
