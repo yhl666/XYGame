@@ -9,7 +9,7 @@ public class Skill61_1 : SkillBase
 {
     Counter cd = Counter.Create(Skill61_1_Data_V1.ins.cd);
     Counter tick_cancel = Counter.Create(Skill61_1_Data_V1.ins.cancel);
-    Counter launchCounter=Counter.Create(Skill61_1_Data_V1.ins.bulletLaunchDealy);
+    Counter launchCounter = Counter.Create(Skill61_1_Data_V1.ins.bulletLaunchDealy);
     public override void OnEnter()
     {
         cd.Reset();
@@ -18,7 +18,7 @@ public class Skill61_1 : SkillBase
         this.Enable = true;
         Target.attackingAnimationName = Skill61_1_Data_V1.ins.animation_name;
 
- 
+
     }
 
     private void shoot()
@@ -29,10 +29,10 @@ public class Skill61_1 : SkillBase
                 BulletMgr.Create(this.Target, "BulletConfig", info);
                 break;
             case 2:
-                //BufferSpin spin = BufferMgr.CreateHelper<BufferSpin>(this.Target);
-                //spin.SetLastTime(Skill61_1_Data_V2.ins.spinTime);
-                //Debug.LogError("spine time is " + Skill61_1_Data_V2.ins.spinTime);
-                //info2.AddBuffer(spin);
+                BufferSpin spin = BufferMgr.CreateHelper<BufferSpin>(this.Target);
+                spin.SetLastTime(Skill61_1_Data_V2.ins.spinTime);
+                info2.buffers.Clear();
+                info2.AddBuffer(spin);
                 BulletMgr.Create(this.Target, "BulletConfig", info2);
                 break;
             case 3:
@@ -40,13 +40,13 @@ public class Skill61_1 : SkillBase
                 break;
         }
 
-       
-        
+
+
     }
 
     public void LevelUp()
     {
-        if (level<3)
+        if (level < 3)
         {
             level++;
         }
@@ -62,10 +62,10 @@ public class Skill61_1 : SkillBase
         cd.Tick();
         tick_cancel.Tick();
         launchCounter.Tick();
-        if (launchCounter.GetCurrent()==launchCounter.GetMax())
+        if (launchCounter.GetCurrent() == launchCounter.GetMax())
         {
             shoot();
-            
+
         }
     }
 
@@ -132,7 +132,7 @@ public class Skill61_1 : SkillBase
     public void ConfigBulletInfo()
     {
         {
-            
+
 
 
             info.damage_ratio = Skill61_1_Data_V1.ins.damage_ratio;
@@ -158,7 +158,7 @@ public class Skill61_1 : SkillBase
 
         {
             //BufferSpin spin = Create(Skill61_1_Data_V2.ins.buffer) as BufferSpin;
-            
+
             info2.damage_ratio = Skill61_1_Data_V2.ins.damage_ratio;
             info2.collider_size = Skill61_1_Data_V2.ins.hit_rect;
 
@@ -206,7 +206,7 @@ public class Skill61_1 : SkillBase
     }
 
     private int level = 2;
-    private BulletConfigInfo info=BulletConfigInfo.Create();
+    private BulletConfigInfo info = BulletConfigInfo.Create();
     private BulletConfigInfo info2 = BulletConfigInfo.Create();
     private BulletConfigInfo info3 = BulletConfigInfo.Create();
 }
@@ -228,7 +228,7 @@ public class Skill61_2 : SkillBase
 
     private void shoot()
     {
-        Debug.Log("skill2 level is"+ level);
+        Debug.Log("skill2 level is" + level);
         switch (level)
         {
             case 1:
@@ -242,7 +242,7 @@ public class Skill61_2 : SkillBase
                 break;
         }
 
-         BulletMgr.Create(this.Target, "BulletConfig", info);
+        BulletMgr.Create(this.Target, "BulletConfig", info);
         //bullet.x = Target.x;
         //bullet.y = Target.y;
     }
@@ -268,7 +268,7 @@ public class Skill61_2 : SkillBase
             info.lastTime = 10;
             info.scale_x = 2f;
             info.scale_y = 2f;
-            
+
         }
 
         {
@@ -362,7 +362,7 @@ public class Skill61_2 : SkillBase
             this.OnExit();
             return true;
         }
-       
+
         return false;
     }
 
@@ -393,7 +393,7 @@ public class Skill61_2 : SkillBase
 
     Counter cd = Counter.Create(Skill61_2_Data_V1.ins.cd);
     Counter tick1Counter = Counter.Create(Skill61_2_Data_V1.ins.bulletLaunchDealy);
-    Counter cancelCounter=Counter.Create(Skill61_2_Data_V1.ins.cancel);
+    Counter cancelCounter = Counter.Create(Skill61_2_Data_V1.ins.cancel);
 
 
     private float forward;
@@ -411,9 +411,9 @@ public class Skill61_2 : SkillBase
 /// </summary>
 public class Skill61_3 : SkillBase
 {
-    Counter cd=Counter.Create(Skill61_3_Data.ins.cd);
-    Counter cancelCounter=Counter.Create(Skill61_3_Data.ins.cancel);
-    Counter dealyCounter=Counter.Create(Skill61_3_Data.ins.delayFrame);
+    Counter cd = Counter.Create(Skill61_3_Data.ins.cd);
+    Counter cancelCounter = Counter.Create(Skill61_3_Data.ins.cancel);
+    Counter dealyCounter = Counter.Create(Skill61_3_Data.ins.delayFrame);
     public override void OnEnter()
     {
         cd.Reset();
@@ -430,19 +430,19 @@ public class Skill61_3 : SkillBase
 
         b_shifa = null;
 
-      
-       
+
+
     }
 
     private void shoot1()
     {
-        
+
 
 
         ArrayList list = GetEnemyByOrder();
 
         Debug.Log(list.Count);
-        for (int i = 0; i < 3&&i<list.Count; i++)
+        for (int i = 0; i < 3 && i < list.Count; i++)
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
@@ -459,13 +459,13 @@ public class Skill61_3 : SkillBase
             //buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
             info.AddBuffer(buffer);
             var b = BulletMgr.Create(this.Target, "BulletConfig", info);
-            Enemy enemy=list[i] as Enemy;
+            Enemy enemy = list[i] as Enemy;
             b.x = enemy.x;
             b.z = enemy.z;
             b.y = enemy.y;
         }
 
-        
+
     }
     private void shoot2()
     {
@@ -474,7 +474,7 @@ public class Skill61_3 : SkillBase
 
         ArrayList list = GetEnemyByOrder();
         Debug.Log(list.Count);
-        for (int i = 0; i < 10&&i<list.Count; i++)
+        for (int i = 0; i < 10 && i < list.Count; i++)
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
@@ -502,12 +502,12 @@ public class Skill61_3 : SkillBase
     }
     private void shoot3()
     {
-        
+
 
 
         ArrayList list = GetEnemyByOrder();
         Debug.Log(list.Count);
-        for (int i = 0; i < 10&&i<list.Count; i++)
+        for (int i = 0; i < 10 && i < list.Count; i++)
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
@@ -537,7 +537,7 @@ public class Skill61_3 : SkillBase
         cd.Tick();
         cancelCounter.Tick();
         dealyCounter.Tick();
-        if (dealyCounter.GetCurrent()==dealyCounter.GetMax())
+        if (dealyCounter.GetCurrent() == dealyCounter.GetMax())
         {
             switch (level)
             {
@@ -614,11 +614,11 @@ public class Skill61_3 : SkillBase
     private ArrayList GetEnemyByOrder()
     {
         ArrayList enemyList = EnemyMgr.ins.GetEnemys();
-        for (int i = 0; i < enemyList.Count-1; i++)
+        for (int i = 0; i < enemyList.Count - 1; i++)
         {
-            for (int j = 0; j < enemyList.Count - 1-i; j++)
+            for (int j = 0; j < enemyList.Count - 1 - i; j++)
             {
-                if (distance(enemyList[j] as Enemy)>distance(enemyList[j+1] as Enemy))
+                if (distance(enemyList[j] as Enemy) > distance(enemyList[j + 1] as Enemy))
                 {
                     Enemy temp = enemyList[j + 1] as Enemy;
                     enemyList[j + 1] = enemyList[j];

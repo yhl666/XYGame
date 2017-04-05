@@ -169,9 +169,9 @@ namespace ConfigTables
             ArrayList ret = new ArrayList();
             if(hero_type == "6")
             { /// group 1
-                ret.Add("Skill62_1");
-                ret.Add("Skill62_2");
-                ret.Add("Skill62_3");
+                ret.Add("Skill62_1_v2");
+                ret.Add("Skill62_2_v2");
+                ret.Add("Skill62_3_v2");
                 ret.Add("Skill6_Final");
                 ret.Add("SkillForceCancel");
 

@@ -1377,12 +1377,503 @@ public class Skill6_3_2 : SkillBase
 
 }
 
+
+
+
+
 /// <summary>
 /// 形态2 技能1
 /// 人物动画6100_2，无特效，判定范围为人物边框，持续2秒，
 /// 除切换取消和终结技取消外无法停止，释放期间可以移动(控制免疫)，并且移动速度增加30%，cd15s。
 /// </summary>
-public class Skill62_1 : SkillBase
+public class Skill62_1_v1 : SkillBase
+{
+    public override string GetName()
+    {
+        return "Skill62_1";
+    }
+    Bullet b = null;
+    Counter cd = Counter.Create(Skill62_1_Data.ins.cd);
+    Counter tick = Counter.Create(Skill62_1_Data.ins.last_time);
+    Counter tick_cancel = Counter.Create(Skill62_1_Data.ins.cancel);
+
+    public override void OnEnter()
+    {
+        cd.SetMax(Skill62_1_Data.ins.cd);
+        tick.SetMax(Skill62_1_Data.ins.last_time);
+        tick_cancel.SetMax(Skill62_1_Data.ins.cancel);
+
+        cd.Reset();
+        tick_cancel.Reset();
+        this.PauseAll();
+        this.Target.machine.GetState<StandState>().Resume();
+        this.Target.machine.GetState<FallState>().Resume();
+        tick.Reset();
+        {
+            RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
+            state.Resume();
+            state.EnableWhenAttack();
+        }
+        {
+            RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
+            state.Resume();
+            state.EnableWhenAttack();
+        }
+        Target.isAttacking = true;
+        this.Enable = true;
+        Target.attackingAnimationName = Skill62_1_Data.ins.animation_name; // "6100_2";
+        this.Shoot();
+
+
+        {
+            BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
+            buffer.id = 0xef2;
+            buffer.percent = -Skill62_1_Data.ins.added_speed_percent;
+            buffer.time = Skill62_1_Data.ins.last_time;
+            Target.AddBuffer(buffer);
+        }
+        {
+            BufferNegativeUnbeatable buffer = BufferMgr.CreateHelper<BufferNegativeUnbeatable>(Target);
+            buffer.MAX_TICK = Skill62_1_Data.ins.last_time;
+            Target.AddBuffer(buffer);
+        }
+    }
+    public override void UpdateMS()
+    {
+        cd.Tick();
+        tick_cancel.Tick();
+        if (tick.Tick())
+        {
+            b.x = Target.x;
+            b.y = Target.GetRealY();
+            if (b.IsInValid())
+            {//每次Bullet持续时间为10 fps ， 为结束 继续释放bullet
+                this.Shoot();
+            }
+            return;
+        }
+        this.OnExit();
+    }
+    public override void UpdateMSIdle()
+    {
+        cd.Tick();
+    }
+    private void Shoot()
+    {
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitBack");
+
+        info.launch_delta_xyz.x = 1.5f;
+        info.launch_delta_xyz.y = -0.2f;
+        info.frameDelay = 4;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.damage_ratio = Skill62_1_Data.ins.damage_ratio;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6122/role_6_bul_6122.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 10;
+        info.collider_size = Skill62_1_Data.ins.hit_rect;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+        b = BulletMgr.Create(this.Target, "BulletConfig", info);
+    }
+    public override void OnSpineComplete()
+    {
+        ///  this.stack.PopSingleSkill();
+
+    }
+    public override void OnExit()
+    {
+        b.SetInValid();
+        this.Enable = false;
+        Target.isAttacking = false;
+        tick.Reset();
+        Target.is_spine_loop = true;
+        RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
+        state.DisableWhenAttak();
+        this.ResumeAll();
+
+        /// this.stack.PushSingleSkill(new Skill6_2_2());
+
+
+    }
+    public override void OnAcceptInterrupted(SkillBase who)
+    {
+        if (this.Enable) return;
+        this.OnEnter();
+    }
+    public override void OnPush()
+    {
+        if (cd.IsMax() == false) return;
+        if (Target.isStand == false) return;
+        if (this.Enable) return;
+
+        if (Target.isAttacking)
+        {
+            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+        }
+        if (Target.isAttacking)
+        {
+            this.PushOnInterrupted();
+            return;
+        }
+        this.OnEnter();
+
+    }
+    public override bool Init()
+    {
+        base.Init();
+        cd.TickMax();
+        return true;
+    }
+    public override bool OnInterrupted(SkillBase who)
+    {
+        if (this.Enable && tick_cancel.IsMax())
+        {
+            this.OnExit();
+            return true;
+        }
+        return false;
+    }
+
+}
+
+/// <summary>
+/// 形态2 技能2
+/// </summary>
+public class Skill62_2_v1 : SkillBase
+{
+    public override string GetName()
+    {
+        return "Skill62_2";
+    }
+    Counter tick_cancel = Counter.Create(Skill62_2_Data.ins.cancel);
+    Counter cd = Counter.Create(Skill62_2_Data.ins.cd);
+    Counter tick = Counter.Create(Skill62_2_Data.ins.tick_delay);
+    bool has_shoot = false;
+    public override void OnEnter()
+    {
+        tick_cancel.SetMax(Skill62_2_Data.ins.cancel);
+        cd.SetMax(Skill62_2_Data.ins.cd);
+        tick.SetMax(Skill62_2_Data.ins.tick_delay);
+        tick_cancel.Reset();
+        cd.Reset();
+        this.PauseAll();
+        tick.Reset();
+        has_shoot = false;
+        this.Target.machine.GetState<StandState>().Resume();
+        this.Target.machine.GetState<FallState>().Resume();
+        Target.isAttacking = true;
+        this.Enable = true;
+        Target.is_spine_loop = false;
+        Target.attackingAnimationName = Skill62_2_Data.ins.animation_name;//"6130_1";
+    }
+    public override void UpdateMS()
+    {
+        tick_cancel.Tick();
+        if (tick.Tick() == false && has_shoot == false)
+        {
+            this.Shoot();
+            has_shoot = true;
+        }
+        if (cd.Tick())
+        {
+            return;
+        }
+
+    }
+    public override void UpdateMSIdle()
+    {
+        cd.Tick();
+    }
+    private void Shoot()
+    {
+
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitFly");
+
+        info.launch_delta_xyz.x = Skill62_2_Data.ins.delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = Skill62_2_Data.ins.delta_xyz.y;// -0.2f;
+        info.launch_delta_xyz.z = Skill62_2_Data.ins.delta_xyz.z;// -0.2f;
+
+        info.frameDelay = 4;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        info.plistAnimation = Skill62_2_Data.ins.hit_animation_name;
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 10;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+        info.damage_ratio = Skill62_2_Data.ins.damage_ratio;
+        info.collider_size = Skill62_2_Data.ins.hit_rect;
+        b = BulletMgr.Create(this.Target, "BulletConfig", info);
+    }
+    public override void OnSpineComplete()
+    {
+        ///  this.stack.PopSingleSkill();
+
+        this.OnExit();
+    }
+    public override void OnExit()
+    {
+        if (b != null)
+        {
+            b.SetInValid();
+            b = null;
+        }
+        this.Enable = false;
+        Target.isAttacking = false;
+        Target.is_spine_loop = true;
+        this.ResumeAll();
+
+        /// this.stack.PushSingleSkill(new Skill6_2_2())
+
+    }
+    public override bool Init()
+    {
+        base.Init();
+        cd.TickMax();
+        return true;
+    }
+
+    public override bool OnInterrupted(SkillBase who)
+    {
+        if (this.Enable && tick_cancel.IsMax())
+        {
+            this.OnExit();
+            return true;
+        }
+        return false;
+    }
+    public override void OnAcceptInterrupted(SkillBase who)
+    {
+        if (this.Enable) return;
+        this.OnEnter();
+    }
+    public override void OnPush()
+    {
+        if (cd.IsMax() == false) return;
+        if (Target.isStand == false) return;
+        if (this.Enable) return;
+        if (Target.isAttacking)
+        {
+            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+        }
+        if (Target.isAttacking)
+        {
+            this.PushOnInterrupted();
+            return;
+        }
+        this.OnEnter();
+
+    }
+    Bullet b = null;
+}
+
+
+/// <summary>
+/// 形态2 技能3
+/// 起跳 在快速砍向 地面
+/// </summary>
+public class Skill62_3_v1 : SkillBase
+{
+    public override string GetName()
+    {
+        return "Skill62_3";
+    }
+
+    Counter cd = Counter.Create(Skill62_3_Data.ins.cd);
+    Counter tick1 = Counter.Create(Skill62_3_Data.ins.start_jump);
+    Counter tick_cancel = Counter.Create(Skill62_3_Data.ins.cancel);
+    bool has_shoot = false;
+    public override void OnEnter()
+    {
+        cd.SetMax(Skill62_3_Data.ins.cd);
+        tick1.SetMax(Skill62_3_Data.ins.start_jump);
+        tick_cancel.SetMax(Skill62_3_Data.ins.cancel);
+        tick_cancel.Reset();
+        cd.Reset();
+        this.PauseAll();
+        tick1.Reset();
+        jump_speed = Skill62_3_Data.ins.jump_speed;// DATA.DEFAULT_JUMP_SPEED * 1f;
+        has_shoot = false;
+        this.Target.machine.GetState<StandState>().Resume();
+        this.Target.machine.GetState<FallState>().Resume();
+        Target.isAttacking = true;
+        this.Enable = true;
+        Target.is_spine_loop = false;
+        Target.attackingAnimationName = Skill62_3_Data.ins.animation_name;//// "6140_1";
+    }
+
+    private float jump_speed = Skill62_3_Data.ins.jump_speed;  // DATA.DEFAULT_JUMP_SPEED * 1f;
+    public override void UpdateMS()
+    {
+        ///  Target.x_auto += Target.flipX * -0.05f;
+        if (tick1.Tick())
+        {//阶段1 起跳
+
+
+            if (jump_speed <= 0.0f)
+            {
+                tick1.TickMax();
+
+                BulletConfigInfo info = BulletConfigInfo.Create();
+
+                /// info.AddBuffer("BufferHitFly");
+
+                info.launch_delta_xyz.x = 1.5f;
+                info.launch_delta_xyz.y = -0.2f;
+                info.frameDelay = 3;
+                info.distance_atk = 1.5f;
+                info.number = 0xfff;
+                info.isHitDestory = true;
+                info.damage_ratio = 1.5f;
+                info.oneHitTimes = 1;
+                //  info.rotate = -120.0f;
+                ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
+
+                info.plistAnimation = "";
+                /// info.rotate = 30.0f;
+                info.distance = 0;
+                info.lastTime = 10;
+                info.scale_x = 2f;
+                info.scale_y = 2f;
+
+                Bullet b = BulletMgr.Create(this.Target, "BulletConfig", info);
+
+
+            }
+            else
+            {
+                //接入重力
+
+                jump_speed -= 9.8f / 40.0f * 0.1f * Skill62_3_Data.ins.gravity_ratio;
+                ///   current_height += jump_speed;
+                this.Target.y += jump_speed;
+            }
+        }
+
+        if (Target.y <= 0 && has_shoot == false)
+        {
+            this.Shoot();
+            has_shoot = true;
+        }
+
+        if (cd.Tick())
+        {
+            return;
+        }
+
+    }
+    public override void UpdateMSIdle()
+    {
+        cd.Tick();
+    }
+    private void Shoot()
+    {
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        info.AddBuffer("BufferHitFly");
+
+        // info.launch_delta_xy.x = 1.5f;
+        //  info.launch_delta_xy.y = -0.2f;
+        info.frameDelay = 3;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
+
+        //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 0;
+        info.lastTime = 10;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+
+        info.launch_delta_xyz.x = Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
+        info.launch_delta_xyz.z = Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+
+        info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
+        info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
+        info.collider_size = Skill62_3_Data.ins.hit_rect;
+
+        b = BulletMgr.Create(this.Target, "BulletConfig", info);
+    }
+    public override void OnSpineComplete()
+    {
+        ///  this.stack.PopSingleSkill();
+        ///  this.Shoot();
+        this.OnExit();
+    }
+    public override void OnExit()
+    {
+
+        this.Enable = false;
+        Target.isAttacking = false;
+        Target.is_spine_loop = true;
+        this.ResumeAll();
+
+        /// this.stack.PushSingleSkill(new Skill6_2_2())
+
+    }
+    public override void OnPush()
+    {
+        if (cd.IsMax() == false) return;
+        if (this.Enable) return;
+
+        ///  if (Target.isStand == false) return;
+        if (Target.isAttacking)
+        {
+            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+        }
+        this.OnEnter();
+    }
+    public override bool Init()
+    {
+        base.Init();
+        cd.TickMax();
+        return true;
+    }
+
+    public override void OnInterrupted(AttackInfo info)
+    {
+
+    }
+    public override bool OnInterrupted(SkillBase who)
+    {
+        if (this.Enable && tick_cancel.IsMax())
+        {
+            this.OnExit();
+            return true;
+        }
+        return false;
+    }
+    Bullet b = null;
+}
+
+
+
+
+/// <summary>
+/// 形态2 技能1
+/// 人物动画6100_2，无特效，判定范围为人物边框，持续2秒，
+/// 除切换取消和终结技取消外无法停止，释放期间可以移动(控制免疫)，并且移动速度增加30%，cd15s。
+/// </summary>
+public class Skill62_1_v2 : SkillBase
 {
     public override string GetName()
     {
@@ -1708,7 +2199,7 @@ public class Skill62_2 : SkillBase
 /// 
 /// 为开启/关闭型技能，开启时，每秒损失20（可调）点生命，对范围（可调）内敌人造成每秒100点伤害，升级后，不再造成生命损失
 /// </summary>
-public class Skill62_2 : SkillBase
+public class Skill62_2_v2 : SkillBase
 {
     public override string GetName()
     {
@@ -1831,13 +2322,11 @@ public class Skill62_2 : SkillBase
 }
 
 
-
-
 /// <summary>
 /// 形态2 技能3
 /// 起跳 在快速砍向 地面
 /// </summary>
-public class Skill62_3 : SkillBase
+public class Skill62_3_v2 : SkillBase
 {
     public override string GetName()
     {

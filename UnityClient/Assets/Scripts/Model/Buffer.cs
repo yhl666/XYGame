@@ -934,10 +934,9 @@ public class BufferSpin : Buffer
     }
     public override void OnEnter()
     {
-   
         tick.SetMax(MAX_TICK);
         target.eventDispatcher.PostEvent("SpineComplete");
-
+        tick.Reset();
         target.machine.PauseAllStack();
 
         if (target as Hero == HeroMgr.ins.self)
@@ -958,6 +957,7 @@ public class BufferSpin : Buffer
         target.machine.GetState<RunXZState>().SetEnable();
         EventDispatcher.ins.RemoveEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
     }
+ 
     public override bool Init()
     {
         base.Init();
