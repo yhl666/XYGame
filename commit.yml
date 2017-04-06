@@ -2,16 +2,13 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid '48142a1b2570523a204f6b44f7ef02d666ab58c8'
-    oldFile: !uuid '3e5676e3cee81c86fda1382bd2c4fbdfadc2d1e1'
-  /工作日志/BUG提交:
-    newFile: !uuid '482abc5f3c9c9f1648e4b5ffc6ab881381d93271'
-    oldFile: !uuid '4ced152194dadb8c53256c1ad8278e4749d9890f'
-  /工作日志/BUG提交/005.txt:
-    newFile: !uuid 'd8f7a279c5adea4e7926c718f1b4db9d135a449f'
-    oldFile: null
-gitCommitId: !uuid '0658465cc2ffecbd96901c7da255a76062864ce2'
+  /策划文档:
+    newFile: !uuid 'becb35ad1b88ab98ebbbfadfeb3ae5e3545535ed'
+    oldFile: !uuid 'a9c5b999aa9589d2282fd4b2379df6c32c7c60d1'
+  /策划文档/角色_怪物_刷新点.xlsx:
+    newFile: !uuid '0b2215d9415085a9f66b1ef7d678c44d1c80c389'
+    oldFile: !uuid 'a007908d1e442b20e524318d85d40e0522533413'
+gitCommitId: !uuid 'e63a411e3d232304a2599193138af04be5e07ced'
 renames: {
   }
-revisionId: 622
+revisionId: 623
