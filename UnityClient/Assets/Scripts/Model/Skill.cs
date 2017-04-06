@@ -2658,7 +2658,7 @@ public class Skill62_3_v2 : SkillBase
         }
         if (Target.isJumping == false && Target.isJumpTwice == false)
         {
-            return;
+         //   return;
         }
         ///  if (Target.isStand == false) return;
         if (Target.isAttacking)

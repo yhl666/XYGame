@@ -249,11 +249,11 @@ public class Entity : Model
         }
         foreach (Buffer buf in info.buffers)
         {
-            this.AddBuffer(buf);
+            this.AddBuffer(buf.Clone<Buffer>());
         }
         ///    this.TakeAttacked(info.ownner);
         if (info.damage > 0)
-        {     
+        {
             this.current_hp -= info.damage;
             eventDispatcher.PostEvent(Events.ID_HURT);//notify ui
         }

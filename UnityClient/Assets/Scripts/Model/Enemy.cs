@@ -115,8 +115,6 @@ public class Enemy : Entity
     {
         if (cd.IsMax())
         {
-            //   target.TakeAttack(this);
-            ///  BulletMgr.Create(this, "Bullet444_0");
             atk = true;
             cd.Reset();
         }
@@ -141,45 +139,9 @@ public class Enemy : Entity
 
         scale = 0.8f;
     }
-    // override 
-    public override bool Init()
+    public override void InitStateMachine()
     {
-        base.Init();
-        ai_fsm_machine = Utils.Create<FSMMachine>();
-        ai_fsm_machine.host = this;
-        ai_fsm_machine.Init();
         //init state machine
-        /*
-         {
-             StateStack s = StateStack.Create();
-             this.machine.AddParallelState(s);
-             s.PushSingleState(StateBase.Create<AttackState_1>(this));
-         }
-
-         {
-             StateStack s = StateStack.Create();
-             this.machine.AddParallelState(s);
-             s.PushSingleState(StateBase.Create<RunState>(this));
-
-         }
-
-         {
-             StateStack s = StateStack.Create();
-             this.machine.AddParallelState(s);
-             s.PushSingleState(StateBase.Create<StandState>(this));
-         }
-         {
-             StateStack s = StateStack.Create();
-             this.machine.AddParallelState(s);
-             s.PushSingleState(StateBase.Create<SkillState>(this));
-         }
-         {
-             StateStack s = StateStack.Create();
-             this.machine.AddParallelState(s);
-             s.PushSingleState(StateBase.Create<HurtState>(this));
-         }
-         */
-
         {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
@@ -217,16 +179,20 @@ public class Enemy : Entity
             s.PushSingleState(StateBase.Create<StandState>(this));
 
         }
-        /*  {
-              StateStack s = StateStack.Create();
-              this.machine.AddParallelState(s);
-              s.PushSingleState(StateBase.Create<SkillState>(this));
-          }*/
         {
             StateStack s = StateStack.Create();
             this.machine.AddParallelState(s);
             s.PushSingleState(StateBase.Create<HurtState>(this));
         }
+    }
+    // override 
+    public override bool Init()
+    {
+        base.Init();
+        ai_fsm_machine = Utils.Create<FSMMachine>();
+        ai_fsm_machine.host = this;
+        ai_fsm_machine.Init();
+
 
         this.current_hp = 3000;
         this.hp = 5000;
@@ -256,7 +222,7 @@ public class Enemy : Entity
             if (userData as Enemy == this)
             {
                 this.machine.Pause();
-                this.LazyDispose();
+                this.SetInValid();
             }
             if (userData as Entity == target)
             {//目标死亡
@@ -395,10 +361,6 @@ public class Enemy1 : Enemy
         bullet_atk1_info.isHitDestory = true;
         bullet_atk1_info.collider_size = new Vector3(2f, 2f, 2f);
 
-        //   this.speed *= 0.001f; ;
-        ///  bullet_atk1_info.AddBuffer("BufferHitBack");
-        //     bullet_atk1_info.AddBuffer("BufferSpin");
-
         this.atk_range = 1.0f;
         scale = 0.8f;
     }
@@ -419,8 +381,70 @@ public class Enemy1 : Enemy
     public override void UpdateMS()
     {
         base.UpdateMS();
-
-
-
     }
 }
+
+public class Enemy1_Strengthen : Enemy1
+{
+    public override void InitStateMachine()
+    {
+        //init state machine
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<DieState>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<AttackState_1>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<RunXZState>(this));
+
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<JumpState>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<FallState>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<StandState>(this));
+        }
+    }
+
+    public override void InitInfo()
+    {
+        base.InitInfo();
+        this.prefabsName = "Prefabs/Enemy221Flare";
+        ani_hurt = "";
+        scale = 1.3f;
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
+
+    public override void AI_UpdateMSWithAI()
+    {
+        base.AI_UpdateMSWithAI();
+    }
+    public override void UpdateMS()
+    {
+        base.UpdateMS();
+    }
+}
+
+

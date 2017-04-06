@@ -930,6 +930,13 @@ public class BufferForceCancel : Buffer
 /// </summary>
 public class BufferSpin : Buffer
 {
+    public override T Clone<T>()
+    {
+        BufferSpin ret = new BufferSpin();
+        ret.Init();
+        ret.MAX_TICK = this.MAX_TICK;
+        return ret as T;
+    }
     public override string GetName()
     {
         return "BufferSpin";

@@ -134,13 +134,22 @@ public class GAObject : IDisposable
     public bool isInAutoReleasePool = false;
     /// <summary>
     /// 深拷贝 接口
+    /// 注意 实现时 需要注意生命周期 比如Init是否需要手动调用等 要自己处理
     /// </summary>
     /// <returns></returns>
     public virtual GAObject Clone()
     {
-        return null;
+        return this;
     }
-
+    /// <summary>
+    /// 深拷贝 接口
+    /// 注意 实现时 需要注意生命周期 比如Init是否需要手动调用等 要自己处理
+    /// </summary>
+    /// <returns></returns>
+    public virtual T Clone<T>() where T : GAObject, new()
+    {
+        return this as T;
+    }
     ///--------------------------------------------------------- some helper function--------------
 
     public void log(string what)
@@ -195,7 +204,7 @@ public class GAObject : IDisposable
     }
 
     static Vector track_list = new Vector();
- 
+
     public static GAObject Create(string _class_name)
     {
         System.Type t = System.Type.GetType(_class_name);
