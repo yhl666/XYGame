@@ -130,7 +130,24 @@ public sealed class BulletConfigInfo
     public int sector_angle;//扇形评定框 角度
     public float sector_radius; // 扇形 评定半径
     public DamageType damage_type = DamageType.RATIO;//伤害类型 默认为 比例伤害
-    public int dir_2d=-1;//2d 移动方向 x z轴
+    public int dir_2d = -1;//2d 移动方向 x z轴
+    public ArrayList hit_targets = new ArrayList();//指定攻击目标 如果有指定 那么不自动判定目标， 没有的话，大小为0
+    /// <summary>
+    /// 添加指定攻击目标
+    /// </summary>
+    /// <param name="who"></param>
+    public void AddHitTarget(Entity who)
+    {
+        hit_targets.Add(who);
+    }
+    /// <summary>
+    /// 是否指定攻击目标
+    /// </summary>
+    /// <returns></returns>
+    public bool HasHitTarget()
+    {
+        return hit_targets.Count > 0;
+    }
     // eg.
 
     //比如 某法术 效果是 持续3秒 原地 2米内 造成2次伤害
@@ -218,7 +235,7 @@ public sealed class BulletConfig : Bullet
     private int validTimes = 0;
     private Vector hasHit = new Vector();//命中物体的集合 ，可判定命中次数
     public override void UpdateMS()
-    {
+    {//TODO 代码复用
         tick++;
 
         if (distance <= 0 && tick > info.lastTime)
@@ -241,7 +258,7 @@ public sealed class BulletConfig : Bullet
 
                 this.x += x_delta;
                 this.z += z_delta;
-                dis =Mathf.Abs(  z_delta )+ Mathf.Abs( x_delta);
+                dis = Mathf.Abs(z_delta) + Mathf.Abs(x_delta);
 
             }
             else
@@ -268,231 +285,334 @@ public sealed class BulletConfig : Bullet
             }
         }
         info.InVokeOnUpdateMS(this);
-        //scan heros
-        ArrayList heros = HeroMgr.ins.GetHeros();
-        int hitNumber = 0; // 命中怪物数量
         bool tagForValidTimes = false;
-        foreach (Hero h in heros)
-        {
-            if (hitNumber >= info.number) break;// 如果命中 敌人数 大于限制数量，忽略
-
-            if (h == owner) continue;
-
-            if (h.team != owner.team)
+        if (info.HasHitTarget())
+        {//指定了目标 直接判定目标是否进入范围
+            //scan heros
+            ArrayList targets = info.hit_targets;
+            int hitNumber = 0; // 命中数量
+            foreach (Entity h in targets)
             {
-                bool hit = false;
-                if (info.collider_type == ColliderType.Rect || info.collider_type == ColliderType.Box)
+                if (hitNumber >= info.number) break;// 如果命中 数 大于限制数量，忽略
+                if (h == owner) continue;
+                if (h.team != owner.team)
                 {
-                    hit = h.IsCast(this.bounds);
-                }
-                else if (ColliderType.Circle == info.collider_type)
-                {
-                    //    Debug.Log("dis = " + diss);
-                    hit = h.ClaculateDistance(x, y) < info.distance_atk;
-                }
-                else if (ColliderType.Sector == info.collider_type)
-                {
-                    //扇形评定框
-                    do
+                    bool hit = false;
+                    if (info.collider_type == ColliderType.Rect || info.collider_type == ColliderType.Box)
                     {
-                        int base_angle = 0;//评定角度
-                        if (this.flipX < 0)//往左边走
+                        hit = h.IsCast(this.bounds);
+                    }
+                    else if (ColliderType.Circle == info.collider_type)
+                    {
+                        //    Debug.Log("dis = " + diss);
+                        hit = h.ClaculateDistance(x, y) < info.distance_atk;
+                    }
+                    else if (ColliderType.Sector == info.collider_type)
+                    {
+                        //扇形评定框
+                        do
                         {
-                            if (this.x < h.x) break; // 目标在右边 跳过
-                            base_angle = 180;
+                            int base_angle = 0;//评定角度
+                            if (this.flipX < 0)//往左边走
+                            {
+                                if (this.x < h.x) break; // 目标在右边 跳过
+                                base_angle = 180;
+                            }
+                            else
+                            {
+                                if (this.x >= h.x) break; // 目标在左边 跳过
+                                base_angle = 0;
+                            }
+                            if (h.ClaculateDistance(x, h.y, z) < info.sector_radius)
+                            {//范围内
+                                int degree = (int)Utils.GetAngle(new Vector3(x, h.y, z), new Vector3(h.x, h.y, h.z));
+                                int angle = info.sector_angle;//扇形大小 
+                                int delta = base_angle - angle / 2;
+                                while (delta < 0)
+                                {
+                                    delta += 360;
+                                }
+                                while (degree - delta < 0)
+                                {
+                                    degree += 360;
+                                }
+                                if (angle >= degree - delta)
+                                {
+                                    hit = true;
+                                }
+                            }
+                        }
+                        while (false);
+                    }
+                    if (hit)
+                    {
+                        if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
+                        hitNumber++;
+                        AttackInfo inf = AttackInfo.Create(owner, h, info.damage_type);
+                        if (info.damage_type == DamageType.RATIO)
+                        {
+                            inf.InitWithCommon();
+                            inf.damage = (int)((float)inf.damage * info.damage_ratio);
+                        }
+                        else if (info.damage_type == DamageType.REAL)
+                        {
+                            inf.damage = (int)info.damage_real;
                         }
                         else
                         {
-                            if (this.x >= h.x) break; // 目标在左边 跳过
-                            base_angle = 0;
+                            Debug.LogError("unsuport damage type");
                         }
-                        if (h.ClaculateDistance(x, h.y, z) < info.sector_radius)
-                        {//范围内
-                            int degree = (int)Utils.GetAngle(new Vector3(x, h.y, z), new Vector3(h.x, h.y, h.z));
-                            int angle = info.sector_angle;//扇形大小 
-
-                            int delta = base_angle - angle / 2;
-
-                            while (delta < 0)
-                            {
-                                delta += 360;
-                            }
-                            while (degree - delta < 0)
-                            {
-                                degree += 360;
-                            }
-                            if (angle >= degree - delta)
-                            {
-                                hit = true;
-                            }
+                        foreach (string buf in info.buffers_string)
+                        {
+                            inf.AddBuffer(buf);
                         }
+                        foreach (Buffer buf in info.buffers)
+                        {
+                            inf.AddBuffer(buf);
+                        }
+                        ///     inf.buffers_string = info.buffers_string;
+                        h.TakeAttacked(inf);
+                        info.InVokeOnTakeAttack(this, h);
+
+                        hasHit.PushBack(h);
+                        tagForValidTimes = true;
+                        /* foreach (string buffer in info.buffers_string)
+                         {//add buffer
+                             h.AddBuffer(buffer);
+                         }
+                         foreach (Buffer buffer in info.buffers)
+                         {//add buffer
+                             h.AddBuffer(buffer);
+                         }*/
                     }
-                    while (false);
                 }
-                if (hit)
+                else
                 {
-                    if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
-                    hitNumber++;
-
-                    AttackInfo inf = AttackInfo.Create(owner, h, info.damage_type);
-                    if (info.damage_type == DamageType.RATIO)
-                    {
-                        inf.InitWithCommon();
-                        inf.damage = (int)((float)inf.damage * info.damage_ratio);
-                    }
-                    else if (info.damage_type == DamageType.REAL)
-                    {
-                        inf.damage = (int)info.damage_real;
-                    }
-                    else
-                    {
-                        Debug.LogError("unsuport damage type");
-                    }
-                    foreach (string buf in info.buffers_string)
-                    {
-                        inf.AddBuffer(buf);
-                    }
-                    foreach (Buffer buf in info.buffers)
-                    {
-                        inf.AddBuffer(buf);
-                    }
-                    ///     inf.buffers_string = info.buffers_string;
-                    h.TakeAttacked(inf);
-                    info.InVokeOnTakeAttack(this, h);
-
-                    hasHit.PushBack(h);
-                    tagForValidTimes = true;
-                    /* foreach (string buffer in info.buffers_string)
-                     {//add buffer
-                         h.AddBuffer(buffer);
-                     }
-                     foreach (Buffer buffer in info.buffers)
-                     {//add buffer
-                         h.AddBuffer(buffer);
-                     }*/
+                    continue;
                 }
-            }
-            else
-            {
-                continue;
             }
         }
-
-
-
-        //scan enemy
-        ArrayList enemys = EnemyMgr.ins.GetEnemys();
-        foreach (Enemy h in enemys)
-        {
-            if (hitNumber >= info.number) break; // 如果命中 敌人数 大于限制数量，忽略
-
-            if (h.team != owner.team)
+        else
+        {//未指定目标
+            //scan heros
+            ArrayList heros = HeroMgr.ins.GetHeros();
+            int hitNumber = 0; // 命中怪物数量
+            foreach (Hero h in heros)
             {
-                bool hit = false;
-                if (info.collider_type == ColliderType.Rect || info.collider_type == ColliderType.Box)
+                if (hitNumber >= info.number) break;// 如果命中 敌人数 大于限制数量，忽略
+
+                if (h == owner) continue;
+
+                if (h.team != owner.team)
                 {
-                    hit = h.IsCast(this.bounds);
-                }
-                else if (ColliderType.Circle == info.collider_type)
-                {
-                    //    Debug.Log("dis = " + diss);
-                    hit = h.ClaculateDistance(x, y) < info.distance_atk;
-                }
-                else if (ColliderType.Sector == info.collider_type)
-                {
-                    //扇形评定框
-                    do
+                    bool hit = false;
+                    if (info.collider_type == ColliderType.Rect || info.collider_type == ColliderType.Box)
                     {
-                        int base_angle = 0;//评定角度
-                        if (this.flipX < 0)//往左边走
+                        hit = h.IsCast(this.bounds);
+                    }
+                    else if (ColliderType.Circle == info.collider_type)
+                    {
+                        //    Debug.Log("dis = " + diss);
+                        hit = h.ClaculateDistance(x, y) < info.distance_atk;
+                    }
+                    else if (ColliderType.Sector == info.collider_type)
+                    {
+                        //扇形评定框
+                        do
                         {
-                            if (this.x < h.x) break; // 目标在右边 跳过
-                            base_angle = 180;
+                            int base_angle = 0;//评定角度
+                            if (this.flipX < 0)//往左边走
+                            {
+                                if (this.x < h.x) break; // 目标在右边 跳过
+                                base_angle = 180;
+                            }
+                            else
+                            {
+                                if (this.x >= h.x) break; // 目标在左边 跳过
+                                base_angle = 0;
+                            }
+                            if (h.ClaculateDistance(x, h.y, z) < info.sector_radius)
+                            {//范围内
+                                int degree = (int)Utils.GetAngle(new Vector3(x, h.y, z), new Vector3(h.x, h.y, h.z));
+                                int angle = info.sector_angle;//扇形大小 
+
+                                int delta = base_angle - angle / 2;
+
+                                while (delta < 0)
+                                {
+                                    delta += 360;
+                                }
+                                while (degree - delta < 0)
+                                {
+                                    degree += 360;
+                                }
+                                if (angle >= degree - delta)
+                                {
+                                    hit = true;
+                                }
+                            }
+                        }
+                        while (false);
+                    }
+                    if (hit)
+                    {
+                        if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
+                        hitNumber++;
+
+                        AttackInfo inf = AttackInfo.Create(owner, h, info.damage_type);
+                        if (info.damage_type == DamageType.RATIO)
+                        {
+                            inf.InitWithCommon();
+                            inf.damage = (int)((float)inf.damage * info.damage_ratio);
+                        }
+                        else if (info.damage_type == DamageType.REAL)
+                        {
+                            inf.damage = (int)info.damage_real;
                         }
                         else
                         {
-                            if (this.x >= h.x) break; // 目标在左边 跳过
-                            base_angle = 0;
+                            Debug.LogError("unsuport damage type");
                         }
-                        if (h.ClaculateDistance(x, h.y, z) < info.sector_radius)
-                        {//范围内
-                            int degree = (int)Utils.GetAngle(new Vector3(x, h.y, z), new Vector3(h.x, h.y, h.z));
-                            int angle = info.sector_angle;//扇形大小 
-
-                            int delta = base_angle - angle / 2;
-
-                            while (delta < 0)
-                            {
-                                delta += 360;
-                            }
-                            while (degree - delta < 0)
-                            {
-                                degree += 360;
-                            }
-                            if (angle >= degree - delta)
-                            {
-                                hit = true;
-                            }
+                        foreach (string buf in info.buffers_string)
+                        {
+                            inf.AddBuffer(buf);
                         }
+                        foreach (Buffer buf in info.buffers)
+                        {
+                            inf.AddBuffer(buf);
+                        }
+                        ///     inf.buffers_string = info.buffers_string;
+                        h.TakeAttacked(inf);
+                        info.InVokeOnTakeAttack(this, h);
+
+                        hasHit.PushBack(h);
+                        tagForValidTimes = true;
+                        /* foreach (string buffer in info.buffers_string)
+                         {//add buffer
+                             h.AddBuffer(buffer);
+                         }
+                         foreach (Buffer buffer in info.buffers)
+                         {//add buffer
+                             h.AddBuffer(buffer);
+                         }*/
                     }
-                    while (false);
                 }
-                if (hit)
+                else
                 {
-                    if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
-
-                    AttackInfo inf = AttackInfo.Create(owner, h, info.damage_type);
-                    if (info.damage_type == DamageType.RATIO)
-                    {
-                        inf.InitWithCommon();
-                        inf.damage = (int)((float)inf.damage * info.damage_ratio);
-                    }
-                    else if (info.damage_type == DamageType.REAL)
-                    {
-                        inf.damage = (int)info.damage_real;
-                    }
-                    else
-                    {
-                        Debug.LogError("unsuport damage type");
-                    }
-                    foreach (string buf in info.buffers_string)
-                    {
-                        inf.AddBuffer(buf);
-                    }
-                    foreach (Buffer buf in info.buffers)
-                    {
-                        inf.AddBuffer(buf);
-                    }
-                    //  inf.buffers_string = info.buffers_string;
-                    h.TakeAttacked(inf);
-
-                    info.InVokeOnTakeAttack(this, h);
-                    hasHit.PushBack(h);
-                    tagForValidTimes = true;
-                    hitNumber++;
-                    /*   foreach (string buffer in info.buffers_string)
-                       {//add buffer
-                           h.AddBuffer(buffer);
-                       }
-                       foreach (Buffer buffer in info.buffers)
-                       {//add buffer
-                           h.AddBuffer(buffer);
-                       }*/
+                    continue;
                 }
             }
-            else
+
+            //scan enemy
+            ArrayList enemys = EnemyMgr.ins.GetEnemys();
+            foreach (Enemy h in enemys)
             {
-                continue;
+                if (hitNumber >= info.number) break; // 如果命中 敌人数 大于限制数量，忽略
+
+                if (h.team != owner.team)
+                {
+                    bool hit = false;
+                    if (info.collider_type == ColliderType.Rect || info.collider_type == ColliderType.Box)
+                    {
+                        hit = h.IsCast(this.bounds);
+                    }
+                    else if (ColliderType.Circle == info.collider_type)
+                    {
+                        //    Debug.Log("dis = " + diss);
+                        hit = h.ClaculateDistance(x, y) < info.distance_atk;
+                    }
+                    else if (ColliderType.Sector == info.collider_type)
+                    {
+                        //扇形评定框
+                        do
+                        {
+                            int base_angle = 0;//评定角度
+                            if (this.flipX < 0)//往左边走
+                            {
+                                if (this.x < h.x) break; // 目标在右边 跳过
+                                base_angle = 180;
+                            }
+                            else
+                            {
+                                if (this.x >= h.x) break; // 目标在左边 跳过
+                                base_angle = 0;
+                            }
+                            if (h.ClaculateDistance(x, h.y, z) < info.sector_radius)
+                            {//范围内
+                                int degree = (int)Utils.GetAngle(new Vector3(x, h.y, z), new Vector3(h.x, h.y, h.z));
+                                int angle = info.sector_angle;//扇形大小 
+
+                                int delta = base_angle - angle / 2;
+
+                                while (delta < 0)
+                                {
+                                    delta += 360;
+                                }
+                                while (degree - delta < 0)
+                                {
+                                    degree += 360;
+                                }
+                                if (angle >= degree - delta)
+                                {
+                                    hit = true;
+                                }
+                            }
+                        }
+                        while (false);
+                    }
+                    if (hit)
+                    {
+                        if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
+
+                        AttackInfo inf = AttackInfo.Create(owner, h, info.damage_type);
+                        if (info.damage_type == DamageType.RATIO)
+                        {
+                            inf.InitWithCommon();
+                            inf.damage = (int)((float)inf.damage * info.damage_ratio);
+                        }
+                        else if (info.damage_type == DamageType.REAL)
+                        {
+                            inf.damage = (int)info.damage_real;
+                        }
+                        else
+                        {
+                            Debug.LogError("unsuport damage type");
+                        }
+                        foreach (string buf in info.buffers_string)
+                        {
+                            inf.AddBuffer(buf);
+                        }
+                        foreach (Buffer buf in info.buffers)
+                        {
+                            inf.AddBuffer(buf);
+                        }
+                        //  inf.buffers_string = info.buffers_string;
+                        h.TakeAttacked(inf);
+
+                        info.InVokeOnTakeAttack(this, h);
+                        hasHit.PushBack(h);
+                        tagForValidTimes = true;
+                        hitNumber++;
+                        /*   foreach (string buffer in info.buffers_string)
+                           {//add buffer
+                               h.AddBuffer(buffer);
+                           }
+                           foreach (Buffer buffer in info.buffers)
+                           {//add buffer
+                               h.AddBuffer(buffer);
+                           }*/
+                    }
+                }
+                else
+                {
+                    continue;
+                }
             }
         }
         if (tagForValidTimes)
         {//命中过敌人 有效次数
             validTimes++;
         }
-
-
-
-
     }
 
     public override void OnEnter()
@@ -515,7 +635,7 @@ public sealed class BulletConfig : Bullet
 
         if (info.dir_2d < 0)
         {
-            if(this.flipX>0)
+            if (this.flipX > 0)
             {
                 info.dir_2d = 0;
             }
@@ -550,7 +670,7 @@ public sealed class BulletConfig : Bullet
         this.scale_x = info.scale_x;
         this.scale_y = info.scale_y;
         this.bounds_size = info.collider_size;
-    
+
     }
     public static BulletConfig CreateWithJson(string json)
     {

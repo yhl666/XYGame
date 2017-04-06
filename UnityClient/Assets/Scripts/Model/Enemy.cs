@@ -322,6 +322,7 @@ public class Enemy221 : Enemy
         bullet_atk1_info.plistAnimation = "";
         bullet_atk1_info.distance = 0.2f;
         bullet_atk1_info.distance_atk = 1f;
+        ///  bullet_atk1_info.AddHitTarget(BuildingMgr.ins.GetBuildings()[0] as Entity);
         //   this.speed *= 0.001f; ;
         ///  bullet_atk1_info.AddBuffer("BufferHitBack");
         //     bullet_atk1_info.AddBuffer("BufferSpin");
@@ -371,7 +372,7 @@ public class Enemy1 : Enemy
 
     public override void AI_UpdateMSWithAI()
     {
-        if(HasTowner())
+        if (HasTowner())
         {
 
         }
