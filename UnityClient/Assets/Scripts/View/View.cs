@@ -432,3 +432,133 @@ public class ViewBuffer : View
     private Buffer m = null;
 
 }
+
+
+public class ViewBuilding : View
+{
+    public override void OnDispose()
+    {
+        GameObject.DestroyImmediate(obj);
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+        this.m = model as Building;
+
+        this.obj = PrefabsMgr.Load(m.prefabsName);
+        this.spine = obj.GetComponent<SkeletonAnimation>();
+        spine.initialSkinName = m.skin;
+        spine.skeleton.SetSkin(m.skin);
+        this.transform = obj.GetComponent<Transform>();
+        obj.name = "Building-" + m.GetType().ToString();
+        EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_REVIVE);
+
+        //init event
+
+        spine.state._OnComplete = () =>
+        {
+            //   Debug.Log("_OnComplete");
+            m.eventDispatcher.PostEvent("SpineComplete", spine.AnimationName);
+
+        };
+
+        spine.state._OnEnd = () =>
+        {//
+            // Debug.Log("end");
+        };
+        spine.state._OnStart = () =>
+        {
+            //   Debug.Log("start");
+        };
+
+        return true;
+    }
+
+    public override void OnEvent(int type, object userData)
+    {
+        Entity mm = userData as Entity;
+        if (mm != m) return;
+
+        if (type == Events.ID_DIE)
+        {
+            this.obj.SetActive(false);
+        }
+        else if (type == Events.ID_REVIVE)
+        {
+            this.obj.SetActive(true);
+        }
+    }
+
+    public override void UpdateMS()
+    {
+        if (m.IsInValid())
+        {
+            this.SetInValid();
+            return;
+        }
+        if (Config.VIEW_MODE == ViewMode.M25D)
+        {
+            transform.position = new Vector3(m.x, m.GetReal25DY(), transform.position.z);
+        }
+        else
+        {
+            transform.position = new Vector3(m.x, m.GetRealY(), transform.position.z);
+        }
+        float factor = m.scale;
+        transform.localScale = new Vector3(m.flipX * factor, factor, factor);
+
+        string name = "";
+        //优先级匹配，状态可能组合，但是动画只有一个
+        if (m.isDie)
+        {
+
+            ///    name = m.ani_die;
+        }
+        else if (m.isAttacking)
+        {
+            name = m.attackingAnimationName;
+        }
+        else if (m.isHurt)
+        {
+            name = m.ani_hurt;
+        }
+        else if (m.isStand)
+        {
+            name = m.ani_stand;
+        }
+        spine.loop = m.is_spine_loop;
+
+        spine.AnimationName = name;
+
+        if (m.delta_hp != 0)
+        {
+
+            BattleFlyTextInfo info = BattleFlyTextInfo.Create();
+            if (m.delta_hp > 0)
+            {
+                //加血
+                info.color = BattleFlyTextInfo.COLOR_HP_ADD;
+            }
+            else if (m.delta_hp < 0)
+            {//减血
+
+                info.color = BattleFlyTextInfo.COLOR_HP_REDUCE;
+            }
+
+            info.txt = m.delta_hp.ToString(); ;
+            info.position_world_x = m.x + UnityEngine.Random.Range(-0.5f, 0.5f);
+            info.position_world_y = m.GetReal25DY() + 0.8f;
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_FLYTEXT, info);
+            m.delta_hp = 0;
+        }
+        spine.UpdateMS(Utils.deltaTime * m.spine_time_scale);
+    }
+
+    SkeletonAnimation spine = null;
+    Transform transform = null;
+    GameObject obj = null;
+    Building m = null;
+}
+

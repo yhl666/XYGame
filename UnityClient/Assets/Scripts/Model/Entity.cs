@@ -772,17 +772,3 @@ public class Entity : Model
     public BufferMgr bufferMgr { get { return _bufferMgr; } }
 
 }
-
-
-
-public class Building:Entity
-{
-
-}
-
-public class Tower:Building
-{
-
-
-
-}

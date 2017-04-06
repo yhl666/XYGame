@@ -136,12 +136,12 @@ sealed class BattlePVEHandler : BattleHandlerBase
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         {
-            for (int i = 0; i < 10  ; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy221>();
                 e1.x = randObj.Next(0, 340000) / 10000f;
                 e1.z = randObj.Next(1000, 4000) / 1000.0f;
-               
+
                 //   e1.x = 5+i*0.1f;   
                 ///   e1.x = 55555;
                 e1.y = 5;
@@ -170,7 +170,9 @@ sealed class BattlePVEHandler : BattleHandlerBase
         }
         HeroMgr.ins.self.z = 3f;
         HeroMgr.ins.self.x = 8f;
-
+        Tower tower = BuildingMgr.Create<Tower>();
+        tower.x = 10f;
+        tower.z = 3f;
         return true;
     }
     public static BattleHandlerBase Create(BattleApp app)

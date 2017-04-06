@@ -26,6 +26,8 @@ public sealed class ModelMgr : SingletonGAObject<ModelMgr>
         BulletMgr.DestroyInstance();
         HeroMgr.DestroyInstance();
         EnemyMgr.DestroyInstance();
+        BuildingMgr.DestroyInstance();
+
         base.OnDispose();
     }
     public void Add(Model b)
@@ -47,6 +49,7 @@ public sealed class ModelMgr : SingletonGAObject<ModelMgr>
         BulletMgr.ins.UpdateMS();
         HeroMgr.ins.UpdateMS();
         EnemyMgr.ins.UpdateMS();
+        BuildingMgr.ins.UpdateMS();
 
         foreach (Model b in lists)
         {
@@ -71,11 +74,12 @@ public sealed class ModelMgr : SingletonGAObject<ModelMgr>
     }
     public override void Update()
     {
-      ///  EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLMODEL_UPDATEMS);
+        ///  EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLMODEL_UPDATEMS);
 
         BulletMgr.ins.Update();
         HeroMgr.ins.Update();
         EnemyMgr.ins.Update();
+        BuildingMgr.ins.Update();
 
         foreach (Model b in lists)
         {
@@ -84,19 +88,19 @@ public sealed class ModelMgr : SingletonGAObject<ModelMgr>
             { b.Update(); }
         }
 
-    /*    for (int i = 0; i < lists.Count; )
-        {
-            Model b = lists[i] as Model;
-            if (b.IsInValid())
+        /*    for (int i = 0; i < lists.Count; )
             {
-                this.Remove(b);
-            }
-            else
-            {
-                ++i;
-            }
-        }*/
-      ////  EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
+                Model b = lists[i] as Model;
+                if (b.IsInValid())
+                {
+                    this.Remove(b);
+                }
+                else
+                {
+                    ++i;
+                }
+            }*/
+        ////  EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
     }
 
     ArrayList lists = new ArrayList();

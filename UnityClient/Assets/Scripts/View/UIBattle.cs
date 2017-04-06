@@ -1188,52 +1188,42 @@ public sealed class UI_smallmap : ViewUI
     public override void Update()
     {
         base.Update();
-
+        //更新enemy 信息
+        this.Sync(ref list_ememy, EnemyMgr.ins.GetEnemys(), template_enemy);
+        //更新hero 信息
+        this.Sync(ref list_hero, HeroMgr.ins.GetHeros(), template_hero2);
+        //更新building 信息
+        this.Sync(ref list_building, BuildingMgr.ins.GetBuildings(), template_building);
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="list">缓存数组</param>
+    /// <param name="objs">Entity 源信息数组</param>
+    /// <param name="template">模板</param>
+    private void Sync(ref ArrayList list, ArrayList objs, GameObject template)
+    {
         Terrain terrain = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetTerrain();
 
-        //更新enemy 信息
-        ArrayList enemys = EnemyMgr.ins.GetEnemys();
-        if (enemys.Count > list_ememy.Count)
+        //更新 信息
+        if (objs.Count > list.Count)//扩容
         {
-            for (int ii = list_ememy.Count; ii < enemys.Count; ii++)
+            for (int ii = list.Count; ii < objs.Count; ii++)
             {
-                list_ememy.Add(GameObject.Instantiate(template_enemy, template_enemy.transform.parent));
+                list.Add(GameObject.Instantiate(template, template.transform.parent));
             }
         }
         int i = 0;
-        for (i = 0; i < enemys.Count; i++)
+        for (i = 0; i < objs.Count; i++) // 更新
         {
-            Entity e = enemys[i] as Entity;
-            GameObject obj = list_ememy[i] as GameObject;
+            Entity e = objs[i] as Entity;
+            GameObject obj = list[i] as GameObject;
             obj.SetActive(true);
             this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.z / terrain.limit_z_up);
         }
-        for (; i < list_ememy.Count; i++)
+        for (; i < list.Count; i++) // 隐藏多余的缓存图块
         {
-            GameObject obj = list_ememy[i] as GameObject;
-            obj.SetActive(false);
-        }
-
-        //更新hero 信息
-        ArrayList heros = HeroMgr.ins.GetHeros();
-        if (heros.Count > list_hero.Count)
-        {
-            for (int ii = list_hero.Count; ii < heros.Count; ii++)
-            {
-                list_hero.Add(GameObject.Instantiate(template_hero2, template_hero2.transform.parent));
-            }
-        }
-        i = 0;
-        for (i = 0; i < heros.Count; i++)
-        {
-            Entity e = heros[i] as Entity;
-            GameObject obj = list_hero[i] as GameObject;
-            obj.SetActive(true);
-            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.z / terrain.limit_z_up);
-        }
-        for (; i < list_hero.Count; i++)
-        {
-            GameObject obj = list_hero[i] as GameObject;
+            GameObject obj = list[i] as GameObject;
             obj.SetActive(false);
         }
     }
@@ -1263,14 +1253,19 @@ public sealed class UI_smallmap : ViewUI
         this.template_enemy = _ui.transform.FindChild("enemy_template").gameObject;
         this.template_enemy.SetActive(false);
 
+        this.template_building = _ui.transform.FindChild("building_template").gameObject;
+        this.template_building.SetActive(false);
+
         return true;
     }
 
     ArrayList list_ememy = new ArrayList();
     ArrayList list_hero = new ArrayList();
+    ArrayList list_building = new ArrayList();
 
     GameObject template_hero2 = null;
     GameObject template_enemy = null;
+    GameObject template_building = null;
 
     Image img_bg = null;
 }
