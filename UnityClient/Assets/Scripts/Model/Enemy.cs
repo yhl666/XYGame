@@ -185,6 +185,11 @@ public class Enemy : Entity
             this.machine.AddParallelState(s);
             s.PushSingleState(StateBase.Create<HurtState>(this));
         }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<SkillState>(this));
+        }
     }
     // override 
     public override bool Init()
@@ -667,7 +672,7 @@ public class EnemyBoss : Enemy
     public override bool Init()
     {
         base.Init();
-
+        type = "boss";
         return true;
     }
 
@@ -680,5 +685,6 @@ public class EnemyBoss : Enemy
     {
         base.UpdateMS();
     }
+
 }
 

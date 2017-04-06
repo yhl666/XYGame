@@ -164,10 +164,10 @@ namespace ConfigTables
             }
             return kv.Get<HashTable>(key);
         }
-        public static ArrayList GetSkillsList(string hero_type)
+        public static ArrayList GetSkillsList(string type)
         {
             ArrayList ret = new ArrayList();
-            if(hero_type == "6")
+            if (type == "6")
             { /// group 1
                 ret.Add("Skill62_1_v2");
                 ret.Add("Skill62_2_v2");
@@ -183,7 +183,7 @@ namespace ConfigTables
                 ret.Add("SkillForceCancel");
 
             }
-            else if (hero_type == "2")
+            else if (type == "2")
             {
                 /// group 1
                 ret.Add("Skill2_1");
@@ -198,6 +198,23 @@ namespace ConfigTables
                 ret.Add("Skill2_3");
                 ret.Add("Skill2_5");
                 ret.Add("SkillForceCancel");
+            }
+            else if (type == "boss")
+            {
+                /// group 1
+                ret.Add("SkillBoss_1");
+                ret.Add("SkillBoss_2");
+                ret.Add("SkillBoss_3");
+                ret.Add("SkillBoss_1");
+                ret.Add("SkillBoss_1");
+
+                //-- group 2
+                ret.Add("SkillBoss_1");
+                ret.Add("SkillBoss_2");
+                ret.Add("SkillBoss_3");
+                ret.Add("SkillBoss_1");
+                ret.Add("SkillBoss_1");
+
             }
 
             return ret;
