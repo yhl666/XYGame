@@ -131,7 +131,7 @@ public sealed class BulletConfigInfo
     public float sector_radius; // 扇形 评定半径
     public DamageType damage_type = DamageType.RATIO;//伤害类型 默认为 比例伤害
     public int dir_2d = -1;//2d 移动方向 x z轴
-    public ArrayList hit_targets = new ArrayList();//指定攻击目标 如果有指定 那么不自动判定目标， 没有的话，大小为0
+    public ArrayList hit_targets = new ArrayList();//指定攻击目标 如果有指定 那么不自动判定目标（只会在运动轨迹范围内判定 指定的目标是否在攻击范围内）， 没有的话，大小为0
     /// <summary>
     /// 添加指定攻击目标
     /// </summary>
