@@ -2,22 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '15eef7e1b7e6cc686fb53c8ee4617f19f272bc6c'
-    oldFile: !uuid 'ca756e61dcfa1dda4b6481670f5d137c06918fb7'
-  /UnityClient/Assets:
-    newFile: !uuid '84dca4ae001b9934cb68c6bdda0785681ce99459'
-    oldFile: !uuid 'bc8a6eab1f2b1f01da6af61e18dd84e8105b539c'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '4d4075388e97b461942a7c886a5b245415b2d3c6'
-    oldFile: !uuid 'e876b3156e207ddc923908b8237c4c2e317aa6f5'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '3b731d71fc0c02442fcfd453186829362c02ecba'
-    oldFile: !uuid 'ca18c5eb0905ca0bf14a042bac3a9eb9b2abdc20'
-  /UnityClient/Assets/Scripts/Model/Bullet.cs:
-    newFile: !uuid 'ce3651e7600038582b6b2c5401315eaa4aec4b3e'
-    oldFile: !uuid '7ce29d2c6c1f9d692a5337fd5b26fe63b239df0e'
-gitCommitId: !uuid '2513bd1fc751b4b72f8d915492e2b4356c798aba'
+  /策划文档:
+    newFile: !uuid 'a9c5b999aa9589d2282fd4b2379df6c32c7c60d1'
+    oldFile: !uuid '4424fb21c32d1d933e781d5afe29a7dce256c424'
+  /策划文档/角色_怪物_刷新点.xlsx:
+    newFile: !uuid 'a007908d1e442b20e524318d85d40e0522533413'
+    oldFile: null
+gitCommitId: !uuid 'c39caf0f36af659918a47ef14620edcce64a0829'
 renames: {
   }
-revisionId: 617
+revisionId: 618
