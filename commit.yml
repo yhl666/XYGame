@@ -3,27 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'fa59fb0294cb640cc9ba5ae2265ebc01f72d283e'
-    oldFile: !uuid 'fd1f941ba1e5d2e5f70ec4fbc00e9c487fb3f3c2'
+    newFile: !uuid '7bffd026b8a1376477f65ae7ead43f276d477a9f'
+    oldFile: !uuid 'fa59fb0294cb640cc9ba5ae2265ebc01f72d283e'
   /UnityClient/Assets:
-    newFile: !uuid '721d6cbf8364ec07ec296739e0f367ffcbbcc4a0'
-    oldFile: !uuid 'db22dc90f268f4c1ff0c6b21edd883e5623cba77'
+    newFile: !uuid 'f7748e8ed6b1dc5de6b881a9fb88bf11fe37f2e4'
+    oldFile: !uuid '721d6cbf8364ec07ec296739e0f367ffcbbcc4a0'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '845d6124cd9c41ef8cc072c8471ec6e2968af9df'
-    oldFile: !uuid 'c5cda51f510a0ff4109c0a0956d43209d1f2d8b8'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '2b1e167485b73f1e08e287a2b356f5d9319727fb'
-    oldFile: !uuid 'becb29d3b2761fa4cdb3e0e6a2035dc4f302c641'
-  /UnityClient/Assets/Scripts/Data/ConfigTables.cs:
-    newFile: !uuid '7d4863cdf8beaff5ee64bb5330435d330aae1b14'
-    oldFile: !uuid '5c7ca1ec91f55d826921a0a989109160e642b551'
+    newFile: !uuid '3024a99b2ac38f5067f4773b6ab92a2e9edca118'
+    oldFile: !uuid '845d6124cd9c41ef8cc072c8471ec6e2968af9df'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'b65dede9df722fbf8529d38ff85ad53f974903ac'
-    oldFile: !uuid '213b3009b915da66897db39aebe890c6246a872a'
+    newFile: !uuid 'db2f97b64c34f4fa86697d331558557440e27575'
+    oldFile: !uuid 'b65dede9df722fbf8529d38ff85ad53f974903ac'
   /UnityClient/Assets/Scripts/Model/Enemy.cs:
-    newFile: !uuid '52bb59e8e92e4f5f9a1255348643af739e646285'
-    oldFile: !uuid 'd53fab23a6c0c5b38c166d1446138e8fe0a3139a'
-gitCommitId: !uuid '94393ab17c87899ddf6d2d3ff0e4facfde47f838'
+    newFile: !uuid 'f74a8a8e9b37c44b311e74568d877be127bdf992'
+    oldFile: !uuid '52bb59e8e92e4f5f9a1255348643af739e646285'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid 'b7468c09ec4735130b7ac6c9ec9eb4c0f51e2436'
+    oldFile: !uuid 'e17fd47823cb111d6d40ba1da25f31cc8336abb8'
+gitCommitId: !uuid '76e08b9945497ccaa956258aafbf315eaab09733'
 renames: {
   }
-revisionId: 632
+revisionId: 633
