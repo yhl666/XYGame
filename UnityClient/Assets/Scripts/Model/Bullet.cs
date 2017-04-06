@@ -501,7 +501,7 @@ public sealed class BulletConfig : Bullet
 
         this.y = owner.y + owner.height + info.launch_delta_xyz.y;
         this.z = owner.z + info.launch_delta_xyz.z;
-        this.x = owner.x + info.launch_delta_xyz.x;
+    ///    this.x = owner.x + info.launch_delta_xyz.x;
 
         this.flipX = -owner.flipX;
         if (this.flipX < 0)
