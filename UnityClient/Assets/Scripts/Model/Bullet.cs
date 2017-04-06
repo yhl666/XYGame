@@ -130,7 +130,7 @@ public sealed class BulletConfigInfo
     public int sector_angle;//扇形评定框 角度
     public float sector_radius; // 扇形 评定半径
     public DamageType damage_type = DamageType.RATIO;//伤害类型 默认为 比例伤害
-    public int dir_2d=-1;//2d 移动方向 x z轴
+    public int dir_2d = -1;//2d 移动方向 x z轴
     // eg.
 
     //比如 某法术 效果是 持续3秒 原地 2米内 造成2次伤害
@@ -241,7 +241,7 @@ public sealed class BulletConfig : Bullet
 
                 this.x += x_delta;
                 this.z += z_delta;
-                dis =Mathf.Abs(  z_delta )+ Mathf.Abs( x_delta);
+                dis = Mathf.Abs(z_delta) + Mathf.Abs(x_delta);
 
             }
             else
@@ -500,8 +500,8 @@ public sealed class BulletConfig : Bullet
         base.OnEnter();
 
         this.y = owner.y + owner.height + info.launch_delta_xyz.y;
-
         this.z = owner.z + info.launch_delta_xyz.z;
+        this.x = owner.x + info.launch_delta_xyz.x;
 
         this.flipX = -owner.flipX;
         if (this.flipX < 0)
@@ -515,7 +515,7 @@ public sealed class BulletConfig : Bullet
 
         if (info.dir_2d < 0)
         {
-            if(this.flipX>0)
+            if (this.flipX > 0)
             {
                 info.dir_2d = 0;
             }
@@ -550,7 +550,7 @@ public sealed class BulletConfig : Bullet
         this.scale_x = info.scale_x;
         this.scale_y = info.scale_y;
         this.bounds_size = info.collider_size;
-    
+
     }
     public static BulletConfig CreateWithJson(string json)
     {
