@@ -490,61 +490,61 @@ public class BufferHitBack : Buffer
     {
         return "BufferHitBack";
     }
-    /*  public int time = 15;//默认3s
-      public int dir = 1;
-      public bool nonsense = true;
-      public override void OnEnter()
-      {
-          //去重
-          {
-              Buffer other = mgr.GetBuffer(this.GetId());
-              if (other != null && other != this && other.GetId() == this.GetId())
-              {
-                  ///   other.GetCounter().Reset();
-                  this.SetInValid();
-                  return;
-              }
-          }
+    public int time = 15;//默认3s
+    public int dir = 1;
+    public bool nonsense = true;
+    public override void OnEnter()
+    {
+        //去重
+        {
+            Buffer other = mgr.GetBuffer(this.GetId());
+            if (other != null && other != this && other.GetId() == this.GetId())
+            {
+                ///   other.GetCounter().Reset();
+                this.SetInValid();
+                return;
+            }
+        }
 
-          nonsense = false;
-          base.OnEnter();
-          tick.SetMax(time);
-          target.machine.GetState<RunXZState>().Pause();
-          //  Debug.Log("击退开始");
+        nonsense = false;
+        base.OnEnter();
+        tick.SetMax(time);
+        target.machine.GetState<RunXZState>().Pause();
+        //  Debug.Log("击退开始");
 
-      }
-      public override void UpdateMS()
-      {
-          if (nonsense) return;
+    }
+    public override void UpdateMS()
+    {
+        if (nonsense) return;
 
-          if (tick.Tick())
-          {
-              target.x_auto -= dir * 0.07f;
-              return;
-          }
-          this.SetInValid();
-      }
-      public override bool Init()
-      {
-          base.Init();
-          this.id = 0xffef1;
-          if (target.flipX > 0)
-          {
-              dir = -1;
-          }
-          show_ui = true;
-          icon = "hd/interface/items/503079.png";
-          brief = "击退";
-          return true;
-      }
-      public override void OnExit()
-      {
-          if (nonsense) return;
-          ///  Debug.Log("击退结束");
-          target.machine.GetState<RunXZState>().Resume();
-          base.OnExit();
-      }
-      */
+        if (tick.Tick())
+        {
+            target.x_auto -= dir * 0.07f;
+            return;
+        }
+        this.SetInValid();
+    }
+    public override bool Init()
+    {
+        base.Init();
+        this.id = 0xffef1;
+        if (target.flipX > 0)
+        {
+            dir = -1;
+        }
+        show_ui = true;
+        icon = "hd/interface/items/503079.png";
+        brief = "击退";
+        return true;
+    }
+    public override void OnExit()
+    {
+        if (nonsense) return;
+        ///  Debug.Log("击退结束");
+        target.machine.GetState<RunXZState>().Resume();
+        base.OnExit();
+    }
+
 }
 
 
@@ -792,8 +792,8 @@ public class BufferSkill62_2 : Buffer
         show_ui = true;
         icon = "hd/interface/items/503063.png";
         brief = "烈焰斗篷";
-      //  has_view = true;
-    //    plist = "hd/roles/role_6/bullet/role_6_bul_6241/role_6_bul_6241.plist";
+        //  has_view = true;
+        //    plist = "hd/roles/role_6/bullet/role_6_bul_6241/role_6_bul_6241.plist";
         return true;
     }
     public override void UpdateMS()
@@ -959,7 +959,7 @@ public class BufferSpin : Buffer
         target.machine.GetState<RunXZState>().SetEnable();
         EventDispatcher.ins.RemoveEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
     }
- 
+
     public override bool Init()
     {
         base.Init();
