@@ -1,7 +1,7 @@
 ﻿/*
 * Author:  caoshanshan
 * Email:   me@dreamyouxi.com
-
+using FSM to peocess lite AI
  */
 using UnityEngine;
 using System.Collections;
