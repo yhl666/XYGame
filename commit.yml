@@ -2,13 +2,13 @@
 branches: {
   }
 fileChange:
-  /策划文档:
-    newFile: !uuid 'becb35ad1b88ab98ebbbfadfeb3ae5e3545535ed'
-    oldFile: !uuid 'a9c5b999aa9589d2282fd4b2379df6c32c7c60d1'
-  /策划文档/角色_怪物_刷新点.xlsx:
-    newFile: !uuid '0b2215d9415085a9f66b1ef7d678c44d1c80c389'
-    oldFile: !uuid 'a007908d1e442b20e524318d85d40e0522533413'
-gitCommitId: !uuid 'e63a411e3d232304a2599193138af04be5e07ced'
+  /设计文档:
+    newFile: !uuid '585ca4a75d074b00bb535b8ca81a44a98fbe72fe'
+    oldFile: !uuid 'a65c2fc12a856eadbe65a2631953a2bfa1189e94'
+  /设计文档/草地拼接图.jpg:
+    newFile: !uuid '6692206475a46ae77bf833ac81a6f2b624a6a664'
+    oldFile: null
+gitCommitId: !uuid 'b9dd6cc5876f73d787bd035bc94f3b6e2ed5d2ec'
 renames: {
   }
-revisionId: 623
+revisionId: 624
