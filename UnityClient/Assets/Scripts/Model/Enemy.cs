@@ -643,10 +643,10 @@ public class EnemyBoss : Enemy
 {
     public override void InitInfo()
     {
-        this.prefabsName = "Prefabs/Enemy221";
-        this.skin = "baihu4";
+        this.prefabsName = "Prefabs/Hero2";
+        this.skin = "#1";
         ani_hurt = "hurt";
-        ani_run = "walk";
+        ani_run = "run";
         ani_stand = "rest";
         ani_atk1 = "218010";
         attackingAnimationName = ani_atk1;
@@ -671,8 +671,9 @@ public class EnemyBoss : Enemy
 
     public override bool Init()
     {
-        base.Init();
         type = "boss";
+        base.Init();
+   
         return true;
     }
 
@@ -685,6 +686,11 @@ public class EnemyBoss : Enemy
     {
         base.UpdateMS();
     }
+    public override void AI_AttackTarget()
+    {//释放技能1
+        s1 = 1;
+    }
+
 
 }
 
