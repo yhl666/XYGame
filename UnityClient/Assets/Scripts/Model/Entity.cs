@@ -252,16 +252,12 @@ public class Entity : Model
             this.AddBuffer(buf);
         }
         ///    this.TakeAttacked(info.ownner);
-        ///    
-
         if (info.damage > 0)
-        {
+        {     
             this.current_hp -= info.damage;
             eventDispatcher.PostEvent(Events.ID_HURT);//notify ui
         }
-
         info.Invoke();
-
         EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_TAKEATTACKED, info);
     }
     /// <summary>
@@ -296,7 +292,7 @@ public class Entity : Model
     private BoundsImpl _bounds = null;
     public void SyncBounds()
     {
-        this._bounds.center = new Vector3(this.x, this.GetRealY(), this.z);
+        this._bounds.center = new Vector3(this.x, this.y, this.z);
         this._bounds.size = new Vector3(this.bounds_size.x, this.bounds_size.y, this.bounds_size.z);
     }
     public bool IsCast(Entity other)

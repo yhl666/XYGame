@@ -17,7 +17,6 @@ public sealed class BuildingMgr: SingletonGAObject<BuildingMgr>
         Building m = t as Building;
         m.Init();
         ins.Add(m);
-        ViewMgr.Create<ViewBuilding>(m);
 
         return t;
     }
@@ -33,6 +32,10 @@ public sealed class BuildingMgr: SingletonGAObject<BuildingMgr>
     public ArrayList GetBuildings()
     {
         return lists;
+    }
+    public bool HasBuilding()
+    {
+        return lists.Count > 0;
     }
     public int GetBuildingsCount()
     {

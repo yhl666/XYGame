@@ -48,11 +48,14 @@ public class Building : Entity
             this.machine.AddParallelState(s);
             s.PushSingleState(StateBase.Create<HurtState>(this));
         }
-
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<DieStateBuilding>(this));
+        }
         this.current_hp = 3000;
         this.hp = 5000;
-
-        ViewMgr.Create<ViewEnemy>(this);
+        ViewMgr.Create<ViewBuilding>(this);
         this.speed *= 0.5f;
 
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
@@ -62,8 +65,7 @@ public class Building : Entity
 
     public override void OnEvent(int type, object userData)
     {
-        base.OnEvent(type, userData);
-
+     
         if (type == Events.ID_LAUNCH_SKILL1)
         {
             //  this.AddBuffer(bufferMgr.Create<Buffer4>());
@@ -71,9 +73,9 @@ public class Building : Entity
             //   Bullet b = BulletMgr.Create<Bullet2_1>(this);
 
         }
-        else if (Events.ID_DIE == type)
+        else if (Events.ID_DIE == type && userData as Building  == this)
         {
-
+            this.SetInValid();
         }
     }
 

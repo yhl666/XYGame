@@ -160,7 +160,7 @@ public sealed class BulletConfigInfo
     //lastTime=0 distance_atk=2 validTimes =1,distance=10,buffers="buffer0,buffer1";
 
     //触发攻击时回调
-    public OnBulletFunc _OnTakeAttack = null;
+    public OnBulletFunc _OnTakeAttack = null; //，命中的回调 第二参数是命中的目标
     public OnBulletFunc _OnLaunch = null; // 创建时回调
     public OnBulletFunc _OnUpdateMS = null; // 有效帧时间 回调
     public int onTakeAttackFuncCallTimes = 0xfffffff;//攻击函数回调次数
@@ -237,7 +237,6 @@ public sealed class BulletConfig : Bullet
     public override void UpdateMS()
     {//TODO 代码复用
         tick++;
-
         if (distance <= 0 && tick > info.lastTime)
         {//both dis and  time done // 时间 和 距离 都 完成，，如果validTime
             this.SetInValid();
@@ -272,7 +271,6 @@ public sealed class BulletConfig : Bullet
             distance -= Mathf.Abs(dis);
             if (distance <= 0) distance = 0;
         }
-
         if (validTimes >= info.validTimes)
         {//超过 有效次数 
             if (info.isHitDestory)
@@ -289,6 +287,7 @@ public sealed class BulletConfig : Bullet
         if (info.HasHitTarget())
         {//指定了目标 直接判定目标是否进入范围
             //scan heros
+
             ArrayList targets = info.hit_targets;
             int hitNumber = 0; // 命中数量
             foreach (Entity h in targets)

@@ -225,4 +225,13 @@ public sealed class Utils
         }
         return (System.Activator.CreateInstance(t));
     }
+    /// <summary>
+    /// all creator just new class,Init() will not been called
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static T Create<T>() where T : GAObject, new()
+    {
+        return new T();
+    }
 }

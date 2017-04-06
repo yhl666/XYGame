@@ -733,6 +733,54 @@ public class DieState : StateBase
 
 }
 
+
+public class DieStateBuilding : DieState
+{
+    public override StateBase GetState<T>()
+    {
+        if (typeof(T) == typeof(DieState))
+        {
+            return this;
+        }
+        return null;
+    }
+    public override string GetName() { return "DieState"; }
+    public DieStateBuilding()
+    {
+
+    }
+    public override void UpdateMS()
+    {
+        if (Target.current_hp <= 0)
+        {
+            this.Enable = false;
+            Target.isDie = true;
+            Target.bufferMgr.ClearClearAble();//清除所有Buffer
+            EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
+        }
+    }
+    public override void OnPause()
+    {
+
+    }
+    public override void OnResume()
+    {
+
+    }
+    public override void OnEnter()
+    {
+        this.Enable = true;
+    }
+    public override void OnEvent(string type, object userData)
+    {
+    }
+    public override void OnExit()
+    {
+
+    }
+
+}
+
 public class AttackState_1 : StateBase
 {//普通 攻击 连招1
 

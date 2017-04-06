@@ -195,7 +195,7 @@ public class GAObject : IDisposable
     }
 
     static Vector track_list = new Vector();
-
+ 
     public static GAObject Create(string _class_name)
     {
         System.Type t = System.Type.GetType(_class_name);

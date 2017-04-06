@@ -520,10 +520,10 @@ public class ViewBuilding : View
         {
             name = m.attackingAnimationName;
         }
-        else if (m.isHurt)
+     /*   else if (m.isHurt)
         {
             name = m.ani_hurt;
-        }
+        }*/
         else if (m.isStand)
         {
             name = m.ani_stand;
