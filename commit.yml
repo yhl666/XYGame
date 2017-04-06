@@ -2,13 +2,31 @@
 branches: {
   }
 fileChange:
-  /策划文档:
-    newFile: !uuid 'a9c5b999aa9589d2282fd4b2379df6c32c7c60d1'
-    oldFile: !uuid '4424fb21c32d1d933e781d5afe29a7dce256c424'
-  /策划文档/角色_怪物_刷新点.xlsx:
-    newFile: !uuid 'a007908d1e442b20e524318d85d40e0522533413'
-    oldFile: null
-gitCommitId: !uuid 'c39caf0f36af659918a47ef14620edcce64a0829'
+  /UnityClient:
+    newFile: !uuid '3db9e532e61405be71f0e4523a35002d07fbe570'
+    oldFile: !uuid '15eef7e1b7e6cc686fb53c8ee4617f19f272bc6c'
+  /UnityClient/Assets:
+    newFile: !uuid 'c339f1dcac1980bd9831f31bc38fcf55191d2d7c'
+    oldFile: !uuid '84dca4ae001b9934cb68c6bdda0785681ce99459'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '06f12bb1209c0c1d92d6b3bbaa3af6ccd74b457a'
+    oldFile: !uuid '4d4075388e97b461942a7c886a5b245415b2d3c6'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid '2a8d85620c345249980828d9bc37a25c01cb1aa8'
+    oldFile: !uuid 'd6211b871a52306edd6edd72b6894d2bc6958282'
+  /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
+    newFile: !uuid '1e4c64cf8e084aea7237fdfaeead0095803404ba'
+    oldFile: !uuid '8c0524ef4ec05d9f60cd1ceecd325f89d374cc3e'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '41305e6a332a3944418cee1eda9de331157099fb'
+    oldFile: !uuid '3b731d71fc0c02442fcfd453186829362c02ecba'
+  /UnityClient/Assets/Scripts/Model/Bullet.cs:
+    newFile: !uuid '7f1c4b474c296158ce1308691b12de79824ea561'
+    oldFile: !uuid 'ce3651e7600038582b6b2c5401315eaa4aec4b3e'
+  /UnityClient/Assets/Scripts/Model/Enemy.cs:
+    newFile: !uuid '8110533ccd6c59e944e3459aabacb774d0ef09a1'
+    oldFile: !uuid 'b21584413702ca34493367cf2a6ec2c06e138044'
+gitCommitId: !uuid '0fd29966a7f1f0bb176b0edb02e6ddcf8473a68d'
 renames: {
   }
-revisionId: 618
+revisionId: 619
