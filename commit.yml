@@ -2,13 +2,25 @@
 branches: {
   }
 fileChange:
-  /策划文档:
-    newFile: !uuid '1338e0962927f12270e50897b166bd0b5d6bc543'
-    oldFile: !uuid 'becb35ad1b88ab98ebbbfadfeb3ae5e3545535ed'
-  /策划文档/战斗系统.docx:
-    newFile: !uuid '58985fe0c34e9dd98dcdc0fdb493a5b035183ac7'
-    oldFile: !uuid 'cea53efdbc07f8894c9a8a5787adb94af69c4405'
-gitCommitId: !uuid '29d68455f391f1f8089a2fc48649ed0192f28914'
+  /UnityClient:
+    newFile: !uuid '8429afb9654b3c8f81e81a6be7c4818af4f54ab5'
+    oldFile: !uuid 'c5157eb5d1fdfbd3d14196ddbd7da055a07534d6'
+  /UnityClient/Assets:
+    newFile: !uuid '25f34ff1a811bb591324c59f66eb9590f953193c'
+    oldFile: !uuid '993368f0dd82a05f4ef0069d523b2e43394030b5'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '29d786b0b5be1b7b4ad2aa2afb571e1b55533d53'
+    oldFile: !uuid 'c8b8540223fba724b84e999b16374f9aa994305b'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'bc9f8170c1685b69ad857a740d1ba94ad540e1c9'
+    oldFile: !uuid 'c35462505d3d09aa20c53879afb628a7f707d6a4'
+  /UnityClient/Assets/Scripts/Model/AI:
+    newFile: !uuid 'e9ee9fc5b2e670142964b7732a2a8521c3503486'
+    oldFile: !uuid 'c68cfac2492714842472ee9308bacde808c3a269'
+  /UnityClient/Assets/Scripts/Model/AI/AIEnemy.cs:
+    newFile: !uuid 'a26b621bab7a018458a54adc6c191cf0e6c0b6dc'
+    oldFile: !uuid '434614521c3a00ed408a83f9904575f68f544c91'
+gitCommitId: !uuid '4568cc3ab85adab11e24badc3bac7da10acf564c'
 renames: {
   }
-revisionId: 627
+revisionId: 628
