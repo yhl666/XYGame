@@ -132,8 +132,14 @@ public class GAObject : IDisposable
 
     private bool isValid = true;
     public bool isInAutoReleasePool = false;
-
-
+    /// <summary>
+    /// 深拷贝 接口
+    /// </summary>
+    /// <returns></returns>
+    public virtual GAObject Clone()
+    {
+        return null;
+    }
 
     ///--------------------------------------------------------- some helper function--------------
 
@@ -198,7 +204,7 @@ public class GAObject : IDisposable
             Debug.LogError("UnKnown type:" + _class_name);
             return null;
         }
-        if (t.IsSubclassOf(t_static)==false)
+        if (t.IsSubclassOf(t_static) == false)
         {
             Debug.LogError("class " + _class_name + " not the subclass of GAObject");
             return null;
