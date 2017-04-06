@@ -173,6 +173,15 @@ public sealed class Utils
             return 40;
         }
     }
+    /// <summary>
+    /// 转换为帧数
+    /// </summary>
+    /// <param name="time">单位秒</param>
+    /// <returns></returns>
+    public static int ConvertToFPS(float time)
+    {
+        return (int)(fps * time);
+    }
     public static void SetTargetFPS(int fps)
     {
         Application.targetFrameRate = fps;

@@ -1024,6 +1024,65 @@ public class BufferSpin : Buffer
     }
 }
 
+/// <summary>
+/// 中毒
+/// </summary>
+public class BufferPoison : Buffer
+{
+    public float hp_percent = 0.5f;//血量百分比
+    public float total_time = 3f;//持续时间 单位秒
+    public float each_time = 0.5f; // 每次伤害计算 间隔，单位秒
+
+    private Counter tick_each = Counter.Create();
+    public override T Clone<T>()
+    {
+        BufferPoison ret = new BufferPoison();
+        ret.Init();
+        ret.hp_percent = hp_percent;
+        ret.total_time = total_time;
+        ret.each_time = each_time;
+        return ret as T;
+    }
+    public override string GetName()
+    {
+        return "BufferPoison";
+    }
+    public override void OnEnter()
+    {
+        tick.SetMax(Utils.ConvertToFPS(total_time));
+        tick_each.SetMax(Utils.ConvertToFPS(each_time));
+    }
+    public override void OnExit()
+    {
+
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+        isOnlyOne = true;
+        has_view = true;
+        ///      plist = "hd/buff/buff_200564/buff_200564.plist";
+        plist = "hd/enemies/enemy_374/bullet/enemy_374_bul_374001/enemy_374_bul_374001.plist";
+        show_ui = true;
+        icon = "hd/interface/items/503079.png";
+        brief = "中毒";
+        return true;
+    }
+    public override void UpdateMS()
+    {
+        if (tick_each.Tick() == false)
+        {
+            target.current_hp = (int)((float)target.current_hp * (1.0f - hp_percent / 100.0f));
+            tick_each.Reset();
+        }
+        if (tick.Tick())
+        {
+            return;
+        }
+        this.SetInValid();
+    }
+}
 
 /// <summary>
 /// 可配置 buffer

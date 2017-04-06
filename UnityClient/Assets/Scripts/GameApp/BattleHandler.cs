@@ -141,7 +141,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
         tower.hp = 0xffff;
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 0; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy1>();
                 e1.x = randObj.Next(0, 340000) / 10000f;
@@ -154,7 +154,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
 
             }
             {
-                Enemy e1 = EnemyMgr.Create<Enemy1_Strengthen>();
+                Enemy e1 = EnemyMgr.Create<EnemyBoss>();
                 e1.x = randObj.Next(0, 340000) / 10000f;
                 e1.z = randObj.Next(1000, 4000) / 1000.0f;
 

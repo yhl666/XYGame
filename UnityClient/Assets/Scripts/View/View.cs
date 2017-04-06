@@ -328,7 +328,7 @@ public class ViewEnemy : View
         {
             name = m.ani_die;
         }
-        else if (m.isHurt)
+        else if (m.isHurt && m.ani_hurt!="")
         {
             name = m.ani_hurt;
         }

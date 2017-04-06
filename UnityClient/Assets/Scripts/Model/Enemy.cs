@@ -56,7 +56,16 @@ public class Enemy : Entity
         {
             //攻击范围内
             dir = -1;
-            this.AI_AttackTarget();
+
+            if (cd.IsMax())
+            {
+                this.AI_AttackTarget();
+                cd.Reset();
+            }
+            else
+            {
+                stand = true;
+            }
         }
         else
         {
@@ -113,15 +122,7 @@ public class Enemy : Entity
     }
     public virtual void AI_AttackTarget()
     {
-        if (cd.IsMax())
-        {
-            atk = true;
-            cd.Reset();
-        }
-        else
-        {
-            stand = true;
-        }
+        atk = true;
     }
 
     public override void InitInfo()
@@ -385,7 +386,7 @@ public class Enemy1 : Enemy
 }
 
 public class Enemy1_Strengthen : Enemy1
-{
+{//TODO 添加 闪烁特效
     public override void InitStateMachine()
     {
         //init state machine
@@ -447,4 +448,237 @@ public class Enemy1_Strengthen : Enemy1
     }
 }
 
+/// <summary>
+/// 小怪2
+/// </summary>
+public class Enemy2 : Enemy
+{
+    public override void InitInfo()
+    {
+        this.prefabsName = "Prefabs/Enemy221";
+        this.skin = "baihu4";
+        ani_hurt = "hurt";
+        ani_run = "walk";
+        ani_stand = "rest";
+        ani_atk1 = "218020_0";
+        attackingAnimationName = ani_atk1;
+        atk_level = 1;
+        bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
+        bulleClassName_s1 = "Bullet221_0"; // 1 号技能 子弹名字
+        this.bullet_atk1_info = BulletConfigInfo.Create();
+        bullet_atk1_info.plistAnimation = "";
+        bullet_atk1_info.distance = 0.2f;
+        bullet_atk1_info.distance_atk = 1f;
+        bullet_atk1_info.lastTime = 10;
+        bullet_atk1_info.oneHitTimes = 0xfffff;
+        bullet_atk1_info.isHitDestory = true;
+        bullet_atk1_info.collider_size = new Vector3(2f, 2f, 2f);
+
+        this.atk_range = 1.0f;
+        scale = 0.8f;
+    }
+
+
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
+
+    public override void AI_UpdateMSWithAI()
+    {
+        ai_fsm_machine.UpdateMS();
+        base.AI_UpdateMSWithAI();
+    }
+    public override void UpdateMS()
+    {
+        base.UpdateMS();
+    }
+    public override void AI_AttackTarget()
+    {
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
+        // info.AddBuffer("BufferHitBack");
+
+        // info.launch_delta_xy.x = 1.5f;
+        //  info.launch_delta_xy.y = -0.2f;
+        info.frameDelay = 3;
+        info.distance_atk = 1.5f;
+        info.number = 0xfff;
+        info.isHitDestory = false;
+        info.oneHitTimes = 1;
+        //  info.rotate = -120.0f;
+        ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
+
+        //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
+        /// info.rotate = 30.0f;
+        info.distance = 2f;
+        ///   info.lastTime = 10;
+        info.scale_x = 2f;
+        info.scale_y = 2f;
+
+        info.launch_delta_xyz.x = 0.5f;// Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = -0.2f;// Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
+        info.launch_delta_xyz.z = 0f;// Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+        info.isHitDestory = true;
+        info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
+        info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
+        info.collider_size = Skill62_3_Data.ins.hit_rect;
+        info.collider_type = ColliderType.Box;
+
+        BulletMgr.Create(this, "BulletConfig", info);
+        atk = true;
+    }
+}
+
+public class Enemy2_Strengthen : Enemy2
+{//TODO 添加 闪烁特效
+    public override void InitStateMachine()
+    {
+        //init state machine
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<DieState>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<AttackState_1>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<RunXZState>(this));
+
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<JumpState>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<FallState>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<StandState>(this));
+        }
+    }
+
+    public override void InitInfo()
+    {
+        base.InitInfo();
+        this.prefabsName = "Prefabs/Enemy221Flare";
+        ani_hurt = "";
+        scale = 1.3f;
+    }
+
+}
+
+/// <summary>
+/// 小怪3
+/// </summary>
+public class Enemy3 : Enemy
+{
+    public override void InitInfo()
+    {
+        this.prefabsName = "Prefabs/Enemy221";
+        this.skin = "baihu4";
+        ani_hurt = "hurt";
+        ani_run = "walk";
+        ani_stand = "rest";
+        ani_atk1 = "218010";
+        attackingAnimationName = ani_atk1;
+        atk_level = 1;
+        bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
+        bulleClassName_s1 = "Bullet221_0"; // 1 号技能 子弹名字
+        BulletConfigInfo info = BulletConfigInfo.Create();
+        info.plistAnimation = "";
+        info.distance = 0.2f;
+        info.distance_atk = 1f;
+        info.lastTime = 10;
+        info.oneHitTimes = 0xfffff;
+        info.isHitDestory = true;
+        info.collider_size = new Vector3(2f, 2f, 2f);
+        info.AddBuffer("BufferPoison");
+
+        this.bullet_atk1_info = info;
+        this.atk_range = 1.0f;
+        scale = 0.8f;
+    }
+
+
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
+
+    public override void AI_UpdateMSWithAI()
+    {
+        ai_fsm_machine.UpdateMS();
+        base.AI_UpdateMSWithAI();
+    }
+    public override void UpdateMS()
+    {
+        base.UpdateMS();
+    }
+}
+
+/// <summary>
+/// BOSS
+/// </summary>
+public class EnemyBoss : Enemy
+{
+    public override void InitInfo()
+    {
+        this.prefabsName = "Prefabs/Enemy221";
+        this.skin = "baihu4";
+        ani_hurt = "hurt";
+        ani_run = "walk";
+        ani_stand = "rest";
+        ani_atk1 = "218010";
+        attackingAnimationName = ani_atk1;
+        atk_level = 1;
+        bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
+        bulleClassName_s1 = "Bullet221_0"; // 1 号技能 子弹名字
+        BulletConfigInfo info = BulletConfigInfo.Create();
+        info.plistAnimation = "";
+        info.distance = 0.2f;
+        info.distance_atk = 1f;
+        info.lastTime = 10;
+        info.oneHitTimes = 0xfffff;
+        info.isHitDestory = true;
+        info.collider_size = new Vector3(2f, 2f, 2f);
+        info.AddBuffer("BufferPoison");
+
+        this.bullet_atk1_info = info;
+        this.atk_range = 1.0f;
+        scale = 0.8f;
+    }
+
+
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
+
+    public override void AI_UpdateMSWithAI()
+    {
+        ai_fsm_machine.UpdateMS();
+        base.AI_UpdateMSWithAI();
+    }
+    public override void UpdateMS()
+    {
+        base.UpdateMS();
+    }
+}
 
