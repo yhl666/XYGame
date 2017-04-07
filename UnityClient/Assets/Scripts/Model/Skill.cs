@@ -2341,17 +2341,17 @@ public class Skill62_2_v2 : SkillBase
     }
     public override void OnAcceptInterrupted(SkillBase who)
     {
-        if (this.Enable) return;
-        this.OnEnter();
+       /* if (this.Enable) return;
+        this.OnEnter();*/
     }
     public override void OnPush()
     {
+        this.PushOnInterrupted();
         if (this.Enable)
         {
             this.OnExit();
             return;
         }
-
         this.OnEnter();
     }
 
