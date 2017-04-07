@@ -2,25 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '4c826bd7ac41a5f9b7e4f2949efd7dd61d7fa22a'
-    oldFile: !uuid '1adb872480167f81b3a9da94a735cbc1fccb2650'
-  /UnityClient/Assets:
-    newFile: !uuid '8fa1b9a8bdba0b4aad2b81a06ccc8866f96d949c'
-    oldFile: !uuid '095b254f9c3606edb86ec064051397a6c57086a7'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '31d32fb5ed2684adc29c5dd67af5f4d8216bc2c6'
-    oldFile: !uuid 'b82ef817641f5ca83201c1e1a8138c0d90655689'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'b882520028af6843361319ffc826352bcb716c11'
-    oldFile: !uuid '84e3d11fe78ccb27359ffa6e5b1e7b4a8299dd17'
-  /UnityClient/Assets/Resources/Prefabs/Enemy221Flare.prefab:
-    newFile: !uuid 'df4ebe8716768da064490a3c1383586a3489591b'
+  /工作日志:
+    newFile: !uuid 'c072ec0703e1804bf3637f5effb8091e0e7ebac1'
+    oldFile: !uuid '234a376313fcaa5346e0b0a23346984bf574bc7e'
+  /工作日志/BUG提交:
+    newFile: !uuid '124d0d60ca191564a1a590717b9bbfa71e3c8c88'
+    oldFile: !uuid '482abc5f3c9c9f1648e4b5ffc6ab881381d93271'
+  /工作日志/BUG提交/006.txt:
+    newFile: !uuid '9177e2328b2daeccc942d5c335b533590e976f75'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/Enemy221Flare.prefab.meta:
-    newFile: !uuid '93f68860cdf886616a365b058e30c20ad86b0fa0'
-    oldFile: null
-gitCommitId: !uuid '1f89e00e08e66cf1c5d2abd4cdbb7bedeffad125'
+gitCommitId: !uuid 'cd06a7b4cbb7094065ba742235a71d461b90aba1'
 renames: {
   }
-revisionId: 640
+revisionId: 641
