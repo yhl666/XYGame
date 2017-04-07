@@ -442,6 +442,7 @@ public class Enemy1_Strengthen : Enemy1
         this.prefabsName = "Prefabs/Enemy221Flare";
         ani_hurt = "";
         scale = 1.3f;
+        this.AddBuffer<BufferBaTi>();
     }
 
     public override bool Init()
@@ -634,6 +635,7 @@ public class Enemy2_Strengthen : Enemy2
         this.prefabsName = "Prefabs/Enemy221Flare";
         ani_hurt = "";
         scale = 1.3f;
+        this.AddBuffer<BufferBaTi>();
     }
 
 }

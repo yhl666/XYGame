@@ -1104,7 +1104,7 @@ public class BufferEnemyMovementAfterAtk : Buffer
         return "BufferEnemyMovementAfterAtk";
     }
     public override void OnEnter()
-    {  
+    {
         Enemy host = target as Enemy;
         if (host == null)
         {
@@ -1116,14 +1116,14 @@ public class BufferEnemyMovementAfterAtk : Buffer
         {//Enemy 位于 目标右边
             // 0-90 or 270-360
             dir = Utils.random_frameMS.Next(0, 180);
-            if(dir>90)
+            if (dir > 90)
             {
                 dir += 90;
             }
         }
         else
         {
-            dir = Utils.random_frameMS.Next(90,270);
+            dir = Utils.random_frameMS.Next(90, 270);
         }
         tick.SetMax(10);
         target.eventDispatcher.PostEvent("SpineComplete");
@@ -1131,7 +1131,7 @@ public class BufferEnemyMovementAfterAtk : Buffer
         target.machine.PauseAllStack();
 
         target.machine.GetState<RunXZState>().SetDisable();
-        target.machine.GetState<SkillState>().Resume();
+        //target.machine.GetState<SkillState>().Resume();
         target.machine.GetState<StandState>().Resume();
 
         target.ani_force = "walk";
@@ -1180,15 +1180,15 @@ public class BufferEnemyMovementAfterAtk : Buffer
             target.z = target.z + speed * z_delta;
             target.x = target.x + speed * x_delta;
 
-           /* if (dir > 90 && dir < 270)
-            { //left
-                target.flipX = 1.0f;
-            }
-            else
-            {//right
-                target.flipX = -1.0f;
+            /* if (dir > 90 && dir < 270)
+             { //left
+                 target.flipX = 1.0f;
+             }
+             else
+             {//right
+                 target.flipX = -1.0f;
 
-            }*/
+             }*/
 
             return;
         }
@@ -1209,6 +1209,60 @@ public class BufferEnemyMovementAfterAtk : Buffer
             target.s1 = 0;
         }
     }
+}
+
+/// <summary>
+/// 霸体Buffer
+/// 只会吃伤害 不接受任何buffer
+/// </summary>
+public class BufferBaTi : Buffer
+{
+    public override void OnEnter()
+    {
+        base.OnEnter();
+
+    }
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED)
+        {
+            AttackInfo info = userData as AttackInfo;
+            if (info.target != this.owner) return;
+            info.buffers.Clear();//拒绝所有buffer
+            info.buffers_string.Clear();
+        }
+        else if (type == Events.ID_BEFORE_ONEENTITY_UPDATEMS)
+        {
+            Entity e = userData as Entity;
+            if (e == target)
+            {//不会 hurt状态暂时 不添加 HurtState 来处理
+            }
+        }
+    }
+    public override void UpdateMS()
+    {
+
+    }
+    public override void OnExit()
+    {
+        EventDispatcher.ins.RemoveEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+        EventDispatcher.ins.RemoveEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+        this.icon = "hd/interface/items/503119.png";
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
+
+        this.target = this.owner;
+        this.brief = "霸体";
+        return true;
+    }
+
+    private int left_hp = 0;//护罩剩余血量
+    private System.Random random = new System.Random(0);
 }
 
 
