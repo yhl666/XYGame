@@ -9,7 +9,7 @@ public class Skill61_1 : SkillBase
 {
     Counter cd = Counter.Create(Skill61_1_Data_V1.ins.cd);
     Counter tick_cancel = Counter.Create(Skill61_1_Data_V1.ins.cancel);
-    Counter launchCounter = Counter.Create(Skill61_1_Data_V1.ins.bulletLaunchDealy);
+    Counter launchCounter=Counter.Create(Skill61_1_Data_V1.ins.bulletLaunchDealy);
     public override void OnEnter()
     {
         cd.Reset();
@@ -18,35 +18,118 @@ public class Skill61_1 : SkillBase
         this.Enable = true;
         Target.attackingAnimationName = Skill61_1_Data_V1.ins.animation_name;
 
-
+ 
     }
 
     private void shoot()
     {
-        switch (level)
+        BulletConfigInfo info=BulletConfigInfo.Create();
         {
-            case 1:
-                BulletMgr.Create(this.Target, "BulletConfig", info);
-                break;
-            case 2:
-                BufferSpin spin = BufferMgr.CreateHelper<BufferSpin>(this.Target);
-                spin.SetLastTime(Skill61_1_Data_V2.ins.spinTime);
-                info2.buffers.Clear();
-                info2.AddBuffer(spin);
-                BulletMgr.Create(this.Target, "BulletConfig", info2);
-                break;
-            case 3:
-                BulletMgr.Create(this.Target, "BulletConfig", info3);
-                break;
+            BufferHitBack hitBack = BufferMgr.CreateHelper<BufferHitBack>(this.Target);
+            hitBack.position = this.Target.pos;
+            info.AddBuffer(hitBack);
+
+            info.damage_ratio = Skill61_1_Data_V1.ins.damage_ratio;
+            info.collider_size = Skill61_1_Data_V1.ins.hit_rect;
+
+
+            info.launch_delta_xyz.x = Skill61_1_Data_V1.ins.PositionVector2.x;
+
+            info.launch_delta_xyz.y = Skill61_1_Data_V1.ins.PositionVector2.y;
+            info.frameDelay = 4;
+            info.distance_atk = 2.0f;
+            info.number = 0xfff;
+            info.isHitDestory = false;
+            info.oneHitTimes = 1;
+            //  info.rotate = -120.0f;
+            info.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
+            /// info.rotate = 30.0f;
+            info.distance = 0;
+            info.lastTime = 15;
+            info.scale_x = Skill61_1_Data_V1.ins.scale_x;
+            info.scale_y = Skill61_1_Data_V1.ins.scale_y;
         }
 
-
-
+        BulletMgr.Create(this.Target, "BulletConfig", info);
+       
+        
     }
 
+    private void shoot2()
+    {
+        BulletConfigInfo info2 = BulletConfigInfo.Create();
+        BufferHitBack hitBack = BufferMgr.CreateHelper<BufferHitBack>(this.Target);
+        hitBack.position = this.Target.pos;
+        info2.AddBuffer(hitBack);
+
+
+
+          BufferSpin spin = BufferMgr.CreateHelper<BufferSpin>(this.Target);
+          spin.SetLastTime(Skill61_1_Data_V2.ins.spinTime);
+          info2.AddBuffer(spin);
+          {
+
+              info2.damage_ratio = Skill61_1_Data_V2.ins.damage_ratio;
+              info2.collider_size = Skill61_1_Data_V2.ins.hit_rect;
+
+
+              info2.launch_delta_xyz.x = Skill61_1_Data_V2.ins.PositionVector2.x;
+
+              info2.launch_delta_xyz.y = Skill61_1_Data_V2.ins.PositionVector2.y;
+              info2.frameDelay = 4;
+              info2.distance_atk = 2.0f;
+              info2.number = 0xfff;
+              info2.isHitDestory = false;
+              info2.oneHitTimes = 1;
+              //  info.rotate = -120.0f;
+              info2.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
+              /// info.rotate = 30.0f;
+              info2.distance = 0;
+              info2.lastTime = 15;
+              info2.scale_x = Skill61_1_Data_V2.ins.scale_x;
+              info2.scale_y = Skill61_1_Data_V2.ins.scale_y;
+          }
+          BulletMgr.Create(this.Target, "BulletConfig", info2);
+    }
+
+    private void shoot3()
+    {
+        BulletConfigInfo info3 = BulletConfigInfo.Create();
+        BufferSpin spin = BufferMgr.CreateHelper<BufferSpin>(this.Target);
+        BufferHitBack hitBack = BufferMgr.CreateHelper<BufferHitBack>(this.Target);
+        hitBack.position = this.Target.pos;
+        info3.AddBuffer(hitBack);
+        spin.SetLastTime(Skill61_1_Data_V3.ins.spinTime);
+
+        {
+            
+            info3.AddBuffer(spin);
+            info3.damage_ratio = Skill61_1_Data_V3.ins.damage_ratio;
+            info3.collider_size = Skill61_1_Data_V3.ins.hit_rect;
+
+
+            info3.launch_delta_xyz.x = Skill61_1_Data_V3.ins.PositionVector2.x;
+
+            info3.launch_delta_xyz.y = Skill61_1_Data_V3.ins.PositionVector2.y;
+            info3.frameDelay = 4;
+            info3.distance_atk = 2.0f;
+            info3.number = 0xfff;
+            info3.isHitDestory = false;
+            info3.oneHitTimes = 1;
+            //  info.rotate = -120.0f;
+            info3.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
+            /// info.rotate = 30.0f;
+            info3.distance = 0;
+            info3.lastTime = 15;
+            info3.scale_x = Skill61_1_Data_V3.ins.scale_x;
+            info3.scale_y = Skill61_1_Data_V3.ins.scale_y;
+        }
+
+        BulletMgr.Create(this.Target, "BulletConfig", info3);
+    }
     public void LevelUp()
     {
-        if (level < 3)
+        if (level<3)
         {
             level++;
         }
@@ -62,10 +145,21 @@ public class Skill61_1 : SkillBase
         cd.Tick();
         tick_cancel.Tick();
         launchCounter.Tick();
-        if (launchCounter.GetCurrent() == launchCounter.GetMax())
+        if (launchCounter.GetCurrent()==launchCounter.GetMax())
         {
-            shoot();
-
+            switch (level)
+            {
+                case 1:
+                    shoot();
+                    break;
+                case 2:
+                    shoot2();
+                  
+                    break;
+                case 3:
+                    shoot3();
+                    break;
+            }
         }
     }
 
@@ -131,84 +225,15 @@ public class Skill61_1 : SkillBase
 
     public void ConfigBulletInfo()
     {
-        {
+       
 
-
-
-            info.damage_ratio = Skill61_1_Data_V1.ins.damage_ratio;
-            info.collider_size = Skill61_1_Data_V1.ins.hit_rect;
-
-
-            info.launch_delta_xyz.x = Skill61_1_Data_V1.ins.PositionVector2.x;
-
-            info.launch_delta_xyz.y = Skill61_1_Data_V1.ins.PositionVector2.y;
-            info.frameDelay = 4;
-            info.distance_atk = 2.0f;
-            info.number = 0xfff;
-            info.isHitDestory = false;
-            info.oneHitTimes = 1;
-            //  info.rotate = -120.0f;
-            info.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
-            /// info.rotate = 30.0f;
-            info.distance = 0;
-            info.lastTime = 15;
-            info.scale_x = Skill61_1_Data_V1.ins.scale_x;
-            info.scale_y = Skill61_1_Data_V1.ins.scale_y;
-        }
-
-        {
-            //BufferSpin spin = Create(Skill61_1_Data_V2.ins.buffer) as BufferSpin;
-
-            info2.damage_ratio = Skill61_1_Data_V2.ins.damage_ratio;
-            info2.collider_size = Skill61_1_Data_V2.ins.hit_rect;
-
-
-            info2.launch_delta_xyz.x = Skill61_1_Data_V2.ins.PositionVector2.x;
-
-            info2.launch_delta_xyz.y = Skill61_1_Data_V2.ins.PositionVector2.y;
-            info2.frameDelay = 4;
-            info2.distance_atk = 2.0f;
-            info2.number = 0xfff;
-            info2.isHitDestory = false;
-            info2.oneHitTimes = 1;
-            //  info.rotate = -120.0f;
-            info2.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
-            /// info.rotate = 30.0f;
-            info2.distance = 0;
-            info2.lastTime = 15;
-            info2.scale_x = Skill61_1_Data_V2.ins.scale_x;
-            info2.scale_y = Skill61_1_Data_V2.ins.scale_y;
-        }
-        {
-            BufferSpin spin = Create(Skill61_1_Data_V3.ins.buffer) as BufferSpin;
-            spin.SetLastTime(Skill61_1_Data_V3.ins.spinTime);
-            info3.AddBuffer(spin);
-            info3.damage_ratio = Skill61_1_Data_V3.ins.damage_ratio;
-            info3.collider_size = Skill61_1_Data_V3.ins.hit_rect;
-
-
-            info3.launch_delta_xyz.x = Skill61_1_Data_V3.ins.PositionVector2.x;
-
-            info3.launch_delta_xyz.y = Skill61_1_Data_V3.ins.PositionVector2.y;
-            info3.frameDelay = 4;
-            info3.distance_atk = 2.0f;
-            info3.number = 0xfff;
-            info3.isHitDestory = false;
-            info3.oneHitTimes = 1;
-            //  info.rotate = -120.0f;
-            info3.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
-            /// info.rotate = 30.0f;
-            info3.distance = 0;
-            info3.lastTime = 15;
-            info3.scale_x = Skill61_1_Data_V3.ins.scale_x;
-            info3.scale_y = Skill61_1_Data_V3.ins.scale_y;
-        }
+       
     }
 
     private int level = 2;
-    private BulletConfigInfo info = BulletConfigInfo.Create();
-    private BulletConfigInfo info2 = BulletConfigInfo.Create();
-    private BulletConfigInfo info3 = BulletConfigInfo.Create();
+   
+
+
 }
 
 
@@ -228,27 +253,7 @@ public class Skill61_2 : SkillBase
 
     private void shoot()
     {
-        Debug.Log("skill2 level is" + level);
-        switch (level)
-        {
-            case 1:
-                BulletMgr.Create(this.Target, "BulletConfig", info);
-                break;
-            case 2:
-                BulletMgr.Create(this.Target, "BulletConfig", info2);
-                break;
-            case 3:
-                BulletMgr.Create(this.Target, "BulletConfig", info3);
-                break;
-        }
-
-        BulletMgr.Create(this.Target, "BulletConfig", info);
-        //bullet.x = Target.x;
-        //bullet.y = Target.y;
-    }
-
-    public void ConfigBulletInfo()
-    {
+        BulletConfigInfo info = BulletConfigInfo.Create();
         {
             info.launch_delta_xyz.x = 0;
             info.launch_delta_xyz.y = 0;
@@ -258,7 +263,7 @@ public class Skill61_2 : SkillBase
             info.isHitDestory = Skill61_2_Data_V1.ins.immediateDisappear;
             info.damage_ratio = Skill61_2_Data_V1.ins.damage_ratio;
             info.collider_size = Skill61_2_Data_V1.ins.hit_rect;
-
+            info.validTimes = 99999;
             info.oneHitTimes = 1;
             //  info.rotate = -120.0f;
             //info.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
@@ -270,29 +275,46 @@ public class Skill61_2 : SkillBase
             info.scale_y = 2f;
 
         }
+        BulletMgr.Create(this.Target, "BulletConfig", info);
 
+      
+
+
+        //bullet.x = Target.x;
+        //bullet.y = Target.y;
+    }
+
+    private void shoot2()
+    {
+         BulletConfigInfo info2 = BulletConfigInfo.Create();
         {
             info2.launch_delta_xyz.x = 0;
             info2.launch_delta_xyz.y = 0;
             info2.frameDelay = 4;
             info2.distance_atk = 2.0f;
             info2.number = 0xfff;
-            Debug.Log("is hit history " + Skill61_2_Data_V2.ins.immediateDisappear);
+            //Debug.Log("is hit history " + Skill61_2_Data_V2.ins.immediateDisappear);
             info2.isHitDestory = Skill61_2_Data_V2.ins.immediateDisappear;
             info2.damage_ratio = Skill61_2_Data_V2.ins.damage_ratio;
             info2.collider_size = Skill61_2_Data_V2.ins.hit_rect;
-
+            info2.validTimes = 99999;
             info2.oneHitTimes = 1;
             //  info.rotate = -120.0f;
             //info.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
             /// info.rotate = 30.0f;
-            info2.distance = Skill61_2_Data_V1.ins.distance;
-            info2.speed = Skill61_2_Data_V1.ins.speed;
+            info2.distance = Skill61_2_Data_V2.ins.distance;
+            info2.speed = Skill61_2_Data_V2.ins.speed;
             info2.lastTime = 10;
             info2.scale_x = 2f;
             info2.scale_y = 2f;
 
         }
+        BulletMgr.Create(this.Target, "BulletConfig", info2);
+    }
+
+    private void shoot3()
+    {
+        BulletConfigInfo info3 = BulletConfigInfo.Create();
         {
             info3.launch_delta_xyz.x = 0;
             info3.launch_delta_xyz.y = 0;
@@ -302,8 +324,8 @@ public class Skill61_2 : SkillBase
             info3.isHitDestory = Skill61_2_Data_V3.ins.immediateDisappear;
             info3.damage_ratio = Skill61_2_Data_V3.ins.damage_ratio;
             info3.collider_size = Skill61_2_Data_V3.ins.hit_rect;
-
-            info2.oneHitTimes = 0xffffff;
+            info3.validTimes = 99999;
+            info3.oneHitTimes = 0xffffff;
             //  info.rotate = -120.0f;
             //info.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
             /// info.rotate = 30.0f;
@@ -313,6 +335,13 @@ public class Skill61_2 : SkillBase
             info3.scale_x = Skill61_1_Data_V3.ins.scale_x;
             info3.scale_y = Skill61_1_Data_V3.ins.scale_y;
         }
+        BulletMgr.Create(this.Target, "BulletConfig", info3);
+    }
+    public void ConfigBulletInfo()
+    {
+        
+
+
     }
     public override void OnSpineComplete()
     {
@@ -326,7 +355,18 @@ public class Skill61_2 : SkillBase
         if (tick1Counter.Tick() != true && isReleased == false)
         {
             isReleased = true;
-            shoot();
+            switch (level)
+            {
+                case 1:
+                    shoot();
+                    break;
+                case 2:
+                    shoot2();
+                    break;
+                case 3:
+                    shoot3();
+                    break;
+            }
         }
     }
 
@@ -362,7 +402,7 @@ public class Skill61_2 : SkillBase
             this.OnExit();
             return true;
         }
-
+       
         return false;
     }
 
@@ -393,16 +433,16 @@ public class Skill61_2 : SkillBase
 
     Counter cd = Counter.Create(Skill61_2_Data_V1.ins.cd);
     Counter tick1Counter = Counter.Create(Skill61_2_Data_V1.ins.bulletLaunchDealy);
-    Counter cancelCounter = Counter.Create(Skill61_2_Data_V1.ins.cancel);
+    Counter cancelCounter=Counter.Create(Skill61_2_Data_V1.ins.cancel);
 
 
     private float forward;
     private Bullet bullet;
     private bool isReleased = false;
     private int level = 2;
-    private BulletConfigInfo info = BulletConfigInfo.Create();
-    private BulletConfigInfo info2 = BulletConfigInfo.Create();
-    private BulletConfigInfo info3 = BulletConfigInfo.Create();
+
+
+  
 }
 
 
@@ -411,9 +451,9 @@ public class Skill61_2 : SkillBase
 /// </summary>
 public class Skill61_3 : SkillBase
 {
-    Counter cd = Counter.Create(Skill61_3_Data.ins.cd);
-    Counter cancelCounter = Counter.Create(Skill61_3_Data.ins.cancel);
-    Counter dealyCounter = Counter.Create(Skill61_3_Data.ins.delayFrame);
+    Counter cd=Counter.Create(Skill61_3_Data.ins.cd);
+    Counter cancelCounter=Counter.Create(Skill61_3_Data.ins.cancel);
+    Counter dealyCounter=Counter.Create(Skill61_3_Data.ins.delayFrame);
     public override void OnEnter()
     {
         cd.Reset();
@@ -430,19 +470,19 @@ public class Skill61_3 : SkillBase
 
         b_shifa = null;
 
-
-
+      
+       
     }
 
     private void shoot1()
     {
-
+        
 
 
         ArrayList list = GetEnemyByOrder();
 
         Debug.Log(list.Count);
-        for (int i = 0; i < 3 && i < list.Count; i++)
+        for (int i = 0; i < 3&&i<list.Count; i++)
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
@@ -454,18 +494,18 @@ public class Skill61_3 : SkillBase
             info.lastTime = 5;
             info.isHitDestory = false;
             info.collider_size = Skill61_3_Data.ins.hit_rect;
-            BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
+            BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(this.Target);
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
             //buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
             info.AddBuffer(buffer);
             var b = BulletMgr.Create(this.Target, "BulletConfig", info);
-            Enemy enemy = list[i] as Enemy;
+            Enemy enemy=list[i] as Enemy;
             b.x = enemy.x;
             b.z = enemy.z;
             b.y = enemy.y;
         }
 
-
+        
     }
     private void shoot2()
     {
@@ -474,7 +514,7 @@ public class Skill61_3 : SkillBase
 
         ArrayList list = GetEnemyByOrder();
         Debug.Log(list.Count);
-        for (int i = 0; i < 10 && i < list.Count; i++)
+        for (int i = 0; i < 10&&i<list.Count; i++)
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
@@ -486,7 +526,7 @@ public class Skill61_3 : SkillBase
             info.lastTime = 5;
             info.isHitDestory = false;
             info.collider_size = Skill61_3_Data.ins.hit_rect;
-            BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
+            BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(this.Target);
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
             buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
             info.AddBuffer(buffer);
@@ -502,12 +542,12 @@ public class Skill61_3 : SkillBase
     }
     private void shoot3()
     {
-
+        
 
 
         ArrayList list = GetEnemyByOrder();
         Debug.Log(list.Count);
-        for (int i = 0; i < 10 && i < list.Count; i++)
+        for (int i = 0; i < 10&&i<list.Count; i++)
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
@@ -519,7 +559,7 @@ public class Skill61_3 : SkillBase
             info.lastTime = 5;
             info.isHitDestory = false;
             info.collider_size = Skill61_3_Data.ins.hit_rect;
-            BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
+            BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(this.Target);
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
             buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
             info.AddBuffer(buffer);
@@ -537,7 +577,7 @@ public class Skill61_3 : SkillBase
         cd.Tick();
         cancelCounter.Tick();
         dealyCounter.Tick();
-        if (dealyCounter.GetCurrent() == dealyCounter.GetMax())
+        if (dealyCounter.GetCurrent()==dealyCounter.GetMax())
         {
             switch (level)
             {
@@ -614,11 +654,11 @@ public class Skill61_3 : SkillBase
     private ArrayList GetEnemyByOrder()
     {
         ArrayList enemyList = EnemyMgr.ins.GetEnemys();
-        for (int i = 0; i < enemyList.Count - 1; i++)
+        for (int i = 0; i < enemyList.Count-1; i++)
         {
-            for (int j = 0; j < enemyList.Count - 1 - i; j++)
+            for (int j = 0; j < enemyList.Count - 1-i; j++)
             {
-                if (distance(enemyList[j] as Enemy) > distance(enemyList[j + 1] as Enemy))
+                if (distance(enemyList[j] as Enemy)>distance(enemyList[j+1] as Enemy))
                 {
                     Enemy temp = enemyList[j + 1] as Enemy;
                     enemyList[j + 1] = enemyList[j];
@@ -644,5 +684,5 @@ public class Skill61_3 : SkillBase
     private bool is_shifa = true;
 
     Bullet b_shifa = null;
-    private int level = 1;
+    private int level = 2;
 }

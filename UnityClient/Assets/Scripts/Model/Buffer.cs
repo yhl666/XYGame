@@ -435,6 +435,14 @@ public class BufferEquipTest2 : Buffer
 /// </summary>
 public class BufferSpeedSlow : Buffer
 {
+    public override T Clone<T>()
+    {
+        BufferSpeedSlow ret = new BufferSpeedSlow();
+        ret.Init();
+        ret.MAX_TICK = this.MAX_TICK;
+        ret.percent = this.percent;
+        return ret as T;
+    }
     public override string GetName()
     {
         return "BufferSpeedSlow";
@@ -445,10 +453,12 @@ public class BufferSpeedSlow : Buffer
 
     public override void OnEnter()
     {
+
         base.OnEnter();
         tick.SetMax(time);
-        speed_slow = percent / 100.0f * this.owner.speed;
+        speed_slow = 99 / 100.0f * this.target.speed;
         this.target.speed -= speed_slow;
+        Debug.Log("former speed is" + this.target.speed);
     }
     public override void UpdateMS()
     {
@@ -474,6 +484,7 @@ public class BufferSpeedSlow : Buffer
     }
     public override void OnExit()
     {
+        Debug.Log("late speed is " + this.target.speed);
         this.target.speed += speed_slow;
 
         base.OnExit();
@@ -486,6 +497,17 @@ public class BufferSpeedSlow : Buffer
 /// </summary>
 public class BufferHitBack : Buffer
 {
+    public override T Clone<T>()
+    {
+        BufferHitBack ret = new BufferHitBack();
+        ret.Init();
+        ret.MAX_TICK = this.MAX_TICK;
+        ret.position.x = this.position.x;
+        ret.position.y = this.position.y;
+        ret.position.z = this.position.z;
+        return ret as T;
+    }
+
     public override string GetName()
     {
         return "BufferHitBack";
@@ -493,6 +515,7 @@ public class BufferHitBack : Buffer
     public int time = 15;//默认3s
     public int dir = 1;
     public bool nonsense = true;
+    public Vector3 position;
     public override void OnEnter()
     {
         //去重
@@ -508,18 +531,29 @@ public class BufferHitBack : Buffer
 
         nonsense = false;
         base.OnEnter();
+     tick.Reset();
         tick.SetMax(time);
         target.machine.GetState<RunXZState>().Pause();
         //  Debug.Log("击退开始");
-
+        if (target.pos.x > this.position.x)
+        {
+            dir = -1;
+        }
+        else
+        {
+            dir = 1;
+        }
+        //Debug.Log("target.x=" + target.pos.x + "target.y=" + target.pos.y + "target.z=" + target.pos.z);
+        //Debug.Log("releaser.x=" + this.position.x + "releaser.y=" + this.position.y + "releaser.z=" + this.position.z);
+        //Debug.Log("dir = " +dir);
+        //Debug.Log("\n");
     }
     public override void UpdateMS()
     {
-        if (nonsense) return;
 
         if (tick.Tick())
         {
-            target.x_auto -= dir * 0.07f;
+            target.x -= dir * 0.07f;
             return;
         }
         this.SetInValid();
@@ -527,11 +561,8 @@ public class BufferHitBack : Buffer
     public override bool Init()
     {
         base.Init();
-        this.id = 0xffef1;
-        if (target.flipX > 0)
-        {
-            dir = -1;
-        }
+        //this.id = 0xffef1;
+        this.isOnlyOne = true;
         show_ui = true;
         icon = "hd/interface/items/503079.png";
         brief = "击退";
@@ -539,12 +570,13 @@ public class BufferHitBack : Buffer
     }
     public override void OnExit()
     {
-        if (nonsense) return;
+        //if (nonsense) return;
         ///  Debug.Log("击退结束");
         target.machine.GetState<RunXZState>().Resume();
         base.OnExit();
     }
 
+    
 }
 
 
