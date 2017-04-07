@@ -839,7 +839,6 @@ public class AttackState_1 : StateBase
     public override void OnEvent(int type, object userData)
     {
         if (Target.isHurt) return;
-
         if (type == Events.ID_BTN_ATTACK && this.Enable == false)
         {
             ///  this.Target.AddBuffer<BufferFlashMove>();
@@ -847,7 +846,6 @@ public class AttackState_1 : StateBase
             tick_cancel.Reset();
             tick_cancel.SetMax(AttackState6_Data.ins.level1_cancel);
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_ATTACK, this.Target);
-
             this.Enable = true;
             Target.isAttacking = true;
             Target.attackingAnimationName = this.GetAnimationName();
