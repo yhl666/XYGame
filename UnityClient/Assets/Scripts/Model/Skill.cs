@@ -2024,7 +2024,7 @@ public class Skill62_1_v2 : SkillBase
     public override void OnPush()
     {
         if (cd.IsMax() == false) return;
-        if (Target.isStand == false && Target.isAttacking==false) return;
+        if (Target.isStand == false && Target.isAttacking == false) return;
         if (this.Enable) return;
         if (Target.isAttacking)
         {
@@ -2341,8 +2341,8 @@ public class Skill62_2_v2 : SkillBase
     }
     public override void OnAcceptInterrupted(SkillBase who)
     {
-       /* if (this.Enable) return;
-        this.OnEnter();*/
+        /* if (this.Enable) return;
+         this.OnEnter();*/
     }
     public override void OnPush()
     {
@@ -2990,7 +2990,7 @@ public class SkillBoss_1 : SkillBase
         return "SkillBoss_1";
     }
     Bullet b = null;
-    public Counter cd = Counter.Create(40);
+    public Counter cd = Counter.Create(120);
     Counter tick = Counter.Create(120);
     private int atk_times = 0;
     private Buffer bati = null;
@@ -3046,7 +3046,7 @@ public class SkillBoss_1 : SkillBase
     }
     public override void UpdateMS()
     {
-        ///   cd.Tick();
+        cd.Tick();
 
         if (will_run && atk_times == 0)
         {//冲向目标点
@@ -3089,10 +3089,6 @@ public class SkillBoss_1 : SkillBase
                 }
             }
 
-        }
-        if (tick.Tick())
-        {
-            return;
         }
     }
     public override void UpdateMSIdle()
@@ -3210,7 +3206,11 @@ public class SkillBoss_1 : SkillBase
     }
     public override bool OnInterrupted(SkillBase who)
     {
-        return false;
+        if (Enable)
+        {
+            this.OnExit();
+        }
+        return true;
     }
 }
 
@@ -3224,7 +3224,7 @@ public class SkillBoss_2 : SkillBase
         return "SkillBoss_2";
     }
     Bullet b = null;
-    public Counter cd = Counter.Create(99);
+    public Counter cd = Counter.Create(120);
     Counter tick = Counter.Create(120);
     Counter tick_auto = Counter.Create(40);
     private int atk_times = 0;
@@ -3413,7 +3413,11 @@ public class SkillBoss_2 : SkillBase
     }
     public override bool OnInterrupted(SkillBase who)
     {
-        return false;
+        if (Enable)
+        {
+            this.OnExit();
+        }
+        return true;
     }
 }
 
@@ -3427,34 +3431,21 @@ public class SkillBoss_3 : SkillBase
     {
         return "SkillBoss_3";
     }
-    Bullet b = null;
-    public Counter cd = Counter.Create(99);
+    public Counter cd = Counter.Create(120);
     Counter tick = Counter.Create(120);
-    private int atk_times = 0;
+    Buffer bati = null;
     public override void OnLevelUp(int target_level)
     {
-
 
     }
     public override void OnEnter()
     {
-        Debug.LogError("SkillBoss_1");
         cd.Reset();
-        atk_times = 0;
         this.PauseAll();
         this.Target.machine.GetState<StandState>().Resume();
         this.Target.machine.GetState<FallState>().Resume();
         tick.Reset();
-        {
-            RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
-            state.Resume();
-            state.EnableWhenAttack();
-        }
-        {
-            RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
-            state.Resume();
-            state.EnableWhenAttack();
-        }
+        bati = Target.AddBuffer<BufferBaTi>();
         Target.isAttacking = true;
         this.Enable = true;
         this.Shoot();
@@ -3464,10 +3455,18 @@ public class SkillBoss_3 : SkillBase
         cd.Tick();
         if (tick.Tick())
         {
+
             return;
         }
-        this.Shoot();
+        Enemy e1 = EnemyMgr.Create<Enemy3>();
+        e1.x = Utils.random_frameMS.Next(0, 340000) / 10000f;
+        e1.z = Utils.random_frameMS.Next(1000, 4000) / 1000.0f;
 
+        //   e1.x = 5+i*0.1f;   
+        ///   e1.x = 55555;
+        e1.y = 5;
+        e1.team = 333;
+        this.OnExit();
     }
     public override void UpdateMSIdle()
     {
@@ -3475,46 +3474,7 @@ public class SkillBoss_3 : SkillBase
     }
     private void Shoot()
     {
-        tick.Reset();
-        ++atk_times;
-        if (atk_times == 1)
-        {
-            Target.attackingAnimationName = "2110";
-        }
-        else if (atk_times == 2)
-        {
-            Target.attackingAnimationName = "2000";
-        }
-        else if (atk_times == 3)
-        {
-            Target.attackingAnimationName = "2130";
-        }
-
-        BulletConfigInfo info = BulletConfigInfo.Create();
-
-        info.AddBuffer("BufferHitBack");
-
-        info.launch_delta_xyz.x = 1.5f;
-        info.launch_delta_xyz.y = -0.2f;
-        info.frameDelay = 4;
-        info.distance_atk = 1.5f;
-        info.number = 0xfff;
-        info.isHitDestory = false;
-        info.damage_ratio = Skill62_1_Data.ins.damage_ratio;
-        info.oneHitTimes = 1;
-        //  info.rotate = -120.0f;
-        info.plistAnimation = "hd/enemies/enemy_311/bullet/enemy_311_bul_311011/enemy_311_bul_311011.plist";
-
-        ///  ;"hd/roles/role_6/bullet/role_6_bul_6122/role_6_bul_6122.plist";
-        /// info.rotate = 30.0f;
-        info.distance = 0;
-        info.lastTime = 10;
-        info.collider_size = Skill62_1_Data.ins.hit_rect;
-        info.scale_x = 2f;
-        info.scale_y = 2f;
-        b = BulletMgr.Create(this.Target, "BulletConfig", info);
-
-
+        Target.attackingAnimationName = "2240_0";
     }
     public override void OnSpineComplete()
     {
@@ -3523,18 +3483,19 @@ public class SkillBoss_3 : SkillBase
     }
     public override void OnExit()
     {
-        b.SetInValid();
+        if (bati != null)
+        {
+            bati.SetInValid();
+            bati = null;
+        }
         this.Enable = false;
         Target.isAttacking = false;
         tick.Reset();
-        Target.is_spine_loop = true;
         RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
         state.DisableWhenAttak();
         this.ResumeAll();
 
         /// this.stack.PushSingleSkill(new Skill6_2_2());
-
-
     }
     public override void OnAcceptInterrupted(SkillBase who)
     {
@@ -3567,6 +3528,10 @@ public class SkillBoss_3 : SkillBase
     }
     public override bool OnInterrupted(SkillBase who)
     {
-        return false;
+        if (Enable)
+        {
+            this.OnExit();
+        }
+        return true;
     }
 }

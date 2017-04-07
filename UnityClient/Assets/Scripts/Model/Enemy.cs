@@ -738,7 +738,10 @@ public class EnemyBoss : Enemy
         this.skill1 = skill.GetSkill<SkillBoss_1>();
         this.skill2 = skill.GetSkill<SkillBoss_2>();
         this.skill3 = skill.GetSkill<SkillBoss_3>();
-        ai_fsm_machine.Pause();
+        ai_fsm_machine.Pause();    
+        hp = 3000;
+
+        current_hp = hp;
         return true;
     }
 
@@ -755,23 +758,63 @@ public class EnemyBoss : Enemy
     public override void AI_AttackTarget()
     {//释放技能1
 
-        s1 = 2;
-        return;
-        if (skill1.cd.IsMax())
-        {
-            s1 = 1;
-        }
-        else if (skill1.cd.IsMax())
+        /*  s1 = 3;
+          return;
+          if (skill1.cd.IsMax())
+          {
+              s1 = 1;
+          }
+          else if (skill1.cd.IsMax())
+          {
+              s1 = 2;
+          }
+          else if (skill1.cd.IsMax())
+          {
+              s1 = 3;
+          }
+          else
+          {
+
+          }*/
+
+
+
+        /*  if (skill3.cd.IsMax())
+          {
+              s1 = 3;
+          }
+          else */
+        if (skill2.cd.IsMax())
         {
             s1 = 2;
         }
         else if (skill1.cd.IsMax())
         {
-            s1 = 3;
+            s1 = 1;
         }
-        else
-        {
 
+        if (has3 == false && current_hp < hp * 0.3f)
+        {
+            s1 = 3;
+            has3 = true;
+        }
+        if (has2 == false && current_hp < hp * 0.5f && current_hp > hp * 0.3f)
+        {
+            s1 = 3;
+            has2 = true;
+        }
+        if (has1 == false && current_hp < hp * 0.7f && current_hp > hp * 0.5f)
+        {
+            s1 = 3;
+            has1 = true;
+        }
+
+
+
+        if (s1 == 3)
+        {
+            skill1.OnInterrupted(new SkillBase());
+            skill2.OnInterrupted(new SkillBase());
         }
     }
     SkillState skill = null;
@@ -779,5 +822,9 @@ public class EnemyBoss : Enemy
     SkillBoss_2 skill2 = null;
     SkillBoss_3 skill3 = null;
 
+    bool has1 = false;
+    bool has2 = false;
+    bool has3 = false;
+    public int level_call = 0;//召唤等级 
 }
 
