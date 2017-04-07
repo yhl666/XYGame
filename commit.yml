@@ -3,39 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'a7541682ba3dd4257386c7abbfdaed9df00e7c34'
-    oldFile: !uuid '252249fca5230d550bbea2906b8a134ac35ba150'
+    newFile: !uuid '36dc98f4020ed34ab7b2e1725f37a4a0162a15fd'
+    oldFile: !uuid 'a7541682ba3dd4257386c7abbfdaed9df00e7c34'
   /UnityClient/Assets:
-    newFile: !uuid 'c81746c753fab586e616c00ced55f6ea2e2e07d0'
-    oldFile: !uuid 'edb39ff81fb687c9545ec90d8b766b06136fe1d6'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '1fca06fd6d23173c1a1b2daa9fb3e3869fa104dd'
-    oldFile: !uuid '91497cfcfa254123415eb7b7a686a6bfbaffba80'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'ecb20c67f68318c1a98d85b45e425e345e5f7714'
-    oldFile: !uuid '2bdf1fbe0d2fb15b2ec555332eef572d87db9648'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '0b4080cf2c487fb34e53c3471386b40ad6e319e9'
-    oldFile: !uuid '9977d8860d142655db0a231378b40fcb57118d0a'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
-    newFile: !uuid '853241e162e5782be9b4416a4cc5c5eaa3fe78c0'
-    oldFile: !uuid '3880bc619d232dd196b58d32c5472eda64174962'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '27d690eab4cec2b94880dd1b2144313b6deda1bc'
-    oldFile: !uuid 'f1f325d03c89bda753789d53afc91e7947096899'
-  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid 'ef3212184e17fd14a41e1673aa2e5c658c89164a'
-    oldFile: !uuid '622240b95e0c776aa329ac7fa8b84884fa49d7e1'
+    newFile: !uuid '15d418ac1c2de10be3d92e859809c396b856f486'
+    oldFile: !uuid 'c81746c753fab586e616c00ced55f6ea2e2e07d0'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid 'fac36a0d635b210ce229bbeaf91a5631caccbade'
-    oldFile: !uuid 'b1720331af10362d4d9aacadaa9182c9f88eb6e7'
+    newFile: !uuid '3346c5131ec1e755efca0c0899e6b886e614f517'
+    oldFile: !uuid 'fac36a0d635b210ce229bbeaf91a5631caccbade'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '0f771a30e0acfabaf0e3785332c196730b4d5198'
-    oldFile: !uuid '5ae86f545ee5db5daaa2d7f6454383c476bbcddc'
+    newFile: !uuid '068ddc147c75ccef8285e2d704f5963d6d3e2ee3'
+    oldFile: !uuid '0f771a30e0acfabaf0e3785332c196730b4d5198'
   /UnityClient/Assets/Scripts/Model/Skill.cs:
-    newFile: !uuid 'a4c1f1d04f5d188e0397b771f7125fe58800ccfc'
-    oldFile: !uuid '20bb3bcdb8ae59196346d97f44ecfeae88723933'
-gitCommitId: !uuid '0fbc29be6407b95855b972749a9fcc7f11dc3ec9'
+    newFile: !uuid '35a274b4a32a0e1bfb2a45601533c434763af785'
+    oldFile: !uuid 'a4c1f1d04f5d188e0397b771f7125fe58800ccfc'
+gitCommitId: !uuid '3b08068d654f06a08033009e2912cb9c5c90cbc4'
 renames: {
   }
-revisionId: 649
+revisionId: 650
