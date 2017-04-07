@@ -163,6 +163,8 @@ public sealed class BulletConfigInfo
     public OnBulletFunc _OnTakeAttack = null; //，命中的回调 第二参数是命中的目标
     public OnBulletFunc _OnLaunch = null; // 创建时回调
     public OnBulletFunc _OnUpdateMS = null; // 有效帧时间 回调
+    public OnBulletFunc _OnExit = null; //  销毁时 回调
+
     public int onTakeAttackFuncCallTimes = 0xfffffff;//攻击函数回调次数
     public OnMoveFunc _OnMoveFunc = null;
 
@@ -185,9 +187,14 @@ public sealed class BulletConfigInfo
         {
             _OnLaunch.Invoke(bullet);
         }
-
     }
-
+    public void InVokeOnExit(Bullet bullet)
+    {
+        if (_OnExit != null)
+        {
+            _OnExit.Invoke(bullet);
+        }
+    }
     public void InVokeOnUpdateMS(Bullet bullet)
     {
         if (_OnUpdateMS != null)
@@ -651,7 +658,10 @@ public sealed class BulletConfig : Bullet
         base.Init();
         return true;
     }
-
+    public override void OnExit()
+    {
+        info.InVokeOnExit(this);
+    }
 
 
     public void LoadConfig(BulletConfigInfo info)

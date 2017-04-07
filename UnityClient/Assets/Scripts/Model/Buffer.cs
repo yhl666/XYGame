@@ -1084,6 +1084,134 @@ public class BufferPoison : Buffer
     }
 }
 
+
+/// <summary>
+/// Enemy攻击后的 随机位移
+/// part of code copy from BufferSpin and BufferAttackTo
+/// </summary>
+public class BufferEnemyMovementAfterAtk : Buffer
+{
+    private int dir = 0;
+    public override T Clone<T>()
+    {
+        BufferEnemyMovementAfterAtk ret = new BufferEnemyMovementAfterAtk();
+        ret.Init();
+        ret.MAX_TICK = this.MAX_TICK;
+        return ret as T;
+    }
+    public override string GetName()
+    {
+        return "BufferEnemyMovementAfterAtk";
+    }
+    public override void OnEnter()
+    {  
+        Enemy host = target as Enemy;
+        if (host == null)
+        {
+            Debug.LogError("this buffer only can add to Enemy " + this.GetType().ToString());
+            this.SetInValid();
+            return;
+        }
+        if (target.x > host.target.x)
+        {//Enemy 位于 目标右边
+            // 0-90 or 270-360
+            dir = Utils.random_frameMS.Next(0, 180);
+            if(dir>90)
+            {
+                dir += 90;
+            }
+        }
+        else
+        {
+            dir = Utils.random_frameMS.Next(90,270);
+        }
+        tick.SetMax(10);
+        target.eventDispatcher.PostEvent("SpineComplete");
+        tick.Reset();
+        target.machine.PauseAllStack();
+
+        target.machine.GetState<RunXZState>().SetDisable();
+        target.machine.GetState<SkillState>().Resume();
+        target.machine.GetState<StandState>().Resume();
+
+        target.ani_force = "walk";
+    }
+    public override void OnExit()
+    {
+        target.machine.ResumeAllStack();
+        target.machine.GetState<RunXZState>().SetEnable();
+        EventDispatcher.ins.RemoveEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
+        target.ani_force = "";
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+        isOnlyOne = true;
+        tick.SetMax(MAX_TICK);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
+        return true;
+    }
+
+    public override void OnDispose()
+    {
+
+    }
+    public override void OnMerge(Buffer other)
+    {
+
+    }
+    public override void UpdateMS()
+    {
+        if (tick.Tick())
+        {
+            target.isJumping = false;
+            target.isHurt = false;
+            target.isRunning = false;
+            //开始强制位移
+
+            // code copy from RunXZState
+            float speed = target.speed * 2f;
+
+            float dd = dir * DATA.ONE_DEGREE;//一度的弧度
+
+            float z_delta = Mathf.Sin(dd);
+            float x_delta = Mathf.Cos(dd);
+            target.z = target.z + speed * z_delta;
+            target.x = target.x + speed * x_delta;
+
+           /* if (dir > 90 && dir < 270)
+            { //left
+                target.flipX = 1.0f;
+            }
+            else
+            {//right
+                target.flipX = -1.0f;
+
+            }*/
+
+            return;
+        }
+        this.SetInValid();
+    }
+
+    public override void OnEvent(int type, object userData)
+    {
+        if (this.IsInValid()) return;
+        if (type == Events.ID_BEFORE_ONEENTITY_UPDATEMS)
+        {
+            if (userData as Entity != this.target) return;
+            //reset all cmd
+            target.atk = false;
+            target.left = false;
+            target.right = false;
+            target.jump = false;
+            target.s1 = 0;
+        }
+    }
+}
+
+
 /// <summary>
 /// 可配置 buffer
 /// </summary>

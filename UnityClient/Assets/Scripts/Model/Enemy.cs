@@ -358,15 +358,23 @@ public class Enemy1 : Enemy
         atk_level = 1;
         bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
         bulleClassName_s1 = "Bullet221_0"; // 1 号技能 子弹名字
-        this.bullet_atk1_info = BulletConfigInfo.Create();
-        bullet_atk1_info.plistAnimation = "";
-        bullet_atk1_info.distance = 0.2f;
-        bullet_atk1_info.distance_atk = 1f;
-        bullet_atk1_info.lastTime = 10;
-        bullet_atk1_info.oneHitTimes = 0xfffff;
-        bullet_atk1_info.isHitDestory = true;
-        bullet_atk1_info.collider_size = new Vector3(2f, 2f, 2f);
-
+        BulletConfigInfo info = BulletConfigInfo.Create();
+        info.plistAnimation = "";
+        info.distance = 0.2f;
+        info.distance_atk = 1f;
+        info.lastTime = 10;
+        info.oneHitTimes = 0xfffff;
+        info.isHitDestory = true;
+        info.collider_size = new Vector3(2f, 2f, 2f);
+        ///info.AddBuffer("BufferEnemyMovementAfterAtk");
+        info._OnTakeAttack = (Bullet bbbb, object user) =>
+        {
+            TimerQueue.ins.AddTimerMSI(10, () =>
+            {
+                this.AddBuffer("BufferEnemyMovementAfterAtk");
+            });
+        };
+        this.bullet_atk1_info = info;
         this.atk_range = 1.0f;
         scale = 0.8f;
     }
@@ -470,15 +478,22 @@ public class Enemy2 : Enemy
         atk_level = 1;
         bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
         bulleClassName_s1 = "Bullet221_0"; // 1 号技能 子弹名字
-        this.bullet_atk1_info = BulletConfigInfo.Create();
-        bullet_atk1_info.plistAnimation = "";
-        bullet_atk1_info.distance = 0.2f;
-        bullet_atk1_info.distance_atk = 1f;
-        bullet_atk1_info.lastTime = 10;
-        bullet_atk1_info.oneHitTimes = 0xfffff;
-        bullet_atk1_info.isHitDestory = true;
-        bullet_atk1_info.collider_size = new Vector3(2f, 2f, 2f);
-
+        BulletConfigInfo info = BulletConfigInfo.Create();
+        info.plistAnimation = "";
+        info.distance = 0.2f;
+        info.distance_atk = 1f;
+        info.lastTime = 10;
+        info.oneHitTimes = 0xfffff;
+        info.isHitDestory = true;
+        info.collider_size = new Vector3(2f, 2f, 2f);
+        info._OnTakeAttack = (Bullet bbbb, object user) =>
+        {
+            TimerQueue.ins.AddTimerMSI(10, () =>
+            {
+                this.AddBuffer("BufferEnemyMovementAfterAtk");
+            });
+        };
+        this.bullet_atk1_info = info;
         this.atk_range = 1.0f;
         scale = 0.8f;
     }
@@ -611,7 +626,13 @@ public class Enemy3 : Enemy
         info.isHitDestory = true;
         info.collider_size = new Vector3(2f, 2f, 2f);
         info.AddBuffer("BufferPoison");
-
+        info._OnTakeAttack = (Bullet bbbb, object user) =>
+        {
+            TimerQueue.ins.AddTimerMSI(10, () =>
+                {
+                    this.AddBuffer("BufferEnemyMovementAfterAtk");
+                });
+        };
         this.bullet_atk1_info = info;
         this.atk_range = 1.0f;
         scale = 0.8f;
@@ -673,7 +694,7 @@ public class EnemyBoss : Enemy
     {
         type = "boss";
         base.Init();
-   
+
         return true;
     }
 
@@ -690,7 +711,5 @@ public class EnemyBoss : Enemy
     {//释放技能1
         s1 = 1;
     }
-
-
 }
 

@@ -243,4 +243,7 @@ public sealed class Utils
     {
         return new T();
     }
+
+    //帧同步随机数
+    public static System.Random random_frameMS;
 }

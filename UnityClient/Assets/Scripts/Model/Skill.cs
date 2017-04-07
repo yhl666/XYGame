@@ -1887,7 +1887,6 @@ public class Skill62_1_v2 : SkillBase
     public override void OnLevelUp(int target_level)
     {
 
-
     }
     public override void OnEnter()
     {
@@ -1955,8 +1954,6 @@ public class Skill62_1_v2 : SkillBase
     {
 
         BulletConfigInfo info = BulletConfigInfo.Create();
-
-        info.AddBuffer("BufferHitBack");
 
         info.launch_delta_xyz.x = 1.5f;
         info.launch_delta_xyz.y = -0.2f;
@@ -2222,10 +2219,6 @@ public class Skill62_2_v2 : SkillBase
         Target.AddBuffer(buf);
         this.Enable = true;
 
-
-
-
-
         //特效
         BulletConfigInfo info = BulletConfigInfo.Create();
         info.launch_delta_xyz.x = Skill62_2_Data.ins.delta_xyz.x;// 1.5f;
@@ -2256,10 +2249,6 @@ public class Skill62_2_v2 : SkillBase
         };
 
         bu_hide = BulletMgr.Create(this.Target, "BulletConfig", info) as BulletConfig;
-
-
-
-
 
     }
     public override void UpdateMS()

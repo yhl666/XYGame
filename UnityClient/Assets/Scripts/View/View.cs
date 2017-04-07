@@ -193,10 +193,13 @@ public class ViewEntity : View
 
         string name = "";
         //优先级匹配，状态可能组合，但是动画只有一个
-        if (m.isDie)
+        if (m.ani_force != "")
         {
-
-            ///    name = m.ani_die;
+            name = m.ani_force;
+        }
+        else if (m.isDie)
+        {
+            ///   name = m.ani_die;
         }
         else if (m.isAttacking)
         {
@@ -324,11 +327,15 @@ public class ViewEnemy : View
 
         string name = "";
         //优先级匹配，状态可能组合，但是动画只有一个
-        if (m.isDie)
+        if (m.ani_force != "")
+        {
+            name = m.ani_force;
+        }
+        else if (m.isDie)
         {
             name = m.ani_die;
         }
-        else if (m.isHurt && m.ani_hurt!="")
+        else if (m.isHurt && m.ani_hurt != "")
         {
             name = m.ani_hurt;
         }
@@ -520,10 +527,10 @@ public class ViewBuilding : View
         {
             name = m.attackingAnimationName;
         }
-     /*   else if (m.isHurt)
-        {
-            name = m.ani_hurt;
-        }*/
+        /*   else if (m.isHurt)
+           {
+               name = m.ani_hurt;
+           }*/
         else if (m.isStand)
         {
             name = m.ani_stand;
