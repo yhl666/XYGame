@@ -453,12 +453,10 @@ public class BufferSpeedSlow : Buffer
 
     public override void OnEnter()
     {
-
         base.OnEnter();
         tick.SetMax(time);
-        speed_slow = 99 / 100.0f * this.target.speed;
+        speed_slow = percent / 100.0f * this.target.speed;
         this.target.speed -= speed_slow;
-        Debug.Log("former speed is" + this.target.speed);
     }
     public override void UpdateMS()
     {
@@ -484,7 +482,6 @@ public class BufferSpeedSlow : Buffer
     }
     public override void OnExit()
     {
-        Debug.Log("late speed is " + this.target.speed);
         this.target.speed += speed_slow;
 
         base.OnExit();
@@ -531,7 +528,7 @@ public class BufferHitBack : Buffer
 
         nonsense = false;
         base.OnEnter();
-     tick.Reset();
+        tick.Reset();
         tick.SetMax(time);
         target.machine.GetState<RunXZState>().Pause();
         //  Debug.Log("击退开始");
@@ -576,7 +573,7 @@ public class BufferHitBack : Buffer
         base.OnExit();
     }
 
-    
+
 }
 
 
