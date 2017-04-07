@@ -2,25 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '7bffd026b8a1376477f65ae7ead43f276d477a9f'
-    oldFile: !uuid 'fa59fb0294cb640cc9ba5ae2265ebc01f72d283e'
-  /UnityClient/Assets:
-    newFile: !uuid 'f7748e8ed6b1dc5de6b881a9fb88bf11fe37f2e4'
-    oldFile: !uuid '721d6cbf8364ec07ec296739e0f367ffcbbcc4a0'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '3024a99b2ac38f5067f4773b6ab92a2e9edca118'
-    oldFile: !uuid '845d6124cd9c41ef8cc072c8471ec6e2968af9df'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'db2f97b64c34f4fa86697d331558557440e27575'
-    oldFile: !uuid 'b65dede9df722fbf8529d38ff85ad53f974903ac'
-  /UnityClient/Assets/Scripts/Model/Enemy.cs:
-    newFile: !uuid 'f74a8a8e9b37c44b311e74568d877be127bdf992'
-    oldFile: !uuid '52bb59e8e92e4f5f9a1255348643af739e646285'
-  /UnityClient/Assets/Scripts/Model/Skill.cs:
-    newFile: !uuid 'b7468c09ec4735130b7ac6c9ec9eb4c0f51e2436'
-    oldFile: !uuid 'e17fd47823cb111d6d40ba1da25f31cc8336abb8'
-gitCommitId: !uuid '76e08b9945497ccaa956258aafbf315eaab09733'
+  /策划文档:
+    newFile: !uuid 'fc5644b0eef2eebcd98374ad5c70dc6b6eecb33c'
+    oldFile: !uuid '1338e0962927f12270e50897b166bd0b5d6bc543'
+  /策划文档/防御塔.docx:
+    newFile: !uuid '611d2a7ed5533503b72a36297bd7dd3932eb1597'
+    oldFile: null
+gitCommitId: !uuid 'e691452e44c8e09d0ec83119fb7f7733357c5bcc'
 renames: {
   }
-revisionId: 633
+revisionId: 634
