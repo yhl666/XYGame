@@ -613,6 +613,112 @@ public sealed class BulletConfig : Bullet
                 {
                     continue;
                 }
+
+
+
+
+            }
+
+            //scan buinding
+            ArrayList buildings = BuildingMgr.ins.GetBuildings();
+            foreach (Building h in buildings)
+            {
+                if (hitNumber >= info.number) break; // 如果命中 敌人数 大于限制数量，忽略
+
+                if (h.team != owner.team)
+                {
+                    bool hit = false;
+                    if (info.collider_type == ColliderType.Rect || info.collider_type == ColliderType.Box)
+                    {
+                        hit = h.IsCast(this.bounds);
+                    }
+                    else if (ColliderType.Circle == info.collider_type)
+                    {
+                        //    Debug.Log("dis = " + diss);
+                        hit = h.ClaculateDistance(x, y) < info.distance_atk;
+                    }
+                    else if (ColliderType.Sector == info.collider_type)
+                    {
+                        //扇形评定框
+                        do
+                        {
+                            int base_angle = 0;//评定角度
+                            if (this.flipX < 0)//往左边走
+                            {
+                                if (this.x < h.x) break; // 目标在右边 跳过
+                                base_angle = 180;
+                            }
+                            else
+                            {
+                                if (this.x >= h.x) break; // 目标在左边 跳过
+                                base_angle = 0;
+                            }
+                            if (h.ClaculateDistance(x, h.y, z) < info.sector_radius)
+                            {//范围内
+                                int degree = (int)Utils.GetAngle(new Vector3(x, h.y, z), new Vector3(h.x, h.y, h.z));
+                                int angle = info.sector_angle;//扇形大小 
+
+                                int delta = base_angle - angle / 2;
+
+                                while (delta < 0)
+                                {
+                                    delta += 360;
+                                }
+                                while (degree - delta < 0)
+                                {
+                                    degree += 360;
+                                }
+                                if (angle >= degree - delta)
+                                {
+                                    hit = true;
+                                }
+                            }
+                        }
+                        while (false);
+                    }
+                    if (hit)
+                    {
+                        if (hasHit.GetCount(h) >= info.oneHitTimes) continue;
+
+                        AttackInfo inf = AttackInfo.Create(owner, h, info.damage_type);
+                        if (info.damage_type == DamageType.RATIO)
+                        {
+                            inf.InitWithCommon();
+                            inf.damage = (int)((float)inf.damage * info.damage_ratio);
+                        }
+                        else if (info.damage_type == DamageType.REAL)
+                        {
+                            inf.damage = (int)info.damage_real;
+                        }
+                        else
+                        {
+                            Debug.LogError("unsuport damage type");
+                        }
+                        foreach (string buf in info.buffers_string)
+                        {
+                            inf.AddBuffer(buf);
+                        }
+                        foreach (Buffer buf in info.buffers)
+                        {
+                            inf.AddBuffer(buf);
+                        }
+                        //  inf.buffers_string = info.buffers_string;
+                        h.TakeAttacked(inf);
+
+                        info.InVokeOnTakeAttack(this, h);
+                        hasHit.PushBack(h);
+                        tagForValidTimes = true;
+                        hitNumber++;
+                        /*   foreach (string buffer in info.buffers_string)
+                           {//add buffer
+                               h.AddBuffer(buffer);
+                           }
+                           foreach (Buffer buffer in info.buffers)
+                           {//add buffer
+                               h.AddBuffer(buffer);
+                           }*/
+                    }
+                }
             }
         }
         if (tagForValidTimes)

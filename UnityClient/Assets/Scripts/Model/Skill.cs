@@ -101,7 +101,10 @@ public sealed class SkillStack : GAObject
         s.OnExit();
         //  s.stack = null;
     }
-
+    public SkillBase TopSkill()
+    {
+        return stacks.Peek() as SkillBase;
+    }
     public override void UpdateMS()
     {
         if (this.enable == false) return;
@@ -2026,8 +2029,8 @@ public class Skill62_1_v2 : SkillBase
         }
         if (Target.isAttacking)
         {
-            ///  this.PushOnInterrupted();
-            /// return;
+            this.PushOnInterrupted();
+            return;
         }
         this.OnEnter();
 
@@ -2336,7 +2339,13 @@ public class Skill62_2_v2 : SkillBase
 
     public override bool OnInterrupted(SkillBase who)
     {
+        if (Enable)
+        {   
+            this.OnExit();
+            return true;
+        }
         return false;
+ 
     }
     public override void OnAcceptInterrupted(SkillBase who)
     {
@@ -2978,46 +2987,110 @@ public class SkillBoss_1 : SkillBase
         return "SkillBoss_1";
     }
     Bullet b = null;
-    Counter cd = Counter.Create(99);
+    public Counter cd = Counter.Create(40);
     Counter tick = Counter.Create(120);
     private int atk_times = 0;
+    private Buffer bati = null;
+    public float distance = 1f; // 冲向目标距离
+    private EnemyBoss target;
+    private Vector3 pos;
+    bool will_run = false;
     public override void OnLevelUp(int target_level)
     {
-
 
     }
     public override void OnEnter()
     {
-        Debug.LogError("SkillBoss_1");
         cd.Reset();
         atk_times = 0;
+        will_run = false;
         this.PauseAll();
+        b = null;
         this.Target.machine.GetState<StandState>().Resume();
         this.Target.machine.GetState<FallState>().Resume();
         tick.Reset();
+        /*  {
+              RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
+              state.Resume();
+              state.EnableWhenAttack();
+          }
+          {
+              RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
+              state.Resume();
+              state.EnableWhenAttack();
+          }*/
+        target = Target as EnemyBoss;
+        if (target == null)
         {
-            RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
-            state.Resume();
-            state.EnableWhenAttack();
+            Debug.LogError("Skill only use in EnemyBoss");
+            this.OnExit();
         }
-        {
-            RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
-            state.Resume();
-            state.EnableWhenAttack();
-        }
+        bati = Target.AddBuffer<BufferBaTi>();
         Target.isAttacking = true;
         this.Enable = true;
-        this.Shoot();
+
+        pos = target.target.pos;
+
+        if (target.ClaculateDistance(target.target) < distance)
+        { // 目标在攻击范围内
+            this.Shoot();
+        }
+        else
+        {//目标不再攻击范围内 直接发起冲锋到目标点 在评定是否在范围内 ，如果不在直接取消 ，在的话直接发起攻击
+
+            will_run = true;
+        }
     }
     public override void UpdateMS()
     {
-        cd.Tick();
+        ///   cd.Tick();
+
+        if (will_run && atk_times == 0)
+        {//冲向目标点
+            if (target.ClaculateDistance(pos) < distance)
+            { // 到达目标点
+
+                if (target.ClaculateDistance(target.target) < distance)
+                { // 还在范围内
+
+                    this.Shoot();
+                }
+                else
+                {
+                    this.OnExit();
+                }
+                target.ani_force = "";
+                will_run = false;
+            }
+            else
+            {
+                int dir = (int)Utils.GetAngle(target.pos, pos);
+
+                // code copy from RunXZState
+                float speed = target.speed * 5f; // X倍速度冲锋
+
+                float dd = dir * DATA.ONE_DEGREE;//一度的弧度
+
+                float z_delta = Mathf.Sin(dd);
+                float x_delta = Mathf.Cos(dd);
+                target.z = target.z + speed * z_delta;
+                target.x = target.x + speed * x_delta;
+                target.ani_force = "run";
+                if (dir > 90 && dir < 270)
+                { //left
+                    target.flipX = 1.0f;
+                }
+                else
+                {//right
+                    target.flipX = -1.0f;
+                }
+            }
+
+        }
         if (tick.Tick())
         {
             return;
         }
-        this.Shoot();
-
     }
     public override void UpdateMSIdle()
     {
@@ -3025,6 +3098,11 @@ public class SkillBoss_1 : SkillBase
     }
     private void Shoot()
     {
+        if (atk_times >= 3)
+        {
+            this.OnExit();
+            return;
+        }
         tick.Reset();
         ++atk_times;
         if (atk_times == 1)
@@ -3042,7 +3120,7 @@ public class SkillBoss_1 : SkillBase
 
         BulletConfigInfo info = BulletConfigInfo.Create();
 
-        info.AddBuffer("BufferHitBack");
+        //  info.AddBuffer("BufferHitBack");
 
         info.launch_delta_xyz.x = 1.5f;
         info.launch_delta_xyz.y = -0.2f;
@@ -3058,10 +3136,12 @@ public class SkillBoss_1 : SkillBase
         ///  ;"hd/roles/role_6/bullet/role_6_bul_6122/role_6_bul_6122.plist";
         /// info.rotate = 30.0f;
         info.distance = 0;
-        info.lastTime = 10;
-        info.collider_size = Skill62_1_Data.ins.hit_rect;
+        info.lastTime = 20;
+        info.collider_size = new Vector3(10f, 10f, 10f);
+        info.launch_delta_xyz = new Vector3(1f, 0f, 0f);
         info.scale_x = 2f;
         info.scale_y = 2f;
+        /// info.AddHitTarget(    )
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
 
 
@@ -3069,11 +3149,23 @@ public class SkillBoss_1 : SkillBase
     public override void OnSpineComplete()
     {
         ///  this.stack.PopSingleSkill();
-
+        if (will_run == false && atk_times != 0)
+        {
+            this.Shoot();
+        }
     }
     public override void OnExit()
     {
-        b.SetInValid();
+        if (b != null)
+        {
+            b.SetInValid();
+            b = null;
+        }
+        if (bati != null)
+        {
+            bati.SetInValid();
+            bati = null;
+        }
         this.Enable = false;
         Target.isAttacking = false;
         tick.Reset();
@@ -3081,9 +3173,6 @@ public class SkillBoss_1 : SkillBase
         RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
         state.DisableWhenAttak();
         this.ResumeAll();
-
-        /// this.stack.PushSingleSkill(new Skill6_2_2());
-
 
     }
     public override void OnAcceptInterrupted(SkillBase who)
@@ -3113,6 +3202,7 @@ public class SkillBoss_1 : SkillBase
     {
         base.Init();
         cd.TickMax();
+        EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
         return true;
     }
     public override bool OnInterrupted(SkillBase who)
@@ -3131,36 +3221,64 @@ public class SkillBoss_2 : SkillBase
         return "SkillBoss_2";
     }
     Bullet b = null;
-    Counter cd = Counter.Create(99);
+    public Counter cd = Counter.Create(99);
     Counter tick = Counter.Create(120);
+    Counter tick_auto = Counter.Create(40);
     private int atk_times = 0;
+    public int level_buffer = 0;
+    public int atk_origned = 0;
+    private Enemy target = null;
     public override void OnLevelUp(int target_level)
     {
 
-
+    }
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_DIE)
+        {
+            if (userData as Entity == Target)
+            {//死亡后清除Buffer 
+                //TODO 死亡后 复用 还是创建新Buffer
+                //  this.Clear();
+            }
+        }
+    }
+    public void Clear()
+    {
+        target.damage = atk_origned;
+        atk_times = 0;
+        atk_origned = 0;
+        level_buffer = 0;
     }
     public override void OnEnter()
     {
-        Debug.LogError("SkillBoss_1");
         cd.Reset();
         atk_times = 0;
         this.PauseAll();
         this.Target.machine.GetState<StandState>().Resume();
         this.Target.machine.GetState<FallState>().Resume();
         tick.Reset();
+
+        target = Target as EnemyBoss;
+        if (target == null)
         {
-            RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
-            state.Resume();
-            state.EnableWhenAttack();
-        }
-        {
-            RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
-            state.Resume();
-            state.EnableWhenAttack();
+            Debug.LogError("Skill only use in EnemyBoss");
+            this.OnExit();
         }
         Target.isAttacking = true;
         this.Enable = true;
         this.Shoot();
+
+        if (atk_origned <= 0)
+        {//初始化
+            atk_origned = target.damage;
+            level_buffer = 0;
+        }
+        if (level_buffer < 3)
+        {//叠加buffer
+            ++level_buffer;
+            target.damage = (int)((float)atk_origned * (1 + (float)level_buffer * 0.1f));
+        }
     }
     public override void UpdateMS()
     {
@@ -3169,12 +3287,23 @@ public class SkillBoss_2 : SkillBase
         {
             return;
         }
-        this.Shoot();
-
     }
     public override void UpdateMSIdle()
     {
         cd.Tick();
+        if (Target != null && (Target.isStand || Target.isRunning))
+        {
+            if (tick_auto.Tick())
+            {
+                return;
+            }
+            if (target != null)
+            {
+                /// this.Shoot();
+                Target.s1 = 2;
+                tick_auto.Reset();
+            }
+        }
     }
     private void Shoot()
     {
@@ -3182,47 +3311,62 @@ public class SkillBoss_2 : SkillBase
         ++atk_times;
         if (atk_times == 1)
         {
-            Target.attackingAnimationName = "2110";
+            Target.attackingAnimationName = "2140";
         }
         else if (atk_times == 2)
         {
-            Target.attackingAnimationName = "2000";
+            Target.attackingAnimationName = "2140";
         }
         else if (atk_times == 3)
         {
-            Target.attackingAnimationName = "2130";
+            Target.attackingAnimationName = "2140";
         }
 
         BulletConfigInfo info = BulletConfigInfo.Create();
 
-        info.AddBuffer("BufferHitBack");
+        info.frameDelay = 1;
 
-        info.launch_delta_xyz.x = 1.5f;
-        info.launch_delta_xyz.y = -0.2f;
-        info.frameDelay = 4;
         info.distance_atk = 1.5f;
         info.number = 0xfff;
         info.isHitDestory = false;
-        info.damage_ratio = Skill62_1_Data.ins.damage_ratio;
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
-        info.plistAnimation = "hd/enemies/enemy_311/bullet/enemy_311_bul_311011/enemy_311_bul_311011.plist";
+        info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
 
-        ///  ;"hd/roles/role_6/bullet/role_6_bul_6122/role_6_bul_6122.plist";
+        info.plistAnimation = "hd/enemies/enemy_311/bullet/enemy_311_bul_311031/enemy_311_bul_311031.plist";
         /// info.rotate = 30.0f;
-        info.distance = 0;
-        info.lastTime = 10;
-        info.collider_size = Skill62_1_Data.ins.hit_rect;
-        info.scale_x = 2f;
-        info.scale_y = 2f;
+        info.distance = target.ClaculateDistance(target.target);
+        ///   info.lastTime = 10;
+        // info.scale_x = 2f;
+        //   info.scale_y = 2f;
+
+        info.launch_delta_xyz.x = 0.5f;// Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = -0.2f;// Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
+        info.launch_delta_xyz.z = 0f;// Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+        info.isHitDestory = true;
+        //  info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
+        info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
+        info.collider_size = Skill62_3_Data.ins.hit_rect;
+        info.collider_type = ColliderType.Box;
+        info._OnTakeAttack = (Bullet bbbb, object user) =>
+        {
+            TimerQueue.ins.AddTimerMSI(10, () =>
+            {
+                ///   this.AddBuffer("BufferEnemyMovementAfterAtk");
+            });
+        };
+        info._OnLaunch = (Bullet bbbb, object user) =>
+        {
+            info.dir_2d = (int)Utils.GetAngle(Target.pos, target.target.pos);
+        };
+
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
 
 
     }
     public override void OnSpineComplete()
     {
-        ///  this.stack.PopSingleSkill();
-
+        this.OnExit();
     }
     public override void OnExit()
     {
@@ -3231,13 +3375,8 @@ public class SkillBoss_2 : SkillBase
         Target.isAttacking = false;
         tick.Reset();
         Target.is_spine_loop = true;
-        RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
-        state.DisableWhenAttak();
+
         this.ResumeAll();
-
-        /// this.stack.PushSingleSkill(new Skill6_2_2());
-
-
     }
     public override void OnAcceptInterrupted(SkillBase who)
     {
@@ -3266,6 +3405,7 @@ public class SkillBoss_2 : SkillBase
     {
         base.Init();
         cd.TickMax();
+
         return true;
     }
     public override bool OnInterrupted(SkillBase who)
@@ -3285,7 +3425,7 @@ public class SkillBoss_3 : SkillBase
         return "SkillBoss_3";
     }
     Bullet b = null;
-    Counter cd = Counter.Create(99);
+    public Counter cd = Counter.Create(99);
     Counter tick = Counter.Create(120);
     private int atk_times = 0;
     public override void OnLevelUp(int target_level)

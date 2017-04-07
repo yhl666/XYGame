@@ -51,7 +51,7 @@ public class Enemy : Entity
 
         // 有目标 ，先判断是否在攻击范围内
         float dis = target.ClaculateDistance(this);
-     ///   Debug.Log(dis + "      " + atk_range);
+        ///   Debug.Log(dis + "      " + atk_range);
         if (dis < this.atk_range)
         {
             //攻击范围内
@@ -522,7 +522,7 @@ public class Enemy2 : Enemy
         {
             TimerQueue.ins.AddTimerMSI(10, () =>
             {
-             ///   this.AddBuffer("BufferEnemyMovementAfterAtk");
+                ///   this.AddBuffer("BufferEnemyMovementAfterAtk");
             });
         };
         info._OnLaunch = (Bullet bbbb, object user) =>
@@ -725,7 +725,7 @@ public class EnemyBoss : Enemy
         info.AddBuffer("BufferPoison");
 
         this.bullet_atk1_info = info;
-        this.atk_range = 1.0f;
+        this.atk_range = 999f;
         scale = 0.8f;
     }
 
@@ -734,12 +734,17 @@ public class EnemyBoss : Enemy
     {
         type = "boss";
         base.Init();
-
+        this.skill = machine.GetState<SkillState>() as SkillState;
+        this.skill1 = skill.GetSkill<SkillBoss_1>();
+        this.skill2 = skill.GetSkill<SkillBoss_2>();
+        this.skill3 = skill.GetSkill<SkillBoss_3>();
+        ai_fsm_machine.Pause();
         return true;
     }
 
     public override void AI_UpdateMSWithAI()
     {
+        target = HeroMgr.ins.self;
         ai_fsm_machine.UpdateMS();
         base.AI_UpdateMSWithAI();
     }
@@ -749,7 +754,30 @@ public class EnemyBoss : Enemy
     }
     public override void AI_AttackTarget()
     {//释放技能1
-        s1 = 1;
+
+       // s1 = 2;
+        return;
+        if (skill1.cd.IsMax())
+        {
+            s1 = 1;
+        }
+        else if (skill1.cd.IsMax())
+        {
+            s1 = 2;
+        }
+        else if (skill1.cd.IsMax())
+        {
+            s1 = 3;
+        }
+        else
+        {
+
+        }
     }
+    SkillState skill = null;
+    SkillBoss_1 skill1 = null;
+    SkillBoss_2 skill2 = null;
+    SkillBoss_3 skill3 = null;
+
 }
 

@@ -214,6 +214,7 @@ namespace AIEnemy
     {
         public override void UpdateMS()
         {
+            if (pause) return;
             if (current_fsm != null)
             {
                 current_fsm.UpdateMS();
@@ -254,6 +255,19 @@ namespace AIEnemy
             fsm.Init();
             this.ChangeTo(fsm);
         }
+        public void Pause()
+        {
+            pause = true;
+        }
+        public void Resume()
+        {
+            pause = false;
+        }
+        public bool IsPause()
+        {
+            return pause;
+        }
+        private bool pause = false;
         FSMBase current_fsm = null;
         public Enemy host = null;
     }

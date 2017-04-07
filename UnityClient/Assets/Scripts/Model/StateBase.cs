@@ -696,7 +696,7 @@ public class DieState : StateBase
             Target.isDie = true;
             Target.bufferMgr.ClearClearAble();//清除所有Buffer
             EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
-            if (Target != HeroMgr.ins.self as Entity && (Target as Enemy) ==null)
+            if (Target != HeroMgr.ins.self as Entity && (Target as Enemy) == null)
             {
                 EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + Target.name + "死亡");
             }
@@ -1341,7 +1341,35 @@ public class SkillState : StateBase
     {
 
     }
-
+    /// <summary>
+    /// 查找技能
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="all">是否包含全部技能组，默认只在当前技能组查找</param>
+    /// <returns></returns>
+    public T GetSkill<T>(bool all = false) where T : SkillBase, new()
+    {
+        if (all)
+        {
+            SkillBase t = Find(ref skill_stacks1, typeof(T).ToString());
+            if (t == null)
+            {
+                return Find(ref skill_stacks2, typeof(T).ToString()) as T;
+            }
+        }
+        return Find(ref skill_stacks, typeof(T).ToString()) as T;
+    }
+    private SkillBase Find(ref ArrayList list, string name)
+    {
+        foreach (SkillStack stack in list)
+        {
+            if (stack.TopSkill().GetName() == name)
+            {
+                return stack.TopSkill();
+            }
+        }
+        return null;
+    }
     ArrayList skill_stacks1 = new ArrayList();
     ArrayList skill_stacks2 = new ArrayList();
     ArrayList skill_stacks = null;

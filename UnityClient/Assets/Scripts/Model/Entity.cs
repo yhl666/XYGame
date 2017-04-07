@@ -341,6 +341,10 @@ public class Entity : Model
     {
         return this.ClaculateDistance(other.x, other.y, other.z);
     }
+    public float ClaculateDistance(Vector3 other)
+    {
+        return this.ClaculateDistance(other.x, other.y, other.z);
+    }
     public float ClaculateDistance(float x, float y, float z = 0f)
     {
         return Utils.ClaculateDistance(new Vector3(this.x, this.y + this.height, this.z), new Vector3(x, y, z));
