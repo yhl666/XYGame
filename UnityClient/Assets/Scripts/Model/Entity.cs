@@ -467,8 +467,9 @@ public class Entity : Model
     {
         set
         {
-            AppMgr.GetCurrentApp().GetCurrentWorldMap().ClipPositionX(this, value);
-
+            x = value;
+            //AppMgr.GetCurrentApp().GetCurrentWorldMap().ClipPositionX(this, value);
+            //临时去掉 旧地图系统
         }
         get
         {
@@ -683,7 +684,7 @@ public class Entity : Model
     public bool isDie = false; // die state but this will not sunc to other clients
     //public bool right_enable = true;//是否允许右移
     //  public bool left_enable = true;//是否允许左移动
-    public string ani_force="";//强制显示的动画，无需强制显示 为""
+    public string ani_force = "";//强制显示的动画，无需强制显示 为""
     public string ani_atk3 = "2000";
     public string ani_atk2 = "2000";
     public string ani_atk1 = "2000";
