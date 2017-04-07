@@ -1920,12 +1920,10 @@ public class Skill62_1_v2 : SkillBase
 
         if (level == 2)
         {
-
             BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
             buffer.percent = -Skill62_1_Data.ins.added_speed_percent;
             buffer.time = Skill62_1_Data.ins.last_time;
             Target.AddBuffer(buffer);
-
         }
         {
             BufferNegativeUnbeatable buffer = BufferMgr.CreateHelper<BufferNegativeUnbeatable>(Target);
@@ -1989,8 +1987,6 @@ public class Skill62_1_v2 : SkillBase
                 };
         }
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
-
-
     }
     public override void OnSpineComplete()
     {
@@ -2009,38 +2005,8 @@ public class Skill62_1_v2 : SkillBase
         this.ResumeAll();
 
         /// this.stack.PushSingleSkill(new Skill6_2_2());
-
-
     }
-    public override void OnAcceptInterrupted(SkillBase who)
-    {
-        if (this.Enable) return;
-        this.OnEnter();
-    }
-    public override void OnPush()
-    {
-        if (cd.IsMax() == false) return;
-        if (Target.isStand == false) return;
-        if (this.Enable) return;
 
-        if (Target.isAttacking)
-        {
-            /// this.PushOnInterruptAttackSate(); //强制打断 普通技能
-        }
-        if (Target.isAttacking)
-        {
-            this.PushOnInterrupted();
-            return;
-        }
-        this.OnEnter();
-
-    }
-    public override bool Init()
-    {
-        base.Init();
-        cd.TickMax();
-        return true;
-    }
     public override bool OnInterrupted(SkillBase who)
     {
         if (this.Enable && tick_cancel.IsMax())
@@ -2050,7 +2016,33 @@ public class Skill62_1_v2 : SkillBase
         }
         return false;
     }
-
+    public override void OnAcceptInterrupted(SkillBase who)
+    {
+        if (this.Enable) return;
+        this.OnEnter();
+    }
+    public override void OnPush()
+    {
+        if (cd.IsMax() == false) return;
+        if (Target.isStand == false && Target.isAttacking==false) return;
+        if (this.Enable) return;
+        if (Target.isAttacking)
+        {
+            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+        }
+        if (Target.isAttacking)
+        {
+            this.PushOnInterrupted();
+            return;
+        }
+        this.OnEnter();
+    }
+    public override bool Init()
+    {
+        base.Init();
+        cd.TickMax();
+        return true;
+    }
 }
 /*
 /// <summary>
@@ -2340,12 +2332,12 @@ public class Skill62_2_v2 : SkillBase
     public override bool OnInterrupted(SkillBase who)
     {
         if (Enable)
-        {   
+        {
             this.OnExit();
             return true;
         }
-        return false;
- 
+        return true;
+
     }
     public override void OnAcceptInterrupted(SkillBase who)
     {
@@ -2651,7 +2643,7 @@ public class Skill62_3_v2 : SkillBase
         {
             return;
         }
-        if (this.Enable || Target.isAttacking)
+        if (this.Enable)
         {
             return;
         }
@@ -2659,10 +2651,15 @@ public class Skill62_3_v2 : SkillBase
         {
             //   return;
         }
-        ///  if (Target.isStand == false) return;
+
         if (Target.isAttacking)
         {
-            /// this.PushOnInterruptAttackSate(); //强制打断 普通技能
+            this.PushOnInterruptAttackSate(); //强制打断 普通技能
+        }
+        if (Target.isAttacking)
+        {
+            this.PushOnInterrupted();
+            return;
         }
         this.OnEnter();
     }
@@ -2673,14 +2670,21 @@ public class Skill62_3_v2 : SkillBase
         return true;
     }
 
-    public override void OnInterrupted(AttackInfo info)
-    {
-
-    }
     public override bool OnInterrupted(SkillBase who)
     {
+        if (this.Enable && tick_cancel.IsMax())
+        {
+            this.OnExit();
+            return true;
+        }
         return false;
     }
+    public override void OnAcceptInterrupted(SkillBase who)
+    {
+        if (this.Enable) return;
+        this.OnEnter();
+    }
+
     Bullet b = null;
 }
 

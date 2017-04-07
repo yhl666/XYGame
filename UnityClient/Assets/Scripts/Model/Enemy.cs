@@ -755,7 +755,7 @@ public class EnemyBoss : Enemy
     public override void AI_AttackTarget()
     {//释放技能1
 
-       // s1 = 2;
+        s1 = 2;
         return;
         if (skill1.cd.IsMax())
         {
