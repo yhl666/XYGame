@@ -2396,10 +2396,9 @@ public class Skill62_3_v2 : SkillBase
     public override void UpdateMS()
     {
         ///  Target.x_auto += Target.flipX * -0.05f;
+        tick_cancel.Tick();
         if (tick1.Tick())
         {//阶段1 起跳
-
-
             if (jump_speed <= 0.0f)
             {
                 tick1.TickMax();
