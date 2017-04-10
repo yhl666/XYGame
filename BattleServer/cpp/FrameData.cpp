@@ -90,6 +90,12 @@ string  FrameData::toJson(bool skip)
 		ret += Utils::itos(dir);
 		ret.append(",");
 	}
+	if ((skip  && opt > 0) || !skip)
+	{
+		ret.append("opt:");
+		ret += Utils::itos(opt);
+		ret.append(",");
+	}
 	return ret;
 }
 
@@ -192,6 +198,13 @@ void  FrameData::Parse()
 		if (str != "")
 		{
 			this->dir = std::stoi(str);
+		}
+	}
+	{
+		string &str = kv["opt"];
+		if (str != "")
+		{
+			this->opt = std::stoi(str);
 		}
 	}
 }

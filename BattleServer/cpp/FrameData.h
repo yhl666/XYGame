@@ -25,7 +25,7 @@ public:
 	int stand = 0;//stand
 	int revive = 0;//revive point
 	int dir = -1;
-
+	int opt = 0;
 public:
 
 	/**
