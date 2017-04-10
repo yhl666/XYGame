@@ -2,25 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '8c49c3988a6cd47789b2eb04baa3b47af5afaa71'
-    oldFile: !uuid '74b5cff4c5a52dbe385a719465299af22d657386'
-  /UnityClient/Assets:
-    newFile: !uuid '7c492bcf42ffd4d8c90ad8251dde3a62b49be61e'
-    oldFile: !uuid '672a68d1d67326fbc9b1dac1620c320bdda44f18'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '857d457683c6a45694f00d7ca1ba5d59936a711d'
-    oldFile: !uuid '06ba3172d7274f2f2439d3c23a86c5138359ff98'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '9f527c9a8972be15e371db97050b1a2a579c7b31'
-    oldFile: !uuid 'e9f018cd9eb9f29dcde621b9bde257fd0740c028'
-  /UnityClient/Assets/Scripts/Model/Buffer.cs:
-    newFile: !uuid 'e58f83c018aa547d8fc6028cf677f03e9ed0305a'
-    oldFile: !uuid '0b1d879fdb4b0c51c29b158c6089a973d3db4739'
-  /UnityClient/Assets/Scripts/Model/Skill.cs:
-    newFile: !uuid '0cc27b739f9e85e57cbb2ed788e25a9f20262175'
-    oldFile: !uuid 'c9fe446dd32453645c3b9cab4c4fb72ea81afbff'
-gitCommitId: !uuid '198efc650116583e6c959dcf87eaa4634c150fe3'
+  /策划文档:
+    newFile: !uuid '0b2242b50a4f2d396f8f155f5fef1dd38555ac2c'
+    oldFile: !uuid 'fc5644b0eef2eebcd98374ad5c70dc6b6eecb33c'
+  /策划文档/角色_怪物_刷新点.xlsx:
+    newFile: !uuid 'f027c3f4073310ebd4fbb3e91cb68649ca102a89'
+    oldFile: !uuid '0b2215d9415085a9f66b1ef7d678c44d1c80c389'
+gitCommitId: !uuid '9cf67391ed613bbbb5ce907361515ceeb5ded2a1'
 renames: {
   }
-revisionId: 661
+revisionId: 662
