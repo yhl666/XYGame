@@ -504,7 +504,14 @@ public class BufferHitBack : Buffer
         ret.position.z = this.position.z;
         return ret as T;
     }
-
+    /// <summary>
+    /// 设置攻击源，此设置用于正确评定 击退方向
+    /// </summary>
+    /// <param name="who"></param>
+    public void SetAttackSource(Entity who)
+    {
+        this.position = who.pos;
+    }
     public override string GetName()
     {
         return "BufferHitBack";

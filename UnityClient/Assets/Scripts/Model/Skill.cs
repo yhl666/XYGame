@@ -2459,8 +2459,10 @@ public class Skill62_3_v2 : SkillBase
     {
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
+            BufferHitBack hitBack = BufferMgr.CreateHelper<BufferHitBack>(this.Target);
+            hitBack.SetAttackSource(Target);
+            info.AddBuffer(hitBack);
 
-            info.AddBuffer("BufferHitBack");
             if (level == 2)
             {
                 BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
