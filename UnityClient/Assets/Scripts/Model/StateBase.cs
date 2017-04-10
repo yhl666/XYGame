@@ -860,7 +860,7 @@ public class AttackState_1 : StateBase
         {
             Target.isAttacking = false;
             this.Enable = false;
-            ///  Debug.Log(" 连招  1111 完成  "  );
+        //    Debug.Log(" 连招  1111 完成  ");
 
             if (Target.atk_level > 1)
             {//下段招数
@@ -917,7 +917,7 @@ public class AttackState_2 : StateBase
     private bool isLaunch = false;
     public AttackState_2()
     {
-        //   Debug.Log(" 连招  222 待命");
+      //  Debug.Log(" 连招  222 待命");
     }
     public override void UpdateMS()
     {
@@ -929,7 +929,7 @@ public class AttackState_2 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-            //    Debug.Log(" 连招  222 超时");
+           // Debug.Log(" 连招  222 超时");
 
         }
 
@@ -950,7 +950,7 @@ public class AttackState_2 : StateBase
     {
         if (Target.isHurt) return;
 
-        if (type == Events.ID_BTN_ATTACK)
+        if (type == Events.ID_BTN_ATTACK && this.Enable==false)
         {
             if (isLaunch) return;
             isLaunch = true;
@@ -969,7 +969,7 @@ public class AttackState_2 : StateBase
         }
         else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
-            //  Debug.Log("连招   222 完成");
+          ///  Debug.Log("连招   222 完成");
 
             Target.isAttacking = false;
             this.Enable = false;
@@ -1006,7 +1006,7 @@ public class AttackState_2 : StateBase
     }
     public override void OnEnter()
     {
-        this.Enable = true;
+        this.Enable = false;
         tick_cancel.Reset();
         this.stack.id = StateStack.ID_ATTACK;
     }
@@ -1036,7 +1036,7 @@ public class AttackState_3 : StateBase
     int tick = 0;
     public AttackState_3()
     {
-        //   Debug.Log("连招   3333 待命");
+     ///   Debug.Log("连招   3333 待命");
 
     }
     public override void UpdateMS()
@@ -1049,7 +1049,7 @@ public class AttackState_3 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-            //  Debug.Log("连招   333333 超时");
+         ///   Debug.Log("连招   333333 超时");
         }
 
     }
@@ -1067,8 +1067,15 @@ public class AttackState_3 : StateBase
     public override void OnEvent(int type, object userData)
     {
         if (Target.isHurt) return;
+        if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
+        {
+            Target.isAttacking = false;
+            this.Enable = false;
+         ///   Debug.Log("连招   33333 完成");
+            this.stack.PopSingleState();
 
-        if (type == Events.ID_BTN_ATTACK && checkForTimeOut)
+        }
+        else if (type == Events.ID_BTN_ATTACK && checkForTimeOut && this.Enable == false)
         {
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_ATTACK, this.Target);
 
@@ -1082,14 +1089,7 @@ public class AttackState_3 : StateBase
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
 
         }
-        else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
-        {
-            Target.isAttacking = false;
-            this.Enable = false;
-            // Debug.Log("连招   33333 完成");
-            this.stack.PopSingleState();
 
-        }
         else if (this.Enable == true && Events.ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE == type)
         {//请求打断
             SkillBase skill = userData as SkillBase;
@@ -1115,7 +1115,7 @@ public class AttackState_3 : StateBase
     }
     public override void OnEnter()
     {
-        this.Enable = true;
+        this.Enable = false;
         tick_cancel.Reset();
     }
     public override void OnExit()

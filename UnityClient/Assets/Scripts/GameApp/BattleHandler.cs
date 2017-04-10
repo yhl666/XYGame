@@ -142,7 +142,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         Utils.random_frameMS = randObj;
         {
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i <0; i++)
             {
                 Enemy e1 = EnemyMgr.Create<EnemyBoss>();
                 e1.x = randObj.Next(0, 340000) / 10000f;
