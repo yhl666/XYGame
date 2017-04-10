@@ -96,6 +96,9 @@ public class PublicData : object
     public int IS_s1 = 0;//skill 1
     public bool IS_stand = false;//stand
     public int IS_revive_point = 0;
+    public FrameCustomsOpt IS_opt = FrameCustomsOpt.UnKnown; // 该数据不会上传
+
+
     public IGiantGame game = null;
 
 

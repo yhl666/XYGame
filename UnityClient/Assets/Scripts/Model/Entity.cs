@@ -111,7 +111,7 @@ public class Entity : Model
     public bool atk = false;//atk
     public int s1 = 0;//skill 1
     public bool stand = false;//stand
-
+    public FrameCustomsOpt opt = FrameCustomsOpt.UnKnown;
 
     //--------------------------------------------------interface for outside game logic-----
     /// <summary>

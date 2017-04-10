@@ -6,6 +6,15 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 帧同步  自定义 帧操作
+/// 比如 购买物品 升级技能等 需要同步的 自定义操作
+/// </summary>
+public enum FrameCustomsOpt
+{
+    UnKnown = 0,
+    Test = 1,
+}
 
 public sealed class FrameData : object
 {
@@ -22,6 +31,7 @@ public sealed class FrameData : object
     public int stand = 0;//stand
     public int revive = 0;//revive point
     public int dir = -1;
+    public int opt = 0;
     private FrameData()
     {
 
@@ -42,6 +52,7 @@ public sealed class FrameData : object
         s += "s1:" + s1.ToString() + ",";
         s += "stand:" + stand.ToString() + ",";
         s += "revive:" + revive.ToString() + ",";
+        s += "opt:" + opt.ToString() + ",";
 
         return s;
 
@@ -61,6 +72,8 @@ public sealed class FrameData : object
             if (s1 != 0) s += "s1:" + s1.ToString() + ",";
             if (stand != 0) s += "stand:" + stand.ToString() + ",";
             if (revive != 0) s += "revive:" + revive.ToString() + ",";
+            if (opt > 0) s += "opt:" + opt.ToString() + ",";
+
         }
         else
         {
@@ -73,7 +86,7 @@ public sealed class FrameData : object
             s += "s1:" + s1.ToString() + ",";
             s += "stand:" + stand.ToString() + ",";
             s += "revive:" + revive.ToString() + ",";
-
+            s += "opt:" + opt.ToString() + ",";
         }
         return s;
 
@@ -184,6 +197,10 @@ public sealed class FrameData : object
                 if (k == "dir")
                 {
                     dir = int.Parse(v);
+                }
+                if (k == "opt")
+                {
+                    opt = int.Parse(v);
                 }
             }
 

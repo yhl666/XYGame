@@ -145,7 +145,7 @@ public sealed class Events : object
 
     public const int ID_DISABLE_DIRINPUT = 314;//禁止摇杆
     public const int ID_ABLE_DIRINPUT = 315;//开启摇杆
-
+    public const int ID_OPT = 316;// 帧同步自定义操作， 和其他帧操作同源
 
     public const int ID_SETTING_CLICKED = 557;
     public const int ID_SETTING_CLOSE_CLICKED = 558;

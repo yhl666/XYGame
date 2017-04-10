@@ -378,6 +378,11 @@ public class BattleHero : Hero
 
                 /// this will be clean when do not recv dir
             }
+            if (opt != FrameCustomsOpt.UnKnown)
+            {
+                eventDispatcher.PostEvent(Events.ID_OPT, opt);
+                opt = FrameCustomsOpt.UnKnown;
+            }
         }
         base.UpdateMS();
 
