@@ -3,27 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'adca8c44182c4bdc277187bddac06dead8b4276b'
-    oldFile: !uuid 'e0a860aa1af481dbe72f87c73bb95f39ab2ddd89'
+    newFile: !uuid '56676acfc7215ab8ab8e3a0f41860fda790622d8'
+    oldFile: !uuid 'adca8c44182c4bdc277187bddac06dead8b4276b'
   /UnityClient/Assets:
-    newFile: !uuid '4cdaac7ca9551472526dcfeb06ab40df2e9a67bd'
-    oldFile: !uuid '5788e6748ccd916fc402b5e45c415d3d7f7fca3d'
+    newFile: !uuid 'fbe5e1c9f3beb5eda3526f578531709e32af73bc'
+    oldFile: !uuid '4cdaac7ca9551472526dcfeb06ab40df2e9a67bd'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '949b048692fd54a2b33d5562fe0d50e34e79f394'
-    oldFile: !uuid 'd02a837340371436d0ab1100269004927119b391'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid '1f4197da24214e19770d1576acbecaa55770be28'
-    oldFile: !uuid 'ced83f995055774a8e92e5245f8673649f01a255'
-  /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
-    newFile: !uuid '55d25a97f82b0c8a89bf7ac432c22801732a4673'
-    oldFile: !uuid 'faaca29b399692ea650e9cbb4e4d514bd33f40d2'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '12e2f613aed17723effaf74aee3ff16e63e45197'
-    oldFile: !uuid '52c561b89686ada719435d840f742bd8213e3c64'
-  /UnityClient/Assets/Scripts/Model/StateBase.cs:
-    newFile: !uuid '10139f73fcb62b8985f6922b395d89ae85d411ab'
-    oldFile: !uuid '4c05b8b727379efaf12c6808937f1b5cbc98786d'
-gitCommitId: !uuid '7648562b8d444dfe88bb31aeaa959d2d73811bf1'
+    newFile: !uuid '8be88cc64eb36d4c2648f02396cbf528503898e3'
+    oldFile: !uuid '949b048692fd54a2b33d5562fe0d50e34e79f394'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid '2427b519e6220c61c61d6c4efae10593b6301344'
+    oldFile: !uuid '9a916bc6236c9cf881e25a50100fd9ba9622df5e'
+  /UnityClient/Assets/Scripts/Data/EnemyPrototype.cs:
+    newFile: !uuid 'c000cdf891f31926c50b275a4d8450448433bf76'
+    oldFile: !uuid '2a4c67e33343817cbc619025ec8116f90b2b2def'
+gitCommitId: !uuid 'cfc3924cb43500c70defd5a0119a92f4fd84e82c'
 renames: {
   }
-revisionId: 675
+revisionId: 676
