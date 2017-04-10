@@ -3,18 +3,30 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '21423c38b77c5d27d8386a3dd19c573b51a3a477'
-    oldFile: !uuid 'ea49415433c01cd4820400e0ab5dbd05a6ea7912'
+    newFile: !uuid '74b5cff4c5a52dbe385a719465299af22d657386'
+    oldFile: !uuid '21423c38b77c5d27d8386a3dd19c573b51a3a477'
   /UnityClient/Assets:
-    newFile: !uuid 'f09cb75dbe5183c4305ebe400d160a4c6842ba4f'
-    oldFile: !uuid 'd2df710f1b904cfcf2d1e5da3ba3aa887c3435fb'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '46cea5f3bcd55214960cc3ecdfb73855fb5dd6fb'
-    oldFile: !uuid 'f71fb2e8de5082a250702ad9343c23f033dbc7fb'
-  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid '8f0a1850d271142d3180ef0a0f97bc4f7c6164cc'
-    oldFile: !uuid 'dc26ebd6d5448d84e35fd120840a00290a63ca6f'
-gitCommitId: !uuid 'f14c08695029d5fe3d07db9309e2f09b6e99dc8f'
+    newFile: !uuid '672a68d1d67326fbc9b1dac1620c320bdda44f18'
+    oldFile: !uuid 'f09cb75dbe5183c4305ebe400d160a4c6842ba4f'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '4ad8e2d77e72dbece8784d89baedb5ec613af854'
+    oldFile: !uuid '9af8134841a83c489b7bcf750cd500fdb2ff8c72'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'd9f94904414b6c68d378b9d8e45bb490fe0fe142'
+    oldFile: !uuid '6aa86b3911384ddd69ff3589244de13382c68773'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid 'f4a5ee2f30992b7d48c17fc47e8d8649060f06e3'
+    oldFile: !uuid 'ba8c71b921d76a98ecb909980a9dd4d1669410d3'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
+    newFile: !uuid '668d10da65ad975a52e46a23a0263be4e18f9c0b'
+    oldFile: !uuid '1dafadb97ed1c093e050e69cf411558ca9bae154'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
+    newFile: !uuid '5008b5e405909c052b6e4bf74a24c7f5145070e6'
+    oldFile: !uuid '853241e162e5782be9b4416a4cc5c5eaa3fe78c0'
+  /UnityClient/Assets/Resources/Prefabs/data/普通攻击.prefab:
+    newFile: !uuid '077c7549ab63605e8aec0e96b647cd91199cd3dc'
+    oldFile: !uuid 'f8e9b17caa64f51a2e8dfe04cd28035d2a26d57e'
+gitCommitId: !uuid '1b1eb7807fc7fab59c3c8c4c9e77d1d9d2530819'
 renames: {
   }
-revisionId: 659
+revisionId: 660
