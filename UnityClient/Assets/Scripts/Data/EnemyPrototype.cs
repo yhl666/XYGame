@@ -13,6 +13,7 @@ public enum EnemyProtoType
     小怪2, // 小怪2
     小怪2加强版,// 小怪2 加强版
     小怪3, // 小怪3
+    Boss//boss
 }
 
 public class EnemyPrototype : MonoBehaviour
@@ -32,7 +33,7 @@ public class EnemyPrototype : MonoBehaviour
     /// <returns></returns>
     public string GetClassType()
     {
-        string[] class_types = { "Enemy1", "Enemy1_Strengthen", "Enemy2", "Enemy2_Strengthen", "Enemy3" };
+        string[] class_types = { "Enemy1", "Enemy1_Strengthen", "Enemy2", "Enemy2_Strengthen", "Enemy3", "EnemyBoss" };
 
         return class_types[(int)type];
 
@@ -55,6 +56,10 @@ public class EnemyPrototype : MonoBehaviour
         else if (type == EnemyProtoType.小怪3)
         {
             return "Enemy3";
+        }
+        else if (type == EnemyProtoType.Boss)
+        {
+            return "EnemyBoss";
         }
         else
         {
