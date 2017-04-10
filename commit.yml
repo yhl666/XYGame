@@ -2,25 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'b96807babbf920586ad1503cce515b5e9acb1cee'
-    oldFile: !uuid '8c49c3988a6cd47789b2eb04baa3b47af5afaa71'
-  /UnityClient/Assets:
-    newFile: !uuid '0a76ef3d2fe17ea3a15275ab0241cf4114f14a19'
-    oldFile: !uuid '7c492bcf42ffd4d8c90ad8251dde3a62b49be61e'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '4ad6e6b64cfb3939d0a216b1dd22edc5a39e3de5'
-    oldFile: !uuid '4ad8e2d77e72dbece8784d89baedb5ec613af854'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '5e13e0d69f750050f3479b9cdac2aa91c49de095'
-    oldFile: !uuid 'd9f94904414b6c68d378b9d8e45bb490fe0fe142'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '877c6ce1d8804665c9f01030e1401c51225023d6'
-    oldFile: !uuid 'f4a5ee2f30992b7d48c17fc47e8d8649060f06e3'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
-    newFile: !uuid '60fd48378d08fd9b3031569fd626a1ce5bb96c42'
-    oldFile: !uuid '5008b5e405909c052b6e4bf74a24c7f5145070e6'
-gitCommitId: !uuid 'ab83d6cc1ace1de5b8830ef06fe25c9439491488'
+  /策划文档:
+    newFile: !uuid '9a1377be5df6e0f84c975cb65b20a5d56232a183'
+    oldFile: !uuid '0b2242b50a4f2d396f8f155f5fef1dd38555ac2c'
+  /策划文档/角色_怪物_刷新点.xlsx:
+    newFile: !uuid '594ceede4672cb0a2fe27c7d4a2c39820ff529fe'
+    oldFile: !uuid 'f027c3f4073310ebd4fbb3e91cb68649ca102a89'
+gitCommitId: !uuid '9f5ffc7e633fe560fa9a94641a4bc6de26efcc4c'
 renames: {
   }
-revisionId: 663
+revisionId: 664
