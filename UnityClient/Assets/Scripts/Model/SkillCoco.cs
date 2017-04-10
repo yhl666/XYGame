@@ -518,6 +518,7 @@ public class Skill61_3 : SkillBase
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
+            info.frameDelay = 20;
             info.distance_atk = 2.0f;
             info.distance = 0;
             info.number = 999;
