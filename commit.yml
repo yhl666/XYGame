@@ -3,33 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'f133b901155bea5ee950aa2e3d71188a9fd15dc0'
-    oldFile: !uuid '1df9a4584cd3766440636cb4d8be0e51893a8a81'
+    newFile: !uuid '0acefc7fc540507af8cf70ac71192d4f9ae5cc5b'
+    oldFile: !uuid 'f133b901155bea5ee950aa2e3d71188a9fd15dc0'
   /UnityClient/Assets:
-    newFile: !uuid 'eca4c1ce736b2f4754764404c752da923de656a6'
-    oldFile: !uuid '3ca1836dc1183a5a3bc69cb89c39753d3f72c630'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid 'f71fb2e8de5082a250702ad9343c23f033dbc7fb'
-    oldFile: !uuid '27d690eab4cec2b94880dd1b2144313b6deda1bc'
-  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid 'dc26ebd6d5448d84e35fd120840a00290a63ca6f'
-    oldFile: !uuid 'ef3212184e17fd14a41e1673aa2e5c658c89164a'
-  /UnityClient/Assets/Scenes/BattlePVP.unity:
-    newFile: !uuid 'afc2325ee336039dd0def8c320a92fbbe905c54c'
-    oldFile: !uuid '576ffce880aa00c1e2f7668e447ed387c1dbfa9b'
-  /UnityClient/Assets/Scenes/SpineTest.unity.r429:
-    newFile: !uuid '7edba3f370748f92eba3ff328554f9c7dc794215'
+    newFile: !uuid 'f358d6b44cb93cd7c4cc4c6af30e740ede8480ac'
+    oldFile: !uuid 'eca4c1ce736b2f4754764404c752da923de656a6'
+  /UnityClient/Assets/EditorSuport:
+    newFile: !uuid '9b141c3cfd66f34ade07463ed7312d5dee78587b'
     oldFile: null
-  /UnityClient/Assets/Scenes/SpineTest.unity.r429.meta:
-    newFile: !uuid 'af7ff7f68ed2e1948e68e2cc8e956d474be3444a'
+  /UnityClient/Assets/EditorSuport/EnemyBornEdit.cs:
+    newFile: !uuid 'e70e7f137919c61e00b4ffa5bd12b6998a68c173'
     oldFile: null
-  /UnityClient/Assets/Scenes/SpineTest.unity.r461:
-    newFile: !uuid '2e635e4fc39927b2b320ec4b1ad672791a84da99'
+  /UnityClient/Assets/EditorSuport/EnemyBornEdit.cs.meta:
+    newFile: !uuid '72a946431c2b208934fe471fbee0c75c39a8f0b9'
     oldFile: null
-  /UnityClient/Assets/Scenes/SpineTest.unity.r461.meta:
-    newFile: !uuid '863ebf1cd97ac96c83c7a9e42bc063be44490fc5'
-    oldFile: null
-gitCommitId: !uuid '677baaeefe8a79d14e2283bda50ac841efc9f584'
+gitCommitId: !uuid '80865a162987f0aacab86f0ace44ac2497cd7c91'
 renames: {
   }
-revisionId: 654
+revisionId: 655
