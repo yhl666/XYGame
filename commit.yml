@@ -3,21 +3,33 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '1df9a4584cd3766440636cb4d8be0e51893a8a81'
-    oldFile: !uuid 'e5e1efafa8ed5907f7fffcbc653b72488cfdcb5c'
+    newFile: !uuid 'f133b901155bea5ee950aa2e3d71188a9fd15dc0'
+    oldFile: !uuid '1df9a4584cd3766440636cb4d8be0e51893a8a81'
   /UnityClient/Assets:
-    newFile: !uuid '3ca1836dc1183a5a3bc69cb89c39753d3f72c630'
-    oldFile: !uuid '882b519cf2bf17a5845dada42143c34ce600a601'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '8599c3496f7a452f5d4643bd179816589e26dab2'
-    oldFile: !uuid 'acbeaa0b15c842ba75e81bf5c88a4e615d085ede'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid '7d1445b62d0db2c04c608da1f2bcf8cb59982b2f'
-    oldFile: !uuid '5e4fe5850b494382cc4efebc221e846ab18b21e8'
-  /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
-    newFile: !uuid '0349a6598d5e2939ec52696158972903306041a6'
-    oldFile: !uuid '7874ff8c05aed30e2d395af70445378df803966f'
-gitCommitId: !uuid '1b5ab63f1371b32647ae8437cd92de4095530fc9'
+    newFile: !uuid 'eca4c1ce736b2f4754764404c752da923de656a6'
+    oldFile: !uuid '3ca1836dc1183a5a3bc69cb89c39753d3f72c630'
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid 'f71fb2e8de5082a250702ad9343c23f033dbc7fb'
+    oldFile: !uuid '27d690eab4cec2b94880dd1b2144313b6deda1bc'
+  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
+    newFile: !uuid 'dc26ebd6d5448d84e35fd120840a00290a63ca6f'
+    oldFile: !uuid 'ef3212184e17fd14a41e1673aa2e5c658c89164a'
+  /UnityClient/Assets/Scenes/BattlePVP.unity:
+    newFile: !uuid 'afc2325ee336039dd0def8c320a92fbbe905c54c'
+    oldFile: !uuid '576ffce880aa00c1e2f7668e447ed387c1dbfa9b'
+  /UnityClient/Assets/Scenes/SpineTest.unity.r429:
+    newFile: !uuid '7edba3f370748f92eba3ff328554f9c7dc794215'
+    oldFile: null
+  /UnityClient/Assets/Scenes/SpineTest.unity.r429.meta:
+    newFile: !uuid 'af7ff7f68ed2e1948e68e2cc8e956d474be3444a'
+    oldFile: null
+  /UnityClient/Assets/Scenes/SpineTest.unity.r461:
+    newFile: !uuid '2e635e4fc39927b2b320ec4b1ad672791a84da99'
+    oldFile: null
+  /UnityClient/Assets/Scenes/SpineTest.unity.r461.meta:
+    newFile: !uuid '863ebf1cd97ac96c83c7a9e42bc063be44490fc5'
+    oldFile: null
+gitCommitId: !uuid '677baaeefe8a79d14e2283bda50ac841efc9f584'
 renames: {
   }
-revisionId: 653
+revisionId: 654
