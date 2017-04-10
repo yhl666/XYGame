@@ -3,36 +3,18 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '3dd5018ea355ad90358053bf7ddfa4448b8f0471'
-    oldFile: !uuid '73a1233b8aa8014c26a1b0c4a45b780bb0629b3f'
+    newFile: !uuid '33869aabe1bc529e7a56ade73cd21b1c4df488a7'
+    oldFile: !uuid '3dd5018ea355ad90358053bf7ddfa4448b8f0471'
   /UnityClient/Assets:
-    newFile: !uuid 'a5383968ef97a37acf47f626a2743080ce83c358'
-    oldFile: !uuid '28c26bee6444b97f273e1be1ecbbce08b45ca86b'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '5d80481e58964f5ba30a2685ca37e46597f01db4'
-    oldFile: !uuid '36a09d422ae0bbb9990cfd3b1b0835a09d80aeab'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'cf05c3ae5aa21d268a14a42f3469faaa173d5de1'
-    oldFile: !uuid '44d7e3cb5ab7f258599cf1846dce1ac5ce65724b'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '1a9b535d97a486a4c9f4256c39b3c717f78926f0'
-    oldFile: !uuid '479521fb3b34fda10289bc1c9bd85b6ae64102c6'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型1.prefab:
-    newFile: !uuid '197a8cf22799f41d453f3e83b2b9410ce3e25493'
-    oldFile: !uuid '9e619597af43664510d4a2911f83877dd21853f3'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型2.prefab:
-    newFile: !uuid '509061021cb8c76f3f4e6d39af08780079ee2faf'
-    oldFile: !uuid 'da60de78f9064996aa15d2f308dd7b46a52ed411'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型3.prefab:
-    newFile: !uuid '46ac3f93775648fa8515955ff6d10cd870b5e887'
-    oldFile: !uuid 'f9bf59e3d0fe555159a2861f1460712a5e837c56'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型4.prefab:
-    newFile: !uuid 'e8b6ce171d403f39ddca519b4e4a96e78266e2e0'
-    oldFile: !uuid '20131d4b40fe775f09d77cef32efbf874c03bbdd'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型5.prefab:
-    newFile: !uuid 'c9b06e246afb357ab30f922527951fb6f1264743'
-    oldFile: !uuid 'cc0d3a7f52a6d1b6862b58f1e87519013de84960'
-gitCommitId: !uuid '799256efa1c649187dbc74c2a20680f2cf4745a0'
+    newFile: !uuid '98205e1de2db9e7200e05258a6c11eba90796e21'
+    oldFile: !uuid 'a5383968ef97a37acf47f626a2743080ce83c358'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '73bb393e3eb59b209cd1f961972fd90587f4dd4e'
+    oldFile: !uuid '5bf24b90da7ab582e39082169cb0945648e382ca'
+  /UnityClient/Assets/Scripts/CameraFollow.cs:
+    newFile: !uuid 'f9f398c0d18c31ef64e391de56d5e525eebe790b'
+    oldFile: !uuid 'df3a495dbc8f6156a5c3167496bb5438d80d737a'
+gitCommitId: !uuid '4d3d8a00d07346e5143437981da5a01a2e8fa293'
 renames: {
   }
-revisionId: 672
+revisionId: 673
