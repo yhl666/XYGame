@@ -2,103 +2,31 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'd676c3e00ae9e721acc65c9d56612599aac9f750'
-    oldFile: !uuid 'b96807babbf920586ad1503cce515b5e9acb1cee'
-  /UnityClient/Assets:
-    newFile: !uuid 'fb17cc6008f34f19e1fd2076d528730e7a13da63'
-    oldFile: !uuid '0a76ef3d2fe17ea3a15275ab0241cf4114f14a19'
-  /UnityClient/Assets/EditorSuport:
-    newFile: !uuid 'c129104c2a944dfbc6bba203de77148227b7a0cc'
-    oldFile: !uuid '9b141c3cfd66f34ade07463ed7312d5dee78587b'
-  /UnityClient/Assets/EditorSuport/EnemyBornEdit.cs:
-    newFile: !uuid 'd4afc9bdbac50a351732de8572c30f3b79e51959'
-    oldFile: !uuid 'e70e7f137919c61e00b4ffa5bd12b6998a68c173'
-  /UnityClient/Assets/EditorSuport/EnemyPrototypeEdit.cs:
-    newFile: !uuid 'f448dad7d9facd9f1660ebc1bead03cc26af2d1f'
-    oldFile: null
-  /UnityClient/Assets/EditorSuport/EnemyPrototypeEdit.cs.meta:
-    newFile: !uuid '807fd2de918458a750dcff6ddb9ddc50a717b423'
-    oldFile: null
-  /UnityClient/Assets/EditorSuport/EnemyPrototypeEditor.cs:
-    newFile: !uuid '3d61458414a238b8ed98a6f1e50767600760966b'
-    oldFile: null
-  /UnityClient/Assets/EditorSuport/EnemyPrototypeEditor.cs.meta:
-    newFile: !uuid '5999b429a93530b6baf6c18cb8a1844e648eb6a1'
-    oldFile: null
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '36a09d422ae0bbb9990cfd3b1b0835a09d80aeab'
-    oldFile: !uuid '4ad6e6b64cfb3939d0a216b1dd22edc5a39e3de5'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '44d7e3cb5ab7f258599cf1846dce1ac5ce65724b'
-    oldFile: !uuid '5e13e0d69f750050f3479b9cdac2aa91c49de095'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '479521fb3b34fda10289bc1c9bd85b6ae64102c6'
-    oldFile: !uuid '877c6ce1d8804665c9f01030e1401c51225023d6'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型1.prefab:
-    newFile: !uuid '9e619597af43664510d4a2911f83877dd21853f3'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型1.prefab.meta:
-    newFile: !uuid '3e97692f58c9d97404df4110a0f59a2f799feae7'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型2.prefab:
-    newFile: !uuid 'da60de78f9064996aa15d2f308dd7b46a52ed411'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型2.prefab.meta:
-    newFile: !uuid 'd9a9497e21dd339e483c53be47331cd3ae2747df'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型3.prefab:
-    newFile: !uuid 'f9bf59e3d0fe555159a2861f1460712a5e837c56'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型3.prefab.meta:
-    newFile: !uuid 'e240edc7e1dd3ed00bf17913a3e52efcae6132f6'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型4.prefab:
-    newFile: !uuid '20131d4b40fe775f09d77cef32efbf874c03bbdd'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型4.prefab.meta:
-    newFile: !uuid '2530e246bfe87afd2d59ad141f9203ba5cbbedbd'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型5.prefab:
-    newFile: !uuid 'cc0d3a7f52a6d1b6862b58f1e87519013de84960'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型5.prefab.meta:
-    newFile: !uuid 'f2c6cd451d3270239abdf0d8893cbabe16133970'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/map:
-    newFile: !uuid 'aece4b73a0917832c9df9832ee45d8a2a8dd1485'
-    oldFile: !uuid 'f4880ac55e089f74bda8e385f1d74cd51dc7e1db'
-  /UnityClient/Assets/Resources/Prefabs/map/Terrain1.prefab:
-    newFile: !uuid 'bb0cbc1004aee0ee25d08110370c132f3a1ec55f'
-    oldFile: !uuid '0aa2f37b72fb6131f5773e1adb70c0b504da4ad9'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid 'c782013d5c150a6c626d57df0115101804a871a7'
-    oldFile: !uuid '46cea5f3bcd55214960cc3ecdfb73855fb5dd6fb'
-  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid '8d23d48315d43d8e4a0b07723f786c8f02116147'
-    oldFile: !uuid '8f0a1850d271142d3180ef0a0f97bc4f7c6164cc'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '2c4fe6f84244b8217440caa816fa1c95f34346e1'
-    oldFile: !uuid '857d457683c6a45694f00d7ca1ba5d59936a711d'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid 'ba59834d71c1aa091bc388e3b4435403218c20b4'
-    oldFile: !uuid 'c0e76893372de676387e233756eafd981225f89e'
-  /UnityClient/Assets/Scripts/Data/EnemyPrototype.cs:
-    newFile: !uuid '2a4c67e33343817cbc619025ec8116f90b2b2def'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/EnemyPrototype.cs.meta:
-    newFile: !uuid '92d86b07de0eb443d604202fc9505f9ad68db929'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/OneEnemyBornData.cs:
-    newFile: !uuid 'a2bf34a7466cff5f968578648f00ad37caef4ef0'
-    oldFile: !uuid 'ce86f2659beae8ec2dce48d020f6b5c581be1f2f'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '5599eecc06068716e848de75aa5e3decb99bf544'
-    oldFile: !uuid '9f527c9a8972be15e371db97050b1a2a579c7b31'
-  /UnityClient/Assets/Scripts/Model/CustomObjects.cs:
-    newFile: !uuid '7b805c01ff4b845a7bc34534fb2ec72d74848883'
-    oldFile: !uuid '224973c30512a2baab96e059cf1cafddb5372ffd'
-gitCommitId: !uuid '2cc3c87330a97b2f9bf2622eb96236a11fe7b5a8'
+  /BattleServer:
+    newFile: !uuid '2b3ac6adf3184540a5c2630781b5608c45349578'
+    oldFile: !uuid '33c3124d88dfb2902a5bf8c801e49cbceb60e835'
+  /BattleServer/Debug:
+    newFile: !uuid '760589b21a614e490e86f16857dd892b9e65cd6d'
+    oldFile: !uuid '42997090c729a2210e08af897cf974ed9bd0a465'
+  /BattleServer/Debug/BattleServerPVETEST.exe:
+    newFile: !uuid 'd7b44896238ea2c1ef4277a9b17d2aac1ce4a58f'
+    oldFile: !uuid 'c07281e0f4ca4ea4c4141f672104e396940763a0'
+  /BattleServer/Release:
+    newFile: !uuid '8c4a51fc44076276308dce01cb613282e8f2c2d0'
+    oldFile: !uuid 'e1b2d08f9de01fa0463b37cefb6009494fdb80b6'
+  /BattleServer/Release/BattleServerPVETEST.exe:
+    newFile: !uuid '42ffdc36ca4f00987fd6d6fcc660223d3bc4565a'
+    oldFile: !uuid '75d597eee39ff125f903d42b44512e3cbf724ea8'
+  /BattleServer/cpp:
+    newFile: !uuid 'cd64a50bfe6060b414b3bc6fcad718f802f42bcb'
+    oldFile: !uuid '5cbb5d05e937d9bc9e35754324246e23a72d29be'
+  /BattleServer/cpp/FrameData.cpp:
+    newFile: !uuid '906c536042871f41eedc9973b2ec61df28b64f03'
+    oldFile: !uuid '6411b208ab74a410c89b814f81c0e847c1300805'
+  /BattleServer/cpp/FrameData.h:
+    newFile: !uuid 'fcd8ac3c3fd13099a5abfeb0430d0aebb2479a2e'
+    oldFile: !uuid '6de1240950ad1cc4f994e178922d5e4275741df9'
+gitCommitId: !uuid '2761ff4e86f84e90e2d33df9d80ca344f4dad98a'
 renames: {
   }
-revisionId: 668
+revisionId: 669
