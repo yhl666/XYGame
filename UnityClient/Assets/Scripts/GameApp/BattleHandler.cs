@@ -142,9 +142,9 @@ sealed class BattlePVEHandler : BattleHandlerBase
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         Utils.random_frameMS = randObj;
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 1; i++)
             {
-                Enemy e1 = EnemyMgr.Create<Enemy3>();
+                Enemy e1 = EnemyMgr.Create<EnemyBoss>();
                 e1.x = randObj.Next(0, 340000) / 10000f;
                 e1.z = randObj.Next(1000, 4000) / 1000.0f;
 
@@ -152,66 +152,11 @@ sealed class BattlePVEHandler : BattleHandlerBase
                 ///   e1.x = 55555;
                 e1.y = 5;
                 e1.team = 333;
-
             }
-
-            for (int i = 0; i < 3; i++)
-            {
-                Enemy e1 = EnemyMgr.Create<Enemy1>();
-                e1.x = randObj.Next(0, 340000) / 10000f;
-                e1.z = randObj.Next(1000, 4000) / 1000.0f;
-
-                //   e1.x = 5+i*0.1f;   
-                ///   e1.x = 55555;
-                e1.y = 5;
-                e1.team = 333;
-
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                Enemy e1 = EnemyMgr.Create<Enemy2>();
-                e1.x = randObj.Next(0, 340000) / 10000f;
-                e1.z = randObj.Next(1000, 4000) / 1000.0f;
-
-                //   e1.x = 5+i*0.1f;   
-                ///   e1.x = 55555;
-                e1.y = 5;
-                e1.team = 333;
-
-            }
-            {
-                //Enemy e1 = EnemyMgr.Create<Enemy1_Strengthen>();
-                //e1.x = randObj.Next(0, 340000) / 10000f;
-                //e1.z = randObj.Next(1000, 4000) / 1000.0f;
-
-                ////   e1.x = 5+i*0.1f;   
-                /////   e1.x = 55555;
-                //e1.y = 5;
-                //e1.team = 333;
-            }
-            /*  for (int i = 0; i < 10; i++)
-              {
-                  Enemy e1 = EnemyMgr.Create<Enemy>();
-                  e1.x = Random.Range(5, 80);
-                  ///   e1.x =5;
-                  e1.y = 5;
-                  e1.team = 333;
-              }*/
-
-
-            /*   for (int i = 0; i < 25; i++)
-               {
-                   Enemy e1 = EnemyMgr.Create<Enemy>();
-                   e1.x = randObj.Next(5, 80);
-                   ;
-                   //    e1.x = 5;
-                   e1.y = 5;
-                   e1.team = 333;
-               }*/
         }
         HeroMgr.ins.self.z = 3f;
         HeroMgr.ins.self.x = 8f;
-   
+
         return true;
     }
     public static BattleHandlerBase Create(BattleApp app)
@@ -399,6 +344,11 @@ public sealed class BattleSyncHandler
         {
             dd.dir = PublicData.ins.IS_dir;
             PublicData.ins.IS_dir = -1;
+        }
+        if ((int)PublicData.ins.IS_opt > 0)
+        {
+            dd.opt = (int)PublicData.ins.IS_opt;
+            PublicData.ins.IS_opt = FrameCustomsOpt.UnKnown;
         }
 
         app.Send(dd.toUploadJson());
@@ -687,7 +637,7 @@ public sealed class BattleSyncHandler
             Hero hero = HeroMgr.ins.GetHero(f.no);
             if (hero == null)
             {
-                Debug.LogError("Can not fild ball no=" + f.no);
+                Debug.LogError("Can not find Entity no=" + f.no);
                 continue;
             }
 
@@ -721,7 +671,11 @@ public sealed class BattleSyncHandler
                 b.point_index = f.revive;
                 hero.AddBuffer(b);
             }
-            hero.dir = f.dir;
+            if (f.opt > 0)
+            {//收到了自定义2数据 
+                hero.opt = (FrameCustomsOpt)f.opt;
+            }
+            hero.dir = f.dir; // 收到了数据 直接 处理
             /*  if (f.no == 0) continue;
            
               if (f.op == -1)
