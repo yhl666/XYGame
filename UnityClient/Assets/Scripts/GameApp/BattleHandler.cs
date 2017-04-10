@@ -137,12 +137,12 @@ sealed class BattlePVEHandler : BattleHandlerBase
         Tower tower = BuildingMgr.Create<Tower>();
         tower.x = 5f;
         tower.z = 3f;
-        tower.current_hp = 2;
+        tower.current_hp = 15;
         tower.hp = 0xffff;
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         Utils.random_frameMS = randObj;
         {
-            for (int i = 0; i < 0; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Enemy e1 = EnemyMgr.Create<Enemy3>();
                 e1.x = randObj.Next(0, 340000) / 10000f;
@@ -154,8 +154,10 @@ sealed class BattlePVEHandler : BattleHandlerBase
                 e1.team = 333;
 
             }
+
+            for (int i = 0; i < 3; i++)
             {
-                Enemy e1 = EnemyMgr.Create<EnemyBoss>();
+                Enemy e1 = EnemyMgr.Create<Enemy1>();
                 e1.x = randObj.Next(0, 340000) / 10000f;
                 e1.z = randObj.Next(1000, 4000) / 1000.0f;
 
@@ -163,6 +165,29 @@ sealed class BattlePVEHandler : BattleHandlerBase
                 ///   e1.x = 55555;
                 e1.y = 5;
                 e1.team = 333;
+
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                Enemy e1 = EnemyMgr.Create<Enemy2>();
+                e1.x = randObj.Next(0, 340000) / 10000f;
+                e1.z = randObj.Next(1000, 4000) / 1000.0f;
+
+                //   e1.x = 5+i*0.1f;   
+                ///   e1.x = 55555;
+                e1.y = 5;
+                e1.team = 333;
+
+            }
+            {
+                //Enemy e1 = EnemyMgr.Create<Enemy1_Strengthen>();
+                //e1.x = randObj.Next(0, 340000) / 10000f;
+                //e1.z = randObj.Next(1000, 4000) / 1000.0f;
+
+                ////   e1.x = 5+i*0.1f;   
+                /////   e1.x = 55555;
+                //e1.y = 5;
+                //e1.team = 333;
             }
             /*  for (int i = 0; i < 10; i++)
               {
