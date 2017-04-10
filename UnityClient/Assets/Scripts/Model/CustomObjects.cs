@@ -201,13 +201,22 @@ class EnemyLauncher : Model
         {
             return;
         }
-        Enemy enemy = EnemyMgr.Create(data.enemy_type);
-        enemy.hp = data.hp;
-        enemy.current_hp = enemy.hp;
-        enemy.team = 333;
-        enemy.x = data.gameObject.transform.localPosition.x;
-        enemy.z = data.gameObject.transform.localPosition.y;
-        enemy.y = 2;
+
+        EnemyPrototype proto = EnemyPrototype.GetPrototype(data.enemy_code);
+        if (proto != null)
+        {
+            Enemy enemy = EnemyMgr.Create(proto.GetClassType());
+            // one enemy data  
+            enemy.team = 333;
+            enemy.x = data.gameObject.transform.localPosition.x;
+            enemy.z = data.gameObject.transform.localPosition.y;
+            enemy.y = 2;
+            //prototype
+            enemy.hp = proto.hp;
+            enemy.current_hp = enemy.hp;
+            enemy.damage = proto.damage;
+            enemy.exp = proto.exp;
+        }
         this.SetInValid();
     }
     public override void OnEnter()

@@ -18,6 +18,9 @@ public class EnemyBornEdit : Editor
     {
     }
     static float time_add = 1;
+    static string type = "202001";// 原型类型
+    static int count = 10;//数量
+
 
     public override void OnInspectorGUI()
     {
@@ -31,61 +34,62 @@ public class EnemyBornEdit : Editor
             OneEnemyBornData[] comps = obj.gameObject.GetComponents<OneEnemyBornData>();
 
             GUILayout.Label("--------该刷新点数据汇总---------");
-            GUILayout.Label("--------该修改不会立刻生效,需要重新run---------");
 
             GUILayout.BeginHorizontal();
             GUILayout.Label("敌人总数:");
             GUILayout.Label(comps.Length.ToString(), GUILayout.Width(50));
             GUILayout.EndHorizontal();
 
+            GUILayout.Label("-------批量生成设置---------");
+
             GUILayout.BeginHorizontal();
-            GUILayout.Label("自动填充的秒数增量");
-            time_add = EditorGUILayout.FloatField(time_add, GUILayout.Width(50));
+            GUILayout.Label("每个单位时间增量");
+            time_add = EditorGUILayout.FloatField(time_add, GUILayout.Width(100));
             GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("怪物原型");
+            type = EditorGUILayout.TextField(type, GUILayout.Width(100));
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("生成个数");
+            count = EditorGUILayout.IntField(count, GUILayout.Width(100));
+            GUILayout.EndHorizontal();
+
         }
 
         GUILayout.BeginHorizontal();
 
-        if (GUILayout.Button("顺序添加"))
+        if (GUILayout.Button("顺序批量添加"))
+        {
+            OneEnemyBornData[] comps = obj.gameObject.GetComponents<OneEnemyBornData>();
+            float t = 0f;
+            if (comps.Length > 0)
+            {
+                t = time_add + comps[comps.Length - 1].time;
+            }
+            for (int i = 0; i < count; i++)
+            {
+                OneEnemyBornData data = obj.gameObject.AddComponent<OneEnemyBornData>();
+                data.time = t;
+                data.enemy_code = type;
+                t += time_add;
+            }
+            serializedObject.ApplyModifiedProperties();
+        }
+        if (GUILayout.Button("顺序添加一个"))
         {
             OneEnemyBornData[] comps = obj.gameObject.GetComponents<OneEnemyBornData>();
             OneEnemyBornData data = obj.gameObject.AddComponent<OneEnemyBornData>();
-            data.time = time_add + comps[comps.Length - 1].time;
+            if (comps.Length > 0)
+            {
+                data.time = time_add + comps[comps.Length - 1].time;
+                data.enemy_code = type;
+            }
             serializedObject.ApplyModifiedProperties();
         }
 
-        if (GUILayout.Button("顺序添加10个"))
-        {
-            OneEnemyBornData[] comps = obj.gameObject.GetComponents<OneEnemyBornData>();
-            float t = 0f;
-            if (comps.Length > 0)
-            {
-                t = time_add + comps[comps.Length - 1].time;
-            }
-            for (int i = 0; i < 10; i++)
-            {
-                OneEnemyBornData data = obj.gameObject.AddComponent<OneEnemyBornData>();
-                data.time = t;
-                t += time_add;
-            }
-            serializedObject.ApplyModifiedProperties();
-        }
-        if (GUILayout.Button("顺序添加100个"))
-        {
-            OneEnemyBornData[] comps = obj.gameObject.GetComponents<OneEnemyBornData>();
-            float t = 0f;
-            if (comps.Length > 0)
-            {
-                t = time_add + comps[comps.Length - 1].time;
-            }
-            for (int i = 0; i < 100; i++)
-            {
-                OneEnemyBornData data = obj.gameObject.AddComponent<OneEnemyBornData>();
-                data.time = t;
-                t += time_add;
-            }
-            serializedObject.ApplyModifiedProperties();
-        }
         if (GUILayout.Button("倒序删除"))
         {
             Component[] comp = obj.gameObject.GetComponents<OneEnemyBornData>();
