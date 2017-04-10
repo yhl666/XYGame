@@ -290,7 +290,7 @@ public class BufferEquipTest1 : Buffer
 
                 int add_crits = 10;
                 this.owner.crits_ratio += add_crits;
-                Debug.Log("触发了屠龙效果" + this._level + " 伤害增加" + add_damage + "  暴击率增加" + add_crits);
+              //  Debug.Log("触发了屠龙效果" + this._level + " 伤害增加" + add_damage + "  暴击率增加" + add_crits);
                 this.brief = "屠龙x" + this._level;
             }
         }
@@ -313,7 +313,7 @@ public class BufferEquipTest1 : Buffer
         this.owner.crits_ratio -= this._level * 10;
 
         this._level = 0;
-        Debug.Log("屠龙效果 清除");
+     //   Debug.Log("屠龙效果 清除");
     }
     public override bool Init()
     {
@@ -356,7 +356,7 @@ public class BufferEquipTest2 : Buffer
                 tick.Reset();
                 this.left_hp = 25;
                 this.show_ui = true;
-                Debug.Log("触发了护体效果吸收" + left_hp + "伤害  Hero剩余血量" + owner.current_hp);
+            ///    Debug.Log("触发了护体效果吸收" + left_hp + "伤害  Hero剩余血量" + owner.current_hp);
 
                 //触发
             }
@@ -376,7 +376,7 @@ public class BufferEquipTest2 : Buffer
                 {
                     if (buf == "BufferHitBack")
                     {
-                        Debug.Log("移除击退效果");
+                        ///Debug.Log("移除击退效果");
                         info.buffers_string.Remove(buf);
                         break;
                     }
@@ -385,11 +385,11 @@ public class BufferEquipTest2 : Buffer
                 //     info.damage = -left_hp;
                 if (info.is_crits)
                 {
-                    Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点暴击伤害 剩余血量" + owner.current_hp);
+                   // Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点暴击伤害 剩余血量" + owner.current_hp);
                 }
                 else
                 {
-                    Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点伤害 剩余血量" + owner.current_hp);
+//                    Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点伤害 剩余血量" + owner.current_hp);
 
                 }
 
@@ -410,7 +410,7 @@ public class BufferEquipTest2 : Buffer
     private void ResetBuffer()
     {
         this.left_hp = 0;
-        Debug.Log("护体效果结束");
+//        Debug.Log("护体效果结束");
         this.show_ui = false;
     }
 
