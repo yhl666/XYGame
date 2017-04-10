@@ -14,6 +14,7 @@ public class CustomObject : Model
 {
     public float x = 0.0f;
     public float y = 0.0f;
+    public float z = 0.0f;
     public string name = "";
     public bool has_ui = true;
     public bool Enable = true;
@@ -49,8 +50,8 @@ public class TerrainObjectHpPack : CustomObject
         ArrayList heros = HeroMgr.ins.GetHeros();
         foreach (Hero hero in heros)
         {
-          ///  if (this.y < hero.GetRealY()) continue;
-            float dis = hero.ClaculateDistance(x, 0,y);
+            ///  if (this.y < hero.GetRealY()) continue;
+            float dis = hero.ClaculateDistance(x, 0, y);
             if (dis < distance)
             {
                 this.Enable = false;
@@ -177,4 +178,75 @@ public class TerrainObjectTransform : CustomObject
         return true;
     }
     Counter tick = Counter.Create(40); //cd for transform
+}
+
+
+/// <summary>
+/// Enemy 启动器
+/// </summary>
+class EnemyLauncher : Model
+{
+    public OneEnemyBornData data = null;
+
+    public static EnemyLauncher Create(OneEnemyBornData data)
+    {
+        EnemyLauncher ret = new EnemyLauncher();
+        ret.Init();
+        ret.data = data;
+        return ret;
+    }
+    public override void UpdateMS()
+    {
+        if (tick.Tick())
+        {
+            return;
+        }
+        Enemy enemy = EnemyMgr.Create(data.enemy_type);
+        enemy.hp = data.hp;
+        enemy.current_hp = enemy.hp;
+        enemy.team = 333;
+        enemy.x = data.gameObject.transform.localPosition.x;
+        enemy.z = data.gameObject.transform.localPosition.y;
+        enemy.y = 2;
+        this.SetInValid();
+    }
+    public override void OnEnter()
+    {
+        tick.SetMax(Utils.ConvertToFPS(data.time));
+    }
+
+    Counter tick = Counter.Create();
+}
+
+/// <summary>
+/// 刷新点
+/// 只提供数据
+/// </summary>
+public class TerrainObjectEnemyBornPoint : CustomObject
+{
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
+    public override void UpdateMS()
+    {
+
+    }
+    public override void InitWithData(object obj)
+    {
+        TerrainObjectEnemyBornPointData data = obj as TerrainObjectEnemyBornPointData;
+        this.x = data.gameObject.transform.localPosition.x;
+        this.y = data.gameObject.transform.localPosition.y;
+        this.z = data.gameObject.transform.localPosition.z;
+        this.name = data.gameObject.name;
+        OneEnemyBornData[] enemys = data.gameObject.GetComponents<OneEnemyBornData>();
+        foreach (OneEnemyBornData enemy in enemys)
+        {//初始化 启动器
+            EnemyLauncher launch = EnemyLauncher.Create(enemy);  // ModelMgr.Create<EnemyLauncher>();
+            ModelMgr.ins.Add(launch);
+        }
+        Debug.Log("TerrainObjectEnemyBornPoint  OK " + enemys.Length);
+    }
 }

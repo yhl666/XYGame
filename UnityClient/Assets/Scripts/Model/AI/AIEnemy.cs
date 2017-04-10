@@ -29,6 +29,11 @@ namespace AIEnemy
             base.Init();
             return true;
         }
+        //  ------ helper function
+        public void ChangeTo<T>() where T : FSMBase, new()
+        {
+            machine.ChangeTo<T>();
+        }
     }
     /// <summary>
     /// 锁定塔状态 
@@ -38,7 +43,10 @@ namespace AIEnemy
     {
         public override void UpdateMS()
         {
-
+            if (host.target == null)
+            {
+                this.ChangeTo<Free>();
+            }
         }
         public override void OnEnter()
         {
@@ -77,19 +85,19 @@ namespace AIEnemy
                 {//锁定玩家攻击
                     if (host.AI_SearchNearestTarget(list)) ;
                     {
-                        machine.ChangeTo<LockHero>();
+                        this.ChangeTo<LockHero>();
                     }
                 }
                 else // 仇恨范围内没有玩家，直接进入半锁定塔状态
                 {
-                    machine.ChangeTo<LockHalfTower>();
+                    this.ChangeTo<LockHalfTower>();
                 }
             }
             else
             {//不存在塔，直接锁定最近玩家攻击
                 if (host.AI_SearchNearestTarget(HeroMgr.ins.GetHeros())) ;
                 {
-                    machine.ChangeTo<LockHero>();
+                    this.ChangeTo<LockHero>();
                 }
             }
         }
@@ -195,7 +203,10 @@ namespace AIEnemy
     {
         public override void UpdateMS()
         {
-
+            if (host.target == null)
+            {
+                this.ChangeTo<Free>();
+            }
         }
         public override void OnEnter()
         {

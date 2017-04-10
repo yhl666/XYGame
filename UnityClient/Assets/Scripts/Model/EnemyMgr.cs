@@ -10,11 +10,18 @@ using System.Collections;
 /// <summary>
 ///  sub mgr of ModelMgr
 /// </summary>
-public sealed class EnemyMgr :  SingletonGAObject<EnemyMgr>
+public sealed class EnemyMgr : SingletonGAObject<EnemyMgr>
 {
     public static Enemy Create<T>() where T : new()
     {
         Enemy ret = new T() as Enemy;
+        ret.Init();
+        ins.Add(ret);
+        return ret;
+    }
+    public static Enemy Create(string _class)
+    {
+        Enemy ret = GAObject.Create(_class) as Enemy;
         ret.Init();
         ins.Add(ret);
         return ret;

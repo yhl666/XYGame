@@ -1141,6 +1141,11 @@ public class BufferEnemyMovementAfterAtk : Buffer
             this.SetInValid();
             return;
         }
+        if (target == null || host.target == null)
+        {
+            this.SetInValid();
+            return;
+        }
         if (target.x > host.target.x)
         {//Enemy 位于 目标右边
             // 0-90 or 270-360

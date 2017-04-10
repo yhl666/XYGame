@@ -97,7 +97,10 @@ public class WorldMap : Model
         {
             return custom_objs_revivepoints;
         }
-
+        if (t == typeof(TerrainObjectEnemyBornPoint))
+        {
+            return custom_objs_enemybornpoints;
+        }
         ArrayList ret = new ArrayList();
         foreach (CustomObject obj1 in custom_objs)
         {
@@ -112,9 +115,14 @@ public class WorldMap : Model
     {
         return custom_objs_revivepoints;
     }
+    public ArrayList GetEnemyBornPoints()
+    {
+        return custom_objs_enemybornpoints;
+    }
 
     protected ArrayList custom_objs = new ArrayList();
     protected ArrayList custom_objs_revivepoints = new ArrayList();
+    protected ArrayList custom_objs_enemybornpoints = new ArrayList();
     protected ArrayList objs = new ArrayList();
     protected Terrain terrain = null;
     protected TerrainPlatform platform = null;
@@ -359,55 +367,70 @@ public sealed class BattleWorldMap : WorldMap
         GameObject obj_terrain = GameObject.Find("Terrain");
         {// -- init revive points
             Transform p = obj_terrain.transform.FindChild("RevivePoints");
-            if (p == null) return true;
-            Transform[] objs = p.GetComponentsInChildren<Transform>();
-            foreach (Transform obj in objs)
+            if (p != null)
             {
-                TerrainObjectRevivePointData data = obj.gameObject.GetComponent<TerrainObjectRevivePointData>();
-                if (data == null) continue;
-
-                CustomObject t = ModelMgr.Create<TerrainObjectRevivePoint>();
-                t.LoadWithData(data);
-                this.custom_objs_revivepoints.Add(t);
-                this.custom_objs.Add(t);
+                Transform[] objs = p.GetComponentsInChildren<Transform>();
+                foreach (Transform obj in objs)
+                {
+                    TerrainObjectRevivePointData data = obj.gameObject.GetComponent<TerrainObjectRevivePointData>();
+                    if (data == null) continue;
+                    CustomObject t = ModelMgr.Create<TerrainObjectRevivePoint>();
+                    t.LoadWithData(data);
+                    this.custom_objs_revivepoints.Add(t);
+                    this.custom_objs.Add(t);
+                }
             }
         }
 
         {// -- init hp pack
             Transform p = obj_terrain.transform.FindChild("HpPacks");
-            if (p == null) return true;
-            Transform[] objs = p.GetComponentsInChildren<Transform>();
-
-            foreach (Transform obj in objs)
+            if (p != null)
             {
-                TerrainObjectHpPackData data = obj.gameObject.GetComponent<TerrainObjectHpPackData>();
-                if (data == null) continue;
-
-                CustomObject t = ModelMgr.Create<TerrainObjectHpPack>();
-
-                t.LoadWithData(data);
-
-                this.custom_objs.Add(t);
+                Transform[] objs = p.GetComponentsInChildren<Transform>();
+                foreach (Transform obj in objs)
+                {
+                    TerrainObjectHpPackData data = obj.gameObject.GetComponent<TerrainObjectHpPackData>();
+                    if (data == null) continue;
+                    CustomObject t = ModelMgr.Create<TerrainObjectHpPack>();
+                    t.LoadWithData(data);
+                    this.custom_objs.Add(t);
+                }
             }
         }
 
         {// -- init  transform
             Transform p = obj_terrain.transform.FindChild("Transform");
-            if (p == null) return true;
-            Transform[] objs = p.GetComponentsInChildren<Transform>();
-
-            foreach (Transform obj in objs)
+            if (p != null)
             {
-                TerrainObjectTransformData data = obj.gameObject.GetComponent<TerrainObjectTransformData>();
-                if (data == null) continue;
-
-                CustomObject t = ModelMgr.Create<TerrainObjectTransform>();
-
-                t.LoadWithData(data);
-
-                this.custom_objs.Add(t);
+                Transform[] objs = p.GetComponentsInChildren<Transform>();
+                foreach (Transform obj in objs)
+                {
+                    TerrainObjectTransformData data = obj.gameObject.GetComponent<TerrainObjectTransformData>();
+                    if (data == null) continue;
+                    CustomObject t = ModelMgr.Create<TerrainObjectTransform>();
+                    t.LoadWithData(data);
+                    this.custom_objs.Add(t);
+                }
             }
         }
+
+        {// -- init enemy born points
+            Transform p = obj_terrain.transform.FindChild("EnemyBornPoints");
+            if (p != null)
+            {
+                Transform[] objs = p.GetComponentsInChildren<Transform>();
+                foreach (Transform obj in objs)
+                {
+                    TerrainObjectEnemyBornPointData data = obj.gameObject.GetComponent<TerrainObjectEnemyBornPointData>();
+                    if (data == null) continue;
+                    CustomObject t = ModelMgr.Create<TerrainObjectEnemyBornPoint>();
+                    t.LoadWithData(data);
+                    this.custom_objs_enemybornpoints.Add(t);
+                    this.custom_objs.Add(t);
+                }
+            }
+        }
+
         return true;
     }
     public override void OnEvent(int type, object userData)
