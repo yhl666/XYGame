@@ -2,37 +2,13 @@
 branches: {
   }
 fileChange:
-  /设计文档:
-    newFile: !uuid '5f2df7ad7bc648cf39449455def91121da0ca787'
-    oldFile: !uuid '279173b90cc5a1afc4d29edea9e46bad8924ef56'
-  /设计文档/BOSS头像.png:
-    newFile: !uuid '677d9b5b23bf5df15895dc06dd83483c46134a6f'
+  /策划文档:
+    newFile: !uuid '49659e9841fa9923eb0719c17e14407a83f9e529'
+    oldFile: !uuid '9a1377be5df6e0f84c975cb65b20a5d56232a183'
+  /策划文档/UI.docx:
+    newFile: !uuid '0da4a8bb44073498c3ff2692dd3a33c83037d475'
     oldFile: null
-  /设计文档/光环.png:
-    newFile: !uuid 'f36e5938c5caef9ae7160215b5c05a1c21579c29'
-    oldFile: null
-  /设计文档/劈斩.png:
-    newFile: !uuid '9a24325e8b9c598b26ae6573217a6b9623fae036'
-    oldFile: null
-  /设计文档/升级技能.jpg:
-    newFile: !uuid '96a8a4290fa80334974009620a86b9d20700b252'
-    oldFile: null
-  /设计文档/头像.png:
-    newFile: !uuid '52d1456f47668f691b7e80b7aa9dd8a07c02d393'
-    oldFile: null
-  /设计文档/放波.png:
-    newFile: !uuid 'b5a61622f7eddcfb32d0533bf749dab135a19811'
-    oldFile: null
-  /设计文档/旋转.png:
-    newFile: !uuid 'e32f20def9e4d695607383b4571208abfcc63e9e'
-    oldFile: null
-  /设计文档/踩地板.png:
-    newFile: !uuid '4b3f794e7507777b65d88b366c4fbb4feb34baac'
-    oldFile: null
-  /设计文档/雷电.png:
-    newFile: !uuid '85b4a3b2b0111fe02ccc978637ffac32e524dcf6'
-    oldFile: null
-gitCommitId: !uuid '7cc35722c5ba5828e31251867badc4ce999afc2a'
+gitCommitId: !uuid 'c0812b81cfa27f15f9e677f55d3d02e66c329db4'
 renames: {
   }
-revisionId: 665
+revisionId: 666
