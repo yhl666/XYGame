@@ -3,12 +3,12 @@ branches: {
   }
 fileChange:
   /策划文档:
-    newFile: !uuid '49659e9841fa9923eb0719c17e14407a83f9e529'
-    oldFile: !uuid '9a1377be5df6e0f84c975cb65b20a5d56232a183'
+    newFile: !uuid '6dae639046e06b1a7e58c98e0d85a21c0df7084c'
+    oldFile: !uuid '49659e9841fa9923eb0719c17e14407a83f9e529'
   /策划文档/UI.docx:
-    newFile: !uuid '0da4a8bb44073498c3ff2692dd3a33c83037d475'
-    oldFile: null
-gitCommitId: !uuid 'c0812b81cfa27f15f9e677f55d3d02e66c329db4'
+    newFile: !uuid '2d1b8b6413eee862b177005d47b81aebde1efd61'
+    oldFile: !uuid '0da4a8bb44073498c3ff2692dd3a33c83037d475'
+gitCommitId: !uuid 'f66d12a01cea2b9acbf19797c4e205f63a38269a'
 renames: {
   }
-revisionId: 666
+revisionId: 667
