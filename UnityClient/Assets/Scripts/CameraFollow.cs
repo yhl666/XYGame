@@ -64,7 +64,7 @@ public class CameraFollow : MonoBehaviour
         if (y < y_min) y = y_min;
         if (y > y_max) y = y_max;
 
-        float delta = WIDTH / 100.0f / 4.0f;//推动滚动 的宽度值
+        float delta =  WIDTH / 100.0f / 8.0f;//推动滚动 的宽度值
         if (Mathf.Abs(this.transform.position.x - x) > delta)
         {
             if (this.transform.position.x < x)
