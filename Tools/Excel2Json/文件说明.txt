@@ -1,0 +1,3 @@
+两个python文件
+\XYGame\Tools\Excel2Json\myXLDR\myXLDR文件夹下面
+myXLDR.py 自动读取当前文件夹下面的所有excel文件 输出到该文件夹下面out文件夹目录下面
