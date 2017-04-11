@@ -274,7 +274,7 @@ public class ViewEnemy : View
     public override bool Init()
     {
         base.Init();
-        this.m = model as Entity;
+        this.m = model as Enemy;
 
         this.obj = PrefabsMgr.Load(m.prefabsName);
         this.spine = obj.GetComponent<SkeletonAnimation>();
@@ -308,8 +308,8 @@ public class ViewEnemy : View
     {
         if (type == Events.ID_DIE)
         {
-            if (userData as Entity == m)
-                this.SetInValid();
+            /*  if (userData as Entity == m)
+                  this.SetInValid();*/
         }
     }
 
@@ -394,7 +394,7 @@ public class ViewEnemy : View
     SkeletonAnimation spine = null;
     Transform transform = null;
     GameObject obj = null;
-    Entity m = null;
+    Enemy m = null;
 }
 
 public class ViewBuffer : View

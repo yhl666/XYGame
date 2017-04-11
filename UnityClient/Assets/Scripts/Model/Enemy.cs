@@ -209,9 +209,16 @@ public class Enemy : Entity
 
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
         EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
+        this.eventDispatcher.AddEventListener(this, "SpineComplete");
         return true;
     }
-
+    public override void OnEvent(string type, object userData)
+    {
+        if ("SpineComplete" == type)
+        {
+            this.OnEvent(Events.ID_SPINE_COMPLETE, userData);
+        }
+    }
     public override void OnEvent(int type, object userData)
     {
         base.OnEvent(type, userData);
@@ -229,7 +236,10 @@ public class Enemy : Entity
             if (userData as Enemy == this)
             {
                 this.machine.Pause();
-                this.SetInValid();
+                if (ani_die == "")
+                {
+                    this.SetInValid();
+                }
             }
             if (userData as Entity == target)
             {//目标死亡
@@ -237,6 +247,10 @@ public class Enemy : Entity
                 bullet_atk1_info.hit_targets.Clear();
                 ai_fsm_machine.ChangeTo<Free>();
             }
+        }
+        else if (type == Events.ID_SPINE_COMPLETE && isDie)
+        {
+            this.SetInValid();
         }
     }
 
@@ -396,7 +410,7 @@ public class Enemy1 : Enemy
     {
         base.UpdateMS();
     }
-    
+
 }
 
 public class Enemy1_Strengthen : Enemy1
@@ -739,7 +753,7 @@ public class EnemyBoss : Enemy
         this.skill1 = skill.GetSkill<SkillBoss_1>();
         this.skill2 = skill.GetSkill<SkillBoss_2>();
         this.skill3 = skill.GetSkill<SkillBoss_3>();
-        ai_fsm_machine.Pause();    
+        ai_fsm_machine.Pause();
         hp = 3000;
 
         current_hp = hp;
@@ -748,10 +762,10 @@ public class EnemyBoss : Enemy
 
     public override void AI_UpdateMSWithAI()
     {
-       if(target == null)
-       {
-           this.AI_SearchNewTarget();
-       }
+        if (target == null)
+        {
+            this.AI_SearchNewTarget();
+        }
         ai_fsm_machine.UpdateMS();
         base.AI_UpdateMSWithAI();
     }
