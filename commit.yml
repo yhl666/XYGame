@@ -2,49 +2,73 @@
 branches: {
   }
 fileChange:
-  /Tools:
-    newFile: !uuid 'cb2e4a7f3cfb8893998945762fca9acab74590f8'
-    oldFile: !uuid 'b49a066b70630e15c99315332a6920473e3db7a8'
-  /Tools/Excel2Json:
-    newFile: !uuid '0ef5a86737a27facbb44d5115243b3f233955e05'
-    oldFile: !uuid 'e6d46352e9a5f51ff2cba8b0852b4d95972a5804'
-  /Tools/Excel2Json/myXLDR:
-    newFile: !uuid '8a17c48314cbd6640699a102c7a0b6654b4e6a78'
+  /UnityClient:
+    newFile: !uuid 'ebe6f947b5b55d89aa5e1d99b0d6728b8b6c21f8'
+    oldFile: !uuid 'd12acd83fc881f9c399701c3bc5be0bb1224e03c'
+  /UnityClient/Assets:
+    newFile: !uuid '718725f51def2cafc3785944217277c7911a84b1'
+    oldFile: !uuid '3a461aa7c57af5700fefa8abb7787fa48bcb4cbd'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '450435bfb369837bc1959a969dcf448353c2a0d3'
+    oldFile: !uuid '0ddbe319264e917850ed1076f814ba3aa026efe4'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid '9198bdc28d4a3811d2bf4256d11e4cce564b213c'
+    oldFile: !uuid 'e2495240705b186e3710b01d87912482bcf927b6'
+  /UnityClient/Assets/Scripts/Data/EntityBaseConfigInfo.cs:
+    newFile: !uuid 'dbdbe6eba98e0e62672e2ccf347f87ad964de71c'
     oldFile: null
-  /Tools/Excel2Json/myXLDR/UpgradeLog.htm:
-    newFile: !uuid '5241dcd2cda26cbd9eae22270329c0c4828e8524'
+  /UnityClient/Assets/Scripts/Data/EntityBaseConfigInfo.cs.meta:
+    newFile: !uuid '2166c01cf00a4c92203e44d6ff9830b72560d0f6'
     oldFile: null
-  /Tools/Excel2Json/myXLDR/myXLDR:
-    newFile: !uuid '77dd5ef8fb8a642af56267b4f9c2cae7457f7241'
+  /UnityClient/Assets/Scripts/Data/HeroLevelData.cs:
+    newFile: !uuid '14a9b7ff71b69709466f1389bcbfb446224ec246'
     oldFile: null
-  /Tools/Excel2Json/myXLDR/myXLDR.sln:
-    newFile: !uuid '71c2132850fd0c0e611cbfd4071796487f93da3d'
-    oldFile: null
-  /Tools/Excel2Json/myXLDR/myXLDR.v12.suo:
-    newFile: !uuid '8b37246e48233cde89a6862f589d7cd53c0a277e'
-    oldFile: null
-  /Tools/Excel2Json/myXLDR/myXLDR/.333.json:
-    newFile: !uuid '5001dd331a9e870d3d3a27592b3858f6c324da02'
-    oldFile: null
-  /Tools/Excel2Json/myXLDR/myXLDR/333.json:
-    newFile: !uuid '50feba6c1a85dfaf787fba1f8ef0e54cc2b4f650'
-    oldFile: null
-  /Tools/Excel2Json/myXLDR/myXLDR/BufferRead.py:
-    newFile: !uuid '7277aecc365bcfcb4cded9a7ecb7b82631d3df6f'
-    oldFile: null
-  /Tools/Excel2Json/myXLDR/myXLDR/coco.xlsx:
-    newFile: !uuid '802e59691bead6826b2ce85dfb9232395283403e'
-    oldFile: null
-  /Tools/Excel2Json/myXLDR/myXLDR/myXLDR.py:
-    newFile: !uuid 'd79d9f964192b7378b1e4e9c13e673e877c55e8e'
-    oldFile: null
-  /Tools/Excel2Json/myXLDR/myXLDR/myXLDR.pyproj:
-    newFile: !uuid 'f50441812f4c9f978d726823aec9396f86a59c9f'
-    oldFile: null
-  /Tools/Excel2Json/文件说明.txt:
-    newFile: !uuid '3e7faee33b6d2c182e7437af1e70dfc9114806c8'
-    oldFile: null
-gitCommitId: !uuid 'b88157b5b6c9a6ecce9368f4929e4b0085ef2056'
+  /UnityClient/Assets/Scripts/Data/Skill61_3_Data.cs:
+    newFile: !uuid '81039d43e0a45484226ca16e91c68ec613f80b93'
+    oldFile: !uuid 'f36854d89895dc03fe183792c140204be7923a7e'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid 'a07ee66201620d42cc640044bf3d49502c5c87fe'
+    oldFile: !uuid 'c58404f83a4d7c1ff1def625565241f7a474063b'
+  /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
+    newFile: !uuid '8edb2ea23bd353c6fd65ad715ca9bf7f9227f986'
+    oldFile: !uuid '119a2b0f02833a35139de87b438ac2cbaf2ec030'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'e824ee1f50bf185c996ebec131235a19af4f45c9'
+    oldFile: !uuid '549670898beec2563e45df83c168a9a35bffe8ae'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid '7ab63d831439c5bde13e8bf5177fbfde7e548e39'
+    oldFile: !uuid '791cf5592fb3c3de0fb8a50a17c90e0b93aa3d06'
+  /UnityClient/Assets/Scripts/Model/Bullet.cs:
+    newFile: !uuid '9037a5856c9035170f698c555d22856bdb4f5e8b'
+    oldFile: !uuid '23652b9b3cb47da0fce6cc3374a4346e31947868'
+  /UnityClient/Assets/Scripts/Model/CustomObjects.cs:
+    newFile: !uuid 'a4add9229d17896c874379b35e0df7aa7b17cdda'
+    oldFile: !uuid '7522ca49858a6e5706daf48631fcf88fabb225da'
+  /UnityClient/Assets/Scripts/Model/Enemy.cs:
+    newFile: !uuid '16263b794d892057b18b4919778d75a832cccefe'
+    oldFile: !uuid 'ae38044c9d9d19918d8ce1b32660b98c0b61f00f'
+  /UnityClient/Assets/Scripts/Model/Entity.cs:
+    newFile: !uuid 'bd6fedbce31c684e48ac4e1a7f00b4e97f3c31c8'
+    oldFile: !uuid 'b657ee576dd56f56420398c8dc7a11fa47820c0a'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid '5a14a18cadc2f6df081b7e6be2205ba4d670ba75'
+    oldFile: !uuid '0cc27b739f9e85e57cbb2ed788e25a9f20262175'
+  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
+    newFile: !uuid '004271f7bf973a7459f369236e6774aaed0d3f4b'
+    oldFile: !uuid '086461454ab2a336e9d9db55ccad2648bdd1553b'
+  /UnityClient/Assets/Scripts/Model/StateBase.cs:
+    newFile: !uuid 'a30987326eefb828c62ecd6c1cd12df949690292'
+    oldFile: !uuid '10139f73fcb62b8985f6922b395d89ae85d411ab'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'e06b428ee9349993ac4dd9945b3612164a060e33'
+    oldFile: !uuid '80a72ede0b57d2ed9320eb5f7aa009b2d51770f9'
+  /UnityClient/Assets/Scripts/View/UIBattle.cs:
+    newFile: !uuid '9b46104c28fb58d25ad9693f21ccf22d5609a1a1'
+    oldFile: !uuid '9beed4adfa7a415122c0f06a22db3119124619d1'
+  /UnityClient/Assets/Scripts/View/View.cs:
+    newFile: !uuid '4fe5e8bff0f48ab6fa2225b10d2c45e8217a7a63'
+    oldFile: !uuid '4565beeedd1272acdf510b85e0680a7024bf82b6'
+gitCommitId: !uuid '56969999ec9ab01a06767cbe1c1a5b65ce3bf0b4'
 renames: {
   }
-revisionId: 696
+revisionId: 697
