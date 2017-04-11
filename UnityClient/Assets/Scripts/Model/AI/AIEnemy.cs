@@ -120,10 +120,16 @@ namespace AIEnemy
     {
         public override void UpdateMS()
         {
+
             if (has_find)//已找到塔 CD冷却
             {//开始攻击指令
                 if (has_shoot == false)
                 {
+                    if (host.target == null || host == null)
+                    {
+                        ChangeTo<Free>();
+                        return;
+                    }
                     this.Shoot();
                 }
             }
@@ -150,7 +156,10 @@ namespace AIEnemy
         }
         public override void OnExit()
         {
-            host.bullet_atk1_info = info_backup;
+            if (info_backup != null)
+            {
+                host.bullet_atk1_info = info_backup;
+            }
         }
         private void Shoot()
         {

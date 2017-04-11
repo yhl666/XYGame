@@ -660,6 +660,8 @@ public class HurtState : StateBase
                 this.Enable = true;
                 Target.isHurt = true;
                 tick = 0;
+             //  this.Target.eventDispatcher.PostEvent (Events.ID_SPINE_COMPLETE);
+
             }
         }
     }
@@ -714,7 +716,7 @@ public class DieState : StateBase
     {
 
         this.Enable = true;
-        this.stack.AddLocalEventListener("SpineComplete");
+    ///    this.stack.AddLocalEventListener("SpineComplete");
     }
     public override void OnEvent(string type, object userData)
     {
@@ -821,7 +823,8 @@ public class AttackState_1 : StateBase
     }
     public override void UpdateMSIdle()
     {
-        cd_attack--;
+      //  Target.isAttacking = false;
+        cd_attack--; 
     }
     public override void OnEvent(string type, object userData)
     {
@@ -838,9 +841,10 @@ public class AttackState_1 : StateBase
 
     public override void OnEvent(int type, object userData)
     {
-        if (Target.isHurt) return;
+    
         if (type == Events.ID_BTN_ATTACK && this.Enable == false)
         {
+            if (Target.isHurt) return;
             ///  this.Target.AddBuffer<BufferFlashMove>();
             if (cd_attack > 0) return;
             tick_cancel.Reset();
@@ -860,12 +864,14 @@ public class AttackState_1 : StateBase
         {
             Target.isAttacking = false;
             this.Enable = false;
+ 
         //    Debug.Log(" 连招  1111 完成  ");
 
             if (Target.atk_level > 1)
             {//下段招数
                 this.stack.PushSingleState(StateBase.Create<AttackState_2>(Target));
             }
+  
 
         }
         else if (this.Enable == true && Events.ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE == type)
@@ -919,20 +925,26 @@ public class AttackState_2 : StateBase
     {
       //  Debug.Log(" 连招  222 待命");
     }
-    public override void UpdateMS()
+    private void CheckForTimeOut()
     {
-        tick_cancel.Tick();
-        if (checkForTimeOut == false) return;
+        if (this.checkForTimeOut == false) return;
         tick++;
         if (tick > AttackState6_Data.ins.level2_timeout)
         {//time out
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-           // Debug.Log(" 连招  222 超时");
-
+            //   Debug.Log("连招   222222222 超时");
         }
-
+    }
+    public override void UpdateMS()
+    {
+        tick_cancel.Tick();
+        this.CheckForTimeOut();
+    }
+    public override void UpdateMSIdle()
+    {
+        CheckForTimeOut();
     }
     public override void OnEvent(string type, object userData)
     {
@@ -1039,9 +1051,8 @@ public class AttackState_3 : StateBase
      ///   Debug.Log("连招   3333 待命");
 
     }
-    public override void UpdateMS()
+    private void CheckForTimeOut()
     {
-        tick_cancel.Tick();
         if (this.checkForTimeOut == false) return;
         tick++;
         if (tick > AttackState6_Data.ins.level3_timeout)
@@ -1049,9 +1060,17 @@ public class AttackState_3 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-         ///   Debug.Log("连招   333333 超时");
+         //   Debug.Log("连招   333333 超时");
         }
-
+    }
+    public override void UpdateMS()
+    {
+        tick_cancel.Tick();
+        this.CheckForTimeOut();
+    }
+    public override void UpdateMSIdle()
+    {
+        this.CheckForTimeOut();
     }
     public override void OnEvent(string type, object userData)
     {
