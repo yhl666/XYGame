@@ -3,132 +3,51 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '83e739817894fb217fc5d19a222cbb7626d5a012'
-    oldFile: !uuid 'cc5320626435d7b6d792f46f4bc96f1aec8b83cb'
+    newFile: !uuid '2522326af6a4a0c7b6dcb0cc2404b0e9fd65f760'
+    oldFile: !uuid '83e739817894fb217fc5d19a222cbb7626d5a012'
   /UnityClient/Assets:
-    newFile: !uuid 'c12af2ce9fabac1b644b2815e6573c0ebba8939b'
-    oldFile: !uuid 'f7dfd84ec92be4691e9f81367a41d6e38f2a49b5'
-  /UnityClient/Assets/ClientServerApp.cs:
-    newFile: !uuid '2427c95dde5b89150f7314714f8368e0264ddf27'
-    oldFile: !uuid 'd098a1a341a133f6257c959d28a3b115ffc982c9'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid '48442bb447c627625c7d2b2fb1de3ab4bf281af2'
-    oldFile: !uuid '9117f8bb6a4166bcf42bbeddd3b2c560dd93cc7c'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid 'a211480bf62def05e3948b0af5edc020a8100665'
-    oldFile: !uuid '44b3e9e9f79e88694209dd51de171cb7bd888124'
-  /UnityClient/Assets/Logic/Scripts/GameCellApp:
-    newFile: !uuid 'bc8544c2cb1a3bab87b12b850719e8fc869eec28'
-    oldFile: !uuid 'dd689e3f7486548cf72ac32cefeedec0a86b0319'
-  /UnityClient/Assets/Logic/Scripts/GameCellApp/TownPVPApp.cs:
-    newFile: !uuid 'a2573832d1485d1e5c3b4481bdf210a54450aa0a'
-    oldFile: !uuid '650eefa57cd73c913e64607a89783be5c0982f5c'
-  /UnityClient/Assets/Logic/TownScene.unity:
-    newFile: !uuid '901ece92fec48922e7f7a082b611ddfb48d26082'
-    oldFile: !uuid '0a5610fc1edebd5fc7b6cad28051291014734b87'
+    newFile: !uuid '3a461aa7c57af5700fefa8abb7787fa48bcb4cbd'
+    oldFile: !uuid 'c12af2ce9fabac1b644b2815e6573c0ebba8939b'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '4c142aecd8668411c1af71eb10499277b08fdbbd'
-    oldFile: !uuid '79d937ba89dfc527f7b883e5e8444b6821be75a3'
+    newFile: !uuid 'd1856cd1acd55a68e26d7d3b6fd621cd7d778f2c'
+    oldFile: !uuid '4c142aecd8668411c1af71eb10499277b08fdbbd'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'eca9088ab02c6bab9cb2e72035ba7e9db229a823'
-    oldFile: !uuid '4de3b8777e2000fcd1d75711ff36fc3b20bb457b'
-  /UnityClient/Assets/Resources/Prefabs/map:
-    newFile: !uuid '2dc22c6ceab887fdda39da45506304e99716a6b0'
-    oldFile: !uuid '66fc77954ad43c61b6fe9908ec22c37702a6e1bf'
-  /UnityClient/Assets/Resources/Prefabs/map/TerrainTown.prefab:
-    newFile: !uuid 'e9b929e34e7d5d192e839b7c0039d6b56bcf4d6c'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/map/TerrainTown.prefab.meta:
-    newFile: !uuid '91ebe2ce785204cc9588691ab9140f7eedbe3003'
-    oldFile: null
+    newFile: !uuid '18d436a94c9b880d62d2491ff21b2106ddb653e1'
+    oldFile: !uuid 'eca9088ab02c6bab9cb2e72035ba7e9db229a823'
   /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '500f67462c2f3125083e5cf7b34f54211d285c96'
-    oldFile: !uuid 'be47d9539ce474e5acfe2bc5f724f76a14ecd93b'
+    newFile: !uuid 'f794815590f4debb68fd8f3bc877dda3ada25476'
+    oldFile: !uuid '500f67462c2f3125083e5cf7b34f54211d285c96'
   /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid 'd30902530e19e38b0c35d9c6190caefdb52441eb'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d.meta:
-    newFile: !uuid '935c5ea5dc7f11dc4d766bb0e7043feca550df3c'
-    oldFile: null
+    newFile: !uuid 'e16e9ff8d05d746cc4ab4a827f4bfadd374abfd6'
+    oldFile: !uuid 'd30902530e19e38b0c35d9c6190caefdb52441eb'
   /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/UI_Battle.prefab:
-    newFile: !uuid 'bcfa9842dc78ace1f8f213ad5fd51a71b6c1dd35'
-    oldFile: null
+    newFile: !uuid '8c2877dd7cc41816b8f48e77d67d44ef25f965a4'
+    oldFile: !uuid 'bcfa9842dc78ace1f8f213ad5fd51a71b6c1dd35'
   /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/UI_Battle.prefab.meta:
-    newFile: !uuid '37ed1333e725ca8b12bcdd4d2f7973744f698a4e'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_buffers.prefab:
-    newFile: !uuid 'e34b6bc607a5f624fd4ceee953c75df332ea55e0'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_buffers.prefab.meta:
-    newFile: !uuid '154e9f38cd9e614fd623cd0fa893c3e8701a513e'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_die.prefab:
-    newFile: !uuid 'bdc4d3228d2d2f8d0ce39bee0ec1628c8a4fb0b3'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_die.prefab.meta:
-    newFile: !uuid '946cc4e95d8f1ad79fa328e1cbdb6dc489dfdbf0'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_hero_info.prefab:
-    newFile: !uuid 'e6d4d6d65d2570f1c461a3a35d293894ffc81148'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_hero_info.prefab.meta:
-    newFile: !uuid 'de31f3307382c71933c99d16cb63b5c7ef94b180'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_joystick.prefab:
-    newFile: !uuid '8430504c45db39db13aa91968f6ef52fc72ca592'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_joystick.prefab.meta:
-    newFile: !uuid '2bc5d877236dc5b05d9c30131137c1c793ad5bf3'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_result.prefab:
-    newFile: !uuid '87b1c8746bd171971cfa240a380605fa4f9806ee'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_result.prefab.meta:
-    newFile: !uuid '3e33af5d9ea9064cdfa970fcfb6d8af6f214cca3'
-    oldFile: null
+    newFile: !uuid '56ec7cde33d5350e77f73265e2d53cf9dc87ca70'
+    oldFile: !uuid '37ed1333e725ca8b12bcdd4d2f7973744f698a4e'
   /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab:
-    newFile: !uuid 'c463453768de7b4c62fa36415493d786fbdb2a2f'
-    oldFile: null
+    newFile: !uuid 'fbd49b2f090f47a2dba4b4b209b8c3a0421823e0'
+    oldFile: !uuid 'c463453768de7b4c62fa36415493d786fbdb2a2f'
   /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab.meta:
-    newFile: !uuid '6b3c38a368f8d1ce5349b8ac014401e193b9ae40'
+    newFile: !uuid 'a6457fa03f17b6fe550e4c95f358901a2f5ab59b'
+    oldFile: !uuid '6b3c38a368f8d1ce5349b8ac014401e193b9ae40'
+  /UnityClient/Assets/Resources/Sprites:
+    newFile: !uuid 'e85910686898ae1719fa863b229abf5893a03436'
+    oldFile: !uuid 'f6d9d1d4b2b1f7c1199deb426ec9d4d2248f642e'
+  /UnityClient/Assets/Resources/Sprites/levelup.gif:
+    newFile: !uuid 'edd8db8ce65a5ad9bf648fb6610c95db8c873b12'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_smallmap.prefab:
-    newFile: !uuid '15e3e1a07cf15e35eeff263b853627045781e994'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_smallmap.prefab.meta:
-    newFile: !uuid '0bc5cd17613555f4a47edfd1d7c3ef8fea36c842'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_tower.prefab:
-    newFile: !uuid '59f268e990019e05e39224554818d6475f4e42b0'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_tower.prefab.meta:
-    newFile: !uuid 'aad8a4d8a3e61c96d4a85bfcb9587c7017a76da8'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_txts.prefab:
-    newFile: !uuid '453dd4aaccc50c6313db9f699a5fa7ad31d26eeb'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_txts.prefab.meta:
-    newFile: !uuid 'bb8d914ebc20085372bcb5b0a1c81dbff2da3238'
+  /UnityClient/Assets/Resources/Sprites/levelup.gif.meta:
+    newFile: !uuid '63fe8c232da3b04f26912f5e4bb2070844fdcc48'
     oldFile: null
   /UnityClient/Assets/Scenes:
-    newFile: !uuid '38426f3cc7137db5c1f2049d1e9b2aa46a8711e4'
-    oldFile: !uuid '6e5618c96401d17011f81f79d43642fb833f0deb'
-  /UnityClient/Assets/Scenes/BattlePVE.unity:
-    newFile: !uuid '9ae00bd003379fa3d9e29c988cafab052354afb8'
-    oldFile: !uuid 'cd5e1fe840b07c8fa8fc20dd5de9b3bb3124bd67'
+    newFile: !uuid 'cf3f594ce10591eea74016ce93445e41eaabfafe'
+    oldFile: !uuid '38426f3cc7137db5c1f2049d1e9b2aa46a8711e4'
   /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid 'e4e0c4add54e98e5504036d84cfda86c264ae524'
-    oldFile: !uuid '76b974ea67cd65cdab073aac7f4055fb12e79178'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '0ddbe319264e917850ed1076f814ba3aa026efe4'
-    oldFile: !uuid 'f837d513789f0aa1ed1b2b68f53d778c0bb5c07a'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '549670898beec2563e45df83c168a9a35bffe8ae'
-    oldFile: !uuid '5395c6e63d154e00a730c38f0ff3158cb0aeda1f'
-  /UnityClient/Assets/Scripts/Model/Enemy.cs:
-    newFile: !uuid 'ae38044c9d9d19918d8ce1b32660b98c0b61f00f'
-    oldFile: !uuid '52ea545648b0fe1189b15959cc2a169d5ea46d21'
-gitCommitId: !uuid 'ad28c428e7190e43adf2bdb4c0e1be2cc94518aa'
+    newFile: !uuid '42fe25b75a1581a3747be92d61974e8ad0c202ad'
+    oldFile: !uuid 'e4e0c4add54e98e5504036d84cfda86c264ae524'
+gitCommitId: !uuid '9afbacee868b5e2d51bfe5fbdf10675f8aa095cf'
 renames: {
   }
-revisionId: 693
+revisionId: 694
