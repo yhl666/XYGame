@@ -174,6 +174,7 @@ namespace AIEnemy
         }
         public override void OnEvent(int type, object userData)
         {
+            if (this.IsInValid()) return;
             if (type == Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED)
             {
                 AttackInfo info = userData as AttackInfo;
