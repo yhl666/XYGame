@@ -162,7 +162,7 @@ public class ClientServerApp : GAObject
         {
             PublicData.ins.battle_mode = "pve";
             PublicData.ins.is_pve = true;
-            SceneMgr.Load("BattlePVE");
+            SceneMgr.Load("BattlePVE25D");
         }
 
 

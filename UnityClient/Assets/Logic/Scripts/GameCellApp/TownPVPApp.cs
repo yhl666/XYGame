@@ -155,7 +155,7 @@ public class TownPVPApp : CellApp
             {
                 PublicData.ins.is_pve = true;
 
-                SceneMgr.Load("BattlePVE");
+                SceneMgr.Load("BattlePVE25D");//BattlePVE
             }
             else
             {

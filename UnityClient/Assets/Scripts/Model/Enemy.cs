@@ -747,7 +747,10 @@ public class EnemyBoss : Enemy
 
     public override void AI_UpdateMSWithAI()
     {
-        target = HeroMgr.ins.self;
+       if(target == null)
+       {
+           this.AI_SearchNewTarget();
+       }
         ai_fsm_machine.UpdateMS();
         base.AI_UpdateMSWithAI();
     }
