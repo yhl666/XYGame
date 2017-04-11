@@ -3,105 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'f557d922057257a88aeccd889927e7a45530bbc0'
-    oldFile: !uuid '211df6848f4ec09110334212edffabd77de49151'
+    newFile: !uuid '0cfc4cc82366f96f3327bd6221c23edf84f87197'
+    oldFile: !uuid 'f557d922057257a88aeccd889927e7a45530bbc0'
   /UnityClient/Assets:
-    newFile: !uuid '5bd712b05723746a6429f7387a874418157f9acc'
-    oldFile: !uuid '60623769b58ca61d276e07b6bb2fe6b0aa1deac4'
+    newFile: !uuid 'd4d5240706341d392f5e6ed496a0c14723b21b00'
+    oldFile: !uuid '5bd712b05723746a6429f7387a874418157f9acc'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '15bab8bdbd5edf8575385dc2807f9a7fd5f5479e'
-    oldFile: !uuid 'b635bbd34b88bd5ab682b59bbee6c3028306ae37'
+    newFile: !uuid '7496f1cc6e8670c9836f6806edd1dccc10211269'
+    oldFile: !uuid '15bab8bdbd5edf8575385dc2807f9a7fd5f5479e'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '6aecb1a425d8e5c28853c9b48b29f1aaef9ee074'
-    oldFile: !uuid 'c501a9107e060aec72eaad319597dc5525c20d8c'
+    newFile: !uuid '4d6efadff42625808910c613216853099376ebb6'
+    oldFile: !uuid '6aecb1a425d8e5c28853c9b48b29f1aaef9ee074'
   /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '54ca85e4ebc20679f4263f2e7cab7c7cacdc804e'
-    oldFile: !uuid '215a0273afaa8c90da6f7296ce42ceafb6ce439e'
-  /UnityClient/Assets/Resources/Prefabs/data/防御塔.prefab:
-    newFile: !uuid 'b32f211a49881076e80a0d5a7034487a5d64d45a'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/防御塔.prefab.meta:
-    newFile: !uuid '9c31dc8ab5318671ee73ab1dbb4112cc5c9702b2'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/map:
-    newFile: !uuid 'fb69f4104f8ad988d427298c63bedc5bce8b50fe'
-    oldFile: !uuid 'aece4b73a0917832c9df9832ee45d8a2a8dd1485'
-  /UnityClient/Assets/Resources/Prefabs/map/DefendTowers.prefab:
-    newFile: !uuid '26d793fe8174756c6cf7335f7f238714e7c9feb1'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/map/DefendTowers.prefab.meta:
-    newFile: !uuid '4c9bea8af886970e506cbddd2c74a2f7c11bd9ae'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'be47d9539ce474e5acfe2bc5f724f76a14ecd93b'
-    oldFile: !uuid '925cee1eb991982040a870f0b76dd6dce35f92af'
-  /UnityClient/Assets/Resources/Prefabs/ui/Battle.prefab:
-    newFile: !uuid 'a103b3214fed6ff028001c974fc342e79c3e23c7'
-    oldFile: !uuid '54639a4dfe78d53a822ed85c84be1e0562f29cfb'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_tower.prefab:
-    newFile: !uuid 'f3b8749f66e1d99a06aa710f313fba186c4556f8'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_tower.prefab.meta:
-    newFile: !uuid '8b6538d374197ae6140ae4beec2f97b00394831f'
-    oldFile: null
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'f837d513789f0aa1ed1b2b68f53d778c0bb5c07a'
-    oldFile: !uuid '285bf0ec8b099606938eef6e9c3ee6d23a6b3327'
-  /UnityClient/Assets/Scripts/Base:
-    newFile: !uuid '6262ef9bcd12e70f248b07989b2c152d05ad45cf'
-    oldFile: !uuid '3c59a4091ea89290362425550ca9288b5360485b'
-  /UnityClient/Assets/Scripts/Base/Events.cs:
-    newFile: !uuid 'feacb9bc2df4bab7eac942ccfdf11feddcdab36f'
-    oldFile: !uuid '2a6fbf11a23667fd73810f634cc1a64901c51abb'
-  /UnityClient/Assets/Scripts/Base/FrameData.cs:
-    newFile: !uuid '2258b26ed4c4022f47f34a1181a4aae97336e92a'
-    oldFile: !uuid '3f6e363c2675aea4dc581606b7de47ad9771497c'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid 'e2495240705b186e3710b01d87912482bcf927b6'
-    oldFile: !uuid '2427b519e6220c61c61d6c4efae10593b6301344'
-  /UnityClient/Assets/Scripts/Data/DefendTowerData.cs:
-    newFile: !uuid '67e327f08f6bf94b9af3882251d3fceb5cbbeb05'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/DefendTowerData.cs.meta:
-    newFile: !uuid '9697cc7d7c678689529eeef99a12d0a76e2fa065'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/TerrainObjectDefendTowerData.cs:
-    newFile: !uuid '588e1139e59072e0f80a3be6d8125d52511e9328'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/TerrainObjectDefendTowerData.cs.meta:
-    newFile: !uuid '4263b4fa4bc51acb32d35f7dced7814498ced536'
-    oldFile: null
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid 'c58404f83a4d7c1ff1def625565241f7a474063b'
-    oldFile: !uuid '1f4197da24214e19770d1576acbecaa55770be28'
-  /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
-    newFile: !uuid '119a2b0f02833a35139de87b438ac2cbaf2ec030'
-    oldFile: !uuid '55d25a97f82b0c8a89bf7ac432c22801732a4673'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '5395c6e63d154e00a730c38f0ff3158cb0aeda1f'
-    oldFile: !uuid '7c2c023ac57f6e0b62a2ce881a39938a14b15868'
-  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
-    newFile: !uuid '791cf5592fb3c3de0fb8a50a17c90e0b93aa3d06'
-    oldFile: !uuid '9b50806d873eabe58d6d6ad1ff23ab3c07f31198'
-  /UnityClient/Assets/Scripts/Model/Building.cs:
-    newFile: !uuid '6dbe79702cfb2c10fe41b5051b9ccef186bb5781'
-    oldFile: !uuid '318f8a5d01dcc30f7fc3c9d7add0a5f5e194ed1c'
-  /UnityClient/Assets/Scripts/Model/CustomObjects.cs:
-    newFile: !uuid '7522ca49858a6e5706daf48631fcf88fabb225da'
-    oldFile: !uuid '7b805c01ff4b845a7bc34534fb2ec72d74848883'
-  /UnityClient/Assets/Scripts/Model/WorldMap.cs:
-    newFile: !uuid 'cbb27f11bfa26f9f5510cb7db31034d38a3e74ac'
-    oldFile: !uuid 'e7d766bf7009e5240277e8c88d8be2d5bc9b7546'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid '80a72ede0b57d2ed9320eb5f7aa009b2d51770f9'
-    oldFile: !uuid 'e67024f7546c4cc0f138ff01f3dcd54c4f69a68b'
-  /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid '9beed4adfa7a415122c0f06a22db3119124619d1'
-    oldFile: !uuid '7a38bd8e54a686e90eb70e169e2e91a0dd10189d'
-  /UnityClient/Assets/Scripts/View/ViewUI.cs:
-    newFile: !uuid 'e667c77a12dc30218171b36d065f884ba7a5e5f4'
-    oldFile: !uuid '3c04135cc05273e655bc74b2bf0c3f4069f6d042'
-gitCommitId: !uuid 'e067443414b6b85db9de02ca5d91972b84a09c69'
+    newFile: !uuid '71f3ce793ddfff9bfb2fef4466057239da6c109d'
+    oldFile: !uuid '54ca85e4ebc20679f4263f2e7cab7c7cacdc804e'
+  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn:
+    newFile: !uuid 'a53ce87b97aea8d29200b6fa1681dec38fd522c5'
+    oldFile: !uuid '7dd1c43bf61225a1619a1e56c9643e976dd2e3f9'
+  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/EnemyBornPoint1.prefab:
+    newFile: !uuid '7d958a60bfa8a0d1f61db011e2b48096a0c99bfd'
+    oldFile: !uuid '85891d906c55b7f2a7598ccb792103f78c2ecea5'
+gitCommitId: !uuid '612e9fe685ff955709e362101db15d3d67434dab'
 renames: {
   }
-revisionId: 688
+revisionId: 689
