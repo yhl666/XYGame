@@ -2,25 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '211df6848f4ec09110334212edffabd77de49151'
-    oldFile: !uuid 'a18bc96b6594e5c588f1211d54afb4df88586d0c'
-  /UnityClient/Assets:
-    newFile: !uuid '60623769b58ca61d276e07b6bb2fe6b0aa1deac4'
-    oldFile: !uuid '44d5245a6bb3acde037ea9bdba52c0410964bc15'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'b635bbd34b88bd5ab682b59bbee6c3028306ae37'
-    oldFile: !uuid 'e4687bf9507af254521965bd56d61fe4ae15b683'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'c501a9107e060aec72eaad319597dc5525c20d8c'
-    oldFile: !uuid '8bcce86b6c93cd4b0929aa3c33a4f09c9a9d700a'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '215a0273afaa8c90da6f7296ce42ceafb6ce439e'
-    oldFile: !uuid '5efbb721a6759ed362e6685b5b2d853e2bc0a86c'
-  /UnityClient/Assets/Resources/Prefabs/data/普通攻击.prefab:
-    newFile: !uuid '928300e7c7d1c8f5725a6820c856b78ddf924e72'
-    oldFile: !uuid '077c7549ab63605e8aec0e96b647cd91199cd3dc'
-gitCommitId: !uuid 'c8b22697f3c81f938d9fd0b857ef027b516065ad'
+  /设计文档:
+    newFile: !uuid 'ad45dd32982d1f5ee27ef03b17815f179e012e71'
+    oldFile: !uuid '52f8c3204536dadaa71aa25841e69d13cf0dca11'
+  /设计文档/levelup.gif:
+    newFile: !uuid 'edd8db8ce65a5ad9bf648fb6610c95db8c873b12'
+    oldFile: null
+gitCommitId: !uuid '3878c20f24eb3d8cab6be34957228373464edc6d'
 renames: {
   }
-revisionId: 686
+revisionId: 687
