@@ -259,3 +259,40 @@ public class TerrainObjectEnemyBornPoint : CustomObject
         Debug.Log("TerrainObjectEnemyBornPoint  OK " + enemys.Length);
     }
 }
+
+
+
+
+/// <summary>
+///  
+/// 只提供数据
+/// </summary>
+public class TerrainObjectDefendTower : CustomObject
+{
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
+    public override void UpdateMS()
+    {
+
+    }
+    public override void InitWithData(object obj)
+    {
+        TerrainObjectDefendTowerData data = obj as TerrainObjectDefendTowerData;
+        this.x = data.gameObject.transform.localPosition.x;
+      ///  this.y = data.gameObject.transform.localPosition.y;
+        this.z = data.gameObject.transform.localPosition.y;
+        this.name = data.gameObject.name;
+
+        DefendTower tower = BuildingMgr.Create<DefendTower>();
+        tower.x = this.x;
+        tower.y = this.y;
+        tower.z = this.z;
+        Debug.Log("TerrainObjectDefendTower  OK ");
+        GameObject.Destroy(data.gameObject);
+        this.SetInValid();
+    }
+}

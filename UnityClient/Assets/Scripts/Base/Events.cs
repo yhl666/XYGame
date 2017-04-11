@@ -147,6 +147,14 @@ public sealed class Events : object
     public const int ID_ABLE_DIRINPUT = 315;//开启摇杆
     public const int ID_OPT = 316;// 帧同步自定义操作， 和其他帧操作同源
 
+    public const int ID_BATTLE_LAUNCH_DEFENDTOWER = 317; //防御塔开炮消息
+    public const int ID_BATTLE_SHOW_TOWER_PANEL = 318;//显示防御塔 操作面板
+    public const int ID_BATTLE_HIDE_TOWER_PANEL = 319; // 隐藏防御塔操作面板
+
+
+
+
+ //---------------------------------------
     public const int ID_SETTING_CLICKED = 557;
     public const int ID_SETTING_CLOSE_CLICKED = 558;
     public const int ID_INFO_SETTING = 559;

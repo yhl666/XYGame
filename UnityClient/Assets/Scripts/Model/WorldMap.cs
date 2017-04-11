@@ -430,7 +430,20 @@ public sealed class BattleWorldMap : WorldMap
                 }
             }
         }
-
+        {// -- init  tower
+            Transform p = obj_terrain.transform.FindChild("DefendTowers");
+            if (p != null)
+            {
+                Transform[] objs = p.GetComponentsInChildren<Transform>();
+                foreach (Transform obj in objs)
+                {
+                    TerrainObjectDefendTowerData data = obj.gameObject.GetComponent<TerrainObjectDefendTowerData>();
+                    if (data == null) continue;
+                    CustomObject t = ModelMgr.Create<TerrainObjectDefendTower>();
+                    t.LoadWithData(data);
+                }
+            }
+        }
         return true;
     }
     public override void OnEvent(int type, object userData)

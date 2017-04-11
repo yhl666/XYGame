@@ -134,15 +134,19 @@ sealed class BattlePVEHandler : BattleHandlerBase
     {
         base.Init();
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
-        Tower tower = BuildingMgr.Create<Tower>();
-        tower.x = 5f;
-        tower.z = 3f;
-        tower.current_hp = 15;
-        tower.hp = 0xffff;
+
+        {
+            ArrayList lis = BuildingMgr.ins.GetBuildings<DefendTower>();
+            foreach (DefendTower t in lis)
+            {
+                DefendTower tower = t;
+                tower.team = HeroMgr.ins.self.team;
+            }
+        }
         var randObj = new System.Random(PublicData.ins.battle_random_seed);
         Utils.random_frameMS = randObj;
         {
-            for (int i = 0; i <0; i++)
+            for (int i = 0; i < 0; i++)
             {
                 Enemy e1 = EnemyMgr.Create<EnemyBoss>();
                 e1.x = randObj.Next(0, 340000) / 10000f;
@@ -157,6 +161,8 @@ sealed class BattlePVEHandler : BattleHandlerBase
         HeroMgr.ins.self.z = 3f;
         HeroMgr.ins.self.x = 8f;
 
+        //   tower.AddBuffer<BufferGod>();
+        // HeroMgr.ins.self.AddBuffer<BufferGod>();
         return true;
     }
     public static BattleHandlerBase Create(BattleApp app)

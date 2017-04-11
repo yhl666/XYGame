@@ -70,7 +70,11 @@ public sealed class UIBattleRoot : ViewUI
             this._ui_child.Add(ViewUI.Create<UI_combo>(this));
             return DATA.EMPTY_STRING;
         }));
-
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_tower>(this));
+            return DATA.EMPTY_STRING;
+        }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_frame>(this));
@@ -1280,4 +1284,156 @@ public sealed class UI_smallmap : ViewUI
     GameObject template_building = null;
 
     Image img_bg = null;
+}
+
+
+
+public sealed class UI_tower : ViewUI
+{
+    public override void OnEvent(int type, object userData)
+    {
+        if (type == Events.ID_BATTLE_SHOW_TOWER_PANEL)
+        {
+            this.Show();
+
+        }
+        else if (type == Events.ID_BATTLE_HIDE_TOWER_PANEL)
+        {
+            this.Hide();
+        }
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        this._ui = GameObject.Find("UI_Battle/ui_panel_tower");
+        this.btn_launch = _ui.transform.FindChild("btn_launch").GetComponent<Button>();
+
+        this.btn_launch.onClick.AddListener(delegate()
+        {
+            if (PublicData.ins.inputAble == false) return;
+            PublicData.ins.IS_opt = FrameCustomsOpt.LaunchDefendTower;
+        });
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_SHOW_TOWER_PANEL);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_HIDE_TOWER_PANEL);
+
+
+        for (int i = 0; i <= MAX_BUFFER_SHOW; i++)
+        {
+            string name = "Tower" + i.ToString();
+
+            Transform buf = this._ui.transform.FindChild(name);
+
+            Image img = buf.FindChild("icon").GetComponent<Image>();
+            Text txt = buf.GetComponentInChildren<Text>();
+            Image img_fill = buf.FindChild("filled").GetComponent<Image>();
+            Text txt_time = buf.FindChild("time").GetComponent<Text>();
+            this.list_img.Add(img);
+            this.list_txt.Add(txt);
+            this.list_img_filled.Add(img_fill);
+            this.list_txt_time.Add(txt_time);
+
+            buf.gameObject.SetActive(false);
+            this.list_panel.Add(buf.gameObject);
+
+        }
+        if (list_img.Count != list_txt.Count)
+        {
+            throw new ArgumentNullException("");
+        }
+
+
+        this.Hide();
+        return true;
+    }
+    public override void OnHide()
+    {
+        this.btn_launch.gameObject.SetActive(false);
+    }
+    public override void OnShow()
+    {
+        this.btn_launch.gameObject.SetActive(true);
+    }
+    private void On_BtnClicked(int e)
+    {
+        //   EventDispatcher.ins.PostEvent(e);
+
+        //  HeroMgr.ins.GetSelfHero().eventDispatcher.PostEvent(e);
+    }
+
+
+    Button btn_launch;
+
+
+
+
+    //------------- code copy from ui_buffers
+    public override void Update()
+    {
+        base.Update();
+
+        if (tick.Tick()) return;
+        tick.Reset();
+
+        ArrayList buffers = BuildingMgr.ins.GetBuildings<DefendTower>();
+        int index = 0;
+        foreach (DefendTower buffer in buffers)
+        {
+            if (index > MAX_BUFFER_SHOW) break;
+
+            (list_panel[index] as GameObject).SetActive(true);
+            if (buffer.IsMaxPowerLevel() == false)
+            {
+                Counter t = buffer.tick_power;
+
+                float current = t.GetCurrent();
+                float max = t.GetMax();
+                (list_img_filled[index] as Image).fillAmount = current / max;
+                float timef = ((max - current) / (float)Config.MAX_FPS);
+
+                int time = (int)((max - current) / Config.MAX_FPS);
+                if (timef < 1.0f)
+                {
+                    (list_txt_time[index] as Text).text = timef.ToString("0.0");
+                }
+                else
+                {
+                    (list_txt_time[index] as Text).text = time.ToString();
+                }
+            }
+            else
+            {
+                (list_img_filled[index] as Image).fillAmount = 0;
+                (list_txt_time[index] as Text).text = "";
+            }
+            (list_txt[index] as Text).text = "防御塔x" + buffer.power_level;
+            Sprite sp = SpriteFrameCache.ins.GetSpriteFrameAuto("hd/interface/items/503093.png").sprite;
+            (list_img[index] as Image).sprite = sp;
+            ++index;
+        }
+
+        for (int i = index; i <= MAX_BUFFER_SHOW; i++)
+        {
+            (list_panel[i] as GameObject).SetActive(false);
+
+        }
+        if (buffers.Count <= 0)
+        {
+            this.Hide();
+        }
+
+    }
+
+
+    Counter tick = Counter.Create(0);
+    private const int MAX_BUFFER_SHOW = 1;
+    ArrayList list_panel = new ArrayList();//GameObject
+    ArrayList list_img = new ArrayList();
+    ArrayList list_txt = new ArrayList();
+    ArrayList list_txt_time = new ArrayList();
+    ArrayList list_img_filled = new ArrayList();
+    GameObject panel = null;
+
+
 }

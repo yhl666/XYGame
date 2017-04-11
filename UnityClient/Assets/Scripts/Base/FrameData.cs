@@ -14,6 +14,7 @@ public enum FrameCustomsOpt
 {
     UnKnown = 0,
     Test = 1,
+    LaunchDefendTower,//防御攻击消息
 }
 
 public sealed class FrameData : object

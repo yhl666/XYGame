@@ -298,6 +298,8 @@ public class BattleHero : Hero
             this.AddBuffer(buf);
         }
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
+        this.eventDispatcher.AddEventListener(this, Events.ID_OPT);
+
         return true;
     }
 
@@ -312,7 +314,34 @@ public class BattleHero : Hero
             //   Bullet b = BulletMgr.Create<Bullet2_1>(this);
 
         }
+        else if (type == Events.ID_OPT)
+        {
+            this.ProcessWithFrameCustomsOpt((FrameCustomsOpt)(userData));
+        }
 
+    }
+    private void ProcessWithFrameCustomsOpt(FrameCustomsOpt opt)
+    {
+        if (opt == FrameCustomsOpt.LaunchDefendTower)
+        {
+            ArrayList towers = BuildingMgr.ins.GetBuildings<DefendTower>();
+            foreach (DefendTower t in towers)
+            {
+                t.Launch();
+            }
+        }
+        else if (opt == FrameCustomsOpt.Test)
+        {
+
+        }
+        else if (opt == FrameCustomsOpt.UnKnown)
+        {
+
+        }
+        else
+        {
+            Debug.LogError("ProcessWithFrameCustomsOpt UnKnown Opt " + opt.ToString());
+        }
     }
     public override void UpdateMS()
     {

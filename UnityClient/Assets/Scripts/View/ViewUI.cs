@@ -9,7 +9,22 @@ using System.Collections;
 
 public class ViewUI : View
 {
+    public void Show()
+    {
+        this.OnShow();
+    }
+    public void Hide()
+    {
+        this.OnHide();
+    }
+    public virtual void OnShow()
+    {
 
+    }
+    public virtual void OnHide()
+    {
+
+    }
     protected void PopIn(GameObject host)
     {
         host.SetActive(true);
