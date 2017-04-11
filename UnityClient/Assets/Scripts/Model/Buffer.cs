@@ -457,6 +457,7 @@ public class BufferSpeedSlow : Buffer
         tick.SetMax(time);
         speed_slow = percent / 100.0f * this.target.speed;
         this.target.speed -= speed_slow;
+        brief = "移动" + percent.ToString() + "%";
     }
     public override void UpdateMS()
     {
