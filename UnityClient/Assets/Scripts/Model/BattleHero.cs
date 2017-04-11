@@ -91,8 +91,8 @@ public class BattleHero : Hero
 
                 BulletConfigInfo info = BulletConfigInfo.Create();
                 bullet_atk1_info = info;
-                info.AddBuffer("BufferSpin");
-                info.AddBuffer("BufferHitBack");
+               // info.AddBuffer("BufferSpin");
+             //   info.AddBuffer("BufferHitBack");
 
                 info.isHitDestory = true;
                 info.number = 1;
@@ -128,8 +128,8 @@ public class BattleHero : Hero
 
                 BulletConfigInfo info = BulletConfigInfo.Create();
                 bullet_atk1_info = info;
-                info.AddBuffer("BufferHitBack");
-                info.AddBuffer("BufferSpin");
+             //   info.AddBuffer("BufferHitBack");
+             //   info.AddBuffer("BufferSpin");
 
                 info.launch_delta_xyz.x = AttackState6_Data.ins.level1_delta_xyz.x; //; 1f;
                 info.launch_delta_xyz.y = AttackState6_Data.ins.level1_delta_xyz.y; ;// 0f;
@@ -170,7 +170,7 @@ public class BattleHero : Hero
 
                 BulletConfigInfo info = BulletConfigInfo.Create();
                 bullet_atk2_info = info;
-                info.AddBuffer("BufferHitBack");
+             //   info.AddBuffer("BufferHitBack");
 
 
                 info.frameDelay = 4;
@@ -215,7 +215,7 @@ public class BattleHero : Hero
 
                 BulletConfigInfo info = BulletConfigInfo.Create();
                 bullet_atk3_info = info;
-                info.AddBuffer("BufferHitBack");
+              //  info.AddBuffer("BufferHitBack");
 
                 ///   info.launch_delta_xy.x = 1f;
                 //     info.launch_delta_xy.y = 0f;
