@@ -66,7 +66,7 @@ public sealed class BufferMgr : GAObject
             Buffer b = lists[i] as Buffer;
             if (b.clearAble)
             {
-                this.Remove(b);
+                this.lists.Remove(b);
                 b.OnExit();
                 b.LazyDispose();
             }
