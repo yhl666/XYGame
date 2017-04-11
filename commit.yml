@@ -3,30 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '2d8e1e215498884bf50956ecf2b86a82d7f201f3'
-    oldFile: !uuid 'ebe6f947b5b55d89aa5e1d99b0d6728b8b6c21f8'
+    newFile: !uuid '4dea3115faf4e3febbd713c256a6a951e3eb8965'
+    oldFile: !uuid '2d8e1e215498884bf50956ecf2b86a82d7f201f3'
   /UnityClient/Assets:
-    newFile: !uuid '2af2dabe305331e385978437d331b3c2c7e91ff2'
-    oldFile: !uuid '718725f51def2cafc3785944217277c7911a84b1'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '8ba94f4f60e6bdfbcf7ed17912ad3cdd0db67ee8'
-    oldFile: !uuid '450435bfb369837bc1959a969dcf448353c2a0d3'
-  /UnityClient/Assets/Scripts/Base:
-    newFile: !uuid '7d6630ef3a492216063deab71821f2a8fc024ffc'
-    oldFile: !uuid '6262ef9bcd12e70f248b07989b2c152d05ad45cf'
-  /UnityClient/Assets/Scripts/Base/Events.cs:
-    newFile: !uuid '93327c4ff40fbc0ec5db84937a9a8cbd205bb920'
-    oldFile: !uuid 'feacb9bc2df4bab7eac942ccfdf11feddcdab36f'
-  /UnityClient/Assets/Scripts/Base/FrameData.cs:
-    newFile: !uuid '0977d252604ae2e30e8110007db2cacd18273e15'
-    oldFile: !uuid '2258b26ed4c4022f47f34a1181a4aae97336e92a'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '3d341b367c4264e1b4663564c97a363bbf92f6d7'
-    oldFile: !uuid '9198bdc28d4a3811d2bf4256d11e4cce564b213c'
-  /UnityClient/Assets/Scripts/Data/HeroLevelData.cs.meta:
-    newFile: !uuid 'dd8d123c56c68df27e31ae1cd9760bd92a5d227d'
+    newFile: !uuid 'bf72acafaae5176389abddb41a334bd62c77b070'
+    oldFile: !uuid '2af2dabe305331e385978437d331b3c2c7e91ff2'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'a4bf03035be944be8fb126199771e560ffa7c501'
+    oldFile: !uuid 'd1856cd1acd55a68e26d7d3b6fd621cd7d778f2c'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '44db6d7b380c16e9992943b89bbae361acc82dd9'
+    oldFile: !uuid '18d436a94c9b880d62d2491ff21b2106ddb653e1'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '4f0d5b99f7ff461b07c80ee82458b512ddf88567'
+    oldFile: !uuid '71f3ce793ddfff9bfb2fef4466057239da6c109d'
+  /UnityClient/Assets/Resources/Prefabs/data/人物配置.prefab:
+    newFile: !uuid 'fc5c77e952b685d8ddd1facb68808cc14b58988b'
     oldFile: null
-gitCommitId: !uuid 'fe282386f174d788dd36570bb55c4bbfd9ea8115'
+  /UnityClient/Assets/Resources/Prefabs/data/人物配置.prefab.meta:
+    newFile: !uuid 'a896580bf0975f58aac99e605c9f250c941476cf'
+    oldFile: null
+gitCommitId: !uuid 'edb5e747cd1911d867c2624ded6b3ae5428a7656'
 renames: {
   }
-revisionId: 698
+revisionId: 699
