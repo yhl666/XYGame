@@ -1,0 +1,146 @@
+
+217.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+pet_214/leishui
+  rotate: false
+  xy: 190, 2
+  size: 11, 12
+  orig: 120, 85
+  offset: 54, 37
+  index: -1
+pet_214/pet_214_sk_eff_214000
+  rotate: false
+  xy: 2, 12
+  size: 62, 33
+  orig: 120, 85
+  offset: 28, 26
+  index: -1
+pet_214/shengqi
+  rotate: false
+  xy: 267, 31
+  size: 17, 16
+  orig: 120, 85
+  offset: 51, 34
+  index: -1
+pet_215/bIngzhu
+  rotate: true
+  xy: 398, 2
+  size: 10, 12
+  orig: 120, 85
+  offset: 55, 36
+  index: -1
+pet_215/qianjiao
+  rotate: false
+  xy: 286, 30
+  size: 15, 17
+  orig: 120, 85
+  offset: 52, 34
+  index: -1
+pet_217/bozi
+  rotate: false
+  xy: 162, 10
+  size: 26, 35
+  orig: 120, 85
+  offset: 47, 25
+  index: -1
+pet_217/chibang
+  rotate: true
+  xy: 66, 5
+  size: 40, 48
+  orig: 120, 85
+  offset: 40, 19
+  index: -1
+pet_217/jianjia
+  rotate: false
+  xy: 190, 16
+  size: 31, 29
+  orig: 120, 85
+  offset: 44, 28
+  index: -1
+pet_217/shenti
+  rotate: false
+  xy: 398, 14
+  size: 82, 46
+  orig: 120, 85
+  offset: 19, 20
+  index: -1
+pet_217/shou
+  rotate: true
+  xy: 230, 29
+  size: 18, 35
+  orig: 120, 85
+  offset: 51, 25
+  index: -1
+pet_217/shou_1
+  rotate: true
+  xy: 482, 26
+  size: 35, 23
+  orig: 120, 85
+  offset: 42, 31
+  index: -1
+pet_217/tou
+  rotate: false
+  xy: 304, 2
+  size: 92, 49
+  orig: 120, 85
+  offset: 17, 18
+  index: -1
+pet_217/txtx0001
+  rotate: false
+  xy: 116, 5
+  size: 44, 40
+  orig: 88, 88
+  offset: 24, 25
+  index: -1
+pet_217/txtx0002
+  rotate: false
+  xy: 451, 63
+  size: 54, 63
+  orig: 88, 88
+  offset: 17, 11
+  index: -1
+pet_217/txtx0003
+  rotate: false
+  xy: 2, 47
+  size: 75, 79
+  orig: 88, 88
+  offset: 4, 7
+  index: -1
+pet_217/txtx0004
+  rotate: false
+  xy: 79, 47
+  size: 74, 79
+  orig: 88, 88
+  offset: 5, 7
+  index: -1
+pet_217/txtx0005
+  rotate: false
+  xy: 230, 49
+  size: 72, 77
+  orig: 88, 88
+  offset: 6, 8
+  index: -1
+pet_217/txtx0006
+  rotate: false
+  xy: 155, 47
+  size: 73, 79
+  orig: 88, 88
+  offset: 6, 5
+  index: -1
+pet_217/txtx0007
+  rotate: false
+  xy: 304, 53
+  size: 73, 73
+  orig: 88, 88
+  offset: 4, 7
+  index: -1
+pet_217/txtx0008
+  rotate: false
+  xy: 379, 62
+  size: 70, 64
+  orig: 88, 88
+  offset: 6, 12
+  index: -1

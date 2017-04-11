@@ -1,0 +1,48 @@
+
+214.png
+size: 128,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+pet_214/chui
+  rotate: false
+  xy: 2, 2
+  size: 17, 17
+  orig: 120, 85
+  offset: 51, 34
+  index: -1
+pet_214/leishui
+  rotate: false
+  xy: 40, 7
+  size: 11, 12
+  orig: 120, 85
+  offset: 54, 37
+  index: -1
+pet_214/pet_214_sk_eff_214000
+  rotate: false
+  xy: 2, 21
+  size: 62, 33
+  orig: 120, 85
+  offset: 28, 26
+  index: -1
+pet_214/shengqi
+  rotate: false
+  xy: 21, 3
+  size: 17, 16
+  orig: 120, 85
+  offset: 51, 34
+  index: -1
+pet_214/tou
+  rotate: false
+  xy: 66, 20
+  size: 51, 34
+  orig: 120, 85
+  offset: 34, 26
+  index: -1
+pet_214/zuiba
+  rotate: true
+  xy: 119, 46
+  size: 8, 7
+  orig: 120, 85
+  offset: 55, 39
+  index: -1
