@@ -144,10 +144,13 @@ namespace AIEnemy
             has_shoot = false;
             has_find = false;
         }
+        public override void OnDispose()
+        {
+            EventDispatcher.ins.RemoveEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+        }
         public override void OnExit()
         {
             host.bullet_atk1_info = info_backup;
-            EventDispatcher.ins.RemoveEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
         }
         private void Shoot()
         {
@@ -254,6 +257,7 @@ namespace AIEnemy
             if (current_fsm != null)
             {
                 current_fsm.OnExit();
+                current_fsm.LazyDispose();
             }
             fsm.host = host;
             fsm.machine = this;
