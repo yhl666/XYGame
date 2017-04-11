@@ -2,25 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'f8e562d32d6caeb4549940b69f0c9a63008593f7'
-    oldFile: !uuid '67a74d575b13452b2de5b242c1644c8def398f00'
-  /UnityClient/Assets:
-    newFile: !uuid '2d73543cd96d8f620c13144d125f2212e00df995'
-    oldFile: !uuid '7be20372becb52d217cf8e36772951022c7d138c'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'c470d6757309799fd72bd26beba5b2c36feb4c5b'
-    oldFile: !uuid '1bcc6551e8ffe140d8a420174564f2992b607fc1'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'e1923e1150c1ca3db433e6a1ff2e7a4604ee90c8'
-    oldFile: !uuid '86323434095fc1778375e44ee45b01debb7b3b2a'
-  /UnityClient/Assets/Scripts/Model/AI:
-    newFile: !uuid 'dbe64d8cc04d604b774f5843fda5311a190bd3d5'
-    oldFile: !uuid 'efbf8fb14519116a01ae14c7a4a956a58df79ce6'
-  /UnityClient/Assets/Scripts/Model/AI/AIEnemy.cs:
-    newFile: !uuid '72d7992cf1160214a0eab531437b04dc4531e1d2'
-    oldFile: !uuid '4aa45a61aa6dcf9c0843bfa63ce57b286a3764f2'
-gitCommitId: !uuid '2a68da5ae48b5cd5082d6f2d7ee07947e56ecf25'
+  /工作日志:
+    newFile: !uuid '12a2137a24b090088a92fee6ea9f8f4cf57a52d6'
+    oldFile: !uuid 'a20cefd7eb231b1c7348f2c72c216facdde04c07'
+  /工作日志/BUG处理:
+    newFile: !uuid 'dbad344cb5c7580e3ec3211d70c1481bb6be3c34'
+    oldFile: !uuid 'a1385770f29c0e25fcd030a79b6fbd955a35baa6'
+  /工作日志/BUG处理/010.txt:
+    newFile: !uuid 'fa3b6df602113440e0f7447ab4bd1457141ee08b'
+    oldFile: null
+gitCommitId: !uuid 'aa7957d68ee81841b135d5ddb7b03a3763ae036c'
 renames: {
   }
-revisionId: 710
+revisionId: 711
