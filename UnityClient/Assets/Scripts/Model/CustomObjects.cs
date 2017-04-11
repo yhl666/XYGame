@@ -58,7 +58,7 @@ public class TerrainObjectHpPack : CustomObject
                 tick.Reset();
                 int delta = (int)((float)hero.hp * hp_percent / 100.0f);
                 hero.current_hp += delta;
-                Debug.LogError("Terrain 血包 回血 " + delta);
+                //Debug.LogError("Terrain 血包 回血 " + delta);
                 this.view.SetActive(false);
                 return;
             }

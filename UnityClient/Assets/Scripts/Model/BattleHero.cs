@@ -5,6 +5,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 public class BattleHero : Hero
 {
@@ -259,6 +260,8 @@ public class BattleHero : Hero
     {
         base.Init();
         scale = 0.8f;
+
+
         // config
 
         /* ------------------------------------------hero 2
@@ -280,7 +283,7 @@ public class BattleHero : Hero
         bullet_atk1_info.AddBuffer("BufferHitBack");
  
         */
-
+        //ConfigByLevel(this.level);
         this.SwitchTypeTo(type);
 
         ViewMgr.Create<ViewEntity>(this);
@@ -299,14 +302,29 @@ public class BattleHero : Hero
         }
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
         this.eventDispatcher.AddEventListener(this, Events.ID_OPT);
-
+        EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL_POINT_REDUCE);
+        ConfigByLevel(this.level);
         return true;
     }
 
+    public void ConfigByLevel(int level)
+    {
+        this.hp = HeroLevelData.ins.heroBaseDataByLevels[level ].health;
+        this.damage = HeroLevelData.ins.heroBaseDataByLevels[level ].attack;
+        this.exp = HeroLevelData.ins.heroBaseDataByLevels[level ].exp_next_level;
+        this.crits_ratio = HeroLevelData.ins.heroBaseDataByLevels[level ].crit;
+        this.speed = HeroLevelData.ins.heroBaseDataByLevels[level].move_speed;
+        Debug.LogError(HeroLevelData.ins.heroBaseDataByLevels[level].move_speed);
+        Debug.LogError("this.speed=" + this.speed);
+    }
     public override void OnEvent(int type, object userData)
     {
         base.OnEvent(type, userData);
-
+        if (type == Events.ID_SKILL_POINT_REDUCE)
+        {
+            //Debug.LogError("sp --");
+            sp--;
+        }
         if (type == Events.ID_LAUNCH_SKILL1)
         {
             //  this.AddBuffer(bufferMgr.Create<Buffer4>());
@@ -314,34 +332,28 @@ public class BattleHero : Hero
             //   Bullet b = BulletMgr.Create<Bullet2_1>(this);
 
         }
-        else if (type == Events.ID_OPT)
+        if (type == Events.ID_OPT)
         {
-            this.ProcessWithFrameCustomsOpt((FrameCustomsOpt)(userData));
-        }
-
-    }
-    private void ProcessWithFrameCustomsOpt(FrameCustomsOpt opt)
-    {
-        if (opt == FrameCustomsOpt.LaunchDefendTower)
-        {
-            ArrayList towers = BuildingMgr.ins.GetBuildings<DefendTower>();
-            foreach (DefendTower t in towers)
+            FrameCustomsOpt opt =(FrameCustomsOpt) (userData);
+            if (opt == FrameCustomsOpt.level_up1)
             {
-                t.Launch();
+                (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(1);
+            }
+            else if (opt == FrameCustomsOpt.level_up2)
+            {
+                (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(2);
+            }
+            else if (opt == FrameCustomsOpt.level_up3)
+            {
+                (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(3);
+            }
+            else if (opt == FrameCustomsOpt.level_up4)
+            {
+                (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(4);
             }
         }
-        else if (opt == FrameCustomsOpt.Test)
-        {
 
-        }
-        else if (opt == FrameCustomsOpt.UnKnown)
-        {
 
-        }
-        else
-        {
-            Debug.LogError("ProcessWithFrameCustomsOpt UnKnown Opt " + opt.ToString());
-        }
     }
     public override void UpdateMS()
     {
@@ -419,9 +431,37 @@ public class BattleHero : Hero
         {//test
             /// eventDispatcher.PostEvent(Events.ID_BTN_ATTACK);
         }
+        if (this.current_exp > this.exp)
+        {
+            LevelUp();
+        }
+        if (sp>0)
+        {
+            ShowLevelUPButton();
+        }
 
     }
 
+    private int sp = 0;
+    private void LevelUp()
+    {
+       
+        this.current_exp -= this.exp;
+        this.level++;
+        this.sp++;
+        ConfigByLevel(this.level);
+    }
+    
+    private void ShowLevelUPButton()
+    {
+        ArrayList list = new ArrayList();
+        for (int i = 1; i < 4; i++)
+        {
+            bool levelupAble = (this.machine.GetState<SkillState>() as SkillState).AreLevelUpAbleByIndex(i);
+            list.Add(levelupAble);
+        }
+        EventDispatcher.ins.PostEvent(Events.ID_SKILL_LEVEL_IS_UP, list);
+    }
     Hero target = null;
 
     private int cd_atk = 0;

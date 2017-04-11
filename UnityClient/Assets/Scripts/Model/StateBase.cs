@@ -1232,6 +1232,11 @@ public class SkillState : StateBase
         }
     }
 
+    public void PushLevelUp(int idx)
+    {
+        if (idx > skill_stacks.Count) return;
+        (skill_stacks[idx - 1] as SkillStack).PushLevelUp();
+    }
     public override void OnEvent(int type, object userData)
     {
         if (type == Events.ID_LAUNCH_SKILL1 && this.Enable == true)
@@ -1252,6 +1257,14 @@ public class SkillState : StateBase
                 }
             }
         }
+        //else if (type==Events.ID_SKILL_LEVEL_UP&&this.Enable==true)
+        //{
+        //    //Debug.LogError("收到升级消息");
+        //    //int idx = (int)userData;
+        //    //
+            
+            
+        //}
     }
     public void PushOnInterrupted(SkillBase who)
     {
@@ -1304,11 +1317,10 @@ public class SkillState : StateBase
     }
     public override void OnEnter()
     {
-
         this.stack.AddLocalEventListener(Events.ID_LAUNCH_SKILL1);
         this.stack.AddLocalEventListener(Events.ID_SPINE_COMPLETE);
+        this.stack.AddLocalEventListener(Events.ID_SKILL_LEVEL_UP);
         this.stack.AddLocalEventListener("SpineComplete");
-
 
         ///---------------------------------技能组 2
         string type = Target.type;
@@ -1359,6 +1371,13 @@ public class SkillState : StateBase
         }
         return Find(ref skill_stacks, typeof(T).ToString()) as T;
     }
+
+    public bool AreLevelUpAbleByIndex(int idx)
+    {
+        if( (skill_stacks[idx - 1] as SkillStack).TopSkill().level<3)
+            return true;
+        return false;
+    }
     private SkillBase Find(ref ArrayList list, string name)
     {
         foreach (SkillStack stack in list)
@@ -1370,6 +1389,7 @@ public class SkillState : StateBase
         }
         return null;
     }
+    
     ArrayList skill_stacks1 = new ArrayList();
     ArrayList skill_stacks2 = new ArrayList();
     ArrayList skill_stacks = null;

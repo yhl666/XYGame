@@ -255,6 +255,12 @@ public class Entity : Model
         if (info.damage > 0)
         {
             this.current_hp -= info.damage;
+            if (this.current_hp<=0)
+            {
+                //Debug.LogError("英雄增加了" + this.exp+"经验");
+                info.ownner._current_exp += this.exp;
+                this.exp = 0;
+            }
             eventDispatcher.PostEvent(Events.ID_HURT);//notify ui
         }
         info.Invoke();

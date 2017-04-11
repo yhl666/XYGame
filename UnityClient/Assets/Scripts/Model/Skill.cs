@@ -136,6 +136,12 @@ public sealed class SkillStack : GAObject
 
     }
 
+    public void PushLevelUp()
+    {
+        SkillBase s = stacks.Peek() as SkillBase;
+
+        s.PushLevelUp();
+    }
 
     public override void OnEvent(string what, object userData)
     {
@@ -228,7 +234,7 @@ public class SkillBase : Model
 {
     public Entity Target = null; // reference
     public SkillStack stack = null;//reference
-    public int level = 2;
+    public int level = 1;
     public virtual string GetName() { return "SkillBase"; }
     public virtual string GetAnimationName() { return ""; }
     public bool Enable = false;

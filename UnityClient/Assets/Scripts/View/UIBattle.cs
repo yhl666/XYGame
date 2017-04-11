@@ -293,17 +293,75 @@ public sealed class UI_skills : ViewUI
     }
     public override void OnEvent(int type, object userData)
     {
-
+        if (type == Events.ID_SKILL_LEVEL_IS_UP)
+        {
+            ArrayList list = (userData as ArrayList);
+            for (int i = 0; i < list.Count; i++)
+            {
+                if ((bool)list[i] == true)
+                {
+                    ShowButtonByNumber(i+1);
+                }
+            }
+        }
     }
+
+    public void ShowAllLevelUpButton()
+    {
+        this.btn_skill1_levelup.gameObject.SetActive(true);
+        this.btn_skill2_levelup.gameObject.SetActive(true);
+        this.btn_skill3_levelup.gameObject.SetActive(true);
+        this.btn_skill4_levelup.gameObject.SetActive(true);
+        this.btn_skill5_levelup.gameObject.SetActive(true);
+    }
+
+    public void HideAllLevelUpButton()
+    {
+        this.btn_skill1_levelup.gameObject.SetActive(false);
+        this.btn_skill2_levelup.gameObject.SetActive(false);
+        this.btn_skill3_levelup.gameObject.SetActive(false);
+        this.btn_skill4_levelup.gameObject.SetActive(false);
+        //this.btn_skill5_levelup.gameObject.SetActive(false);
+    }
+    public void ShowButtonByNumber(int num)
+    {
+        switch (num)
+        {
+            case 1:
+                this.btn_skill1_levelup.gameObject.SetActive(true);
+                break;
+            case 2:
+                this.btn_skill2_levelup.gameObject.SetActive(true);
+                break;
+            case 3:
+                this.btn_skill3_levelup.gameObject.SetActive(true);
+                break;
+            case 4:
+                this.btn_skill4_levelup.gameObject.SetActive(true);
+                break;
+            case 5:
+                this.btn_skill5_levelup.gameObject.SetActive(true);
+                break;
+        }
+    }
+
+
     public override bool Init()
     {
         base.Init();
+
 
         this.btn_skill1 = GameObject.Find("btn_skill1").GetComponent<Button>();
         this.btn_skill2 = GameObject.Find("btn_skill2").GetComponent<Button>();
         this.btn_skill3 = GameObject.Find("btn_skill3").GetComponent<Button>();
         this.btn_skill4 = GameObject.Find("btn_skill4").GetComponent<Button>();
         this.btn_skill5 = GameObject.Find("btn_skill5").GetComponent<Button>();
+        this.btn_skill1_levelup = GameObject.Find("btn_skill1_levelup").GetComponent<Button>();
+        this.btn_skill2_levelup = GameObject.Find("btn_skill2_levelup").GetComponent<Button>();
+        this.btn_skill3_levelup = GameObject.Find("btn_skill3_levelup").GetComponent<Button>();
+        this.btn_skill4_levelup = GameObject.Find("btn_skill4_levelup").GetComponent<Button>();
+        HideAllLevelUpButton();
+        //this.btn_skill5_levelup = GameObject.Find("btn_skill5_levelup").GetComponent<Button>();
         /*
    
    
@@ -333,14 +391,42 @@ public sealed class UI_skills : ViewUI
         {
             PublicData.ins.IS_s1 = 5;
         });
-
-
+        this.btn_skill1_levelup.onClick.AddListener(() =>
+        {
+            //Debug.LogError("send level1 up ");
+           PublicData.ins.IS_opt= FrameCustomsOpt.level_up1;
+           EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
+           HideAllLevelUpButton();
+        });
+        this.btn_skill2_levelup.onClick.AddListener(() =>
+        {
+            //Debug.LogError("send level1 up ");
+            PublicData.ins.IS_opt = FrameCustomsOpt.level_up2;
+            EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
+            HideAllLevelUpButton();
+        });
+        this.btn_skill3_levelup.onClick.AddListener(() =>
+        {
+            //Debug.LogError("send level1 up ");
+            PublicData.ins.IS_opt = FrameCustomsOpt.level_up3;
+            EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
+            HideAllLevelUpButton();
+        });
+        this.btn_skill4_levelup.onClick.AddListener(() =>
+        {
+            //Debug.LogError("send level1 up ");
+            PublicData.ins.IS_opt = FrameCustomsOpt.level_up4;
+            EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
+            HideAllLevelUpButton();
+        });
+        EventDispatcher.ins.AddEventListener(this,Events.ID_SKILL_LEVEL_IS_UP);
+        
         //  this.btn_skill2.gameObject.SetActive(false);
         //   this.btn_skill3.gameObject.SetActive(false);
         return true;
     }
 
-
+   
     private void On_BtnClicked(int e)
     {
         Debug.Log(" skill ckicled" + e);
@@ -358,6 +444,12 @@ public sealed class UI_skills : ViewUI
     Button btn_skill3;
     Button btn_skill4;
     Button btn_skill5;//切换取消 按钮
+
+    Button btn_skill1_levelup;
+    Button btn_skill2_levelup;
+    Button btn_skill3_levelup;
+    Button btn_skill4_levelup;
+    Button btn_skill5_levelup;
 }
 public sealed class UI_heroInfo : ViewUI
 {

@@ -5,6 +5,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using AIEnemy;
 
 public class Enemy : Entity
@@ -383,7 +384,6 @@ public class Enemy1 : Enemy
     public override bool Init()
     {
         base.Init();
-
         return true;
     }
 
@@ -396,6 +396,7 @@ public class Enemy1 : Enemy
     {
         base.UpdateMS();
     }
+    
 }
 
 public class Enemy1_Strengthen : Enemy1

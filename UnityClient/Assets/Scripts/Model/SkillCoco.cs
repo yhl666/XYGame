@@ -127,13 +127,7 @@ public class Skill61_1 : SkillBase
 
         BulletMgr.Create(this.Target, "BulletConfig", info3);
     }
-    public void LevelUp()
-    {
-        if (level<3)
-        {
-            level++;
-        }
-    }
+
 
     public override void OnSpineComplete()
     {
@@ -154,10 +148,11 @@ public class Skill61_1 : SkillBase
                     break;
                 case 2:
                     shoot2();
-                  
+                    cd.SetMax(Skill61_1_Data_V2.ins.cd);
                     break;
                 case 3:
                     shoot3();
+                    cd.SetMax(Skill61_1_Data_V3.ins.cd);
                     break;
             }
         }
@@ -230,7 +225,6 @@ public class Skill61_1 : SkillBase
        
     }
 
-    private int level = 2;
    
 
 
@@ -259,11 +253,11 @@ public class Skill61_2 : SkillBase
             info.launch_delta_xyz.y = 0;
             info.frameDelay = 4;
             info.distance_atk = 2.0f;
-            info.number = 0xfff;
-            info.isHitDestory = Skill61_2_Data_V1.ins.immediateDisappear;
+            info.number = 1;
+            info.isHitDestory = true;
             info.damage_ratio = Skill61_2_Data_V1.ins.damage_ratio;
             info.collider_size = Skill61_2_Data_V1.ins.hit_rect;
-            info.validTimes = 99999;
+            info.validTimes = 1;
             info.oneHitTimes = 1;
             //  info.rotate = -120.0f;
             //info.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
@@ -271,8 +265,8 @@ public class Skill61_2 : SkillBase
             info.distance = Skill61_2_Data_V1.ins.distance;
             info.speed = Skill61_2_Data_V1.ins.speed;
             info.lastTime = 10;
-            info.scale_x = 2f;
-            info.scale_y = 2f;
+            info.scale_x = Skill61_1_Data_V1.ins.scale_x;
+            info.scale_y = Skill61_1_Data_V1.ins.scale_y;
 
         }
         BulletMgr.Create(this.Target, "BulletConfig", info);
@@ -305,8 +299,8 @@ public class Skill61_2 : SkillBase
             info2.distance = Skill61_2_Data_V2.ins.distance;
             info2.speed = Skill61_2_Data_V2.ins.speed;
             info2.lastTime = 10;
-            info2.scale_x = 2f;
-            info2.scale_y = 2f;
+            info2.scale_x = Skill61_2_Data_V2.ins.scale_x;
+            info2.scale_y = Skill61_2_Data_V2.ins.scale_x;
 
         }
         BulletMgr.Create(this.Target, "BulletConfig", info2);
@@ -332,8 +326,8 @@ public class Skill61_2 : SkillBase
             info3.distance = Skill61_2_Data_V1.ins.distance;
             info3.speed = Skill61_2_Data_V1.ins.speed;
             info3.lastTime = 10;
-            info3.scale_x = Skill61_1_Data_V3.ins.scale_x;
-            info3.scale_y = Skill61_1_Data_V3.ins.scale_y;
+            info3.scale_x = Skill61_2_Data_V3.ins.scale_x;
+            info3.scale_y = Skill61_2_Data_V3.ins.scale_y;
         }
         BulletMgr.Create(this.Target, "BulletConfig", info3);
     }
@@ -362,14 +356,16 @@ public class Skill61_2 : SkillBase
                     break;
                 case 2:
                     shoot2();
+                    cd.SetMax(Skill61_2_Data_V2.ins.cd);
                     break;
                 case 3:
                     shoot3();
+                    cd.SetMax(Skill61_2_Data_V3.ins.cd);
                     break;
             }
         }
     }
-
+    
     public override void OnPush()
     {
         if (cd.IsMax() == false) return;
@@ -439,7 +435,6 @@ public class Skill61_2 : SkillBase
     private float forward;
     private Bullet bullet;
     private bool isReleased = false;
-    private int level = 2;
 
 
   
@@ -468,11 +463,11 @@ public class Skill61_3 : SkillBase
         //开始施法
         Target.attackingAnimationName = Skill61_3_Data.ins.animation_name;
 
-        b_shifa = null;
 
       
        
     }
+
 
     private void shoot1()
     {
@@ -488,12 +483,13 @@ public class Skill61_3 : SkillBase
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
             info.distance_atk = 2.0f;
             info.distance = 0;
-            info.number = 999;
+            info.number = 1;
             info.speed = 1.0f;
-            info.number = 999;
+            info.number = 1;
             info.lastTime = 5;
             info.isHitDestory = false;
             info.collider_size = Skill61_3_Data.ins.hit_rect;
+            info.damage_ratio = Skill61_3_Data.ins.damage_ratio_level1;
             BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(this.Target);
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
             //buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
@@ -521,11 +517,12 @@ public class Skill61_3 : SkillBase
             info.frameDelay = 20;
             info.distance_atk = 2.0f;
             info.distance = 0;
-            info.number = 999;
+            info.number = 1;
             info.speed = 1.0f;
             info.number = 999;
             info.lastTime = 5;
             info.isHitDestory = false;
+            info.damage_ratio = Skill61_3_Data.ins.damage_ratio_level2;
             info.collider_size = Skill61_3_Data.ins.hit_rect;
             BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(this.Target);
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
@@ -554,12 +551,13 @@ public class Skill61_3 : SkillBase
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
             info.distance_atk = 2.0f;
             info.distance = 0;
-            info.number = 999;
+            info.number = 1;
             info.speed = 1.0f;
             info.number = 999;
             info.lastTime = 5;
             info.isHitDestory = false;
             info.collider_size = Skill61_3_Data.ins.hit_rect;
+            info.damage_ratio = Skill61_3_Data.ins.damage_ratio_level3;
             BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(this.Target);
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
             buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
@@ -684,6 +682,4 @@ public class Skill61_3 : SkillBase
     }
     private bool is_shifa = true;
 
-    Bullet b_shifa = null;
-    private int level = 2;
 }

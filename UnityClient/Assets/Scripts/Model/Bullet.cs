@@ -3,8 +3,11 @@
 * Email:   me@dreamyouxi.com
 
  */
+
+using System;
 using UnityEngine;
 using System.Collections;
+using System.Runtime.CompilerServices;
 
 
 //TODO should use callback and configuration  OnEnter UpdateMS in a super class  ?
@@ -787,9 +790,35 @@ public sealed class BulletConfig : Bullet
         this.bounds_size = info.collider_size;
 
     }
-    public static BulletConfig CreateWithJson(string json)
+
+    public static BulletConfig CreateWithJson(string json="brief_detail:1233.0,brief_short:1113.0,plistAnimation:3333.0,frameDelay:37456.0,lastTime:4689.0,isHitDestory:456.0,number:237.0,speed:148.0,distance:922.0,distance_atk:333.0,buffers_string:2256.0,scale_x:3397.0,scale_y:2258.0,launch_delta_xy:1139.0,rotate:1139.0,damage_ratio:123.0,validTimes:132.0,oneHitTimes:85.0,")
+
     {
-        return null;
+
+        HashTable table = Json.Decode(json);
+        BulletConfig bulletConfig=new BulletConfig();
+
+        bulletConfig.info.brief_detail = table["brief_detail"];
+        bulletConfig.info.brief_short = table["brief_short"];
+        bulletConfig.info.plistAnimation = table["plistAnimation"];
+        bulletConfig.info.frameDelay = Convert.ToInt32(table["frameDelay"]);
+        bulletConfig.info.lastTime = Convert.ToInt32(table["lastTime"]);
+        bulletConfig.info.isHitDestory = Convert.ToBoolean(table["lastTime"]);
+        bulletConfig.info.number = Convert.ToInt32(table["number"]);
+        bulletConfig.info.speed = Convert.ToSingle(table["speed"]);
+        bulletConfig.info.distance = Convert.ToSingle(table["distance"]);
+        bulletConfig.info.distance_atk = Convert.ToSingle(table["distance_atk"]);
+        bulletConfig.info.scale_x = Convert.ToSingle(table["scale_x"]);
+        bulletConfig.info.scale_y = Convert.ToSingle(table["scale_y"]);
+        bulletConfig.info.rotate = Convert.ToSingle(table["rotate"]);
+        bulletConfig.info.damage_ratio = Convert.ToSingle(table["damage_ratio"]);
+        bulletConfig.info.validTimes = Convert.ToInt32(table["validTimes"]);
+        bulletConfig.info.oneHitTimes = Convert.ToInt32(table["oneHitTimes"]);
+        
+        //bulletConfig.info.buffers_string = table["buffers_string"];
+
+        return bulletConfig;
+
     }
     public BulletConfigInfo info = null;
 }
