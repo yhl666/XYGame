@@ -309,10 +309,10 @@ public class BattleHero : Hero
 
     public void ConfigByLevel(int level)
     {
-        this.hp = HeroLevelData.ins.heroBaseDataByLevels[level ].health;
-        this.damage = HeroLevelData.ins.heroBaseDataByLevels[level ].attack;
-        this.exp = HeroLevelData.ins.heroBaseDataByLevels[level ].exp_next_level;
-        this.crits_ratio = HeroLevelData.ins.heroBaseDataByLevels[level ].crit;
+        this.hp = HeroLevelData.ins.heroBaseDataByLevels[level].health;
+        this.damage = HeroLevelData.ins.heroBaseDataByLevels[level].attack;
+        this.exp = HeroLevelData.ins.heroBaseDataByLevels[level].exp_next_level;
+        this.crits_ratio = HeroLevelData.ins.heroBaseDataByLevels[level].crit;
         this.speed = HeroLevelData.ins.heroBaseDataByLevels[level].move_speed;
         Debug.LogError(HeroLevelData.ins.heroBaseDataByLevels[level].move_speed);
         Debug.LogError("this.speed=" + this.speed);
@@ -334,27 +334,53 @@ public class BattleHero : Hero
         }
         if (type == Events.ID_OPT)
         {
-            FrameCustomsOpt opt =(FrameCustomsOpt) (userData);
-            if (opt == FrameCustomsOpt.level_up1)
-            {
-                (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(1);
-            }
-            else if (opt == FrameCustomsOpt.level_up2)
-            {
-                (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(2);
-            }
-            else if (opt == FrameCustomsOpt.level_up3)
-            {
-                (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(3);
-            }
-            else if (opt == FrameCustomsOpt.level_up4)
-            {
-                (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(4);
-            }
+            this.ProcessWithFrameCustomsOpt((FrameCustomsOpt)(userData));
+
         }
 
 
     }
+
+    private void ProcessWithFrameCustomsOpt(FrameCustomsOpt opt)
+    {
+        if (opt == FrameCustomsOpt.LaunchDefendTower)
+        {
+            ArrayList towers = BuildingMgr.ins.GetBuildings<DefendTower>();
+            foreach (DefendTower t in towers)
+            {
+                t.Launch();
+            }
+        }
+        else if (opt == FrameCustomsOpt.level_up1)
+        {
+            (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(1);
+        }
+        else if (opt == FrameCustomsOpt.level_up2)
+        {
+            (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(2);
+        }
+        else if (opt == FrameCustomsOpt.level_up3)
+        {
+            (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(3);
+        }
+        else if (opt == FrameCustomsOpt.level_up4)
+        {
+            (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(4);
+        }
+        else if (opt == FrameCustomsOpt.Test)
+        {
+
+        }
+        else if (opt == FrameCustomsOpt.UnKnown)
+        {
+
+        }
+        else
+        {
+            Debug.LogError("ProcessWithFrameCustomsOpt UnKnown Opt " + opt.ToString());
+        }
+    }
+
     public override void UpdateMS()
     {
 
@@ -435,7 +461,7 @@ public class BattleHero : Hero
         {
             LevelUp();
         }
-        if (sp>0)
+        if (sp > 0)
         {
             ShowLevelUPButton();
         }
@@ -445,13 +471,13 @@ public class BattleHero : Hero
     private int sp = 0;
     private void LevelUp()
     {
-       
+
         this.current_exp -= this.exp;
         this.level++;
         this.sp++;
         ConfigByLevel(this.level);
     }
-    
+
     private void ShowLevelUPButton()
     {
         ArrayList list = new ArrayList();
