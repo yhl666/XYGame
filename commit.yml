@@ -2,31 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'cc5320626435d7b6d792f46f4bc96f1aec8b83cb'
-    oldFile: !uuid '0cfc4cc82366f96f3327bd6221c23edf84f87197'
-  /UnityClient/Assets:
-    newFile: !uuid 'f7dfd84ec92be4691e9f81367a41d6e38f2a49b5'
-    oldFile: !uuid 'd4d5240706341d392f5e6ed496a0c14723b21b00'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '79d937ba89dfc527f7b883e5e8444b6821be75a3'
-    oldFile: !uuid '7496f1cc6e8670c9836f6806edd1dccc10211269'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '4de3b8777e2000fcd1d75711ff36fc3b20bb457b'
-    oldFile: !uuid '4d6efadff42625808910c613216853099376ebb6'
-  /UnityClient/Assets/Resources/Prefabs/map:
-    newFile: !uuid '66fc77954ad43c61b6fe9908ec22c37702a6e1bf'
-    oldFile: !uuid 'fb69f4104f8ad988d427298c63bedc5bce8b50fe'
-  /UnityClient/Assets/Resources/Prefabs/map/Terrain1.prefab:
-    newFile: !uuid '68a48b3bef738f01993804f83a94160597300534'
-    oldFile: !uuid 'bb0cbc1004aee0ee25d08110370c132f3a1ec55f'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '6e5618c96401d17011f81f79d43642fb833f0deb'
-    oldFile: !uuid 'c782013d5c150a6c626d57df0115101804a871a7'
-  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid '76b974ea67cd65cdab073aac7f4055fb12e79178'
-    oldFile: !uuid '8d23d48315d43d8e4a0b07723f786c8f02116147'
-gitCommitId: !uuid '9d9849380c5c5e2f77ef4969d1816236453dafc5'
+  /工作日志:
+    newFile: !uuid '88d11422618277521703aada93f6fc85fcdc261e'
+    oldFile: !uuid 'af66f065115841c29b4712b6cff1e2ed0b20b8df'
+  /工作日志/BUG提交:
+    newFile: !uuid '8704bef8d654064206d4054bfe0f7b56c0f03a3a'
+    oldFile: !uuid '6abd947666de7eaae8e845cc7c5c1ea0ebb1acc6'
+  /工作日志/BUG提交/010.txt:
+    newFile: !uuid '9992b0a4e9415348ff220e060ef11b81e0f46353'
+    oldFile: null
+gitCommitId: !uuid 'b0d474634bfc0d9e33410c1a9290d74b555e893b'
 renames: {
   }
-revisionId: 690
+revisionId: 691
