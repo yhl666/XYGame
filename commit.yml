@@ -2,13 +2,40 @@
 branches: {
   }
 fileChange:
-  /设计文档:
-    newFile: !uuid '52f8c3204536dadaa71aa25841e69d13cf0dca11'
-    oldFile: !uuid '5f2df7ad7bc648cf39449455def91121da0ca787'
-  /设计文档/技能升级.gif:
-    newFile: !uuid '8120cf35b06c8e221e16d0c556342d94a8446d10'
-    oldFile: null
-gitCommitId: !uuid '4dc97cd7ec178b162e00b6eaf2399a86274612e3'
+  /UnityClient:
+    newFile: !uuid '04c7c7c17ba3b7aeafddb015a0eb60b83442e635'
+    oldFile: !uuid '9787de9be520005f94b2535e3b1d26c80b67ad4d'
+  /UnityClient/Assets:
+    newFile: !uuid 'a2fda565420379b996149b63a3605ec8b3a392ba'
+    oldFile: !uuid '9d85674ee48d7f2624511fdba9bf92cb4a2037d2'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'b73156fb247bde57cca026cf6920cfcf4dd41fe8'
+    oldFile: !uuid '8be88cc64eb36d4c2648f02396cbf528503898e3'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '3e2cf8ab004c661b28438bc4c26c980deb7c5a6c'
+    oldFile: !uuid '12e2f613aed17723effaf74aee3ff16e63e45197'
+  /UnityClient/Assets/Scripts/Model/BufferMgr.cs:
+    newFile: !uuid '7d7558c399972096fb8c29a0523c6c51e1de01f5'
+    oldFile: !uuid '8091c160713a22956bd78c0c87d326d7e9911ea4'
+  /UnityClient/Assets/Scripts/Model/BuildingMgr.cs:
+    newFile: !uuid 'aaff055ff5c3a1394f76cd1b6602e1f3ae6701a3'
+    oldFile: !uuid '6e558c59b7fb4e8ee47716bfe2ff033f0460885c'
+  /UnityClient/Assets/Scripts/Model/EnemyMgr.cs:
+    newFile: !uuid 'bfc15db1612301ef15fdc86f416d7387944fca62'
+    oldFile: !uuid 'c07a2a919bed652b48ce5b3a2a597ff2e0849f2e'
+  /UnityClient/Assets/Scripts/Model/HeroMgr.cs:
+    newFile: !uuid '1986038149886f39e4b849eeb921a8027b73e706'
+    oldFile: !uuid '797ff823de35795119de447ddb87f9304ee19173'
+  /UnityClient/Assets/Scripts/Model/ModelMgr.cs:
+    newFile: !uuid '457808e930f8bd641fa48f9090cdc7f1cc6e5acf'
+    oldFile: !uuid '0fbe081a22ec6eac23baf764b40388e15d0bbbc5'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'e67024f7546c4cc0f138ff01f3dcd54c4f69a68b'
+    oldFile: !uuid '972b745ce5d89e269a8be57cd40465f66266c044'
+  /UnityClient/Assets/Scripts/View/UIBattle.cs:
+    newFile: !uuid '7a38bd8e54a686e90eb70e169e2e91a0dd10189d'
+    oldFile: !uuid '87c21f29769762f0723df79dc4047e23159d09c8'
+gitCommitId: !uuid '2be716c7045d81d486d4b902041179ed34575fcf'
 renames: {
   }
-revisionId: 678
+revisionId: 679
