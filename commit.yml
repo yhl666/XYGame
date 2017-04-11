@@ -2,25 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '8d5b165a91b4a843757bcdfa3106d202fde4274c'
-    oldFile: !uuid '8bf204898be1b186cccf086aba5c899fff926bf7'
-  /UnityClient/Assets:
-    newFile: !uuid 'ee4abd4337a63769a7a6f56d4f151c6a050cd658'
-    oldFile: !uuid '8f1bd40c93ae38b7dcff3405dc82b2a3e21610b4'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '285bf0ec8b099606938eef6e9c3ee6d23a6b3327'
-    oldFile: !uuid 'cdb12448aff3d459cb06eeba591236bfc54600ed'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '7c2c023ac57f6e0b62a2ce881a39938a14b15868'
-    oldFile: !uuid '52c905703fdb73b6e794a7950b31371fbb8f9542'
-  /UnityClient/Assets/Scripts/Model/AI:
-    newFile: !uuid 'd3297f54a1845b1ea5b344e861c404db3aba0a73'
-    oldFile: !uuid 'fff4c5b054a6bb9ef3e6c6c259dd7ec93e5e939b'
-  /UnityClient/Assets/Scripts/Model/AI/AIEnemy.cs:
-    newFile: !uuid '1b6a97299f9e29b8383685534e136b5a429ce1eb'
-    oldFile: !uuid '7014570b43908a2b462af172aef172fd96d49a7f'
-gitCommitId: !uuid 'eb56ba94214b425e0ca48f15473ee40bb4014da4'
+  /策划文档:
+    newFile: !uuid '86fe46eba219e89e08524099e8502ca73ef9d09c'
+    oldFile: !uuid '6dae639046e06b1a7e58c98e0d85a21c0df7084c'
+  /策划文档/角色_怪物_刷新点.xlsx:
+    newFile: !uuid 'd9061d25c3fb5bc8c71968cdc84b1858b88fe80a'
+    oldFile: !uuid '594ceede4672cb0a2fe27c7d4a2c39820ff529fe'
+gitCommitId: !uuid '8f82c79d48b4fdc9cee7bc336a1e86f071fe6147'
 renames: {
   }
-revisionId: 681
+revisionId: 682
