@@ -101,6 +101,31 @@ public sealed class BufferMgr : GAObject
             }
         }
     }
+    public ArrayList GetBuffers<T>() where T : Buffer
+    {
+        System.Type t = typeof(T);
+        ArrayList ret = new ArrayList();
+        foreach (Buffer b in lists)
+        {
+            if (b.GetType() == t)
+            {
+                ret.Add(b);
+            }
+        }
+        return ret;
+    }
+    public T GetBuffer<T>() where T : Buffer
+    {
+        System.Type t = typeof(T);
+        foreach (Buffer b in lists)
+        {
+            if (b.GetType() == t)
+            {
+                return b as T;
+            }
+        }
+        return null;
+    }
     public ArrayList GetBuffers()
     {
         return lists;

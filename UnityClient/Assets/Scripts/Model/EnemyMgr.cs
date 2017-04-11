@@ -80,6 +80,32 @@ public sealed class EnemyMgr : SingletonGAObject<EnemyMgr>
         }
         return null;
     }
+    public ArrayList GetEnemys<T>() where T : Enemy, new()
+    {
+        System.Type t = typeof(T);
+        ArrayList ret = new ArrayList();
+        foreach (Enemy b in lists)
+        {
+            if (b.GetType() == t)
+            {
+                ret.Add(b);
+            }
+        }
+        return ret;
+    }
+    public T GetEnemy<T>() where T : Enemy, new()
+    {
+        System.Type t = typeof(T);
+        foreach (Enemy b in lists)
+        {
+            if (b.GetType() == t)
+            {
+                return b as T;
+            }
+        }
+        return null;
+    }
+
     public int GetEnemyCount()
     {
         return lists.Count;

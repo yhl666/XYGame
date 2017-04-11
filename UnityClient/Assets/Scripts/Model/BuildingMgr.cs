@@ -9,7 +9,7 @@ using System.Collections;
 /// <summary>
 ///  manage and call all sub mgr(such as HeroMgr EnemyMgr and BulletMgr)  and model
 /// </summary>
-public sealed class BuildingMgr: SingletonGAObject<BuildingMgr>
+public sealed class BuildingMgr : SingletonGAObject<BuildingMgr>
 {
     public static T Create<T>() where T : new()
     {
@@ -33,6 +33,31 @@ public sealed class BuildingMgr: SingletonGAObject<BuildingMgr>
     {
         return lists;
     }
+    public ArrayList GetBuildings<T>() where T : Building, new()
+    {
+        System.Type t = typeof(T);
+        ArrayList ret = new ArrayList();
+        foreach (Building b in lists)
+        {
+            if (b.GetType() == t)
+            {
+                ret.Add(b);
+            }
+        }
+        return ret;
+    }
+    public T GetBuilding<T>() where T : Building, new()
+    {
+        System.Type t = typeof(T);
+        foreach (Building b in lists)
+        {
+            if (b.GetType() == t)
+            {
+                return b as T;
+            }
+        }
+        return null;// default(T);            
+    }
     public bool HasBuilding()
     {
         return lists.Count > 0;
@@ -53,9 +78,10 @@ public sealed class BuildingMgr: SingletonGAObject<BuildingMgr>
     {
         foreach (Building b in lists)
         {
-            // if (b.IsValid()) 
-
-            { b.UpdateMS(); }
+            b.AI_UpdateMSWithAI();
+            EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ONEENTITY_UPDATEMS, b);
+            b.UpdateMS();
+            EventDispatcher.ins.PostEvent(Events.ID_AFTER_ONEENTITY_UPDATEMS, b);
         }
 
         for (int i = 0; i < lists.Count; )
@@ -70,18 +96,18 @@ public sealed class BuildingMgr: SingletonGAObject<BuildingMgr>
                 ++i;
             }
         }
-    ///    EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
+        ///    EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
     }
     public override void Update()
     {
-      ///  EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLMODEL_UPDATEMS);
+        ///  EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLMODEL_UPDATEMS);
         foreach (Building b in lists)
         {
             // if (b.IsValid()) 
 
             { b.Update(); }
         }
-      ////  EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
+        ////  EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
     }
 
     ArrayList lists = new ArrayList();

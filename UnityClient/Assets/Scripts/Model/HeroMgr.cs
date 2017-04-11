@@ -10,7 +10,7 @@ using System.Collections;
 /// <summary>
 ///  sub mgr of ModelMgr
 /// </summary>
-public sealed class HeroMgr :  SingletonGAObject<HeroMgr>
+public sealed class HeroMgr : SingletonGAObject<HeroMgr>
 {
     public Hero self = null;
     public int me_no = 0;
@@ -82,16 +82,16 @@ public sealed class HeroMgr :  SingletonGAObject<HeroMgr>
     /// </summary>
     /// <param name="includeDie"> 是否包含死亡的Hero</param>
     /// <returns></returns>
-    public ArrayList GetHeros(bool includeDie=false)
+    public ArrayList GetHeros(bool includeDie = false)
     {
         if (includeDie)
         {
             return lists;
         }
         ArrayList ret = new ArrayList();
-        foreach(Hero h in lists)
+        foreach (Hero h in lists)
         {
-            if(false == h.isDie)
+            if (false == h.isDie)
             {
                 ret.Add(h);
             }
@@ -103,6 +103,32 @@ public sealed class HeroMgr :  SingletonGAObject<HeroMgr>
         foreach (Hero hero in lists)
         {
             if (hero.no == no) return hero;
+        }
+        return null;
+    }
+
+    public ArrayList GetHeros<T>() where T : Hero
+    {
+        System.Type t = typeof(T);
+        ArrayList ret = new ArrayList();
+        foreach (Hero b in lists)
+        {
+            if (b.GetType() == t)
+            {
+                ret.Add(b);
+            }
+        }
+        return ret;
+    }
+    public T GetHero<T>() where T : Hero
+    {
+        System.Type t = typeof(T);
+        foreach (Hero b in lists)
+        {
+            if (b.GetType() == t)
+            {
+                return b as T;
+            }
         }
         return null;
     }

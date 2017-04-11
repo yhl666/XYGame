@@ -103,6 +103,31 @@ public sealed class ModelMgr : SingletonGAObject<ModelMgr>
         ////  EventDispatcher.ins.PostEvent(Events.ID_AFTER_ALLMODEL_UPDATEMS);
     }
 
+    public ArrayList GetModels<T>() where T : Model
+    {
+        System.Type t = typeof(T);
+        ArrayList ret = new ArrayList();
+        foreach (Model b in lists)
+        {
+            if (b.GetType() == t)
+            {
+                ret.Add(b);
+            }
+        }
+        return ret;
+    }
+    public T GetModel<T>() where T : Model
+    {
+        System.Type t = typeof(T);
+        foreach (Model b in lists)
+        {
+            if (b.GetType() == t)
+            {
+                return b as T;
+            }
+        }
+        return null;// default(T);            
+    }
     ArrayList lists = new ArrayList();
 
 }

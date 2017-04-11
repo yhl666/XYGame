@@ -125,6 +125,18 @@ public sealed class UIBattleRoot : ViewUI
 
         base.OnExit();
     }
+    public T GetViewUI<T>() where T : ViewUI
+    {
+        System.Type t = typeof(T);
+        foreach (ViewUI b in _ui_child)
+        {
+            if (b.GetType() == t)
+            {
+                return b as T;
+            }
+        }
+        return null;
+    }
     protected ArrayList _ui_child = new ArrayList();
 
 }
