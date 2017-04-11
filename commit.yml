@@ -3,21 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '284c4abc69d9641c23ce199ee62b48b61151b7ef'
-    oldFile: !uuid '7829ae3f162c8e3c5f6826bb0101d61fc92eba24'
+    newFile: !uuid '67a74d575b13452b2de5b242c1644c8def398f00'
+    oldFile: !uuid '284c4abc69d9641c23ce199ee62b48b61151b7ef'
   /UnityClient/Assets:
-    newFile: !uuid 'f7770c890c796881f4675c645da9a010d3f7f79f'
-    oldFile: !uuid '01bf3bec8760b201cdb1507471ae40f1fd695c31'
+    newFile: !uuid '7be20372becb52d217cf8e36772951022c7d138c'
+    oldFile: !uuid 'f7770c890c796881f4675c645da9a010d3f7f79f'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '9e9d3b5998101d7e977783567fbfda5f703ce7e1'
-    oldFile: !uuid 'b61564a7ae404efbb6665647de76bc40c508315c'
+    newFile: !uuid '1bcc6551e8ffe140d8a420174564f2992b607fc1'
+    oldFile: !uuid '9e9d3b5998101d7e977783567fbfda5f703ce7e1'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'd9670090e187f7e7200cebe670f195d768bd888b'
-    oldFile: !uuid 'd45078e3f8db2d969c28665ce50b7f19a3c760b4'
-  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
-    newFile: !uuid 'f8e345dee73b9d9853b0a41004c4472b4ff8190f'
-    oldFile: !uuid '19e674ba90b664203861cd02c195aa6744bea674'
-gitCommitId: !uuid '185ac7f29a2e4f23fafbb82acd5e703d0fde982f'
+    newFile: !uuid '86323434095fc1778375e44ee45b01debb7b3b2a'
+    oldFile: !uuid 'd9670090e187f7e7200cebe670f195d768bd888b'
+  /UnityClient/Assets/Scripts/Model/Enemy.cs:
+    newFile: !uuid '1f2a2216b20de75fe8bb2902a8d151cfe242ff9a'
+    oldFile: !uuid '16263b794d892057b18b4919778d75a832cccefe'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid '1582d5a093a791f45c1d883b175db4f4523e1345'
+    oldFile: !uuid 'e06b428ee9349993ac4dd9945b3612164a060e33'
+  /UnityClient/Assets/Scripts/View/View.cs:
+    newFile: !uuid '859a91d6302cfa94306e96833aaf479440c82a8a'
+    oldFile: !uuid '4fe5e8bff0f48ab6fa2225b10d2c45e8217a7a63'
+gitCommitId: !uuid 'bb03103e6d21d4343e031f2f511c6b6d81194e4a'
 renames: {
   }
-revisionId: 707
+revisionId: 708
