@@ -194,8 +194,9 @@ public sealed class Events : object
     public const int ID_REVIVE = 75;
 
 
-
-
+    public const int ID_SKILL_LEVEL_UP = 515;
+    public const int ID_SKILL_LEVEL_IS_UP = 516;
+    public const int ID_SKILL_POINT_REDUCE = 517;
     //------------------------------local event-----------------------------------------------------------
 
     /* public const int ID_DISABLE_RUN = 100;//禁止run 状态

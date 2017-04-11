@@ -14,6 +14,11 @@ public enum FrameCustomsOpt
 {
     UnKnown = 0,
     Test = 1,
+        level_up1,//升级技能1
+    level_up2,//升级技能2
+    level_up3,//升级技能3
+    level_up4,//升级技能4
+    level_up5,//升级技能5
     LaunchDefendTower,//防御攻击消息
 }
 
