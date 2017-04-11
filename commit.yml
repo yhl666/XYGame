@@ -3,51 +3,15 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '2522326af6a4a0c7b6dcb0cc2404b0e9fd65f760'
-    oldFile: !uuid '83e739817894fb217fc5d19a222cbb7626d5a012'
-  /UnityClient/Assets:
-    newFile: !uuid '3a461aa7c57af5700fefa8abb7787fa48bcb4cbd'
-    oldFile: !uuid 'c12af2ce9fabac1b644b2815e6573c0ebba8939b'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'd1856cd1acd55a68e26d7d3b6fd621cd7d778f2c'
-    oldFile: !uuid '4c142aecd8668411c1af71eb10499277b08fdbbd'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '18d436a94c9b880d62d2491ff21b2106ddb653e1'
-    oldFile: !uuid 'eca9088ab02c6bab9cb2e72035ba7e9db229a823'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'f794815590f4debb68fd8f3bc877dda3ada25476'
-    oldFile: !uuid '500f67462c2f3125083e5cf7b34f54211d285c96'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid 'e16e9ff8d05d746cc4ab4a827f4bfadd374abfd6'
-    oldFile: !uuid 'd30902530e19e38b0c35d9c6190caefdb52441eb'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/UI_Battle.prefab:
-    newFile: !uuid '8c2877dd7cc41816b8f48e77d67d44ef25f965a4'
-    oldFile: !uuid 'bcfa9842dc78ace1f8f213ad5fd51a71b6c1dd35'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/UI_Battle.prefab.meta:
-    newFile: !uuid '56ec7cde33d5350e77f73265e2d53cf9dc87ca70'
-    oldFile: !uuid '37ed1333e725ca8b12bcdd4d2f7973744f698a4e'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab:
-    newFile: !uuid 'fbd49b2f090f47a2dba4b4b209b8c3a0421823e0'
-    oldFile: !uuid 'c463453768de7b4c62fa36415493d786fbdb2a2f'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab.meta:
-    newFile: !uuid 'a6457fa03f17b6fe550e4c95f358901a2f5ab59b'
-    oldFile: !uuid '6b3c38a368f8d1ce5349b8ac014401e193b9ae40'
-  /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid 'e85910686898ae1719fa863b229abf5893a03436'
-    oldFile: !uuid 'f6d9d1d4b2b1f7c1199deb426ec9d4d2248f642e'
-  /UnityClient/Assets/Resources/Sprites/levelup.gif:
-    newFile: !uuid 'edd8db8ce65a5ad9bf648fb6610c95db8c873b12'
-    oldFile: null
-  /UnityClient/Assets/Resources/Sprites/levelup.gif.meta:
-    newFile: !uuid '63fe8c232da3b04f26912f5e4bb2070844fdcc48'
-    oldFile: null
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid 'cf3f594ce10591eea74016ce93445e41eaabfafe'
-    oldFile: !uuid '38426f3cc7137db5c1f2049d1e9b2aa46a8711e4'
-  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid '42fe25b75a1581a3747be92d61974e8ad0c202ad'
-    oldFile: !uuid 'e4e0c4add54e98e5504036d84cfda86c264ae524'
-gitCommitId: !uuid '9afbacee868b5e2d51bfe5fbdf10675f8aa095cf'
+    newFile: !uuid 'd12acd83fc881f9c399701c3bc5be0bb1224e03c'
+    oldFile: !uuid '2522326af6a4a0c7b6dcb0cc2404b0e9fd65f760'
+  /UnityClient/ProjectSettings:
+    newFile: !uuid '4024fd7cbdcf3f5a3d483e1a4197e953b8d99dd8'
+    oldFile: !uuid '05696aa354965fb84edc49fc4307da9a9caf6ec9'
+  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
+    newFile: !uuid '1c9872768db8958ad5f15f13bfcfac39e22564e3'
+    oldFile: !uuid '7cb8d7d0e2b5e7e80ec0414eb8ba71d7ae4ba1f0'
+gitCommitId: !uuid '1e555cffde1584d750cc323f16481883be0739e3'
 renames: {
   }
-revisionId: 694
+revisionId: 695
