@@ -2,31 +2,22 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid 'd1ae2670156ebcde5698c83129a1018ca2755485'
-    oldFile: !uuid '482bfd40439484ca47f64e314c14ca3e8e9b83ea'
-  /工作日志/BUG处理:
-    newFile: !uuid '27d5278ccea689264f19683a5254eeb9ca70b3f6'
-    oldFile: !uuid 'b473383c1cf4b8cf8e129b67b90bf2b9f1b48814'
-  /工作日志/BUG处理/003.txt:
-    newFile: !uuid 'fa3b6df602113440e0f7447ab4bd1457141ee08b'
-    oldFile: null
-  /工作日志/BUG处理/006.txt:
-    newFile: !uuid '9cbc0d141ead61f3b6a906f946200ea64cb9e039'
-    oldFile: null
-  /工作日志/BUG处理/007.txt:
-    newFile: !uuid '9cbc0d141ead61f3b6a906f946200ea64cb9e039'
-    oldFile: null
-  /工作日志/BUG处理/008.txt:
-    newFile: !uuid 'fa3b6df602113440e0f7447ab4bd1457141ee08b'
-    oldFile: null
-  /工作日志/BUG处理/009.txt:
-    newFile: !uuid 'fa3b6df602113440e0f7447ab4bd1457141ee08b'
-    oldFile: null
-  /工作日志/BUG处理/011.txt:
-    newFile: !uuid 'fa3b6df602113440e0f7447ab4bd1457141ee08b'
-    oldFile: null
-gitCommitId: !uuid '3d907a6c08fde7b078de33c6cf24f9da9d7b23cd'
+  /UnityClient:
+    newFile: !uuid '284c4abc69d9641c23ce199ee62b48b61151b7ef'
+    oldFile: !uuid '7829ae3f162c8e3c5f6826bb0101d61fc92eba24'
+  /UnityClient/Assets:
+    newFile: !uuid 'f7770c890c796881f4675c645da9a010d3f7f79f'
+    oldFile: !uuid '01bf3bec8760b201cdb1507471ae40f1fd695c31'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '9e9d3b5998101d7e977783567fbfda5f703ce7e1'
+    oldFile: !uuid 'b61564a7ae404efbb6665647de76bc40c508315c'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'd9670090e187f7e7200cebe670f195d768bd888b'
+    oldFile: !uuid 'd45078e3f8db2d969c28665ce50b7f19a3c760b4'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid 'f8e345dee73b9d9853b0a41004c4472b4ff8190f'
+    oldFile: !uuid '19e674ba90b664203861cd02c195aa6744bea674'
+gitCommitId: !uuid '185ac7f29a2e4f23fafbb82acd5e703d0fde982f'
 renames: {
   }
-revisionId: 706
+revisionId: 707
