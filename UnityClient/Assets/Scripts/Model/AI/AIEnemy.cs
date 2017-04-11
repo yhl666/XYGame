@@ -176,7 +176,7 @@ namespace AIEnemy
             info._OnTakeAttack = (Bullet bullet, object userData) =>
             {
                 //命中后 切换为锁定塔 攻击
-                machine.ChangeTo<LockTower>();
+               /// machine.ChangeTo<LockTower>();
             };
             has_shoot = true;
             host.bullet_atk1_info = info;
