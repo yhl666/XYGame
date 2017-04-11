@@ -314,8 +314,8 @@ public class BattleHero : Hero
         this.exp = HeroLevelData.ins.heroBaseDataByLevels[level].exp_next_level;
         this.crits_ratio = HeroLevelData.ins.heroBaseDataByLevels[level].crit;
         this.speed = HeroLevelData.ins.heroBaseDataByLevels[level].move_speed;
-        Debug.LogError(HeroLevelData.ins.heroBaseDataByLevels[level].move_speed);
-        Debug.LogError("this.speed=" + this.speed);
+        //Debug.LogError(HeroLevelData.ins.heroBaseDataByLevels[level].move_speed);
+        //Debug.LogError("this.speed=" + this.speed);
     }
     public override void OnEvent(int type, object userData)
     {
@@ -457,7 +457,7 @@ public class BattleHero : Hero
         {//test
             /// eventDispatcher.PostEvent(Events.ID_BTN_ATTACK);
         }
-        if (this.current_exp > this.exp)
+        if (this.current_exp > this.exp&&this.level<8)
         {
             LevelUp();
         }
