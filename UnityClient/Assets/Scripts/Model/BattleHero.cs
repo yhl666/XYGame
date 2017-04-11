@@ -457,7 +457,7 @@ public class BattleHero : Hero
         {//test
             /// eventDispatcher.PostEvent(Events.ID_BTN_ATTACK);
         }
-        if (this.current_exp > this.exp&&this.level<8)
+        if (this.current_exp >= this.exp&&this.level<8)
         {
             LevelUp();
         }
