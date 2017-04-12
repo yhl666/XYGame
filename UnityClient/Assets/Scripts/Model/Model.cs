@@ -70,7 +70,7 @@ public sealed class DirInput : Model
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_UI_WAIT);
         EventDispatcher.ins.AddEventListener(this, Events.ID_UI_NOWAIT);
-
+        SetPosition(new Vector2(Screen.width / 8, Screen.height / 7));
         return true;
     }
 
@@ -113,7 +113,7 @@ public sealed class DirInput : Model
 
     void OnTouchBegan(float x, float y)
     {
-        this.SetPosition(pos_began);
+     ///   this.SetPosition(pos_began);
     }
 
     void SetPosition(Vector2 pos)
@@ -149,7 +149,8 @@ public sealed class DirInput : Model
     {
         this._enable = false;
         //  dir = -1;
-        SetPosition(pos_began);
+        //    SetPosition(pos_began);
+        SetPosition(new Vector2(Screen.width / 8, Screen.height / 7));
         PublicData.ins.IS_dir = -1;
     }
 
@@ -162,6 +163,7 @@ public sealed class DirInput : Model
     void OnTouchMoved(float x, float y)
     {
         this._enable = true;
+        this.SetPosition(pos_began);
         //   Debug.Log("mov");
         //8方向 0 1 2 3 4 5 6 7
 

@@ -1236,11 +1236,19 @@ public class UI_dirInput : ViewUI
 
         if (this.ui.activeSelf != model._enable)
         {
-            this.ui.SetActive(model._enable);
+            ///  this.ui.SetActive(model._enable);
         }
-
-        if (model._enable)
+        if (model._enable == false)
         {
+            this.img_arrow.gameObject.SetActive(false);
+        }
+        else
+        {
+            this.img_arrow.gameObject.SetActive(true);
+        }
+   //  if (model._enable)
+        {
+
             //比例变换
             float factor_x = 1f / (Screen.width / 1136f);
             float factor_y = 1f / (Screen.height / 640f);
@@ -1254,6 +1262,7 @@ public class UI_dirInput : ViewUI
             this.img_bg.transform.localPosition = new Vector3(model.x_bg * factor_x, model.y_bg * factor_y, this.img_bg.transform.localPosition.z);
 
         }
+ 
     }
     public override bool Init()
     {
