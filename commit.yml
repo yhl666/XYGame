@@ -3,36 +3,30 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '35682cc6c7672b98b454bc034c8130833137ad73'
-    oldFile: !uuid '8e953c721a1095466bf6ae0d0770657954c9fb84'
+    newFile: !uuid 'e8a285136318087a45ed4b7eb432db099bdc363f'
+    oldFile: !uuid '35682cc6c7672b98b454bc034c8130833137ad73'
   /UnityClient/Assets:
-    newFile: !uuid '3b9c5f51bb9405947503033e964b7865be204810'
-    oldFile: !uuid '29e608e2218f300a8bd8dce4ca02a08cbae82048'
+    newFile: !uuid 'f9b6d6ee657cb405ac7b3624b1c4174873fa27bf'
+    oldFile: !uuid '3b9c5f51bb9405947503033e964b7865be204810'
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'c535888a483587e0ffbbefe846738aeed25064e6'
-    oldFile: !uuid '2e473f3a7e5e580c38361ec65a50e71e757ad3a2'
+    newFile: !uuid '7af66e7ecad93cac2874efb7440ed59403193a9f'
+    oldFile: !uuid 'c535888a483587e0ffbbefe846738aeed25064e6'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'e7fa30a5fabc54bf3220877dd4fa2fc332bcaa79'
-    oldFile: !uuid '5f82600025dd7296f2c9c37d1bd950f197dba658'
+    newFile: !uuid '531992469b366fff04108a427c47b85841d34d0c'
+    oldFile: !uuid 'e7fa30a5fabc54bf3220877dd4fa2fc332bcaa79'
   /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '50282da938b731687e83e9c998af2d9598ccec3a'
-    oldFile: !uuid 'e0f1f5f08cb243dd1ca0c37d8f6d5aff22accb06'
-  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn:
-    newFile: !uuid '80a1a3dd8d48d566c54f45bb0106f5a0c2253f9c'
-    oldFile: !uuid 'c37c888849a79efcf92c8a40682147fcb81eac49'
-  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/EnemyBornPoint1.prefab:
-    newFile: !uuid 'b4bd861363313af10ea6a8d3750dcc68af3ae2a8'
-    oldFile: !uuid '7d958a60bfa8a0d1f61db011e2b48096a0c99bfd'
-  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/EnemyBornPoint2.prefab:
-    newFile: !uuid '55c53ed85da30e204b81c0904a9a706788c7bd06'
-    oldFile: !uuid 'b190b9ebb71493210b2f32698b70f9df24c9028f'
-  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/EnemyBornPoint3.prefab:
-    newFile: !uuid '81bd72fa255bdf4c0b55ae49f100469296f325a2'
-    oldFile: !uuid 'd2dc7864e23a2a80094168f1bed90927ea2206e6'
-  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/EnemyBornPoint4.prefab:
-    newFile: !uuid '7d525e6cf4833e60047c2be28652af93f0da7378'
-    oldFile: !uuid '720efc8828237fed958f45272feb968feb237808'
-gitCommitId: !uuid 'bf97aa6fc01f294ad4a59bdbfdb6bb6d5806f464'
+    newFile: !uuid 'bea5a661cb642059b94dc629ec191d150e1801cc'
+    oldFile: !uuid '50282da938b731687e83e9c998af2d9598ccec3a'
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers:
+    newFile: !uuid '069dd12c0a9a7b46e128a990c033fefd445ef242'
+    oldFile: !uuid '4a75aaa2d6132af601e68537f554fa7f0da77a70'
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower1.prefab:
+    newFile: !uuid 'c1ab174f834c70558b5e3689b5977adba7ace88d'
+    oldFile: !uuid '32362d2b21084fd852d487324ebb063cb78a824a'
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower2.prefab:
+    newFile: !uuid '121b90e3ed2af3ded8c37a33ca1ffec1d7bc4679'
+    oldFile: !uuid '104c87a2493433817c1184b2a818922e5a8c4cce'
+gitCommitId: !uuid '1b0543c4419d3ee5fcc50180f845752597071ee6'
 renames: {
   }
-revisionId: 733
+revisionId: 734
