@@ -3,27 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '41522998c45be4faaca493968c0029f6daf66d7b'
-    oldFile: !uuid 'f099af494072b62fffb4d588c5fe57b0a796afbd'
+    newFile: !uuid 'd28f155020ce17c757c0d9af355de90c8563958c'
+    oldFile: !uuid '41522998c45be4faaca493968c0029f6daf66d7b'
   /UnityClient/Assets:
-    newFile: !uuid '016ccb9a24b395c9c046e4ab4ec794107d5076fe'
-    oldFile: !uuid '97ce69c5492a0e9bc3428b841fbfe68590b36360'
+    newFile: !uuid '692950bd1883cd60dcc3cf42d3e4edc5dbf120ec'
+    oldFile: !uuid '016ccb9a24b395c9c046e4ab4ec794107d5076fe'
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'a219d393cf6077466b7103cd25cf93f1f56589ba'
-    oldFile: !uuid '38433918983b4ac05f90ec97fb5f4ee0efd5e136'
+    newFile: !uuid '42b8b7a2014f862b18c694798d6b131355578e51'
+    oldFile: !uuid 'a219d393cf6077466b7103cd25cf93f1f56589ba'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'e4b5525f204f4e25bdcd04b599bda359bd07ccb2'
-    oldFile: !uuid 'e73dea81e5aecaf3bdfdce7ce1c0a2a4c8942158'
+    newFile: !uuid '3f117d6f479e0e4b4f0219f1a0b45b4ebe004410'
+    oldFile: !uuid 'e4b5525f204f4e25bdcd04b599bda359bd07ccb2'
   /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '65f806d1d4d627f78209e548c4d671ef8334988c'
-    oldFile: !uuid '987766827cdb206e9d33544f0180a2a4b38d2e2d'
+    newFile: !uuid 'a0bc459bd6377c8b05d10824fbc28d521756c0c1'
+    oldFile: !uuid '65f806d1d4d627f78209e548c4d671ef8334988c'
   /UnityClient/Assets/Resources/Prefabs/data/HpPacks:
-    newFile: !uuid 'e2a2b28c408e308cb8e8e9a1e98ba770b1260c8f'
-    oldFile: !uuid '82841c16b6655f31fbf0e89421ac0a9b657bc39a'
-  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack1.prefab:
-    newFile: !uuid '6125744ae2417612433f50c8fde048a79424e708'
-    oldFile: !uuid '9fbb1a4964fd0a35abdfa2ba0f7f035e9c6db1a5'
-gitCommitId: !uuid '4912cf0a500e004f573ba77b8db49fab62257501'
+    newFile: !uuid '8e22ed4358d2ac5a71a0ffa8962b2d9b307cadb3'
+    oldFile: !uuid 'e2a2b28c408e308cb8e8e9a1e98ba770b1260c8f'
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack2.prefab:
+    newFile: !uuid '3e9add3400388a9c44e09726328b128dbb279b49'
+    oldFile: !uuid 'b07f22db2d65f1102ada0c0e0b05f2ba165ea1ca'
+gitCommitId: !uuid '8cd28f91ba3659d35e42d73eecaa0b60e8949528'
 renames: {
   }
-revisionId: 736
+revisionId: 737
