@@ -1229,10 +1229,16 @@ public class UI_dirInput : ViewUI
 
 
         Hero self = HeroMgr.ins.self;
-        /* if (!self.alive)
+        if (self == null) return;
+         if (self.isDie)
          {//死亡后不显示摇杆
-             this.model._enable = false;
-         }*/
+             this.ui.SetActive(false);
+
+         }
+         else
+         {
+             this.ui.SetActive(true);
+         }
 
         if (this.ui.activeSelf != model._enable)
         {
