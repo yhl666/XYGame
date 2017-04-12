@@ -3,24 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'f099af494072b62fffb4d588c5fe57b0a796afbd'
-    oldFile: !uuid 'e8a285136318087a45ed4b7eb432db099bdc363f'
+    newFile: !uuid '41522998c45be4faaca493968c0029f6daf66d7b'
+    oldFile: !uuid 'f099af494072b62fffb4d588c5fe57b0a796afbd'
   /UnityClient/Assets:
-    newFile: !uuid '97ce69c5492a0e9bc3428b841fbfe68590b36360'
-    oldFile: !uuid 'f9b6d6ee657cb405ac7b3624b1c4174873fa27bf'
+    newFile: !uuid '016ccb9a24b395c9c046e4ab4ec794107d5076fe'
+    oldFile: !uuid '97ce69c5492a0e9bc3428b841fbfe68590b36360'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '38433918983b4ac05f90ec97fb5f4ee0efd5e136'
-    oldFile: !uuid '7af66e7ecad93cac2874efb7440ed59403193a9f'
+    newFile: !uuid 'a219d393cf6077466b7103cd25cf93f1f56589ba'
+    oldFile: !uuid '38433918983b4ac05f90ec97fb5f4ee0efd5e136'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'e73dea81e5aecaf3bdfdce7ce1c0a2a4c8942158'
-    oldFile: !uuid '531992469b366fff04108a427c47b85841d34d0c'
+    newFile: !uuid 'e4b5525f204f4e25bdcd04b599bda359bd07ccb2'
+    oldFile: !uuid 'e73dea81e5aecaf3bdfdce7ce1c0a2a4c8942158'
   /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '987766827cdb206e9d33544f0180a2a4b38d2e2d'
-    oldFile: !uuid 'bea5a661cb642059b94dc629ec191d150e1801cc'
-  /UnityClient/Assets/Resources/Prefabs/data/防御塔.prefab:
-    newFile: !uuid 'b59849b7cf330caeb8218dcb3b892c912ca5a687'
-    oldFile: !uuid '9ed4d8bc50d8244ca6e11b369d86acfbc42e3876'
-gitCommitId: !uuid '3badeaa8de1add83dab380751a0992f187980858'
+    newFile: !uuid '65f806d1d4d627f78209e548c4d671ef8334988c'
+    oldFile: !uuid '987766827cdb206e9d33544f0180a2a4b38d2e2d'
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks:
+    newFile: !uuid 'e2a2b28c408e308cb8e8e9a1e98ba770b1260c8f'
+    oldFile: !uuid '82841c16b6655f31fbf0e89421ac0a9b657bc39a'
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack1.prefab:
+    newFile: !uuid '6125744ae2417612433f50c8fde048a79424e708'
+    oldFile: !uuid '9fbb1a4964fd0a35abdfa2ba0f7f035e9c6db1a5'
+gitCommitId: !uuid '4912cf0a500e004f573ba77b8db49fab62257501'
 renames: {
   }
-revisionId: 735
+revisionId: 736
