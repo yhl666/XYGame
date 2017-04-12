@@ -3,45 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '8473c6db472629e0d960fec105de3bd0fd6e4b39'
-    oldFile: !uuid '77daba16a535f1f9d891beb0c75dd7d9eb89d35e'
+    newFile: !uuid '9915d4395f915a987d77397bb341866a269f564a'
+    oldFile: !uuid '8473c6db472629e0d960fec105de3bd0fd6e4b39'
   /UnityClient/Assets:
-    newFile: !uuid 'a75b7ca49144eeea9c4331622fd9b0f991b66fb8'
-    oldFile: !uuid '9327b4775de60e1ec3d3ad12eecb7ef366aa3b2e'
+    newFile: !uuid '939381ac12aa21e020ab7328462dd5aab3d626c0'
+    oldFile: !uuid 'a75b7ca49144eeea9c4331622fd9b0f991b66fb8'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '4a49752280c8e3a8ca6e28bf3e02de8d4bf4d25b'
-    oldFile: !uuid '258256647bb32deb5571d066b50abf46850f5b74'
+    newFile: !uuid '3c2537cfbaab51a6364e51afeb304cf5ec382e01'
+    oldFile: !uuid '4a49752280c8e3a8ca6e28bf3e02de8d4bf4d25b'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '76a83eb645fcf838ec4c548f7450381f9290ae3e'
-    oldFile: !uuid '97474268271077334185e4c47ea7d993a5b97826'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'cdc4eb5f095154f3a6222a88579d31cb4330ee61'
-    oldFile: !uuid '683e77f79d8fbff8626c72525d5a0b2ec2afa6e1'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid '0384b3f871ecdba06869770c54d84ddfd717607f'
-    oldFile: !uuid '63020ee0038e1e36bdd812f6c22c6dbf7af3d5a4'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/UI_Battle.prefab:
-    newFile: !uuid '4e093e5e489e3e8ef69146619946c432cb0750cb'
-    oldFile: !uuid '8c2877dd7cc41816b8f48e77d67d44ef25f965a4'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_hero_info.prefab:
-    newFile: !uuid 'a4ded8001e29e661352cd7487570e0174ee984cb'
-    oldFile: !uuid 'e6d4d6d65d2570f1c461a3a35d293894ffc81148'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid 'e628371e37a3f32035d21c28836ab7f88abd63b5'
-    oldFile: !uuid '6dc94771e36ac6d6d1d70c90e638c823b93d5ace'
-  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid '61dc59a755176ab05d09eb9dd408119c9307a0f3'
-    oldFile: !uuid '771622337632523d228692698b5d1c135838b70b'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '13fdd749c137dc4d675870b4362e94380ceeb2ba'
-    oldFile: !uuid '5472b0ee1be132e2d6df74ead4415250a5b96dd2'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'f8acaf827f6683760253832781b4f090b8bc9151'
-    oldFile: !uuid '7654071e3334e212512eb999cf0729f3d11ef76e'
-  /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid '3320a969d5cacb147f4d4168f86b64f83d2a687b'
-    oldFile: !uuid '8fe8922ee433fc8da95d52f3e3942aa1b100f6f6'
-gitCommitId: !uuid 'f7c21ab04bf99ad609b51eeb12a2ed6e42a730fa'
+    newFile: !uuid 'cef588b15de5a511a167600de46c77ac3ec4ca6b'
+    oldFile: !uuid '76a83eb645fcf838ec4c548f7450381f9290ae3e'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '99e9626b17ce86f32e89bac9caac143eb4c5884e'
+    oldFile: !uuid 'b07db3eb4bfac6d86558389bab6bf170fd757f55'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
+    newFile: !uuid 'ff86138b43e728c5a44d0dc59ae4e1d9bdc66391'
+    oldFile: !uuid '668d10da65ad975a52e46a23a0263be4e18f9c0b'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
+    newFile: !uuid '6402f8f73f363af448b581ae642e9059f77ba7fe'
+    oldFile: !uuid '60fd48378d08fd9b3031569fd626a1ce5bb96c42'
+gitCommitId: !uuid 'ef9fd08f102c46d77961ca1126a4ee78c88c2d57'
 renames: {
   }
-revisionId: 713
+revisionId: 714
