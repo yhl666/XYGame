@@ -2504,6 +2504,9 @@ public class Skill62_3_v2 : SkillBase
                 //长方
                 info.collider_size = Skill62_3_Data.ins.hit_rect;
                 info.collider_type = ColliderType.Box;
+                info.number = 1;
+                info.isHitDestory = true;
+                info.validTimes = 1;
             }
             else if (level == 2)
             {
@@ -2513,118 +2516,121 @@ public class Skill62_3_v2 : SkillBase
             }
             b = BulletMgr.Create(this.Target, "BulletConfig", info);
         }
+        if (level == 2)
         {
-            //视觉效果
-            BulletConfigInfo info = BulletConfigInfo.Create();
+            {
+                //视觉效果
+                BulletConfigInfo info = BulletConfigInfo.Create();
 
-            info.AddBuffer("BufferHitBack");
-            if (level == 2)
-            {
-                BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
-                buf.SetLastTime(Skill62_3_Data.ins.spin_time);
-                info.AddBuffer(buf);
-            }
-            // info.launch_delta_xy.x = 1.5f;
-            //  info.launch_delta_xy.y = -0.2f;
-            info.frameDelay = 3;
-            info.distance_atk = 1.5f;
-            info.number = 0;
-            info.isHitDestory = false;
-            info.oneHitTimes = 1;
-            //  info.rotate = -120.0f;
-            ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
+                info.AddBuffer("BufferHitBack");
+                if (level == 2)
+                {
+                    BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
+                    buf.SetLastTime(Skill62_3_Data.ins.spin_time);
+                    info.AddBuffer(buf);
+                }
+                // info.launch_delta_xy.x = 1.5f;
+                //  info.launch_delta_xy.y = -0.2f;
+                info.frameDelay = 3;
+                info.distance_atk = 1.5f;
+                info.number = 0;
+                info.isHitDestory = false;
+                info.oneHitTimes = 1;
+                //  info.rotate = -120.0f;
+                ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
 
-            //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
-            /// info.rotate = 30.0f;
-            info.distance = 2f;
-            ///   info.lastTime = 10;
-            info.scale_x = 2f;
-            info.scale_y = 2f;
+                //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
+                /// info.rotate = 30.0f;
+                info.distance = 2f;
+                ///   info.lastTime = 10;
+                info.scale_x = 2f;
+                info.scale_y = 2f;
 
-            info.launch_delta_xyz.x = Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
-            info.launch_delta_xyz.y = Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
-            info.launch_delta_xyz.z = Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+                info.launch_delta_xyz.x = Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
+                info.launch_delta_xyz.y = Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
+                info.launch_delta_xyz.z = Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
 
-            info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
-            info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
-            if (Target.flipX < 0)
-            {
-                info.dir_2d = Skill62_3_Data.ins.sector_angle / 2;
-            }
-            else
-            {
-                info.dir_2d = 180 - Skill62_3_Data.ins.sector_angle / 2;
-            }
+                info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
+                info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
+                if (Target.flipX < 0)
+                {
+                    info.dir_2d = Skill62_3_Data.ins.sector_angle / 2;
+                }
+                else
+                {
+                    info.dir_2d = 180 - Skill62_3_Data.ins.sector_angle / 2;
+                }
 
-            if (level == 1)
-            {
-                //长方
-                info.collider_size = Skill62_3_Data.ins.hit_rect;
-                info.collider_type = ColliderType.Box;
+                if (level == 1)
+                {
+                    //长方
+                    info.collider_size = Skill62_3_Data.ins.hit_rect;
+                    info.collider_type = ColliderType.Box;
+                }
+                else if (level == 2)
+                {
+                    info.collider_type = ColliderType.Sector;
+                    info.sector_angle = Skill62_3_Data.ins.sector_angle;
+                    info.sector_radius = Skill62_3_Data.ins.sector_radius;
+                }
+                BulletMgr.Create(this.Target, "BulletConfig", info);
             }
-            else if (level == 2)
             {
-                info.collider_type = ColliderType.Sector;
-                info.sector_angle = Skill62_3_Data.ins.sector_angle;
-                info.sector_radius = Skill62_3_Data.ins.sector_radius;
-            }
-            BulletMgr.Create(this.Target, "BulletConfig", info);
-        }
-        {
-            //视觉效果
-            BulletConfigInfo info = BulletConfigInfo.Create();
+                //视觉效果
+                BulletConfigInfo info = BulletConfigInfo.Create();
 
-            info.AddBuffer("BufferHitBack");
-            if (level == 2)
-            {
-                BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
-                buf.SetLastTime(Skill62_3_Data.ins.spin_time);
-                info.AddBuffer(buf);
-            }
-            // info.launch_delta_xy.x = 1.5f;
-            //  info.launch_delta_xy.y = -0.2f;
-            info.frameDelay = 3;
-            info.distance_atk = 1.5f;
-            info.number = 0;
-            info.isHitDestory = false;
-            info.oneHitTimes = 1;
-            //  info.rotate = -120.0f;
-            ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
+                info.AddBuffer("BufferHitBack");
+                if (level == 2)
+                {
+                    BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
+                    buf.SetLastTime(Skill62_3_Data.ins.spin_time);
+                    info.AddBuffer(buf);
+                }
+                // info.launch_delta_xy.x = 1.5f;
+                //  info.launch_delta_xy.y = -0.2f;
+                info.frameDelay = 3;
+                info.distance_atk = 1.5f;
+                info.number = 0;
+                info.isHitDestory = false;
+                info.oneHitTimes = 1;
+                //  info.rotate = -120.0f;
+                ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
 
-            //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
-            /// info.rotate = 30.0f;
-            info.distance = 2f;
-            ///   info.lastTime = 10;
-            info.scale_x = 2f;
-            info.scale_y = 2f;
+                //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
+                /// info.rotate = 30.0f;
+                info.distance = 2f;
+                ///   info.lastTime = 10;
+                info.scale_x = 2f;
+                info.scale_y = 2f;
 
-            info.launch_delta_xyz.x = Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
-            info.launch_delta_xyz.y = Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
-            info.launch_delta_xyz.z = Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+                info.launch_delta_xyz.x = Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
+                info.launch_delta_xyz.y = Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
+                info.launch_delta_xyz.z = Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
 
-            info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
-            info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
-            if (Target.flipX < 0)
-            {
-                info.dir_2d = 360 - Skill62_3_Data.ins.sector_angle / 2;
+                info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
+                info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
+                if (Target.flipX < 0)
+                {
+                    info.dir_2d = 360 - Skill62_3_Data.ins.sector_angle / 2;
+                }
+                else
+                {
+                    info.dir_2d = 180 + Skill62_3_Data.ins.sector_angle / 2;
+                }
+                if (level == 1)
+                {
+                    //长方
+                    info.collider_size = Skill62_3_Data.ins.hit_rect;
+                    info.collider_type = ColliderType.Box;
+                }
+                else if (level == 2)
+                {
+                    info.collider_type = ColliderType.Sector;
+                    info.sector_angle = Skill62_3_Data.ins.sector_angle;
+                    info.sector_radius = Skill62_3_Data.ins.sector_radius;
+                }
+                BulletMgr.Create(this.Target, "BulletConfig", info);
             }
-            else
-            {
-                info.dir_2d = 180 + Skill62_3_Data.ins.sector_angle / 2;
-            }
-            if (level == 1)
-            {
-                //长方
-                info.collider_size = Skill62_3_Data.ins.hit_rect;
-                info.collider_type = ColliderType.Box;
-            }
-            else if (level == 2)
-            {
-                info.collider_type = ColliderType.Sector;
-                info.sector_angle = Skill62_3_Data.ins.sector_angle;
-                info.sector_radius = Skill62_3_Data.ins.sector_radius;
-            }
-            BulletMgr.Create(this.Target, "BulletConfig", info);
         }
     }
     public override void OnSpineComplete()

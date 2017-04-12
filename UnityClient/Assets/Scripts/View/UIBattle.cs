@@ -80,7 +80,11 @@ public sealed class UIBattleRoot : ViewUI
             this._ui_child.Add(ViewUI.Create<UI_frame>(this));
             return DATA.EMPTY_STRING;
         }));
-
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_boss>(this));
+            return DATA.EMPTY_STRING;
+        }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_flytext>(this));
@@ -300,7 +304,7 @@ public sealed class UI_skills : ViewUI
             {
                 if ((bool)list[i] == true)
                 {
-                    ShowButtonByNumber(i+1);
+                    ShowButtonByNumber(i + 1);
                 }
             }
         }
@@ -394,9 +398,9 @@ public sealed class UI_skills : ViewUI
         this.btn_skill1_levelup.onClick.AddListener(() =>
         {
             //Debug.LogError("send level1 up ");
-           PublicData.ins.IS_opt= FrameCustomsOpt.level_up1;
-           EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
-           HideAllLevelUpButton();
+            PublicData.ins.IS_opt = FrameCustomsOpt.level_up1;
+            EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
+            HideAllLevelUpButton();
         });
         this.btn_skill2_levelup.onClick.AddListener(() =>
         {
@@ -419,14 +423,14 @@ public sealed class UI_skills : ViewUI
             EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
             HideAllLevelUpButton();
         });
-        EventDispatcher.ins.AddEventListener(this,Events.ID_SKILL_LEVEL_IS_UP);
-        
+        EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL_LEVEL_IS_UP);
+
         //  this.btn_skill2.gameObject.SetActive(false);
         //   this.btn_skill3.gameObject.SetActive(false);
         return true;
     }
 
-   
+
     private void On_BtnClicked(int e)
     {
         Debug.Log(" skill ckicled" + e);
@@ -1529,3 +1533,131 @@ public sealed class UI_tower : ViewUI
 
 
 }
+
+
+
+public sealed class UI_boss : ViewUI
+{
+    public override void OnHide()
+    {
+        panel.SetActive(false);
+    }
+    public override void OnShow()
+    {
+        panel.SetActive(true);
+    }
+    public override void Update()
+    {// code copy from UI_buffers
+        base.Update();
+
+        if (tick.Tick()) return;
+        tick.Reset();
+        if (boss == null)
+        {
+            boss = EnemyMgr.ins.GetEnemy<EnemyBoss>();
+            this.Hide();
+            return;
+        }
+        this.Show();
+        ArrayList buffers = boss.bufferMgr.GetBuffers();
+
+        int index = 0;
+        foreach (Buffer buffer in buffers)
+        {
+            if (!buffer.show_ui) continue;
+            if (index > MAX_BUFFER_SHOW) break;
+
+            (list_panel[index] as GameObject).SetActive(true);
+            if (buffer.enable_time)
+            {
+                Counter t = buffer.GetCounter();
+
+                float current = t.GetCurrent();
+                float max = t.GetMax();
+                (list_img_filled[index] as Image).fillAmount = current / max;
+                float timef = ((max - current) / (float)Config.MAX_FPS);
+
+                int time = (int)((max - current) / Config.MAX_FPS);
+                if (timef < 1.0f)
+                {
+                    (list_txt_time[index] as Text).text = timef.ToString("0.0");
+                }
+                else
+                {
+                    (list_txt_time[index] as Text).text = time.ToString();
+                }
+            }
+            else
+            {
+                (list_img_filled[index] as Image).fillAmount = 0;
+                (list_txt_time[index] as Text).text = "";
+            }
+            (list_txt[index] as Text).text = buffer.brief;
+            Sprite sp = SpriteFrameCache.ins.GetSpriteFrameAuto(buffer.icon).sprite;
+            (list_img[index] as Image).sprite = sp;
+            ++index;
+        }
+
+        for (int i = index; i <= MAX_BUFFER_SHOW; i++)
+        {
+            (list_panel[i] as GameObject).SetActive(false);
+
+        }
+
+        txt_hp.text = boss.current_hp.ToString() + " / " + boss.hp.ToString();
+        img_hp.gameObject.transform.localScale = new Vector3(Utils.RangeLimit((float)boss.current_hp / (float)boss.hp, 0f, 1f),
+            img_hp.gameObject.transform.localScale.y, img_hp.gameObject.transform.localScale.z);
+        txt_info.text = "Boss:唐僧 LV:" + boss.level + "   敌人总数:" + EnemyMgr.ins.GetEnemyCount().ToString();
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+        this.panel = GameObject.Find("ui_panel_boss");
+        this.panel.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        for (int i = 0; i <= MAX_BUFFER_SHOW; i++)
+        {
+            string name = "Buffer" + i.ToString();
+
+            Transform buf = this.panel.transform.FindChild(name);
+
+            Image img = buf.FindChild("icon").GetComponent<Image>();
+            Text txt = buf.GetComponentInChildren<Text>();
+            Image img_fill = buf.FindChild("filled").GetComponent<Image>();
+            Text txt_time = buf.FindChild("time").GetComponent<Text>();
+            this.list_img.Add(img);
+            this.list_txt.Add(txt);
+            this.list_img_filled.Add(img_fill);
+            this.list_txt_time.Add(txt_time);
+
+            buf.gameObject.SetActive(false);
+            this.list_panel.Add(buf.gameObject);
+
+        }
+        txt_hp = panel.transform.FindChild("panel_boss/txt_hp").GetComponent<Text>();
+        txt_info = panel.transform.FindChild("panel_boss/txt_info").GetComponent<Text>();
+        img_hp = panel.transform.FindChild("panel_boss/img_hp").GetComponent<Image>();
+
+        if (list_img.Count != list_txt.Count)
+        {
+            throw new ArgumentNullException("");
+        }
+        return true;
+    }
+
+    Counter tick = Counter.Create(0);
+    private const int MAX_BUFFER_SHOW = 8;
+    ArrayList list_panel = new ArrayList();//GameObject
+    ArrayList list_img = new ArrayList();
+    ArrayList list_txt = new ArrayList();
+    ArrayList list_txt_time = new ArrayList();
+    ArrayList list_img_filled = new ArrayList();
+    GameObject panel = null;
+
+    Text txt_hp = null;
+    Image img_hp;
+    Text txt_info = null;
+    EnemyBoss boss = null;
+}
+

@@ -37,7 +37,24 @@ public sealed class Utils
     {
         return Vector3.Distance(v1, new Vector3(v2.x, v2.y, v1.z));
     }
-
+    public static float RangeLimit(float value, float min, float max)
+    {
+        if (value > max) return max;
+        if (value < min) return min;
+        return value;
+    }
+    public static int RangeLimit(int value, int min, int max)
+    {
+        if (value > max) return max;
+        if (value < min) return min;
+        return value;
+    }
+    public static double RangeLimit(double value, double min, double max)
+    {
+        if (value > max) return max;
+        if (value < min) return min;
+        return value;
+    }
     /// <summary>
     /// y和 z 的混合比例 默认为 1：1 45度视角
     /// </summary>
