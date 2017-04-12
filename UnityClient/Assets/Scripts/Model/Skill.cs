@@ -2432,7 +2432,7 @@ public class Skill62_3_v2 : SkillBase
                 info.scale_x = 2f;
                 info.scale_y = 2f;
 
-                Bullet b = BulletMgr.Create(this.Target, "BulletConfig", info);
+                BulletMgr.Create(this.Target, "BulletConfig", info);
 
 
             }
@@ -2523,20 +2523,13 @@ public class Skill62_3_v2 : SkillBase
                 //视觉效果
                 BulletConfigInfo info = BulletConfigInfo.Create();
 
-                info.AddBuffer("BufferHitBack");
-                if (level >= 2)
-                {
-                    BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
-                    buf.SetLastTime(Skill62_3_Data.Get(level).spin_time);
-                    info.AddBuffer(buf);
-                }
                 // info.launch_delta_xy.x = 1.5f;
                 //  info.launch_delta_xy.y = -0.2f;
                 info.frameDelay = 3;
                 info.distance_atk = 1.5f;
                 info.number = 0;
                 info.isHitDestory = false;
-                info.oneHitTimes = 1;
+                info.oneHitTimes = 0;
                 //  info.rotate = -120.0f;
                 ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
 
@@ -2552,7 +2545,7 @@ public class Skill62_3_v2 : SkillBase
                 info.launch_delta_xyz.z = Skill62_3_Data.Get(level).delta_xyz.z;// -0.2f;
 
                 info.plistAnimation = Skill62_3_Data.Get(level).hit_animation_name;
-                info.damage_ratio = Skill62_3_Data.Get(level).damage_ratio;
+                info.damage_ratio = 0f;
                 if (Target.flipX < 0)
                 {
                     info.dir_2d = Skill62_3_Data.Get(level).sector_angle / 2;
@@ -2580,20 +2573,13 @@ public class Skill62_3_v2 : SkillBase
                 //视觉效果
                 BulletConfigInfo info = BulletConfigInfo.Create();
 
-                info.AddBuffer("BufferHitBack");
-                if (level >= 2)
-                {
-                    BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
-                    buf.SetLastTime(Skill62_3_Data.Get(level).spin_time);
-                    info.AddBuffer(buf);
-                }
                 // info.launch_delta_xy.x = 1.5f;
                 //  info.launch_delta_xy.y = -0.2f;
                 info.frameDelay = 3;
                 info.distance_atk = 1.5f;
                 info.number = 0;
                 info.isHitDestory = false;
-                info.oneHitTimes = 1;
+                info.oneHitTimes = 0;
                 //  info.rotate = -120.0f;
                 ///   info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
 
@@ -2609,7 +2595,7 @@ public class Skill62_3_v2 : SkillBase
                 info.launch_delta_xyz.z = Skill62_3_Data.Get(level).delta_xyz.z;// -0.2f;
 
                 info.plistAnimation = Skill62_3_Data.Get(level).hit_animation_name;
-                info.damage_ratio = Skill62_3_Data.Get(level).damage_ratio;
+                info.damage_ratio = 0f;
                 if (Target.flipX < 0)
                 {
                     info.dir_2d = 360 - Skill62_3_Data.Get(level).sector_angle / 2;

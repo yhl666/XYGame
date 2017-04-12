@@ -221,7 +221,7 @@ public class Enemy : Entity
     }
     public override void OnEvent(int type, object userData)
     {
-        base.OnEvent(type, userData);
+
 
         if (type == Events.ID_LAUNCH_SKILL1)
         {
@@ -239,6 +239,7 @@ public class Enemy : Entity
                 if (ani_die == "")
                 {
                     this.SetInValid();
+                    return;
                 }
             }
             if (userData as Entity == target)
@@ -250,6 +251,7 @@ public class Enemy : Entity
         }
         else if (type == Events.ID_SPINE_COMPLETE && isDie)
         {
+      ///      this.bufferMgr.Clear();
             this.SetInValid();
         }
     }

@@ -992,6 +992,8 @@ public class BufferSpin : Buffer
         target.machine.GetState<RunXZState>().SetDisable();
         target.machine.GetState<FallState>().Resume();
         target.machine.GetState<StandState>().Resume();
+        target.machine.GetState<DieState>().Resume();
+
     }
     public override void OnExit()
     {
