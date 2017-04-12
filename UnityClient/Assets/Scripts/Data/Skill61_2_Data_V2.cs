@@ -19,7 +19,7 @@ public class Skill61_2_Data_V2 : MonoBehaviour
     public float scale_x;//特效大小的X
     public float scale_y;//特效大小的y
     public bool immediateDisappear;//是否立即消失
-
+    public int playTimes;//播放时间
     public static Skill61_2_Data_V2 ins = null;
     void Awake()
     {

@@ -94,16 +94,18 @@ public class Skill61_1 : SkillBase
 
     private void shoot3()
     {
+        //Debug.LogError("skill1 level3 shoot");
         BulletConfigInfo info3 = BulletConfigInfo.Create();
         BufferSpin spin = BufferMgr.CreateHelper<BufferSpin>(this.Target);
         BufferHitBack hitBack = BufferMgr.CreateHelper<BufferHitBack>(this.Target);
         hitBack.position = this.Target.pos;
         info3.AddBuffer(hitBack);
+        info3.AddBuffer(spin);
         spin.SetLastTime(Skill61_1_Data_V3.ins.spinTime);
 
         {
             
-            info3.AddBuffer(spin);
+
             info3.damage_ratio = Skill61_1_Data_V3.ins.damage_ratio;
             info3.collider_size = Skill61_1_Data_V3.ins.hit_rect;
 
@@ -238,6 +240,7 @@ public class Skill61_2 : SkillBase
         cd.Reset();
         cancelCounter.Reset();
         tick1Counter.Reset();
+        endPlay.Reset();
         this.PauseAll();
         Target.isAttacking = true;
         this.Enable = true;
@@ -346,6 +349,7 @@ public class Skill61_2 : SkillBase
     {
         cd.Tick();
         cancelCounter.Tick();
+        endPlay.Tick();
         if (tick1Counter.Tick() != true && isReleased == false)
         {
             isReleased = true;
@@ -363,6 +367,10 @@ public class Skill61_2 : SkillBase
                     cd.SetMax(Skill61_2_Data_V3.ins.cd);
                     break;
             }
+        }
+        if (endPlay.IsMax())
+        {
+            this.OnExit();
         }
     }
     
@@ -430,7 +438,7 @@ public class Skill61_2 : SkillBase
     Counter cd = Counter.Create(Skill61_2_Data_V1.ins.cd);
     Counter tick1Counter = Counter.Create(Skill61_2_Data_V1.ins.bulletLaunchDealy);
     Counter cancelCounter=Counter.Create(Skill61_2_Data_V1.ins.cancel);
-
+    Counter endPlay = Counter.Create(Skill61_2_Data_V1.ins.playTimes);
 
     private float forward;
     private Bullet bullet;
