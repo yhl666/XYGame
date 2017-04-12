@@ -3,27 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '94603cdc13c5ca48ba2c576ad21dffa35e6abb0a'
-    oldFile: !uuid '6afb5b9b4b6b28a5e3ce8d4815498742b87f354f'
+    newFile: !uuid '0e1c32aa59ba0d6c7fa1ec6d214fe91fa025c776'
+    oldFile: !uuid '94603cdc13c5ca48ba2c576ad21dffa35e6abb0a'
   /UnityClient/Assets:
-    newFile: !uuid 'ae737cfc46104d927aae0f772f43af4e923f69c4'
-    oldFile: !uuid '4dc7b513b4a29ebd0da185ce00e83b6f6771594a'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '909bc9d06de8c30f9a72f8316a872c0744f55019'
-    oldFile: !uuid '3c2537cfbaab51a6364e51afeb304cf5ec382e01'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '7b8d4ee1f3ecf4a74238a54f24cce5d1d14d09b4'
-    oldFile: !uuid 'cef588b15de5a511a167600de46c77ac3ec4ca6b'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '6a9ca4fa605d07ac2dabb393c5a47133a5eaa5c0'
-    oldFile: !uuid 'cdc4eb5f095154f3a6222a88579d31cb4330ee61'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid '19b0400b06745250123c733be4316759c95ce68d'
-    oldFile: !uuid '0384b3f871ecdba06869770c54d84ddfd717607f'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/UI_Battle.prefab:
-    newFile: !uuid 'f94dd3fc1a7579c4b0a6f76cfd17788425b2c88e'
-    oldFile: !uuid '4e093e5e489e3e8ef69146619946c432cb0750cb'
-gitCommitId: !uuid '416017276de563552600aa8724e528343d42c049'
+    newFile: !uuid 'd64229f4dafd7bafd091fc76b49ee7536acc87b7'
+    oldFile: !uuid 'ae737cfc46104d927aae0f772f43af4e923f69c4'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'fa3a0b694d78f165b1113a11867947c4acf9d680'
+    oldFile: !uuid '85bcc6b35fc8cf895b1c8f0d4fe6d5f0b26dae32'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'b6a5bb3627fbad6b38bfbc199562d319779a556e'
+    oldFile: !uuid 'bf1c0a9f31baf934e636015893b9b4053eebcb48'
+  /UnityClient/Assets/Scripts/View/UIBattle.cs:
+    newFile: !uuid 'd7cf6e66d5b0c5baeb5087393df87f9ca915ee16'
+    oldFile: !uuid 'e110fc2c81c27f2f2f2b0f62d8975d750844c350'
+gitCommitId: !uuid '20e26ef1473bc2897e34a7c398d0c06905bf65f0'
 renames: {
   }
-revisionId: 717
+revisionId: 718
