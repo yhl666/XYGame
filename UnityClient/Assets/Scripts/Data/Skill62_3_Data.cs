@@ -6,9 +6,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class Skill62_3_Data : MonoBehaviour
+[System.Serializable]
+public class Skill62_3_DataLevelAble
 {
-
     //common
     public string cancelable_skill;//能取消（打断）的技能名字， 逗号隔开
 
@@ -28,10 +28,45 @@ public class Skill62_3_Data : MonoBehaviour
 
     public int sector_angle;//扇形角度
     public float sector_radius;//扇形半径
-   
-    public static Skill62_3_Data ins = null;
+}
+
+
+public class Skill62_3_Data : MonoBehaviour
+{
+
+    public Skill62_3_DataLevelAble level_1;
+    public Skill62_3_DataLevelAble level_2;
+    public Skill62_3_DataLevelAble level_3;
     void Awake()
     {
-        ins = this;
+        _ins = this;
+    }
+    public static Skill62_3_DataLevelAble ins
+    {
+        get
+        {
+            return Get(1);//默认一级
+        }
+    }
+    static Skill62_3_Data _ins = null;
+    public static Skill62_3_DataLevelAble Get(int level)
+    {
+        if (level == 1)
+        {
+            return _ins.level_1;
+        }
+        else if (level == 2)
+        {
+            return _ins.level_2;
+        }
+        else if (level == 3)
+        {
+            return _ins.level_3;
+        }
+        else
+        {
+            return Get(1);//默认返回等级1
+        }
+        return null;
     }
 }

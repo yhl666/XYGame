@@ -290,7 +290,7 @@ public class BufferEquipTest1 : Buffer
 
                 int add_crits = 10;
                 this.owner.crits_ratio += add_crits;
-              //  Debug.Log("触发了屠龙效果" + this._level + " 伤害增加" + add_damage + "  暴击率增加" + add_crits);
+                //  Debug.Log("触发了屠龙效果" + this._level + " 伤害增加" + add_damage + "  暴击率增加" + add_crits);
                 this.brief = "屠龙x" + this._level;
             }
         }
@@ -313,7 +313,7 @@ public class BufferEquipTest1 : Buffer
         this.owner.crits_ratio -= this._level * 10;
 
         this._level = 0;
-     //   Debug.Log("屠龙效果 清除");
+        //   Debug.Log("屠龙效果 清除");
     }
     public override bool Init()
     {
@@ -356,7 +356,7 @@ public class BufferEquipTest2 : Buffer
                 tick.Reset();
                 this.left_hp = 25;
                 this.show_ui = true;
-            ///    Debug.Log("触发了护体效果吸收" + left_hp + "伤害  Hero剩余血量" + owner.current_hp);
+                ///    Debug.Log("触发了护体效果吸收" + left_hp + "伤害  Hero剩余血量" + owner.current_hp);
 
                 //触发
             }
@@ -385,11 +385,11 @@ public class BufferEquipTest2 : Buffer
                 //     info.damage = -left_hp;
                 if (info.is_crits)
                 {
-                   // Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点暴击伤害 剩余血量" + owner.current_hp);
+                    // Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点暴击伤害 剩余血量" + owner.current_hp);
                 }
                 else
                 {
-//                    Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点伤害 剩余血量" + owner.current_hp);
+                    //                    Debug.Log("护体效果吸收了 " + (damage - info.damage) + " 点伤害 剩余血量" + owner.current_hp);
 
                 }
 
@@ -410,7 +410,7 @@ public class BufferEquipTest2 : Buffer
     private void ResetBuffer()
     {
         this.left_hp = 0;
-//        Debug.Log("护体效果结束");
+        //        Debug.Log("护体效果结束");
         this.show_ui = false;
     }
 
@@ -1305,6 +1305,66 @@ public class BufferBaTi : Buffer
 
     private int left_hp = 0;//护罩剩余血量
     private System.Random random = new System.Random(0);
+}
+
+
+/// <summary>
+/// Boss  技能2 叠加攻击Buffer
+/// </summary>
+public class BufferBoss2 : Buffer
+{
+    public override T Clone<T>()
+    {
+        BufferBoss2 ret = new BufferBoss2();
+        ret.Init();
+        ret.damage_orign = this.damage_orign;
+        ret.percent = percent;
+        ret.level = 0;
+        return ret as T;
+    }
+    public override string GetName()
+    {
+        return "BufferBoss2";
+    }
+    private int damage_orign = 0;
+    public int percent =10; // 每次叠加比例
+    private int level = 0;
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        this.damage_orign = target.damage;
+        this.OnMerge(null);
+    }
+    public override void UpdateMS()
+    {
+        //         if (tick.Tick())
+        //         {
+        //             return;
+        //         }
+        //         this.SetInValid();
+    }
+    public override bool Init()
+    {
+        base.Init();
+        show_ui = true;
+        icon = "hd/interface/items/503063.png";
+        brief = "攻击" + percent.ToString() + "%";
+        enable_time = false;
+        isOnlyOne = true;
+        return true;
+    }
+    public override void OnMerge(Buffer other)
+    {
+        this.level++;
+        target.damage = (int)((float)damage_orign * (1 + (float)level * percent/100f));
+        brief = "攻击+" + (percent*level).ToString("00") + "%";
+    }
+    public override void OnExit()
+    {
+        this.target.damage = damage_orign;
+
+        base.OnExit();
+    }
 }
 
 

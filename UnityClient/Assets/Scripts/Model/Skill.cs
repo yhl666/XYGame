@@ -235,6 +235,11 @@ public class SkillBase : Model
     public Entity Target = null; // reference
     public SkillStack stack = null;//reference
     public int level = 1;
+    public Counter cd = Counter.Create();
+    public Counter GetCd()
+    {
+        return cd;
+    }
     public virtual string GetName() { return "SkillBase"; }
     public virtual string GetAnimationName() { return ""; }
     public bool Enable = false;
@@ -1889,7 +1894,6 @@ public class Skill62_1_v2 : SkillBase
         return "Skill62_1";
     }
     Bullet b = null;
-    Counter cd = Counter.Create(Skill62_1_Data.ins.cd);
     Counter tick = Counter.Create(Skill62_1_Data.ins.last_time);
     Counter tick_cancel = Counter.Create(Skill62_1_Data.ins.cancel);
 
@@ -1899,9 +1903,9 @@ public class Skill62_1_v2 : SkillBase
     }
     public override void OnEnter()
     {
-        cd.SetMax(Skill62_1_Data.ins.cd);
-        tick.SetMax(Skill62_1_Data.ins.last_time);
-        tick_cancel.SetMax(Skill62_1_Data.ins.cancel);
+        cd.SetMax(Skill62_1_Data.Get(level).cd);
+        tick.SetMax(Skill62_1_Data.Get(level).last_time);
+        tick_cancel.SetMax(Skill62_1_Data.Get(level).cancel);
 
         cd.Reset();
         tick_cancel.Reset();
@@ -1921,19 +1925,19 @@ public class Skill62_1_v2 : SkillBase
         }
         Target.isAttacking = true;
         this.Enable = true;
-        Target.attackingAnimationName = Skill62_1_Data.ins.animation_name; // "6100_2";
+        Target.attackingAnimationName = Skill62_1_Data.Get(level).animation_name; // "6100_2";
         this.Shoot();
 
-        if (level == 2)
+        if (level >= 2)
         {
             BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(Target);
-            buffer.percent = -Skill62_1_Data.ins.added_speed_percent;
-            buffer.time = Skill62_1_Data.ins.last_time;
+            buffer.percent = -Skill62_1_Data.Get(level).added_speed_percent;
+            buffer.time = Skill62_1_Data.Get(level).last_time;
             Target.AddBuffer(buffer);
         }
         {
             BufferNegativeUnbeatable buffer = BufferMgr.CreateHelper<BufferNegativeUnbeatable>(Target);
-            buffer.MAX_TICK = Skill62_1_Data.ins.last_time;
+            buffer.MAX_TICK = Skill62_1_Data.Get(level).last_time;
             Target.AddBuffer(buffer);
         }
     }
@@ -1968,18 +1972,18 @@ public class Skill62_1_v2 : SkillBase
         info.distance_atk = 1.5f;
         info.number = 0xfff;
         info.isHitDestory = false;
-        info.damage_ratio = Skill62_1_Data.ins.damage_ratio;
+        info.damage_ratio = Skill62_1_Data.Get(level).damage_ratio;
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
         info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6122/role_6_bul_6122.plist";
         /// info.rotate = 30.0f;
         info.distance = 0;
         info.lastTime = 10;
-        info.collider_size = Skill62_1_Data.ins.hit_rect;
+        info.collider_size = Skill62_1_Data.Get(level).hit_rect;
         info.scale_x = 2f;
         info.scale_y = 2f;
 
-        if (level == 2)
+        if (level >= 2)
         {
             info._OnTakeAttack = (Bullet b1, object userdata) =>
                 {
@@ -1987,9 +1991,9 @@ public class Skill62_1_v2 : SkillBase
 
                     BufferAttachTo buffer = BufferMgr.CreateHelper<BufferAttachTo>(Target);
                     buffer.to = Target;
-                    buffer.distance = Skill62_1_Data.ins.attach_distance;
+                    buffer.distance = Skill62_1_Data.Get(level).attach_distance;
                     target.AddBuffer(buffer);
-                    buffer.SetLastTime(Skill62_1_Data.ins.attach_last_time);
+                    buffer.SetLastTime(Skill62_1_Data.Get(level).attach_last_time);
                 };
         }
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
@@ -2205,13 +2209,12 @@ public class Skill62_2_v2 : SkillBase
     }
     BufferSkill62_2 buf = null;
     BulletConfig bu_hide = null;
-    Counter cd = Counter.Create(Skill62_2_Data.ins.cd);
     Counter tick = Counter.Create(40);
     bool has_shoot = false;
     public override void OnEnter()
     {
-        cd.SetMax(Skill62_2_Data.ins.cd);
-        int time = (int)(Skill62_2_Data.ins.time * Utils.fps);
+        cd.SetMax(Skill62_2_Data.Get(level).cd);
+        int time = (int)(Skill62_2_Data.Get(level).time * Utils.fps);
         tick.SetMax(time);
         tick.Reset();
         cd.Reset();
@@ -2222,30 +2225,30 @@ public class Skill62_2_v2 : SkillBase
 
         //特效
         BulletConfigInfo info = BulletConfigInfo.Create();
-        info.launch_delta_xyz.x = Skill62_2_Data.ins.delta_xyz.x;// 1.5f;
-        info.launch_delta_xyz.y = Skill62_2_Data.ins.delta_xyz.y;// -0.2f;
-        info.launch_delta_xyz.z = Skill62_2_Data.ins.delta_xyz.z;// -0.2f;
+        info.launch_delta_xyz.x = Skill62_2_Data.Get(level).delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = Skill62_2_Data.Get(level).delta_xyz.y;// -0.2f;
+        info.launch_delta_xyz.z = Skill62_2_Data.Get(level).delta_xyz.z;// -0.2f;
         info.damage_type = DamageType.REAL;
         info.frameDelay = 4;
         info.distance_atk = 1.5f;
         info.number = 0;
         info.isHitDestory = false;
         info.oneHitTimes = 1;
-        info.damage_real = Skill62_2_Data.ins.damage;
+        info.damage_real = Skill62_2_Data.Get(level).damage;
         //  info.rotate = -120.0f;
-        info.plistAnimation = Skill62_2_Data.ins.hit_animation_name;
+        info.plistAnimation = Skill62_2_Data.Get(level).hit_animation_name;
         /// info.rotate = 30.0f;
         info.distance = 0;
         info.lastTime = 0xffff;
         info.scale_x = 2f;
         info.scale_y = 2f;
-        info.collider_size = Skill62_2_Data.ins.hit_rect;
+        info.collider_size = Skill62_2_Data.Get(level).hit_rect;
 
         info._OnUpdateMS = (Bullet bb, object userdata) =>
         {
-            bb.x = Target.x + Skill62_2_Data.ins.delta_xyz.x;
-            bb.y = Target.y + Skill62_2_Data.ins.delta_xyz.y;
-            bb.z = Target.z + Skill62_2_Data.ins.delta_xyz.z;
+            bb.x = Target.x + Skill62_2_Data.Get(level).delta_xyz.x;
+            bb.y = Target.y + Skill62_2_Data.Get(level).delta_xyz.y;
+            bb.z = Target.z + Skill62_2_Data.Get(level).delta_xyz.z;
             bu_hide.tick = 0;
         };
 
@@ -2254,7 +2257,7 @@ public class Skill62_2_v2 : SkillBase
     }
     public override void UpdateMS()
     {
-        if (Target.current_hp <= Skill62_2_Data.ins.hp_reduce)
+        if (Target.current_hp <= Skill62_2_Data.Get(level).hp_reduce)
         {
             this.OnExit();
             return;
@@ -2277,19 +2280,19 @@ public class Skill62_2_v2 : SkillBase
     {
         if (level == 1)
         {
-            Target.current_hp -= Skill62_2_Data.ins.hp_reduce;
+            Target.current_hp -= Skill62_2_Data.Get(level).hp_reduce;
         }
         BulletConfigInfo info = BulletConfigInfo.Create();
-        info.launch_delta_xyz.x = Skill62_2_Data.ins.delta_xyz.x;// 1.5f;
-        info.launch_delta_xyz.y = Skill62_2_Data.ins.delta_xyz.y;// -0.2f;
-        info.launch_delta_xyz.z = Skill62_2_Data.ins.delta_xyz.z;// -0.2f;
+        info.launch_delta_xyz.x = Skill62_2_Data.Get(level).delta_xyz.x;// 1.5f;
+        info.launch_delta_xyz.y = Skill62_2_Data.Get(level).delta_xyz.y;// -0.2f;
+        info.launch_delta_xyz.z = Skill62_2_Data.Get(level).delta_xyz.z;// -0.2f;
         info.damage_type = DamageType.REAL;
         info.frameDelay = 4;
         info.distance_atk = 1.5f;
         info.number = 0xfff;
         info.isHitDestory = false;
         info.oneHitTimes = 1;
-        info.damage_real = Skill62_2_Data.ins.damage;
+        info.damage_real = Skill62_2_Data.Get(level).damage;
         //  info.rotate = -120.0f;
         info.plistAnimation = "";// Skill62_2_Data.ins.hit_animation_name;
         /// info.rotate = 30.0f;
@@ -2297,13 +2300,13 @@ public class Skill62_2_v2 : SkillBase
         info.lastTime = 10;
         info.scale_x = 2f;
         info.scale_y = 2f;
-        info.collider_size = Skill62_2_Data.ins.hit_rect;
+        info.collider_size = Skill62_2_Data.Get(level).hit_rect;
 
         info._OnUpdateMS = (Bullet bb, object userdata) =>
               {
-                  bb.x = Target.x + Skill62_2_Data.ins.delta_xyz.x;
-                  bb.y = Target.y + Skill62_2_Data.ins.delta_xyz.y;
-                  bb.z = Target.z + Skill62_2_Data.ins.delta_xyz.z;
+                  bb.x = Target.x + Skill62_2_Data.Get(level).delta_xyz.x;
+                  bb.y = Target.y + Skill62_2_Data.Get(level).delta_xyz.y;
+                  bb.z = Target.z + Skill62_2_Data.Get(level).delta_xyz.z;
               };
 
 
@@ -2374,28 +2377,26 @@ public class Skill62_3_v2 : SkillBase
     {
         return "Skill62_3";
     }
-
-    Counter cd = Counter.Create(Skill62_3_Data.ins.cd);
     Counter tick1 = Counter.Create(Skill62_3_Data.ins.start_jump);
     Counter tick_cancel = Counter.Create(Skill62_3_Data.ins.cancel);
     bool has_shoot = false;
     public override void OnEnter()
     {
-        cd.SetMax(Skill62_3_Data.ins.cd);
-        tick1.SetMax(Skill62_3_Data.ins.start_jump);
-        tick_cancel.SetMax(Skill62_3_Data.ins.cancel);
+        cd.SetMax(Skill62_3_Data.Get(level).cd);
+        tick1.SetMax(Skill62_3_Data.Get(level).start_jump);
+        tick_cancel.SetMax(Skill62_3_Data.Get(level).cancel);
         tick_cancel.Reset();
         cd.Reset();
         this.PauseAll();
         tick1.Reset();
-        jump_speed = Skill62_3_Data.ins.jump_speed;// DATA.DEFAULT_JUMP_SPEED * 1f;
+        jump_speed = Skill62_3_Data.Get(level).jump_speed;// DATA.DEFAULT_JUMP_SPEED * 1f;
         has_shoot = false;
         this.Target.machine.GetState<StandState>().Resume();
         this.Target.machine.GetState<FallState>().Resume();
         Target.isAttacking = true;
         this.Enable = true;
         Target.is_spine_loop = true;
-        Target.attackingAnimationName = Skill62_3_Data.ins.animation_name;//// "6140_1";
+        Target.attackingAnimationName = Skill62_3_Data.Get(level).animation_name;//// "6140_1";
     }
 
     private float jump_speed = Skill62_3_Data.ins.jump_speed;  // DATA.DEFAULT_JUMP_SPEED * 1f;
@@ -2439,7 +2440,7 @@ public class Skill62_3_v2 : SkillBase
             {
                 //接入重力
 
-                jump_speed -= 9.8f / 40.0f * 0.1f * Skill62_3_Data.ins.gravity_ratio;
+                jump_speed -= 9.8f / 40.0f * 0.1f * Skill62_3_Data.Get(level).gravity_ratio;
                 ///   current_height += jump_speed;
                 this.Target.y += jump_speed;
             }
@@ -2469,10 +2470,10 @@ public class Skill62_3_v2 : SkillBase
             hitBack.SetAttackSource(Target);
             info.AddBuffer(hitBack);
 
-            if (level == 2)
+            if (level >= 2)
             {
                 BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
-                buf.SetLastTime(Skill62_3_Data.ins.spin_time);
+                buf.SetLastTime(Skill62_3_Data.Get(level).spin_time);
                 info.AddBuffer(buf);
             }
             // info.launch_delta_xy.x = 1.5f;
@@ -2492,41 +2493,41 @@ public class Skill62_3_v2 : SkillBase
             info.scale_x = 2f;
             info.scale_y = 2f;
 
-            info.launch_delta_xyz.x = Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
-            info.launch_delta_xyz.y = Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
-            info.launch_delta_xyz.z = Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+            info.launch_delta_xyz.x = Skill62_3_Data.Get(level).delta_xyz.x;// 1.5f;
+            info.launch_delta_xyz.y = Skill62_3_Data.Get(level).delta_xyz.y;// -0.2f;
+            info.launch_delta_xyz.z = Skill62_3_Data.Get(level).delta_xyz.z;// -0.2f;
 
-            info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
-            info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
+            info.plistAnimation = Skill62_3_Data.Get(level).hit_animation_name;
+            info.damage_ratio = Skill62_3_Data.Get(level).damage_ratio;
 
             if (level == 1)
             {
                 //长方
-                info.collider_size = Skill62_3_Data.ins.hit_rect;
+                info.collider_size = Skill62_3_Data.Get(level).hit_rect;
                 info.collider_type = ColliderType.Box;
                 info.number = 1;
                 info.isHitDestory = true;
                 info.validTimes = 1;
             }
-            else if (level == 2)
+            else if (level >= 2)
             {
                 info.collider_type = ColliderType.Sector;
-                info.sector_angle = Skill62_3_Data.ins.sector_angle;
-                info.sector_radius = Skill62_3_Data.ins.sector_radius;
+                info.sector_angle = Skill62_3_Data.Get(level).sector_angle;
+                info.sector_radius = Skill62_3_Data.Get(level).sector_radius;
             }
             b = BulletMgr.Create(this.Target, "BulletConfig", info);
         }
-        if (level == 2)
+        if (level >= 2)
         {
             {
                 //视觉效果
                 BulletConfigInfo info = BulletConfigInfo.Create();
 
                 info.AddBuffer("BufferHitBack");
-                if (level == 2)
+                if (level >= 2)
                 {
                     BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
-                    buf.SetLastTime(Skill62_3_Data.ins.spin_time);
+                    buf.SetLastTime(Skill62_3_Data.Get(level).spin_time);
                     info.AddBuffer(buf);
                 }
                 // info.launch_delta_xy.x = 1.5f;
@@ -2546,32 +2547,32 @@ public class Skill62_3_v2 : SkillBase
                 info.scale_x = 2f;
                 info.scale_y = 2f;
 
-                info.launch_delta_xyz.x = Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
-                info.launch_delta_xyz.y = Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
-                info.launch_delta_xyz.z = Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+                info.launch_delta_xyz.x = Skill62_3_Data.Get(level).delta_xyz.x;// 1.5f;
+                info.launch_delta_xyz.y = Skill62_3_Data.Get(level).delta_xyz.y;// -0.2f;
+                info.launch_delta_xyz.z = Skill62_3_Data.Get(level).delta_xyz.z;// -0.2f;
 
-                info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
-                info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
+                info.plistAnimation = Skill62_3_Data.Get(level).hit_animation_name;
+                info.damage_ratio = Skill62_3_Data.Get(level).damage_ratio;
                 if (Target.flipX < 0)
                 {
-                    info.dir_2d = Skill62_3_Data.ins.sector_angle / 2;
+                    info.dir_2d = Skill62_3_Data.Get(level).sector_angle / 2;
                 }
                 else
                 {
-                    info.dir_2d = 180 - Skill62_3_Data.ins.sector_angle / 2;
+                    info.dir_2d = 180 - Skill62_3_Data.Get(level).sector_angle / 2;
                 }
 
                 if (level == 1)
                 {
                     //长方
-                    info.collider_size = Skill62_3_Data.ins.hit_rect;
+                    info.collider_size = Skill62_3_Data.Get(level).hit_rect;
                     info.collider_type = ColliderType.Box;
                 }
-                else if (level == 2)
+                else if (level >= 2)
                 {
                     info.collider_type = ColliderType.Sector;
-                    info.sector_angle = Skill62_3_Data.ins.sector_angle;
-                    info.sector_radius = Skill62_3_Data.ins.sector_radius;
+                    info.sector_angle = Skill62_3_Data.Get(level).sector_angle;
+                    info.sector_radius = Skill62_3_Data.Get(level).sector_radius;
                 }
                 BulletMgr.Create(this.Target, "BulletConfig", info);
             }
@@ -2580,10 +2581,10 @@ public class Skill62_3_v2 : SkillBase
                 BulletConfigInfo info = BulletConfigInfo.Create();
 
                 info.AddBuffer("BufferHitBack");
-                if (level == 2)
+                if (level >= 2)
                 {
                     BufferSpin buf = BufferMgr.CreateHelper<BufferSpin>(Target);
-                    buf.SetLastTime(Skill62_3_Data.ins.spin_time);
+                    buf.SetLastTime(Skill62_3_Data.Get(level).spin_time);
                     info.AddBuffer(buf);
                 }
                 // info.launch_delta_xy.x = 1.5f;
@@ -2603,31 +2604,31 @@ public class Skill62_3_v2 : SkillBase
                 info.scale_x = 2f;
                 info.scale_y = 2f;
 
-                info.launch_delta_xyz.x = Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
-                info.launch_delta_xyz.y = Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
-                info.launch_delta_xyz.z = Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+                info.launch_delta_xyz.x = Skill62_3_Data.Get(level).delta_xyz.x;// 1.5f;
+                info.launch_delta_xyz.y = Skill62_3_Data.Get(level).delta_xyz.y;// -0.2f;
+                info.launch_delta_xyz.z = Skill62_3_Data.Get(level).delta_xyz.z;// -0.2f;
 
-                info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
-                info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
+                info.plistAnimation = Skill62_3_Data.Get(level).hit_animation_name;
+                info.damage_ratio = Skill62_3_Data.Get(level).damage_ratio;
                 if (Target.flipX < 0)
                 {
-                    info.dir_2d = 360 - Skill62_3_Data.ins.sector_angle / 2;
+                    info.dir_2d = 360 - Skill62_3_Data.Get(level).sector_angle / 2;
                 }
                 else
                 {
-                    info.dir_2d = 180 + Skill62_3_Data.ins.sector_angle / 2;
+                    info.dir_2d = 180 + Skill62_3_Data.Get(level).sector_angle / 2;
                 }
                 if (level == 1)
                 {
                     //长方
-                    info.collider_size = Skill62_3_Data.ins.hit_rect;
+                    info.collider_size = Skill62_3_Data.Get(level).hit_rect;
                     info.collider_type = ColliderType.Box;
                 }
-                else if (level == 2)
+                else if (level >= 2)
                 {
                     info.collider_type = ColliderType.Sector;
-                    info.sector_angle = Skill62_3_Data.ins.sector_angle;
-                    info.sector_radius = Skill62_3_Data.ins.sector_radius;
+                    info.sector_angle = Skill62_3_Data.Get(level).sector_angle;
+                    info.sector_radius = Skill62_3_Data.Get(level).sector_radius;
                 }
                 BulletMgr.Create(this.Target, "BulletConfig", info);
             }
@@ -2711,8 +2712,6 @@ public class Skill6_Final : SkillBase
     {
         return "Skill6_Final";
     }
-
-    Counter cd = Counter.Create(Skill6_Final_Data.ins.cd);
     Counter tick = Counter.Create(10);
     bool has_shoot = false;
     Buffer buf_god = null;
@@ -3243,7 +3242,7 @@ public class SkillBoss_2 : SkillBase
     Counter tick_auto = Counter.Create(40);
     private int atk_times = 0;
     public int level_buffer = 0;
-    public int atk_origned = 0;
+    BufferBoss2 buf = null;
     private Enemy target = null;
     public override void OnLevelUp(int target_level)
     {
@@ -3262,10 +3261,13 @@ public class SkillBoss_2 : SkillBase
     }
     public void Clear()
     {
-        target.damage = atk_origned;
         atk_times = 0;
-        atk_origned = 0;
         level_buffer = 0;
+        if (buf != null)
+        {
+            buf.SetInValid();
+            buf = null;
+        }
     }
     public override void OnEnter()
     {
@@ -3286,15 +3288,19 @@ public class SkillBoss_2 : SkillBase
         this.Enable = true;
         this.Shoot();
 
-        if (atk_origned <= 0)
-        {//初始化
-            atk_origned = target.damage;
-            level_buffer = 0;
-        }
         if (level_buffer < 3)
         {//叠加buffer
             ++level_buffer;
-            target.damage = (int)((float)atk_origned * (1 + (float)level_buffer * 0.1f));
+            if (buf == null)
+            {//只保存 一段Buf 其余都是合并而来
+                buf = BufferMgr.CreateHelper<BufferBoss2>(Target);
+                buf = Target.AddBuffer<BufferBoss2>() as BufferBoss2;
+                buf.percent = 10;
+            }
+            else
+            {
+                Target.AddBuffer<BufferBoss2>();
+            }
         }
     }
     public override void UpdateMS()
