@@ -472,9 +472,9 @@ public sealed class UI_heroInfo : ViewUI
         txt_hp1.text = m.current_hp + "/" + m.hp;
         //  txt_mp1.text = m.current_mp + "/" + m.mp;
 
-        img_hp1.transform.localScale = new Vector3(m.current_hp * 1.0f / m.hp, 1.0f, 1.0f);
+        img_hp1.transform.localScale = new Vector3(Utils.RangeLimit(m.current_hp * 1.0f / m.hp, 0f, 1f), 1.0f, 1.0f);
         //    img_mp1.transform.localScale = new Vector3(m.current_mp * 1.0f / m.mp, 1.0f, 1.0f);
-        img_exp1.transform.localScale = new Vector3(m.current_exp * 1.0f / m.exp, 1.0f, 1.0f);
+        img_exp1.transform.localScale = new Vector3(Utils.RangeLimit(m.current_exp * 1.0f / m.exp, 0f, 1f), 1.0f, 1.0f);
 
         if (m2 == null)
         {
@@ -503,9 +503,9 @@ public sealed class UI_heroInfo : ViewUI
             txt_hp2.text = m2.current_hp + "/" + m2.hp;
             //  txt_mp2.text = m2.current_mp + "/" + m2.mp;
 
-            img_hp2.transform.localScale = new Vector3(m2.current_hp * 1.0f / m2.hp, 1.0f, 1.0f);
+            img_hp2.transform.localScale = new Vector3(Utils.RangeLimit(m2.current_hp * 1.0f / m2.hp, 0f, 1f), 1.0f, 1.0f);
             //   img_mp2.transform.localScale = new Vector3(m2.current_mp * 1.0f / m2.mp, 1.0f, 1.0f);
-            img_exp2.transform.localScale = new Vector3(m2.current_exp * 1.0f / m2.exp, 1.0f, 1.0f);
+            img_exp2.transform.localScale = new Vector3(Utils.RangeLimit(m2.current_exp * 1.0f / m2.exp, 0f, 1f), 1.0f, 1.0f);
         }
 
     }
@@ -1230,15 +1230,15 @@ public class UI_dirInput : ViewUI
 
         Hero self = HeroMgr.ins.self;
         if (self == null) return;
-         if (self.isDie)
-         {//死亡后不显示摇杆
-             this.ui.SetActive(false);
+        if (self.isDie)
+        {//死亡后不显示摇杆
+            this.ui.SetActive(false);
 
-         }
-         else
-         {
-             this.ui.SetActive(true);
-         }
+        }
+        else
+        {
+            this.ui.SetActive(true);
+        }
 
         if (this.ui.activeSelf != model._enable)
         {
@@ -1252,7 +1252,7 @@ public class UI_dirInput : ViewUI
         {
             this.img_arrow.gameObject.SetActive(true);
         }
-   //  if (model._enable)
+        //  if (model._enable)
         {
 
             //比例变换
@@ -1268,7 +1268,7 @@ public class UI_dirInput : ViewUI
             this.img_bg.transform.localPosition = new Vector3(model.x_bg * factor_x, model.y_bg * factor_y, this.img_bg.transform.localPosition.z);
 
         }
- 
+
     }
     public override bool Init()
     {

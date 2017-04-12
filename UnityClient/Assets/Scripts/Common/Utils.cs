@@ -37,7 +37,7 @@ public sealed class Utils
     {
         return Vector3.Distance(v1, new Vector3(v2.x, v2.y, v1.z));
     }
-    public static float RangeLimit(float value, float min, float max)
+    public static float RangeLimit(float value, float min=0f, float max=1f)
     {
         if (value > max) return max;
         if (value < min) return min;
@@ -49,7 +49,7 @@ public sealed class Utils
         if (value < min) return min;
         return value;
     }
-    public static double RangeLimit(double value, double min, double max)
+    public static double RangeLimit(double value, double min=0f, double max=1f)
     {
         if (value > max) return max;
         if (value < min) return min;
