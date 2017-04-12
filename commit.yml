@@ -3,36 +3,33 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'c0cb2ce353642e59e37b03774e534ea39c939e95'
-    oldFile: !uuid '0e1c32aa59ba0d6c7fa1ec6d214fe91fa025c776'
+    newFile: !uuid 'cb05449d8efea128f0555f49ba2a4e2a1ec818eb'
+    oldFile: !uuid 'c0cb2ce353642e59e37b03774e534ea39c939e95'
   /UnityClient/Assets:
-    newFile: !uuid '0a27348b6ada5c0ce0fc3011b6f17c21685655d5'
-    oldFile: !uuid 'd64229f4dafd7bafd091fc76b49ee7536acc87b7'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '1c647ed0162c608a61cbcbb419fc0f6822a7aa7b'
-    oldFile: !uuid 'fa3a0b694d78f165b1113a11867947c4acf9d680'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '7b90c7331e44cba565f5ba0bb283eb9a8cd56232'
-    oldFile: !uuid '341fa066daa70e3826978e8a05a60489ef2f75de'
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data_V1.cs:
-    newFile: !uuid 'c45433e055eb744b1e12b3777ea5531c6246282a'
-    oldFile: !uuid '39c46427af40e99bf0464b2e1b061abb8c1933b7'
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data_V2.cs:
-    newFile: !uuid 'a1ff2196ee06cbebbd5b3199e3d61e4b032dc434'
-    oldFile: !uuid '73c265a329a1cf28bee829875258db5c87b9e0ff'
-  /UnityClient/Assets/Scripts/Data/Skill61_2_Data_V3.cs:
-    newFile: !uuid '8c40b05ad2dcc20cac7cd1343ac38e1c90b40647'
-    oldFile: !uuid 'c3e6494b5d9a41dd9a4181b945bede5c5752bb42'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'd3167558db510a6b4acdc12eeec676d38b01db12'
-    oldFile: !uuid '2a078119f735035cfd313d52fbd8a1f9db6abdc9'
-  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
-    newFile: !uuid '0866ccceb33c30826af7211824f8e0bb664ce988'
-    oldFile: !uuid 'f8e345dee73b9d9853b0a41004c4472b4ff8190f'
-  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
-    newFile: !uuid 'c9ac2aaf7f6b8dc0d14390a08bf0494a24c3295f'
-    oldFile: !uuid '004271f7bf973a7459f369236e6774aaed0d3f4b'
-gitCommitId: !uuid 'a9a57a0b22b63d1c1d60099c5d691b768b16052e'
+    newFile: !uuid '851332cbc9f147f97c2c1606ec680b5c3d7d718e'
+    oldFile: !uuid '0a27348b6ada5c0ce0fc3011b6f17c21685655d5'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'b07ad551a3fdf17a08370c8764d24a899138ba1f'
+    oldFile: !uuid '909bc9d06de8c30f9a72f8316a872c0744f55019'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '8e3b79fe661485e1d225f0201ca3011978c905c7'
+    oldFile: !uuid '7b8d4ee1f3ecf4a74238a54f24cce5d1d14d09b4'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '62f084df082b4187bb1c185a958b141674fcdc86'
+    oldFile: !uuid '99e9626b17ce86f32e89bac9caac143eb4c5884e'
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers:
+    newFile: !uuid '4458eb6b667c1b499398fbcad27c0d9765d9f1aa'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers.meta:
+    newFile: !uuid '22e6cce6666c075c257bab0e76753e7f9c9b6283'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab:
+    newFile: !uuid 'b5f792c9400ef61e431618b834a6da89c665fdfa'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta:
+    newFile: !uuid '6a374cf8f1ad227d466defb408d8fab124bad2ea'
+    oldFile: null
+gitCommitId: !uuid '49b371b18e28c7d30f461564b920d75f84d91811'
 renames: {
   }
-revisionId: 719
+revisionId: 720
