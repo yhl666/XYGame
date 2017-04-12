@@ -3,33 +3,33 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'cb05449d8efea128f0555f49ba2a4e2a1ec818eb'
-    oldFile: !uuid 'c0cb2ce353642e59e37b03774e534ea39c939e95'
+    newFile: !uuid 'cd57e3a32459cccc9f6a42eb00b587a54f7fb365'
+    oldFile: !uuid 'cb05449d8efea128f0555f49ba2a4e2a1ec818eb'
   /UnityClient/Assets:
-    newFile: !uuid '851332cbc9f147f97c2c1606ec680b5c3d7d718e'
-    oldFile: !uuid '0a27348b6ada5c0ce0fc3011b6f17c21685655d5'
+    newFile: !uuid '8ed1f8aae466d65461333ee122c4f7403c1c6ffa'
+    oldFile: !uuid '851332cbc9f147f97c2c1606ec680b5c3d7d718e'
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'b07ad551a3fdf17a08370c8764d24a899138ba1f'
-    oldFile: !uuid '909bc9d06de8c30f9a72f8316a872c0744f55019'
+    newFile: !uuid 'f9231cf29ae5a95584ca1ef1685818abd31863d2'
+    oldFile: !uuid 'b07ad551a3fdf17a08370c8764d24a899138ba1f'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '8e3b79fe661485e1d225f0201ca3011978c905c7'
-    oldFile: !uuid '7b8d4ee1f3ecf4a74238a54f24cce5d1d14d09b4'
+    newFile: !uuid '0ca66f35f5c3a9337a3db9a93ea58d9073c1fa9d'
+    oldFile: !uuid '8e3b79fe661485e1d225f0201ca3011978c905c7'
   /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '62f084df082b4187bb1c185a958b141674fcdc86'
-    oldFile: !uuid '99e9626b17ce86f32e89bac9caac143eb4c5884e'
-  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers:
-    newFile: !uuid '4458eb6b667c1b499398fbcad27c0d9765d9f1aa'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers.meta:
-    newFile: !uuid '22e6cce6666c075c257bab0e76753e7f9c9b6283'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab:
-    newFile: !uuid 'b5f792c9400ef61e431618b834a6da89c665fdfa'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta:
-    newFile: !uuid '6a374cf8f1ad227d466defb408d8fab124bad2ea'
-    oldFile: null
-gitCommitId: !uuid '49b371b18e28c7d30f461564b920d75f84d91811'
+    newFile: !uuid 'd17d4baeea2443a6e34cec3bfb65f2ed2ba50eda'
+    oldFile: !uuid '62f084df082b4187bb1c185a958b141674fcdc86'
+  /UnityClient/Assets/Resources/Prefabs/data/人物配置.prefab:
+    newFile: !uuid '8119d7c16a599f29a8130581a620486352a1e6c0'
+    oldFile: !uuid 'db79cc4d1de6b955c15ac8c4ac5f0b42b074f14a'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
+    newFile: !uuid '9b09fdb25f5f54eeb6d5c09834e887c4828d7dcb'
+    oldFile: !uuid 'ff86138b43e728c5a44d0dc59ae4e1d9bdc66391'
+  /UnityClient/Assets/Resources/Prefabs/data/普通攻击.prefab:
+    newFile: !uuid 'e0da5adc74ef1019aafdb634c983360a9de3cfdd'
+    oldFile: !uuid '928300e7c7d1c8f5725a6820c856b78ddf924e72'
+  /UnityClient/Assets/Resources/Prefabs/data/防御塔.prefab:
+    newFile: !uuid '9ed4d8bc50d8244ca6e11b369d86acfbc42e3876'
+    oldFile: !uuid 'b32f211a49881076e80a0d5a7034487a5d64d45a'
+gitCommitId: !uuid '3f8501f0f4e8b2d19281c5b8126555bc8dca7cc0'
 renames: {
   }
-revisionId: 720
+revisionId: 721
