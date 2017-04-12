@@ -3,21 +3,154 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'ec8d7653e7070c4fd6b07ab45215d52f3f9fee1b'
-    oldFile: !uuid 'b2f77e95e390751b355cee756f8cc9aad08ff80c'
+    newFile: !uuid 'd027a9ebb8ae019c8da9f5cebb0b52b5f7b22e7e'
+    oldFile: !uuid 'ec8d7653e7070c4fd6b07ab45215d52f3f9fee1b'
   /UnityClient/Assets:
-    newFile: !uuid '8cf79b933277a0f815015aff171559bcf946440a'
-    oldFile: !uuid '41a1ec10982eef3533477f64ee3577b10b8d2aea'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '24219d7b6a1578f46fce6393099d7753a28d764d'
-    oldFile: !uuid '31b46408e7103704292a3e42e79fce5b1227f07a'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'd9d2ae5f6d247572a17e444955b5a249cc2b53c6'
-    oldFile: !uuid 'b6a5bb3627fbad6b38bfbc199562d319779a556e'
-  /UnityClient/Assets/Scripts/View/View.cs:
-    newFile: !uuid 'c2004d2aec61cd5ce82b886790c28cf70b806a31'
-    oldFile: !uuid '859a91d6302cfa94306e96833aaf479440c82a8a'
-gitCommitId: !uuid '45bbe329b629da3c5e2468d09cd93cdaf117bbe5'
-renames: {
-  }
-revisionId: 725
+    newFile: !uuid '3b294653717bfab6eb277359fae52e98bb70bfab'
+    oldFile: !uuid '8cf79b933277a0f815015aff171559bcf946440a'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '615780411986fb5c0224bb67faadc53ad830a913'
+    oldFile: !uuid 'cca4456e76d124bd33845f3a581122b27ce9f24f'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '35322c10474bac3f904785b555f021c3e32a1118'
+    oldFile: !uuid '69dd7f45cc749b6c4f460efbf3c3c784ba2de0cf'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid 'a10e9119e9005416965e283f87f6d6eb83fac0cf'
+    oldFile: !uuid '40ca2e094567b9275bb60968844cd12054059cbf'
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers:
+    newFile: !uuid '4a75aaa2d6132af601e68537f554fa7f0da77a70'
+    oldFile: !uuid '4458eb6b667c1b499398fbcad27c0d9765d9f1aa'
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower1.prefab:
+    newFile: !uuid '32362d2b21084fd852d487324ebb063cb78a824a'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower1.prefab.meta:
+    newFile: !uuid 'bcec8b9f8b1f0dc98d2295d721aa91734ad27f9f'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower2.prefab:
+    newFile: !uuid '104c87a2493433817c1184b2a818922e5a8c4cce'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower2.prefab.meta:
+    newFile: !uuid 'a15f1fb0a8b4d5d0e804d3410f24189c60f145a7'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab:
+    newFile: null
+    oldFile: !uuid 'b5f792c9400ef61e431618b834a6da89c665fdfa'
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta:
+    newFile: null
+    oldFile: !uuid '6a374cf8f1ad227d466defb408d8fab124bad2ea'
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/防御塔数据.txt:
+    newFile: !uuid '315b23e8c8915b4026822ac8f2e0b9818f1fe490'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/防御塔数据.txt.meta:
+    newFile: !uuid '93f8b2acd815759db7074f4989ebc9bc64c24a59'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn:
+    newFile: !uuid 'c37c888849a79efcf92c8a40682147fcb81eac49'
+    oldFile: !uuid 'a53ce87b97aea8d29200b6fa1681dec38fd522c5'
+  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/敌人出生点数据.txt:
+    newFile: !uuid 'da9f773c65ce2a60afd2425c5b736def0bc564b9'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/敌人出生点数据.txt.meta:
+    newFile: !uuid 'fe6c7b10ebb3a11fda1eac013e20038a41f39b99'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks:
+    newFile: !uuid '219eccb694b63a6060761d866961e7e822f797aa'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks.meta:
+    newFile: !uuid '79e4d5a117abe90e5ac1ab063eca00c6fc781473'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack1.prefab:
+    newFile: !uuid '493dbb062049e0d06c89ed09f05ca69f2e946dc0'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack1.prefab.meta:
+    newFile: !uuid 'fd38495223c49154f993b03f3196eaa99670be69'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack2.prefab:
+    newFile: !uuid '35e3454a6d3399a81ee814e37021e9c964661cae'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack2.prefab.meta:
+    newFile: !uuid 'd6be889544eb755f25087406972f15c654d6b912'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/血包配置信息.txt:
+    newFile: !uuid '4f3c550ac78842e058f458504bed11662fa1155b'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/血包配置信息.txt.meta:
+    newFile: !uuid '6d014e9746298b0875252f87be9babaa0437742d'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/RevivePoints:
+    newFile: !uuid '7aa006df6b9f4492526cb3baf8ab3d35902760e2'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/RevivePoints.meta:
+    newFile: !uuid '242ddde4e25aa26a89c2496b78ab2b77fd25cc5b'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/RevivePoints/RevivePoint.prefab:
+    newFile: !uuid '7cc52abd29b34b9da8f9c8b11af144b286c863ba'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/RevivePoints/RevivePoint.prefab.meta:
+    newFile: !uuid '549157c7e742c86589f034775e55cbfaf54739a4'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/RevivePoints/复活点配置信息.txt:
+    newFile: !uuid '0fe8575107e7eef59af779a7703d3b0008417e9f'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/RevivePoints/复活点配置信息.txt.meta:
+    newFile: !uuid 'd2198b56c74a177698f91a666364a6df4dff33c1'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain:
+    newFile: !uuid 'f39f2dd77255cb5edb85d0c02b43191b54ab4a06'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain.meta:
+    newFile: !uuid '7e3d39051606bb4a5444b73b6e4ae2016bf67280'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/MapRange.prefab:
+    newFile: !uuid '42973565c9a3a7c2a035f6e950ffddab60f4a9d6'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/MapRange.prefab.meta:
+    newFile: !uuid '2b7e683037995ec6aadcb6a58157d9fd7319ab23'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/Platform.prefab:
+    newFile: !uuid 'b61a6801a46cfa172799d50035b0cb87d91f8536'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/Platform.prefab.meta:
+    newFile: !uuid '86b69394247e56299b1bad9c095f76351c48de9a'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/WalkAble.prefab:
+    newFile: !uuid '29dd4398dbbee4e3fe3a517e2c178ed55f6ccc7c'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/WalkAble.prefab.meta:
+    newFile: !uuid 'd156677e8c061ce240cd0e95233a2b880fa5e5c2'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/bg_static.prefab:
+    newFile: !uuid '132429062ce97a814b78a1dd7330495be060f79b'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/bg_static.prefab.meta:
+    newFile: !uuid 'b66dc234a8f3bd7207d2c852a900585db967a756'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/地图其他数据.txt:
+    newFile: !uuid '8be7d83a8c0cf3d7376f6ff20eae35acb81290e6'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/地图其他数据.txt.meta:
+    newFile: !uuid 'c87097be84b2dd469e10c076ee52b7616f4d712e'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/说明.txt:
+    newFile: !uuid 'ca08a17e2732b25e850135f0f5aaf0a4c109327f'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/data/说明.txt.meta:
+    newFile: !uuid '20362b1b44fb7fdefc032c0de4bcd1247277ba1b'
+    oldFile: null
+gitCommitId: !uuid '777ec9a24d51a8219243538628a84e681e97e488'
+renames:
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower1.prefab: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower1.prefab.meta: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower2.prefab: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab
+  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower2.prefab.meta: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack1.prefab: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack1.prefab.meta: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack2.prefab: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack2.prefab.meta: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta
+  /UnityClient/Assets/Resources/Prefabs/data/RevivePoints/RevivePoint.prefab: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab
+  /UnityClient/Assets/Resources/Prefabs/data/RevivePoints/RevivePoint.prefab.meta: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/MapRange.prefab.meta: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/Platform.prefab.meta: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/WalkAble.prefab.meta: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta
+  /UnityClient/Assets/Resources/Prefabs/data/Terrain/bg_static.prefab.meta: /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTowers.prefab.meta
+revisionId: 726
