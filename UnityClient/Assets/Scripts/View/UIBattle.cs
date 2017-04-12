@@ -470,10 +470,10 @@ public sealed class UI_heroInfo : ViewUI
         txt_info1.text = m.no + " LV:" + m.level;
         txt_exp1.text = m.current_exp + "/" + m.exp;
         txt_hp1.text = m.current_hp + "/" + m.hp;
-        txt_mp1.text = m.current_mp + "/" + m.mp;
+        //  txt_mp1.text = m.current_mp + "/" + m.mp;
 
         img_hp1.transform.localScale = new Vector3(m.current_hp * 1.0f / m.hp, 1.0f, 1.0f);
-        img_mp1.transform.localScale = new Vector3(m.current_mp * 1.0f / m.mp, 1.0f, 1.0f);
+        //    img_mp1.transform.localScale = new Vector3(m.current_mp * 1.0f / m.mp, 1.0f, 1.0f);
         img_exp1.transform.localScale = new Vector3(m.current_exp * 1.0f / m.exp, 1.0f, 1.0f);
 
         if (m2 == null)
@@ -501,10 +501,10 @@ public sealed class UI_heroInfo : ViewUI
             txt_info2.text = m2.no + " LV:" + m2.level;
             txt_exp2.text = m2.current_exp + "/" + m2.exp;
             txt_hp2.text = m2.current_hp + "/" + m2.hp;
-            txt_mp2.text = m2.current_mp + "/" + m2.mp;
+            //  txt_mp2.text = m2.current_mp + "/" + m2.mp;
 
             img_hp2.transform.localScale = new Vector3(m2.current_hp * 1.0f / m2.hp, 1.0f, 1.0f);
-            img_mp2.transform.localScale = new Vector3(m2.current_mp * 1.0f / m2.mp, 1.0f, 1.0f);
+            //   img_mp2.transform.localScale = new Vector3(m2.current_mp * 1.0f / m2.mp, 1.0f, 1.0f);
             img_exp2.transform.localScale = new Vector3(m2.current_exp * 1.0f / m2.exp, 1.0f, 1.0f);
         }
 
@@ -531,34 +531,34 @@ public sealed class UI_heroInfo : ViewUI
 
         // init member
         this.img_hp1 = panel1.transform.FindChild("hero_img_hp").GetComponent<Image>();
-        this.img_mp1 = panel1.transform.FindChild("hero_img_mp").GetComponent<Image>();
+        //  this.img_mp1 = panel1.transform.FindChild("hero_img_mp").GetComponent<Image>();
         this.img_exp1 = panel1.transform.FindChild("hero_img_exp").GetComponent<Image>();
 
         this.txt_hp1 = panel1.transform.FindChild("hero_txt_hp").GetComponent<Text>();
-        this.txt_mp1 = panel1.transform.FindChild("hero_txt_mp").GetComponent<Text>();
+        // this.txt_mp1 = panel1.transform.FindChild("hero_txt_mp").GetComponent<Text>();
         this.txt_exp1 = panel1.transform.FindChild("hero_txt_exp").GetComponent<Text>();
         this.txt_info1 = panel1.transform.FindChild("hero_txt_info").GetComponent<Text>();
 
 
         // init member
         this.img_hp2 = panel2.transform.FindChild("hero_img_hp").GetComponent<Image>();
-        this.img_mp2 = panel2.transform.FindChild("hero_img_mp").GetComponent<Image>();
+        //  this.img_mp2 = panel2.transform.FindChild("hero_img_mp").GetComponent<Image>();
         this.img_exp2 = panel2.transform.FindChild("hero_img_exp").GetComponent<Image>();
 
         this.txt_hp2 = panel2.transform.FindChild("hero_txt_hp").GetComponent<Text>();
-        this.txt_mp2 = panel2.transform.FindChild("hero_txt_mp").GetComponent<Text>();
+        //  this.txt_mp2 = panel2.transform.FindChild("hero_txt_mp").GetComponent<Text>();
         this.txt_exp2 = panel2.transform.FindChild("hero_txt_exp").GetComponent<Text>();
         this.txt_info2 = panel2.transform.FindChild("hero_txt_info").GetComponent<Text>();
 
         //init state
         txt_hp1.text = "0/0";
-        txt_mp1.text = "0/0";
+        //  txt_mp1.text = "0/0";
         txt_exp1.text = "0/0";
 
         txt_info1.text = "测试玩家 LV:50";
         //init state
         txt_hp2.text = "0/0";
-        txt_mp2.text = "0/0";
+        //  txt_mp2.text = "0/0";
         txt_exp2.text = "0/0";
 
         txt_info2.text = "测试玩家 LV:50";
@@ -584,22 +584,22 @@ public sealed class UI_heroInfo : ViewUI
     Hero m = null;
     Hero m2 = null;
     Text txt_hp1;
-    Text txt_mp1;
+    //  Text txt_mp1;
     Text txt_exp1;
     Text txt_info1;
 
     Image img_hp1;
-    Image img_mp1;
+    //   Image img_mp1;
     Image img_exp1;
     Image img_icon1;
 
     Text txt_hp2;
-    Text txt_mp2;
+    //    Text txt_mp2;
     Text txt_exp2;
     Text txt_info2;
 
     Image img_hp2;
-    Image img_mp2;
+    //  Image img_mp2;
     Image img_exp2;
     Image img_icon2;
 
