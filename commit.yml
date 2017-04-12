@@ -3,33 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'cd57e3a32459cccc9f6a42eb00b587a54f7fb365'
-    oldFile: !uuid 'cb05449d8efea128f0555f49ba2a4e2a1ec818eb'
+    newFile: !uuid '7a808f8a919dde50244c6274cfba77f5ab7024a2'
+    oldFile: !uuid 'cd57e3a32459cccc9f6a42eb00b587a54f7fb365'
   /UnityClient/Assets:
-    newFile: !uuid '8ed1f8aae466d65461333ee122c4f7403c1c6ffa'
-    oldFile: !uuid '851332cbc9f147f97c2c1606ec680b5c3d7d718e'
+    newFile: !uuid '7452393e61cfef746976790a5ad4e38e9d62ed2b'
+    oldFile: !uuid '8ed1f8aae466d65461333ee122c4f7403c1c6ffa'
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'f9231cf29ae5a95584ca1ef1685818abd31863d2'
-    oldFile: !uuid 'b07ad551a3fdf17a08370c8764d24a899138ba1f'
+    newFile: !uuid 'cca4456e76d124bd33845f3a581122b27ce9f24f'
+    oldFile: !uuid 'f9231cf29ae5a95584ca1ef1685818abd31863d2'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '0ca66f35f5c3a9337a3db9a93ea58d9073c1fa9d'
-    oldFile: !uuid '8e3b79fe661485e1d225f0201ca3011978c905c7'
+    newFile: !uuid '69dd7f45cc749b6c4f460efbf3c3c784ba2de0cf'
+    oldFile: !uuid '0ca66f35f5c3a9337a3db9a93ea58d9073c1fa9d'
   /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid 'd17d4baeea2443a6e34cec3bfb65f2ed2ba50eda'
-    oldFile: !uuid '62f084df082b4187bb1c185a958b141674fcdc86'
-  /UnityClient/Assets/Resources/Prefabs/data/人物配置.prefab:
-    newFile: !uuid '8119d7c16a599f29a8130581a620486352a1e6c0'
-    oldFile: !uuid 'db79cc4d1de6b955c15ac8c4ac5f0b42b074f14a'
+    newFile: !uuid '40ca2e094567b9275bb60968844cd12054059cbf'
+    oldFile: !uuid 'd17d4baeea2443a6e34cec3bfb65f2ed2ba50eda'
   /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
-    newFile: !uuid '9b09fdb25f5f54eeb6d5c09834e887c4828d7dcb'
-    oldFile: !uuid 'ff86138b43e728c5a44d0dc59ae4e1d9bdc66391'
-  /UnityClient/Assets/Resources/Prefabs/data/普通攻击.prefab:
-    newFile: !uuid 'e0da5adc74ef1019aafdb634c983360a9de3cfdd'
-    oldFile: !uuid '928300e7c7d1c8f5725a6820c856b78ddf924e72'
-  /UnityClient/Assets/Resources/Prefabs/data/防御塔.prefab:
-    newFile: !uuid '9ed4d8bc50d8244ca6e11b369d86acfbc42e3876'
-    oldFile: !uuid 'b32f211a49881076e80a0d5a7034487a5d64d45a'
-gitCommitId: !uuid '3f8501f0f4e8b2d19281c5b8126555bc8dca7cc0'
+    newFile: !uuid 'a9682db8e30b7fa0eff35c98a086bbee0057d2a7'
+    oldFile: !uuid '9b09fdb25f5f54eeb6d5c09834e887c4828d7dcb'
+gitCommitId: !uuid '7191a9ce13f9b4d48863c5a5865590863af66cb9'
 renames: {
   }
-revisionId: 721
+revisionId: 722
