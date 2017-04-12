@@ -241,7 +241,7 @@ public class Entity : Model
 
     public void TakeAttacked(AttackInfo info)
     {
-      //  if (this.IsAlive==false) return;
+        if (this.IsAlive == false) return;//死亡后 不再吃伤害
         EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED, info);
 
         foreach (string buf in info.buffers_string)
@@ -256,7 +256,7 @@ public class Entity : Model
         if (info.damage > 0)
         {
             this.current_hp -= info.damage;
-            if (this.current_hp<=0)
+            if (this.current_hp <= 0)
             {
                 //Debug.LogError("英雄增加了" + this.exp+"经验");
                 info.ownner._current_exp += this.exp;
