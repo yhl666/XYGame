@@ -2,28 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '9915d4395f915a987d77397bb341866a269f564a'
-    oldFile: !uuid '8473c6db472629e0d960fec105de3bd0fd6e4b39'
-  /UnityClient/Assets:
-    newFile: !uuid '939381ac12aa21e020ab7328462dd5aab3d626c0'
-    oldFile: !uuid 'a75b7ca49144eeea9c4331622fd9b0f991b66fb8'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '3c2537cfbaab51a6364e51afeb304cf5ec382e01'
-    oldFile: !uuid '4a49752280c8e3a8ca6e28bf3e02de8d4bf4d25b'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'cef588b15de5a511a167600de46c77ac3ec4ca6b'
-    oldFile: !uuid '76a83eb645fcf838ec4c548f7450381f9290ae3e'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '99e9626b17ce86f32e89bac9caac143eb4c5884e'
-    oldFile: !uuid 'b07db3eb4bfac6d86558389bab6bf170fd757f55'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
-    newFile: !uuid 'ff86138b43e728c5a44d0dc59ae4e1d9bdc66391'
-    oldFile: !uuid '668d10da65ad975a52e46a23a0263be4e18f9c0b'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
-    newFile: !uuid '6402f8f73f363af448b581ae642e9059f77ba7fe'
-    oldFile: !uuid '60fd48378d08fd9b3031569fd626a1ce5bb96c42'
-gitCommitId: !uuid 'ef9fd08f102c46d77961ca1126a4ee78c88c2d57'
+  /工作日志:
+    newFile: !uuid '630b8decd0662d8cc1981d5ba5a5301f13c15caf'
+    oldFile: !uuid '12a2137a24b090088a92fee6ea9f8f4cf57a52d6'
+  /工作日志/BUG提交:
+    newFile: !uuid '07ede8a9d30e47ac5aa59bf625fd94458a03676e'
+    oldFile: !uuid 'dba14e6f80c308514bf38fffea07047664d43e42'
+  /工作日志/BUG提交/014.txt:
+    newFile: !uuid '367846acf90895098e335d366e771c2b780b9882'
+    oldFile: null
+gitCommitId: !uuid 'd493134ec5e0138ff6943290768ccaafb437cf80'
 renames: {
   }
-revisionId: 714
+revisionId: 715
