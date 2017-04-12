@@ -2,13 +2,49 @@
 branches: {
   }
 fileChange:
-  /设计文档:
-    newFile: !uuid 'a80112a7825ffd41f1ce83f4619707216e22fbdd'
-    oldFile: !uuid 'ad45dd32982d1f5ee27ef03b17815f179e012e71'
-  /设计文档/HP恢复.png:
-    newFile: !uuid '99d2f3bf3ea831175de568aa390550f8e9513e6d'
-    oldFile: null
-gitCommitId: !uuid '322d94d01335f451badefebed20fc62815752976'
+  /UnityClient:
+    newFile: !uuid 'd8974ab7fa1c29a5bbaacdb5b2e6e73e196966db'
+    oldFile: !uuid '5d5989c2a49b2a0bd3b8f2de190a569874032f05'
+  /UnityClient/Assets:
+    newFile: !uuid 'b67910093d8c481e9fdca9fdfa0d5f1fcc131447'
+    oldFile: !uuid '5568b99044ba20252896e7504a9e46b3a23276b6'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'e53e0ca43173b81d85d9cd98ca2c8ab01828ebad'
+    oldFile: !uuid '5d02a977d677e8bc00e63fb8c34d2adb984b9d7e'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '24d925a7e52e8e322b306a04cb91a6177dca3303'
+    oldFile: !uuid 'eaf342ee8281319b8f9b02646f272154bbf05665'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid 'cbe8180609f102a44e070bef6efc8041c89b5775'
+    oldFile: !uuid 'd4774fc7668c54a52a225cc80e950b2d796c77a4'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
+    newFile: !uuid '70d7aa35fd36ac650c0b94f779a560c91774619d'
+    oldFile: !uuid '6402f8f73f363af448b581ae642e9059f77ba7fe'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'b19a7a6c91281da4b28a2e55dc3714330559345a'
+    oldFile: !uuid '24219d7b6a1578f46fce6393099d7753a28d764d'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid 'bc1bee854ee54a5406a682ea6db1374619f212f1'
+    oldFile: !uuid '7b90c7331e44cba565f5ba0bb283eb9a8cd56232'
+  /UnityClient/Assets/Scripts/Data/Skill62_1_Data.cs:
+    newFile: !uuid '55e37c512d0347f6af8564ff9aba66052dce8602'
+    oldFile: !uuid 'c4ad5e13131e3b79473eccc6ad826203bb8bfc0e'
+  /UnityClient/Assets/Scripts/Data/Skill62_2_Data.cs:
+    newFile: !uuid '7e989fb7295e771ada277dbc9b264bf09c90d730'
+    oldFile: !uuid '2c433a0eeeb0367254d6d2f437bc19ae5c25326f'
+  /UnityClient/Assets/Scripts/Data/Skill62_3_Data.cs:
+    newFile: !uuid '0fb250b60d420f7eb8afbba8f4323853cf40ac6a'
+    oldFile: !uuid 'da06388157644df57bd374e2aa6bfe2c7fc5a134'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '7dd046e0bf0f35a97ded26693f6b334dca7a9139'
+    oldFile: !uuid '3b7bacc0bf231a7d43697790b259d4b916d2dee4'
+  /UnityClient/Assets/Scripts/Model/Buffer.cs:
+    newFile: !uuid 'ff4b0d90d6413803d59cabf7d50b0e3c524e4d6f'
+    oldFile: !uuid '533ec91666f7d9a77bb8c9fc328282bb5ea6749d'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid '5ca0bce990d6b2fc154759188421daa2002f4437'
+    oldFile: !uuid 'f1b41461bc829d34e31be5346259e19148fba9ba'
+gitCommitId: !uuid 'aebeac14eec24842c8bb781109e99541a828fe5e'
 renames: {
   }
-revisionId: 743
+revisionId: 744
