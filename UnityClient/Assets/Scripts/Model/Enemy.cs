@@ -251,7 +251,7 @@ public class Enemy : Entity
         }
         else if (type == Events.ID_SPINE_COMPLETE && isDie)
         {
-      ///      this.bufferMgr.Clear();
+            this.bufferMgr.Clear();
             this.SetInValid();
         }
     }
