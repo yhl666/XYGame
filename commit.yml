@@ -3,30 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '9855bcf709b2d261be240eede4b2971bd07efe55'
-    oldFile: !uuid '5e2152e187f24e74206cb36a9ae77a443da56705'
+    newFile: !uuid '5d5989c2a49b2a0bd3b8f2de190a569874032f05'
+    oldFile: !uuid '9855bcf709b2d261be240eede4b2971bd07efe55'
   /UnityClient/Assets:
-    newFile: !uuid '24bc387da6edaf67e9904bb0e8370d1edad51b31'
-    oldFile: !uuid '62fb3eaa3dc3a568f73ee3a9c8918d5cba98d3f0'
+    newFile: !uuid '5568b99044ba20252896e7504a9e46b3a23276b6'
+    oldFile: !uuid '24bc387da6edaf67e9904bb0e8370d1edad51b31'
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'a040696c79558b277b8db485bd09f542c30a8ad1'
-    oldFile: !uuid 'f00d08669d7bd838818fea426d1b88be7fcb1bc9'
+    newFile: !uuid '5d02a977d677e8bc00e63fb8c34d2adb984b9d7e'
+    oldFile: !uuid 'a040696c79558b277b8db485bd09f542c30a8ad1'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '73d0da962f30ba586b0f7c3500a27b97a69e4ebb'
-    oldFile: !uuid '153a9e7d38f72663a851e7bdab974568503e773c'
+    newFile: !uuid 'eaf342ee8281319b8f9b02646f272154bbf05665'
+    oldFile: !uuid '73d0da962f30ba586b0f7c3500a27b97a69e4ebb'
   /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid 'f0e5f8dd49845d76e43b186501c40f3b3c8d5faf'
-    oldFile: !uuid 'f99bfd8a37926dc6975ffb7e7b710f51145892af'
-  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers:
-    newFile: !uuid 'f2a552054292d7a16a7be937d48069304a2ffdee'
-    oldFile: !uuid '069dd12c0a9a7b46e128a990c033fefd445ef242'
-  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower1.prefab:
-    newFile: !uuid '4cc5fd2b5fba8f6c33490fce18a190dd5ca0be14'
-    oldFile: !uuid 'c1ab174f834c70558b5e3689b5977adba7ace88d'
-  /UnityClient/Assets/Resources/Prefabs/data/DefentTowers/DefendTower2.prefab:
-    newFile: !uuid '18845580896bafe1a36c32d474bddf8c64525e85'
-    oldFile: !uuid '121b90e3ed2af3ded8c37a33ca1ffec1d7bc4679'
-gitCommitId: !uuid '3f9a8593630ee6b18db5fe687a47d348c743f607'
+    newFile: !uuid 'd4774fc7668c54a52a225cc80e950b2d796c77a4'
+    oldFile: !uuid 'f0e5f8dd49845d76e43b186501c40f3b3c8d5faf'
+  /UnityClient/Assets/Resources/Prefabs/data/防御塔.prefab:
+    newFile: !uuid 'c1d30223a007c350a7db1221090dc51507a79399'
+    oldFile: !uuid '99255b4a07ca36bc47a6226474bee8c06f5e0247'
+gitCommitId: !uuid '1cac8e443ea47dcbc876182f2823f6aceb2863be'
 renames: {
   }
-revisionId: 741
+revisionId: 742
