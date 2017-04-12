@@ -3,18 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '2e3ab9c7b0ebcabb0915f8441434a121afb396c7'
-    oldFile: !uuid 'd796c184f43b58fb7357ec1496672897c51a33d3'
+    newFile: !uuid '3a6064f724820148957466da0c22eef5a7202149'
+    oldFile: !uuid '2e3ab9c7b0ebcabb0915f8441434a121afb396c7'
   /UnityClient/Assets:
-    newFile: !uuid '3e12fe46b6b6472d8234cacf0f546714aec1cc61'
-    oldFile: !uuid 'd8713a53f7e9bc71716fef4f39e7f82ffd101a4a'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '10fbd2b7c9cd0b8d48a56f2e38279854e4074011'
-    oldFile: !uuid '1be7a75f421f932b62f1d6fc29e5767557f2a8ad'
-  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid '7a34a829d868c3c421e2e18cd418588041c3ec0c'
-    oldFile: !uuid '1fc29dd7661847b3b79e3e520706617a17c98df3'
-gitCommitId: !uuid 'a8ff8d43b98bbca05f51b17ab7e2fff141ff4b8b'
+    newFile: !uuid '42c3e0ad7dc197f22d8068722ae3feceb7a1abf5'
+    oldFile: !uuid '3e12fe46b6b6472d8234cacf0f546714aec1cc61'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '01ac5d23a0b17af9da0b10a6e582dcbc14e04f6d'
+    oldFile: !uuid 'f294b0a0ec9c3d70cc9ac313f4c5b0841e358ca1'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '386456968dd0fc363111becd0bb84f8790c0117a'
+    oldFile: !uuid '70eac8575e9904125771144061e74258af829969'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '029499ce73c0134cfbf379be0a58f9831d8d849f'
+    oldFile: !uuid 'a10e9119e9005416965e283f87f6d6eb83fac0cf'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
+    newFile: !uuid '8e107c2fb7411e770c4e19152e331625d3b66cbb'
+    oldFile: !uuid 'a9682db8e30b7fa0eff35c98a086bbee0057d2a7'
+gitCommitId: !uuid 'f1f984c0bc5dd0768c0a471a11d3acd2b5d14b99'
 renames: {
   }
-revisionId: 730
+revisionId: 731
