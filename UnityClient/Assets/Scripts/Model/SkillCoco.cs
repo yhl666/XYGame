@@ -268,8 +268,8 @@ public class Skill61_2 : SkillBase
             info.distance = Skill61_2_Data_V1.ins.distance;
             info.speed = Skill61_2_Data_V1.ins.speed;
             info.lastTime = 10;
-            info.scale_x = Skill61_1_Data_V1.ins.scale_x;
-            info.scale_y = Skill61_1_Data_V1.ins.scale_y;
+            info.scale_x = Skill61_2_Data_V1.ins.scale_x;
+            info.scale_y = Skill61_2_Data_V1.ins.scale_y;
 
         }
         BulletMgr.Create(this.Target, "BulletConfig", info);
