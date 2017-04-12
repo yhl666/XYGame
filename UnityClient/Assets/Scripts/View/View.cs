@@ -333,6 +333,7 @@ public class ViewEnemy : View
         }
         else if (m.isDie)
         {
+            spine.loop = false;
             name = m.ani_die;
         }
         else if (m.isHurt && m.ani_hurt != "")
