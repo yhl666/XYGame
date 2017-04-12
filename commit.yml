@@ -2,25 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '5d5989c2a49b2a0bd3b8f2de190a569874032f05'
-    oldFile: !uuid '9855bcf709b2d261be240eede4b2971bd07efe55'
-  /UnityClient/Assets:
-    newFile: !uuid '5568b99044ba20252896e7504a9e46b3a23276b6'
-    oldFile: !uuid '24bc387da6edaf67e9904bb0e8370d1edad51b31'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '5d02a977d677e8bc00e63fb8c34d2adb984b9d7e'
-    oldFile: !uuid 'a040696c79558b277b8db485bd09f542c30a8ad1'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'eaf342ee8281319b8f9b02646f272154bbf05665'
-    oldFile: !uuid '73d0da962f30ba586b0f7c3500a27b97a69e4ebb'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid 'd4774fc7668c54a52a225cc80e950b2d796c77a4'
-    oldFile: !uuid 'f0e5f8dd49845d76e43b186501c40f3b3c8d5faf'
-  /UnityClient/Assets/Resources/Prefabs/data/防御塔.prefab:
-    newFile: !uuid 'c1d30223a007c350a7db1221090dc51507a79399'
-    oldFile: !uuid '99255b4a07ca36bc47a6226474bee8c06f5e0247'
-gitCommitId: !uuid '1cac8e443ea47dcbc876182f2823f6aceb2863be'
+  /设计文档:
+    newFile: !uuid 'a80112a7825ffd41f1ce83f4619707216e22fbdd'
+    oldFile: !uuid 'ad45dd32982d1f5ee27ef03b17815f179e012e71'
+  /设计文档/HP恢复.png:
+    newFile: !uuid '99d2f3bf3ea831175de568aa390550f8e9513e6d'
+    oldFile: null
+gitCommitId: !uuid '322d94d01335f451badefebed20fc62815752976'
 renames: {
   }
-revisionId: 742
+revisionId: 743
