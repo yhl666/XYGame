@@ -29,11 +29,23 @@ public sealed class BuildingMgr : SingletonGAObject<BuildingMgr>
         this.lists.Add(b);
         b.OnEnter();
     }
-    public ArrayList GetBuildings()
+    public ArrayList GetBuildings(bool includeDie=false)
     {
-        return lists;
+        if (includeDie)
+        {
+            return lists;
+        }
+        ArrayList ret = new ArrayList();
+        foreach (Entity h in lists)
+        {
+            if (false == h.isDie)
+            {
+                ret.Add(h);
+            }
+        }
+        return ret;
     }
-    public ArrayList GetBuildings<T>() where T : Building, new()
+    public ArrayList GetBuildings<T>(bool includeDie = false) where T : Building, new()
     {
         System.Type t = typeof(T);
         ArrayList ret = new ArrayList();
@@ -41,6 +53,10 @@ public sealed class BuildingMgr : SingletonGAObject<BuildingMgr>
         {
             if (b.GetType() == t)
             {
+                if (includeDie == false && b.isDie)
+                {
+                    continue;
+                }
                 ret.Add(b);
             }
         }

@@ -67,9 +67,21 @@ public sealed class EnemyMgr : SingletonGAObject<EnemyMgr>
         }
     }
 
-    public ArrayList GetEnemys()
+    public ArrayList GetEnemys(bool includeDie = false)
     {
-        return lists;
+        if (includeDie)
+        {
+            return lists;
+        }
+        ArrayList ret = new ArrayList();
+        foreach (Entity h in lists)
+        {
+            if (false == h.isDie)
+            {
+                ret.Add(h);
+            }
+        }
+        return ret;
     }
 
     public Enemy GetEnemy(int no)
@@ -80,7 +92,7 @@ public sealed class EnemyMgr : SingletonGAObject<EnemyMgr>
         }
         return null;
     }
-    public ArrayList GetEnemys<T>() where T : Enemy, new()
+    public ArrayList GetEnemys<T>(bool includeDie = false) where T : Enemy, new()
     {
         System.Type t = typeof(T);
         ArrayList ret = new ArrayList();
@@ -88,6 +100,10 @@ public sealed class EnemyMgr : SingletonGAObject<EnemyMgr>
         {
             if (b.GetType() == t)
             {
+                if (includeDie == false && b.isDie)
+                {
+                    continue;
+                }
                 ret.Add(b);
             }
         }
