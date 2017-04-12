@@ -3,24 +3,30 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '3a6064f724820148957466da0c22eef5a7202149'
-    oldFile: !uuid '2e3ab9c7b0ebcabb0915f8441434a121afb396c7'
+    newFile: !uuid '8e953c721a1095466bf6ae0d0770657954c9fb84'
+    oldFile: !uuid '3a6064f724820148957466da0c22eef5a7202149'
   /UnityClient/Assets:
-    newFile: !uuid '42c3e0ad7dc197f22d8068722ae3feceb7a1abf5'
-    oldFile: !uuid '3e12fe46b6b6472d8234cacf0f546714aec1cc61'
+    newFile: !uuid '29e608e2218f300a8bd8dce4ca02a08cbae82048'
+    oldFile: !uuid '42c3e0ad7dc197f22d8068722ae3feceb7a1abf5'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '01ac5d23a0b17af9da0b10a6e582dcbc14e04f6d'
-    oldFile: !uuid 'f294b0a0ec9c3d70cc9ac313f4c5b0841e358ca1'
+    newFile: !uuid '2e473f3a7e5e580c38361ec65a50e71e757ad3a2'
+    oldFile: !uuid '01ac5d23a0b17af9da0b10a6e582dcbc14e04f6d'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '386456968dd0fc363111becd0bb84f8790c0117a'
-    oldFile: !uuid '70eac8575e9904125771144061e74258af829969'
+    newFile: !uuid '5f82600025dd7296f2c9c37d1bd950f197dba658'
+    oldFile: !uuid '386456968dd0fc363111becd0bb84f8790c0117a'
   /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '029499ce73c0134cfbf379be0a58f9831d8d849f'
-    oldFile: !uuid 'a10e9119e9005416965e283f87f6d6eb83fac0cf'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
-    newFile: !uuid '8e107c2fb7411e770c4e19152e331625d3b66cbb'
-    oldFile: !uuid 'a9682db8e30b7fa0eff35c98a086bbee0057d2a7'
-gitCommitId: !uuid 'f1f984c0bc5dd0768c0a471a11d3acd2b5d14b99'
+    newFile: !uuid 'e0f1f5f08cb243dd1ca0c37d8f6d5aff22accb06'
+    oldFile: !uuid '029499ce73c0134cfbf379be0a58f9831d8d849f'
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks:
+    newFile: !uuid '82841c16b6655f31fbf0e89421ac0a9b657bc39a'
+    oldFile: !uuid '219eccb694b63a6060761d866961e7e822f797aa'
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack1.prefab:
+    newFile: !uuid '9fbb1a4964fd0a35abdfa2ba0f7f035e9c6db1a5'
+    oldFile: !uuid '493dbb062049e0d06c89ed09f05ca69f2e946dc0'
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack2.prefab:
+    newFile: !uuid 'b07f22db2d65f1102ada0c0e0b05f2ba165ea1ca'
+    oldFile: !uuid '35e3454a6d3399a81ee814e37021e9c964661cae'
+gitCommitId: !uuid '667430e37ac44a87d541b240805346b6829510ca'
 renames: {
   }
-revisionId: 731
+revisionId: 732
