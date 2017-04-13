@@ -1,0 +1,76 @@
+
+223.png
+size: 512,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+datui_zxuanwu
+  rotate: false
+  xy: 441, 28
+  size: 26, 22
+  orig: 26, 22
+  offset: 0, 0
+  index: -1
+xiaotui_zxuanwu
+  rotate: false
+  xy: 377, 28
+  size: 29, 22
+  orig: 29, 22
+  offset: 0, 0
+  index: -1
+yanjing_xuanwu
+  rotate: false
+  xy: 469, 31
+  size: 13, 19
+  orig: 13, 19
+  offset: 0, 0
+  index: -1
+zxuanwu_body
+  rotate: false
+  xy: 239, 15
+  size: 40, 35
+  orig: 40, 35
+  offset: 0, 0
+  index: -1
+zxuanwu_ke
+  rotate: true
+  xy: 185, 4
+  size: 46, 52
+  orig: 46, 52
+  offset: 0, 0
+  index: -1
+zxuanwu_tou
+  rotate: false
+  xy: 128, 4
+  size: 55, 46
+  orig: 55, 46
+  offset: 0, 0
+  index: -1
+zxuanwu_wuqi
+  rotate: true
+  xy: 1, 1
+  size: 49, 125
+  orig: 49, 125
+  offset: 0, 0
+  index: -1
+zxuanwu_yaodai
+  rotate: false
+  xy: 325, 26
+  size: 50, 24
+  orig: 50, 24
+  offset: 0, 0
+  index: -1
+zxuanwu_yoush
+  rotate: true
+  xy: 281, 17
+  size: 33, 42
+  orig: 33, 42
+  offset: 0, 0
+  index: -1
+zxuanwu_zuoshou
+  rotate: false
+  xy: 408, 30
+  size: 31, 20
+  orig: 31, 20
+  offset: 0, 0
+  index: -1

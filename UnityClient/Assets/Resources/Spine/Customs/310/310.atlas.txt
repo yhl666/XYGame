@@ -1,0 +1,68 @@
+
+310.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fj
+  rotate: false
+  xy: 150, 3
+  size: 51, 43
+  orig: 51, 43
+  offset: 0, 0
+  index: -1
+pj
+  rotate: false
+  xy: 358, 70
+  size: 65, 56
+  orig: 65, 56
+  offset: 0, 0
+  index: -1
+shou2
+  rotate: false
+  xy: 116, 2
+  size: 32, 44
+  orig: 32, 44
+  offset: 0, 0
+  index: -1
+st
+  rotate: true
+  xy: 201, 81
+  size: 45, 83
+  orig: 45, 83
+  offset: 0, 0
+  index: -1
+tf
+  rotate: false
+  xy: 286, 73
+  size: 70, 53
+  orig: 70, 53
+  offset: 0, 0
+  index: -1
+tou
+  rotate: false
+  xy: 116, 48
+  size: 83, 78
+  orig: 83, 78
+  offset: 0, 0
+  index: -1
+wuqi
+  rotate: false
+  xy: 2, 14
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
+xbs
+  rotate: false
+  xy: 425, 83
+  size: 68, 43
+  orig: 68, 43
+  offset: 0, 0
+  index: -1
+yq
+  rotate: false
+  xy: 201, 56
+  size: 18, 23
+  orig: 18, 23
+  offset: 0, 0
+  index: -1

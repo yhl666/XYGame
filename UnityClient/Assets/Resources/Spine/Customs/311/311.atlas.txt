@@ -1,0 +1,75 @@
+
+311.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Monster16/jianbang
+  rotate: false
+  xy: 672, 81
+  size: 55, 45
+  orig: 200, 120
+  offset: 72, 37
+  index: -1
+Monster16/jiao
+  rotate: false
+  xy: 729, 99
+  size: 72, 27
+  orig: 200, 120
+  offset: 64, 46
+  index: -1
+Monster16/leizhu
+  rotate: false
+  xy: 204, 2
+  size: 18, 23
+  orig: 18, 23
+  offset: 0, 0
+  index: -1
+Monster16/qiang_1
+  rotate: false
+  xy: 2, 15
+  size: 200, 111
+  orig: 200, 120
+  offset: 0, 6
+  index: -1
+Monster16/qunbai
+  rotate: false
+  xy: 598, 72
+  size: 72, 54
+  orig: 200, 120
+  offset: 64, 33
+  index: -1
+Monster16/shenti
+  rotate: true
+  xy: 391, 27
+  size: 99, 113
+  orig: 200, 120
+  offset: 50, 3
+  index: -1
+Monster16/shou
+  rotate: true
+  xy: 803, 102
+  size: 24, 55
+  orig: 200, 120
+  offset: 88, 32
+  index: -1
+Monster16/tou
+  rotate: false
+  xy: 506, 52
+  size: 90, 74
+  orig: 200, 120
+  offset: 55, 23
+  index: -1
+Monster16/wuqi
+  rotate: false
+  xy: 204, 27
+  size: 185, 99
+  orig: 200, 120
+  offset: 7, 12
+  index: -1
+Monster16/yaodai
+  rotate: false
+  xy: 506, 33
+  size: 62, 17
+  orig: 200, 120
+  offset: 69, 51
+  index: -1
