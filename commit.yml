@@ -3,27 +3,87 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '017c43c989efe95c75f776c7b8470ff83bd8570f'
-    oldFile: !uuid 'd3a042b76d01383f1f06873895c261c46b9e0b7e'
+    newFile: !uuid '34889b8a82817915fffcaa8d9ce10233a6c155c7'
+    oldFile: !uuid '017c43c989efe95c75f776c7b8470ff83bd8570f'
   /UnityClient/Assets:
-    newFile: !uuid '98a6d6f40cf14b3cb08aff4f0dc2763b6eb7afef'
-    oldFile: !uuid '63a6de72ad463cde3e6a69c9046acafa3cabec56'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'bcd01d46d777a4485370a172dc529a5ecce7de2f'
-    oldFile: !uuid 'f0d2ed7e96df1a552c6b158db7e24d8c7dc9f5d1'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'f2c9581c5f0aa3afbc0692330535342fbb408c31'
-    oldFile: !uuid 'f6c7cb8d6f28b762d4c2c29ebdd0079d77f13740'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '60b08241304b11ce133d2c63746bce9fa03e0fc2'
-    oldFile: !uuid 'be68c7b83ab7ea7acd2ad4b06efeda289797ef04'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
-    newFile: !uuid 'd2814c7f3f0a64a252c9bf73d6cd9d6ec98e6d45'
-    oldFile: !uuid 'afcd65e9fc4708722ad8428db24f576bc3dba1fe'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
-    newFile: !uuid 'a7e5a2f2b961fef97f50a49f96447ba48f95e15f'
-    oldFile: !uuid '28e39f0e882b5a878ed3835dd1f81f471e40ce01'
-gitCommitId: !uuid '0eb6608e7ad5f11ab1d8ffe4a6c1c4a8419ad175'
+    newFile: !uuid '153ed370ed9b44032b9c17e6487431bb90fd80a8'
+    oldFile: !uuid '98a6d6f40cf14b3cb08aff4f0dc2763b6eb7afef'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'faf1e9bcc271da8c3f59e889fb4a834d07866c01'
+    oldFile: !uuid '75e61b6a291bb6b30fada41325f0f1eb3db53dfa'
+  /UnityClient/Assets/Scripts/Audio:
+    newFile: !uuid '65534eaaa7fef93bb0f0bfb5145aaf2eea9a4e15'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Audio.meta:
+    newFile: !uuid '411c467d2558942d9720b0f3952a1c34e1219bbc'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Audio/AudioEvents.cs:
+    newFile: !uuid '7af61d032e2a97dcb7838fddc433a3090a6d8e45'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Audio/AudioEvents.cs.meta:
+    newFile: !uuid '5e8685b1524756d53f75925c1c8b1e2c285269b5'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Audio/AudioMgr.cs:
+    newFile: !uuid '32fd7f0bb71fca35bd7d98472ce96780533dfc35'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Audio/AudioMgr.cs.meta:
+    newFile: !uuid '1e1763e6cc520a7ba91c65bb8c5271845e16fc66'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid 'a0af78ddc3dc75926053c08fbd79c511a2398b22'
+    oldFile: !uuid 'bc1bee854ee54a5406a682ea6db1374619f212f1'
+  /UnityClient/Assets/Scripts/Data/SkillBoss_1_Data.cs:
+    newFile: !uuid '74bffc19d92220c0d7e173c09bc68954ece09de9'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/SkillBoss_1_Data.cs.meta:
+    newFile: !uuid '11d4df04c788f5009953cd40aae727c172ff3176'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/SkillBoss_2_Data.cs:
+    newFile: !uuid 'dd23679534a00faa96c94370589511958185fcfb'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/SkillBoss_2_Data.cs.meta:
+    newFile: !uuid '32b90ae54348872485ba998e31ad4096013686b4'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/SkillBoss_3_CallData.cs:
+    newFile: !uuid '8a8e9403f01d4bf392b534d9c5926cf08008521b'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/SkillBoss_3_CallData.cs.meta:
+    newFile: !uuid 'd8297e48e556ceaa2e1907fa7f7900355431bde1'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/SkillBoss_3_Data.cs:
+    newFile: !uuid '4fa145eeb435d10c619658658567faec80948bdc'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Data/SkillBoss_3_Data.cs.meta:
+    newFile: !uuid '793358e12bf3853bcb0ae69143180f693c4c88ce'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '048e4d734eceb294268db0f7749d00ba159ce671'
+    oldFile: !uuid '07c9fd53301b6804a22fe1ddce9b9d0ad6abe31b'
+  /UnityClient/Assets/Scripts/Model/AI:
+    newFile: !uuid 'd601c20a918c316de8bcff0ccfa83eb1d353c7a6'
+    oldFile: !uuid '524245f3a899d263f6d299935757814a2caf7714'
+  /UnityClient/Assets/Scripts/Model/AI/AIEnemy.cs:
+    newFile: !uuid 'bc9cf020468c1b16ceade2205a138cdd2feb9554'
+    oldFile: !uuid '8c1aa4ce1c105feec43e64d55dc1f742d023c123'
+  /UnityClient/Assets/Scripts/Model/Bullet.cs:
+    newFile: !uuid 'fb5ce3ea7eeaccf44d70c0824c4f3bc52eafa35f'
+    oldFile: !uuid '0da26925d210bf458dcb1b5cd70ec3a768aa4672'
+  /UnityClient/Assets/Scripts/Model/CustomObjects.cs:
+    newFile: !uuid 'c6d9dfa76ac68db06938c8d9e6a312f36ff94a13'
+    oldFile: !uuid 'a4add9229d17896c874379b35e0df7aa7b17cdda'
+  /UnityClient/Assets/Scripts/Model/Enemy.cs:
+    newFile: !uuid 'bb01156a6be6c45f7b7d9a3e6457026a6e543562'
+    oldFile: !uuid '1fd5af1e8111a7976324f2bc7ba0c6ef029a9127'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid 'eac97f842d195c152f143ed7f0e7e882be607532'
+    oldFile: !uuid 'e5fc1594a745b20ec96325bdfe3e96775e48af54'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid '79b052bd6e1913eeb66642a6af524390a4097526'
+    oldFile: !uuid 'e1687fa6f13c16ab588f5d274824d315c47b938b'
+  /UnityClient/Assets/Scripts/View/View.cs:
+    newFile: !uuid 'fd43d53db8452d09fe205747d3dfd1daff14e929'
+    oldFile: !uuid 'c2004d2aec61cd5ce82b886790c28cf70b806a31'
+gitCommitId: !uuid 'fb57bfe09b6947ff23ac423e0844d3f8ef6c34b3'
 renames: {
   }
-revisionId: 764
+revisionId: 765
