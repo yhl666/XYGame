@@ -283,16 +283,14 @@ public class BattleHero : Hero
         bullet_atk1_info.AddBuffer("BufferHitBack");
  
         */
-        //ConfigByLevel(this.level);
+        ConfigByLevel(this.level);
         this.SwitchTypeTo(type);
 
         ViewMgr.Create<ViewEntity>(this);
 
         this.team = 1;
 
-        this.current_hp = 500;
-        this.hp = 0xffffff;
-
+		
 
         DAO.Equip equip = EquipMgr.ins.GetTestEquip();
 
@@ -303,7 +301,7 @@ public class BattleHero : Hero
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
         this.eventDispatcher.AddEventListener(this, Events.ID_OPT);
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL_POINT_REDUCE);
-     //   ConfigByLevel(this.level);
+       ConfigByLevel(this.level);
         return true;
     }
 
@@ -475,7 +473,7 @@ public class BattleHero : Hero
         this.current_exp -= this.exp;
         this.level++;
         this.sp++;
-      //  ConfigByLevel(this.level);
+    ConfigByLevel(this.level);
     }
 
     private void ShowLevelUPButton()
