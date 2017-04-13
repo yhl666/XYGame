@@ -2,55 +2,22 @@
 branches: {
   }
 fileChange:
-  /设计文档:
-    newFile: !uuid '0b5699dc43103ebdf40e8ff389cfd6c3be69305d'
-    oldFile: !uuid 'a80112a7825ffd41f1ce83f4619707216e22fbdd'
-  /设计文档/音效:
-    newFile: !uuid 'b6bc53e0bdf67bab0c850e192df1ea6203656f3f'
+  /UnityClient:
+    newFile: !uuid '424e548095ba2a7fcedd767205ebc4adb5082e69'
+    oldFile: !uuid '28a1ece00f37d6b540aab7ab23cf3ef79307d4b4'
+  /UnityClient/Assets:
+    newFile: !uuid '0bdb5c320a0cfefa47da6655cc58043837c92a2e'
+    oldFile: !uuid 'ac503fa2e95e60b4cfe9f81792fc8bac7265029d'
+  /UnityClient/Assets/EditorSuport:
+    newFile: !uuid '4d9ea24506ae19db56888e804fbeb018257b4265'
+    oldFile: !uuid 'c129104c2a944dfbc6bba203de77148227b7a0cc'
+  /UnityClient/Assets/EditorSuport/SkillBoss3CallDataEdit.cs:
+    newFile: !uuid '7e670eb5f72b9033c7fa7f2148c3fdaba00aed4f'
     oldFile: null
-  /设计文档/音效/BOSS出场.mp3:
-    newFile: !uuid '39565256c1776943e5a23307159779a112731130'
+  /UnityClient/Assets/EditorSuport/SkillBoss3CallDataEdit.cs.meta:
+    newFile: !uuid '92b678b750a2a3660d88ed19c71667c2360c6248'
     oldFile: null
-  /设计文档/音效/冲击波.wav:
-    newFile: !uuid '5bc71855649a56d28158793a9d66d70910ca811c'
-    oldFile: null
-  /设计文档/音效/受伤1.wav:
-    newFile: !uuid 'aca2bf15bb7bd5dd67fbafc1f627a61ec7a49b49'
-    oldFile: null
-  /设计文档/音效/受伤2.wav:
-    newFile: !uuid '75851e1817d7345004fb50ce22a377c082dc4bd4'
-    oldFile: null
-  /设计文档/音效/战斗胜利.mp3:
-    newFile: !uuid 'd80f71fb512e3c19c84c568b1f9e6c02dfef91df'
-    oldFile: null
-  /设计文档/音效/挥剑1.wav:
-    newFile: !uuid '1f7afae42f0f690237a115740386b7e849169797'
-    oldFile: null
-  /设计文档/音效/挥剑2.wav:
-    newFile: !uuid 'dc7d133051ad7dfc144f865aebd8aed3b29ce44a'
-    oldFile: null
-  /设计文档/音效/挥剑3.wav:
-    newFile: !uuid 'c96ec6ea626e4e88d79ca4f79024ed764d365963'
-    oldFile: null
-  /设计文档/音效/旋风.wav:
-    newFile: !uuid 'a20c85c7a5b0df7bd16b408359a94408fd6a3cb4'
-    oldFile: null
-  /设计文档/音效/波.wav:
-    newFile: !uuid '964abf10251d6370513696fbec295011ce3d2bc6'
-    oldFile: null
-  /设计文档/音效/波2.wav:
-    newFile: !uuid '131926877bc4c6934026ce33f102d6a6d8f7c48f'
-    oldFile: null
-  /设计文档/音效/背景Our Hero Is Back.mp3:
-    newFile: !uuid 'c1c3fed4f31af772ae1ae1da983bd6f18da2cd3a'
-    oldFile: null
-  /设计文档/音效/踩地板.wav:
-    newFile: !uuid 'e913f0bd3d8c5fc8b2b7895bccea426d6d3ecb28'
-    oldFile: null
-  /设计文档/音效/闪电.wav:
-    newFile: !uuid '6153124f3a5aa4c6416e4a12a33ed67d283434b3'
-    oldFile: null
-gitCommitId: !uuid '94bbeffefd36f9e9bfc2dc6f104f37eed80542a4'
+gitCommitId: !uuid '9deb88d6bbef41dc4c211fafaeb5ee914d869144'
 renames: {
   }
-revisionId: 775
+revisionId: 776
