@@ -3,36 +3,39 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '7fe3c3db906a41d6d5d2371ad70b758b91e60ad2'
-    oldFile: !uuid '4026253cfda1fea4651c5aedfec8340e7a74e25d'
+    newFile: !uuid '18c739935e46981553b7fdf13def22ce2a8d6ae1'
+    oldFile: !uuid '7fe3c3db906a41d6d5d2371ad70b758b91e60ad2'
   /UnityClient/Assets:
-    newFile: !uuid 'da9793ff24bb09614ca34b323f4994bfe802dc0a'
-    oldFile: !uuid '983297876fa818978f904d39e1fd1355656d78bb'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '91551e944089177cce27bee0200c1c1b8640a565'
-    oldFile: !uuid 'a9afe7bafd6a5f9e2a94dbfd0dd58b60645393d9'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '07e434be61748bc72a4340b66e2cce53f48704b3'
-    oldFile: !uuid '8145fec538095d861b5774c5854aaa08ab916581'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid 'be68c7b83ab7ea7acd2ad4b06efeda289797ef04'
-    oldFile: !uuid '187260c5f90289a09414c7f2d5154df9f3075487'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型1.prefab:
-    newFile: !uuid '72d1f1429b010f259c8e7c77dc34e6cc25fc7382'
-    oldFile: !uuid 'eb7f94a6eaa681452a959ff2e2c45f85bd9b7b9c'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型2.prefab:
-    newFile: !uuid 'b8e5f01b8e3bbb82351bb1150a2b1822333fdb30'
-    oldFile: !uuid '509061021cb8c76f3f4e6d39af08780079ee2faf'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型3.prefab:
-    newFile: !uuid '4681c0827f5f872629601a94348272a776df8b38'
-    oldFile: !uuid '46ac3f93775648fa8515955ff6d10cd870b5e887'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型4.prefab:
-    newFile: !uuid '275538d50bb71c68d763ab1aa6988b88f5e17d00'
-    oldFile: !uuid 'e8b6ce171d403f39ddca519b4e4a96e78266e2e0'
-  /UnityClient/Assets/Resources/Prefabs/data/怪物原型5.prefab:
-    newFile: !uuid '1354722beb99d75d7338a3e87bd388872294782b'
-    oldFile: !uuid 'c9b06e246afb357ab30f922527951fb6f1264743'
-gitCommitId: !uuid 'd9d0bcf5996ade0712242f931de5bf0bf27f54dd'
+    newFile: !uuid '8ba5e257f4aed8f23c70dceb62cfc698b9d27bf5'
+    oldFile: !uuid 'da9793ff24bb09614ca34b323f4994bfe802dc0a'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '75e61b6a291bb6b30fada41325f0f1eb3db53dfa'
+    oldFile: !uuid '9f2de4b339bbd3e9a0be55d3a0ae4898c2053760'
+  /UnityClient/Assets/Scripts/Base:
+    newFile: !uuid 'bc5e52196a33accd2cf229f29ab71c61c6777c33'
+    oldFile: !uuid '468ba8be376f736134f09ddb8b3951e8f5c140ae'
+  /UnityClient/Assets/Scripts/Base/Events.cs:
+    newFile: !uuid 'f84a499e201453c67475f5e9b25e4898ab2fcaec'
+    oldFile: !uuid '93327c4ff40fbc0ec5db84937a9a8cbd205bb920'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '07c9fd53301b6804a22fe1ddce9b9d0ad6abe31b'
+    oldFile: !uuid 'ffecd57f89684f1bb0d492e44e94b8d2bf05dc78'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid 'e5fc1594a745b20ec96325bdfe3e96775e48af54'
+    oldFile: !uuid '1ad9861c05aee6c0dd31292b769e147351972da4'
+  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
+    newFile: !uuid '572b62105f0db5e4714ff69ecaaaebd581253035'
+    oldFile: !uuid '8a7499bc965c35b4deedb012c55b3523e49788b4'
+  /UnityClient/Assets/Scripts/Model/StateBase.cs:
+    newFile: !uuid '0156789cfc5962045248feb005091f73b29cfb29'
+    oldFile: !uuid '43af8fd2f2d2686e2abf2004b7af4dc204a51fe3'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'e1687fa6f13c16ab588f5d274824d315c47b938b'
+    oldFile: !uuid '22152c17052acbcca5f4853284689bf7fafb17fb'
+  /UnityClient/Assets/Scripts/View/UIBattle.cs:
+    newFile: !uuid '8d446ca8e2415e890e45ed479035fcc58555688f'
+    oldFile: !uuid 'adf31807ea21f602b22965ad71518869a3c70bb0'
+gitCommitId: !uuid 'f728073936745ed0451d8e33d7e2889f708a2817'
 renames: {
   }
-revisionId: 759
+revisionId: 760
