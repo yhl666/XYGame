@@ -152,6 +152,16 @@ public class GAObject : IDisposable
     }
     ///--------------------------------------------------------- some helper function--------------
 
+    //是否是目标类型，  
+    // 通过多态的动态转换确定 ，包括了子类和父类
+    public bool IsType<T>() where T : GAObject
+    {
+        return this as T != null; // 转换成功表示是该类型 或是其子类 父类
+    }
+    public static bool IsType<T>(GAObject obj) where T : GAObject
+    {
+        return obj as T != null; // 转换成功表示是该类型 或是其子类 父类
+    }
     public void log(string what)
     {
         Debug.Log(this.GetType().ToString() + ":" + what);
