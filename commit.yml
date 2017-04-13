@@ -3,24 +3,39 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '9a41345ac77d322106d5e25693b1194dd4e957d1'
-    oldFile: !uuid '424e548095ba2a7fcedd767205ebc4adb5082e69'
+    newFile: !uuid '9b2aa7a5eae49240ea2457e70825336705c1daad'
+    oldFile: !uuid '9a41345ac77d322106d5e25693b1194dd4e957d1'
   /UnityClient/Assets:
-    newFile: !uuid '7b557948f3722f25d6997c2ebbb1cc990534c74e'
-    oldFile: !uuid '0bdb5c320a0cfefa47da6655cc58043837c92a2e'
+    newFile: !uuid '994a994c05fd951b3aefed2e0a336ab0d5cb2958'
+    oldFile: !uuid '7b557948f3722f25d6997c2ebbb1cc990534c74e'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '2e97dc188fce0a94fe16887e6466b9c3b4974a57'
-    oldFile: !uuid '03e2018b434c1c84039599d8f87f0ca0351ebd28'
+    newFile: !uuid '431782f69321b5dcb3c87c854ab95712d8388fe0'
+    oldFile: !uuid '2e97dc188fce0a94fe16887e6466b9c3b4974a57'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '6fce33ac7228d1deb1ac699020c052d2ee566151'
-    oldFile: !uuid '9c09ddc78daa286d9cb7e41e565f78c25cc812ec'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '5be22ad79d71147b2f0f0ad364cdac12ca1872bc'
-    oldFile: !uuid '0dce4099395583ba58cf571cbdb871faa499ec0f'
-  /UnityClient/Assets/Resources/Prefabs/data/Boss技能.prefab:
-    newFile: !uuid 'd1b80bc40cbc6fdc2bb85547b970267b47f96acf'
-    oldFile: !uuid '0197b4445e8dd89225df16c2cd38c4d8de1f1668'
-gitCommitId: !uuid '53e876163ba4e0caf81ba2ab9b6556a8d448ec17'
+    newFile: !uuid 'bbfb4a6a65957b5cba6c24f285de35886a30bceb'
+    oldFile: !uuid '6fce33ac7228d1deb1ac699020c052d2ee566151'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid '9c6610c5c798c3a53ccd9c6815215c1b1b8d2cd7'
+    oldFile: !uuid '6b0a4dc064ed7971644fa7d857d4c9fba1ef5ca8'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
+    newFile: !uuid '357411f35d180d8edf72c7920f65647d133abc4d'
+    oldFile: !uuid '4285ce16fbfdb5653fd02ce8f097442deff5308e'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_hps.prefab:
+    newFile: !uuid 'eea413999d7ab08a80618e866c8eab9de1425b36'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_hps.prefab.meta:
+    newFile: !uuid '2dc3ce9c9631d3b241eea0eb0847a3c4a791cee3'
+    oldFile: null
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'a961dee1bd5c997fa0066c1a7f3453147b0c7a87'
+    oldFile: !uuid '1b9ccfc50deaf0f82df416947ec44d2e419720ed'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'b0b1495a7ac82853785376f8ed1860bcf6491695'
+    oldFile: !uuid '40d028fd0d0a77bed076f540e05e1530db2e19a5'
+  /UnityClient/Assets/Scripts/View/UIBattle.cs:
+    newFile: !uuid 'a0092ec8fc1cb4cd2bd30b7776e211e7bf4941f8'
+    oldFile: !uuid '589ea1ff283ff6e0816e5e2648e7793525e5ff1d'
+gitCommitId: !uuid '1607942daafcca0e325e101a66be4da6938f18f5'
 renames: {
   }
-revisionId: 777
+revisionId: 778
