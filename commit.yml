@@ -3,21 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '424e548095ba2a7fcedd767205ebc4adb5082e69'
-    oldFile: !uuid '28a1ece00f37d6b540aab7ab23cf3ef79307d4b4'
+    newFile: !uuid '9a41345ac77d322106d5e25693b1194dd4e957d1'
+    oldFile: !uuid '424e548095ba2a7fcedd767205ebc4adb5082e69'
   /UnityClient/Assets:
-    newFile: !uuid '0bdb5c320a0cfefa47da6655cc58043837c92a2e'
-    oldFile: !uuid 'ac503fa2e95e60b4cfe9f81792fc8bac7265029d'
-  /UnityClient/Assets/EditorSuport:
-    newFile: !uuid '4d9ea24506ae19db56888e804fbeb018257b4265'
-    oldFile: !uuid 'c129104c2a944dfbc6bba203de77148227b7a0cc'
-  /UnityClient/Assets/EditorSuport/SkillBoss3CallDataEdit.cs:
-    newFile: !uuid '7e670eb5f72b9033c7fa7f2148c3fdaba00aed4f'
-    oldFile: null
-  /UnityClient/Assets/EditorSuport/SkillBoss3CallDataEdit.cs.meta:
-    newFile: !uuid '92b678b750a2a3660d88ed19c71667c2360c6248'
-    oldFile: null
-gitCommitId: !uuid '9deb88d6bbef41dc4c211fafaeb5ee914d869144'
+    newFile: !uuid '7b557948f3722f25d6997c2ebbb1cc990534c74e'
+    oldFile: !uuid '0bdb5c320a0cfefa47da6655cc58043837c92a2e'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '2e97dc188fce0a94fe16887e6466b9c3b4974a57'
+    oldFile: !uuid '03e2018b434c1c84039599d8f87f0ca0351ebd28'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '6fce33ac7228d1deb1ac699020c052d2ee566151'
+    oldFile: !uuid '9c09ddc78daa286d9cb7e41e565f78c25cc812ec'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '5be22ad79d71147b2f0f0ad364cdac12ca1872bc'
+    oldFile: !uuid '0dce4099395583ba58cf571cbdb871faa499ec0f'
+  /UnityClient/Assets/Resources/Prefabs/data/Boss技能.prefab:
+    newFile: !uuid 'd1b80bc40cbc6fdc2bb85547b970267b47f96acf'
+    oldFile: !uuid '0197b4445e8dd89225df16c2cd38c4d8de1f1668'
+gitCommitId: !uuid '53e876163ba4e0caf81ba2ab9b6556a8d448ec17'
 renames: {
   }
-revisionId: 776
+revisionId: 777
