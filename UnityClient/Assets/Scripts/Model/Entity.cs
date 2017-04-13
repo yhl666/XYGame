@@ -102,6 +102,11 @@ public class AttackInfo
 
 public class Entity : Model
 {
+    //------type Boolean  will be init in Entity.Init();  getter will be provide 
+    private bool _IsHero = false;//是否是玩家
+    private bool _IsEnemy = false; // 是否是怪物
+    private bool _IsEnemyBoss = false; // 是否是Boss
+    private bool _IsTower = false; // 是否是 炮塔
 
     //---------------for player input state and frame sync
     public int dir = -1;
@@ -660,6 +665,34 @@ public class Entity : Model
             }
         }
     }
+    public bool IsHero
+    {
+        get
+        {
+            return _IsHero;
+        }
+    }
+    public bool IsEnemy
+    {
+        get
+        {
+            return _IsEnemy;
+        }
+    }
+    public bool IsEnemyBoss
+    {
+        get
+        {
+            return _IsEnemyBoss;
+        }
+    }
+    public bool IsTower
+    {
+        get
+        {
+            return _IsTower;
+        }
+    }
 
     //-----------------------end of setter getter if hp mp exp
 
@@ -756,6 +789,13 @@ public class Entity : Model
     public override bool Init()
     {
         base.Init();
+        // init type 
+
+        _IsHero = IsType<Hero>();
+        _IsEnemy = IsType<Enemy>();
+        _IsEnemyBoss = IsType<EnemyBoss>();
+        _IsTower = IsType<Tower>();
+
         bounds = BoundsImpl.Create(new Vector3(0f, 0f, 0f), new Vector3(0.5f, 1f, 0.2f));
         _machine = StateMachine.Create(this);
         _eventDispatcher = EventDispatcher.Create("Entity");
