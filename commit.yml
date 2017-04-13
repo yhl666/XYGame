@@ -3,27 +3,75 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '036c65dd61caadefc61a4b87e602302763d4309c'
-    oldFile: !uuid 'ed5471782945fd6749666aac5b29b81c6325d566'
+    newFile: !uuid '63dcb66ce055a2c0ac05bba424e47e4d9b23282b'
+    oldFile: !uuid '036c65dd61caadefc61a4b87e602302763d4309c'
   /UnityClient/Assets:
-    newFile: !uuid '3a45a9955b8b54fa7acf8536b578f5a0f4e117c9'
-    oldFile: !uuid '4b6557936164c287e5fbc9b5175cd3588c6730a9'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '7eb5f023863a31f2cec9256c67a0d152fc93c5db'
-    oldFile: !uuid 'e421479cd75e30c34765be3e1dcc9217ec3fa794'
-  /UnityClient/Assets/Scripts/Common:
-    newFile: !uuid 'ff2ddab64b3d68b6586fc874a37ab2c206a79341'
-    oldFile: !uuid 'ab473db79bc9468fc34bc23489a938ad11c935f1'
-  /UnityClient/Assets/Scripts/Common/Utils.cs:
-    newFile: !uuid '6a94700fc1580dbded93b28d849eaca6bfd0d369'
-    oldFile: !uuid '916a940256f940c0bdd5cc6c9f8a969c5f5aefc8'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid '22152c17052acbcca5f4853284689bf7fafb17fb'
-    oldFile: !uuid 'd9d2ae5f6d247572a17e444955b5a249cc2b53c6'
-  /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid 'adf31807ea21f602b22965ad71518869a3c70bb0'
-    oldFile: !uuid 'd7cf6e66d5b0c5baeb5087393df87f9ca915ee16'
-gitCommitId: !uuid '1b753b5d905af2da1a4bdcd756809601fed1e11e'
+    newFile: !uuid 'd21b485793d2ed586cac533e9f6c06f8790c9d21'
+    oldFile: !uuid '3a45a9955b8b54fa7acf8536b578f5a0f4e117c9'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'a9791e9136c46c919be3274eae48b8df40950d38'
+    oldFile: !uuid 'c498ea9da21fef237d595386f721ed454685cfd5'
+  /UnityClient/Assets/Resources/Spine:
+    newFile: !uuid '540486c35971b79f2e513237e67feb3dd913e86d'
+    oldFile: !uuid 'a999cd8d4c5de4d888ca286c6114e35494998f84'
+  /UnityClient/Assets/Resources/Spine/Customs:
+    newFile: !uuid '3e46ee419d143e41b6211d115e2d551cae74299a'
+    oldFile: !uuid '1d8506770f0a51dc9a50d881ef891bb11e2b566e'
+  /UnityClient/Assets/Resources/Spine/Customs/210:
+    newFile: !uuid '2e70d0eda9d154af174e5866f99282b0044223ce'
+    oldFile: !uuid '653c90b4e46258e2b8b6ca1edc9bd378b1f3d0dd'
+  /UnityClient/Assets/Resources/Spine/Customs/210/210.png.meta:
+    newFile: !uuid 'f9bd02e0d815c35c1eba0b1b12a499da73d45d7f'
+    oldFile: !uuid 'c9a8ec48f2d6d5e87a07d5742ac05ea084acafcb'
+  /UnityClient/Assets/Resources/Spine/Customs/211:
+    newFile: !uuid 'cd102b872512dfe051fcca3bd54f3dcc357c524a'
+    oldFile: !uuid '288f3b41fc2b93a57c3d840cb84bf3b3f775bde1'
+  /UnityClient/Assets/Resources/Spine/Customs/211/211.png.meta:
+    newFile: !uuid '79c2a845637df9fe05631f271aaf4adc36d4ed06'
+    oldFile: !uuid '794843c5d135628e245924b652927a25b3668f47'
+  /UnityClient/Assets/Resources/Spine/Customs/212:
+    newFile: !uuid '83c3a47c8e794171912977b1e150068cb8e71408'
+    oldFile: !uuid '1502e80d087019332713dda5ab97601863489342'
+  /UnityClient/Assets/Resources/Spine/Customs/212/212.png.meta:
+    newFile: !uuid '80baabb58e80d2798a60de721cd7fd01dd4d31cd'
+    oldFile: !uuid 'b2427b0cf4668e37fc9ebd0e082eae51e98a33a4'
+  /UnityClient/Assets/Resources/Spine/Customs/213:
+    newFile: !uuid 'a78b94b2b4f6c833d18db076bde7ee7cfbe97d77'
+    oldFile: !uuid '19d78ce6a90294ad494e3e0811ea91c953281d2e'
+  /UnityClient/Assets/Resources/Spine/Customs/213/213.png.meta:
+    newFile: !uuid '7afc1ebfc6eab804aeeb6dccaaca022cd3c66913'
+    oldFile: !uuid '6809ff195660e6c43106916c4d1fe970b571069b'
+  /UnityClient/Assets/Resources/Spine/Customs/214:
+    newFile: !uuid 'c433d23addb2daf44b24d79283f3cc7de6281f00'
+    oldFile: !uuid '3d7b3dd3aa81ecaaf64ccca5a2afbb65940077d2'
+  /UnityClient/Assets/Resources/Spine/Customs/214/214.png.meta:
+    newFile: !uuid '3409b84c9f8b1879f44bb604337ce4d5a2aaa0fe'
+    oldFile: !uuid 'eaedba04df91aac9fa110708edda0e28fc6acbd1'
+  /UnityClient/Assets/Resources/Spine/Customs/217:
+    newFile: !uuid '46db10211f79ec1e1b33bbb8a8f681cbc56a2e2a'
+    oldFile: !uuid '6fb1098cdf2ee91d59c6188cdd545ac33d6ea0ee'
+  /UnityClient/Assets/Resources/Spine/Customs/217/217.png.meta:
+    newFile: !uuid '542ea2503ddc49a688ff97605c1046bc6dc71529'
+    oldFile: !uuid 'a174901eaeb94cf9a958a53e39daa68491bea441'
+  /UnityClient/Assets/Resources/Spine/Customs/500017:
+    newFile: !uuid '25984547ba689278a176065456d3ba70c5310756'
+    oldFile: !uuid '89498adaf0aa7581f12db8dec7ca8295a76dc682'
+  /UnityClient/Assets/Resources/Spine/Customs/500017/500017.png.meta:
+    newFile: !uuid '25f28dfa9cf0e33fbcadaa4c2dce6b44ca1f9d3a'
+    oldFile: !uuid 'd88830c9b8ada39fdff7d91bbfed8c6ed5cc5110'
+  /UnityClient/Assets/Resources/Spine/Customs/534:
+    newFile: !uuid 'c796e2c4f80c77232de817e076f871b7aa0a3448'
+    oldFile: !uuid '38590007f1e3d963df1fabc7a29976840c619258'
+  /UnityClient/Assets/Resources/Spine/Customs/534/534.png.meta:
+    newFile: !uuid '1974eacb4affd61771d0dec6d5978566afb8e3bf'
+    oldFile: !uuid '90e89b06c515109c67cd3d3fc10800f74e41aa51'
+  /UnityClient/Assets/Resources/Spine/Customs/536:
+    newFile: !uuid '99506fabddefe0a658730d380fde1851585b7b0e'
+    oldFile: !uuid 'ae7bad3bebbc290d97ed771a91f9cda08e9a7fda'
+  /UnityClient/Assets/Resources/Spine/Customs/536/536.png.meta:
+    newFile: !uuid '3192e594922f542156466813ff6c390bbcb8af45'
+    oldFile: !uuid '4bb8209e9091bf6cd41603d2d4525f11cd98bc15'
+gitCommitId: !uuid '55bf9a651b78fcd4b997103663153d1abcf9af0e'
 renames: {
   }
-revisionId: 751
+revisionId: 752
