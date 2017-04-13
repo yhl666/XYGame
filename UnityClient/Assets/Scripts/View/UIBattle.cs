@@ -365,6 +365,28 @@ public sealed class UI_skills : ViewUI
                 }
             }
         }
+        if (type == Events.ID_SKILL1_LEVEL_INFOMATION)
+        {
+            
+            int level = (int)(userData );
+            skill1_level.text = level.ToString();
+            
+        }
+        if (type == Events.ID_SKILL2_LEVEL_INFOMATION)
+        {
+            int level = (int)(userData);
+            skill2_level.text = level.ToString();
+        }
+        if (type == Events.ID_SKILL3_LEVEL_INFOMATION)
+        {
+            int level = (int)(userData);
+            skill3_level.text = level.ToString();
+            if (level==3)
+            {
+                Debug.LogError(level);    
+            }
+            
+        }
     }
 
     public void ShowAllLevelUpButton()
@@ -421,6 +443,9 @@ public sealed class UI_skills : ViewUI
         this.btn_skill2_levelup = GameObject.Find("btn_skill2_levelup").GetComponent<Button>();
         this.btn_skill3_levelup = GameObject.Find("btn_skill3_levelup").GetComponent<Button>();
         this.btn_skill4_levelup = GameObject.Find("btn_skill4_levelup").GetComponent<Button>();
+        this.skill1_level = GameObject.Find("Text_skill_1_level").GetComponent<Text>();
+        this.skill2_level = GameObject.Find("Text_skill_2_level").GetComponent<Text>();
+        this.skill3_level = GameObject.Find("Text_skill_3_level").GetComponent<Text>();
         HideAllLevelUpButton();
         cd_skill1 = GameObject.Find("cool_skill1");
         cd_skill2 = GameObject.Find("cool_skill2");
@@ -431,6 +456,9 @@ public sealed class UI_skills : ViewUI
         cd_skill1.transform.FindChild("time").GetComponent<Text>().text = "";
         cd_skill2.transform.FindChild("time").GetComponent<Text>().text = "";
         cd_skill3.transform.FindChild("time").GetComponent<Text>().text = "";
+        skill1_level.text = "";
+        skill2_level.text = "";
+        skill3_level.text = "";
         //this.btn_skill5_levelup = GameObject.Find("btn_skill5_levelup").GetComponent<Button>();
         /*
    
@@ -489,10 +517,14 @@ public sealed class UI_skills : ViewUI
             EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
             HideAllLevelUpButton();
         });
+        
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL_LEVEL_IS_UP);
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL1_COOL_INFOMATION);
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL2_COOL_INFOMATION);
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL3_COOL_INFOMATION);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL1_LEVEL_INFOMATION);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL2_LEVEL_INFOMATION);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL3_LEVEL_INFOMATION);
         //  this.btn_skill2.gameObject.SetActive(false);
         //   this.btn_skill3.gameObject.SetActive(false);
         return true;
@@ -525,6 +557,9 @@ public sealed class UI_skills : ViewUI
     private GameObject cd_skill1;
     private GameObject cd_skill2;
     private GameObject cd_skill3;
+    private Text skill1_level;
+    private Text skill2_level;
+    private Text skill3_level;
 }
 public sealed class UI_heroInfo : ViewUI
 {

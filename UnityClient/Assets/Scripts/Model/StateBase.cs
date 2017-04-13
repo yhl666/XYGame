@@ -1239,7 +1239,11 @@ public class SkillState : StateBase
         {
             s.UpdateMS();
         }
-        SendCDInfomationToUI();
+        if( (Target as Entity)==HeroMgr.ins.self)
+        {
+            SendCDInfomationToUI();    
+        }
+        
     }
     public override void OnEvent(string type, object userData)
     {
@@ -1259,6 +1263,7 @@ public class SkillState : StateBase
     {
         if (idx > skill_stacks.Count) return;
         (skill_stacks[idx - 1] as SkillStack).PushLevelUp();
+
     }
     public override void OnEvent(int type, object userData)
     {
@@ -1421,28 +1426,18 @@ public class SkillState : StateBase
             if (((skill_stacks[i] as SkillStack).TopSkill()) != null)
             {
                 Counter counter = (skill_stacks[i] as SkillStack).TopSkill().GetCd();
-
+                int level = (skill_stacks[i] as SkillStack).TopSkill().level;
                 EventDispatcher.ins.PostEvent(Event[i], counter);
+                EventDispatcher.ins.PostEvent(Event[i+3], level);
             }
         }
-        //if (i == 0)
-        //{
-
-        //}
-        //if (i == 1)
-        //{
-        //    EventDispatcher.ins.PostEvent(Events.ID_SKILL2_COOL_INFOMATION, counter);
-        //}
-        //if (i == 2)
-        //{
-        //    EventDispatcher.ins.PostEvent(Events.ID_SKILL3_COOL_INFOMATION, counter);
-        //}
+        
     }
     ArrayList skill_stacks1 = new ArrayList();
     ArrayList skill_stacks2 = new ArrayList();
     ArrayList skill_stacks = null;
 
-    private int[] Event = new[]        {Events.ID_SKILL1_COOL_INFOMATION, Events.ID_SKILL2_COOL_INFOMATION, Events.ID_SKILL3_COOL_INFOMATION};
+    private int[] Event = new[] { Events.ID_SKILL1_COOL_INFOMATION, Events.ID_SKILL2_COOL_INFOMATION, Events.ID_SKILL3_COOL_INFOMATION, Events.ID_SKILL1_LEVEL_INFOMATION, Events.ID_SKILL2_LEVEL_INFOMATION, Events.ID_SKILL3_LEVEL_INFOMATION };
 }
 
 
