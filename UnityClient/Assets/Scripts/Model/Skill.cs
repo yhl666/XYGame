@@ -2999,8 +2999,7 @@ public class SkillBoss_1 : SkillBase
         return "SkillBoss_1";
     }
     Bullet b = null;
-    public Counter cd = Counter.Create(120);
-    Counter tick = Counter.Create(120);
+    Counter tick = Counter.Create(0);
     private int atk_times = 0;
     private Buffer bati = null;
     public float distance = 1f; // 冲向目标距离
@@ -3013,10 +3012,12 @@ public class SkillBoss_1 : SkillBase
     }
     public override void OnEnter()
     {
+        cd.SetMax(SkillBoss_1_Data.ins.cd);
         cd.Reset();
         atk_times = 0;
         will_run = false;
         this.PauseAll();
+        distance = SkillBoss_1_Data.ins.distance;
         b = null;
         this.Target.machine.GetState<StandState>().Resume();
         this.Target.machine.GetState<FallState>().Resume();
@@ -3056,7 +3057,14 @@ public class SkillBoss_1 : SkillBase
     public override void UpdateMS()
     {
         cd.Tick();
-
+        if (wait_for_next_atk)
+        {
+            if (tick.Tick() == false)
+            {
+                this.Shoot();
+                wait_for_next_atk = false;
+            }
+        }
         if (will_run && atk_times == 0)
         {//冲向目标点
             if (target.ClaculateDistance(pos) < distance)
@@ -3069,7 +3077,7 @@ public class SkillBoss_1 : SkillBase
                 }
                 else
                 {
-                    this.OnExit();
+                    this.OnExit();//TODO 未在范围内 来回移动
                 }
                 target.ani_force = "";
                 will_run = false;
@@ -3079,7 +3087,7 @@ public class SkillBoss_1 : SkillBase
                 int dir = (int)Utils.GetAngle(target.pos, pos);
 
                 // code copy from RunXZState
-                float speed = target.speed * 5f; // X倍速度冲锋
+                float speed = target.speed * SkillBoss_1_Data.ins.run_speed_ratio; // X倍速度冲锋
 
                 float dd = dir * DATA.ONE_DEGREE;//一度的弧度
 
@@ -3113,21 +3121,25 @@ public class SkillBoss_1 : SkillBase
         }
         tick.Reset();
         ++atk_times;
+        BulletConfigInfo info = BulletConfigInfo.Create();
+
         if (atk_times == 1)
         {
-            Target.attackingAnimationName = "2110";
+            Target.attackingAnimationName = SkillBoss_1_Data.ins.animation_name_1;  // ; "2110";
+            info.plistAnimation = SkillBoss_1_Data.ins.hit_animation_name_1;
         }
         else if (atk_times == 2)
         {
-            Target.attackingAnimationName = "2000";
+            Target.attackingAnimationName = SkillBoss_1_Data.ins.animation_name_2;// "2000";
+            info.plistAnimation = SkillBoss_1_Data.ins.hit_animation_name_2;
         }
         else if (atk_times == 3)
         {
-            Target.attackingAnimationName = "2130";
+            Target.attackingAnimationName = SkillBoss_1_Data.ins.animation_name_3;// "2210";//"2130";
+            info.plistAnimation = SkillBoss_1_Data.ins.hit_animation_name_3;
         }
 
-        BulletConfigInfo info = BulletConfigInfo.Create();
-
+      
         //  info.AddBuffer("BufferHitBack");
 
         info.launch_delta_xyz.x = 1.5f;
@@ -3136,19 +3148,19 @@ public class SkillBoss_1 : SkillBase
         info.distance_atk = 1.5f;
         info.number = 0xfff;
         info.isHitDestory = false;
-        info.damage_ratio = Skill62_1_Data.ins.damage_ratio;
+        info.damage_ratio = SkillBoss_1_Data.ins.damage_ratio;
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
-        info.plistAnimation = "hd/enemies/enemy_311/bullet/enemy_311_bul_311011/enemy_311_bul_311011.plist";
-
+        //        info.plistAnimation = "hd/enemies/enemy_311/bullet/enemy_311_bul_311011/enemy_311_bul_311011.plist";
+  
         ///  ;"hd/roles/role_6/bullet/role_6_bul_6122/role_6_bul_6122.plist";
         /// info.rotate = 30.0f;
         info.distance = 0;
         info.lastTime = 20;
-        info.collider_size = new Vector3(10f, 10f, 10f);
-        info.launch_delta_xyz = new Vector3(1f, 0f, 0f);
-        info.scale_x = 2f;
-        info.scale_y = 2f;
+        info.collider_size = SkillBoss_1_Data.ins.hit_rect;// new Vector3(10f, 10f, 10f);
+        info.launch_delta_xyz = SkillBoss_1_Data.ins.delta_xyz;// new Vector3(1f, 0f, 0f);
+        info.scale_x = 3f;
+        info.scale_y = 3f;
         /// info.AddHitTarget(    )
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
 
@@ -3159,9 +3171,13 @@ public class SkillBoss_1 : SkillBase
         ///  this.stack.PopSingleSkill();
         if (will_run == false && atk_times != 0)
         {
-            this.Shoot();
+            ///  this.Shoot();
+
+            wait_for_next_atk = true;
+            tick.Reset();
         }
     }
+    bool wait_for_next_atk = false;//是否等待攻击间隔
     public override void OnExit()
     {
         if (b != null)
@@ -3232,14 +3248,14 @@ public class SkillBoss_2 : SkillBase
     {
         return "SkillBoss_2";
     }
-    Bullet b = null;
-    public Counter cd = Counter.Create(120);
-    Counter tick = Counter.Create(120);
-    Counter tick_auto = Counter.Create(40);
+    ////  Bullet b = null;
+    //  Counter tick = Counter.Create(120);
+    Counter tick_auto = Counter.Create(40);//自动攻击间隔
     private int atk_times = 0;
     public int level_buffer = 0;
     BufferBoss2 buf = null;
     private Enemy target = null;
+    int MAX_BUFFER_LEVEL = 3;
     public override void OnLevelUp(int target_level)
     {
 
@@ -3267,12 +3283,15 @@ public class SkillBoss_2 : SkillBase
     }
     public override void OnEnter()
     {
+        cd.SetMax(SkillBoss_2_Data.ins.cd);
         cd.Reset();
+        tick_auto.SetMax(SkillBoss_2_Data.ins.auto_atk_interval);
         atk_times = 0;
+        MAX_BUFFER_LEVEL = SkillBoss_2_Data.ins.max_buf_level;
         this.PauseAll();
         this.Target.machine.GetState<StandState>().Resume();
         this.Target.machine.GetState<FallState>().Resume();
-        tick.Reset();
+        // tick.Reset();
 
         target = Target as EnemyBoss;
         if (target == null)
@@ -3284,14 +3303,14 @@ public class SkillBoss_2 : SkillBase
         this.Enable = true;
         this.Shoot();
 
-        if (level_buffer < 3)
+        if (level_buffer < MAX_BUFFER_LEVEL)
         {//叠加buffer
             ++level_buffer;
             if (buf == null)
             {//只保存 一段Buf 其余都是合并而来
                 buf = BufferMgr.CreateHelper<BufferBoss2>(Target);
                 buf = Target.AddBuffer<BufferBoss2>() as BufferBoss2;
-                buf.percent = 10;
+                buf.percent = SkillBoss_2_Data.ins.per_buf_damage_percent;//10;
             }
             else
             {
@@ -3302,7 +3321,7 @@ public class SkillBoss_2 : SkillBase
     public override void UpdateMS()
     {
         cd.Tick();
-        if (tick.Tick())
+        //  if (tick.Tick())
         {
             return;
         }
@@ -3326,46 +3345,36 @@ public class SkillBoss_2 : SkillBase
     }
     private void Shoot()
     {
-        tick.Reset();
+        // tick.Reset();
         ++atk_times;
-        if (atk_times == 1)
-        {
-            Target.attackingAnimationName = "2140";
-        }
-        else if (atk_times == 2)
-        {
-            Target.attackingAnimationName = "2140";
-        }
-        else if (atk_times == 3)
-        {
-            Target.attackingAnimationName = "2140";
-        }
 
+        Target.attackingAnimationName = "2140";
+        Target.attackingAnimationName = SkillBoss_2_Data.ins.animation_name;
         BulletConfigInfo info = BulletConfigInfo.Create();
-
         info.frameDelay = 1;
-
         info.distance_atk = 1.5f;
-        info.number = 0xfff;
-        info.isHitDestory = false;
+        info.number = 1;
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
-        info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
+        //  info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
 
-        info.plistAnimation = "hd/enemies/enemy_311/bullet/enemy_311_bul_311031/enemy_311_bul_311031.plist";
+        //   info.plistAnimation = "hd/enemies/enemy_311/bullet/enemy_311_bul_311031/enemy_311_bul_311031.plist";
+        info.plistAnimation = SkillBoss_2_Data.ins.hit_animation_name;
         /// info.rotate = 30.0f;
         info.distance = target.ClaculateDistance(target.target);
         ///   info.lastTime = 10;
-        // info.scale_x = 2f;
-        //   info.scale_y = 2f;
+        info.scale_x = SkillBoss_2_Data.ins.scale_xy;
+        info.scale_y = SkillBoss_2_Data.ins.scale_xy;
 
-        info.launch_delta_xyz.x = 0.5f;// Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
-        info.launch_delta_xyz.y = -0.2f;// Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
-        info.launch_delta_xyz.z = 0f;// Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+        // info.launch_delta_xyz.x = 0.5f;// Skill62_3_Data.ins.delta_xyz.x;// 1.5f;
+        // info.launch_delta_xyz.y = -0.2f;// Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
+        // info.launch_delta_xyz.z = 0f;// Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
+        info.launch_delta_xyz = SkillBoss_2_Data.ins.delta_xyz;
         info.isHitDestory = true;
-        //  info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
-        info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
-        info.collider_size = Skill62_3_Data.ins.hit_rect;
+        info.damage_ratio = SkillBoss_2_Data.ins.damage_ratio;
+        info.collider_size = SkillBoss_2_Data.ins.hit_rect;
+
+        ///    info.AddHitTarget(target.target);
         info.collider_type = ColliderType.Box;
         info._OnTakeAttack = (Bullet bbbb, object user) =>
         {
@@ -3379,7 +3388,7 @@ public class SkillBoss_2 : SkillBase
             info.dir_2d = (int)Utils.GetAngle(Target.pos, target.target.pos);
         };
 
-        b = BulletMgr.Create(this.Target, "BulletConfig", info);
+        BulletMgr.Create(this.Target, "BulletConfig", info);
 
 
     }
@@ -3389,10 +3398,10 @@ public class SkillBoss_2 : SkillBase
     }
     public override void OnExit()
     {
-        b.SetInValid();
+        //      b.SetInValid();
         this.Enable = false;
         Target.isAttacking = false;
-        tick.Reset();
+        //  tick.Reset();
         Target.is_spine_loop = true;
 
         this.ResumeAll();
@@ -3447,7 +3456,6 @@ public class SkillBoss_3 : SkillBase
     {
         return "SkillBoss_3";
     }
-    public Counter cd = Counter.Create(120);
     Counter tick = Counter.Create(120);
     Buffer bati = null;
     public override void OnLevelUp(int target_level)
@@ -3456,6 +3464,8 @@ public class SkillBoss_3 : SkillBase
     }
     public override void OnEnter()
     {
+        tick.SetMax(SkillBoss_3_Data.ins.last_time);
+        cd.SetMax(SkillBoss_3_Data.ins.cd);
         cd.Reset();
         this.PauseAll();
         this.Target.machine.GetState<StandState>().Resume();
@@ -3464,24 +3474,43 @@ public class SkillBoss_3 : SkillBase
         bati = Target.AddBuffer<BufferBaTi>();
         Target.isAttacking = true;
         this.Enable = true;
+        points = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetCustomObjects<TerrainObjectEnemyBornPoint>();
+
+
         this.Shoot();
     }
+    private ArrayList points; // 出生点
+    TerrainObjectEnemyBornPoint GetBornPoint(int id)
+    {
+        foreach (TerrainObjectEnemyBornPoint point in points)
+        {
+            if (point.id == id) return point;
+        }
+        return null;
+    }
+    bool has_call = false;
     public override void UpdateMS()
     {
         cd.Tick();
         if (tick.Tick())
         {
-
             return;
         }
-        Enemy e1 = EnemyMgr.Create<Enemy3>();
-        e1.x = Utils.random_frameMS.Next(0, 340000) / 10000f;
-        e1.z = Utils.random_frameMS.Next(1000, 4000) / 1000.0f;
 
-        //   e1.x = 5+i*0.1f;   
-        ///   e1.x = 55555;
-        e1.y = 5;
-        e1.team = 333;
+        TimerQueue.ins.AddTimerMSI(1, () =>
+        {
+            //开始召唤
+            ArrayList lists = SkillBoss_3_Data.ins.Get(this.level); // 按照技能等级（波数）来召唤， AI会设置level 来表示波数
+
+            foreach (SkillBoss_3_CallData data in lists)
+            {
+                TerrainObjectEnemyBornPoint point = GetBornPoint(data.id);
+                EnemyLauncher launch = EnemyLauncher.Create(new Vector3(point.x, point.y, point.z), data.code, Utils.ConvertToFPS(data.time),AIEnemyType.Normal);
+                ModelMgr.ins.Add(launch);
+            }
+      //      Debug.LogError("开始召唤波数" + level);
+        });
+
         this.OnExit();
     }
     public override void UpdateMSIdle()
@@ -3490,7 +3519,7 @@ public class SkillBoss_3 : SkillBase
     }
     private void Shoot()
     {
-        Target.attackingAnimationName = "2240_0";
+        Target.attackingAnimationName = SkillBoss_3_Data.ins.animation_name;//"2240_0";
     }
     public override void OnSpineComplete()
     {

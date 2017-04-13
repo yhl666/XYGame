@@ -296,6 +296,7 @@ namespace AIEnemy
     {
         public override void UpdateMS()
         {
+            if (host.ai_type != AIEnemyType.FSM) return;
             if (pause) return;
             if (current_fsm != null)
             {

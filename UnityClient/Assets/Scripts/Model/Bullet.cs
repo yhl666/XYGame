@@ -452,16 +452,20 @@ public sealed class BulletConfig : Bullet
         this.z = owner.z + info.launch_delta_xyz.z;
 
         this.flipX = -owner.flipX;
-        if (this.flipX < 0)
+
+        info.InVokeOnLaunch(this);
+        if (info.dir_2d >= 0)
         {
-            this.x = owner.x - info.launch_delta_xyz.x;
+            if (info.dir_2d > 90 && info.dir_2d < 270)
+            {
+                flipX = -1f;
+            }
+            else
+            {
+                flipX = 1f;
+            }
         }
         else
-        {
-            this.x = owner.x + info.launch_delta_xyz.x;
-        }
-
-        if (info.dir_2d < 0)
         {
             if (this.flipX > 0)
             {
@@ -472,7 +476,14 @@ public sealed class BulletConfig : Bullet
                 info.dir_2d = 180;
             }
         }
-        info.InVokeOnLaunch(this);
+        if (this.flipX < 0)
+        {
+            this.x = owner.x - info.launch_delta_xyz.x;
+        }
+        else
+        {
+            this.x = owner.x + info.launch_delta_xyz.x;
+        }
     }
 
     public override bool Init()

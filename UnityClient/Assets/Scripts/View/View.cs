@@ -331,7 +331,7 @@ public class ViewEnemy : View
         {
             name = m.ani_force;
         }
-        else if (m.isDie)
+        else if (m.isDie && m.ani_die!="")
         {
             spine.loop = false;
             name = m.ani_die;

@@ -184,15 +184,22 @@ public class TerrainObjectTransform : CustomObject
 /// <summary>
 /// Enemy 启动器
 /// </summary>
-class EnemyLauncher : Model
+public class EnemyLauncher : Model
 {
-    public OneEnemyBornData data = null;
+    //  public OneEnemyBornData data = null;
 
-    public static EnemyLauncher Create(OneEnemyBornData data)
+    public Vector3 pos;//出生坐标
+    public string code;// 原型 code
+    public int time;//延时 帧数
+    private AIEnemyType ai_type;
+    public static EnemyLauncher Create(Vector3 pos, string code, int time , AIEnemyType type = AIEnemyType.FSM)
     {
         EnemyLauncher ret = new EnemyLauncher();
         ret.Init();
-        ret.data = data;
+        ret.pos = pos;
+        ret.ai_type = type;
+        ret.code = code;
+        ret.time = time;
         return ret;
     }
     public override void UpdateMS()
@@ -202,14 +209,15 @@ class EnemyLauncher : Model
             return;
         }
 
-        EnemyPrototype proto = EnemyPrototype.GetPrototype(data.enemy_code);
+        EnemyPrototype proto = EnemyPrototype.GetPrototype(code);
         if (proto != null)
         {
             Enemy enemy = EnemyMgr.Create(proto.GetClassType());
+            enemy.ai_type = ai_type;
             // one enemy data  
             enemy.team = 333;
-            enemy.x = data.gameObject.transform.localPosition.x;
-            enemy.z = data.gameObject.transform.localPosition.y;
+            enemy.x = pos.x;
+            enemy.z = pos.y;
             enemy.y = 2;
             //prototype
             enemy.hp = proto.hp;
@@ -217,11 +225,15 @@ class EnemyLauncher : Model
             enemy.damage = proto.damage;
             enemy.exp = proto.exp;
         }
+        else
+        {
+            Debug.LogError("proto has miss type code = " + code);
+        }
         this.SetInValid();
     }
     public override void OnEnter()
     {
-        tick.SetMax(Utils.ConvertToFPS(data.time));
+        tick.SetMax((time));
     }
 
     Counter tick = Counter.Create();
@@ -233,6 +245,7 @@ class EnemyLauncher : Model
 /// </summary>
 public class TerrainObjectEnemyBornPoint : CustomObject
 {
+    public int id = 0;
     public override bool Init()
     {
         base.Init();
@@ -253,9 +266,11 @@ public class TerrainObjectEnemyBornPoint : CustomObject
         OneEnemyBornData[] enemys = data.gameObject.GetComponents<OneEnemyBornData>();
         foreach (OneEnemyBornData enemy in enemys)
         {//初始化 启动器
-            EnemyLauncher launch = EnemyLauncher.Create(enemy);  // ModelMgr.Create<EnemyLauncher>();
+            EnemyLauncher launch = EnemyLauncher.Create(enemy.transform.localPosition, enemy.enemy_code, Utils.ConvertToFPS(enemy.time)); 
+            // ModelMgr.Create<EnemyLauncher>();
             ModelMgr.ins.Add(launch);
         }
+        this.id = data.id;
         Debug.Log("TerrainObjectEnemyBornPoint  OK " + enemys.Length);
     }
 }
@@ -283,7 +298,7 @@ public class TerrainObjectDefendTower : CustomObject
     {
         TerrainObjectDefendTowerData data = obj as TerrainObjectDefendTowerData;
         this.x = data.gameObject.transform.localPosition.x;
-      ///  this.y = data.gameObject.transform.localPosition.y;
+        ///  this.y = data.gameObject.transform.localPosition.y;
         this.z = data.gameObject.transform.localPosition.y;
         this.name = data.gameObject.name;
 

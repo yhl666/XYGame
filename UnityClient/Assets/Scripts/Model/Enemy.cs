@@ -8,11 +8,18 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using AIEnemy;
 
+public enum AIEnemyType
+{
+    FSM,//  普通仇恨机制 在AIEnemy.cs 里面 该机制只会仇恨行为
+    Normal,// 该类型下 只会找当前最近的玩家攻击
+    //  Boss,//boss 的AI类型
+}
 public class Enemy : Entity
 {
     //--------------------------------接入通用  AI ，自定义可继承并且override  AI接口函数
     //TODO use behavior Tree to process AI
     public Entity target = null;
+    public AIEnemyType ai_type = AIEnemyType.FSM;
     public float target_distance = 5f;//仇恨范围
     public Counter cd = Counter.Create(80);
     public FSMMachine ai_fsm_machine = null;
@@ -41,10 +48,15 @@ public class Enemy : Entity
             this.AI_MoveToTarget();
         }*/
 
+
+        if (ai_type == AIEnemyType.Normal)
+        {//该状态下回始终查找当前最近的玩家作为攻击目标
+            this.AI_SearchNewTarget();
+        }
         //如果目标非法，那么寻找另外一个目标
         if (target == null || target.IsInValid())
         {
-            ///  this.AI_SearchNewTarget();
+            //   this.AI_SearchNewTarget();
             target = null;
             return;
         }
@@ -75,7 +87,7 @@ public class Enemy : Entity
         }
 
     }
-    public virtual void AI_SearchNewTarget()
+    public void AI_SearchNewTarget()
     {
         ArrayList heros = HeroMgr.ins.GetHeros();
         float minDis = 9999.0f;
@@ -91,7 +103,7 @@ public class Enemy : Entity
 
         }
     }
-    public virtual void AI_MoveToTarget()
+    public void AI_MoveToTarget()
     {
         /*  if (this.x < target.x)
           {
@@ -695,7 +707,6 @@ public class Enemy3 : Enemy
         scale = 0.8f;
     }
 
-
     public override bool Init()
     {
         base.Init();
@@ -725,6 +736,7 @@ public class EnemyBoss : Enemy
         this.skin = "#1";
         ani_hurt = "hurt";
         ani_run = "run";
+        ani_die = "";
         ani_stand = "rest";
         ani_atk1 = "218010";
         attackingAnimationName = ani_atk1;
@@ -770,14 +782,51 @@ public class EnemyBoss : Enemy
         }
         ai_fsm_machine.UpdateMS();
         base.AI_UpdateMSWithAI();
+
+        if (isAttacking == false)
+        {
+            run_random = true;
+        }
+        else
+        {
+            run_random = false;
+        }
+        if (run_random)
+        {
+            dir = dir_random;
+
+        }
+        if (tick_run_random.Tick() == false)
+        {
+            dir_random = Utils.random_frameMS.Next(0, 360);
+            tick_run_random.Reset();
+            tick_run_random.SetMax(Utils.random_frameMS.Next(10, 80));
+        }
+ 
     }
     public override void UpdateMS()
     {
+        if (levels.Count <= 0)
+        {
+            if (SkillBoss_3_Data.ins.call_times.Length > has_call.Length)
+            {
+                Debug.LogError("暂时只支持最大召唤波数为" + has_call.Length);
+            }
+            foreach (int lev in SkillBoss_3_Data.ins.call_times)
+            {
+                levels.Add(lev);
+            }
+            levels.Add(0); // 末尾填充0 方便计算
+        }
+   
         base.UpdateMS();
     }
+    Counter tick_run_random = Counter.Create(40);// 随机走动下 多久切换一次 方向
+    int dir_random = -1;
     public override void AI_AttackTarget()
     {//释放技能1
-
+//         s1 = 1;
+//        return;
         /*  s1 = 3;
           return;
           if (skill1.cd.IsMax())
@@ -804,44 +853,90 @@ public class EnemyBoss : Enemy
               s1 = 3;
           }
           else */
+        /*     if (skill2.cd.IsMax())
+             {
+                 s1 = 2;
+             }
+             else if (skill1.cd.IsMax())
+             {
+                 s1 = 1;
+             }
+
+             if (has3 == false && current_hp < hp * 0.3f)
+             {
+                 s1 = 3;
+                 has3 = true;
+             }
+             if (has2 == false && current_hp < hp * 0.5f && current_hp > hp * 0.3f)
+             {
+                 s1 = 3;
+                 has2 = true;
+             }
+             if (has1 == false && current_hp < hp * 0.7f && current_hp > hp * 0.5f)
+             {
+                 s1 = 3;
+                 has1 = true;
+             }
+
+
+
+             if (s1 == 3)
+             {
+                 skill1.OnInterrupted(new SkillBase());
+                 skill2.OnInterrupted(new SkillBase());
+             }*/
+
+
+
+
+        if (skill3.cd.IsMax())
+        {
+            int last = (int)levels[0];
+            for (int i = 1; i < levels.Count; i++)
+            {
+                if (has_call[i - 1] == true)
+                {
+                    last = (int)levels[i];
+                    continue;//该学段 已经召唤
+                }
+                int hp_current_percent = current_hp * 100 / hp;
+                if (hp_current_percent <= last && hp_current_percent > (int)levels[i])
+                {//血量在该范围内 并且没有召唤
+                    s1 = 3;
+                    skill3.level = i; // 开始召唤
+                    has_call[i - 1] = true;
+                    run_random = false;
+                    return;
+                    break;
+                }
+                last = (int)levels[i];
+            }
+        }
         if (skill2.cd.IsMax())
         {
             s1 = 2;
+            run_random = false;
         }
         else if (skill1.cd.IsMax())
         {
             s1 = 1;
+            run_random = false;
+        }
+        else
+        {//所有技能为冷却完毕
+
+            run_random = true;
         }
 
-        if (has3 == false && current_hp < hp * 0.3f)
-        {
-            s1 = 3;
-            has3 = true;
-        }
-        if (has2 == false && current_hp < hp * 0.5f && current_hp > hp * 0.3f)
-        {
-            s1 = 3;
-            has2 = true;
-        }
-        if (has1 == false && current_hp < hp * 0.7f && current_hp > hp * 0.5f)
-        {
-            s1 = 3;
-            has1 = true;
-        }
-
-
-
-        if (s1 == 3)
-        {
-            skill1.OnInterrupted(new SkillBase());
-            skill2.OnInterrupted(new SkillBase());
-        }
     }
+    bool run_random = false;
     SkillState skill = null;
     SkillBoss_1 skill1 = null;
     SkillBoss_2 skill2 = null;
     SkillBoss_3 skill3 = null;
 
+    bool[] has_call = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+    ArrayList levels = new ArrayList(); // 末尾会填充0 方便计算
     bool has1 = false;
     bool has2 = false;
     bool has3 = false;
