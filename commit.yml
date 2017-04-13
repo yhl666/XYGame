@@ -3,39 +3,51 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '9b2aa7a5eae49240ea2457e70825336705c1daad'
-    oldFile: !uuid '9a41345ac77d322106d5e25693b1194dd4e957d1'
+    newFile: !uuid 'dd8f840032dc25b0948656d0c3521aa4f8965c60'
+    oldFile: !uuid '9b2aa7a5eae49240ea2457e70825336705c1daad'
   /UnityClient/Assets:
-    newFile: !uuid '994a994c05fd951b3aefed2e0a336ab0d5cb2958'
-    oldFile: !uuid '7b557948f3722f25d6997c2ebbb1cc990534c74e'
+    newFile: !uuid '0b89f50d66499681887c7396cb34bd7424fe4771'
+    oldFile: !uuid '994a994c05fd951b3aefed2e0a336ab0d5cb2958'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '431782f69321b5dcb3c87c854ab95712d8388fe0'
-    oldFile: !uuid '2e97dc188fce0a94fe16887e6466b9c3b4974a57'
+    newFile: !uuid 'ff88cd938ad7ad98de3e8a8b602eff78030978a3'
+    oldFile: !uuid '431782f69321b5dcb3c87c854ab95712d8388fe0'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'bbfb4a6a65957b5cba6c24f285de35886a30bceb'
-    oldFile: !uuid '6fce33ac7228d1deb1ac699020c052d2ee566151'
+    newFile: !uuid '660d953b071dbeec2ce3ea8de07acabf032dded4'
+    oldFile: !uuid 'bbfb4a6a65957b5cba6c24f285de35886a30bceb'
   /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '9c6610c5c798c3a53ccd9c6815215c1b1b8d2cd7'
-    oldFile: !uuid '6b0a4dc064ed7971644fa7d857d4c9fba1ef5ca8'
+    newFile: !uuid '5a2e99e1929a896b96058322a5cd40f62c1cf01c'
+    oldFile: !uuid '9c6610c5c798c3a53ccd9c6815215c1b1b8d2cd7'
   /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid '357411f35d180d8edf72c7920f65647d133abc4d'
-    oldFile: !uuid '4285ce16fbfdb5653fd02ce8f097442deff5308e'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_hps.prefab:
-    newFile: !uuid 'eea413999d7ab08a80618e866c8eab9de1425b36'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_hps.prefab.meta:
-    newFile: !uuid '2dc3ce9c9631d3b241eea0eb0847a3c4a791cee3'
-    oldFile: null
+    newFile: !uuid 'c9048269c3c2b51e564c9f223e2b37b9dc1365df'
+    oldFile: !uuid '357411f35d180d8edf72c7920f65647d133abc4d'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab:
+    newFile: !uuid '188ffe9afbcf1cb7b1bd41a5aa8374bb6633f99c'
+    oldFile: !uuid '55181b91899b542e64808eebd50887197f66799d'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid 'a961dee1bd5c997fa0066c1a7f3453147b0c7a87'
-    oldFile: !uuid '1b9ccfc50deaf0f82df416947ec44d2e419720ed'
+    newFile: !uuid '18820737650b42053aa90b0cab1b06bf746d861b'
+    oldFile: !uuid 'a961dee1bd5c997fa0066c1a7f3453147b0c7a87'
+  /UnityClient/Assets/Scripts/Audio:
+    newFile: !uuid 'eba122d1a09969378228158ba92d9200dc38946b'
+    oldFile: !uuid '65534eaaa7fef93bb0f0bfb5145aaf2eea9a4e15'
+  /UnityClient/Assets/Scripts/Audio/AudioEvents.cs:
+    newFile: !uuid '89f76fe92e7c2c1d7337358dcd2193bac98a1822'
+    oldFile: !uuid '7af61d032e2a97dcb7838fddc433a3090a6d8e45'
+  /UnityClient/Assets/Scripts/Audio/AudioMgr.cs:
+    newFile: !uuid '8e7d0075efed2ccf49896618900ed9a2f55c1b14'
+    oldFile: !uuid '32fd7f0bb71fca35bd7d98472ce96780533dfc35'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '4e96b45757ebea88d2c909fc4dbeca0305df2d1d'
+    oldFile: !uuid 'c9ecbeac7fe23e5c4530f7150b9e860047162874'
+  /UnityClient/Assets/Scripts/Model/Skill.cs:
+    newFile: !uuid 'f4af9df7d6ce5e246ef534cef0c611639e01f6ad'
+    oldFile: !uuid 'eac97f842d195c152f143ed7f0e7e882be607532'
   /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'b0b1495a7ac82853785376f8ed1860bcf6491695'
-    oldFile: !uuid '40d028fd0d0a77bed076f540e05e1530db2e19a5'
+    newFile: !uuid 'b28029ec470524550f9f63d559d692d4f08ad5a5'
+    oldFile: !uuid 'b0b1495a7ac82853785376f8ed1860bcf6491695'
   /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid 'a0092ec8fc1cb4cd2bd30b7776e211e7bf4941f8'
-    oldFile: !uuid '589ea1ff283ff6e0816e5e2648e7793525e5ff1d'
-gitCommitId: !uuid '1607942daafcca0e325e101a66be4da6938f18f5'
+    newFile: !uuid '6eed7da026cfa147c0e8bc595f610ddf7dd2ef81'
+    oldFile: !uuid 'a0092ec8fc1cb4cd2bd30b7776e211e7bf4941f8'
+gitCommitId: !uuid '58d99dfa936586d77a60e4e3737e14e9571f0dc0'
 renames: {
   }
-revisionId: 778
+revisionId: 779
