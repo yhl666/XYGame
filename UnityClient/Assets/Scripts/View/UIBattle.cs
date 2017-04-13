@@ -117,7 +117,11 @@ public sealed class UIBattleRoot : ViewUI
             this._ui_child.Add(ViewUI.Create<UI_dirInput>(this));
             return DATA.EMPTY_STRING;
         }));
-
+        EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
+        {
+            this._ui_child.Add(ViewUI.Create<UI_hps>(this));
+            return DATA.EMPTY_STRING;
+        }));
         EventDispatcher.ins.PostEvent("addAsync", new Func<string>(() =>
         {
             this._ui_child.Add(ViewUI.Create<UI_smallmap>(this));
@@ -313,17 +317,35 @@ public sealed class UI_skills : ViewUI
             Counter counter = (userData as Counter);
             float max = counter.GetMax();
             float current = counter.GetCurrent();
-            if (current<=max)
+            if (counter.IsMax())
             {
-                float percent = (max - current) / max;
-                float time = (max - current) / Config.MAX_FPS;
+                cd_skill1.transform.FindChild("filled").GetComponent<Image>().fillAmount = 0f;
 
-                cd_skill1.transform.FindChild("filled").GetComponent<Image>().fillAmount = percent;
+                cd_skill1.transform.FindChild("time").GetComponent<Text>().text = "";
 
-                cd_skill1.transform.FindChild("time").GetComponent<Text>().text = time.ToString("0.0");
-                if ( (time)<0.0000001)
+            }
+            else
+            {
+                if (current <= max)
                 {
+                    float percent = (max - current) / max;
+                    float time = (max - current) / Config.MAX_FPS;
+
+                    cd_skill1.transform.FindChild("filled").GetComponent<Image>().fillAmount = percent;
+
+                    cd_skill1.transform.FindChild("time").GetComponent<Text>().text = time.ToString("0.0");
+                    if ((time) < 0.0000001)
+                    {
+                        cd_skill1.transform.FindChild("time").GetComponent<Text>().text = "";
+                    }
+                }
+                else
+                {
+                    cd_skill1.transform.FindChild("filled").GetComponent<Image>().fillAmount = 0f;
+
+
                     cd_skill1.transform.FindChild("time").GetComponent<Text>().text = "";
+
                 }
             }
         }
@@ -577,10 +599,11 @@ public sealed class UI_heroInfo : ViewUI
         txt_exp1.text = m.current_exp + "/" + m.exp;
         txt_hp1.text = m.current_hp + "/" + m.hp;
         //  txt_mp1.text = m.current_mp + "/" + m.mp;
-
-        img_hp1.transform.localScale = new Vector3(Utils.RangeLimit(m.current_hp * 1.0f / m.hp, 0f, 1f), 1.0f, 1.0f);
+        if (m.hp > 0)
+            img_hp1.transform.localScale = new Vector3(Utils.RangeLimit(m.current_hp * 1.0f / m.hp, 0f, 1f), 1.0f, 1.0f);
         //    img_mp1.transform.localScale = new Vector3(m.current_mp * 1.0f / m.mp, 1.0f, 1.0f);
-        img_exp1.transform.localScale = new Vector3(Utils.RangeLimit(m.current_exp * 1.0f / m.exp, 0f, 1f), 1.0f, 1.0f);
+        if (m.exp > 0)
+            img_exp1.transform.localScale = new Vector3(Utils.RangeLimit(m.current_exp * 1.0f / m.exp, 0f, 1f), 1.0f, 1.0f);
 
         if (m2 == null)
         {
@@ -1780,5 +1803,57 @@ public sealed class UI_boss : ViewUI
     Image img_hp;
     Text txt_info = null;
     EnemyBoss boss = null;
+}
+
+
+public sealed class UI_hps : ViewUI
+{
+    public override void Update()
+    {
+        this.Sync(EnemyMgr.ins.GetEnemys(), imgs_ememy, template_enemy);
+        this.Sync(BuildingMgr.ins.GetBuildings(), imgs_buildings, template_building);
+    }
+    private void Sync(ArrayList list, ArrayList list_ui, GameObject template)
+    {
+        while (list.Count > list_ui.Count)
+        {
+            list_ui.Add((GameObject.Instantiate(template, _panel.transform) as GameObject));
+        }
+        int i = 0;
+        foreach (Entity hero in list)
+        {
+            if (hero.IsEnemyBoss) continue;
+            GameObject obj = list_ui[i] as GameObject;
+            obj.SetActive(true);
+            obj.transform.FindChild("hp").transform.localScale = new Vector3(Utils.RangeLimit((float)hero.current_hp / (float)hero.hp, 0f, 1f), 1f, 1f);
+            obj.gameObject.transform.position = Camera.main.WorldToScreenPoint(
+                new Vector3(hero.x, hero.GetReal25DY() + 1.2f, 0));
+            ++i;
+        }
+        for (; i < list_ui.Count; i++)
+        {
+            (list_ui[i] as GameObject).SetActive(false);
+        }
+    }
+    public override bool Init()
+    {
+        base.Init();
+
+        this._panel = GameObject.Find("UI_Battle/ui_panel_hps").gameObject;
+        this.template_enemy = _panel.transform.FindChild("template_enemy").gameObject;
+        this.template_enemy.SetActive(false);
+
+        this.template_building = _panel.transform.FindChild("template_building").gameObject;
+        this.template_building.SetActive(false);
+        return true;
+    }
+
+
+    private ArrayList imgs_ememy = new ArrayList();
+    GameObject template_enemy;
+
+    private ArrayList imgs_buildings = new ArrayList();
+    GameObject template_building;
+    GameObject _panel;
 }
 
