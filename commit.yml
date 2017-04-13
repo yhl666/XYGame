@@ -3,30 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'd3a042b76d01383f1f06873895c261c46b9e0b7e'
-    oldFile: !uuid '93d2b0bde50e517903584e2a3a9dbdec1dd9e071'
+    newFile: !uuid '017c43c989efe95c75f776c7b8470ff83bd8570f'
+    oldFile: !uuid 'd3a042b76d01383f1f06873895c261c46b9e0b7e'
   /UnityClient/Assets:
-    newFile: !uuid '63a6de72ad463cde3e6a69c9046acafa3cabec56'
-    oldFile: !uuid '30df3f904cef3b9caf0d216961b2aed2aaa8d9bc'
+    newFile: !uuid '98a6d6f40cf14b3cb08aff4f0dc2763b6eb7afef'
+    oldFile: !uuid '63a6de72ad463cde3e6a69c9046acafa3cabec56'
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'f0d2ed7e96df1a552c6b158db7e24d8c7dc9f5d1'
-    oldFile: !uuid '513c72da8fca425195519306ee12cc8c375eeade'
+    newFile: !uuid 'bcd01d46d777a4485370a172dc529a5ecce7de2f'
+    oldFile: !uuid 'f0d2ed7e96df1a552c6b158db7e24d8c7dc9f5d1'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'f6c7cb8d6f28b762d4c2c29ebdd0079d77f13740'
-    oldFile: !uuid '06e8eeae2c31568f88016565e5a5b2a73305f1f1'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'c0507f99851e0b1e015dbfc78bf0b83e389cb921'
-    oldFile: !uuid 'cd27ecee6f59be244ab4157f2d72410b023841bd'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid '86af42be68b08f48c020a4593bab0ed7df409035'
-    oldFile: !uuid '5d56ecc157f6882efc8367d86fdf500b9d20d620'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab:
-    newFile: !uuid '29724402fedac2d620e83f005d4d1f7d459920a9'
-    oldFile: !uuid '9ef7f8c64024c9504c3199e79d7e70010f926c27'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab.meta:
-    newFile: !uuid 'd966a6f3c0140406db691dcc586fe60f475e1df2'
-    oldFile: !uuid '7bd5fe605847249427cd64371de6cf8caf10ebe5'
-gitCommitId: !uuid '920540e5f309d6ec71c276845c19ff0d93466cce'
+    newFile: !uuid 'f2c9581c5f0aa3afbc0692330535342fbb408c31'
+    oldFile: !uuid 'f6c7cb8d6f28b762d4c2c29ebdd0079d77f13740'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '60b08241304b11ce133d2c63746bce9fa03e0fc2'
+    oldFile: !uuid 'be68c7b83ab7ea7acd2ad4b06efeda289797ef04'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
+    newFile: !uuid 'd2814c7f3f0a64a252c9bf73d6cd9d6ec98e6d45'
+    oldFile: !uuid 'afcd65e9fc4708722ad8428db24f576bc3dba1fe'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
+    newFile: !uuid 'a7e5a2f2b961fef97f50a49f96447ba48f95e15f'
+    oldFile: !uuid '28e39f0e882b5a878ed3835dd1f81f471e40ce01'
+gitCommitId: !uuid '0eb6608e7ad5f11ab1d8ffe4a6c1c4a8419ad175'
 renames: {
   }
-revisionId: 763
+revisionId: 764
