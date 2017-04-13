@@ -1407,13 +1407,14 @@ public class Skill62_1_v1 : SkillBase
         return "Skill62_1";
     }
     Bullet b = null;
-    Counter cd = Counter.Create(Skill62_1_Data.ins.cd);
+    //Counter cd = Counter.Create(Skill62_1_Data.ins.cd);
     Counter tick = Counter.Create(Skill62_1_Data.ins.last_time);
     Counter tick_cancel = Counter.Create(Skill62_1_Data.ins.cancel);
 
     public override void OnEnter()
     {
         cd.SetMax(Skill62_1_Data.ins.cd);
+        cd.SetMax(400);
         tick.SetMax(Skill62_1_Data.ins.last_time);
         tick_cancel.SetMax(Skill62_1_Data.ins.cancel);
 
@@ -1542,7 +1543,9 @@ public class Skill62_1_v1 : SkillBase
     }
     public override bool Init()
     {
+        //Debug.LogError("技能初始化执行");
         base.Init();
+        cd.SetMax(Skill62_1_Data.ins.cd);
         cd.TickMax();
         return true;
     }
@@ -1568,7 +1571,7 @@ public class Skill62_2_v1 : SkillBase
         return "Skill62_2";
     }
     Counter tick_cancel = Counter.Create(Skill62_2_Data.ins.cancel);
-    Counter cd = Counter.Create(Skill62_2_Data.ins.cd);
+    //Counter cd = Counter.Create(Skill62_2_Data.ins.cd);
     Counter tick = Counter.Create(Skill62_2_Data.ins.tick_delay);
     bool has_shoot = false;
     public override void OnEnter()
@@ -1657,6 +1660,8 @@ public class Skill62_2_v1 : SkillBase
     public override bool Init()
     {
         base.Init();
+        cd.SetMax(Skill62_2_Data.ins.cd);
+
         cd.TickMax();
         return true;
     }
@@ -1707,7 +1712,7 @@ public class Skill62_3_v1 : SkillBase
         return "Skill62_3";
     }
 
-    Counter cd = Counter.Create(Skill62_3_Data.ins.cd);
+    //Counter cd = Counter.Create(Skill62_3_Data.ins.cd);
     Counter tick1 = Counter.Create(Skill62_3_Data.ins.start_jump);
     Counter tick_cancel = Counter.Create(Skill62_3_Data.ins.cancel);
     bool has_shoot = false;
@@ -1859,6 +1864,8 @@ public class Skill62_3_v1 : SkillBase
     public override bool Init()
     {
         base.Init();
+        cd.SetMax(Skill62_3_Data.ins.cd);
+        cd.TickMax();
         cd.TickMax();
         return true;
     }
@@ -2050,6 +2057,7 @@ public class Skill62_1_v2 : SkillBase
     public override bool Init()
     {
         base.Init();
+        cd.SetMax(Skill62_1_Data.Get(level).cd);
         cd.TickMax();
         return true;
     }
@@ -2333,6 +2341,7 @@ public class Skill62_2_v2 : SkillBase
     public override bool Init()
     {
         base.Init();
+        cd.SetMax(Skill62_2_Data.Get(level).cd);
         cd.TickMax();
         tick.Reset();
         return true;
@@ -2666,6 +2675,7 @@ public class Skill62_3_v2 : SkillBase
     public override bool Init()
     {
         base.Init();
+        cd.SetMax(Skill62_3_Data.Get(level).cd);
         cd.TickMax();
         return true;
     }

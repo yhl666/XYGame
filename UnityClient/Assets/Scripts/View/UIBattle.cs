@@ -308,6 +308,63 @@ public sealed class UI_skills : ViewUI
                 }
             }
         }
+        if (type == Events.ID_SKILL1_COOL_INFOMATION)
+        {
+            Counter counter = (userData as Counter);
+            float max = counter.GetMax();
+            float current = counter.GetCurrent();
+            if (current<=max)
+            {
+                float percent = (max - current) / max;
+                float time = (max - current) / Config.MAX_FPS;
+
+                cd_skill1.transform.FindChild("filled").GetComponent<Image>().fillAmount = percent;
+
+                cd_skill1.transform.FindChild("time").GetComponent<Text>().text = time.ToString("0.0");
+                if ( (time)<0.0000001)
+                {
+                    cd_skill1.transform.FindChild("time").GetComponent<Text>().text = "";
+                }
+            }
+        }
+        if (type == Events.ID_SKILL2_COOL_INFOMATION)
+        {
+            Counter counter = (userData as Counter);
+            float max = counter.GetMax();
+            float current = counter.GetCurrent();
+            if (current <= max)
+            {
+                float percent = (max - current) / max;
+                float time = (max - current) / Config.MAX_FPS;
+
+                cd_skill2.transform.FindChild("filled").GetComponent<Image>().fillAmount = percent;
+
+                cd_skill2.transform.FindChild("time").GetComponent<Text>().text = time.ToString("0.0");
+                if ((time) < 0.0000001)
+                {
+                    cd_skill2.transform.FindChild("time").GetComponent<Text>().text = "";
+                }
+            }
+        }
+        if (type == Events.ID_SKILL3_COOL_INFOMATION)
+        {
+            Counter counter = (userData as Counter);
+            float max = counter.GetMax();
+            float current = counter.GetCurrent();
+            if (current <= max)
+            {
+                float percent = (max - current) / max;
+                float time = (max - current) / Config.MAX_FPS;
+
+                cd_skill3.transform.FindChild("filled").GetComponent<Image>().fillAmount = percent;
+
+                cd_skill3.transform.FindChild("time").GetComponent<Text>().text = time.ToString("0.0");
+                if ((time) < 0.0000001)
+                {
+                    cd_skill3.transform.FindChild("time").GetComponent<Text>().text = "";
+                }
+            }
+        }
     }
 
     public void ShowAllLevelUpButton()
@@ -365,6 +422,15 @@ public sealed class UI_skills : ViewUI
         this.btn_skill3_levelup = GameObject.Find("btn_skill3_levelup").GetComponent<Button>();
         this.btn_skill4_levelup = GameObject.Find("btn_skill4_levelup").GetComponent<Button>();
         HideAllLevelUpButton();
+        cd_skill1 = GameObject.Find("cool_skill1");
+        cd_skill2 = GameObject.Find("cool_skill2");
+        cd_skill3 = GameObject.Find("cool_skill3");
+        cd_skill1.transform.FindChild("filled").GetComponent<Image>().fillAmount = 0;
+        cd_skill2.transform.FindChild("filled").GetComponent<Image>().fillAmount = 0;
+        cd_skill3.transform.FindChild("filled").GetComponent<Image>().fillAmount = 0;
+        cd_skill1.transform.FindChild("time").GetComponent<Text>().text = "";
+        cd_skill2.transform.FindChild("time").GetComponent<Text>().text = "";
+        cd_skill3.transform.FindChild("time").GetComponent<Text>().text = "";
         //this.btn_skill5_levelup = GameObject.Find("btn_skill5_levelup").GetComponent<Button>();
         /*
    
@@ -424,7 +490,9 @@ public sealed class UI_skills : ViewUI
             HideAllLevelUpButton();
         });
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL_LEVEL_IS_UP);
-
+        EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL1_COOL_INFOMATION);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL2_COOL_INFOMATION);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL3_COOL_INFOMATION);
         //  this.btn_skill2.gameObject.SetActive(false);
         //   this.btn_skill3.gameObject.SetActive(false);
         return true;
@@ -454,6 +522,9 @@ public sealed class UI_skills : ViewUI
     Button btn_skill3_levelup;
     Button btn_skill4_levelup;
     Button btn_skill5_levelup;
+    private GameObject cd_skill1;
+    private GameObject cd_skill2;
+    private GameObject cd_skill3;
 }
 public sealed class UI_heroInfo : ViewUI
 {

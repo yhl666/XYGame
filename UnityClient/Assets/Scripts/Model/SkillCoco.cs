@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Skill61_1 : SkillBase
 {
-    Counter cd = Counter.Create(Skill61_1_Data_V1.ins.cd);
+    //Counter cd = Counter.Create(Skill61_1_Data_V1.ins.cd);
     Counter tick_cancel = Counter.Create(Skill61_1_Data_V1.ins.cancel);
     Counter launchCounter=Counter.Create(Skill61_1_Data_V1.ins.bulletLaunchDealy);
     public override void OnEnter()
@@ -20,7 +20,7 @@ public class Skill61_1 : SkillBase
 
  
     }
-
+    
     private void shoot()
     {
         BulletConfigInfo info=BulletConfigInfo.Create();
@@ -146,6 +146,7 @@ public class Skill61_1 : SkillBase
             switch (level)
             {
                 case 1:
+
                     shoot();
                     break;
                 case 2:
@@ -180,6 +181,7 @@ public class Skill61_1 : SkillBase
     public override bool Init()
     {
         base.Init();
+        cd.SetMax(Skill61_1_Data_V1.ins.cd);
         cd.TickMax();
         ConfigBulletInfo();
         return true;
@@ -356,6 +358,7 @@ public class Skill61_2 : SkillBase
             switch (level)
             {
                 case 1:
+                    cd.SetMax(Skill61_2_Data_V1.ins.cd);
                     shoot();
                     break;
                 case 2:
@@ -435,7 +438,7 @@ public class Skill61_2 : SkillBase
         return "Skill61_2";
     }
 
-    Counter cd = Counter.Create(Skill61_2_Data_V1.ins.cd);
+    //Counter cd = Counter.Create(Skill61_2_Data_V1.ins.cd);
     Counter tick1Counter = Counter.Create(Skill61_2_Data_V1.ins.bulletLaunchDealy);
     Counter cancelCounter=Counter.Create(Skill61_2_Data_V1.ins.cancel);
     Counter endPlay = Counter.Create(Skill61_2_Data_V1.ins.playTimes);
@@ -454,14 +457,15 @@ public class Skill61_2 : SkillBase
 /// </summary>
 public class Skill61_3 : SkillBase
 {
-    Counter cd=Counter.Create(Skill61_3_Data.ins.cd);
     Counter cancelCounter=Counter.Create(Skill61_3_Data.ins.cancel);
     Counter dealyCounter=Counter.Create(Skill61_3_Data.ins.delayFrame);
     public override void OnEnter()
     {
+
         cd.Reset();
         cancelCounter.Reset();
         dealyCounter.Reset();
+
         Target.machine.PauseAllStack();
         this.stack.parent.stack.Resume();
         is_shifa = true;
@@ -476,6 +480,12 @@ public class Skill61_3 : SkillBase
        
     }
 
+    public override bool Init()
+    {
+        cd.SetMax(Skill61_3_Data.ins.cd);
+        cd.TickMax();
+        return base.Init();
+    }
 
     private void shoot1()
     {
@@ -586,6 +596,7 @@ public class Skill61_3 : SkillBase
         dealyCounter.Tick();
         if (dealyCounter.GetCurrent()==dealyCounter.GetMax())
         {
+
             switch (level)
             {
                 case 1:

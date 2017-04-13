@@ -5,6 +5,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Runtime.Remoting.Messaging;
 
 //状态
 
@@ -1238,6 +1239,7 @@ public class SkillState : StateBase
         {
             s.UpdateMS();
         }
+        SendCDInfomationToUI();
     }
     public override void OnEvent(string type, object userData)
     {
@@ -1250,6 +1252,8 @@ public class SkillState : StateBase
             this.OnEvent(Events.ID_SPINE_COMPLETE, userData);
         }
     }
+
+  
 
     public void PushLevelUp(int idx)
     {
@@ -1408,11 +1412,37 @@ public class SkillState : StateBase
         }
         return null;
     }
-    
+
+    private void SendCDInfomationToUI()
+    {
+       
+        for (int i = 0; i < 3; i++)
+        {
+            if (((skill_stacks[i] as SkillStack).TopSkill()) != null)
+            {
+                Counter counter = (skill_stacks[i] as SkillStack).TopSkill().GetCd();
+
+                EventDispatcher.ins.PostEvent(Event[i], counter);
+            }
+        }
+        //if (i == 0)
+        //{
+
+        //}
+        //if (i == 1)
+        //{
+        //    EventDispatcher.ins.PostEvent(Events.ID_SKILL2_COOL_INFOMATION, counter);
+        //}
+        //if (i == 2)
+        //{
+        //    EventDispatcher.ins.PostEvent(Events.ID_SKILL3_COOL_INFOMATION, counter);
+        //}
+    }
     ArrayList skill_stacks1 = new ArrayList();
     ArrayList skill_stacks2 = new ArrayList();
     ArrayList skill_stacks = null;
 
+    private int[] Event = new[]        {Events.ID_SKILL1_COOL_INFOMATION, Events.ID_SKILL2_COOL_INFOMATION, Events.ID_SKILL3_COOL_INFOMATION};
 }
 
 

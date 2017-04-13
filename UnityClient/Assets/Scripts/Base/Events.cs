@@ -197,6 +197,9 @@ public sealed class Events : object
     public const int ID_SKILL_LEVEL_UP = 515;
     public const int ID_SKILL_LEVEL_IS_UP = 516;
     public const int ID_SKILL_POINT_REDUCE = 517;
+    public const int ID_SKILL1_COOL_INFOMATION = 518;
+    public const int ID_SKILL2_COOL_INFOMATION = 519;
+    public const int ID_SKILL3_COOL_INFOMATION = 520;
     //------------------------------local event-----------------------------------------------------------
 
     /* public const int ID_DISABLE_RUN = 100;//禁止run 状态
