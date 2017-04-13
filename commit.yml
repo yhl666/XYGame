@@ -2,28 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '0e4bc46ebb2a2b210bae877b434e0382ab106e40'
-    oldFile: !uuid '34889b8a82817915fffcaa8d9ce10233a6c155c7'
-  /UnityClient/Assets:
-    newFile: !uuid '6d1a6509a6b118f72927dae3828e90cf14a5434b'
-    oldFile: !uuid '153ed370ed9b44032b9c17e6487431bb90fd80a8'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '0f9574f4785eeeab8db93aae7a648e958875e99c'
-    oldFile: !uuid 'bcd01d46d777a4485370a172dc529a5ecce7de2f'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '2afa42ce4b96833f3030f25b3dea4183a507a1ae'
-    oldFile: !uuid 'f2c9581c5f0aa3afbc0692330535342fbb408c31'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '0dce4099395583ba58cf571cbdb871faa499ec0f'
-    oldFile: !uuid '60b08241304b11ce133d2c63746bce9fa03e0fc2'
-  /UnityClient/Assets/Resources/Prefabs/data/Boss技能.prefab:
-    newFile: !uuid '0197b4445e8dd89225df16c2cd38c4d8de1f1668'
+  /工作日志:
+    newFile: !uuid 'b9704ff96ec80345392a1eeeadcf6438c8fb9b94'
+    oldFile: !uuid 'ecdb5d4e17aabd53764d46c4ebb17c731103f724'
+  /工作日志/BUG提交:
+    newFile: !uuid '670800d311839a07828568bb1311383228968a76'
+    oldFile: !uuid '2c50113135827e5513a9cdee261ce57d828ec507'
+  /工作日志/BUG提交/018.txt:
+    newFile: !uuid '15b3898ae1c571ba831123ab0c3e37d117c8a46e'
     oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/data/Boss技能.prefab.meta:
-    newFile: !uuid 'b5cdaccdaded6bc37cec5b5dd18034e7eebef654'
-    oldFile: null
-gitCommitId: !uuid '9277ad888e72c91c9104ac3a14be335bb048008e'
+gitCommitId: !uuid '32b26940984f55d95cedcc6ef3abc7a6ad9add2e'
 renames: {
   }
-revisionId: 766
+revisionId: 767
