@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 附着在Unity上面
+/// </summary>
 public class AudioEvents : MonoBehaviour {
 
     public AudioClip Effect_Hero6_Atk;

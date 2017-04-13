@@ -391,21 +391,21 @@ public sealed class UI_skills : ViewUI
         {
             
             int level = (int)(userData );
-            skill1_level.text = level.ToString();
+            skill1_level.text ="LV:" +  level.ToString();
             
         }
         if (type == Events.ID_SKILL2_LEVEL_INFOMATION)
         {
             int level = (int)(userData);
-            skill2_level.text = level.ToString();
+            skill2_level.text = "LV:" + level.ToString();
         }
         if (type == Events.ID_SKILL3_LEVEL_INFOMATION)
         {
             int level = (int)(userData);
-            skill3_level.text = level.ToString();
+            skill3_level.text = "LV:" + level.ToString();
             if (level==3)
             {
-                Debug.LogError(level);    
+            //    Debug.LogError(level);    
             }
             
         }

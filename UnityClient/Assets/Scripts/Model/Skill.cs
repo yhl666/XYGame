@@ -2265,6 +2265,7 @@ public class Skill62_2_v2 : SkillBase
     }
     public override void UpdateMS()
     {
+        cd.Tick();
         if (Target.current_hp <= Skill62_2_Data.Get(level).hp_reduce)
         {
             this.OnExit();
@@ -2274,11 +2275,7 @@ public class Skill62_2_v2 : SkillBase
         {
             this.Shoot();
             tick.Reset();
-        }
-        if (cd.Tick())
-        {
-            return;
-        }
+        }    
     }
     public override void UpdateMSIdle()
     {
@@ -2342,7 +2339,7 @@ public class Skill62_2_v2 : SkillBase
     {
         base.Init();
         cd.SetMax(Skill62_2_Data.Get(level).cd);
-        cd.TickMax();
+    ///    cd.TickMax();
         tick.Reset();
         return true;
     }
@@ -2364,6 +2361,7 @@ public class Skill62_2_v2 : SkillBase
     }
     public override void OnPush()
     {
+        if (cd.IsMax() == false) return;
         this.PushOnInterrupted();
         if (this.Enable)
         {
