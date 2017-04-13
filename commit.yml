@@ -3,24 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'eba49eb86a550bf86948c9438d9e519f324a07ab'
-    oldFile: !uuid '5df50206acad59f620565d9ea313e36c16950e94'
+    newFile: !uuid 'c26f2d6ba300504ded555908a207a670b006cb25'
+    oldFile: !uuid 'eba49eb86a550bf86948c9438d9e519f324a07ab'
   /UnityClient/Assets:
-    newFile: !uuid 'cdf264f6057d0c772b6cc3ce562f3c31e5e2b9e6'
-    oldFile: !uuid 'e85913b8c54e8ba67391b71da234d05eb7d12c3e'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '1d6f4484076b74cfee55a123297f9351a98f1806'
-    oldFile: !uuid 'b1b8189d260ad5e4a672717f02f79c2c4fea81f0'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'dd28fedcfc7637558d490dc8cd602ca6b14e88b8'
-    oldFile: !uuid '397e3cff776cffbbd42c64ad953e101517111248'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid 'cabd794176a76c23e5f720542af2b3e1ee377fe1'
-    oldFile: !uuid '7ced14eda161264bf42fa85225d9ba8436716c33'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
-    newFile: !uuid '28e39f0e882b5a878ed3835dd1f81f471e40ce01'
-    oldFile: !uuid '650e04a81b8806271094cb949990f5e1b9ecc91c'
-gitCommitId: !uuid '03c93fed6caaa99c4b838b8e3a1b8507fdec52f9'
+    newFile: !uuid 'ef050ffe456f2d1663a03118d4619dff621b7d4e'
+    oldFile: !uuid 'cdf264f6057d0c772b6cc3ce562f3c31e5e2b9e6'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '9f2de4b339bbd3e9a0be55d3a0ae4898c2053760'
+    oldFile: !uuid '7eb5f023863a31f2cec9256c67a0d152fc93c5db'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'ffecd57f89684f1bb0d492e44e94b8d2bf05dc78'
+    oldFile: !uuid '26263a9c35452dc421d2f64a66a8a0ff25f3adc3'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid '90e5f45980eb6aaf5010b1638dfedd68adb9d91d'
+    oldFile: !uuid '0866ccceb33c30826af7211824f8e0bb664ce988'
+gitCommitId: !uuid '2a99823fa2ab04816456828ec4d146785ccc3147'
 renames: {
   }
-revisionId: 755
+revisionId: 756
