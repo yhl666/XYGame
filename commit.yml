@@ -3,21 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'c26f2d6ba300504ded555908a207a670b006cb25'
-    oldFile: !uuid 'eba49eb86a550bf86948c9438d9e519f324a07ab'
+    newFile: !uuid '4026253cfda1fea4651c5aedfec8340e7a74e25d'
+    oldFile: !uuid 'c26f2d6ba300504ded555908a207a670b006cb25'
   /UnityClient/Assets:
-    newFile: !uuid 'ef050ffe456f2d1663a03118d4619dff621b7d4e'
-    oldFile: !uuid 'cdf264f6057d0c772b6cc3ce562f3c31e5e2b9e6'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '9f2de4b339bbd3e9a0be55d3a0ae4898c2053760'
-    oldFile: !uuid '7eb5f023863a31f2cec9256c67a0d152fc93c5db'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'ffecd57f89684f1bb0d492e44e94b8d2bf05dc78'
-    oldFile: !uuid '26263a9c35452dc421d2f64a66a8a0ff25f3adc3'
-  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
-    newFile: !uuid '90e5f45980eb6aaf5010b1638dfedd68adb9d91d'
-    oldFile: !uuid '0866ccceb33c30826af7211824f8e0bb664ce988'
-gitCommitId: !uuid '2a99823fa2ab04816456828ec4d146785ccc3147'
+    newFile: !uuid '983297876fa818978f904d39e1fd1355656d78bb'
+    oldFile: !uuid 'ef050ffe456f2d1663a03118d4619dff621b7d4e'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'a9afe7bafd6a5f9e2a94dbfd0dd58b60645393d9'
+    oldFile: !uuid '1d6f4484076b74cfee55a123297f9351a98f1806'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '8145fec538095d861b5774c5854aaa08ab916581'
+    oldFile: !uuid 'dd28fedcfc7637558d490dc8cd602ca6b14e88b8'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '187260c5f90289a09414c7f2d5154df9f3075487'
+    oldFile: !uuid 'cabd794176a76c23e5f720542af2b3e1ee377fe1'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
+    newFile: !uuid 'afcd65e9fc4708722ad8428db24f576bc3dba1fe'
+    oldFile: !uuid '8e107c2fb7411e770c4e19152e331625d3b66cbb'
+gitCommitId: !uuid '1d806e557deefb0165581756dbe695c2d5b37fd0'
 renames: {
   }
-revisionId: 756
+revisionId: 757
