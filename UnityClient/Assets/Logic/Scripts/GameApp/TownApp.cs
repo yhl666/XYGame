@@ -203,6 +203,7 @@ public class TownApp : AppBase
         }
         if (tick.Tick() == false)
         {
+            tick.Reset();
             this.PostAlive();
         }
     }
