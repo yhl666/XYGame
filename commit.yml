@@ -3,39 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '18c739935e46981553b7fdf13def22ce2a8d6ae1'
-    oldFile: !uuid '7fe3c3db906a41d6d5d2371ad70b758b91e60ad2'
+    newFile: !uuid '9ff94b69b8b824e7d4ca101e0d283c2e4127c4ee'
+    oldFile: !uuid '18c739935e46981553b7fdf13def22ce2a8d6ae1'
   /UnityClient/Assets:
-    newFile: !uuid '8ba5e257f4aed8f23c70dceb62cfc698b9d27bf5'
-    oldFile: !uuid 'da9793ff24bb09614ca34b323f4994bfe802dc0a'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '75e61b6a291bb6b30fada41325f0f1eb3db53dfa'
-    oldFile: !uuid '9f2de4b339bbd3e9a0be55d3a0ae4898c2053760'
-  /UnityClient/Assets/Scripts/Base:
-    newFile: !uuid 'bc5e52196a33accd2cf229f29ab71c61c6777c33'
-    oldFile: !uuid '468ba8be376f736134f09ddb8b3951e8f5c140ae'
-  /UnityClient/Assets/Scripts/Base/Events.cs:
-    newFile: !uuid 'f84a499e201453c67475f5e9b25e4898ab2fcaec'
-    oldFile: !uuid '93327c4ff40fbc0ec5db84937a9a8cbd205bb920'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '07c9fd53301b6804a22fe1ddce9b9d0ad6abe31b'
-    oldFile: !uuid 'ffecd57f89684f1bb0d492e44e94b8d2bf05dc78'
-  /UnityClient/Assets/Scripts/Model/Skill.cs:
-    newFile: !uuid 'e5fc1594a745b20ec96325bdfe3e96775e48af54'
-    oldFile: !uuid '1ad9861c05aee6c0dd31292b769e147351972da4'
-  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
-    newFile: !uuid '572b62105f0db5e4714ff69ecaaaebd581253035'
-    oldFile: !uuid '8a7499bc965c35b4deedb012c55b3523e49788b4'
-  /UnityClient/Assets/Scripts/Model/StateBase.cs:
-    newFile: !uuid '0156789cfc5962045248feb005091f73b29cfb29'
-    oldFile: !uuid '43af8fd2f2d2686e2abf2004b7af4dc204a51fe3'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'e1687fa6f13c16ab588f5d274824d315c47b938b'
-    oldFile: !uuid '22152c17052acbcca5f4853284689bf7fafb17fb'
-  /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid '8d446ca8e2415e890e45ed479035fcc58555688f'
-    oldFile: !uuid 'adf31807ea21f602b22965ad71518869a3c70bb0'
-gitCommitId: !uuid 'f728073936745ed0451d8e33d7e2889f708a2817'
+    newFile: !uuid '6229ddda9912fd6457a8b28b19c642c9d8d64618'
+    oldFile: !uuid '8ba5e257f4aed8f23c70dceb62cfc698b9d27bf5'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '93a10edd274b5df1ddaafa34442636434787a608'
+    oldFile: !uuid '91551e944089177cce27bee0200c1c1b8640a565'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '9848ef61b432b92e6fcc45413a74cf5001ca1a5a'
+    oldFile: !uuid '07e434be61748bc72a4340b66e2cce53f48704b3'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid '5d4a8f4a03a200196ba2596a9b009dee44909dca'
+    oldFile: !uuid 'f70d9ae51efc38d7563f64e8399656f8a226a201'
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_backpack.prefab:
+    newFile: !uuid '9fab6ef23e4929cac31ccc81fefb96f8946c9112'
+    oldFile: !uuid '1b5b93097709cb59ed0ebb8720bfe67bf6a040c4'
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_backpack.prefab.meta:
+    newFile: !uuid 'c466730bd739441670be45b2f001b6b21a1c79a8'
+    oldFile: !uuid 'ddc1a9fccc3604dfac7b5e34448757861b848f26'
+gitCommitId: !uuid 'b9d0990e95e0acb4c7c534c3c504390df41be937'
 renames: {
   }
-revisionId: 760
+revisionId: 761
