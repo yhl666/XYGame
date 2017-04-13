@@ -2,22 +2,37 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid 'ecdb5d4e17aabd53764d46c4ebb17c731103f724'
-    oldFile: !uuid '630b8decd0662d8cc1981d5ba5a5301f13c15caf'
-  /工作日志/BUG提交:
-    newFile: !uuid '2c50113135827e5513a9cdee261ce57d828ec507'
-    oldFile: !uuid '07ede8a9d30e47ac5aa59bf625fd94458a03676e'
-  /工作日志/BUG提交/015.txt:
-    newFile: !uuid '46c24fd85ddb8813250850c761eab6ec0d8a2007'
-    oldFile: null
-  /工作日志/BUG提交/016.txt:
-    newFile: !uuid 'f86649d0c9e2b3398d72ed9f0306d4d08faed25e'
-    oldFile: null
-  /工作日志/BUG提交/017.txt:
-    newFile: !uuid 'c79671ffc730dafba232c969bb306eea5e63c3ec'
-    oldFile: null
-gitCommitId: !uuid '3f215ff35391237130fe2a66d0046d477dd3fab4'
+  /UnityClient:
+    newFile: !uuid '7fe3c3db906a41d6d5d2371ad70b758b91e60ad2'
+    oldFile: !uuid '4026253cfda1fea4651c5aedfec8340e7a74e25d'
+  /UnityClient/Assets:
+    newFile: !uuid 'da9793ff24bb09614ca34b323f4994bfe802dc0a'
+    oldFile: !uuid '983297876fa818978f904d39e1fd1355656d78bb'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '91551e944089177cce27bee0200c1c1b8640a565'
+    oldFile: !uuid 'a9afe7bafd6a5f9e2a94dbfd0dd58b60645393d9'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '07e434be61748bc72a4340b66e2cce53f48704b3'
+    oldFile: !uuid '8145fec538095d861b5774c5854aaa08ab916581'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid 'be68c7b83ab7ea7acd2ad4b06efeda289797ef04'
+    oldFile: !uuid '187260c5f90289a09414c7f2d5154df9f3075487'
+  /UnityClient/Assets/Resources/Prefabs/data/怪物原型1.prefab:
+    newFile: !uuid '72d1f1429b010f259c8e7c77dc34e6cc25fc7382'
+    oldFile: !uuid 'eb7f94a6eaa681452a959ff2e2c45f85bd9b7b9c'
+  /UnityClient/Assets/Resources/Prefabs/data/怪物原型2.prefab:
+    newFile: !uuid 'b8e5f01b8e3bbb82351bb1150a2b1822333fdb30'
+    oldFile: !uuid '509061021cb8c76f3f4e6d39af08780079ee2faf'
+  /UnityClient/Assets/Resources/Prefabs/data/怪物原型3.prefab:
+    newFile: !uuid '4681c0827f5f872629601a94348272a776df8b38'
+    oldFile: !uuid '46ac3f93775648fa8515955ff6d10cd870b5e887'
+  /UnityClient/Assets/Resources/Prefabs/data/怪物原型4.prefab:
+    newFile: !uuid '275538d50bb71c68d763ab1aa6988b88f5e17d00'
+    oldFile: !uuid 'e8b6ce171d403f39ddca519b4e4a96e78266e2e0'
+  /UnityClient/Assets/Resources/Prefabs/data/怪物原型5.prefab:
+    newFile: !uuid '1354722beb99d75d7338a3e87bd388872294782b'
+    oldFile: !uuid 'c9b06e246afb357ab30f922527951fb6f1264743'
+gitCommitId: !uuid 'd9d0bcf5996ade0712242f931de5bf0bf27f54dd'
 renames: {
   }
-revisionId: 758
+revisionId: 759
