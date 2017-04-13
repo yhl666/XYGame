@@ -2,13 +2,22 @@
 branches: {
   }
 fileChange:
-  /策划文档:
-    newFile: !uuid '2ecfd09deda2b47b50926b71fb13b6517f07ad36'
-    oldFile: !uuid '86fe46eba219e89e08524099e8502ca73ef9d09c'
-  /策划文档/技能2.0.docx:
-    newFile: !uuid 'db9371448ac16e7fd2d0e51ca7c22f293d8c71b6'
-    oldFile: !uuid '291846f442da62ffb36e39257a536caf35168b32'
-gitCommitId: !uuid '6bd60a1601c2c3ac27af253864b47609867f718c'
+  /UnityClient:
+    newFile: !uuid '28a1ece00f37d6b540aab7ab23cf3ef79307d4b4'
+    oldFile: !uuid 'abc40eb894fcc11b1f89966f83f692231ef888c5'
+  /UnityClient/Assets:
+    newFile: !uuid 'ac503fa2e95e60b4cfe9f81792fc8bac7265029d'
+    oldFile: !uuid 'e2fa23e8bdc18eaf58e43419332dd39bd5aa7826'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '1b9ccfc50deaf0f82df416947ec44d2e419720ed'
+    oldFile: !uuid '15e46958a37f5e6e840ab76ef65e2bb8125f9981'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'c9ecbeac7fe23e5c4530f7150b9e860047162874'
+    oldFile: !uuid '4fa150614f90897f71bcb3b7d0ecb3e4bf977948'
+  /UnityClient/Assets/Scripts/Model/Entity.cs:
+    newFile: !uuid '1aca33afec5f10a1d49f2124371a39ece053cfba'
+    oldFile: !uuid 'b63d73c4b1825cfca1a17341db8ae3683d309823'
+gitCommitId: !uuid 'e8d1b4bd8f5bfdbe23083dbb264e6a0481549351'
 renames: {
   }
-revisionId: 773
+revisionId: 774
