@@ -263,4 +263,21 @@ public sealed class Utils
 
     //帧同步随机数
     public static System.Random random_frameMS;
+
+
+    public static byte[] ConvertToBytes(rpc.EnterRoomMsg t)
+    {
+        System.IO.MemoryStream ms = new System.IO.MemoryStream();
+        ProtoBuf.Serializer.Serialize<rpc.EnterRoomMsg>(ms, t);
+        return ms.ToArray();
+    }
+    public static rpc.EnterRoomMsg ConvertToRpc(byte[] b)
+    {
+        System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
+        memoryStream.Write(b, 0, b.Length);
+        memoryStream.Position = 0L;
+        rpc.EnterRoomMsg result = ProtoBuf.Serializer.Deserialize<rpc.EnterRoomMsg>(memoryStream);
+        memoryStream.Dispose();
+        return result;
+    }
 }
