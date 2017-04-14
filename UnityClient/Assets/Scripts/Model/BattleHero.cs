@@ -455,10 +455,10 @@ public class BattleHero : Hero
         {//test
             /// eventDispatcher.PostEvent(Events.ID_BTN_ATTACK);
         }
-        if (this.current_exp >= this.exp&&this.level<6)
-        {
-            LevelUp();
-        }
+        //if (this.current_exp >= this.exp&&this.level<6)
+        //{
+        //    LevelUp();
+        //}
         if (sp > 0)
         {
             ShowLevelUPButton();
@@ -467,13 +467,13 @@ public class BattleHero : Hero
     }
 
     private int sp = 0;
-    private void LevelUp()
+    public void LevelUp()
     {
 
         this.current_exp -= this.exp;
         this.level++;
         this.sp++;
-    ConfigByLevel(this.level);
+        ConfigByLevel(this.level);
     }
 
     private void ShowLevelUPButton()

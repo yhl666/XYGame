@@ -266,6 +266,10 @@ public class Entity : Model
                 //Debug.LogError("英雄增加了" + this.exp+"经验");
                 info.ownner._current_exp += this.exp;
                 this.exp = 0;
+                while (info.ownner._current_exp >= info.ownner.exp)
+                {
+                    (info.ownner as BattleHero).LevelUp();
+                }
             }
             eventDispatcher.PostEvent(Events.ID_HURT);//notify ui
         }
