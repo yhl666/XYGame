@@ -244,6 +244,15 @@ public class Entity : Model
 
       }*/
 
+    public void AddExp(int exp)
+    {
+        if (this.IsHero == false) return;
+        this.current_exp += exp;
+        while (this.current_exp >= this.exp)
+        {
+            (this as BattleHero).LevelUp();
+        }
+    }
     public void TakeAttacked(AttackInfo info)
     {
         if (this.IsAlive == false) return;//死亡后 不再吃伤害
@@ -263,12 +272,13 @@ public class Entity : Model
             this.current_hp -= info.damage;
             if (this.current_hp <= 0)
             {
-                //Debug.LogError("英雄增加了" + this.exp+"经验");
-                info.ownner._current_exp += this.exp;
-                this.exp = 0;
-                while (info.ownner._current_exp >= info.ownner.exp)
-                {
-                    (info.ownner as BattleHero).LevelUp();
+                if (this.IsEnemy)
+                { // enemy 死亡
+                    foreach (Hero h in HeroMgr.ins.GetHeros())
+                    {
+                        h.AddExp(this.exp);
+                    }
+                    this.exp = 0;
                 }
             }
             eventDispatcher.PostEvent(Events.ID_HURT);//notify ui

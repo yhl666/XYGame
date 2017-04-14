@@ -748,6 +748,7 @@ public class BufferRevive : Buffer
         target.x = p.x;
         target.SetRealY(0);
         target.z = p.y;
+        target.machine.GetState<DieState>().Enable = true;
         EventDispatcher.ins.PostEvent(Events.ID_REVIVE, target);
         this.SetInValid();
         EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + target.no + "已复活");
