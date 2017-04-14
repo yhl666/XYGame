@@ -3,30 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'f4fb70368108b81e3e9d0eb6a15ac994a0f8fe76'
-    oldFile: !uuid '89ac5fd0520427728ec3131f26f4c73abee65065'
+    newFile: !uuid '7c336f91388dffd6943b21873dc33d8a1fe14146'
+    oldFile: !uuid 'f4fb70368108b81e3e9d0eb6a15ac994a0f8fe76'
   /UnityClient/Assets:
-    newFile: !uuid '30cbefbb87dfaac37c5104e89290ea5ea33e198c'
-    oldFile: !uuid 'b67d9cfc5a6818e9d835ceeadc4e3419cbe4c806'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'd92f742725a1a069194ae879bab7f504db700741'
-    oldFile: !uuid 'a53d254f676844a8be818e234ad844ce4bc89c67'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'be6f42b18930296b5f6010b41bce1306808d5760'
-    oldFile: !uuid '76b813607ba35cf8c9cb4e72cd18615ea02a1314'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '089f8b8f4fb949373250fa8d9dafef35b5c315eb'
-    oldFile: !uuid '5a2e99e1929a896b96058322a5cd40f62c1cf01c'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid '8cc363acbfc2e2b449b1c3bd537d936e1b2227b9'
-    oldFile: !uuid 'c9048269c3c2b51e564c9f223e2b37b9dc1365df'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_tower.prefab:
-    newFile: !uuid 'd49a9c7b3e349eb4a46008b6db7c1acdcf98eab4'
-    oldFile: !uuid '728703d6a3ba22ed0357d69fc54d65f11767d05a'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_tower.prefab.meta:
-    newFile: !uuid 'a9f9e4173d2b0e7f8e4c96fefc5028f1673cfd0e'
-    oldFile: !uuid 'e5174a9543e331b15f50a24d48e03f675d4348d9'
-gitCommitId: !uuid '0bc22907d3cd98e8c8aaae2654388c3a4eb61b6a'
+    newFile: !uuid 'cf73fc9e30db6d6ecb54a7b13e73153096e22623'
+    oldFile: !uuid '30cbefbb87dfaac37c5104e89290ea5ea33e198c'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '0f0c1c3ca5958fc96147083e75e0092f927723b5'
+    oldFile: !uuid '18820737650b42053aa90b0cab1b06bf746d861b'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '693958f5675468e7a85b648272ae385d04008e59'
+    oldFile: !uuid '4e96b45757ebea88d2c909fc4dbeca0305df2d1d'
+  /UnityClient/Assets/Scripts/Model/ModelMgr.cs:
+    newFile: !uuid '88670a4dccfa41aa588f518a8a3d84c1d7b5b39f'
+    oldFile: !uuid '457808e930f8bd641fa48f9090cdc7f1cc6e5acf'
+gitCommitId: !uuid 'd69f45c12d24c702bf1abe1495a5a20c7be22efc'
 renames: {
   }
-revisionId: 789
+revisionId: 790
