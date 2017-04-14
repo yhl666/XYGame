@@ -5,6 +5,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using UnityEditor;
 using UnityEngine.UI;
 
 //说明
@@ -154,7 +155,20 @@ public class ViewEntity : View
 
         return true;
     }
-
+    public void ChangeReddererOrder()
+    {
+        var redderer = spine.transform.GetComponent<Renderer>();
+        if (redderer != null)
+        {
+            EditorGUI.BeginChangeCheck();
+            {
+                redderer.sortingOrder =1000- (int)((this.m.z) * 100);
+                //Debug.LogError((int)((this.transform.position.z) * 100));
+                //Debug.LogError(redderer.sortingOrder);
+            }
+            EditorGUI.EndChangeCheck();
+        }
+    }
     public override void OnEvent(int type, object userData)
     {
         Entity mm = userData as Entity;
@@ -254,6 +268,7 @@ public class ViewEntity : View
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_FLYTEXT, info);
             m.delta_hp = 0;
         }
+        ChangeReddererOrder();
         spine.UpdateMS(Utils.deltaTime * m.spine_time_scale);
     }
 
@@ -312,7 +327,20 @@ public class ViewEnemy : View
                   this.SetInValid();*/
         }
     }
-
+    public void ChangeReddererOrder()
+    {
+        var redderer = spine.transform.GetComponent<Renderer>();
+        if (redderer != null)
+        {
+            EditorGUI.BeginChangeCheck();
+            {
+                redderer.sortingOrder = 1000-(int)((this.m.z) * 100);
+                //Debug.LogError((int)((this.transform.position.z) * 100));
+                //Debug.LogError(redderer.sortingOrder);
+            }
+            EditorGUI.EndChangeCheck();
+        }
+    }
     public override void UpdateMS()
     {
         if (m.IsInValid())
@@ -388,9 +416,11 @@ public class ViewEnemy : View
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_FLYTEXT, info);
             m.delta_hp = 0;
         }
-
+        ChangeReddererOrder();
         spine.UpdateMS(Utils.deltaTime * m.spine_time_scale);
     }
+
+    
 
     SkeletonAnimation spine = null;
     Transform transform = null;
@@ -480,7 +510,7 @@ public class ViewBuilding : View
         {
             //   Debug.Log("start");
         };
-
+        ChangeReddererOrder();
         return true;
     }
 
@@ -563,7 +593,20 @@ public class ViewBuilding : View
         }
         spine.UpdateMS(Utils.deltaTime * m.spine_time_scale);
     }
-
+    public void ChangeReddererOrder()
+    {
+        var redderer = spine.transform.GetComponent<Renderer>();
+        if (redderer != null)
+        {
+            EditorGUI.BeginChangeCheck();
+            {
+                redderer.sortingOrder = 1000 - (int)((this.m.z) * 100);
+                //Debug.LogError((int)((this.transform.position.z) * 100));
+                //Debug.LogError(redderer.sortingOrder);
+            }
+            EditorGUI.EndChangeCheck();
+        }
+    }
     SkeletonAnimation spine = null;
     Transform transform = null;
     GameObject obj = null;
