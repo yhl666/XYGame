@@ -1,0 +1,4 @@
+<linker>
+ 
+        <assembly fullname="ByteStorage.Utility" preserve="all"/>
+</linker>
