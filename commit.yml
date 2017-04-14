@@ -2,16 +2,37 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid '345536410f4cbbd1558d17a72caf2c94c0802b6b'
-    oldFile: !uuid 'bcae961f50559e874373fb9bf3f274cc88544e99'
-  /工作日志/BUG提交:
-    newFile: !uuid '8c9b0e2f924e2d5f35158f623b145d865e096140'
-    oldFile: !uuid '1ed9eec99fad58c86588fb8db240cf4fdd635f15'
-  /工作日志/BUG提交/022.txt:
-    newFile: !uuid '1de9ff43bd2e649efa4ad96827762d100844015f'
-    oldFile: null
-gitCommitId: !uuid 'b1303b8740dae25903703410f8d36f127411ee93'
+  /UnityClient:
+    newFile: !uuid '3619c0dc18fcc49cdf89b1c54a391fff4c721524'
+    oldFile: !uuid 'e2cd6a89afae10305bd20e19e05f9a0b16c1e7d7'
+  /UnityClient/Assets:
+    newFile: !uuid '0dc67d1f6873bde18bec56063c41b261911a20ef'
+    oldFile: !uuid 'eb341ed13f7ed313a8e9b532fb17fc92cd008a70'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '50c7613ae5fede6cbf240795622f87d4488278bf'
+    oldFile: !uuid '460695d6881ab75427bf1bd01bc3e985d61c2ddb'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '4e7cc8467773e2ba65a088b3099fc85893f22233'
+    oldFile: !uuid '8a2ef20cffffae23c9e9793a2d29e55daaf16963'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid 'a3aa5e729584f8cec9ef80dfdc6039d81b69da68'
+    oldFile: !uuid 'd094b02bb72a7ce01b4f188ac91e50520144be02'
+  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn:
+    newFile: !uuid '2784e8ac5ba5ddf716bf748a0925c435ecc12a21'
+    oldFile: !uuid 'f94bb7848e59de16c6d88a583d423dfd37cb06ae'
+  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/EnemyBornPoint1.prefab:
+    newFile: !uuid '7499662018dd8749838be7ed5150d8c6ccb879ea'
+    oldFile: !uuid 'b4bd861363313af10ea6a8d3750dcc68af3ae2a8'
+  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/EnemyBornPoint2.prefab:
+    newFile: !uuid '3353bd1f90df18ed32f53048ec1e7f287d9bd50b'
+    oldFile: !uuid '7cb3d9ac2635e3f733415f71fcfe64ba60d38ea1'
+  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/EnemyBornPoint3.prefab:
+    newFile: !uuid '7763c13930f23f22f2d9c8fc1db84a60a52c2f60'
+    oldFile: !uuid '81bd72fa255bdf4c0b55ae49f100469296f325a2'
+  /UnityClient/Assets/Resources/Prefabs/data/EnemysBorn/EnemyBornPoint4.prefab:
+    newFile: !uuid '3b685bcff020a101683a5659520075cce8c9c83b'
+    oldFile: !uuid '7d525e6cf4833e60047c2be28652af93f0da7378'
+gitCommitId: !uuid '9b39593bcef532168df8b5f502b75c9874b65a3c'
 renames: {
   }
-revisionId: 785
+revisionId: 786
