@@ -2,31 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'e2cd6a89afae10305bd20e19e05f9a0b16c1e7d7'
-    oldFile: !uuid 'fc8180d192e03872644b8c396a5710e96bad8b95'
-  /UnityClient/Assets:
-    newFile: !uuid 'eb341ed13f7ed313a8e9b532fb17fc92cd008a70'
-    oldFile: !uuid '38a2c63e70f10ed49d005184cf602c5127a48658'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '460695d6881ab75427bf1bd01bc3e985d61c2ddb'
-    oldFile: !uuid 'd2f26273c281a2753c9344c35cf18ab830e22acb'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '8a2ef20cffffae23c9e9793a2d29e55daaf16963'
-    oldFile: !uuid '0387645fcf92e73f624d2b1e8eebb9f3974d109d'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid 'd094b02bb72a7ce01b4f188ac91e50520144be02'
-    oldFile: !uuid 'f29214a77d22dc2b67cd4ecdcd52d929b56051e0'
-  /UnityClient/Assets/Resources/Prefabs/data/HpPacks:
-    newFile: !uuid '763178c594a14193e61bc738d9c5eb283241062a'
-    oldFile: !uuid 'd4f46d1fce11592219fba22b078e70f4bbc0fde5'
-  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack1.prefab:
-    newFile: !uuid '6a7409959be284051d83b12c9c822d45f0d581e5'
-    oldFile: !uuid 'e427c1cc959c805e915c8077927d38e4d53cf4c2'
-  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack2.prefab:
-    newFile: !uuid '181761cff4a9191fb19d2a22ddc016b06ea26ac9'
-    oldFile: !uuid '8b0e10db968db4b4fc6f8b053faa85dda744cd61'
-gitCommitId: !uuid 'f0070e17bbd65047218dbab7e44b862f8b6539da'
+  /工作日志:
+    newFile: !uuid '345536410f4cbbd1558d17a72caf2c94c0802b6b'
+    oldFile: !uuid 'bcae961f50559e874373fb9bf3f274cc88544e99'
+  /工作日志/BUG提交:
+    newFile: !uuid '8c9b0e2f924e2d5f35158f623b145d865e096140'
+    oldFile: !uuid '1ed9eec99fad58c86588fb8db240cf4fdd635f15'
+  /工作日志/BUG提交/022.txt:
+    newFile: !uuid '1de9ff43bd2e649efa4ad96827762d100844015f'
+    oldFile: null
+gitCommitId: !uuid 'b1303b8740dae25903703410f8d36f127411ee93'
 renames: {
   }
-revisionId: 784
+revisionId: 785
