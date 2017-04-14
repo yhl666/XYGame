@@ -2,22 +2,31 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid 'bcae961f50559e874373fb9bf3f274cc88544e99'
-    oldFile: !uuid 'b9704ff96ec80345392a1eeeadcf6438c8fb9b94'
-  /工作日志/BUG提交:
-    newFile: !uuid '1ed9eec99fad58c86588fb8db240cf4fdd635f15'
-    oldFile: !uuid '670800d311839a07828568bb1311383228968a76'
-  /工作日志/BUG提交/019.txt:
-    newFile: !uuid 'a8209f61bf1ab3b959732ae6d3be642fdf936949'
-    oldFile: null
-  /工作日志/BUG提交/020.txt:
-    newFile: !uuid '6dd03109e80049fb57ababe3177a9843684dbb3b'
-    oldFile: null
-  /工作日志/BUG提交/021.txt:
-    newFile: !uuid '6b88692c88cfd3f06c60f6fa76867d7442501956'
-    oldFile: null
-gitCommitId: !uuid 'b845c70114ea6bfe1d038a50d4932bdfe00ac179'
+  /UnityClient:
+    newFile: !uuid 'fc8180d192e03872644b8c396a5710e96bad8b95'
+    oldFile: !uuid '420777e6d326b52c807594c0a334ab04af3398bc'
+  /UnityClient/Assets:
+    newFile: !uuid '38a2c63e70f10ed49d005184cf602c5127a48658'
+    oldFile: !uuid '3cb32b4a6b778827d0e93b0056469fe1449b4457'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'd2f26273c281a2753c9344c35cf18ab830e22acb'
+    oldFile: !uuid 'ff88cd938ad7ad98de3e8a8b602eff78030978a3'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '0387645fcf92e73f624d2b1e8eebb9f3974d109d'
+    oldFile: !uuid '660d953b071dbeec2ce3ea8de07acabf032dded4'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid 'f29214a77d22dc2b67cd4ecdcd52d929b56051e0'
+    oldFile: !uuid '5be22ad79d71147b2f0f0ad364cdac12ca1872bc'
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks:
+    newFile: !uuid 'd4f46d1fce11592219fba22b078e70f4bbc0fde5'
+    oldFile: !uuid '1ae80b109a4a7ab39877d21139740340b002513b'
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack1.prefab:
+    newFile: !uuid 'e427c1cc959c805e915c8077927d38e4d53cf4c2'
+    oldFile: !uuid '6125744ae2417612433f50c8fde048a79424e708'
+  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack2.prefab:
+    newFile: !uuid '8b0e10db968db4b4fc6f8b053faa85dda744cd61'
+    oldFile: !uuid '11a30cdbcf04069f8f7f05a7e6bbb1339b94110b'
+gitCommitId: !uuid 'e758b8d9a5fbacbc9354e61176cb025d09dcc89a'
 renames: {
   }
-revisionId: 782
+revisionId: 783
