@@ -135,6 +135,10 @@ public sealed class UI_loading : ViewUI
             {
                 this.txt.text = string.Format(DATA.UI_LOADING, percent.ToString(), ii.ToString());
             }
+            else if ( ret.IndexOf(DATA.ADD_STRING)>=0)
+            {
+                this.txt.text = string.Format(DATA.UI_LOADING, percent.ToString(), ii.ToString()) + ret.Replace(DATA.ADD_STRING, "");
+            }
             else
             {
                 this.txt.text = ret;

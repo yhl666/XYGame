@@ -121,9 +121,8 @@ public class TownApp : AppBase
         {
             EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
             {
-                return "";
+                return DATA.ADD_STRING + "加载数据";
             }));
-
         }
 
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
@@ -131,22 +130,31 @@ public class TownApp : AppBase
             ViewUI.Create<UITownRoot>();
 
             this.InitCustomAsync();
-            return "";
+            return DATA.ADD_STRING + "加载主场景资源";
         }));
+        //init all robot
+        int robot_count = UnityEngine.Random.Range(5, 10);
+        for (int i = 1; i <= robot_count; i++)
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+            {
+                BaseHero.CreateRobot();
+                return DATA.ADD_STRING + "加载主场景Object";
+            }));
+        }
+        /* for (int i = 0; i < 10; i++)
+         {
+             EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+             {
+                 return "";
+             }));
+         }*/
 
         return true;
     }
     public override void OnEnter()
     {
         base.OnEnter();
-
-        //init all robot
-        int robot_count = UnityEngine.Random.Range(5, 10);
-        for (int i = 1; i <= robot_count; i++)
-        {
-            /// return;
-            BaseHero.CreateRobot();        
-        }
 
     }
 
