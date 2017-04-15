@@ -199,7 +199,7 @@ public class ClientServerApp : GAObject
                 {
                     string str = System.Text.Encoding.Default.GetString(buffer, 0, c);
                     string_last += str;
-                    ///         Debug.Log("recv:" + str);
+                    Debug.Log("recv:" + str);
 
                     ArrayList recv_cache = new ArrayList();
 

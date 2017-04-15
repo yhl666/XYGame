@@ -159,7 +159,7 @@ public sealed class BattleApp : AppBase
         while ((line = sr.ReadLine()) != null)
         {
             string str = line.ToString();
-            ///    Debug.Log("Read From File:      " + str);
+         //   Debug.Log("Read From File:      " + str);
             this.AddRecvMsg(str.Substring(0, str.Length - 1));
         }
     }

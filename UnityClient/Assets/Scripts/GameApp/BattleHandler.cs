@@ -158,9 +158,21 @@ sealed class BattlePVEHandler : BattleHandlerBase
                 e1.team = 333;
             }
         }
-        HeroMgr.ins.self.z = 3f;
-        HeroMgr.ins.self.x = 8f;
+        //  HeroMgr.ins.self.z = 3f;
+        //    HeroMgr.ins.self.x = 8f;
 
+        //默认位置为出生点
+        ArrayList points = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetCustomObjects<TerrainObjectRevivePoint>();
+
+        TerrainObjectRevivePoint p = points[0] as TerrainObjectRevivePoint;
+
+        foreach (Hero h in HeroMgr.ins.GetHeros())
+        {
+            h.x = p.x;
+            h.SetRealY(0);
+            h.z = p.y;
+
+        }
         return true;
     }
     public static BattleHandlerBase Create(BattleApp app)
