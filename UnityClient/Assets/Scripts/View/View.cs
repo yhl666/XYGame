@@ -5,7 +5,7 @@
  */
 using UnityEngine;
 using System.Collections;
-using UnityEditor;
+ 
 using UnityEngine.UI;
 
 //说明
@@ -160,13 +160,11 @@ public class ViewEntity : View
         var redderer = spine.transform.GetComponent<Renderer>();
         if (redderer != null)
         {
-            EditorGUI.BeginChangeCheck();
             {
                 redderer.sortingOrder =1000- (int)((this.m.z) * 100);
                 //Debug.LogError((int)((this.transform.position.z) * 100));
                 //Debug.LogError(redderer.sortingOrder);
             }
-            EditorGUI.EndChangeCheck();
         }
     }
     public override void OnEvent(int type, object userData)
@@ -332,13 +330,11 @@ public class ViewEnemy : View
         var redderer = spine.transform.GetComponent<Renderer>();
         if (redderer != null)
         {
-            EditorGUI.BeginChangeCheck();
             {
                 redderer.sortingOrder = 1000-(int)((this.m.z) * 100);
                 //Debug.LogError((int)((this.transform.position.z) * 100));
                 //Debug.LogError(redderer.sortingOrder);
             }
-            EditorGUI.EndChangeCheck();
         }
     }
     public override void UpdateMS()
@@ -598,13 +594,9 @@ public class ViewBuilding : View
         var redderer = spine.transform.GetComponent<Renderer>();
         if (redderer != null)
         {
-            EditorGUI.BeginChangeCheck();
-            {
                 redderer.sortingOrder = 1000 - (int)((this.m.z) * 100);
                 //Debug.LogError((int)((this.transform.position.z) * 100));
-                //Debug.LogError(redderer.sortingOrder);
-            }
-            EditorGUI.EndChangeCheck();
+               //Debug.LogError(redderer.sortingOrder);
         }
     }
     SkeletonAnimation spine = null;
