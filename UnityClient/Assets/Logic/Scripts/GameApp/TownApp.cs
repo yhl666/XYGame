@@ -121,7 +121,7 @@ public class TownApp : AppBase
         {
             EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
             {
-                return DATA.ADD_STRING + "加载数据";
+                return DATA.ADD_STRING + "  加载数据";
             }));
         }
 
@@ -130,7 +130,7 @@ public class TownApp : AppBase
             ViewUI.Create<UITownRoot>();
 
             this.InitCustomAsync();
-            return DATA.ADD_STRING + "加载主场景资源";
+            return DATA.ADD_STRING + "  加载主场景资源";
         }));
         //init all robot
         int robot_count = UnityEngine.Random.Range(5, 10);
@@ -139,7 +139,7 @@ public class TownApp : AppBase
             EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
             {
                 BaseHero.CreateRobot();
-                return DATA.ADD_STRING + "加载主场景Object";
+                return DATA.ADD_STRING + "  加载主场景Object";
             }));
         }
         /* for (int i = 0; i < 10; i++)
