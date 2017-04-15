@@ -3,48 +3,15 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '3bc1fcaa40093a52764b8228cd926b55e3fcd15a'
-    oldFile: !uuid '85a50a54f430a6e9db72d9b9ac403f8a7c8cad80'
-  /UnityClient/Assets:
-    newFile: !uuid '0241b46bc5f5b2f44bef3ee1e727893e48ba1a91'
-    oldFile: !uuid '1e2af43599ce49dffba4aef4617b3cac09a8854b'
-  /UnityClient/Assets/ClientServerApp.cs:
-    newFile: !uuid 'b92a013ec846e2a1e642301026f30ae3b3ab4329'
-    oldFile: !uuid '2427c95dde5b89150f7314714f8368e0264ddf27'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid 'e0ee5c437ed18003d781e83bdc01a8b9ebecc903'
-    oldFile: !uuid '319db6df1f4a5b463fee7a9b3acc7290f45dc7cd'
-  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid 'd24776277760d9d5ec28442c2f77aeb06d78a7b5'
-    oldFile: !uuid '9bdc095f0a9690847094e78d0461178d5fb5c0d2'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '28c78217752bd1ed26d1b56f6404c4749c379bc0'
-    oldFile: !uuid '04f260a9d14b7f36bd0e8ed02a0a9e2a819bea11'
-  /UnityClient/Assets/Scripts/Common:
-    newFile: !uuid '618cec02d87ede92c8ae85496816123922f04cf2'
-    oldFile: !uuid '257c4a2f4854c8a41196ced4e8123b08f51f1c41'
-  /UnityClient/Assets/Scripts/Common/Config.cs:
-    newFile: !uuid '61838ae1f320c88de4b898a392935f05230589ee'
-    oldFile: !uuid 'f4df1660024f2c0a7851e9930b4b3156ad4cdf34'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid 'ba4daad6c2510d2cb9f92795bb6067ef1aa47aeb'
-    oldFile: !uuid 'a0af78ddc3dc75926053c08fbd79c511a2398b22'
-  /UnityClient/Assets/Scripts/Data/PublicData.cs:
-    newFile: !uuid '3a0efac797e5b6673e4bdcb3cf52e2dc339fa321'
-    oldFile: !uuid 'd0712cacea8adc39b72dae4d52fc7bd65c46eebd'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid 'f3e9d63c1a321a85eced329cd7d8fc7e0c03cb3c'
-    oldFile: !uuid '4a52a87e5b17d5def5618cf580c58605bb779689'
-  /UnityClient/Assets/Scripts/GameApp/BattleApp.cs:
-    newFile: !uuid 'd829ca1576c35f3f2f1f8d8897c1b9a56a978f12'
-    oldFile: !uuid '9fc4db8e0ac1803ac4b709b6bf3f110140215e77'
-  /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
-    newFile: !uuid 'ab8c161b71c1dfec6fdfdb64d2b77f76735c9eec'
-    oldFile: !uuid '92a8218ee4aa2ea9123ba6f6b601606c02e9ddf4'
-  /UnityClient/Assets/link.xml.meta:
-    newFile: !uuid 'b29619481a65788c2965ab33e1acaa550c50f179'
-    oldFile: null
-gitCommitId: !uuid 'be7e5d5841888c3f976d271c455c57fc3f2b3f7f'
+    newFile: !uuid 'cff75a587837e47cd5da199058efec67ae0057f9'
+    oldFile: !uuid '3bc1fcaa40093a52764b8228cd926b55e3fcd15a'
+  /UnityClient/ProjectSettings:
+    newFile: !uuid '891592eef473c9e2fcaafb0108a90f8ec464fd73'
+    oldFile: !uuid '4fff3f125a0980557c4b9227cee5194af0a31224'
+  /UnityClient/ProjectSettings/QualitySettings.asset:
+    newFile: !uuid '181e12106c005d5e0d09a565c7d2f32b61eefb16'
+    oldFile: !uuid '44ab9471216d668bad993c2ab19ee39fa1096b6f'
+gitCommitId: !uuid '86db657919ff89e36ee3526fcbc384cc176bee8d'
 renames: {
   }
-revisionId: 800
+revisionId: 801
