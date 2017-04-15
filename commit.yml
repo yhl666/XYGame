@@ -3,24 +3,36 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'ec3516dc4b12aab6b50ca33f04079534c0d03fa7'
-    oldFile: !uuid '4ffcb69f582778803db6f3ab71a6bc4ddf8861c2'
+    newFile: !uuid '88bceff034707b00bd2b3b942d0cec109caf552c'
+    oldFile: !uuid 'ec3516dc4b12aab6b50ca33f04079534c0d03fa7'
   /UnityClient/Assets:
-    newFile: !uuid 'a81213eb264248cecc92c7c43b59bf3593f26943'
-    oldFile: !uuid '8a37a03d6abc432f29c1f2778597c5a8b740d46b'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '6ba6fa0239c18f40b5c7be354e02f00ee67ba23d'
-    oldFile: !uuid 'eb06c890b4f978d17061de7308ecc7b1e55ab673'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'fd1866e9f2c37bb81220b4429ce8b3dea1780ebf'
-    oldFile: !uuid 'f7c72aa5c4c3fd3ee957da20b80252fdfe7ffcbd'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '574868c6d87290c9dc5d7eb8245e958ee7e5388a'
-    oldFile: !uuid 'de45dca11e3d07b6649c903237ca8a56fb2a4f2d'
-  /UnityClient/Assets/Resources/Prefabs/ui/Login.prefab:
-    newFile: !uuid 'f64b1a70f7202353712db984c5c0a58350a38a32'
-    oldFile: !uuid '756ffca7a1d3db54adf356fb8c23aedb8373e33d'
-gitCommitId: !uuid '87b307e239b2f628a9c51f3249ffa95dcc0a3406'
+    newFile: !uuid '4d850c103cc2763c562a16fc737fb56c4a90f7d6'
+    oldFile: !uuid 'a81213eb264248cecc92c7c43b59bf3593f26943'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid 'fdca3947a164db75d1de6dcbc11ae2038b4c3286'
+    oldFile: !uuid '2b377d04905b449ace98ba2d33b59db457f0e4f2'
+  /UnityClient/Assets/Logic/Scripts:
+    newFile: !uuid 'ca575c436064cf6a3631b6a21bd352be114e2a3b'
+    oldFile: !uuid 'f2864c9d28a775cd088c85d88506fa9261f7dd4d'
+  /UnityClient/Assets/Logic/Scripts/GameApp:
+    newFile: !uuid '0c5d6162acf79a48094eaabc11cacc42ca5cbf23'
+    oldFile: !uuid '3fcb87e5f026f4288cc5edf98c710679d33be9c2'
+  /UnityClient/Assets/Logic/Scripts/GameApp/TownApp.cs:
+    newFile: !uuid '39aafdaf6bb4c403f36953c7871abba22755c9f9'
+    oldFile: !uuid '29619fe8fea0315f0553a3b66ffd69307a229e65'
+  /UnityClient/Assets/Logic/Scripts/Model:
+    newFile: !uuid 'b136b60acaabb784df8f3731f2debd3a1828d5a7'
+    oldFile: !uuid 'fd4c69dd122cf4f904cbfd5b032e091db81d2e4b'
+  /UnityClient/Assets/Logic/Scripts/Model/BaseHero.cs:
+    newFile: !uuid '49f2d633846e5ee6aa7025f37c7b5c01483d8ee3'
+    oldFile: !uuid 'd1a14a158bb5671edc3ec675195d6bb60dc8d754'
+  /UnityClient/Assets/Logic/Scripts/View:
+    newFile: !uuid '5b2ad32815b7317da29c5ae6019b96a77d7f485c'
+    oldFile: !uuid 'c484fe374292bdc390e67295ebbecbe875c9e586'
+  /UnityClient/Assets/Logic/Scripts/View/UITown.cs:
+    newFile: !uuid '7926daabfc1e3cae423bdc894c8ee40cc0f20707'
+    oldFile: !uuid '15d3dd70ede23dd0d9bcede3af58285631df9a76'
+gitCommitId: !uuid '64a6de0e47cf5571f11847d113e7f3e347d189b9'
 renames: {
   }
-revisionId: 804
+revisionId: 805
