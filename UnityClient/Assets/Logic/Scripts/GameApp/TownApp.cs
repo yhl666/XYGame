@@ -140,7 +140,13 @@ public class TownApp : AppBase
     {
         base.OnEnter();
 
-
+        //init all robot
+        int robot_count = UnityEngine.Random.Range(5, 10);
+        for (int i = 1; i <= robot_count; i++)
+        {
+            /// return;
+            BaseHero.CreateRobot();        
+        }
 
     }
 
@@ -166,13 +172,12 @@ public class TownApp : AppBase
     bool is_pvp_ok = false;
     bool is_pvp_wait = false;
 
+
     public override void UpdateMS()
     {
         AutoReleasePool.ins.Clear();
 
         if (this.IsInValid()) return; ;
-
-
 
         base.UpdateMS();
 
@@ -182,7 +187,10 @@ public class TownApp : AppBase
 
         if (HeroMgr.ins.self == null) return;
 
+        //    foreach (BaseHero hero in robots)
+        {
 
+        }
         if (Input.GetMouseButtonUp(0) && enable_newposition)
         {
             if ((Input.mousePosition.x > unclicked_xy.x && Input.mousePosition.y > unclicked_xy.y) && ((Input.mousePosition.x < unclicked_xy.x + unclicked_wh.x && Input.mousePosition.y < unclicked_xy.y + unclicked_wh.y)))

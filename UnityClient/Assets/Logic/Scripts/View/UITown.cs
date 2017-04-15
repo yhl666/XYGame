@@ -277,6 +277,15 @@ public sealed class UI_names : ViewUI
 
             txt.gameObject.transform.position = Camera.main.WorldToScreenPoint(
                 new Vector3(hero.x, hero.y + 1.2f, 0));
+
+            if(hero != HeroMgr.ins.self)
+            {
+                txt.color = Color.white;
+            }
+            else
+            {
+                txt.color = color;
+            }
         }
         for (; i < texts.Count; i++)
         {
@@ -291,7 +300,7 @@ public sealed class UI_names : ViewUI
 
         this._panel = this._root._ui_root.transform.FindChild("ui_panel_hero_names").gameObject;
         this.txt_template = _panel.transform.FindChild("NameTemplate").gameObject;
-
+        color = this.txt_template.GetComponent<Text>().color;
         return true;
     }
 
@@ -299,6 +308,7 @@ public sealed class UI_names : ViewUI
     private ArrayList texts = new ArrayList();
     GameObject _panel;
     GameObject txt_template;
+    Color color;
 }
 
 
