@@ -3,36 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '97d6daee78eac225edea61016a28db63e1618102'
-    oldFile: !uuid '2d0d209556d2e250690ba761472e226559821de5'
-  /UnityClient/Assets:
-    newFile: !uuid '65f8f7a45a75ae81d25f9d22955f6965e2ef68e9'
-    oldFile: !uuid '6a72fae4c009b274388e84c4ebb2122a48d01193'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'c56a297459920e3cd6416b93901e7e0738aa72cb'
-    oldFile: !uuid '6391ebf7a7d97fa5548bf9807c73af2c81f8f39f'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'ceab038977ccadf63579c357756672da422d081d'
-    oldFile: !uuid '315a7d22ebbb4b02de4610bf7af0485e25fea469'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '09c2579b258697a092e70527183d0fd270a92ffc'
-    oldFile: !uuid '596a905f5712df319258bc72a8f7280693b9ca8d'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid 'ea387a7059d02c4215d5bb7321299de90f19c8fd'
-    oldFile: !uuid '364c0085ba9995c9879a436f397d98e35ff195ea'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_joystick.prefab:
-    newFile: !uuid '1e2a0e8e6f2879d7997b9edae09ca0f13c9d464b'
-    oldFile: !uuid 'aa76fc706a5bc09efa269ccb4699abcad6c63db0'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_joystick.prefab.meta:
-    newFile: !uuid '34e69c1d3d37bc2e4596d6b105680629479ea653'
-    oldFile: !uuid 'd7abe29f40bec224669a5a0cb7883b51a57493d8'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab:
-    newFile: !uuid '3c3ddcda79ffd4f0cf34aed9a93a7baed56573c3'
-    oldFile: !uuid '399b952e95afd43ce86567112fdb5ebdc7d56adb'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab.meta:
-    newFile: !uuid '77add9c0e95aee0661a1c5346992fd9838822b0e'
-    oldFile: !uuid '181f9703f2cf3c9708aa07c126ac7f51a3f2978f'
-gitCommitId: !uuid 'e7dc3e3e803f2b3cc4aae2c5c8e7feb0a08c0f12'
+    newFile: !uuid '7eb351564e5c9bc2b3da00485963aa2d6729f6b4'
+    oldFile: !uuid '97d6daee78eac225edea61016a28db63e1618102'
+  /UnityClient/ProjectSettings:
+    newFile: !uuid '4fff3f125a0980557c4b9227cee5194af0a31224'
+    oldFile: !uuid '4024fd7cbdcf3f5a3d483e1a4197e953b8d99dd8'
+  /UnityClient/ProjectSettings/EditorBuildSettings.asset:
+    newFile: !uuid '82f903b7c786cd48dae561fd93c73e8655c48909'
+    oldFile: !uuid '1c9872768db8958ad5f15f13bfcfac39e22564e3'
+  /UnityClient/ProjectSettings/ProjectSettings.asset:
+    newFile: !uuid 'e32dfd06c72f99b608fa68550f66bd4c152a3979'
+    oldFile: !uuid '4a3f2112aa739d068e4bb5bba201b1d3320b273d'
+  /UnityClient/ProjectSettings/QualitySettings.asset:
+    newFile: !uuid '44ab9471216d668bad993c2ab19ee39fa1096b6f'
+    oldFile: !uuid 'd88f4c23a086eaf94d33f7c32fed415b3a17d6e5'
+gitCommitId: !uuid '6b7d16fb9fad8e4ad22d4bc5a1a0e40a5cd96670'
 renames: {
   }
-revisionId: 797
+revisionId: 798
