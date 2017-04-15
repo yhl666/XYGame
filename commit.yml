@@ -3,63 +3,30 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'eda9c5f60fa452d1054e9519daa673a90286c066'
-    oldFile: !uuid 'cff75a587837e47cd5da199058efec67ae0057f9'
+    newFile: !uuid '4ffcb69f582778803db6f3ab71a6bc4ddf8861c2'
+    oldFile: !uuid 'eda9c5f60fa452d1054e9519daa673a90286c066'
   /UnityClient/Assets:
-    newFile: !uuid '46f63d396f80662fbe24d0414a2d3fec3c009a04'
-    oldFile: !uuid '0241b46bc5f5b2f44bef3ee1e727893e48ba1a91'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid '2b377d04905b449ace98ba2d33b59db457f0e4f2'
-    oldFile: !uuid 'e4f87f00396a26bb9c6b9005ccfa1f544f22741e'
-  /UnityClient/Assets/Logic/LoginScene.unity:
-    newFile: !uuid '710175fd8861e9b29234078d7a6bd3d9c66e1829'
-    oldFile: !uuid 'd222f83ef10910809294569d74c93a3968c19d0b'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid 'f2864c9d28a775cd088c85d88506fa9261f7dd4d'
-    oldFile: !uuid 'e51a92fa3faf88c229468bbf190e3516d33a6bb9'
-  /UnityClient/Assets/Logic/Scripts/View:
-    newFile: !uuid 'c484fe374292bdc390e67295ebbecbe875c9e586'
-    oldFile: !uuid 'ab3ede0eaa4ea1dadeb9c6e09838f65b54a8698c'
-  /UnityClient/Assets/Logic/Scripts/View/UILogin.cs:
-    newFile: !uuid '66231953a2b2d087f22090988f0a859afa065eda'
-    oldFile: !uuid 'e67b39eb13cfe4fc09e032cb19b29231b392008a'
+    newFile: !uuid '8a37a03d6abc432f29c1f2778597c5a8b740d46b'
+    oldFile: !uuid '46f63d396f80662fbe24d0414a2d3fec3c009a04'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '0ed04bedb61c9bc515ea07241c244652ae64dd0f'
-    oldFile: !uuid 'c56a297459920e3cd6416b93901e7e0738aa72cb'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'f7c72aa5c4c3fd3ee957da20b80252fdfe7ffcbd'
-    oldFile: !uuid 'ceab038977ccadf63579c357756672da422d081d'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'de45dca11e3d07b6649c903237ca8a56fb2a4f2d'
-    oldFile: !uuid '09c2579b258697a092e70527183d0fd270a92ffc'
-  /UnityClient/Assets/Resources/Prefabs/ui/Login.prefab:
-    newFile: !uuid '756ffca7a1d3db54adf356fb8c23aedb8373e33d'
-    oldFile: !uuid 'ec4b97ea1a8dbc62c753c406cfa754c75d6f88e6'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_skill.prefab.meta:
-    newFile: !uuid '3f4c2ef3b4e25f4ea6998502e05353543f460125'
-    oldFile: null
+    newFile: !uuid 'eb06c890b4f978d17061de7308ecc7b1e55ab673'
+    oldFile: !uuid '0ed04bedb61c9bc515ea07241c244652ae64dd0f'
   /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid 'a57db5a605178675be90dd38a3bc0d827a20d38b'
-    oldFile: !uuid 'e85910686898ae1719fa863b229abf5893a03436'
+    newFile: !uuid 'cb7da45837864c72bc71947790964b85aa1ec19e'
+    oldFile: !uuid 'a57db5a605178675be90dd38a3bc0d827a20d38b'
   /UnityClient/Assets/Resources/Sprites/game_ui.meta:
-    newFile: !uuid '6ae54ab8f86144d89269376500137c2c4fd99d4c'
-    oldFile: null
-  /UnityClient/Assets/Resources/Sprites/giant.png:
-    newFile: !uuid '2e666848eb13769b634d47996764615783a7f872'
-    oldFile: null
-  /UnityClient/Assets/Resources/Sprites/giant.png.meta:
-    newFile: !uuid '35731ad48475a513ba30ecb243ebf8fe0356fb11'
-    oldFile: null
-  /UnityClient/Assets/Resources/level:
-    newFile: !uuid 'ac1fe606f377b3dbce8361413177c6c35e1798d0'
-    oldFile: !uuid '33dbdc749525e3089d10ba9bc84d41039dee01f6'
-  /UnityClient/Assets/Resources/level/level_static_28_bg.png:
-    newFile: !uuid '27e611cd63af0ceb9cc17d1b84c1ddf2882ad656'
-    oldFile: null
-  /UnityClient/Assets/Resources/level/level_static_28_bg.png.meta:
-    newFile: !uuid '67535337deaa4a92a7663117920eaecda0078269'
-    oldFile: null
-gitCommitId: !uuid '354586fd91359d648143292384f0d36347f6dcd8'
+    newFile: null
+    oldFile: !uuid '6ae54ab8f86144d89269376500137c2c4fd99d4c'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '1f1b7564fa435576096bc0dc368c7e7c10afe139'
+    oldFile: !uuid '28c78217752bd1ed26d1b56f6404c4749c379bc0'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'ed38ebaee150ffe1bcea40fc72f466c8485254a3'
+    oldFile: !uuid '9622164ae9a861ecc11ef8c6bb4930dfe1ca18f0'
+  /UnityClient/Assets/Scripts/View/View.cs:
+    newFile: !uuid '9db277f798c84c0305926a7e291f00bd6ecdbe2b'
+    oldFile: !uuid '7c06b1a863c9c48154a66cdf491ae735e73db66d'
+gitCommitId: !uuid 'b5cc1722ee9261cdecd519104d5d2ac43593032e'
 renames: {
   }
-revisionId: 802
+revisionId: 803
