@@ -54,17 +54,34 @@ public class TestServerScene : GiantLightSceneExtension
 
 
 
-
-
-
-
-        RpcClient.ins.SendRequest("services.login", "login", "account:1,pwd:1,", (string msg) =>
+        RpcClient.ins.SendRequest("services.battle_team", "create", "no:123,", (string msg) =>
+           {
+               Debug.Log(msg);
+           });
+        RpcClient.ins.SendRequest("services.battle_team", "create", "no:123,", (string msg) =>
         {
             Debug.Log(msg);
+        });
 
+        RpcClient.ins.SendRequest("services.battle_team", "create", "no:123,", (string msg) =>
+        {
+            Debug.Log(msg);
         });
 
 
+        RpcClient.ins.SendRequest("services.battle_team", "join", "no:2,other:5,", (string msg) =>
+        {
+            Debug.Log(msg);
+        });
+        RpcClient.ins.SendRequest("services.battle_team", "search", "no:123,", (string msg) =>
+        {
+            Debug.Log(msg);
+        });
+
+        RpcClient.ins.SendRequest("services.battle_team", "random", "no:123", (string msg) =>
+        {
+            Debug.Log(msg);
+        });
     }
 
 }

@@ -151,7 +151,30 @@ public sealed class Events : object
     public const int ID_BATTLE_SHOW_TOWER_PANEL = 318;//显示防御塔 操作面板
     public const int ID_BATTLE_HIDE_TOWER_PANEL = 319; // 隐藏防御塔操作面板
 
+    public const int ID_TOWN_BTN_COMPONENT_TEAM_CLICKED = 320;//面板 组队系统按钮被点击
+    public const int ID_TOWN_TEAM_SYNC_INFO = 321;//app 发起更新 组队信息 消息
+    public const int ID_TOWN_TEAM_BTN_OK = 322;// 准备 开始游戏按钮
+    public const int ID_TOWN_TEAM_BTN_CLOSE = 323; //退出队伍按钮
+    public const int ID_TOWN_TEAM_BTN_SKILL = 324; // 切换技能按钮
 
+    public const int ID_TOWN_TEAM_BTN_MAIN_CREATE = 325;//组队主界面  创建房间
+    public const int ID_TOWN_TEAM_BTN_MAIN_JOIN = 326; //组队主界面 加入
+    public const int ID_TOWN_TEAM_BTN_MAIN_SEARCH = 328;//组队主界面 搜索
+    public const int ID_TOWN_TEAM_BTN_MAIN_RANDOM = 329; // 组队主界面 随机
+
+    public const int ID_TOWN_TEAM_RPC_ENTERTEAM = 330;//进入队伍RPC 消息 参数是 HashTable
+    public const int ID_TOWN_TEAM_RPC_LEAVETEAM = 331;//进入队伍RPC 消息 参数是 HashTable
+    public const int ID_TOWN_TEAM_RPC_CHANGESKILL = 332;//进入队伍RPC 消息 参数是 HashTable
+    public const int ID_TOWN_TEAM_RPC_OK = 333;//进入队伍RPC 消息 参数是 HashTable
+    public const int ID_TOWN_TEAM_RPC_STARTGAME = 334;//进入队伍RPC 消息 参数是 HashTable
+
+    public const int ID_TOWN_TEAM_BTN_ALL_CLOSE = 335;
+    public const int ID_TOWN_TEAM_BTN_SHOW = 336;
+
+ //   public const int ID_TOWN_TEAM_RPC_CHANGESTATE = 334;//进入队伍RPC 消息 参数是 HashTable
+   
+    public const int ID_TOWN_TEAM_BTN_INFO_CLOSE = 350;//队伍信息 关闭按钮
+ //   public const int ID_TOWN_TEAM_BTNN_INFO_CHANGE = 332;
 
 
  //---------------------------------------

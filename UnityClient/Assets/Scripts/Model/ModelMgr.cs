@@ -45,19 +45,10 @@ public sealed class ModelMgr : SingletonGAObject<ModelMgr>
     public override void UpdateMS()
     {
         ++tick_server_rpc;
-        if(tick_server_rpc>400)
+        if (tick_server_rpc > 400)
         {
             tick_server_rpc = 0;
-           /*  RpcClient.ins.SendRequest("services.example", "logout", str, (string msg) =>
-        {
-        }*/
-
-
-
-            RpcClient.ins.SendRequest("services.login", "login", "pwd:124,account:213213213,", (string ree) =>
-            {
-
-            });
+            RpcClient.ins.SendRequest("services.example", "heart_beat", "no:" + PublicData.ins.self_user.no.ToString() + ",", (string ree) => { });
         }
         EventDispatcher.ins.PostEvent(Events.ID_BEFORE_ALLMODEL_UPDATEMS);
 

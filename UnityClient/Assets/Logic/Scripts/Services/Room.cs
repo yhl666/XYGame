@@ -12,6 +12,11 @@ namespace Services
 
     public class Room : RpcService
     {
+        public void Test(string msg, VoidFuncString cb)
+        {
+            cb("ret:ok,");
+            Debug.LogError(msg);
+        }
         public void EnterRoom(string msg, VoidFuncString cb)
         {
             Hero hero = HeroMgr.Create<BaseHero>();

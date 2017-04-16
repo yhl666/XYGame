@@ -133,6 +133,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
     public override bool Init()
     {
         base.Init();
+        EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
 
         {
@@ -192,6 +193,7 @@ sealed class BattlePVPHandler : BattleHandlerBase
     }
     public override bool Init()
     {
+        EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
         return base.Init();
     }
     public static BattleHandlerBase Create(BattleApp app)
@@ -220,13 +222,13 @@ public sealed class BattleSyncHandler
     public void AddRecvMsg(string msg)
     {
         _recvQueue.Enqueue(msg);
-        ///    Debug.Log("[LOG]:Recv:  " + msg);
+        //  Debug.Log("[LOG]:Recv:  " + msg);
     }
 
     public void AddRecvMsgUnSafe(string msg)
     {
         _recvQueue.UnSafeEnqueue(msg);
-        //  Debug.Log("[LOG]:Recv:  " + msg);
+        // Debug.Log("[LOG]:Recv:  " + msg);
     }
 
 
@@ -406,6 +408,10 @@ public sealed class BattleSyncHandler
         {//重新连接
             EventDispatcher.ins.PostEvent(Events.ID_UI_NOWAIT);
         }
+        else if (cmd == "Ready")
+        {
+            app.Send("cmd:ready");
+        }
         else if (cmd == "new")
         {//新玩家
             string name = decode.customs[1] as string;
@@ -421,7 +427,6 @@ public sealed class BattleSyncHandler
         else if (cmd == "new_pvp_friend_ai")
         {//pvp 好友 离线模式 模式 新玩家
 
-            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
             int no = int.Parse(decode.customs[1] as string);
             ///  if (no == HeroMgr.ins.me_no)
             //  if (HeroMgr.ins.GetHero(no) != null) return;
@@ -443,7 +448,6 @@ public sealed class BattleSyncHandler
         else if (cmd == "new_pvp_friend")
         {//pvp 好友  模式 新玩家
 
-            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
             int no = int.Parse(decode.customs[1] as string);
             bool is_pve = PublicData.ins.is_pve;
 

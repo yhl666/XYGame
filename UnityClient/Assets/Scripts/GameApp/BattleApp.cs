@@ -51,7 +51,6 @@ public sealed class BattleApp : AppBase
         {
             //   Thread.Sleep(1000);
             AppMgr.GetCurrentApp<BattleApp>().InitNet(false);
-
             return "初始化网络资源，等待服务器响应";
         }));
 
@@ -169,7 +168,6 @@ public sealed class BattleApp : AppBase
         {
             this.InitWithClientServer();
             socket = new SockClientEmpty();
-            EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
             var controller = ClientServerApp.ins;
             return;
         }
