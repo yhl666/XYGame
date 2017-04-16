@@ -41,10 +41,9 @@ function t.login(ctx, msg, cb)
 
 end
 
-function t.logout(msg, cb)
-
+function t.heart_beat (ctx, msg, cb)
+    cb(msg);
 end
-
 return t;
 
 

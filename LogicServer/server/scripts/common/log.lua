@@ -5,7 +5,6 @@ local log_info = c_logger.info
 local log_warn = c_logger.warn
 local log_error = c_logger.error
 local log_fatal = c_logger.fatal
-local log_xyinfo = xygame_log.log
 
 function Log:new(log_name)
 	assert("table" == type(self))
@@ -39,10 +38,6 @@ end
 
 function Log:fatal(pattern, ...)
 	log_fatal(self.log_name, string.format(pattern, ...))
-end
-
-function Log:xygamelog(path, info)
-    log_xyinfo(path, info);
 end
 
 return Log

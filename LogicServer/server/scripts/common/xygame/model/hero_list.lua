@@ -104,7 +104,7 @@ end
 
 
 function t:get_hero_by_no(no)
-
+    no = tostring(no);
     for k, v in pairs(self.list) do
         if v.user.no == no then
             return v;
