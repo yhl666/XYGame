@@ -29,7 +29,7 @@ public:
 
 	void AddFrameData(FrameData*data);
 	int GetMaxFrameCount();;
-
+	bool isReady();
 	/**
 	 * @brief  process this player frame data
 	 */
@@ -105,6 +105,7 @@ public:
 	bool isReadyForGameOver();
 private:
 	std::vector<std::string> _sendMsg;
+	bool isready = false;
 private:
 	bool SendJsonDataHelper(int frame);
 

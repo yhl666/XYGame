@@ -21,7 +21,7 @@ public:
 	static Room *  Room::Create(int id);
 
 	bool isGameOver();
-
+	bool isAllReady();
 	bool CanDestory();
 
 	int GetCurrentFps();
@@ -81,6 +81,11 @@ public:
 	bool JoinAble();
 	const std::vector<Player*> & GetPlayers() const{ return players; }
 	int GetID(){ return id; }
+
+	/**
+	* @brief  check which player is disconnect,if disconnect it will not release ,when room destroy ,all player will be destroy
+	*/
+	void CheckPlayerAlive();
 private:
 	/**
 	 * @brief  set room id (id is a random seed)
@@ -100,10 +105,7 @@ private:
 	void LazyClearPlayer();
 
 
-	/**
-	 * @brief  check which player is disconnect,if disconnect it will not release ,when room destroy ,all player will be destroy
-	 */
-	void CheckPlayerAlive();
+
 private:
 	int max_players;
 	int current_fps = 0;
@@ -113,7 +115,7 @@ private:
 	std::vector<std::string > _brocastDatas;
 
 private: // for multi thread  
-	std::mutex _mutex;
+	std::recursive_mutex _mutex;
 	bool isLock=false;
 
 	public:

@@ -157,8 +157,12 @@ void  Player::OnRecvMessage(SocketClient *client, string what)
 		{
 			room->BroadcastCustomData("cmd:pve");
 		}
+		else if (cmd == "ready")
+		{
+			this->isready = true;
+		}
 		pack->Release();
-		///	cout << __FUNCTION__ << what << endl;
+		//cout << __FUNCTION__ << what << endl;
 		return;
 	}
 
@@ -289,4 +293,9 @@ bool  Player::isReadyForGameOver()
 	if (current_fps == this->frames.size())return true;
 
 	return false;
+}
+
+bool  Player::isReady()
+{
+	return isready;
 }

@@ -911,7 +911,7 @@ int ServerAppBattlePVE::Run()
 								Player*player = players[i];
 								room->BroadcastCustomData("cmd:new_pvp_friend:" + Utils::itos(player->GetNo()));
 							}
-							std::thread t(std::bind(ServerAppDynamic::RoomThreadFunc, room));
+							std::thread t(std::bind(ServerAppBattlePVE::RoomThreadFunc, room));
 							t.detach();
 
 						}
@@ -986,6 +986,22 @@ void   ServerAppBattlePVE::RoomThreadFunc(void *arg1)
 
 
 	QueryPerformanceCounter(&nLast);
+
+
+	QueryPerformanceCounter(&nLast);
+	room->Lock();
+	room->BroadcastCustomData("cmd:Ready");
+	while (true)
+	{//等待所有客户端准备完毕 再开始
+		Sleep(100);
+		if (room->isAllReady())
+		{
+			break;
+		}
+	}
+	room->UnLock();
+	cout << "Ready" << endl;
+
 
 	while (true)
 	{
@@ -1107,7 +1123,7 @@ int ServerAppBattle::Run()
 								Player*player = players[i];
 								room->BroadcastCustomData("cmd:new_pvp_friend:" + Utils::itos(player->GetNo()));
 							}
-							std::thread t(std::bind(ServerAppDynamic::RoomThreadFunc, room));
+							std::thread t(std::bind(ServerAppBattle::RoomThreadFunc, room));
 							t.detach();
 
 						}
@@ -1151,8 +1167,31 @@ void   ServerAppBattle::RoomThreadFunc(void *arg1)
 	perFrame.QuadPart = (LONGLONG)(1.0 / 40.0 * nFreq.QuadPart);//25MS
 
 
-	QueryPerformanceCounter(&nLast);
 
+	room->Lock();
+	room->BroadcastCustomData("cmd:Ready:1:2");
+	while (true)
+	{//等待所有客户端准备完毕 再开始
+		Sleep(200);
+		room->RecvTick();
+		room->CheckPlayerAlive();
+		if (room->CanDestory() || (room->GetPlayerCounts() > 0 && room->isEmptyRoom()))
+		{
+			Sleep(100);
+			room->UnLock();
+			room->Release();
+			Memory::PrintTrace();
+			return;
+		}
+
+		if (room->isAllReady())
+		{
+			break;
+		}
+	}
+	room->UnLock();
+
+	QueryPerformanceCounter(&nLast);
 	while (true)
 	{
 		QueryPerformanceCounter(&nNow);

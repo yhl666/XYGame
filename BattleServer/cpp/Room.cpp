@@ -289,6 +289,17 @@ bool Room::isGameOver()
 	return current_fps > Config::GAME_OVER_FRAME_COUNT;
 }
 
+bool Room::isAllReady()
+{
+	for (Player * p : players)
+	{
+		if (p->isReady() == false)
+		{
+			return false;
+		}
+	}
+	return true;
+}
 bool Room::CanDestory()
 {
 	return this->can_destory;// || this->isEmptyRoom();
