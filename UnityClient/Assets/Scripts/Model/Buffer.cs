@@ -1178,7 +1178,7 @@ public class BufferEnemyMovementAfterAtk : Buffer
         target.machine.GetState<RunXZState>().SetDisable();
         //target.machine.GetState<SkillState>().Resume();
         target.machine.GetState<StandState>().Resume();
-
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
         target.ani_force = "walk";
     }
     public override void OnExit()
@@ -1194,7 +1194,7 @@ public class BufferEnemyMovementAfterAtk : Buffer
         base.Init();
         isOnlyOne = true;
         tick.SetMax(MAX_TICK);
-        EventDispatcher.ins.AddEventListener(this, Events.ID_BEFORE_ONEENTITY_UPDATEMS);
+    
         return true;
     }
 
