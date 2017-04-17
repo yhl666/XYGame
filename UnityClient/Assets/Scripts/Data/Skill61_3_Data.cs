@@ -19,7 +19,8 @@ public class Skill61_3_Data : MonoBehaviour
     public int cancel;//可取消帧数，该数据是在技能释放后开始计算的帧数
     public string animation_name;// 技能角色动画名称
     public float lastTime;//减速持续时间
-
+    public float scale_x;//技能动画大小
+    public float scale_y;//技能动画大小
     //special
     public int slowPrecent;//减速百分比
 

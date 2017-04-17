@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
 
@@ -502,12 +503,15 @@ public class Skill61_3 : SkillBase
             info.distance_atk = 2.0f;
             info.distance = 0;
             info.number = 1;
+            info.frameDelay = 1;
             info.speed = 1.0f;
             info.number = 1;
             info.lastTime = 5;
             info.isHitDestory = false;
             info.collider_size = Skill61_3_Data.ins.hit_rect;
             info.damage_ratio = Skill61_3_Data.ins.damage_ratio_level1;
+            info.scale_x = Skill61_3_Data.ins.scale_x;
+            info.scale_y = Skill61_3_Data.ins.scale_y;
             BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(this.Target);
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
             //buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
@@ -536,6 +540,7 @@ public class Skill61_3 : SkillBase
             info.distance_atk = 2.0f;
             info.distance = 0;
             info.number = 1;
+            info.frameDelay = 1;
             info.speed = 1.0f;
             info.number = 999;
             info.lastTime = 5;
@@ -546,7 +551,8 @@ public class Skill61_3 : SkillBase
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
             buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
             info.AddBuffer(buffer);
-
+            info.scale_x = Skill61_3_Data.ins.scale_x;
+            info.scale_y = Skill61_3_Data.ins.scale_y;
             var b = BulletMgr.Create(this.Target, "BulletConfig", info);
             Enemy enemy = list[i] as Enemy;
             b.x = enemy.x;
@@ -570,6 +576,7 @@ public class Skill61_3 : SkillBase
             info.distance_atk = 2.0f;
             info.distance = 0;
             info.number = 1;
+            info.frameDelay = 1;
             info.speed = 1.0f;
             info.number = 999;
             info.lastTime = 5;
@@ -580,6 +587,8 @@ public class Skill61_3 : SkillBase
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
             buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
             info.AddBuffer(buffer);
+            info.scale_x = Skill61_3_Data.ins.scale_x;
+            info.scale_y = Skill61_3_Data.ins.scale_y;
             var b = BulletMgr.Create(this.Target, "BulletConfig", info);
             Enemy enemy = list[i] as Enemy;
             b.x = enemy.x;
@@ -701,4 +710,40 @@ public class Skill61_3 : SkillBase
     }
     private bool is_shifa = true;
 
+}
+
+public class Skill61_Final : SkillBase
+{
+    public override void OnEnter()
+    {
+        cd.Reset();
+    }
+
+    public override bool Init()
+    {
+        cd.SetMax(40);
+        return base.Init();
+    }
+    public override string GetName()
+    {
+        return "Skill61_Final";
+    }
+
+    public override void OnPush()
+    {
+        if (cd.IsMax() == false) return;
+        if (Target.isStand == false) return;
+
+        if (Target.isAttacking)
+        {
+            this.PushOnInterruptAttackSate(); //强制打断普通攻击
+        }
+        if (Target.isAttacking)
+        {
+            Debug.Log("发起打断请求");
+            this.PushOnInterrupted();
+            return;
+        }
+        this.OnEnter();
+    }
 }
