@@ -2,31 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'ed628267df3a9666425afbd70cd8ca2b3efaacd8'
-    oldFile: !uuid 'feada3afb4cfd3c79e625dc686cd51fd11567b77'
-  /UnityClient/Assets:
-    newFile: !uuid '748772ba4e80eab90d67acc54e91dc3adc9f9a74'
-    oldFile: !uuid '7c4e44f14088d21c74b24a4d83f09fe215aabdc5'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '1cf2b072c8e85ce28470cdb9cdf5b16efcc70087'
-    oldFile: !uuid '8ccb688a264ce14ad4e82866ca34f1dcc4912e72'
-  /UnityClient/Assets/Resources/Spine:
-    newFile: !uuid 'b6735e0f99258c77d01d6c659e3cbd2bfd61dd27'
-    oldFile: !uuid 'f0c8e39b07cd7182f494ffc3db1e2d6b0c181bb6'
-  /UnityClient/Assets/Resources/Spine/Customs:
-    newFile: !uuid 'c562ec39a7c0743314649291abe13c469d8891e9'
-    oldFile: !uuid 'b63c7c772aa3c0c3c15a83eef204764f0a4bbb11'
-  /UnityClient/Assets/Resources/Spine/Customs/424:
-    newFile: !uuid '070cc680982efb74241c93b3456d434bf3750f69'
-    oldFile: !uuid 'c707a934eed579472868966e76b993b7251887eb'
-  /UnityClient/Assets/Resources/Spine/Customs/424/424 1.prefab:
-    newFile: !uuid 'e0854570e29441e088e1a5c988391d1630b8f8e8'
+  /工作日志:
+    newFile: !uuid 'b296ed0117702077f0829a148aa39021f0a4eddc'
+    oldFile: !uuid 'ddf7f5354f0df35358ff317e3ae822e5e57d1fcd'
+  /工作日志/BUG处理:
+    newFile: !uuid '164f0479f85da89ff508ad5164c87e061acdf5cf'
+    oldFile: !uuid 'c9a6831bf6093256fac8a0d41672d7ed0bef8270'
+  /工作日志/BUG处理/018.txt:
+    newFile: !uuid '2ba306892f212f308b9baedba33ce889ff39faef'
     oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/424/424 1.prefab.meta:
-    newFile: !uuid '2e2ec43c8b6de11281cf03d4aa49e3917bf1035d'
-    oldFile: null
-gitCommitId: !uuid '73b8886d05374c7ab1ad71f73f7397cb237e0803'
+gitCommitId: !uuid '8671b69bdca5181c75e75f6b8f9b5c4974670ce6'
 renames: {
   }
-revisionId: 823
+revisionId: 824
