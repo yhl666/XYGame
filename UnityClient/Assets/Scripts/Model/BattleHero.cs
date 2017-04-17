@@ -381,7 +381,6 @@ public class BattleHero : Hero
 
     public override void UpdateMS()
     {
-        Debug.LogError(current_hp + "   " + hp);
         if (this.isDie)
         {
             if (enable_pvp_ai)
