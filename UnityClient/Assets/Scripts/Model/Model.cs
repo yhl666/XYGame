@@ -280,16 +280,18 @@ public sealed class DirInput : Model
             if (Input.GetButton("Fire1") && isTouch == false)
             {
                 float x = GetCurrentMousePositionX(), y = GetCurrentMousePositionY();
+                if (x < Screen.width / 2)
+                {//屏幕左边才生效
+                    // pos_began.y =( Input.mousePosition.y+42) / Screen.height * 10.0f;
+                    //   pos_began.x = (Input.mousePosition.x+43 )/ Screen.width * 21.0f;
 
-                // pos_began.y =( Input.mousePosition.y+42) / Screen.height * 10.0f;
-                //   pos_began.x = (Input.mousePosition.x+43 )/ Screen.width * 21.0f;
+                    //   pos_began = new Vector3(x - Screen.width / 2.0f, y - Screen.height / 2.0f, 0.0f);
 
-                //   pos_began = new Vector3(x - Screen.width / 2.0f, y - Screen.height / 2.0f, 0.0f);
+                    pos_began = new Vector2(x, y);
 
-                pos_began = new Vector2(x, y);
-
-                isTouch = true;
-                this.OnTouchBegan(x, y);
+                    isTouch = true;
+                    this.OnTouchBegan(x, y);
+                }
             }
             if (Input.GetButton("Fire1") == false && isTouch == true)
             {
