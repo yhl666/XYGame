@@ -3,27 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'a5dbca45cbc80b23bf282a2e818ea5e1b2102b33'
-    oldFile: !uuid '462f4c172c7bc6e9dc4608ef2d89da0e4f35d885'
+    newFile: !uuid 'b9b06add23f6e06dc62c2f777f00228f72a75651'
+    oldFile: !uuid 'a5dbca45cbc80b23bf282a2e818ea5e1b2102b33'
   /UnityClient/Assets:
-    newFile: !uuid '89a294834e52ba091e345c8b7890e38bfd65c1e3'
-    oldFile: !uuid 'f148839c1e01de474ef8bed450ad25f568c1da98'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '87ac52eba41c3d71d1af3730168758ddcbeef162'
-    oldFile: !uuid 'a25dd8f186b8cdf45cbed0fef559c84780b49f04'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '9fdccf8110e39cd9e501610f32c48ca6046ea715'
-    oldFile: !uuid '41df47c8a0f39904b03abc26b4c4b38817901fef'
-  /UnityClient/Assets/Scripts/Data/Skill61_3_Data.cs:
-    newFile: !uuid 'b55a2ccd8fa9aa1d1af84dc87304a6e91f6b8043'
-    oldFile: !uuid '81039d43e0a45484226ca16e91c68ec613f80b93'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '5258aba3770ed47c85c7d0595c2366ef7540bcfd'
-    oldFile: !uuid 'ba1119dde1646f90d5a75448d0b6de4d87f30a25'
-  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
-    newFile: !uuid 'bf61f5e2d692dd9793b78657751cedde535393cc'
-    oldFile: !uuid '572b62105f0db5e4714ff69ecaaaebd581253035'
-gitCommitId: !uuid 'c57ae7ab4505865ba9ad1cbd8211d9d8f351add1'
+    newFile: !uuid 'c0ba478ec86869d1f27880dc0d5ba087c88e3d11'
+    oldFile: !uuid '89a294834e52ba091e345c8b7890e38bfd65c1e3'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'fd4de4d5376bf6365dda56b1f338194f81842999'
+    oldFile: !uuid 'e4d737967a91495169c1e72634f6d9383d5a1e9e'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '2ea34ea7a2c5dc93793cac62d9ac6373293264a9'
+    oldFile: !uuid 'b4ccd66bbfac40e62ddf49bd43814e03805c5e9f'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid 'd6d06a1a816d6a1dcf806f27b6247081a002f8ba'
+    oldFile: !uuid '26142e5ec27065108f9dfa1550c71c21282fc94c'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
+    newFile: !uuid 'c2f21bed4b92fbf1bbaac00bbb4f2611f96c25a0'
+    oldFile: !uuid 'd2814c7f3f0a64a252c9bf73d6cd9d6ec98e6d45'
+gitCommitId: !uuid 'dab8a687e2b841bb2484a2c086d2fbe98c5cd8bc'
 renames: {
   }
-revisionId: 828
+revisionId: 829
