@@ -253,6 +253,9 @@ public sealed class BulletConfig : Bullet
     private bool ColliderCheckOne(Entity h)
     {
         if (h == owner) return false;
+        //目标已经死亡
+        if (h == null) return false;
+    
         if (h.team == owner.team) return false;
         bool hit = false;
         if (this.info.collider_type == ColliderType.Rect || this.info.collider_type == ColliderType.Box)
