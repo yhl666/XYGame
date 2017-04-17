@@ -3,18 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '490414bdd11204b607da9fd818761cf8b6eeaf5c'
-    oldFile: !uuid '03d752ecb9437505e146369937437569e838d3f3'
+    newFile: !uuid 'efc7f25e946f46733c24d14dbbd6f805285bf69d'
+    oldFile: !uuid '490414bdd11204b607da9fd818761cf8b6eeaf5c'
   /UnityClient/Assets:
-    newFile: !uuid 'e4b06b887630ab1bdb287c481928c45bdf5724bb'
-    oldFile: !uuid '77693ee0b5338d3f528afeedcbe2eaf4eeb666fe'
-  /UnityClient/Assets/Scenes:
-    newFile: !uuid '78fddaa45291c90200e5dd043a5da66cd26f4bbb'
-    oldFile: !uuid 'e0ee5c437ed18003d781e83bdc01a8b9ebecc903'
-  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
-    newFile: !uuid 'cd9197da458b807ee2333c0cba0867f9cb3687d7'
-    oldFile: !uuid 'd24776277760d9d5ec28442c2f77aeb06d78a7b5'
-gitCommitId: !uuid 'b7386501d1c209f357b4deaebb4aedbb7d36334e'
+    newFile: !uuid 'c609b8854954a2800ecbc823bbadb6dbdc4a4536'
+    oldFile: !uuid 'e4b06b887630ab1bdb287c481928c45bdf5724bb'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '654ea0fb6c428ad60f88c0640ec1baef1127ecb6'
+    oldFile: !uuid '553c526adf984012d2e38189690179e75aaa5730'
+  /UnityClient/Assets/Scripts/Common:
+    newFile: !uuid '6f542ba06ea64f0e68419f767b475379ac683876'
+    oldFile: !uuid '618cec02d87ede92c8ae85496816123922f04cf2'
+  /UnityClient/Assets/Scripts/Common/Config.cs:
+    newFile: !uuid 'daa1b135c42451a2313154ef4e6afb2837fa00df'
+    oldFile: !uuid '61838ae1f320c88de4b898a392935f05230589ee'
+gitCommitId: !uuid '4d1b6009a437a798cf7a9dace216cc117f763074'
 renames: {
   }
-revisionId: 812
+revisionId: 813
