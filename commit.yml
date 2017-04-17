@@ -3,21 +3,36 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '4377d0479ec51ab82e244cb870f722930544d817'
-    oldFile: !uuid '9fa49ad17496c99a0498df8da8a44dd57af249b4'
+    newFile: !uuid '01aed9b67355366572a019a73d285a6d028f4526'
+    oldFile: !uuid '4377d0479ec51ab82e244cb870f722930544d817'
   /UnityClient/Assets:
-    newFile: !uuid 'de71a94306f4e8f8194293716a432605b92aaa96'
-    oldFile: !uuid '78c000478665d6efc2bcd51c6cec016d286e705b'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'a25dd8f186b8cdf45cbed0fef559c84780b49f04'
-    oldFile: !uuid '30e30f4270fe4a8a1fc16735e000e5ef4268fc70'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'ba1119dde1646f90d5a75448d0b6de4d87f30a25'
-    oldFile: !uuid '7dd4d13795b7e91515de25a5192ae5e6e8927121'
-  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
-    newFile: !uuid '630bef768064800bd37e0bde09d47cd0c9b71846'
-    oldFile: !uuid '02deed131131e62afdb9ad6795d0d7df605d05fc'
-gitCommitId: !uuid '6b3d34e1500715bad0291cafaf5dd848957466f9'
+    newFile: !uuid 'cf9b551eca1bf54f7f8b6f772fc7118711c55684'
+    oldFile: !uuid 'de71a94306f4e8f8194293716a432605b92aaa96'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '11e6b858f3ea0d5c7e7fab77b17dd03e116afb88'
+    oldFile: !uuid '5415d609aeeee000621f8701714076513f59a65f'
+  /UnityClient/Assets/Resources/Sprites:
+    newFile: !uuid '04f2acc5bcd3341fcadec2bddc443c3d640d624d'
+    oldFile: !uuid 'cb7da45837864c72bc71947790964b85aa1ec19e'
+  /UnityClient/Assets/Resources/Sprites/光环.png:
+    newFile: !uuid 'f36e5938c5caef9ae7160215b5c05a1c21579c29'
+    oldFile: null
+  /UnityClient/Assets/Resources/Sprites/光环.png.meta:
+    newFile: !uuid 'a62a82eb93596b6e61f94d820d6562107503f4a3'
+    oldFile: null
+  /UnityClient/Assets/Resources/Sprites/劈斩.png:
+    newFile: !uuid '9a24325e8b9c598b26ae6573217a6b9623fae036'
+    oldFile: null
+  /UnityClient/Assets/Resources/Sprites/劈斩.png.meta:
+    newFile: !uuid '029b41a6be3412fe54e6b3c7ff33edcda3a16ee5'
+    oldFile: null
+  /UnityClient/Assets/Resources/Sprites/旋转.png:
+    newFile: !uuid 'e32f20def9e4d695607383b4571208abfcc63e9e'
+    oldFile: null
+  /UnityClient/Assets/Resources/Sprites/旋转.png.meta:
+    newFile: !uuid '7bcc094526d80dea4d8c8a1b14284592ba40e21f'
+    oldFile: null
+gitCommitId: !uuid 'af03cdf8ff594a4c9ad6981d5943826b19db300e'
 renames: {
   }
-revisionId: 815
+revisionId: 816
