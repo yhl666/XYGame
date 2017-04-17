@@ -285,7 +285,7 @@ public class BattleHero : Hero
         */
         ConfigByLevel(this.level);
         this.SwitchTypeTo(type);
-
+        this.current_hp = this.hp;
         ViewMgr.Create<ViewEntity>(this);
 
         this.team = 1;
@@ -381,7 +381,7 @@ public class BattleHero : Hero
 
     public override void UpdateMS()
     {
-
+        Debug.LogError(current_hp + "   " + hp);
         if (this.isDie)
         {
             if (enable_pvp_ai)
