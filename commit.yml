@@ -2,22 +2,31 @@
 branches: {
   }
 fileChange:
-  /工作日志:
-    newFile: !uuid 'ddf7f5354f0df35358ff317e3ae822e5e57d1fcd'
-    oldFile: !uuid '345536410f4cbbd1558d17a72caf2c94c0802b6b'
-  /工作日志/BUG处理:
-    newFile: !uuid 'c9a6831bf6093256fac8a0d41672d7ed0bef8270'
-    oldFile: !uuid 'dbad344cb5c7580e3ec3211d70c1481bb6be3c34'
-  /工作日志/BUG处理/013.txt:
-    newFile: !uuid 'fa3b6df602113440e0f7447ab4bd1457141ee08b'
+  /UnityClient:
+    newFile: !uuid 'd5523b858d5733f9eda3edac16ab6631886caac4'
+    oldFile: !uuid '57c86ebaed8e1d2e1c282dc19f5270a47fb0b57b'
+  /UnityClient/Assets:
+    newFile: !uuid '0e7775c676c819bc3c54b3167c78dd565574a126'
+    oldFile: !uuid 'ed35412907e946bd1de9afa22c87472a698fe3a3'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '5feefbfc0664e068bf8d7babc6d300765b574d9f'
+    oldFile: !uuid '971968ed40ba2d4619f56ef4a349eca0563f0fd3'
+  /UnityClient/Assets/Resources/Spine:
+    newFile: !uuid '332af5286acf8ce097d9545a829a3296c16ad4ed'
+    oldFile: !uuid '68d58a37db4967d96dcff122039c2c072a178b3b'
+  /UnityClient/Assets/Resources/Spine/Customs:
+    newFile: !uuid '3e2cd13b647e2c3710df11d39989204f08256b30'
+    oldFile: !uuid 'c85d2135b631fb42ef84c8bdefdad2ae445c9832'
+  /UnityClient/Assets/Resources/Spine/Customs/306:
+    newFile: !uuid '8517870101848eb5d676ff93e4dfb31a0cb4f36d'
+    oldFile: !uuid 'd0523d3acaa4c5a99486132cd6b00226053731da'
+  /UnityClient/Assets/Resources/Spine/Customs/306/306 1.prefab:
+    newFile: !uuid '8d9cfb66967a35166c0113d3c166b85f29fafdde'
     oldFile: null
-  /工作日志/BUG处理/015.txt:
-    newFile: !uuid 'fa3b6df602113440e0f7447ab4bd1457141ee08b'
+  /UnityClient/Assets/Resources/Spine/Customs/306/306 1.prefab.meta:
+    newFile: !uuid '378d2ae40fec5ace58f472e2fbba598e2386a719'
     oldFile: null
-  /工作日志/BUG处理/016.txt:
-    newFile: !uuid '098008c59c0b5e252fe90406164aaea6c2ffcfb7'
-    oldFile: null
-gitCommitId: !uuid '9ede5410e2546940568d9223727cac991b5ac626'
+gitCommitId: !uuid 'dab83838b4bf13b283a9fe4f4fbf02c0d16819b3'
 renames: {
   }
-revisionId: 820
+revisionId: 821
