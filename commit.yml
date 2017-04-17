@@ -3,27 +3,30 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '0822795db58e6e0b2e2dab98a774e35c9e1cd32f'
-    oldFile: !uuid '01aed9b67355366572a019a73d285a6d028f4526'
+    newFile: !uuid 'd4dff71901308532497d40d4e818edab31fee128'
+    oldFile: !uuid '0822795db58e6e0b2e2dab98a774e35c9e1cd32f'
   /UnityClient/Assets:
-    newFile: !uuid '7ec5cbc63552309eeef695bfd9ed2fb6a84ef07a'
-    oldFile: !uuid 'cf9b551eca1bf54f7f8b6f772fc7118711c55684'
+    newFile: !uuid 'c005063dbc898666ab1daa75479d0cd03d758b19'
+    oldFile: !uuid '7ec5cbc63552309eeef695bfd9ed2fb6a84ef07a'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '63f82a43ac61e55e135b8ff28e7c40636408ad28'
-    oldFile: !uuid '11e6b858f3ea0d5c7e7fab77b17dd03e116afb88'
+    newFile: !uuid '190fb4b1c632e6ce7a71ad0f3b8138d622aa4599'
+    oldFile: !uuid '63f82a43ac61e55e135b8ff28e7c40636408ad28'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '0bac6c17b4ab6d9edcf7dd27a6f39018e62852dc'
-    oldFile: !uuid 'd7c86af183e2030b30e634eb00b5c13f125905cb'
+    newFile: !uuid 'a450d1e81498f582a2b039339ad93e11d93b66b6'
+    oldFile: !uuid '0bac6c17b4ab6d9edcf7dd27a6f39018e62852dc'
   /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'dc44f2e414cc9d7729ba4cc415662e20800cb357'
-    oldFile: !uuid 'a98512d29959956793189ba9e6735359cf9c1f2f'
+    newFile: !uuid 'a616d7b27dc16dc3780aebe27eeb0b9d5237334e'
+    oldFile: !uuid 'dc44f2e414cc9d7729ba4cc415662e20800cb357'
   /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid 'ad6116305060cc6b13f5acf9dd51e74892afd539'
-    oldFile: !uuid 'ea387a7059d02c4215d5bb7321299de90f19c8fd'
+    newFile: !uuid '9a9e94fc00b65b691814aafeb6e028c2c265a1e1'
+    oldFile: !uuid 'ad6116305060cc6b13f5acf9dd51e74892afd539'
   /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab:
-    newFile: !uuid '0796dc668697e04dbc5ea1fac66b900dc5e056d8'
-    oldFile: !uuid '3c3ddcda79ffd4f0cf34aed9a93a7baed56573c3'
-gitCommitId: !uuid '78265b3d7d13e34ae973808d4f20f9794c998129'
+    newFile: !uuid '86fcc43482c48dfb498db0d00be68513b5a45302'
+    oldFile: !uuid '0796dc668697e04dbc5ea1fac66b900dc5e056d8'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab.meta:
+    newFile: !uuid 'ea0984398b57b4603b6ddca97c61a69e324765fd'
+    oldFile: !uuid '77add9c0e95aee0661a1c5346992fd9838822b0e'
+gitCommitId: !uuid '0176aefd0d9ebffe1d51efb3b07f50d742e912f7'
 renames: {
   }
-revisionId: 817
+revisionId: 818
