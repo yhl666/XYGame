@@ -20,7 +20,7 @@ public class Enemy : Entity
     //TODO use behavior Tree to process AI
     public Entity target = null;
     public AIEnemyType ai_type = AIEnemyType.FSM;
-    public float target_distance = 5f;//仇恨范围
+    public float target_distance = 4f;//仇恨范围
     public Counter cd = Counter.Create(80);
     public FSMMachine ai_fsm_machine = null;
     public virtual void AI_UpdateMSWithAI()
@@ -560,7 +560,7 @@ public class Enemy2 : Enemy
         };
 
         this.bullet_atk1_info = info;
-        this.atk_range = 1.0f;
+        this.atk_range = 3f;
         scale = 0.8f;
     }
 
