@@ -3,36 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '01aed9b67355366572a019a73d285a6d028f4526'
-    oldFile: !uuid '4377d0479ec51ab82e244cb870f722930544d817'
+    newFile: !uuid '0822795db58e6e0b2e2dab98a774e35c9e1cd32f'
+    oldFile: !uuid '01aed9b67355366572a019a73d285a6d028f4526'
   /UnityClient/Assets:
-    newFile: !uuid 'cf9b551eca1bf54f7f8b6f772fc7118711c55684'
-    oldFile: !uuid 'de71a94306f4e8f8194293716a432605b92aaa96'
+    newFile: !uuid '7ec5cbc63552309eeef695bfd9ed2fb6a84ef07a'
+    oldFile: !uuid 'cf9b551eca1bf54f7f8b6f772fc7118711c55684'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '11e6b858f3ea0d5c7e7fab77b17dd03e116afb88'
-    oldFile: !uuid '5415d609aeeee000621f8701714076513f59a65f'
-  /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid '04f2acc5bcd3341fcadec2bddc443c3d640d624d'
-    oldFile: !uuid 'cb7da45837864c72bc71947790964b85aa1ec19e'
-  /UnityClient/Assets/Resources/Sprites/光环.png:
-    newFile: !uuid 'f36e5938c5caef9ae7160215b5c05a1c21579c29'
-    oldFile: null
-  /UnityClient/Assets/Resources/Sprites/光环.png.meta:
-    newFile: !uuid 'a62a82eb93596b6e61f94d820d6562107503f4a3'
-    oldFile: null
-  /UnityClient/Assets/Resources/Sprites/劈斩.png:
-    newFile: !uuid '9a24325e8b9c598b26ae6573217a6b9623fae036'
-    oldFile: null
-  /UnityClient/Assets/Resources/Sprites/劈斩.png.meta:
-    newFile: !uuid '029b41a6be3412fe54e6b3c7ff33edcda3a16ee5'
-    oldFile: null
-  /UnityClient/Assets/Resources/Sprites/旋转.png:
-    newFile: !uuid 'e32f20def9e4d695607383b4571208abfcc63e9e'
-    oldFile: null
-  /UnityClient/Assets/Resources/Sprites/旋转.png.meta:
-    newFile: !uuid '7bcc094526d80dea4d8c8a1b14284592ba40e21f'
-    oldFile: null
-gitCommitId: !uuid 'af03cdf8ff594a4c9ad6981d5943826b19db300e'
+    newFile: !uuid '63f82a43ac61e55e135b8ff28e7c40636408ad28'
+    oldFile: !uuid '11e6b858f3ea0d5c7e7fab77b17dd03e116afb88'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '0bac6c17b4ab6d9edcf7dd27a6f39018e62852dc'
+    oldFile: !uuid 'd7c86af183e2030b30e634eb00b5c13f125905cb'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid 'dc44f2e414cc9d7729ba4cc415662e20800cb357'
+    oldFile: !uuid 'a98512d29959956793189ba9e6735359cf9c1f2f'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
+    newFile: !uuid 'ad6116305060cc6b13f5acf9dd51e74892afd539'
+    oldFile: !uuid 'ea387a7059d02c4215d5bb7321299de90f19c8fd'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab:
+    newFile: !uuid '0796dc668697e04dbc5ea1fac66b900dc5e056d8'
+    oldFile: !uuid '3c3ddcda79ffd4f0cf34aed9a93a7baed56573c3'
+gitCommitId: !uuid '78265b3d7d13e34ae973808d4f20f9794c998129'
 renames: {
   }
-revisionId: 816
+revisionId: 817
