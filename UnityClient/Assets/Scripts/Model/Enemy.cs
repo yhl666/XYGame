@@ -345,12 +345,12 @@ public class Enemy221 : Enemy
 {
     public override void InitInfo()
     {
-        this.prefabsName = "Prefabs/Enemy221";
-        this.skin = "baihu4";
+        this.prefabsName = "Spine/Customs/213/213";
+        this.skin = "213";
         ani_hurt = "hurt";
         ani_run = "walk";
         ani_stand = "rest";
-        ani_atk1 = "218010";
+        ani_atk1 = "210000";
         attackingAnimationName = ani_atk1;
 
         bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
@@ -377,12 +377,12 @@ public class Enemy1 : Enemy
 {
     public override void InitInfo()
     {
-        this.prefabsName = "Prefabs/Enemy221";
-        this.skin = "baihu4";
+        this.prefabsName = "Spine/Customs/213/213";
+        this.skin = "213";
         ani_hurt = "hurt";
         ani_run = "walk";
         ani_stand = "rest";
-        ani_atk1 = "218010";
+        ani_atk1 = "210000";
         attackingAnimationName = ani_atk1;
         atk_level = 1;
         bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
@@ -468,9 +468,13 @@ public class Enemy1_Strengthen : Enemy1
     public override void InitInfo()
     {
         base.InitInfo();
-        this.prefabsName = "Prefabs/Enemy221Flare";
+        this.prefabsName = "Spine/Customs/217/217";
+        this.skin = "217";
+        ani_run = "walk";
+        ani_stand = "rest";
+        ani_atk1 = "214000";
         ani_hurt = "";
-        scale = 1.3f;
+        scale = 1.0f;
         this.AddBuffer<BufferBaTi>();
     }
 
@@ -498,12 +502,12 @@ public class Enemy2 : Enemy
 {
     public override void InitInfo()
     {
-        this.prefabsName = "Prefabs/Enemy221";
-        this.skin = "baihu4";
+        this.prefabsName = "Spine/Customs/424/424";
+        this.skin = "default";
         ani_hurt = "hurt";
         ani_run = "walk";
         ani_stand = "rest";
-        ani_atk1 = "218020_0";
+        ani_atk1 = "424000";
         attackingAnimationName = ani_atk1;
         atk_level = 1;
         bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
@@ -661,9 +665,13 @@ public class Enemy2_Strengthen : Enemy2
     public override void InitInfo()
     {
         base.InitInfo();
-        this.prefabsName = "Prefabs/Enemy221Flare";
+        this.prefabsName = "Spine/Customs/306/306";
+        this.skin = "default";
         ani_hurt = "";
-        scale = 1.3f;
+        ani_run = "walk";
+        ani_stand = "rest";
+        ani_atk1 = "306000";
+        scale = 1.0f;
         this.AddBuffer<BufferBaTi>();
     }
 
@@ -676,12 +684,12 @@ public class Enemy3 : Enemy
 {
     public override void InitInfo()
     {
-        this.prefabsName = "Prefabs/Enemy221";
-        this.skin = "baihu4";
+        this.prefabsName = "Prefabs/Enemy444";
+        this.skin = "default";
         ani_hurt = "hurt";
         ani_run = "walk";
         ani_stand = "rest";
-        ani_atk1 = "218010";
+        ani_atk1 = "444000_1";
         attackingAnimationName = ani_atk1;
         atk_level = 1;
         bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
