@@ -1,0 +1,68 @@
+
+373.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+chibang
+  rotate: false
+  xy: 2, 30
+  size: 83, 96
+  orig: 150, 120
+  offset: 48, 16
+  index: -1
+jiao
+  rotate: false
+  xy: 87, 39
+  size: 25, 21
+  orig: 150, 120
+  offset: 66, 47
+  index: -1
+leizhu
+  rotate: false
+  xy: 192, 85
+  size: 18, 20
+  orig: 18, 20
+  offset: 0, 0
+  index: -1
+qunbai
+  rotate: false
+  xy: 114, 41
+  size: 12, 19
+  orig: 150, 120
+  offset: 61, 53
+  index: -1
+shenti
+  rotate: true
+  xy: 2, 9
+  size: 19, 29
+  orig: 150, 120
+  offset: 63, 47
+  index: -1
+shou
+  rotate: false
+  xy: 154, 68
+  size: 36, 37
+  orig: 150, 120
+  offset: 56, 37
+  index: -1
+tou
+  rotate: false
+  xy: 87, 62
+  size: 65, 64
+  orig: 150, 120
+  offset: 41, 24
+  index: -1
+wuqi
+  rotate: false
+  xy: 154, 107
+  size: 93, 19
+  orig: 150, 120
+  offset: 27, 52
+  index: -1
+yaodai
+  rotate: true
+  xy: 33, 2
+  size: 26, 9
+  orig: 150, 120
+  offset: 59, 65
+  index: -1
