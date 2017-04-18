@@ -3,66 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '6172ef2e2d8754970a28b53856dc30b9daba1896'
-    oldFile: !uuid '6cf0ce27268adff39e0e147ca3afb80e35601ed5'
+    newFile: !uuid '36bb09c2e6c1f5a92429ea5074c52a7b409ba242'
+    oldFile: !uuid '6172ef2e2d8754970a28b53856dc30b9daba1896'
   /UnityClient/Assets:
-    newFile: !uuid '95f11cb7c068c4094e195c12a74c7941f42c4ebc'
-    oldFile: !uuid '73ab36f514d51b64578f13fe37d1cc9f5240f566'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '593746ecb26fbd4ff72502f34bd9e822199fe9d9'
-    oldFile: !uuid '8962ff12158a2a8e64a6757d3ef4653bf1e45f96'
-  /UnityClient/Assets/Resources/Spine:
-    newFile: !uuid '3e26fd51af8a226350318e4fb666942a1c938b58'
-    oldFile: !uuid '75f71bf96cdfab4d0af9c11ae6c19f97a279cbce'
-  /UnityClient/Assets/Resources/Spine/Customs:
-    newFile: !uuid '3ff9895692a9ffa5049f92a9a312bf6b2e1936f1'
-    oldFile: !uuid 'c562ec39a7c0743314649291abe13c469d8891e9'
-  /UnityClient/Assets/Resources/Spine/Customs/444:
-    newFile: !uuid '83ebfe514cb6645c11893ea0e52c60476f7ea7d8'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444.atlas.txt:
-    newFile: !uuid '735ebc9bf1875ad8892fc221854e12e9372f1901'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444.atlas.txt.meta:
-    newFile: !uuid '72014d6a47cffdef83174ed5da071a2ccdd1627e'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444.json:
-    newFile: !uuid '2b075b6563739d223ae0e2a67b8c7dc1e96de9dc'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444.json.meta:
-    newFile: !uuid '91247f61bfa8a2b8a7ac3b01c8889bb05305908f'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444.png:
-    newFile: !uuid '817d54402b94dca437b944edcc460baa6dde5eb5'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444.png.meta:
-    newFile: !uuid 'd5923139e371e7e37c94d494a199a64cd2f485b2'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444.prefab:
-    newFile: !uuid '17276d522db7869fa2accaa3541392cf667a41a1'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444.prefab.meta:
-    newFile: !uuid '4f5bb1069fb05059a056f841499f96a36e22b62b'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444_Atlas.asset:
-    newFile: !uuid '8fbf31fb6e635fc3ef051d00e3b4eeb7144ca65f'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444_Atlas.asset.meta:
-    newFile: !uuid '007a354835b74cefe17c379f59b0720dad6659af'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444_Material.mat:
-    newFile: !uuid '814c40af3633854c4cd5a55748dfce0df538a9fb'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444_Material.mat.meta:
-    newFile: !uuid '1cd801458d20f5cdd054c1ad0529a5815ac92819'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444_SkeletonData.asset:
-    newFile: !uuid '7da8fb8e06deaab3e771e3b79c91d038e573e004'
-    oldFile: null
-  /UnityClient/Assets/Resources/Spine/Customs/444/444_SkeletonData.asset.meta:
-    newFile: !uuid 'd26fad615a81a4be94118e3a2b7a896722164257'
-    oldFile: null
-gitCommitId: !uuid '9f3bcce0249da1054be0c29b0c09596f069be4d2'
+    newFile: !uuid 'cf94806f46915fb8007ef1c8dd0ecf259f2f19f4'
+    oldFile: !uuid '95f11cb7c068c4094e195c12a74c7941f42c4ebc'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '1460bf2702558a3b7470145ee802b34ec3c2ec86'
+    oldFile: !uuid '51cfb227ab895d08de8aa684ed471ccf1908cf94'
+  /UnityClient/Assets/Scripts/GameApp:
+    newFile: !uuid 'b198e52ec51daeb7ea48f482da62722510966573'
+    oldFile: !uuid 'd3edf02441d116efd2ad19896ba62973392c79e6'
+  /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
+    newFile: !uuid '99e770a70833b72ea43dc7ca44e124ce6a4ce664'
+    oldFile: !uuid '6e82613c0a34e0c57f6ff91460e39702c562e06c'
+gitCommitId: !uuid '99dc66fdc8721ae45ea779075c44b8f158f9ceeb'
 renames: {
   }
-revisionId: 854
+revisionId: 855
