@@ -2,28 +2,74 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '28cb1322a0bff9bd93c96917754b79aeec069788'
-    oldFile: !uuid 'f4e749960f8a571eab90070a5e0afc2b05d863cf'
-  /UnityClient/Assets:
-    newFile: !uuid '60832de023f432c3b5722f32dc06e6c72daec1e0'
-    oldFile: !uuid '88fca3e518f4f3719382117b7deaea67eb81df34'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '8730845803db064ae71250b19400fe2c6a0e2d46'
-    oldFile: !uuid '5142e1477c8067417c95fe92d4b46b743e496e8d'
-  /UnityClient/Assets/Resources/Spine:
-    newFile: !uuid 'ee793c13f8fb52e840ad3f3bb2c719d1a2934779'
-    oldFile: !uuid '303824b72d2e72892fcf3eaf1c927a0d68c530b5'
-  /UnityClient/Assets/Resources/Spine/Customs:
-    newFile: !uuid 'aee3bf9d135414cd8ff169e12e9b6cfebb74380f'
-    oldFile: !uuid '446951d8b08f7b4319198ad91981a6d2a20fd7c5'
-  /UnityClient/Assets/Resources/Spine/Customs/424:
-    newFile: !uuid 'f0da3f9d0525780ed6ff9b708ce70fd0b7956874'
-    oldFile: !uuid '070cc680982efb74241c93b3456d434bf3750f69'
-  /UnityClient/Assets/Resources/Spine/Customs/424/424.prefab:
-    newFile: !uuid 'b0abcd7fb589420d23bd11bdd6d5c2e0bd4a841e'
-    oldFile: !uuid 'e632e269b3c13d6d25cc15f8ea85a772065e46fe'
-gitCommitId: !uuid '895192020d409d237938ea11a7531f31b310bf31'
-renames: {
-  }
-revisionId: 859
+  /设计文档:
+    newFile: !uuid 'de83fe29a85e2d96e383356c2eed6723f01e33a1'
+    oldFile: !uuid '254d48c66ea7dc62050f1faf2077d93a2c58493d'
+  /设计文档/音效:
+    newFile: !uuid 'ffe7d2995ccba8d1668aaa717686e94f77367774'
+    oldFile: !uuid '242130420c9b5e14f227f19e697efb3c14b97c75'
+  /设计文档/音效/bgm.mp3:
+    newFile: !uuid '1c4d9eca8d115791aef998264d9f1e9e9550f97b'
+    oldFile: null
+  /设计文档/音效/bgm_level_5.mp3:
+    newFile: null
+    oldFile: !uuid '1c4d9eca8d115791aef998264d9f1e9e9550f97b'
+  /设计文档/音效/pugong1.wav:
+    newFile: !uuid '0de6a9ff512f8e15a2bdf597c051cf8696ba883d'
+    oldFile: null
+  /设计文档/音效/pugong2.wav:
+    newFile: !uuid '718950d43eda3339936c726e3efd24f2f12fefc4'
+    oldFile: null
+  /设计文档/音效/pugong3.wav:
+    newFile: !uuid 'd925a54de5d8bd649f3b0afb14778e663a51ed1a'
+    oldFile: null
+  /设计文档/音效/sfx_role_get_hurt_2.mp3:
+    newFile: !uuid 'd800e9d1f464fbe96fad6717c29bbecd9db3a0f6'
+    oldFile: null
+  /设计文档/音效/skillbo.wav:
+    newFile: !uuid 'bcfe93892a0f83c5b0160b76502765c34a744949'
+    oldFile: null
+  /设计文档/音效/skillbo2.wav:
+    newFile: !uuid '131926877bc4c6934026ce33f102d6a6d8f7c48f'
+    oldFile: null
+  /设计文档/音效/skillcai.wav:
+    newFile: !uuid 'e913f0bd3d8c5fc8b2b7895bccea426d6d3ecb28'
+    oldFile: null
+  /设计文档/音效/skilldian.wav:
+    newFile: !uuid '6153124f3a5aa4c6416e4a12a33ed67d283434b3'
+    oldFile: null
+  /设计文档/音效/skillzhuan.wav:
+    newFile: !uuid '97844876da4a6354b7ee74a0b27310b4d629f5da'
+    oldFile: null
+  /设计文档/音效/挥剑1.wav:
+    newFile: null
+    oldFile: !uuid '1f7afae42f0f690237a115740386b7e849169797'
+  /设计文档/音效/挥剑2.wav:
+    newFile: null
+    oldFile: !uuid 'dc7d133051ad7dfc144f865aebd8aed3b29ce44a'
+  /设计文档/音效/挥剑3.wav:
+    newFile: null
+    oldFile: !uuid 'c96ec6ea626e4e88d79ca4f79024ed764d365963'
+  /设计文档/音效/旋风.wav:
+    newFile: null
+    oldFile: !uuid 'a20c85c7a5b0df7bd16b408359a94408fd6a3cb4'
+  /设计文档/音效/波.wav:
+    newFile: null
+    oldFile: !uuid '964abf10251d6370513696fbec295011ce3d2bc6'
+  /设计文档/音效/波2.wav:
+    newFile: null
+    oldFile: !uuid '131926877bc4c6934026ce33f102d6a6d8f7c48f'
+  /设计文档/音效/踩地板.wav:
+    newFile: null
+    oldFile: !uuid 'e913f0bd3d8c5fc8b2b7895bccea426d6d3ecb28'
+  /设计文档/音效/闪电.wav:
+    newFile: null
+    oldFile: !uuid '6153124f3a5aa4c6416e4a12a33ed67d283434b3'
+gitCommitId: !uuid 'bf5cc9a447cf059ca5e5e70ee556eee1bd54c980'
+renames:
+  /设计文档/音效/bgm.mp3: /设计文档/音效/bgm_level_5.mp3
+  /设计文档/音效/pugong2.wav: /设计文档/音效/挥剑2.wav
+  /设计文档/音效/skillbo2.wav: /设计文档/音效/波2.wav
+  /设计文档/音效/skillcai.wav: /设计文档/音效/踩地板.wav
+  /设计文档/音效/skilldian.wav: /设计文档/音效/闪电.wav
+revisionId: 860
