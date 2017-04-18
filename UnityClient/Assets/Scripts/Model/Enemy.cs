@@ -23,6 +23,53 @@ public class Enemy : Entity
     public float target_distance = 4f;//仇恨范围
     public Counter cd = Counter.Create(80);
     public FSMMachine ai_fsm_machine = null;
+
+    private bool IsHeroRandomAtk()
+    {//随机化 攻击行为，减弱 攻击强度
+        int number = target.GetTargetNo();
+        if (number < 2)
+        {
+            return true;
+        }
+        else if (number >= 3 && number <= 5)
+        {
+            if (Utils.random_frameMS.Next(1, 100) == 2)
+            {
+                return true;
+            }
+        }
+        else if (number >= 5 && number <= 10)
+        {
+            if (Utils.random_frameMS.Next(1, 200) == 2)
+            {
+                return true;
+            }
+        }
+        else
+        {
+            if (Utils.random_frameMS.Next(1, number * 100 / 5) == 2)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void RunRandom()
+    {
+        if (run_random == false)
+        {
+            run_random = true;
+            dir1 = (int)Utils.GetAngle(this.pos, target.pos);
+        }
+        else
+        {
+            if (Utils.random_frameMS.Next(1, 200) == 2)
+            {//一定概率 随机方向
+                dir1 = (int)Utils.GetAngle(this.pos, target.pos);
+            }
+            dir = dir1;
+        }
+    }
     public virtual void AI_UpdateMSWithAI()
     {
         /*//如果目标非法，那么寻找另外一个目标
@@ -51,7 +98,7 @@ public class Enemy : Entity
 
         if (ai_type == AIEnemyType.Normal)
         {//该状态下回始终查找当前最近的玩家作为攻击目标
-            this.AI_SearchNewTarget();
+            this.AI_SearchNearestTarget(HeroMgr.ins.GetHeros(), true);
         }
         //如果目标非法，那么寻找另外一个目标
         if (target == null || target.IsInValid())
@@ -65,44 +112,74 @@ public class Enemy : Entity
         // 有目标 ，先判断是否在攻击范围内
         float dis = target.ClaculateDistance(this);
         ///   Debug.Log(dis + "      " + atk_range);
+        ///   
+
+        if (dis < this.atk_range)
+        {
+            if (target.IsHero == false)
+            {
+                dir = -1;
+                stand = true;
+                run_random = false;
+                if (cd.IsMax())
+                {
+                    atk = true;
+                }
+            }
+            else if (target.IsHero && cd.IsMax())
+            {   //调用 频率是 40HZ 
+                atk = this.IsHeroRandomAtk();
+                if (atk == false)
+                {//未触发了攻击
+                    this.RunRandom();
+                }
+            }
+            else
+            {//hero and cd 未到
+                this.RunRandom();
+            }
+            if (atk)
+            {
+                cd.Reset();
+                run_random = false;
+            }
+        }
+        else
+        {
+            run_random = false;
+            this.AI_MoveToTarget();
+        }
+        return;
+        //原始 未处理攻击行为 版本
         if (dis < this.atk_range)
         {
             //攻击范围内
-            dir = -1;
-
-            if (cd.IsMax())
-            {
-                this.AI_AttackTarget();
-                cd.Reset();
-            }
-            else
-            {
-                stand = true;
-            }
+            this.AI_AttackTarget();
         }
         else
         {
             //不在攻击范围内 移动向目标
             this.AI_MoveToTarget();
         }
-
     }
-    public void AI_SearchNewTarget()
-    {
-        ArrayList heros = HeroMgr.ins.GetHeros();
-        float minDis = 9999.0f;
+    bool run_random = false;
+    int dir1 = -1;
+    /*  public void AI_SearchNewTarget()
+      {
+          ArrayList heros = HeroMgr.ins.GetHeros();
+          float minDis = 9999.0f;
 
-        foreach (Hero h in heros)
-        {//找出一个最近的玩家 作为锁定目标
-            float dis = h.ClaculateDistance(x, y);
-            if (dis < minDis)
-            {
-                target = h;
-                minDis = dis;
-            }
+          foreach (Hero h in heros)
+          {//找出一个最近的玩家 作为锁定目标
+              float dis = h.ClaculateDistance(x, y);
+              if (dis < minDis)
+              {
+                  target = h;
+                  minDis = dis;
+              }
 
-        }
-    }
+          }
+      }*/
     public void AI_MoveToTarget()
     {
         /*  if (this.x < target.x)
@@ -324,19 +401,29 @@ public class Enemy : Entity
     /// <summary>
     /// 搜索最近的目标
     /// </summary>
-    public bool AI_SearchNearestTarget(ArrayList list)
+    public bool AI_SearchNearestTarget(ArrayList list, bool enable_target_no) // 是否开启最大仇恨数限制
     {
+        enable_target_no = true;
         if (list.Count <= 0) return false;
         float minDis = float.MaxValue;
+        Entity target_bk = target;
 
         foreach (Entity h in list)
         {//找出一个最近的玩家 作为锁定目标
+            if (enable_target_no && h.IsMaxTarget())
+            {
+                continue;
+            }
             float dis = h.ClaculateDistance(x, y);
             if (dis < minDis)
             {
                 target = h;
                 minDis = dis;
             }
+        }
+        if (target_bk == target && target == null)
+        {
+            return false;
         }
         return true;
     }
@@ -786,7 +873,7 @@ public class EnemyBoss : Enemy
     {
         if (target == null)
         {
-            this.AI_SearchNewTarget();
+            this.AI_SearchNearestTarget(HeroMgr.ins.GetHeros(), false);
         }
         ai_fsm_machine.UpdateMS();
         base.AI_UpdateMSWithAI();
@@ -810,7 +897,7 @@ public class EnemyBoss : Enemy
             tick_run_random.Reset();
             tick_run_random.SetMax(Utils.random_frameMS.Next(10, 80));
         }
- 
+
     }
     public override void UpdateMS()
     {
@@ -826,15 +913,15 @@ public class EnemyBoss : Enemy
             }
             levels.Add(0); // 末尾填充0 方便计算
         }
-   
+
         base.UpdateMS();
     }
     Counter tick_run_random = Counter.Create(40);// 随机走动下 多久切换一次 方向
     int dir_random = -1;
     public override void AI_AttackTarget()
     {//释放技能1
-//         s1 = 1;
-//        return;
+        //         s1 = 1;
+        //        return;
         /*  s1 = 3;
           return;
           if (skill1.cd.IsMax())

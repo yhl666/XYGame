@@ -83,7 +83,7 @@ namespace AIEnemy
                 }
                 if (has_hero) // 仇恨范围内有玩家
                 {//锁定玩家攻击
-                    if (host.AI_SearchNearestTarget(list)) ;
+                    if (host.AI_SearchNearestTarget(list, true)) ;
                     {
                         this.ChangeTo<LockHero>();
                     }
@@ -95,9 +95,19 @@ namespace AIEnemy
             }
             else
             {//不存在塔，直接锁定最近玩家攻击
-                if (host.AI_SearchNearestTarget(HeroMgr.ins.GetHeros())) ;
+                if (host.AI_SearchNearestTarget(HeroMgr.ins.GetHeros(), true))
                 {
                     this.ChangeTo<LockHero>();
+                }
+                else
+                {//没有任何攻击目标 随机走动
+                    if (Utils.random_frameMS.Next(0, 300) == 5 || dir == -1)
+                    {
+                        Terrain terrain = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetTerrain();
+                        Vector2 to = new Vector2(Utils.random_frameMS.Next((int)(terrain.limit_x_left * 1000), (int)(terrain.limit_x_right * 1000)) / 1000f, Utils.random_frameMS.Next((int)(terrain.limit_z_down * 1000), (int)(terrain.limit_z_up * 1000)) / 1000f);
+                        dir = (int)Utils.GetAngle(host.pos, to);
+                    }
+                    host.dir = dir;// Utils.random_frameMS.Next(0, 361);
                 }
             }
         }
@@ -112,6 +122,9 @@ namespace AIEnemy
         {
 
         }
+
+        private int dir = -1;
+
     }
 
     /// <summary>
@@ -150,8 +163,11 @@ namespace AIEnemy
 
                 {//已经命中 塔 后 被攻击 会切换，在搜索阶段 被命中 也会进入锁定hero
                     //自己被命中
-                    host.target = info.ownner;
-                    machine.ChangeTo<LockHero>();
+                    if (info.ownner.IsMaxTarget() == false)
+                    {
+                        host.target = info.ownner;
+                        machine.ChangeTo<LockHero>();
+                    }
                 }
             }
         }
@@ -186,7 +202,7 @@ namespace AIEnemy
             }
             else
             {
-                if (host.AI_SearchNearestTarget(BuildingMgr.ins.GetBuildings()))//寻找最近的建筑作为目标
+                if (host.AI_SearchNearestTarget(BuildingMgr.ins.GetBuildings(), false))//寻找最近的建筑作为目标
                 {//找到 目标  
                     has_find = true;
                 }
@@ -213,7 +229,7 @@ namespace AIEnemy
             }
             if (has_hero) // 仇恨范围内有玩家
             {//锁定玩家攻击
-                if (host.AI_SearchNearestTarget(list)) ;
+                if (host.AI_SearchNearestTarget(list, true)) ;
                 {
                     this.ChangeTo<LockHero>();
                     return;

@@ -102,6 +102,38 @@ public class AttackInfo
 
 public class Entity : Model
 {
+    public int MAX_TARGET_NO = 0xffffff;//最大仇恨数量
+    public bool IsMaxTarget()
+    {//是否到达最大仇恨
+        //  return current_target_no >= MAX_TARGET_NO;
+        int current_target_no = 0;//当前仇恨数量
+        ArrayList enemys = EnemyMgr.ins.GetEnemys();
+        foreach (Enemy e in enemys)
+        {
+            if (current_target_no >= MAX_TARGET_NO) return true; // 已是最大仇恨数量
+            if (e.IsInValid() || e.isDie) continue;
+            if (e.target == this)
+            {
+                current_target_no++;
+            }
+        }
+        return current_target_no >= MAX_TARGET_NO;
+    }
+    public int GetTargetNo()
+    {//仇恨目标数
+        int current_target_no = 0;
+        ArrayList enemys = EnemyMgr.ins.GetEnemys();
+        foreach (Enemy e in enemys)
+        {
+            if (e.IsInValid() || e.isDie) continue;
+            if (e.target == this)
+            {
+                current_target_no++;
+            }
+        }
+        return current_target_no;
+    }
+
     //------type Boolean  will be init in Entity.Init();  getter will be provide 
     private bool _IsHero = false;//是否是玩家
     private bool _IsEnemy = false; // 是否是怪物
