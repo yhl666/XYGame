@@ -5,7 +5,7 @@
  */
 using UnityEngine;
 using System.Collections;
- 
+
 using UnityEngine.UI;
 
 //说明
@@ -161,7 +161,7 @@ public class ViewEntity : View
         if (redderer != null)
         {
             {
-                redderer.sortingOrder =1000- (int)((this.m.z) * 100);
+                redderer.sortingOrder = 1000 - (int)((this.m.z) * 100);
                 //Debug.LogError((int)((this.transform.position.z) * 100));
                 //Debug.LogError(redderer.sortingOrder);
             }
@@ -296,7 +296,11 @@ public class ViewEnemy : View
         this.transform = obj.GetComponent<Transform>();
         EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
 
-
+        Component comp = obj.gameObject.GetComponent<SpineController>();
+        if (comp != null)
+        {//remove
+            Object.DestroyImmediate(comp);
+        }
         //init event
 
         spine.state._OnComplete = () =>
@@ -331,7 +335,7 @@ public class ViewEnemy : View
         if (redderer != null)
         {
             {
-                redderer.sortingOrder = 1000-(int)((this.m.z) * 100);
+                redderer.sortingOrder = 1000 - (int)((this.m.z) * 100);
                 //Debug.LogError((int)((this.transform.position.z) * 100));
                 //Debug.LogError(redderer.sortingOrder);
             }
@@ -355,7 +359,7 @@ public class ViewEnemy : View
         {
             name = m.ani_force;
         }
-        else if (m.isDie && m.ani_die!="")
+        else if (m.isDie && m.ani_die != "")
         {
             spine.loop = false;
             name = m.ani_die;
@@ -416,7 +420,7 @@ public class ViewEnemy : View
         spine.UpdateMS(Utils.deltaTime * m.spine_time_scale);
     }
 
-    
+
 
     SkeletonAnimation spine = null;
     Transform transform = null;
@@ -594,9 +598,9 @@ public class ViewBuilding : View
         var redderer = spine.transform.GetComponent<Renderer>();
         if (redderer != null)
         {
-                redderer.sortingOrder = 1000 - (int)((this.m.z) * 100);
-                //Debug.LogError((int)((this.transform.position.z) * 100));
-               //Debug.LogError(redderer.sortingOrder);
+            redderer.sortingOrder = 1000 - (int)((this.m.z) * 100);
+            //Debug.LogError((int)((this.transform.position.z) * 100));
+            //Debug.LogError(redderer.sortingOrder);
         }
     }
     SkeletonAnimation spine = null;
