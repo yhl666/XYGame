@@ -5,6 +5,7 @@
  */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 using System.Threading;
@@ -29,7 +30,10 @@ public sealed class UIPublicRoot : ViewUI
                 this._ui_child.Add(ViewUI.Create<UI_wait>(this));
                 this._ui_child.Add(ViewUI.Create<UI_pushmsg>(this));
                 this._ui_child.Add(ViewUI.Create<UI_globaldialog>(this));
-
+                if (Config.DEBUG_EnableDebugWindow)
+                {
+                    this._ui_child.Add(ViewUI.Create<UI_console>(this));
+                }
                 return DATA.EMPTY_STRING;
             }));
         return true;
@@ -135,7 +139,7 @@ public sealed class UI_loading : ViewUI
             {
                 this.txt.text = string.Format(DATA.UI_LOADING, percent.ToString(), ii.ToString());
             }
-            else if ( ret.IndexOf(DATA.ADD_STRING)>=0)
+            else if (ret.IndexOf(DATA.ADD_STRING) >= 0)
             {
                 this.txt.text = string.Format(DATA.UI_LOADING, percent.ToString(), ii.ToString()) + ret.Replace(DATA.ADD_STRING, "");
             }
@@ -437,3 +441,228 @@ public sealed class UI_globaldialog : ViewUI
     private GlobalDialogInfo info = null;
 
 }
+
+
+
+public sealed class UI_console : ViewUI
+{//UI调试界面 
+
+    class DebugInfo
+    {
+        public int index = 0;
+        public string what;
+        public LogType type;
+        public string stack_trace;
+        public GameObject obj;
+        public static DebugInfo Create(string what, LogType type, string stack_trace, int index, GameObject obj = null)
+        {
+            DebugInfo ret = new DebugInfo();
+            ret.what = what;
+            ret.index = index;
+            ret.obj = obj;
+            ret.type = type;
+            ret.stack_trace = stack_trace;
+            return ret;
+        }
+        public void Dispose()
+        {
+            if (obj != null)
+            {
+                GameObject.Destroy(obj);
+            }
+            obj = null;
+            what = null;
+            stack_trace = null;
+        }
+    }
+    public override void OnEvent(int type, object userData)
+    {
+
+    }
+
+    public override void Update()
+    {
+    }
+
+    private void ShowConsole()
+    {
+        scroll.verticalScrollbar.value = 0;
+        this.panel.SetActive(true);
+        this.btn_show.gameObject.SetActive(false);
+    }
+    private void HideConsole()
+    {
+        this.panel.SetActive(false);
+        this.btn_show.gameObject.SetActive(true);
+    }
+    public override bool Init()
+    {
+        base.Init();
+        this._ui = GameObject.Find("ui_panel_console");
+        this.panel = this._ui.transform.FindChild("ui_panel").gameObject;
+        this.content = this.panel.transform.FindChild("scrollview/Viewport/Content").gameObject;
+
+        this.template = this.panel.transform.FindChild("scrollview/Viewport/Content/one").gameObject;
+        this.template.SetActive(false);
+        this.scroll = this.panel.transform.FindChild("scrollview").GetComponent<ScrollRect>();
+
+        this.txt_all_info = this.panel.transform.FindChild("txt_all_info").GetComponent<Text>();
+        this.btn_clear = this.panel.transform.FindChild("btn_clear").GetComponent<Button>();
+        this.btn_close = this.panel.transform.FindChild("btn_close").GetComponent<Button>();
+        this.btn_clearstack = this.panel.transform.FindChild("btn_clearstack").GetComponent<Button>();
+        this.txt_stacktrace = this.panel.transform.FindChild("txt_stacktrace").GetComponent<Text>();
+        this.btn_show = this._ui.transform.FindChild("btn_show").GetComponent<Button>();
+
+        Application.logMessageReceived += PushLog;
+
+        this.btn_clear.onClick.AddListener(() =>
+        {
+            this.Clear();
+        });
+        this.btn_clearstack.onClick.AddListener(() =>
+        {
+            this.txt_stacktrace.text = "调用栈:";
+        });
+        this.btn_show.onClick.AddListener(() =>
+        {
+            this.ShowConsole();
+        });
+        this.btn_close.onClick.AddListener(() =>
+        {
+            this.HideConsole();
+        });
+        this.HideConsole();
+        return true;
+    }
+    void PushLog(string what, string stackTrace, LogType type)
+    {
+        ++current_index;
+        this.SyncOne(DebugInfo.Create(what, type, stackTrace, current_index));
+    }
+    int current_debuginfo_index = 0;
+
+    private void SyncAll()
+    {
+        this.content.GetComponent<RectTransform>().sizeDelta = new Vector2(100, list_debuginfo.Count * 35 + 100);
+        scroll.verticalScrollbar.value = 0;
+        txt_all_info.text = " Log:" + count_log + " Error:" + count_error + "  Warning:" + count_warning + "  Exception:" + count_exception;
+    }
+    private void SyncOne(DebugInfo info)
+    {
+        if (Config.DEBUG_EnableAutoClean && list_debuginfo.Count > Config.DEBUG_MaxCount)
+        {//TODO 考虑复用Node
+            DebugInfo first = list_debuginfo.First.Value;
+            list_debuginfo.RemoveFirst();
+            first.Dispose();
+        }
+        list_debuginfo.AddLast(info);
+        string what = info.what;
+        LogType type = info.type;
+        string stackTrace = info.stack_trace;
+
+        string text = "";
+
+        if (type == LogType.Log)
+        {
+            text = info.index + " [Log]:" + what;
+        }
+        else if (type == LogType.Error)
+        {
+            text = info.index + "[Error]:" + what;
+        }
+        else if (type == LogType.Warning)
+        {
+            text = info.index + " [Warning]:" + what;
+        }
+        else if (type == LogType.Exception)
+        {
+            text = info.index + " [Exception]:" + what;
+        }
+        Color color = Color.white;
+        if (type == LogType.Log)
+        {
+            color = Color.white;
+            ++count_log;
+        }
+        else if (type == LogType.Error)
+        {
+            color = Color.red;
+            ++count_error;
+        }
+        else if (type == LogType.Exception)
+        {
+            color = Color.red;
+            ++count_exception;
+        }
+        else if (type == LogType.Warning)
+        {
+            color = Color.yellow;
+            ++count_warning;
+        }
+        GameObject obj = GameObject.Instantiate(this.template, this.content.transform) as GameObject;
+        obj.SetActive(true);
+        info.obj = obj;
+        Text txt = obj.transform.FindChild("what").GetComponent<Text>();
+        txt.text = text;
+        txt.color = color;
+        Button btn = obj.GetComponentInChildren<Button>();
+        if (type == LogType.Error || type == LogType.Exception)
+        {
+            txt_stacktrace.text = "调用栈: " + info.index + "\n" + info.stack_trace;
+        }
+        else
+        {
+            txt_stacktrace.text = "调用栈:";
+        }
+        btn.onClick.AddListener(() =>
+        {
+            txt_stacktrace.text = "调用栈: " + info.index + "\n" + info.stack_trace;  //stackTrace;
+        });
+
+        int i = 0;
+        foreach (DebugInfo info1 in list_debuginfo)
+        {
+            GameObject one = info1.obj;
+            one.transform.localPosition = new Vector3(one.transform.localPosition.x, -140 - i * 30, one.transform.localPosition.z);
+            i++;
+        }
+        this.content.GetComponent<RectTransform>().sizeDelta = new Vector2(100, list_debuginfo.Count * 30 + 100);
+
+        scroll.verticalScrollbar.value = 0;
+
+        txt_all_info.text = "Total:  Log:" + count_log + " Error:" + count_error + "  Warning:" + count_warning + "  Exception:" + count_exception;
+    }
+    private void Clear()
+    {
+        count_log = 0;
+        count_error = 0;
+        count_exception = 0;
+        count_warning = 0;
+        txt_stacktrace.text = "调用栈:";
+        foreach (DebugInfo info1 in list_debuginfo)
+        {
+            info1.Dispose();
+        }
+        list_debuginfo.Clear();
+        this.SyncAll();
+    }
+    GameObject panel = null;
+    Text txt_stacktrace;
+    Text txt_all_info;
+    ScrollRect scroll = null;
+    LinkedList<DebugInfo> list_debuginfo = new LinkedList<DebugInfo>();
+    // private Text txt_info;
+    GameObject template = null;
+    private GameObject content = null;
+    Button btn_clear;
+    Button btn_clearstack;
+    Button btn_close;
+    Button btn_show;
+    int current_index = 0;
+    int count_log = 0;
+    int count_error = 0;
+    int count_exception = 0;
+    int count_warning = 0;
+
+}
+
