@@ -3,39 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '648a3a9531d68debc28ac8f5f41d8e0cae9d7748'
-    oldFile: !uuid '07c36dc77c29f95d6e4880c553ddae978810095a'
+    newFile: !uuid '2e64b771d08b643fcb1204d2067fad86c90e87e3'
+    oldFile: !uuid '648a3a9531d68debc28ac8f5f41d8e0cae9d7748'
   /UnityClient/Assets:
-    newFile: !uuid 'ea47b87165fb1c7a2a2dfd5baf0496f0ff5bdc6c'
-    oldFile: !uuid '16d89a34834f71786305135f0c4f21d71c2390aa'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid '44b11c81d0b86d4f8d8a221aef1f4b4b273b6112'
-    oldFile: !uuid '0e89d8446b30644f1d27d458180e791a81654a6b'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid '8cfa128a6644733379ec03887a3b28e137a58c18'
-    oldFile: !uuid '19f9b931002b07f2146e052d4abc2c3cb10cd637'
-  /UnityClient/Assets/Logic/Scripts/GameCellApp:
-    newFile: !uuid 'c5d9aaefa4a2e1e732b962957a8ce1bc35c06983'
-    oldFile: !uuid '85bd63ed02b54d7156544a3073ce55bfa42c312b'
-  /UnityClient/Assets/Logic/Scripts/GameCellApp/TownTeamApp.cs:
-    newFile: !uuid '624d7260be13c2147b7f009e6bb7acf62c61eb1d'
-    oldFile: !uuid '8e75f203b37be277da18788857928fe5d8401dd5'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'a111d47b8be4c9f79429a1bbcb13c0f03354144f'
-    oldFile: !uuid 'e81b2b7f4c35144dfe360e16a05e94b5acd18153'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid 'ec2166565abceeca9cee48a74b7d677f99af3f94'
-    oldFile: !uuid '9fdccf8110e39cd9e501610f32c48ca6046ea715'
-  /UnityClient/Assets/Scripts/Data/PublicData.cs:
-    newFile: !uuid '6ff9362834440f3b6b8bc7840a0daef74e9b91f7'
-    oldFile: !uuid '3a0efac797e5b6673e4bdcb3cf52e2dc339fa321'
-  /UnityClient/Assets/Scripts/GameApp:
-    newFile: !uuid 'd3edf02441d116efd2ad19896ba62973392c79e6'
-    oldFile: !uuid '0da162b221671be40ce3640deb4bc7d9ad23368f'
-  /UnityClient/Assets/Scripts/GameApp/BattleHandler.cs:
-    newFile: !uuid '6e82613c0a34e0c57f6ff91460e39702c562e06c'
-    oldFile: !uuid '645c77ecbccec6dd16494eaf9eb0aee6402fe9bf'
-gitCommitId: !uuid 'a73c1bc5e45edc13685784a800635f5b34d798e3'
+    newFile: !uuid '102be9743ffe171930a70251ab7f9e8bffc076be'
+    oldFile: !uuid 'ea47b87165fb1c7a2a2dfd5baf0496f0ff5bdc6c'
+  /UnityClient/Assets/Scenes:
+    newFile: !uuid '6382fd8f03191c674004bd11770ee5b01f444cb3'
+    oldFile: !uuid '78fddaa45291c90200e5dd043a5da66cd26f4bbb'
+  /UnityClient/Assets/Scenes/BattlePVE25D.unity:
+    newFile: !uuid '632640d86afb72a52e16b666d2776ae6c3357f34'
+    oldFile: !uuid 'cd9197da458b807ee2333c0cba0867f9cb3687d7'
+  /UnityClient/Assets/Scenes/SpineTest.unity:
+    newFile: !uuid '08c1d9ebc932367ae1d018f64293e51105fbc86d'
+    oldFile: !uuid '7297bc97997fa9a4dccbc209097487b91ace47c5'
+gitCommitId: !uuid 'c20547293dd5b358e01866c19c23290ddb9620e5'
 renames: {
   }
-revisionId: 841
+revisionId: 842
