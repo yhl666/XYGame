@@ -1402,9 +1402,15 @@ public class SkillState : StateBase
 
     public bool AreLevelUpAbleByIndex(int idx)
     {
-        if( (skill_stacks[idx - 1] as SkillStack).TopSkill().level<3)
+        if ((skill_stacks[idx - 1] as SkillStack).TopSkill().level < 3)
+        {
             return true;
-        return false;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
     private SkillBase Find(ref ArrayList list, string name)
     {

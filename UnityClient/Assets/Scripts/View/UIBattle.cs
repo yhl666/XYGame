@@ -303,12 +303,14 @@ public sealed class UI_skills : ViewUI
     {
         if (type == Events.ID_SKILL_LEVEL_IS_UP)
         {
+            
             ArrayList list = (userData as ArrayList);
+
             for (int i = 0; i < list.Count; i++)
             {
                 if ((bool)list[i] == true)
                 {
-                    ShowButtonByNumber(i + 1);
+                    ShowButtonByNumber(i+1);
                 }
             }
         }
@@ -519,30 +521,29 @@ public sealed class UI_skills : ViewUI
         });
         this.btn_skill1_levelup.onClick.AddListener(() =>
         {
-            //Debug.LogError("send level1 up ");
-            PublicData.ins.IS_opt = FrameCustomsOpt.level_up1;
-            EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
             HideAllLevelUpButton();
+            PublicData.ins.IS_opt = FrameCustomsOpt.level_up1;
+
+
         });
         this.btn_skill2_levelup.onClick.AddListener(() =>
         {
-            //Debug.LogError("send level1 up ");
-            PublicData.ins.IS_opt = FrameCustomsOpt.level_up2;
-            EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
+
+
             HideAllLevelUpButton();
+            PublicData.ins.IS_opt = FrameCustomsOpt.level_up2;
+
         });
         this.btn_skill3_levelup.onClick.AddListener(() =>
         {
-            //Debug.LogError("send level1 up ");
-            PublicData.ins.IS_opt = FrameCustomsOpt.level_up3;
-            EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
             HideAllLevelUpButton();
+            PublicData.ins.IS_opt = FrameCustomsOpt.level_up3;
+
+ 
         });
         this.btn_skill4_levelup.onClick.AddListener(() =>
         {
-            //Debug.LogError("send level1 up ");
             PublicData.ins.IS_opt = FrameCustomsOpt.level_up4;
-            EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
             HideAllLevelUpButton();
         });
         

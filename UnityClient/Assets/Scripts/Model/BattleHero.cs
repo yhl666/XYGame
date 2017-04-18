@@ -301,7 +301,7 @@ public class BattleHero : Hero
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
         this.eventDispatcher.AddEventListener(this, Events.ID_OPT);
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL_POINT_REDUCE);
-       ConfigByLevel(this.level);
+        ConfigByLevel(this.level);
         return true;
     }
 
@@ -318,11 +318,11 @@ public class BattleHero : Hero
     public override void OnEvent(int type, object userData)
     {
         base.OnEvent(type, userData);
-        if (type == Events.ID_SKILL_POINT_REDUCE)
-        {
-            //Debug.LogError("sp --");
-            sp--;
-        }
+        //if (type == Events.ID_SKILL_POINT_REDUCE)
+        //{
+        //    //Debug.LogError("sp --");
+        //    sp--;
+        //}
         if (type == Events.ID_LAUNCH_SKILL1)
         {
             //  this.AddBuffer(bufferMgr.Create<Buffer4>());
@@ -335,8 +335,6 @@ public class BattleHero : Hero
             this.ProcessWithFrameCustomsOpt((FrameCustomsOpt)(userData));
 
         }
-
-
     }
 
     private void ProcessWithFrameCustomsOpt(FrameCustomsOpt opt)
@@ -352,18 +350,25 @@ public class BattleHero : Hero
         else if (opt == FrameCustomsOpt.level_up1)
         {
             (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(1);
+            ReduceSP();
+            Debug.LogError("this.sp is "+this.sp);
         }
         else if (opt == FrameCustomsOpt.level_up2)
         {
             (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(2);
+            ReduceSP();
+            Debug.LogError("this.sp is " + this.sp);
         }
         else if (opt == FrameCustomsOpt.level_up3)
         {
             (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(3);
+            ReduceSP();
+            Debug.LogError("this.sp is " + this.sp);
         }
         else if (opt == FrameCustomsOpt.level_up4)
         {
             (this.machine.GetState<SkillState>() as SkillState).PushLevelUp(4);
+            //EventDispatcher.ins.PostEvent(Events.ID_SKILL_POINT_REDUCE);
         }
         else if (opt == FrameCustomsOpt.Test)
         {
@@ -458,32 +463,61 @@ public class BattleHero : Hero
         //{
         //    LevelUp();
         //}
-        if (sp > 0)
-        {
-            ShowLevelUPButton();
-        }
+
+        //if (counter.Tick()==false)
+        //{
+        //    if (sp > 0)
+        //    {
+        //        ShowLevelUPButton();
+        //    }
+        //    counter.Reset();
+        //}
 
     }
 
+    private Counter counter=Counter.Create(10);
     private int sp = 0;
     public void LevelUp()
     {
 
         this.current_exp -= this.exp;
         this.level++;
-        this.sp++;
+        AddSP();
         ConfigByLevel(this.level);
     }
 
+    public void AddSP()
+    {
+        this.sp++;
+        if (sp > 0)
+        { ShowLevelUPButton();}
+    }
+
+    public void ReduceSP()
+    {
+        this.sp--;
+        if (sp > 0)
+        {
+            ShowLevelUPButton();
+        }
+           
+    }
     private void ShowLevelUPButton()
     {
-        ArrayList list = new ArrayList();
-        for (int i = 1; i < 4; i++)
+        
+        if ( (this as Hero)==HeroMgr.ins.self)
         {
-            bool levelupAble = (this.machine.GetState<SkillState>() as SkillState).AreLevelUpAbleByIndex(i);
-            list.Add(levelupAble);
+            ArrayList list = new ArrayList();
+
+            for (int i = 1; i < 4; i++)
+            {
+                bool levelupAble = (this.machine.GetState<SkillState>() as SkillState).AreLevelUpAbleByIndex(i);
+                list.Add(levelupAble);
+            }
+            EventDispatcher.ins.PostEvent(Events.ID_SKILL_LEVEL_IS_UP, list);
         }
-        EventDispatcher.ins.PostEvent(Events.ID_SKILL_LEVEL_IS_UP, list);
+
+
     }
     Hero target = null;
 
