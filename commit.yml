@@ -3,24 +3,30 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '321fcb4810b06b040e5d7c335f042192f5aa9a3b'
-    oldFile: !uuid 'af6426f9b8ce50ac9aea9680c3ffd86a382e7964'
+    newFile: !uuid 'b0c145b2d672ac7266eae66882dbb5cdd188745a'
+    oldFile: !uuid '321fcb4810b06b040e5d7c335f042192f5aa9a3b'
   /UnityClient/Assets:
-    newFile: !uuid '186e38f1ce483282c6e8f23ce36307a29724a7c5'
-    oldFile: !uuid '14c0c227f6692f0a4b8bde72fcb8f4dc9889195d'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '684db79dac1fbfccb3deea591ab203dcf8d8bfd6'
-    oldFile: !uuid 'fd4de4d5376bf6365dda56b1f338194f81842999'
-  /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid '2c324c15b19e33a1be14687a2276b0fb0788cd9c'
-    oldFile: !uuid '04f2acc5bcd3341fcadec2bddc443c3d640d624d'
-  /UnityClient/Assets/Resources/Sprites/HP恢复.png:
-    newFile: !uuid '99d2f3bf3ea831175de568aa390550f8e9513e6d'
-    oldFile: null
-  /UnityClient/Assets/Resources/Sprites/bg.jpg:
-    newFile: !uuid '7a4101e2ac6df01bafb271efc973ca2c42c27bc3'
-    oldFile: null
-gitCommitId: !uuid 'c88ceddfe25f8718d490ba5920cb458f1b8a0b7c'
+    newFile: !uuid '78eb4490160a6548eb35793728082fabe1a2d3a5'
+    oldFile: !uuid '186e38f1ce483282c6e8f23ce36307a29724a7c5'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'f7d46fdb6d9802f03952b5b9d53143e1f947b691'
+    oldFile: !uuid '104feebcabbbfbd38fc371b16cd196708f1e9ccc'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid 'ce484a086fcf5d8a99befc9875871ea9b257d1d9'
+    oldFile: !uuid 'e0cd1fa9855d8dbaf85466c7df87e211eab4db4b'
+  /UnityClient/Assets/Scripts/Model/AI:
+    newFile: !uuid '9980e096308c0d2639b1c3b443627b938276b24b'
+    oldFile: !uuid 'd601c20a918c316de8bcff0ccfa83eb1d353c7a6'
+  /UnityClient/Assets/Scripts/Model/AI/AIEnemy.cs:
+    newFile: !uuid '0fe2ce6b407f2aac4100c39f078cdff8fee06b79'
+    oldFile: !uuid 'bc9cf020468c1b16ceade2205a138cdd2feb9554'
+  /UnityClient/Assets/Scripts/Model/Enemy.cs:
+    newFile: !uuid '4ac5791abb7304b432402ace5339617060971320'
+    oldFile: !uuid '199ebfbcb5956582fac8dc882052a219f3f2da5e'
+  /UnityClient/Assets/Scripts/Model/Entity.cs:
+    newFile: !uuid 'dd3b3b40ec1215b1696841e0480a0bdf9e5e6b05'
+    oldFile: !uuid 'd70d0ca5bd4bcac17c013b1589625121cae3fe44'
+gitCommitId: !uuid '47930366b72107f59facc9bcf84fabd1ca1573a6'
 renames: {
   }
-revisionId: 836
+revisionId: 837
