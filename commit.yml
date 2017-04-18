@@ -3,27 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '200d20557927eb40442e3b6ba0fd0b2ea2efb8b6'
-    oldFile: !uuid 'eb96d8f67692ca882f234a625e1d7124f7953de1'
+    newFile: !uuid '29e3b5e2d35e69506da074503583bba32c9e9a02'
+    oldFile: !uuid '200d20557927eb40442e3b6ba0fd0b2ea2efb8b6'
   /UnityClient/Assets:
-    newFile: !uuid '1da5a3a9d993ed9ce090e6bc63bcc0cbe219e042'
-    oldFile: !uuid 'ee4425163aecd4cc58a5aaa53220b17d5d8c8dd1'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '8962ff12158a2a8e64a6757d3ef4653bf1e45f96'
-    oldFile: !uuid '65d540a690d3dbd7ae22ee1e0df9431cdd74afa3'
-  /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid 'ca04de68efa69718286c6f89e3ed672512bda776'
-    oldFile: !uuid '1c84dd8730154138472c39425bf66d2834c56261'
-  /UnityClient/Assets/Resources/Sprites/放波.png.meta:
-    newFile: !uuid '036e8d7683ceae873c6f17cae3a75d8b2782ec53'
+    newFile: !uuid '323c691ad7023317173256345e6b89f9bea81d0c'
+    oldFile: !uuid '1da5a3a9d993ed9ce090e6bc63bcc0cbe219e042'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'f2390d43bedeeabcd3b324d096f0d769a3021c2f'
+    oldFile: !uuid '4db1209af11e0edfa900474640e91ff54bf7920c'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid 'f912beb320248cf388ea61d9ba457048cbf50bbb'
+    oldFile: !uuid 'ec2166565abceeca9cee48a74b7d677f99af3f94'
+  /UnityClient/Assets/Scripts/Data/SkillImagePath.cs:
+    newFile: !uuid 'de285a8add9d1fd9bfc3ad54a3cd8ec33cfa9e39'
     oldFile: null
-  /UnityClient/Assets/Resources/Sprites/踩地板.png.meta:
-    newFile: !uuid '2edfc846f00b118a6e2737109a828b4e53120384'
+  /UnityClient/Assets/Scripts/Data/SkillImagePath.cs.meta:
+    newFile: !uuid '6a228e27d9655557bb6ba1d9b7f81f3b062764d8'
     oldFile: null
-  /UnityClient/Assets/Resources/Sprites/雷电.png.meta:
-    newFile: !uuid 'e68d59a7d8f7fffc619264f5211d441afdd2fe11'
-    oldFile: null
-gitCommitId: !uuid 'e94011ddcb0172cc4f7bb20be6518099c8286757'
+gitCommitId: !uuid 'a6fd15b5b090a8b519789f76ecde24a4bd85d031'
 renames: {
   }
-revisionId: 851
+revisionId: 852
