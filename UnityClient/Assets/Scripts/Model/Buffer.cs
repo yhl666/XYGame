@@ -8,7 +8,24 @@ using System.Collections;
 
 public class Buffer : Model
 {
+    public override T Clone<T>()
+    {
+        Buffer ret = new Buffer();
+        ret.show_ui = show_ui;
+        ret.enable_time = enable_time;
+        ret.brief = brief;
+        ret.name = name;
+        ret.icon =icon;
+        ret.plist=plist;
+        ret.has_view=has_view;
+        ret.scale=scale;
+        ret.MAX_TICK=MAX_TICK;
+        ret.isOnlyOne=isOnlyOne;
+        ret.clearAble=clearAble;
+        
 
+        return  ret as T;
+    }
     //----for ui
     public bool show_ui = false;
     public bool enable_time = true;//buffer 显示时间否,时间信息由 tick提供
@@ -338,8 +355,6 @@ public class BufferEquipTest2 : Buffer
 {
     public override void OnEnter()
     {
-        base.OnEnter();
-
     }
     public override void OnEvent(int type, object userData)
     {
@@ -354,7 +369,7 @@ public class BufferEquipTest2 : Buffer
             if (random.Next(0, 100) < 10)
             {
                 tick.Reset();
-                this.left_hp = 25;
+                this.left_hp = target.hp/3;
                 this.show_ui = true;
                 ///    Debug.Log("触发了护体效果吸收" + left_hp + "伤害  Hero剩余血量" + owner.current_hp);
 
@@ -752,8 +767,10 @@ public class BufferRevive : Buffer
         EventDispatcher.ins.PostEvent(Events.ID_REVIVE, target);
         this.SetInValid();
         EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + target.no + "已复活");
-
-        ///     Debug.Log("复活 " + p.x + "   " + p.y);
+       
+        //添加一个3秒无敌 buffer
+        Buffer b = target.AddBuffer<BufferGod>();//无敌
+        b.SetLastTime(3f);
     }
     public override void UpdateMS()
     {
@@ -877,9 +894,10 @@ public class BufferGod : Buffer
         base.Init();
         EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
         show_ui = true;
+        isOnlyOne = true;
         icon = "hd/interface/items/503079.png";
         brief = "无敌";
-        enable_time = false;
+        enable_time = true;
         return true;
     }
     public override void OnExit()
@@ -1194,7 +1212,7 @@ public class BufferEnemyMovementAfterAtk : Buffer
         base.Init();
         isOnlyOne = true;
         tick.SetMax(MAX_TICK);
-    
+
         return true;
     }
 
@@ -1330,7 +1348,7 @@ public class BufferBoss2 : Buffer
         return "BufferBoss2";
     }
     private int damage_orign = 0;
-    public int percent =10; // 每次叠加比例
+    public int percent = 10; // 每次叠加比例
     private int level = 0;
     public override void OnEnter()
     {
@@ -1359,8 +1377,8 @@ public class BufferBoss2 : Buffer
     public override void OnMerge(Buffer other)
     {
         this.level++;
-        target.damage = (int)((float)damage_orign * (1 + (float)level * percent/100f));
-        brief = "攻击+" + (percent*level).ToString("00") + "%";
+        target.damage = (int)((float)damage_orign * (1 + (float)level * percent / 100f));
+        brief = "攻击+" + (percent * level).ToString("00") + "%";
     }
     public override void OnExit()
     {
