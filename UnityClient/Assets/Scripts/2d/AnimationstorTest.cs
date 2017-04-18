@@ -19,10 +19,10 @@ public class AnimationstorTest : MonoBehaviour
     public Animations ani = null;
     void Awake()
     {
-        Utils.SetTargetFPS(40);
+      //  Utils.SetTargetFPS(40);
         this.Init();
     }
-
+    float time = 0f;
     public void Update()
     {
 
@@ -32,7 +32,16 @@ public class AnimationstorTest : MonoBehaviour
             this.Init();
         }
         ///   if (ani != null)
-        ani.UpdateMS();
+        time += Time.deltaTime;
+        if (time > 0.025f)
+        {
+            ani.UpdateMS();
+            time = 0f;
+            if(  ani.IsDone())
+            {
+                GameObject.Destroy(this.gameObject);
+            }
+        }
     }
 
     void OnDestroy()
@@ -56,6 +65,7 @@ public class AnimationstorTest : MonoBehaviour
             ani.Init();
             ani.Run();
         }
+        ani.SetLoop(0xffffff);
         ani.target = this.GetComponent<SpriteRenderer>();
         ani.perFrame = FrameDelay;
 

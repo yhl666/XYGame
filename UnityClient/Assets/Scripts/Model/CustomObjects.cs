@@ -192,7 +192,7 @@ public class EnemyLauncher : Model
     public string code;// 原型 code
     public int time;//延时 帧数
     private AIEnemyType ai_type;
-    public static EnemyLauncher Create(Vector3 pos, string code, int time , AIEnemyType type = AIEnemyType.FSM)
+    public static EnemyLauncher Create(Vector3 pos, string code, int time, AIEnemyType type = AIEnemyType.FSM)
     {
         EnemyLauncher ret = new EnemyLauncher();
         ret.Init();
@@ -218,12 +218,22 @@ public class EnemyLauncher : Model
             enemy.team = 333;
             enemy.x = pos.x;
             enemy.z = pos.y;
-            enemy.y = 2;
+            enemy.y = 0;
             //prototype
             enemy.hp = proto.hp;
             enemy.current_hp = enemy.hp;
             enemy.damage = proto.damage;
             enemy.exp = proto.exp;
+
+            GameObject effect = PrefabsMgr.Load("Prefabs/AnimationsTest");
+            effect.GetComponent<AnimationstorTest>().file = "hd/magic_weapons/bullet/bul_5000171/bul_5000171.plist";
+            var ani = effect.GetComponent<AnimationstorTest>();
+            ani.FrameDelay = 3;
+            ani.Init();
+            ani.ani.Run();
+            ani.ani.SetLoop(1);
+            ani.transform.position = new Vector3(pos.x, pos.y - 0.35f, pos.z);
+
         }
         else
         {
@@ -266,7 +276,7 @@ public class TerrainObjectEnemyBornPoint : CustomObject
         OneEnemyBornData[] enemys = data.gameObject.GetComponents<OneEnemyBornData>();
         foreach (OneEnemyBornData enemy in enemys)
         {//初始化 启动器
-            EnemyLauncher launch = EnemyLauncher.Create(enemy.transform.localPosition, enemy.enemy_code, Utils.ConvertToFPS(enemy.time)); 
+            EnemyLauncher launch = EnemyLauncher.Create(enemy.transform.localPosition, enemy.enemy_code, Utils.ConvertToFPS(enemy.time));
             // ModelMgr.Create<EnemyLauncher>();
             ModelMgr.ins.Add(launch);
         }

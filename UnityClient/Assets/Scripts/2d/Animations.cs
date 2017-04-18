@@ -76,6 +76,10 @@ public sealed class Animations : GAObject
     {
         return index >= frames.Count;
     }
+    public bool IsDone()
+    {
+        return loop<=0;
+    }
     /// <summary>
     ///  set loop times  <0  is forever loop
     /// </summary>
