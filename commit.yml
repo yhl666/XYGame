@@ -3,24 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '1f4b23091f6f015a6645dd46f9e3474ef9ddba53'
-    oldFile: !uuid '7e323be329a124e49dde1ceee30c742bcf3358c5'
+    newFile: !uuid '7f8d0323a91664cf2cb12c4aad9366ee0b97f6dc'
+    oldFile: !uuid '1f4b23091f6f015a6645dd46f9e3474ef9ddba53'
   /UnityClient/Assets:
-    newFile: !uuid 'fc0c1904e220b63acd4fa800ecb1aa55a741de9a'
-    oldFile: !uuid '66d5741e6fb1aea46539b502b491299fe6092978'
+    newFile: !uuid '9ccf7506190e7a0d65ab96fa91ddf625e10738b5'
+    oldFile: !uuid 'fc0c1904e220b63acd4fa800ecb1aa55a741de9a'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '42098d7cda745b7092c42ed751fcf36d13bc3d5d'
-    oldFile: !uuid '3fca43f4e7640410da2bb76e80ed299492ab2b61'
+    newFile: !uuid '527be6526a980877f267c1cd4ef348128ad22555'
+    oldFile: !uuid '42098d7cda745b7092c42ed751fcf36d13bc3d5d'
   /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid '9aca0e4eaa0a6348a5edc04da2c1288d9918214b'
-    oldFile: !uuid '2c324c15b19e33a1be14687a2276b0fb0788cd9c'
-  /UnityClient/Assets/Resources/Sprites/HP恢复.png.meta:
-    newFile: !uuid '8749c0f4a69cc3dc00d943f9ded3f22e9e85a6ca'
+    newFile: !uuid '1c84dd8730154138472c39425bf66d2834c56261'
+    oldFile: !uuid '9aca0e4eaa0a6348a5edc04da2c1288d9918214b'
+  /UnityClient/Assets/Resources/Sprites/放波.png:
+    newFile: !uuid 'b5a61622f7eddcfb32d0533bf749dab135a19811'
     oldFile: null
-  /UnityClient/Assets/Resources/Sprites/bg.jpg.meta:
-    newFile: !uuid '838fc99a878e69aa0addee962a310066d452f3d7'
+  /UnityClient/Assets/Resources/Sprites/踩地板.png:
+    newFile: !uuid '4b3f794e7507777b65d88b366c4fbb4feb34baac'
     oldFile: null
-gitCommitId: !uuid '7203200a446576aa624228e7cf4a7a509debde11'
+  /UnityClient/Assets/Resources/Sprites/雷电.png:
+    newFile: !uuid '85b4a3b2b0111fe02ccc978637ffac32e524dcf6'
+    oldFile: null
+gitCommitId: !uuid 'd3723aef50471bdf6d3469224e48801679ffa66e'
 renames: {
   }
-revisionId: 844
+revisionId: 845
