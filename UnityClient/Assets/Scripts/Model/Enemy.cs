@@ -621,11 +621,12 @@ public class Enemy2 : Enemy
         info.isHitDestory = false;
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
-        info.plistAnimation = "hd/magic_weapons/bullet/bul_500502/bul_500502.plist";
+        info.plistAnimation = "hd/enemies/enemy_526/bullet/enemy_526_bul_526011/enemy_526_bul_526011.plist";
 
         //  info.plistAnimation = "hd/roles/role_6/bullet/role_6_bul_6222/role_6_bul_6222.plist";
         /// info.rotate = 30.0f;
-        info.distance = 2f;
+        info.distance = 4f;
+        info.speed = 0.1f * 0.8f;
         ///   info.lastTime = 10;
         info.scale_x = 2f;
         info.scale_y = 2f;
@@ -634,7 +635,6 @@ public class Enemy2 : Enemy
         info.launch_delta_xyz.y = -0.2f;// Skill62_3_Data.ins.delta_xyz.y;// -0.2f;
         info.launch_delta_xyz.z = 0f;// Skill62_3_Data.ins.delta_xyz.z;// -0.2f;
         info.isHitDestory = true;
-        info.plistAnimation = Skill62_3_Data.ins.hit_animation_name;
         info.damage_ratio = Skill62_3_Data.ins.damage_ratio;
         info.collider_size = Skill62_3_Data.ins.hit_rect;
         info.collider_type = ColliderType.Box;
