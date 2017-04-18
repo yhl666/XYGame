@@ -181,7 +181,7 @@ public class ViewEntity : View
             this.obj.SetActive(true);
         }
     }
-
+    private Transform shadow = null;
     public override void UpdateMS()
     {
         if (m.IsInValid())
@@ -190,7 +190,15 @@ public class ViewEntity : View
             return;
         }
 
-
+        if(m.IsHero)
+        {
+            if (shadow == null)
+            {
+                shadow = obj.transform.FindChild("shadow").transform;
+              shadow.parent = null;
+            }
+         shadow.position = new Vector3(m.x, m.z +m.y*0.05f, shadow.position.z);
+        }
         this.obj.name = m.no.ToString();
         if (Config.VIEW_MODE == ViewMode.M25D)
         {
