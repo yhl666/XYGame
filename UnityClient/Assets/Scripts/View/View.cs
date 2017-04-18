@@ -190,7 +190,7 @@ public class ViewEntity : View
             return;
         }
 
-        if(m.IsHero)
+        if(m.IsType<BattleHero>())
         {
             if (shadow == null)
             {
