@@ -3,54 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'eb96d8f67692ca882f234a625e1d7124f7953de1'
-    oldFile: !uuid 'd3b73a77bf6a4af1a060ae92aa56977cffb37d9a'
+    newFile: !uuid '200d20557927eb40442e3b6ba0fd0b2ea2efb8b6'
+    oldFile: !uuid 'eb96d8f67692ca882f234a625e1d7124f7953de1'
   /UnityClient/Assets:
-    newFile: !uuid 'ee4425163aecd4cc58a5aaa53220b17d5d8c8dd1'
-    oldFile: !uuid 'bdb66c6f3485145c035cced62675163b355d1659'
+    newFile: !uuid '1da5a3a9d993ed9ce090e6bc63bcc0cbe219e042'
+    oldFile: !uuid 'ee4425163aecd4cc58a5aaa53220b17d5d8c8dd1'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '65d540a690d3dbd7ae22ee1e0df9431cdd74afa3'
-    oldFile: !uuid '527be6526a980877f267c1cd4ef348128ad22555'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '564d32d729e2014435fc9f19d121e261df1e53a7'
-    oldFile: !uuid '2ea34ea7a2c5dc93793cac62d9ac6373293264a9'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid '23d918a29781ad44586e1a79b971763859d7bcd9'
-    oldFile: !uuid 'd6d06a1a816d6a1dcf806f27b6247081a002f8ba'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
-    newFile: !uuid '2b10a618158ff5f0d7152d47f865924375d64458'
-    oldFile: !uuid 'c2f21bed4b92fbf1bbaac00bbb4f2611f96c25a0'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab.meta:
-    newFile: !uuid 'a03e95e7135b9c150dbb5989dc983f7a867bd18c'
-    oldFile: !uuid '9b94d92b44033cf70697c75f00725aa009350b52'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '4db1209af11e0edfa900474640e91ff54bf7920c'
-    oldFile: !uuid 'b83a433020895c9a6cd3e8e878f74db1f974930d'
-  /UnityClient/Assets/Scripts/Base:
-    newFile: !uuid '076d88b009be9e1cbe79b3b9f16ec1bbb4dcf376'
-    oldFile: !uuid '86d993c32daf7f29dbd76323312f204e1fdc1b77'
-  /UnityClient/Assets/Scripts/Base/Events.cs:
-    newFile: !uuid '3c7aeff4f425281e071518aca646c0ba8fa1f717'
-    oldFile: !uuid '3d13db34f621cbbb4991c9652082dfd3f285cf0c'
-  /UnityClient/Assets/Scripts/Common:
-    newFile: !uuid '957f661d766a04acaeeedd46fd20b00644d4c888'
-    oldFile: !uuid 'bdfc2349d73d415d0f765c7a2ae6364cf892536b'
-  /UnityClient/Assets/Scripts/Common/Config.cs:
-    newFile: !uuid 'f7645a052554071a86db120ccf8e8e2618966472'
-    oldFile: !uuid '560aba30450765afa15b6d400ce0c9b136bf6a35'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '3e5735682a902e8e2c6e56e342ee5e8d5acadcfc'
-    oldFile: !uuid '9a6f646cbb59c6edd8f88098b45c2117f28a748c'
-  /UnityClient/Assets/Scripts/Model/Skill.cs:
-    newFile: !uuid 'dd7360241ee9a85dbdf5e98a34b7988c48b32a34'
-    oldFile: !uuid 'f4af9df7d6ce5e246ef534cef0c611639e01f6ad'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'e0898ec118f530ecb5b6ff2bedebd27fd3b9505f'
-    oldFile: !uuid '0ffd0a7e4f8cc52722c47ac28dc2ce5243d1d867'
-  /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid '1a2857a8675e6613b02cada30fa9121ada4e0228'
-    oldFile: !uuid '6eed7da026cfa147c0e8bc595f610ddf7dd2ef81'
-gitCommitId: !uuid '304f287ce523e937305b2bd39740a0743193101d'
+    newFile: !uuid '8962ff12158a2a8e64a6757d3ef4653bf1e45f96'
+    oldFile: !uuid '65d540a690d3dbd7ae22ee1e0df9431cdd74afa3'
+  /UnityClient/Assets/Resources/Sprites:
+    newFile: !uuid 'ca04de68efa69718286c6f89e3ed672512bda776'
+    oldFile: !uuid '1c84dd8730154138472c39425bf66d2834c56261'
+  /UnityClient/Assets/Resources/Sprites/放波.png.meta:
+    newFile: !uuid '036e8d7683ceae873c6f17cae3a75d8b2782ec53'
+    oldFile: null
+  /UnityClient/Assets/Resources/Sprites/踩地板.png.meta:
+    newFile: !uuid '2edfc846f00b118a6e2737109a828b4e53120384'
+    oldFile: null
+  /UnityClient/Assets/Resources/Sprites/雷电.png.meta:
+    newFile: !uuid 'e68d59a7d8f7fffc619264f5211d441afdd2fe11'
+    oldFile: null
+gitCommitId: !uuid 'e94011ddcb0172cc4f7bb20be6518099c8286757'
 renames: {
   }
-revisionId: 850
+revisionId: 851
