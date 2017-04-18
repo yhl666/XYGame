@@ -3,24 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '29e3b5e2d35e69506da074503583bba32c9e9a02'
-    oldFile: !uuid '200d20557927eb40442e3b6ba0fd0b2ea2efb8b6'
+    newFile: !uuid '6cf0ce27268adff39e0e147ca3afb80e35601ed5'
+    oldFile: !uuid '29e3b5e2d35e69506da074503583bba32c9e9a02'
   /UnityClient/Assets:
-    newFile: !uuid '323c691ad7023317173256345e6b89f9bea81d0c'
-    oldFile: !uuid '1da5a3a9d993ed9ce090e6bc63bcc0cbe219e042'
+    newFile: !uuid '73ab36f514d51b64578f13fe37d1cc9f5240f566'
+    oldFile: !uuid '323c691ad7023317173256345e6b89f9bea81d0c'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid 'f2390d43bedeeabcd3b324d096f0d769a3021c2f'
-    oldFile: !uuid '4db1209af11e0edfa900474640e91ff54bf7920c'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid 'f912beb320248cf388ea61d9ba457048cbf50bbb'
-    oldFile: !uuid 'ec2166565abceeca9cee48a74b7d677f99af3f94'
-  /UnityClient/Assets/Scripts/Data/SkillImagePath.cs:
-    newFile: !uuid 'de285a8add9d1fd9bfc3ad54a3cd8ec33cfa9e39'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Data/SkillImagePath.cs.meta:
-    newFile: !uuid '6a228e27d9655557bb6ba1d9b7f81f3b062764d8'
-    oldFile: null
-gitCommitId: !uuid 'a6fd15b5b090a8b519789f76ecde24a4bd85d031'
+    newFile: !uuid '51cfb227ab895d08de8aa684ed471ccf1908cf94'
+    oldFile: !uuid 'f2390d43bedeeabcd3b324d096f0d769a3021c2f'
+  /UnityClient/Assets/Scripts/Model:
+    newFile: !uuid '1dcc6be33a45036438888e32f0c87e102ca5a08a'
+    oldFile: !uuid '3e5735682a902e8e2c6e56e342ee5e8d5acadcfc'
+  /UnityClient/Assets/Scripts/Model/Enemy.cs:
+    newFile: !uuid '248f0fa8d4ec19deb4730ca9422df24e5f30e152'
+    oldFile: !uuid '0ec780f1a8564c03ee7b5a54c8d8819b814a15dd'
+gitCommitId: !uuid 'b55eaeaa31c59be48a148d3fd6735aafa857c4dd'
 renames: {
   }
-revisionId: 852
+revisionId: 853
