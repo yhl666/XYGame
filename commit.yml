@@ -3,73 +3,15 @@ branches: {
   }
 fileChange:
   /设计文档:
-    newFile: !uuid 'de83fe29a85e2d96e383356c2eed6723f01e33a1'
-    oldFile: !uuid '254d48c66ea7dc62050f1faf2077d93a2c58493d'
+    newFile: !uuid '50433c4a9e7e5211c1766418cd3b74fbcf744035'
+    oldFile: !uuid 'de83fe29a85e2d96e383356c2eed6723f01e33a1'
   /设计文档/音效:
-    newFile: !uuid 'ffe7d2995ccba8d1668aaa717686e94f77367774'
-    oldFile: !uuid '242130420c9b5e14f227f19e697efb3c14b97c75'
-  /设计文档/音效/bgm.mp3:
-    newFile: !uuid '1c4d9eca8d115791aef998264d9f1e9e9550f97b'
-    oldFile: null
-  /设计文档/音效/bgm_level_5.mp3:
-    newFile: null
-    oldFile: !uuid '1c4d9eca8d115791aef998264d9f1e9e9550f97b'
-  /设计文档/音效/pugong1.wav:
-    newFile: !uuid '0de6a9ff512f8e15a2bdf597c051cf8696ba883d'
-    oldFile: null
-  /设计文档/音效/pugong2.wav:
-    newFile: !uuid '718950d43eda3339936c726e3efd24f2f12fefc4'
-    oldFile: null
-  /设计文档/音效/pugong3.wav:
-    newFile: !uuid 'd925a54de5d8bd649f3b0afb14778e663a51ed1a'
-    oldFile: null
-  /设计文档/音效/sfx_role_get_hurt_2.mp3:
-    newFile: !uuid 'd800e9d1f464fbe96fad6717c29bbecd9db3a0f6'
-    oldFile: null
+    newFile: !uuid '2ea2cd415955b54575d121824a3898da9a206ac4'
+    oldFile: !uuid 'ffe7d2995ccba8d1668aaa717686e94f77367774'
   /设计文档/音效/skillbo.wav:
-    newFile: !uuid 'bcfe93892a0f83c5b0160b76502765c34a744949'
-    oldFile: null
-  /设计文档/音效/skillbo2.wav:
-    newFile: !uuid '131926877bc4c6934026ce33f102d6a6d8f7c48f'
-    oldFile: null
-  /设计文档/音效/skillcai.wav:
-    newFile: !uuid 'e913f0bd3d8c5fc8b2b7895bccea426d6d3ecb28'
-    oldFile: null
-  /设计文档/音效/skilldian.wav:
-    newFile: !uuid '6153124f3a5aa4c6416e4a12a33ed67d283434b3'
-    oldFile: null
-  /设计文档/音效/skillzhuan.wav:
-    newFile: !uuid '97844876da4a6354b7ee74a0b27310b4d629f5da'
-    oldFile: null
-  /设计文档/音效/挥剑1.wav:
-    newFile: null
-    oldFile: !uuid '1f7afae42f0f690237a115740386b7e849169797'
-  /设计文档/音效/挥剑2.wav:
-    newFile: null
-    oldFile: !uuid 'dc7d133051ad7dfc144f865aebd8aed3b29ce44a'
-  /设计文档/音效/挥剑3.wav:
-    newFile: null
-    oldFile: !uuid 'c96ec6ea626e4e88d79ca4f79024ed764d365963'
-  /设计文档/音效/旋风.wav:
-    newFile: null
-    oldFile: !uuid 'a20c85c7a5b0df7bd16b408359a94408fd6a3cb4'
-  /设计文档/音效/波.wav:
-    newFile: null
-    oldFile: !uuid '964abf10251d6370513696fbec295011ce3d2bc6'
-  /设计文档/音效/波2.wav:
-    newFile: null
-    oldFile: !uuid '131926877bc4c6934026ce33f102d6a6d8f7c48f'
-  /设计文档/音效/踩地板.wav:
-    newFile: null
-    oldFile: !uuid 'e913f0bd3d8c5fc8b2b7895bccea426d6d3ecb28'
-  /设计文档/音效/闪电.wav:
-    newFile: null
-    oldFile: !uuid '6153124f3a5aa4c6416e4a12a33ed67d283434b3'
-gitCommitId: !uuid 'bf5cc9a447cf059ca5e5e70ee556eee1bd54c980'
-renames:
-  /设计文档/音效/bgm.mp3: /设计文档/音效/bgm_level_5.mp3
-  /设计文档/音效/pugong2.wav: /设计文档/音效/挥剑2.wav
-  /设计文档/音效/skillbo2.wav: /设计文档/音效/波2.wav
-  /设计文档/音效/skillcai.wav: /设计文档/音效/踩地板.wav
-  /设计文档/音效/skilldian.wav: /设计文档/音效/闪电.wav
-revisionId: 860
+    newFile: !uuid '5c904eede6f102b256e346081cc775a2f8045916'
+    oldFile: !uuid 'bcfe93892a0f83c5b0160b76502765c34a744949'
+gitCommitId: !uuid 'fc06b484e91cf7d66a1298a855048e9e28d13cbf'
+renames: {
+  }
+revisionId: 861
