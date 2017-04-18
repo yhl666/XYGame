@@ -1143,6 +1143,34 @@ public class BufferPoison : Buffer
 }
 
 
+
+/// <summary>
+/// 光圈  用于显示玩家自身 和其他玩家区分开来
+/// </summary>
+public class BufferSelfLight : Buffer
+{
+    public override string GetName()
+    {
+        return "BufferSelfLight";
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+        isOnlyOne = true;
+        has_view = true;
+        ///      plist = "hd/buff/buff_200564/buff_200564.plist";
+        plist = "hd/enemies/enemy_374/bullet/enemy_374_bul_374001/enemy_374_bul_374001.plist";
+  
+        return true;
+    }
+    public override void UpdateMS()
+    {
+     
+    }
+}
+
+
 /// <summary>
 /// Enemy攻击后的 随机位移
 /// part of code copy from BufferSpin and BufferAttackTo
