@@ -147,6 +147,7 @@ public sealed class DirInput : Model
 
     void OnTouchEnded(float x, float y)
     {
+        this.move=false;
         this._enable = false;
         //  dir = -1;
         //    SetPosition(pos_began);
@@ -162,6 +163,7 @@ public sealed class DirInput : Model
     }
     void OnTouchMoved(float x, float y)
     {
+        move = true;
         this._enable = true;
         this.SetPosition(pos_began);
         //   Debug.Log("mov");
@@ -277,7 +279,7 @@ public sealed class DirInput : Model
 
         do
         {
-            if (Input.GetButton("Fire1") && isTouch == false)
+            if (Input.GetButton("Fire1") && isTouch == false && move ==false)
             {
                 float x = GetCurrentMousePositionX(), y = GetCurrentMousePositionY();
                 if (x < Screen.width / 2)
@@ -293,7 +295,7 @@ public sealed class DirInput : Model
                     this.OnTouchBegan(x, y);
                 }
             }
-            if (Input.GetButton("Fire1") == false && isTouch == true)
+            if (Input.GetButton("Fire1") == false && isTouch == true )
             {
                 if (isTouch == true)
                 {
@@ -323,4 +325,5 @@ public sealed class DirInput : Model
         return Input.mousePosition.y;/// /(Screen.height / 640f)/2f;
     }
     public bool _enable = false;
+    private bool move=false;
 }
