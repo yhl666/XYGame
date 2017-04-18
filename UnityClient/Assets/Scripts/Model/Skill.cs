@@ -2950,6 +2950,8 @@ public class SkillForceCancel : SkillBase
         Target.isAttacking = false;
         Target.AddBuffer<BufferForceCancel>();
         this.Enable = true;
+        
+        EventDispatcher.ins.PostEvent(Events.ID_CHANGE_SKILL_ICON);
     }
     public override void UpdateMS()
     {

@@ -409,6 +409,12 @@ public sealed class UI_skills : ViewUI
             }
             
         }
+        if (type == Events.ID_CHANGE_SKILL_ICON)
+        {
+            this.btn_skill1.GetComponent<Image>().sprite=SkillImagePath.ins.skill1;
+            this.btn_skill2.GetComponent<Image>().sprite = SkillImagePath.ins.skill2;
+            this.btn_skill3.GetComponent<Image>().sprite = SkillImagePath.ins.skill3;
+        }
     }
 
     public void ShowAllLevelUpButton()
@@ -547,6 +553,7 @@ public sealed class UI_skills : ViewUI
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL1_LEVEL_INFOMATION);
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL2_LEVEL_INFOMATION);
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL3_LEVEL_INFOMATION);
+        EventDispatcher.ins.AddEventListener(this, Events.ID_CHANGE_SKILL_ICON);
         //  this.btn_skill2.gameObject.SetActive(false);
         //   this.btn_skill3.gameObject.SetActive(false);
         return true;

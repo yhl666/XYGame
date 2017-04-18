@@ -10,6 +10,7 @@ using System.Collections;
 public sealed class Events : object
 {//数组实现hash  事件，提高效率
     public static int MAX_EVENT_LENGTH = 1000;//最大事件长度
+    
 
     //------------------------------------  global event--------------------------------------
 
@@ -226,6 +227,7 @@ public sealed class Events : object
     public const int ID_SKILL1_LEVEL_INFOMATION = 521;
     public const int ID_SKILL2_LEVEL_INFOMATION = 522;
     public const int ID_SKILL3_LEVEL_INFOMATION = 523;
+    public const int ID_CHANGE_SKILL_ICON=524;
     //------------------------------local event-----------------------------------------------------------
 
     /* public const int ID_DISABLE_RUN = 100;//禁止run 状态
