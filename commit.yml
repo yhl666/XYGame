@@ -3,33 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '7e323be329a124e49dde1ceee30c742bcf3358c5'
-    oldFile: !uuid '2e64b771d08b643fcb1204d2067fad86c90e87e3'
+    newFile: !uuid '1f4b23091f6f015a6645dd46f9e3474ef9ddba53'
+    oldFile: !uuid '7e323be329a124e49dde1ceee30c742bcf3358c5'
   /UnityClient/Assets:
-    newFile: !uuid '66d5741e6fb1aea46539b502b491299fe6092978'
-    oldFile: !uuid '102be9743ffe171930a70251ab7f9e8bffc076be'
+    newFile: !uuid 'fc0c1904e220b63acd4fa800ecb1aa55a741de9a'
+    oldFile: !uuid '66d5741e6fb1aea46539b502b491299fe6092978'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '3fca43f4e7640410da2bb76e80ed299492ab2b61'
-    oldFile: !uuid '684db79dac1fbfccb3deea591ab203dcf8d8bfd6'
-  /UnityClient/Assets/Resources/Spine:
-    newFile: !uuid '75f71bf96cdfab4d0af9c11ae6c19f97a279cbce'
-    oldFile: !uuid 'b6735e0f99258c77d01d6c659e3cbd2bfd61dd27'
-  /UnityClient/Assets/Resources/Spine/6:
-    newFile: !uuid '5e6510a18e3783d61dae9cfb115c1e659739f926'
-    oldFile: !uuid '2c0089f1b1599f3b63bf2518c7a98671bcac0e1b'
-  /UnityClient/Assets/Resources/Spine/6/Hero6.prefab:
-    newFile: !uuid '5fcc5a2c70cc8c4e3914bef82b2102473e616698'
-    oldFile: !uuid 'ded00f3ea2b0a7c44b8f1b7e6df30bd23440f364'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '8595cc0f27063f834c08166a605ebc8a8350639b'
-    oldFile: !uuid 'a111d47b8be4c9f79429a1bbcb13c0f03354144f'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'ccdc179de6cf4a87f133dceb01447f45eb736512'
-    oldFile: !uuid 'f5828f9f3da3476f4749df51c54296323d0082e7'
-  /UnityClient/Assets/Scripts/View/View.cs:
-    newFile: !uuid '251f37eea968b47256b896e839596fe7ae6ef53a'
-    oldFile: !uuid 'ac92b489f2440dd70d8bf72f9422f6c126b4ac51'
-gitCommitId: !uuid '5fceb923e07c328c0d2b78d61c31e0cbc1e94870'
+    newFile: !uuid '42098d7cda745b7092c42ed751fcf36d13bc3d5d'
+    oldFile: !uuid '3fca43f4e7640410da2bb76e80ed299492ab2b61'
+  /UnityClient/Assets/Resources/Sprites:
+    newFile: !uuid '9aca0e4eaa0a6348a5edc04da2c1288d9918214b'
+    oldFile: !uuid '2c324c15b19e33a1be14687a2276b0fb0788cd9c'
+  /UnityClient/Assets/Resources/Sprites/HP恢复.png.meta:
+    newFile: !uuid '8749c0f4a69cc3dc00d943f9ded3f22e9e85a6ca'
+    oldFile: null
+  /UnityClient/Assets/Resources/Sprites/bg.jpg.meta:
+    newFile: !uuid '838fc99a878e69aa0addee962a310066d452f3d7'
+    oldFile: null
+gitCommitId: !uuid '7203200a446576aa624228e7cf4a7a509debde11'
 renames: {
   }
-revisionId: 843
+revisionId: 844
