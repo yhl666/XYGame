@@ -140,4 +140,5 @@ public class PublicData : object
     public bool is_pve = false;
     public string battle_mode = "pvp";
     public int battle_random_seed = 0;
+    public TownTeaminfo info;
 }

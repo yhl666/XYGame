@@ -172,7 +172,19 @@ sealed class BattlePVEHandler : BattleHandlerBase
             h.x = p.x;
             h.SetRealY(0);
             h.z = p.y;
-
+            Debug.LogError("hero no is "+h.no);
+        }
+        ArrayList list = PublicData.ins.info.GetPlayerExceptCaptain();
+        if (PublicData.ins.info.GetCaptain().SkillGroup == 2)
+        {
+            HeroMgr.ins.GetHero(PublicData.ins.info.GetCaptain().no).s1 = 5;
+        }
+        foreach (TownTeamPlayer player in list)
+        {
+            if (player.SkillGroup == 2)
+            {
+                HeroMgr.ins.GetHero(player.no).s1 = 5;
+            }
         }
         return true;
     }

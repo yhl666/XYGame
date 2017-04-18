@@ -598,7 +598,7 @@ public class TownTeamApp : CellApp
 
             PublicData.ins.is_pvp_friend = true;
             AppMgr.GetCurrentApp<TownApp>().Dispose();
-
+            PublicData.ins.info = info;
 
             if (mode == "pve")
             {
