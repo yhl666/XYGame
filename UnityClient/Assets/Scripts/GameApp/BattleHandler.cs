@@ -187,6 +187,13 @@ sealed class BattlePVEHandler : BattleHandlerBase
                     HeroMgr.ins.GetHero(player.no).s1 = 5;
                 }
             }
+            foreach (Hero hero in HeroMgr.ins.GetHeros())
+            {
+                if (hero==HeroMgr.ins.self&&hero.s1==5)
+                {
+                    EventDispatcher.ins.PostEvent(Events.ID_CHANGE_SKILL_ICON);
+                }
+            }
         }
         return true;
     }
