@@ -771,7 +771,7 @@ public class Enemy3 : Enemy
 {
     public override void InitInfo()
     {
-        this.prefabsName = "Prefabs/Enemy444";
+        this.prefabsName = "Spine/Customs/444/444";
         this.skin = "default";
         ani_hurt = "hurt";
         ani_run = "walk";
@@ -833,7 +833,7 @@ public class EnemyBoss : Enemy
         ani_run = "run";
         ani_die = "";
         ani_stand = "rest";
-        ani_atk1 = "218010";
+     //   ani_atk1 = "218010";
         attackingAnimationName = ani_atk1;
         atk_level = 1;
         bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
