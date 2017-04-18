@@ -2,16 +2,28 @@
 branches: {
   }
 fileChange:
-  /设计文档:
-    newFile: !uuid '254d48c66ea7dc62050f1faf2077d93a2c58493d'
-    oldFile: !uuid '0b5699dc43103ebdf40e8ff389cfd6c3be69305d'
-  /设计文档/音效:
-    newFile: !uuid '242130420c9b5e14f227f19e697efb3c14b97c75'
-    oldFile: !uuid 'b6bc53e0bdf67bab0c850e192df1ea6203656f3f'
-  /设计文档/音效/bgm_level_5.mp3:
-    newFile: !uuid '1c4d9eca8d115791aef998264d9f1e9e9550f97b'
-    oldFile: null
-gitCommitId: !uuid '7c29d1411d18b1d11135d8643990e59f3e1605f4'
+  /UnityClient:
+    newFile: !uuid 'f4e749960f8a571eab90070a5e0afc2b05d863cf'
+    oldFile: !uuid '5bc90c0767f825c91b1d87c415487cb00f651dbc'
+  /UnityClient/Assets:
+    newFile: !uuid '88fca3e518f4f3719382117b7deaea67eb81df34'
+    oldFile: !uuid '35a483535f0b5a48c98c1eb65912cb749a67a141'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '5142e1477c8067417c95fe92d4b46b743e496e8d'
+    oldFile: !uuid '593746ecb26fbd4ff72502f34bd9e822199fe9d9'
+  /UnityClient/Assets/Resources/Spine:
+    newFile: !uuid '303824b72d2e72892fcf3eaf1c927a0d68c530b5'
+    oldFile: !uuid '3e26fd51af8a226350318e4fb666942a1c938b58'
+  /UnityClient/Assets/Resources/Spine/Customs:
+    newFile: !uuid '446951d8b08f7b4319198ad91981a6d2a20fd7c5'
+    oldFile: !uuid '3ff9895692a9ffa5049f92a9a312bf6b2e1936f1'
+  /UnityClient/Assets/Resources/Spine/Customs/306:
+    newFile: !uuid '4114bbc6b3c28cf0e52b288c2a380c89fee01484'
+    oldFile: !uuid '8517870101848eb5d676ff93e4dfb31a0cb4f36d'
+  /UnityClient/Assets/Resources/Spine/Customs/306/306.prefab:
+    newFile: !uuid '4515791fefa8d19fc5424fb774628109b72c14fd'
+    oldFile: !uuid '15ea60e0d0f900ed376d76ef042c64b7f2c5b251'
+gitCommitId: !uuid 'df9a8baa0f64fccccce4253e9bd8a4fbda7aa8e7'
 renames: {
   }
-revisionId: 857
+revisionId: 858
