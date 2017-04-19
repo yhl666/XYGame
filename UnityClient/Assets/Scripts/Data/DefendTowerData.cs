@@ -6,6 +6,13 @@
 using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public class DefendTowerDataBaseInfo
+{
+    public int hp = 5000;
+    public int damage = 200;
+}
+
 [AddComponentMenu("DATA/DefentTower-防御塔")]
 public class DefendTowerData : MonoBehaviour
 {
@@ -21,6 +28,10 @@ public class DefendTowerData : MonoBehaviour
     public int hp; // 血量
     public int damage;//基础伤害
     public bool faceto_left = false;//朝向左边
+
+    public DefendTowerDataBaseInfo [] levels;
+ 
+
     public static DefendTowerData ins = null;
     void Awake()
     {

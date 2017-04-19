@@ -22,8 +22,7 @@ public class Buffer : Model
         ret.MAX_TICK=MAX_TICK;
         ret.isOnlyOne=isOnlyOne;
         ret.clearAble=clearAble;
-        
-
+       
         return  ret as T;
     }
     //----for ui
@@ -37,6 +36,7 @@ public class Buffer : Model
     public string plist = "";
     public bool has_view = false;
     public float scale = 0.7f;
+    public Vector2 delta_xy = new Vector2(0,0.7f);
     public Counter GetCounter()
     {
         return tick;
@@ -1177,6 +1177,50 @@ public class BufferSelfLight : Buffer
     public override void UpdateMS()
     {
 
+    }
+}
+
+/// <summary>
+/// 升级视觉效果Buffer
+/// </summary>
+public class BufferLevelUpView : Buffer
+{
+    public override string GetName()
+    {
+        return "BufferLevelUpView";
+    }
+    public override void OnEnter()
+    {
+     
+    }
+    public override void OnExit()
+    {
+
+    }
+
+    public override bool Init()
+    {
+        base.Init();
+        isOnlyOne = true;
+        has_view = true;
+        scale = 2.0f;
+        delta_xy = new Vector2(0, -0.5f);
+        ///      plist = "hd/buff/buff_200564/buff_200564.plist";
+        ///      
+        if ((target.machine.GetState<SkillState>() as SkillState).GetSkillGroupIndex() ==1)
+        {//技能组1
+            plist = "hd/roles/equip_effects/eq_eff_dragon_rise_2/eq_eff_dragon_rise_2.plist";
+        }
+        else
+        { // 技能组2
+            plist = "hd/roles/equip_effects/eq_eff_dragon_rise_1/eq_eff_dragon_rise_1.plist";
+        }
+        this.SetLastTime(1f);
+        return true;
+    }
+    public override void UpdateMS()
+    {
+        base.UpdateMS();
     }
 }
 

@@ -1329,6 +1329,11 @@ public class SkillState : StateBase
             }
         }
     }
+    int skillGroup = 2;
+    public int GetSkillGroupIndex()
+    {
+        return this.skillGroup;
+    }
     /// <summary>
     /// 请求切换技能组
     /// </summary>
@@ -1342,10 +1347,12 @@ public class SkillState : StateBase
         if (skill_stacks == skill_stacks1)
         {
             skill_stacks = skill_stacks2;
+            skillGroup = 2;
         }
         else if (skill_stacks == skill_stacks2)
         {
             skill_stacks = skill_stacks1;
+            skillGroup = 1;
         }
         else
         {

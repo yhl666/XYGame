@@ -31,8 +31,9 @@ public class AudioEvents
         HERO_SKILL12,
         HERO_SKILL13,
         HERO_SKILL21,
-       // HERO_SKILL22,
+        // HERO_SKILL22,
         HERO_SKILL23,
+        HERO_LEVELUP,
         MAX,
     }
 
@@ -56,11 +57,12 @@ public class AudioEvents
                            "effect/skill13",
                            "effect/skill21",
                            "effect/skill23",
+                           "effect/levelup",
           
                           "","" };
         for (int i = (int)Events.MIN; i <= (int)Events.MAX; i++)
         {
-         //   if (ss[i] == "") continue;
+            //   if (ss[i] == "") continue;
             Pair p = new Pair();
             var clip = Resources.Load<AudioClip>("Audio/" + ss[i]);
 

@@ -465,12 +465,13 @@ public class ViewBuffer : View
         if (m.IsInValid())
         {
             this.SetInValid();
+            return;
         }
-
+        if (ani.ani == null) return;
         ani.ani.UpdateMS();
 
         //  ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
-        ani.gameObject.transform.position = new Vector3(m.target.x, m.target.GetReal25DY() + 0.7f, ani.gameObject.transform.position.z);
+        ani.gameObject.transform.position = new Vector3(m.target.x +  m.delta_xy.x, m.target.GetReal25DY() + m.delta_xy.y, ani.gameObject.transform.position.z);
 
     }
     private GameObject view_bullet;

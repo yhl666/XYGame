@@ -479,7 +479,8 @@ public class BattleHero : Hero
     private int sp = 0;
     public void LevelUp()
     {
-
+        this.AddBuffer<BufferLevelUpView>();
+        AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_LEVELUP, 1);
         this.current_exp -= this.exp;
         this.level++;
         AddSP();

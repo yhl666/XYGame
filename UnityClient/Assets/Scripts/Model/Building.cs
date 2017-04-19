@@ -297,14 +297,14 @@ public class DefendTower : Tower
         this.current_hp = this.hp;
 
         this.damage = DefendTowerData.ins.damage;
-      if(DefendTowerData.ins.faceto_left)
-      {
-          this.flipX = 1f;
-      }
-      else
-      {
-          this.flipX = -1f;
-      }
+        if (DefendTowerData.ins.faceto_left)
+        {
+            this.flipX = 1f;
+        }
+        else
+        {
+            this.flipX = -1f;
+        }
         return true;
     }
     public override void OnEnter()
@@ -315,6 +315,14 @@ public class DefendTower : Tower
     }
     public override void UpdateMS()
     {
+        Hero self = HeroMgr.ins.self;
+        if (self.level > this.level && DefendTowerData.ins.levels.Length>=this.level)
+        {
+            this.level++;
+            this.hp = DefendTowerData.ins.levels[this.level-1].hp;
+            this.current_hp = this.hp;
+            this.damage = DefendTowerData.ins.levels[this.level-1].damage;
+        }
         if (power_level > 0)
         {
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_SHOW_TOWER_PANEL);
