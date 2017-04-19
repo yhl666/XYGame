@@ -330,7 +330,7 @@ public class Skill61_2 : SkillBase
             info3.damage_ratio = Skill61_2_Data_V3.ins.damage_ratio;
             info3.collider_size = Skill61_2_Data_V3.ins.hit_rect;
             info3.validTimes = 99999;
-            info3.oneHitTimes = 0xffffff;
+            info3.oneHitTimes = 1;
             //  info.rotate = -120.0f;
             //info.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
             /// info.rotate = 30.0f;
