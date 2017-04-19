@@ -3,27 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '9c1d14f9a1f70e0ba0b945df981439b7f1e4465d'
-    oldFile: !uuid '2034e0fb16c4a5464e600453c9611b91db6e9ce3'
+    newFile: !uuid '4782c7e604b2c1a9852192ebe34c8b2cfa2ea352'
+    oldFile: !uuid '9c1d14f9a1f70e0ba0b945df981439b7f1e4465d'
   /UnityClient/Assets:
-    newFile: !uuid '5a9609d5b1d34672eabb17899bbd34776da7534b'
-    oldFile: !uuid '78d0dbb11d508b5b98becbf3ecc4b514251bc918'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'aafc8cc1175dbdbbbe7e2fac88df2e12aba162c3'
-    oldFile: !uuid 'a4c56c8c8dc93ac8889d14b3defc6a7dfb178c14'
-  /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid 'cb694c3572217367292e71eadffef87bc0ed5524'
-    oldFile: !uuid 'b655631af4400157036b14e7f565424bc825cc82'
-  /UnityClient/Assets/Resources/Sprites/放波.png.meta:
-    newFile: !uuid '19c5bf57d4e1546f2378cf5d586f6a4309d455e8'
-    oldFile: !uuid '428fb14faed8f4e2c7a89a03fd316e19f3ea27ee'
-  /UnityClient/Assets/Resources/Sprites/踩地板.png.meta:
-    newFile: !uuid 'aaf27c44c3e02ac85d657b7c76f198f7b3cb2256'
-    oldFile: !uuid 'c20f99a79a29072b458befe727f44c8b0801a7b3'
-  /UnityClient/Assets/Resources/Sprites/雷电.png.meta:
-    newFile: !uuid '4edd045fd6bccffcddea40731e32973498e1051f'
-    oldFile: !uuid '6e7f6806f4876179af96518a3a9756f401a4ed44'
-gitCommitId: !uuid '0ec51eb84ffffeac514897194d71544ec357a450'
+    newFile: !uuid 'ec82f467d6edd667e217b835d52255cc8543b01b'
+    oldFile: !uuid '5a9609d5b1d34672eabb17899bbd34776da7534b'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid 'fbfe1204b49b09218f5f0553d8a4729e8b969763'
+    oldFile: !uuid '2114f7769b49e327ebaaf54083c0bd59f5d1eaa4'
+  /UnityClient/Assets/Scripts/Base:
+    newFile: !uuid '4b53d6252f90a879e601b7f1f486a5ba87893ccc'
+    oldFile: !uuid '076d88b009be9e1cbe79b3b9f16ec1bbb4dcf376'
+  /UnityClient/Assets/Scripts/Base/GAObject.cs:
+    newFile: !uuid 'f79fcd29607c1ae57695b1fb08d6c47208c50787'
+    oldFile: !uuid '2ecad23f74e676c8b200bb31e2b24658a42f8cdf'
+gitCommitId: !uuid 'd96afb35ed59ce400c054eb99b6cefae8d99e142'
 renames: {
   }
-revisionId: 867
+revisionId: 868
