@@ -3,30 +3,72 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '0aafb1f7175b1d54581a417b1e76c1f2004cce9f'
-    oldFile: !uuid 'a324d351a2f4bcc6a436a943f96bf34cf9f57951'
+    newFile: !uuid '2d7e6bbb0c147a2bfc83b9a9b1790ddba9546bd4'
+    oldFile: !uuid '0aafb1f7175b1d54581a417b1e76c1f2004cce9f'
   /UnityClient/Assets:
-    newFile: !uuid '15b89ae4e88af2d706036c36ef3ea134f80acc2d'
-    oldFile: !uuid '6dd2e1fdbc034f2f4ea5d95a193ee9f1a4318a8e'
+    newFile: !uuid 'f2d3f0547494b4c8758e5af6d5621fc90606d0fd'
+    oldFile: !uuid '15b89ae4e88af2d706036c36ef3ea134f80acc2d'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '4199955cde8eb9b16a0b14391e50773d6a665fda'
+    oldFile: !uuid 'aafc8cc1175dbdbbbe7e2fac88df2e12aba162c3'
+  /UnityClient/Assets/Resources/Audio:
+    newFile: !uuid '1d149b853f9e6bfce141a97aaa5b6a4e0f223447'
+    oldFile: !uuid '31cdbdec00397eb5c58feca2e5674f77afed8d37'
+  /UnityClient/Assets/Resources/Audio/effect:
+    newFile: !uuid 'b937c4309ef6cc9389fbc74e4981e5bbf34aae82'
+    oldFile: !uuid 'be47fbd0553faac4f10579f3e281fb326af4dd8b'
+  /UnityClient/Assets/Resources/Audio/effect/levelup.mp3:
+    newFile: !uuid '01ca4b701eb30ac961e41dcae22c46291096373b'
+    oldFile: null
+  /UnityClient/Assets/Resources/Audio/effect/levelup.mp3.meta:
+    newFile: !uuid '244512d6de1ae8e1f429ad5802cb56370c6eea81'
+    oldFile: null
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'bf593fe9780e5f259cb29b517d5ed398911a1da0'
+    oldFile: !uuid 'db68918fe92ef851d992a61fa6d5ffba430cdd83'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '4c686d9d9c103957e38930dabe056f146dede4df'
+    oldFile: !uuid '23d918a29781ad44586e1a79b971763859d7bcd9'
+  /UnityClient/Assets/Resources/Prefabs/data/防御塔.prefab:
+    newFile: !uuid 'd67d4966e21ebbe50d37eb65d6141469f129dad8'
+    oldFile: !uuid 'c1d30223a007c350a7db1221090dc51507a79399'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '997e03ca73a9d8de9810edb6a4e524f7cf917185'
-    oldFile: !uuid '046b7bf314ac1ad23af14e5148a44c19c1882d4e'
+    newFile: !uuid '4f45ec6cd03f7d032e1317a17b70504c72af26d2'
+    oldFile: !uuid '997e03ca73a9d8de9810edb6a4e524f7cf917185'
+  /UnityClient/Assets/Scripts/Audio:
+    newFile: !uuid 'f73a2d964a713ed1ec695c5b87c63222dca93749'
+    oldFile: !uuid 'a5f769b777b26ced09369dea544f311cef0a5f66'
+  /UnityClient/Assets/Scripts/Audio/AudioEvents.cs:
+    newFile: !uuid 'c9e425517570f007539f2c37bfe950ceb9433dd5'
+    oldFile: !uuid 'f3ad3e867e66d4effa8841d377e27b4327721f52'
+  /UnityClient/Assets/Scripts/Data:
+    newFile: !uuid 'e2111f0d97f6c85b73c3479c743642f1b5a2e615'
+    oldFile: !uuid 'f912beb320248cf388ea61d9ba457048cbf50bbb'
+  /UnityClient/Assets/Scripts/Data/DefendTowerData.cs:
+    newFile: !uuid '90a7a7bb5c1a23b8b2804efff49b5ca5456f5fa3'
+    oldFile: !uuid '67e327f08f6bf94b9af3882251d3fceb5cbbeb05'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '9feeeb75253729c3f487d1964dad8e5da807e462'
-    oldFile: !uuid '8811c5fc8633cdb56ece00d4a5b61db48ef1721e'
-  /UnityClient/Assets/Scripts/Model/Skill.cs:
-    newFile: !uuid 'bf227cf57c835cac968495567e04d336bdeb1fdf'
-    oldFile: !uuid '25192a183dcb2d2b1b42c028606374c8b618cd93'
-  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
-    newFile: !uuid '237be0b72d9b696d500d3ced5b575aee03056754'
-    oldFile: !uuid '674be152e61c1d28badb681f67f90cbd06e677a4'
+    newFile: !uuid '2a88eefd10acd4ab88d9086c0e1c4e7c70708192'
+    oldFile: !uuid '9feeeb75253729c3f487d1964dad8e5da807e462'
+  /UnityClient/Assets/Scripts/Model/BattleHero.cs:
+    newFile: !uuid 'd369a20ef27772a354faca3add15376ebeb0b401'
+    oldFile: !uuid '76d5cbac9cffe31f6b74d26336c3750d5fe92b4b'
+  /UnityClient/Assets/Scripts/Model/Buffer.cs:
+    newFile: !uuid '5d1b043279f463b59808be7e2eb35e47bbe1b661'
+    oldFile: !uuid '5defe0e78387a9de532911bd55b789a4edf0a876'
+  /UnityClient/Assets/Scripts/Model/Building.cs:
+    newFile: !uuid 'b9c170f15bdbfbcd68006d6aa9a5043c5d101a77'
+    oldFile: !uuid '6dbe79702cfb2c10fe41b5051b9ccef186bb5781'
+  /UnityClient/Assets/Scripts/Model/StateBase.cs:
+    newFile: !uuid 'c42afa08c5fc30daa4f7a7c160bec807e5384ef2'
+    oldFile: !uuid '3951247850bb946cf4044a3d8d04223fffc699b2'
   /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'ce68c69712cd87a2eca36957f64508d0d91e0f14'
-    oldFile: !uuid 'bf9ee947fb1a14cfd893d47407feee91f522cd13'
-  /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid '90e7325911ea9f61f3e3a219a1dd2caa1fcd94a9'
-    oldFile: !uuid '09a978fb567f3972a6ce8430fa23c9fc153cf28c'
-gitCommitId: !uuid '9ac6d6c8df2d2654cad86a889d71233d5b9f92a1'
+    newFile: !uuid 'ba9b53747d7cf189f8e2da49f4e538baa1776bdc'
+    oldFile: !uuid 'ce68c69712cd87a2eca36957f64508d0d91e0f14'
+  /UnityClient/Assets/Scripts/View/View.cs:
+    newFile: !uuid 'bab9b5a3f2b9aa31842362c007aa622c838fa21a'
+    oldFile: !uuid 'b36149097a71a554126ae467f7ad56fd506a9d7b'
+gitCommitId: !uuid 'cb2c89f161687fc07c593035d0758bdff7e08d30'
 renames: {
   }
-revisionId: 870
+revisionId: 871
