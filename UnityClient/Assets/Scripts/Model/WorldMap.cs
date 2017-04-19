@@ -146,7 +146,7 @@ public sealed class BattleWorldMap : WorldMap
         //边界控制，通过控制dir
         if (what.dir < 0) return;
         //上边界
-        if (what.GetReal25DY() > terrain.limit_z_up)
+        if (what.z > terrain.limit_z_up)
         {
             if (what.dir < 180)
             {
@@ -161,7 +161,7 @@ public sealed class BattleWorldMap : WorldMap
             }
         }
         //下边界
-        if (what.GetReal25DY() < terrain.limit_z_down)
+        if (what.z < terrain.limit_z_down)
         {
             if (what.dir > 180)
             {
