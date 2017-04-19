@@ -42,12 +42,17 @@ public class Animationstor : MonoBehaviour
         if (ani == null)
         {
             ani = AnimationsCache.ins.AddAnimatons(name, Animations.CreateWithFile(file));
-         
+
         }
 
         ani.target = this.GetComponent<SpriteRenderer>();
         ani.perFrame = FrameDelay;
 
+        var redderer = ani.target.GetComponent<Renderer>();
+        if (redderer != null)
+        {
+            redderer.sortingOrder = 2000;
+        }
         return true;
     }
     public static Animationstor Create(string file)

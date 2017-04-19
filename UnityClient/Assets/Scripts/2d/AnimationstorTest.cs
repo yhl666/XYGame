@@ -68,7 +68,11 @@ public class AnimationstorTest : MonoBehaviour
         ani.SetLoop(0xffffff);
         ani.target = this.GetComponent<SpriteRenderer>();
         ani.perFrame = FrameDelay;
-
+        var redderer = ani.target.GetComponent<Renderer>();
+        if (redderer != null)
+        {
+            redderer.sortingOrder = 2000;
+        }
         return true;
     }
     public static Animationstor Create(string file)
