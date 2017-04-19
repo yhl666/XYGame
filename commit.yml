@@ -3,21 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '249179bb5c37f032e35c1ea944eb231d606cfd40'
-    oldFile: !uuid 'a8e127c50f753ce92d19e3c98307124dc69c84db'
+    newFile: !uuid 'f94138a9d056f7c3c52206c59a82e38baf1a017d'
+    oldFile: !uuid '249179bb5c37f032e35c1ea944eb231d606cfd40'
   /UnityClient/Assets:
-    newFile: !uuid 'fedce27bc7ad91805a23f152d65776c48bb59ad0'
-    oldFile: !uuid '7a94d90d23e814f42aa7d3f29afd695a09a03006'
+    newFile: !uuid '989b4f156a5a689b5e56c4ec759e4897abb6665d'
+    oldFile: !uuid 'fedce27bc7ad91805a23f152d65776c48bb59ad0'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid 'ec7459348ee14ffc680f1560f4c363e0596160f7'
-    oldFile: !uuid '3e931fe09eb28d3885a0e9b4f735e5e70ec0edcc'
+    newFile: !uuid '7296d5fe3ccfd50d4549326625bd6bf6b41bd549'
+    oldFile: !uuid 'ec7459348ee14ffc680f1560f4c363e0596160f7'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'bd784dfb97f5ce7287fb675ea1f5d44b03019583'
-    oldFile: !uuid '489bf8bde80b4ed659d4d40fb0547f143a01dfa6'
-  /UnityClient/Assets/Scripts/Model/WorldMap.cs:
-    newFile: !uuid '1fa174f1035b06b7d46304c0ca95f8bbf0d06393'
-    oldFile: !uuid 'cbb27f11bfa26f9f5510cb7db31034d38a3e74ac'
-gitCommitId: !uuid 'b6727db45d5069e9113cedc8ed3a0d07ab365a65'
+    newFile: !uuid 'fc472677829e9ab1cf110a8365f35a73798b85e4'
+    oldFile: !uuid 'bd784dfb97f5ce7287fb675ea1f5d44b03019583'
+  /UnityClient/Assets/Scripts/Model/Building.cs:
+    newFile: !uuid 'ffabe68461d91192e9353653d513008a629e3761'
+    oldFile: !uuid 'b9c170f15bdbfbcd68006d6aa9a5043c5d101a77'
+  /UnityClient/Assets/Scripts/Model/Bullet.cs:
+    newFile: !uuid '3bd60fb107b8c1c83a05c2d98578c294b02b3c18'
+    oldFile: !uuid '9282cc3f3b13b54b71f99d0569bdd58d41eccbfb'
+gitCommitId: !uuid '9fac5fa0c5515f0cc3c4ee9c73a4aacd8be6cdfb'
 renames: {
   }
-revisionId: 873
+revisionId: 874
