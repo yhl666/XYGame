@@ -132,7 +132,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
     }
     public override bool Init()
     {
-        base.Init();
+        base.Init(); AudioMgr.ins.PostEvent(AudioEvents.Events.BATTLE_BG, true);
         EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
 
@@ -240,6 +240,10 @@ public sealed class BattleSyncHandler
         }
     }
 
+    public void ProcessServerReady()
+    {
+        AudioMgr.ins.PostEvent(AudioEvents.Events.BATTLE_BOSS_BG, true);
+    }
     public void AddRecvMsg(string msg)
     {
         _recvQueue.Enqueue(msg);
@@ -431,6 +435,7 @@ public sealed class BattleSyncHandler
         }
         else if (cmd == "Ready")
         {
+            this.ProcessServerReady();
             app.Send("cmd:ready");
         }
         else if (cmd == "new")
@@ -648,7 +653,6 @@ public sealed class BattleSyncHandler
         {
             this.InitWithFirstFrame();
         }
-
         AutoReleasePool.ins.Clear();//更新前 先清理一次 使每帧 都有效清理
 
         ArrayList data = (ArrayList)framedatas[current_fps];

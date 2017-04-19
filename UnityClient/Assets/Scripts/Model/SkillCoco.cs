@@ -13,6 +13,7 @@ public class Skill61_1 : SkillBase
     Counter launchCounter=Counter.Create(Skill61_1_Data_V1.ins.bulletLaunchDealy);
     public override void OnEnter()
     {
+        AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_SKILL11, 1);
         cd.Reset();
         this.PauseAll();
         Target.isAttacking = true;
@@ -43,8 +44,11 @@ public class Skill61_1 : SkillBase
             info.isHitDestory = false;
             info.oneHitTimes = 1;
             //  info.rotate = -120.0f;
+        //    info.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
             info.plistAnimation = "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist";
-            /// info.rotate = 30.0f;
+            info.plistAnimation = "hd/roles/role_2/bullet/role_2_bul_2211/role_2_bul_2211.plist";
+         
+            /// info.rotate = 30.0f;role_2_bul_2211
             info.distance = 0;
             info.lastTime = 15;
             info.scale_x = Skill61_1_Data_V1.ins.scale_x;
@@ -240,6 +244,7 @@ public class Skill61_2 : SkillBase
 {
     public override void OnEnter()
     {
+        AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_SKILL12, 1);
         cd.Reset();
         cancelCounter.Reset();
         tick1Counter.Reset();
@@ -462,7 +467,7 @@ public class Skill61_3 : SkillBase
     Counter dealyCounter=Counter.Create(Skill61_3_Data.ins.delayFrame);
     public override void OnEnter()
     {
-
+        AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_SKILL13, 1);
         cd.Reset();
         cancelCounter.Reset();
         dealyCounter.Reset();
@@ -499,19 +504,20 @@ public class Skill61_3 : SkillBase
         for (int i = 0; i < 3&&i<list.Count; i++)
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
-            info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
+        //    info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
+            info.plistAnimation = "hd/roles/role_5/bullet/role_5_bul_52461/role_5_bul_52461.plist";
             info.distance_atk = 2.0f;
             info.distance = 0;
             info.number = 1;
-            info.frameDelay = 1;
+            info.frameDelay = 3;
             info.speed = 1.0f;
             info.number = 1;
-            info.lastTime = 5;
+            info.lastTime = 40;
             info.isHitDestory = false;
             info.collider_size = Skill61_3_Data.ins.hit_rect;
             info.damage_ratio = Skill61_3_Data.ins.damage_ratio_level1;
-            info.scale_x = Skill61_3_Data.ins.scale_x;
-            info.scale_y = Skill61_3_Data.ins.scale_y;
+            info.scale_x =1f;// Skill61_3_Data.ins.scale_x;
+            info.scale_y = 1f;// Skill61_3_Data.ins.scale_y;
             BufferSpeedSlow buffer = BufferMgr.CreateHelper<BufferSpeedSlow>(this.Target);
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
             //buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
@@ -536,6 +542,7 @@ public class Skill61_3 : SkillBase
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
+            info.plistAnimation = "hd/roles/role_5/bullet/role_5_bul_5246/role_5_bul_5246.plist";
             info.frameDelay = 20;
             info.distance_atk = 2.0f;
             info.distance = 0;
@@ -573,6 +580,7 @@ public class Skill61_3 : SkillBase
         {
             BulletConfigInfo info = BulletConfigInfo.Create();
             info.plistAnimation = "hd/arousal_skill_bullet/arousal_skill_bullet_6300026/arousal_skill_bullet_6300026.plist";
+            info.plistAnimation = "hd/roles/role_5/bullet/role_5_bul_5246/role_5_bul_5246.plist";
             info.distance_atk = 2.0f;
             info.distance = 0;
             info.number = 1;

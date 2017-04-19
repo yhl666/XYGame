@@ -472,7 +472,7 @@ public class BufferSpeedSlow : Buffer
         tick.SetMax(time);
         speed_slow = percent / 100.0f * this.target.speed;
         this.target.speed -= speed_slow;
-        brief = "移动" + percent.ToString() + "%";
+        brief = "移动" + (-percent).ToString() + "%";
     }
     public override void UpdateMS()
     {
@@ -487,7 +487,7 @@ public class BufferSpeedSlow : Buffer
         base.Init();
         show_ui = true;
         icon = "hd/interface/items/503079.png";
-        brief = "移动" + percent.ToString() + "%";
+        brief = "移动" + (-percent).ToString() + "%";
         enable_time = false;
         isOnlyOne = true;
         return true;

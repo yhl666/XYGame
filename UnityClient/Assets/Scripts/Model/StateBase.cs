@@ -661,6 +661,10 @@ public class HurtState : StateBase
                 this.Enable = true;
                 Target.isHurt = true;
                 tick = 0;
+                if (Target.IsHero)
+                {
+                    AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_HURT, 1, false);
+                }
              //  this.Target.eventDispatcher.PostEvent (Events.ID_SPINE_COMPLETE);
 
             }
@@ -859,7 +863,10 @@ public class AttackState_1 : StateBase
 
             BulletMgr.Create(this.Target, Target.bulleClassName_atk1, Target.bullet_atk1_info);
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
-
+            if (Target.IsHero)
+            {
+                AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_ATK1, 1);
+            }
         }
         else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
@@ -978,7 +985,10 @@ public class AttackState_2 : StateBase
             BulletMgr.Create(this.Target, Target.bulleClassName_atk2, Target.bullet_atk2_info);
 
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
-
+            if (Target.IsHero)
+            {
+                AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_ATK2, 1);
+            }
         }
         else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
@@ -1107,7 +1117,10 @@ public class AttackState_3 : StateBase
             tick_cancel.SetMax(AttackState6_Data.ins.level3_cancel);
             BulletMgr.Create(this.Target, Target.bulleClassName_atk3, Target.bullet_atk3_info);
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENEITY_AFTER_ATTACK, this.Target);
-
+            if (Target.IsHero)
+            {
+                AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_ATK3, 1);
+            }
         }
 
         else if (this.Enable == true && Events.ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE == type)

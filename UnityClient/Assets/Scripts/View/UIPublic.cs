@@ -483,7 +483,12 @@ public sealed class UI_console : ViewUI
     public override void Update()
     {
     }
+    public override void OnDispose()
+    {
+        base.OnDispose();
+        Application.logMessageReceived -= PushLog;
 
+    }
     private void ShowConsole()
     {
         scroll.verticalScrollbar.value = 0;

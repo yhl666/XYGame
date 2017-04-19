@@ -289,7 +289,7 @@ public class BattleHero : Hero
         ViewMgr.Create<ViewEntity>(this);
 
         this.team = 1;
-
+        this.speed = 0.1f;
 		
 
         DAO.Equip equip = EquipMgr.ins.GetTestEquip();
@@ -311,7 +311,7 @@ public class BattleHero : Hero
         this.damage = HeroLevelData.ins.heroBaseDataByLevels[level].attack;
         this.exp = HeroLevelData.ins.heroBaseDataByLevels[level].exp_next_level;
         this.crits_ratio = HeroLevelData.ins.heroBaseDataByLevels[level].crit;
-        this.speed = HeroLevelData.ins.heroBaseDataByLevels[level].move_speed;
+    //    this.speed = HeroLevelData.ins.heroBaseDataByLevels[level].move_speed;
         //Debug.LogError(HeroLevelData.ins.heroBaseDataByLevels[level].move_speed);
         //Debug.LogError("this.speed=" + this.speed);
     }

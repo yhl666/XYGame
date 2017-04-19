@@ -1913,7 +1913,7 @@ public class Skill62_1_v2 : SkillBase
         cd.SetMax(Skill62_1_Data.Get(level).cd);
         tick.SetMax(Skill62_1_Data.Get(level).last_time);
         tick_cancel.SetMax(Skill62_1_Data.Get(level).cancel);
-
+        AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_SKILL21,1);
         cd.Reset();
         tick_cancel.Reset();
         this.PauseAll();
@@ -2389,6 +2389,7 @@ public class Skill62_3_v2 : SkillBase
     bool has_shoot = false;
     public override void OnEnter()
     {
+        AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_SKILL23, 1);
         cd.SetMax(Skill62_3_Data.Get(level).cd);
         tick1.SetMax(Skill62_3_Data.Get(level).start_jump);
         tick_cancel.SetMax(Skill62_3_Data.Get(level).cancel);

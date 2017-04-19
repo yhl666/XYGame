@@ -113,7 +113,21 @@ public class Enemy : Entity
         float dis = target.ClaculateDistance(this);
         ///   Debug.Log(dis + "      " + atk_range);
         ///   
+        if (this.IsEnemyBoss)
+        {
+            if (dis < this.atk_range)
+            {
+                //攻击范围内
+                this.AI_AttackTarget();
+            }
+            else
+            {
+                //不在攻击范围内 移动向目标
+                this.AI_MoveToTarget();
 
+            }
+            return;
+        }
         if (dis < this.atk_range)
         {
             if (target.IsHero == false)
@@ -651,7 +665,7 @@ public class Enemy2 : Enemy
         };
 
         this.bullet_atk1_info = info;
-        this.atk_range = 3f;
+        this.atk_range = 8f;
         scale = 0.8f;
     }
 
@@ -833,6 +847,7 @@ public class EnemyBoss : Enemy
         ani_run = "run";
         ani_die = "";
         ani_stand = "rest";
+       // ani_atk1 = "218010";
      //   ani_atk1 = "218010";
         attackingAnimationName = ani_atk1;
         atk_level = 1;
@@ -864,7 +879,7 @@ public class EnemyBoss : Enemy
         this.skill3 = skill.GetSkill<SkillBoss_3>();
         ai_fsm_machine.Pause();
         hp = 3000;
-
+        AudioMgr.ins.PostEvent(AudioEvents.Events.BATTLE_BOSS_BG,true);
         current_hp = hp;
         return true;
     }
