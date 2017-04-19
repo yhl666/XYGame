@@ -47,7 +47,7 @@ public class GAObject : IDisposable
     //use this to init you class
     /// <summary>
     /// 
-    /// 对象构造初始化
+    /// 对象构造初始化  对应OnDispose
     /// </summary>
     /// <returns></returns>
     public virtual bool Init()
@@ -76,7 +76,7 @@ public class GAObject : IDisposable
 
     }
     /// <summary>
-    ///   释放后的事件
+    ///   释放后的事件 对应Init
     /// </summary>
     public virtual void OnDispose()
     {
