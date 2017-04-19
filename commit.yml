@@ -3,21 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'a8e127c50f753ce92d19e3c98307124dc69c84db'
-    oldFile: !uuid '2d7e6bbb0c147a2bfc83b9a9b1790ddba9546bd4'
+    newFile: !uuid '249179bb5c37f032e35c1ea944eb231d606cfd40'
+    oldFile: !uuid 'a8e127c50f753ce92d19e3c98307124dc69c84db'
   /UnityClient/Assets:
-    newFile: !uuid '7a94d90d23e814f42aa7d3f29afd695a09a03006'
-    oldFile: !uuid 'f2d3f0547494b4c8758e5af6d5621fc90606d0fd'
+    newFile: !uuid 'fedce27bc7ad91805a23f152d65776c48bb59ad0'
+    oldFile: !uuid '7a94d90d23e814f42aa7d3f29afd695a09a03006'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '3e931fe09eb28d3885a0e9b4f735e5e70ec0edcc'
-    oldFile: !uuid '4f45ec6cd03f7d032e1317a17b70504c72af26d2'
+    newFile: !uuid 'ec7459348ee14ffc680f1560f4c363e0596160f7'
+    oldFile: !uuid '3e931fe09eb28d3885a0e9b4f735e5e70ec0edcc'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '489bf8bde80b4ed659d4d40fb0547f143a01dfa6'
-    oldFile: !uuid '2a88eefd10acd4ab88d9086c0e1c4e7c70708192'
-  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
-    newFile: !uuid 'aaf61aaa704a141ca2d424544b1f29100ae7e4e9'
-    oldFile: !uuid '237be0b72d9b696d500d3ced5b575aee03056754'
-gitCommitId: !uuid '6970f0f07bb79f1abb9eb4e2dbba84d26ca1d961'
+    newFile: !uuid 'bd784dfb97f5ce7287fb675ea1f5d44b03019583'
+    oldFile: !uuid '489bf8bde80b4ed659d4d40fb0547f143a01dfa6'
+  /UnityClient/Assets/Scripts/Model/WorldMap.cs:
+    newFile: !uuid '1fa174f1035b06b7d46304c0ca95f8bbf0d06393'
+    oldFile: !uuid 'cbb27f11bfa26f9f5510cb7db31034d38a3e74ac'
+gitCommitId: !uuid 'b6727db45d5069e9113cedc8ed3a0d07ab365a65'
 renames: {
   }
-revisionId: 872
+revisionId: 873
