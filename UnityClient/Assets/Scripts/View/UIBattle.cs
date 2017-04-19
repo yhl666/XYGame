@@ -603,7 +603,7 @@ public sealed class UI_heroInfo : ViewUI
             if (m == null) return;
 
         }
-        txt_info1.text = m.no + " LV:" + m.level;
+        txt_info1.text = m.no + " LV:" + (m.level+1);
         txt_exp1.text = m.current_exp + "/" + m.exp;
         txt_hp1.text = m.current_hp + "/" + m.hp;
         //  txt_mp1.text = m.current_mp + "/" + m.mp;
@@ -635,7 +635,7 @@ public sealed class UI_heroInfo : ViewUI
         if (m2 != null)
         {
 
-            txt_info2.text = m2.no + " LV:" + m2.level;
+            txt_info2.text = m2.no + " LV:" + (m2.level+1);
             txt_exp2.text = m2.current_exp + "/" + m2.exp;
             txt_hp2.text = m2.current_hp + "/" + m2.hp;
             //  txt_mp2.text = m2.current_mp + "/" + m2.mp;

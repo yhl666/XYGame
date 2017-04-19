@@ -3346,6 +3346,10 @@ public class SkillBoss_2 : SkillBase
     private void Shoot()
     {
         // tick.Reset();
+        if(target.target== null)
+        {///目标死亡
+            return;
+        }
         ++atk_times;
 
         Target.attackingAnimationName = "2140";
