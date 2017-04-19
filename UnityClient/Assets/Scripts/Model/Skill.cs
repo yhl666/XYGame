@@ -2951,7 +2951,7 @@ public class SkillForceCancel : SkillBase
         Target.isAttacking = false;
         Target.AddBuffer<BufferForceCancel>();
         this.Enable = true;
-    
+
     }
     public override void UpdateMS()
     {
@@ -3070,7 +3070,7 @@ public class SkillBoss_1 : SkillBase
             if (target.ClaculateDistance(pos) < distance)
             { // 到达目标点
 
-                if (target.ClaculateDistance(target.target) < distance)
+                if (target.target != null && target.ClaculateDistance(target.target) < distance)
                 { // 还在范围内
 
                     this.Shoot();
@@ -3139,7 +3139,7 @@ public class SkillBoss_1 : SkillBase
             info.plistAnimation = SkillBoss_1_Data.ins.hit_animation_name_3;
         }
 
-      
+
         //  info.AddBuffer("BufferHitBack");
 
         info.launch_delta_xyz.x = 1.5f;
@@ -3152,7 +3152,7 @@ public class SkillBoss_1 : SkillBase
         info.oneHitTimes = 1;
         //  info.rotate = -120.0f;
         //        info.plistAnimation = "hd/enemies/enemy_311/bullet/enemy_311_bul_311011/enemy_311_bul_311011.plist";
-  
+
         ///  ;"hd/roles/role_6/bullet/role_6_bul_6122/role_6_bul_6122.plist";
         /// info.rotate = 30.0f;
         info.distance = 0;
@@ -3161,7 +3161,7 @@ public class SkillBoss_1 : SkillBase
         info.launch_delta_xyz = SkillBoss_1_Data.ins.delta_xyz;// new Vector3(1f, 0f, 0f);
         info.scale_x = 3f;
         info.scale_y = 3f;
-        /// info.AddHitTarget(    )
+        info.AddHitTarget(target.target);
         b = BulletMgr.Create(this.Target, "BulletConfig", info);
 
 
@@ -3373,7 +3373,7 @@ public class SkillBoss_2 : SkillBase
         info.isHitDestory = true;
         info.damage_ratio = SkillBoss_2_Data.ins.damage_ratio;
         info.collider_size = SkillBoss_2_Data.ins.hit_rect;
-
+        info.AddHitTarget(target.target);
         ///    info.AddHitTarget(target.target);
         info.collider_type = ColliderType.Box;
         info._OnTakeAttack = (Bullet bbbb, object user) =>
@@ -3505,10 +3505,10 @@ public class SkillBoss_3 : SkillBase
             foreach (SkillBoss_3_CallData data in lists)
             {
                 TerrainObjectEnemyBornPoint point = GetBornPoint(data.id);
-                EnemyLauncher launch = EnemyLauncher.Create(new Vector3(point.x, point.y, point.z), data.code, Utils.ConvertToFPS(data.time),AIEnemyType.Normal);
+                EnemyLauncher launch = EnemyLauncher.Create(new Vector3(point.x, point.y, point.z), data.code, Utils.ConvertToFPS(data.time), AIEnemyType.Normal);
                 ModelMgr.ins.Add(launch);
             }
-      //      Debug.LogError("开始召唤波数" + level);
+            //      Debug.LogError("开始召唤波数" + level);
         });
 
         this.OnExit();

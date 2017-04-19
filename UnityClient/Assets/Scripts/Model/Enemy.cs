@@ -999,7 +999,7 @@ public class EnemyBoss : Enemy
 
 
 
-        if (skill3.cd.IsMax())
+        if (skill3.cd.IsMax() && levels.Count>0)
         {
             int last = (int)levels[0];
             for (int i = 1; i < levels.Count; i++)

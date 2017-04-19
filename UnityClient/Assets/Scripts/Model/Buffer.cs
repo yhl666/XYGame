@@ -874,7 +874,7 @@ public class BufferGod : Buffer
     public override void OnEnter()
     {
         base.OnEnter();
-
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
     }
     public override void OnEvent(int type, object userData)
     {
@@ -882,7 +882,7 @@ public class BufferGod : Buffer
         {
             AttackInfo info = userData as AttackInfo;
 
-            if (info.target != this.owner) return;
+            if (info.target != this.owner || this.IsInValid()) return;
             //吸收伤害 去掉buffer
             info.buffers.Clear();
             info.buffers_string.Clear();
@@ -892,17 +892,27 @@ public class BufferGod : Buffer
     public override bool Init()
     {
         base.Init();
-        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+
         show_ui = true;
+        MAX_TICK = 3 * 40;
         isOnlyOne = true;
         icon = "hd/interface/items/503079.png";
         brief = "无敌";
         enable_time = true;
         return true;
     }
+    public override void OnMerge(Buffer other)
+    {
+
+    }
+    public override void OnDispose()
+    {
+
+    }
     public override void OnExit()
     {
         EventDispatcher.ins.RemoveEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+        base.OnExit();
     }
     public override void UpdateMS()
     {
@@ -1161,12 +1171,12 @@ public class BufferSelfLight : Buffer
         has_view = true;
         ///      plist = "hd/buff/buff_200564/buff_200564.plist";
         plist = "hd/enemies/enemy_374/bullet/enemy_374_bul_374001/enemy_374_bul_374001.plist";
-  
+
         return true;
     }
     public override void UpdateMS()
     {
-     
+
     }
 }
 
