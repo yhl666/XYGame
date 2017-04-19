@@ -319,8 +319,8 @@ public class DefendTower : Tower
         if (self.level > this.level && DefendTowerData.ins.levels.Length>=this.level)
         {
             this.level++;
-            this.hp = DefendTowerData.ins.levels[this.level-1].hp;
-            this.current_hp = this.hp;
+         //   this.hp = DefendTowerData.ins.levels[this.level-1].hp;
+      //      this.current_hp = this.hp;
             this.damage = DefendTowerData.ins.levels[this.level-1].damage;
         }
         if (power_level > 0)

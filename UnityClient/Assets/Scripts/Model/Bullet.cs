@@ -242,6 +242,7 @@ public sealed class BulletConfigInfo
 public sealed class BulletConfig : Bullet
 {
     public int tick = 0;
+    private int dir_2d = -1;
     private int validTimes = 0;
     private Vector hasHit = new Vector();//命中物体的集合 ，可判定命中次数
     /// <summary>
@@ -255,7 +256,7 @@ public sealed class BulletConfig : Bullet
         if (h == owner) return false;
         //目标已经死亡
         if (h == null) return false;
-    
+
         if (h.team == owner.team) return false;
         bool hit = false;
         if (this.info.collider_type == ColliderType.Rect || this.info.collider_type == ColliderType.Box)
@@ -355,7 +356,7 @@ public sealed class BulletConfig : Bullet
                 // dis = flipX * speed;
                 //  this.x += dis;
 
-                float dd = info.dir_2d * DATA.ONE_DEGREE;//一度的弧度
+                float dd = dir_2d * DATA.ONE_DEGREE;//一度的弧度
 
                 float z_delta = Mathf.Sin(dd) * speed;
                 float x_delta = Mathf.Cos(dd) * speed;
@@ -457,9 +458,10 @@ public sealed class BulletConfig : Bullet
         this.flipX = -owner.flipX;
 
         info.InVokeOnLaunch(this);
-        if (info.dir_2d >= 0)
+        this.dir_2d = info.dir_2d;
+        if (dir_2d >= 0)
         {
-            if (info.dir_2d > 90 && info.dir_2d < 270)
+            if (dir_2d > 90 && dir_2d < 270)
             {
                 flipX = -1f;
             }
@@ -472,11 +474,11 @@ public sealed class BulletConfig : Bullet
         {
             if (this.flipX > 0)
             {
-                info.dir_2d = 0;
+                dir_2d = 0;
             }
             else
             {
-                info.dir_2d = 180;
+                dir_2d = 180;
             }
         }
         if (this.flipX < 0)
