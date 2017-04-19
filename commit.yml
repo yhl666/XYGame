@@ -2,25 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'f94138a9d056f7c3c52206c59a82e38baf1a017d'
-    oldFile: !uuid '249179bb5c37f032e35c1ea944eb231d606cfd40'
-  /UnityClient/Assets:
-    newFile: !uuid '989b4f156a5a689b5e56c4ec759e4897abb6665d'
-    oldFile: !uuid 'fedce27bc7ad91805a23f152d65776c48bb59ad0'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '7296d5fe3ccfd50d4549326625bd6bf6b41bd549'
-    oldFile: !uuid 'ec7459348ee14ffc680f1560f4c363e0596160f7'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid 'fc472677829e9ab1cf110a8365f35a73798b85e4'
-    oldFile: !uuid 'bd784dfb97f5ce7287fb675ea1f5d44b03019583'
-  /UnityClient/Assets/Scripts/Model/Building.cs:
-    newFile: !uuid 'ffabe68461d91192e9353653d513008a629e3761'
-    oldFile: !uuid 'b9c170f15bdbfbcd68006d6aa9a5043c5d101a77'
-  /UnityClient/Assets/Scripts/Model/Bullet.cs:
-    newFile: !uuid '3bd60fb107b8c1c83a05c2d98578c294b02b3c18'
-    oldFile: !uuid '9282cc3f3b13b54b71f99d0569bdd58d41eccbfb'
-gitCommitId: !uuid '9fac5fa0c5515f0cc3c4ee9c73a4aacd8be6cdfb'
+  /策划文档:
+    newFile: !uuid 'd2fffe91d96b03d2445deb17ac01161a1f2cdae4'
+    oldFile: !uuid '13f0f6f469bb1961ef28a754ee85e9003f891d36'
+  /策划文档/胜利失败.docx:
+    newFile: !uuid '6782118d9569ac87b8730cea4471594cc065dac2'
+    oldFile: null
+gitCommitId: !uuid '8925c85f3d3e2cfa51acbb8f675127345440cc93'
 renames: {
   }
-revisionId: 874
+revisionId: 875
