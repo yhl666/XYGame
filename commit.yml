@@ -2,13 +2,46 @@
 branches: {
   }
 fileChange:
-  /策划文档:
-    newFile: !uuid 'd2fffe91d96b03d2445deb17ac01161a1f2cdae4'
-    oldFile: !uuid '13f0f6f469bb1961ef28a754ee85e9003f891d36'
-  /策划文档/胜利失败.docx:
-    newFile: !uuid '6782118d9569ac87b8730cea4471594cc065dac2'
-    oldFile: null
-gitCommitId: !uuid '8925c85f3d3e2cfa51acbb8f675127345440cc93'
+  /UnityClient:
+    newFile: !uuid '6e2096c41eb90562cb0084f0f6f24315f30d8958'
+    oldFile: !uuid 'f94138a9d056f7c3c52206c59a82e38baf1a017d'
+  /UnityClient/Assets:
+    newFile: !uuid 'c95121b389fe3f437ff941413751b4c7e1e108c3'
+    oldFile: !uuid '989b4f156a5a689b5e56c4ec759e4897abb6665d'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'e1c04a04aa64dfb2b18a05934148d0aa0a453c74'
+    oldFile: !uuid '4199955cde8eb9b16a0b14391e50773d6a665fda'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'f44a154b5052f2dc57dee8362294cfc7c2f1a5f9'
+    oldFile: !uuid 'bf593fe9780e5f259cb29b517d5ed398911a1da0'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '2ec2567def4c8f5fb6154cbc1265e3dd824389af'
+    oldFile: !uuid '4c686d9d9c103957e38930dabe056f146dede4df'
+  /UnityClient/Assets/Resources/Prefabs/data/Boss技能.prefab:
+    newFile: !uuid 'fa13687382792956da9c00b0a2bee739b1adde62'
+    oldFile: !uuid '283f6376869cca669c8d6d13fb263fd4a3dfe936'
+  /UnityClient/Assets/Resources/Prefabs/data/人物配置.prefab:
+    newFile: !uuid 'cd4ee6d8569843ebda48b602f1f7e6297991dc7f'
+    oldFile: !uuid '7dbb6c6867164f7e44d5aec80c1fbc1f2a7e88a1'
+  /UnityClient/Assets/Resources/Prefabs/data/怪物原型3.prefab:
+    newFile: !uuid 'af95a3767cb3d85302be832046caed49a8d54641'
+    oldFile: !uuid '4681c0827f5f872629601a94348272a776df8b38'
+  /UnityClient/Assets/Resources/Prefabs/data/怪物原型4.prefab:
+    newFile: !uuid 'b2b512342d50cf5cfec5e000b187fcf5a8612418'
+    oldFile: !uuid '275538d50bb71c68d763ab1aa6988b88f5e17d00'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
+    newFile: !uuid '1bf27bb62732d9b5ade66e1a396044b072c4e6db'
+    oldFile: !uuid '2b10a618158ff5f0d7152d47f865924375d64458'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态2.prefab:
+    newFile: !uuid '1bfe02c207471d086a734acd086e6d09f3ea649e'
+    oldFile: !uuid 'a7e5a2f2b961fef97f50a49f96447ba48f95e15f'
+  /UnityClient/Assets/Resources/Prefabs/data/普通攻击.prefab:
+    newFile: !uuid '441f11c250631fd5b7d6a7705eff756e08bb7864'
+    oldFile: !uuid 'e0da5adc74ef1019aafdb634c983360a9de3cfdd'
+  /UnityClient/Assets/Resources/Prefabs/data/防御塔.prefab:
+    newFile: !uuid '7ac25b287470720f014cc6ccda776d39aeb35bcc'
+    oldFile: !uuid 'd67d4966e21ebbe50d37eb65d6141469f129dad8'
+gitCommitId: !uuid '566b2b0ce18613fee2683e21a9e314adf16a6d7d'
 renames: {
   }
-revisionId: 875
+revisionId: 876
