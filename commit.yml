@@ -2,22 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'cfc176e55c1ae359e7f25f7a30b36865df4dce80'
-    oldFile: !uuid 'b7a31d569eec92e2aaaa9659555e1086b770036b'
-  /UnityClient/Assets:
-    newFile: !uuid '31244e22a5c0b6de5ca9ef45468e17768e6f0dde'
-    oldFile: !uuid '64b828a685bed1dd62bc215993214a3ed6e7469a'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid '9b1dfd22bcc043e1aae75d5a72b85a9dc09b81a9'
-    oldFile: !uuid 'bed9cb266e4a6930b885dd556fcc3f7e2ddc21da'
-  /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid 'b4845b87d201bac23f2899b879ecca43bfe2ecc8'
-    oldFile: !uuid 'd196dc0fc33620dcac3d39e368cee142c71c2022'
-  /UnityClient/Assets/Resources/Sprites/PK.png:
-    newFile: !uuid '39d422149d281ba848b86c81e4b14a9e5f3ab7e7'
-    oldFile: null
-gitCommitId: !uuid 'a30cbe250d65cafc00e6a1032365ed202364788d'
+  /策划文档:
+    newFile: !uuid '0af77e517fb1ef9d02c78963e00bc632c419b836'
+    oldFile: !uuid 'd2fffe91d96b03d2445deb17ac01161a1f2cdae4'
+  /策划文档/胜利失败.docx:
+    newFile: !uuid '3b36497b62b56086a9b2250465e536ffc0b44679'
+    oldFile: !uuid '6782118d9569ac87b8730cea4471594cc065dac2'
+gitCommitId: !uuid 'b2a1ab09789a906015f353b7b9e821ea8081c515'
 renames: {
   }
-revisionId: 892
+revisionId: 893
