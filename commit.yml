@@ -3,27 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'c2dba9478a9070bbb40826bc620eb9593d4c4282'
-    oldFile: !uuid '32317214851c9f6cd73c531393dae8f5b5eaeb01'
+    newFile: !uuid '5c96369de14fbee8b848676005211a783af21d74'
+    oldFile: !uuid 'c2dba9478a9070bbb40826bc620eb9593d4c4282'
   /UnityClient/Assets:
-    newFile: !uuid 'e58f02a88f49d323955073e7d385f30f1ad41f43'
-    oldFile: !uuid '460e425b2d973f19ef25401ffbbc1a5d43f605d7'
+    newFile: !uuid '4f45619c01d85c10d2e60ab20134e457b93a8406'
+    oldFile: !uuid 'e58f02a88f49d323955073e7d385f30f1ad41f43'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '8526d883d1c0487ef8b693a941b52a76ce810f15'
-    oldFile: !uuid 'e2d16ee3dfb75eb7e7c7fae9dea840a8209bd670'
+    newFile: !uuid '40cf619c9a2569d1179b710ac332bb6b78ee54e3'
+    oldFile: !uuid '8526d883d1c0487ef8b693a941b52a76ce810f15'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '9755bc300d8daf802383721e42a0f6eb8ff3addf'
-    oldFile: !uuid '7c0f7def8db6a50404cf1db305f80a112d0d1d6f'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '82f908234d0d5609f2d01061c4b9b9053984cb60'
-    oldFile: !uuid 'f3c15bd260d6aa7148f54c68d6dfa19cc6ffc3d8'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_tower.prefab:
-    newFile: !uuid 'cabed4680218ba08526babe9ca74a09b4abd7b95'
-    oldFile: !uuid 'f3b8749f66e1d99a06aa710f313fba186c4556f8'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_tower.prefab.meta:
-    newFile: !uuid 'c5ea42b699f6e9653395e7dd5e25cc0f9f12a680'
-    oldFile: !uuid '8b6538d374197ae6140ae4beec2f97b00394831f'
-gitCommitId: !uuid '64c67ff7404b72a04a03b6247b37fabdde08b1ef'
+    newFile: !uuid '83ae31a5ada59e4cb49c6b8dbe5f62b3612d78c8'
+    oldFile: !uuid '9755bc300d8daf802383721e42a0f6eb8ff3addf'
+  /UnityClient/Assets/Resources/Prefabs/data:
+    newFile: !uuid '002545cc77a64b7c8d6b4dd9de41ce8a1497a78b'
+    oldFile: !uuid '2ec2567def4c8f5fb6154cbc1265e3dd824389af'
+  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
+    newFile: !uuid 'f2f1b6ae3e8c6fa34556c54e0cc9d3b35ba6f107'
+    oldFile: !uuid '1bf27bb62732d9b5ade66e1a396044b072c4e6db'
+gitCommitId: !uuid 'eaee5108f2565abbf5e779a1539b177d115534c6'
 renames: {
   }
-revisionId: 882
+revisionId: 883
