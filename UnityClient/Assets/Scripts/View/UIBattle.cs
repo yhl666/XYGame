@@ -1045,7 +1045,7 @@ public sealed class UI_pvpresult : ViewUI
 
                if (PublicData.ins.is_pve)
                {
-                   SceneMgr.Load("BattlePVE");
+                   SceneMgr.Load("BattlePVE25D");
                }
                else
                {
