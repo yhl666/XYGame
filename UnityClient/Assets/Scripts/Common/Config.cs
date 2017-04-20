@@ -24,7 +24,7 @@ public class Config : object
 {
 
   public static string SERVER_IP = "127.0.0.1";
-  //  public static string SERVER_IP = "115.159.203.16";
+ // public static string SERVER_IP = "115.159.203.16";
 
     public const int SERVER_PORT = 8111;
 

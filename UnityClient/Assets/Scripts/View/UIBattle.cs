@@ -643,7 +643,7 @@ public sealed class UI_heroInfo : ViewUI
         if (m.exp > 0)
             img_exp1.transform.localScale = new Vector3(Utils.RangeLimit(m.current_exp * 1.0f / m.exp, 0f, 1f), 1.0f, 1.0f);
 
-     /*   if (m2 == null)
+        if (m2 == null)
         {
             if (m2 != null) return;
 
@@ -674,7 +674,7 @@ public sealed class UI_heroInfo : ViewUI
             //   img_mp2.transform.localScale = new Vector3(m2.current_mp * 1.0f / m2.mp, 1.0f, 1.0f);
             img_exp2.transform.localScale = new Vector3(Utils.RangeLimit(m2.current_exp * 1.0f / m2.exp, 0f, 1f), 1.0f, 1.0f);
         }
-        */
+        
     }
 
     public override void OnEvent(int type, object userData)
