@@ -1918,7 +1918,7 @@ public sealed class UI_boss : ViewUI
         txt_hp.text = boss.current_hp.ToString() + " / " + boss.hp.ToString();
         img_hp.gameObject.transform.localScale = new Vector3(Utils.RangeLimit((float)boss.current_hp / (float)boss.hp, 0f, 1f),
             img_hp.gameObject.transform.localScale.y, img_hp.gameObject.transform.localScale.z);
-        txt_info.text = "Boss:唐僧 LV:" + boss.level + "   敌人总数:" + EnemyMgr.ins.GetEnemyCount().ToString();
+        txt_info.text = "Boss:唐僧 LV:10" + "   敌人总数:" + EnemyMgr.ins.GetEnemyCount().ToString();
     }
 
     public override bool Init()
