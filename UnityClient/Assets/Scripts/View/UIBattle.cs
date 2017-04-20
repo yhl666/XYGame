@@ -609,23 +609,25 @@ public sealed class UI_heroInfo : ViewUI
             if (m == null) return;
         }
 
-        if(m.current_hp <= m.hp*0.3f)
+        if (m.current_hp <= m.hp * 0.3f)
         {
             img_bleed.gameObject.SetActive(true);
-            if(has_vibrate==false)
+            if (has_vibrate == false)
             {
                 has_vibrate = true;
-                Handheld.Vibrate();
+#if UNITY_IOS || UNITY_ANDROID
+             Handheld.Vibrate();
+#endif
             }
-            current_a += 0.05f*current;
-           if(current_a>=1 && current>0)
-           {
-               current = -1f;
-           }
-           else  if(current_a<=0 && current<0)
-           {
-               current =1f;
-           }
+            current_a += 0.05f * current;
+            if (current_a >= 1 && current > 0)
+            {
+                current = -1f;
+            }
+            else if (current_a <= 0 && current < 0)
+            {
+                current = 1f;
+            }
             img_bleed.color = new Color(img_bleed.color.r, img_bleed.color.g, img_bleed.color.b, current_a);
         }
         else
@@ -674,7 +676,7 @@ public sealed class UI_heroInfo : ViewUI
             //   img_mp2.transform.localScale = new Vector3(m2.current_mp * 1.0f / m2.mp, 1.0f, 1.0f);
             img_exp2.transform.localScale = new Vector3(Utils.RangeLimit(m2.current_exp * 1.0f / m2.exp, 0f, 1f), 1.0f, 1.0f);
         }
-        
+
     }
 
     public override void OnEvent(int type, object userData)
@@ -994,7 +996,7 @@ public sealed class UI_pvpresult : ViewUI
                 panel_win.SetActive(true);
                 panel_effects.SetActive(true);
                 RunAnimationNext();
-                AudioMgr.ins.PostEvent(AudioEvents.Events.BATTLE_WIN,  false);
+                AudioMgr.ins.PostEvent(AudioEvents.Events.BATTLE_WIN, false);
             }
             else if (PublicData.ins.battle_result == BattleResult.Lose)
             {
