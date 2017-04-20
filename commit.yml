@@ -3,21 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '6f3630d3acbee9368072c642a3e171a7553fc998'
-    oldFile: !uuid 'd387d84ba1c272e3ecb2febe65234adf98fb0bc8'
+    newFile: !uuid 'eb5a82550b2b95e2ee692c35e928bed003aa3be1'
+    oldFile: !uuid '6f3630d3acbee9368072c642a3e171a7553fc998'
   /UnityClient/Assets:
-    newFile: !uuid 'f6264cb5cb1fd343f011394a6d8c74086be0d6ae'
-    oldFile: !uuid '497ce1144b68299abbad0bec4c619b5c43dbaa3f'
+    newFile: !uuid '568ba0c129172f6fca8b1f1ae716ec2387a926e5'
+    oldFile: !uuid 'f6264cb5cb1fd343f011394a6d8c74086be0d6ae'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '0130c5cdb759cfcc7d7272185555aa39b7111c7f'
-    oldFile: !uuid '793beb75fc62875e9ba0a6a00e05b35149d89b97'
-  /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid '744f3c5aeb37374e221d6dbd0d47955f72d0a55d'
-    oldFile: !uuid '0a0b27dcc644dbce96323bde9d566890082f5681'
-  /UnityClient/Assets/Resources/Sprites/PK.png.meta:
-    newFile: !uuid '9667416e658c0b45c29bda221cc837ac9ed9fe38'
-    oldFile: null
-gitCommitId: !uuid '9cf7d0b70e227b9cb1e07a954b54e321cbb71ca1'
+    newFile: !uuid '0c7008a50304b39cdf2fd3d447285bc150079fd3'
+    oldFile: !uuid '0130c5cdb759cfcc7d7272185555aa39b7111c7f'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'a1496d984d9cd14f9ea727d66bc5879a560f389a'
+    oldFile: !uuid 'df499a7db554c7a2c9d30c80250300bd66e90b29'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid 'a4e450ba29b12b7a6abc0cd17a72df62fc2cb065'
+    oldFile: !uuid '06223d44bb8953735a98facafc66d91ced2d6c29'
+  /UnityClient/Assets/Resources/Prefabs/ui/UI_Town.prefab:
+    newFile: !uuid '57cadd9aad3da676f0c9b5660627aa5f53a81bb9'
+    oldFile: !uuid '7f819c00df3ffff399e0269cb838d2db15acc724'
+gitCommitId: !uuid '051ce8114840cbb34bf73fb56e5975826becb897'
 renames: {
   }
-revisionId: 904
+revisionId: 905
