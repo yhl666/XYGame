@@ -3,24 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '01850d1cc75dc3d48b3b6751d128465655549b3f'
-    oldFile: !uuid '91edc276a980cde3cd21108e2d7d8807e208fa28'
+    newFile: !uuid 'cf053dd0c049108b20a442374af3c33c4669ef72'
+    oldFile: !uuid '01850d1cc75dc3d48b3b6751d128465655549b3f'
   /UnityClient/Assets:
-    newFile: !uuid '1f321470effe2362071cf15115103dab745c9899'
-    oldFile: !uuid '6abe9737f5e2ce9d94d9c95d907a0ac8cef69338'
+    newFile: !uuid 'c2dbf41c157487af1352489932439ed40ed8237c'
+    oldFile: !uuid '1f321470effe2362071cf15115103dab745c9899'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '3c0c376adfc1739b3eef57c1a7ac51a082fd551a'
-    oldFile: !uuid '85168e94afb123c2137e4e95825f5e8dc14e661b'
-  /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid 'fb3008f6a9788c1c311f089111a7463abe87272c'
-    oldFile: !uuid 'b7808a28b43aa18c434277ae04e751b74c6c53af'
-  /UnityClient/Assets/Resources/Sprites/PK.png:
-    newFile: !uuid '22467450187f8f100c08bc551ba225dc34e99af3'
-    oldFile: !uuid '39d422149d281ba848b86c81e4b14a9e5f3ab7e7'
-  /UnityClient/Assets/Resources/Sprites/logo.png:
-    newFile: !uuid 'a2b95e24bd09080230167cbfc29b9005749659a7'
-    oldFile: !uuid '5a1dfa5564a6f1ad667abf26d52f75f47e5166ff'
-gitCommitId: !uuid '0482f6e7caab82264dd2deee638d0bbfe75e1c34'
+    newFile: !uuid '7091e555c375b0343f894f875b2931380a29e8ea'
+    oldFile: !uuid '3c0c376adfc1739b3eef57c1a7ac51a082fd551a'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '168758ad06f7a1890f7f702654fcb050b9a05580'
+    oldFile: !uuid '4e9664bc8616234dc35bfeb2ada4cbc003f894e2'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid '10fc6cecc16218f906fa188eed700db1d53e6437'
+    oldFile: !uuid '317b21acc3cebb135163ef4779de44f1fc9b8d9b'
+  /UnityClient/Assets/Resources/Prefabs/ui/Public.prefab:
+    newFile: !uuid '06226d0fad435d6abae6b0999beedd670e88fcac'
+    oldFile: !uuid '3f2223e687e1ec286ebfa3666a69399059b30273'
+  /UnityClient/Assets/Resources/Prefabs/ui/Public.prefab.meta:
+    newFile: !uuid '63710c5e00f8865dc71daae789173f72e549e3ab'
+    oldFile: !uuid '56e759ec36bf2bf7a20740668c5b81776ea4d3c6'
+gitCommitId: !uuid '4a8c591976a117f672ec8fe56e8ac4025f0ff6fa'
 renames: {
   }
-revisionId: 896
+revisionId: 897
