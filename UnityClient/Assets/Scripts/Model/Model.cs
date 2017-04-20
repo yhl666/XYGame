@@ -151,7 +151,7 @@ public sealed class DirInput : Model
         this._enable = false;
         //  dir = -1;
         //    SetPosition(pos_began);
-        SetPosition(new Vector2(Screen.width / 8, Screen.height / 7));
+        SetPosition(new Vector2(Screen.width / 8, Screen.height / 6));
         PublicData.ins.IS_dir = -1;
     }
 
@@ -170,7 +170,7 @@ public sealed class DirInput : Model
         //8方向 0 1 2 3 4 5 6 7
 
         float factor = (Screen.height / 640f);
-        float DELTA_XY = 30.0f * factor;//图片移动范围
+        float DELTA_XY = 80.0f * factor;//图片移动范围
         const float ONE_DEGREE = DATA.ONE_DEGREE;//一度的弧度
 
         float dx = x - (pos_began.x);
@@ -241,8 +241,8 @@ public sealed class DirInput : Model
             //   float[] pos_x = { 42.0f, 37.0f, 0.0f, -37.0f, -42f, -37.0f, 0.0f, 37.0f };
             //   float[] pos_y = { 0.0f, 37.0f, 42.0f, 37.0f, 0.0f, -37.0f, -42f, -37.0f };
 
-            y_arrow = 50 * factor * Mathf.Sin(degree_total * ONE_DEGREE);// *yy[d / 90];
-            x_arrow = 50 * factor * Mathf.Cos(degree_total * ONE_DEGREE);// *xx[d / 90];
+            y_arrow = 110 * factor * Mathf.Sin(degree_total * ONE_DEGREE);// *yy[d / 90];
+            x_arrow = 110 * factor * Mathf.Cos(degree_total * ONE_DEGREE);// *xx[d / 90];
 
             rotateZ_arrow = degree_total - 270.0f;
             this.dir = dir;

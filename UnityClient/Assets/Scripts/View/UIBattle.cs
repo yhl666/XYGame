@@ -596,6 +596,9 @@ public sealed class UI_skills : ViewUI
 }
 public sealed class UI_heroInfo : ViewUI
 {
+    bool has_vibrate = false;
+    float current_a = 0f;
+    float current = 1f;
     public override void UpdateMS()
     {
         base.UpdateMS();
@@ -604,7 +607,31 @@ public sealed class UI_heroInfo : ViewUI
         {
             this.m = HeroMgr.ins.GetSelfHero();
             if (m == null) return;
+        }
 
+        if(m.current_hp <= m.hp*0.3f)
+        {
+            img_bleed.gameObject.SetActive(true);
+            if(has_vibrate==false)
+            {
+                has_vibrate = true;
+                Handheld.Vibrate();
+            }
+            current_a += 0.05f*current;
+           if(current_a>=1 && current>0)
+           {
+               current = -1f;
+           }
+           else  if(current_a<=0 && current<0)
+           {
+               current =1f;
+           }
+            img_bleed.color = new Color(img_bleed.color.r, img_bleed.color.g, img_bleed.color.b, current_a);
+        }
+        else
+        {
+            has_vibrate = false;
+            img_bleed.gameObject.SetActive(false);
         }
         txt_info1.text = m.no + " LV:" + (m.level + 1);
         txt_exp1.text = m.current_exp + "/" + m.exp;
@@ -616,7 +643,7 @@ public sealed class UI_heroInfo : ViewUI
         if (m.exp > 0)
             img_exp1.transform.localScale = new Vector3(Utils.RangeLimit(m.current_exp * 1.0f / m.exp, 0f, 1f), 1.0f, 1.0f);
 
-        if (m2 == null)
+     /*   if (m2 == null)
         {
             if (m2 != null) return;
 
@@ -647,7 +674,7 @@ public sealed class UI_heroInfo : ViewUI
             //   img_mp2.transform.localScale = new Vector3(m2.current_mp * 1.0f / m2.mp, 1.0f, 1.0f);
             img_exp2.transform.localScale = new Vector3(Utils.RangeLimit(m2.current_exp * 1.0f / m2.exp, 0f, 1f), 1.0f, 1.0f);
         }
-
+        */
     }
 
     public override void OnEvent(int type, object userData)
@@ -668,7 +695,8 @@ public sealed class UI_heroInfo : ViewUI
 
         panel1 = GameObject.Find("panel_hero");
         panel2 = GameObject.Find("panel_hero2");
-
+        img_bleed = GameObject.Find("ui_panel_hero_info/bleed").GetComponent<Image>();
+        img_bleed.transform.localScale = new Vector3(1f, 1f, 1f);
         // init member
         this.img_hp1 = panel1.transform.FindChild("hero_img_hp").GetComponent<Image>();
         //  this.img_mp1 = panel1.transform.FindChild("hero_img_mp").GetComponent<Image>();
@@ -747,6 +775,7 @@ public sealed class UI_heroInfo : ViewUI
     GameObject panel2 = null;
 
     GameObject parent;// parent is ui_panel_hero_info
+    Image img_bleed;
 }
 
 public sealed class UI_xy : ViewUI

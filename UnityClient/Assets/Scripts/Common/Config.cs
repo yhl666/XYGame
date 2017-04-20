@@ -23,11 +23,12 @@ public enum ViewMode
 public class Config : object
 {
 
-//  public static string SERVER_IP = "127.0.0.1";
-    public static string SERVER_IP = "115.159.203.16";
+  public static string SERVER_IP = "127.0.0.1";
+  //  public static string SERVER_IP = "115.159.203.16";
 
     public const int SERVER_PORT = 8111;
 
+    public static float fps_delay = 0.025f;
     public const int MAX_NETSOCKET_BUFFER_SIZE = 500;
 
     public const int MAX_FRAME_COUNT = 60000;
