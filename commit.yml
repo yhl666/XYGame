@@ -3,27 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'e1b2fbeb80c1812604d07fb31c9a4ec31b87d1f0'
-    oldFile: !uuid 'cf053dd0c049108b20a442374af3c33c4669ef72'
+    newFile: !uuid '2fe02e7cb83c1a51b825dacb34cf5a6401180d35'
+    oldFile: !uuid 'e1b2fbeb80c1812604d07fb31c9a4ec31b87d1f0'
   /UnityClient/Assets:
-    newFile: !uuid '69e05d7eb31b0cdb0158bd6539a6997e8dec3af7'
-    oldFile: !uuid 'c2dbf41c157487af1352489932439ed40ed8237c'
+    newFile: !uuid '6cb75c8b4f373aaa3cf2cfa4ca0963e7d2de7459'
+    oldFile: !uuid '69e05d7eb31b0cdb0158bd6539a6997e8dec3af7'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '20b513dfc8a69b73f58c06c02b3bbdc8e287b1d8'
-    oldFile: !uuid '7091e555c375b0343f894f875b2931380a29e8ea'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '831bbed590f834bce5ca00e52dbcadc0e8d4dbcc'
-    oldFile: !uuid '168758ad06f7a1890f7f702654fcb050b9a05580'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '81f2fa059b4d1bcd9275672134fe476a7645e038'
-    oldFile: !uuid '10fc6cecc16218f906fa188eed700db1d53e6437'
-  /UnityClient/Assets/Resources/Prefabs/ui/Town.prefab:
-    newFile: null
-    oldFile: !uuid 'b1d570a9aa52da85d06010b10ab87aa3592338d1'
-  /UnityClient/Assets/Resources/Prefabs/ui/Town.prefab.meta:
-    newFile: null
-    oldFile: !uuid '4baa2dda032e2a82517a70634121148c5ac39c96'
-gitCommitId: !uuid 'a4c044ed44e82d70b7bff4f74f97fc308cfe5972'
+    newFile: !uuid '79f7a6874bbf494c61b280ccc7d3382c3d46bd62'
+    oldFile: !uuid '20b513dfc8a69b73f58c06c02b3bbdc8e287b1d8'
+  /UnityClient/Assets/Resources/Sprites:
+    newFile: !uuid '43fef67786063de41d949eb5b9701c881039c412'
+    oldFile: !uuid 'fb3008f6a9788c1c311f089111a7463abe87272c'
+  /UnityClient/Assets/Resources/Sprites/logo+.png:
+    newFile: !uuid '4c664ca72cb65a846c05d0c78ecd1fa36f1f5ca9'
+    oldFile: null
+gitCommitId: !uuid '78486e9e6e5d2b1a5d475f47ca55e7c3a70c134c'
 renames: {
   }
-revisionId: 898
+revisionId: 899
