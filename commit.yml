@@ -3,21 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'bced7a17815ddc4b12565736b9408d037e23ea28'
-    oldFile: !uuid '4f3ca7f637cf6308ca0b784aa0a64fae8def266e'
+    newFile: !uuid 'd737cc1b98c4e30913a8fc56d967f6fcab14a3e8'
+    oldFile: !uuid 'bced7a17815ddc4b12565736b9408d037e23ea28'
   /UnityClient/Assets:
-    newFile: !uuid '99fcd9f7dcfcd9475d24d7e3ab59b8cff67644fd'
-    oldFile: !uuid '926371639d5765a405621d71f59b28a7fbce9b81'
+    newFile: !uuid 'e2a95da05b41177eec1272ac8b569fbf624c539e'
+    oldFile: !uuid '99fcd9f7dcfcd9475d24d7e3ab59b8cff67644fd'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '08ae0d2cb495cbf57e9fc6eeccd54aecdcddf2df'
-    oldFile: !uuid 'b8f4fa0d06523bdfb9e8d44369d2f53c0a5cc827'
+    newFile: !uuid 'f4464bc2ff6e848f247c24c2e517550504b06049'
+    oldFile: !uuid '08ae0d2cb495cbf57e9fc6eeccd54aecdcddf2df'
   /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid '05acd5562645fb3fcd1de3a0bcf0762c63bd1a6e'
-    oldFile: !uuid 'cb694c3572217367292e71eadffef87bc0ed5524'
-  /UnityClient/Assets/Resources/Sprites/loading.png:
-    newFile: !uuid 'c8391f195e7a5db9fb541e9f80a0372c4ebeb6d7'
+    newFile: !uuid 'd4efb4154a8e810da24ca093ef0da1f1c5afa5c0'
+    oldFile: !uuid '05acd5562645fb3fcd1de3a0bcf0762c63bd1a6e'
+  /UnityClient/Assets/Resources/Sprites/loading.jpg:
+    newFile: !uuid 'fd5d546cff0d23534f47e7e3f97c7a2cedfb01d9'
     oldFile: null
-gitCommitId: !uuid '694573cda7b0a8d1d466e3f22aa0ba15f886385b'
-renames: {
-  }
-revisionId: 887
+  /UnityClient/Assets/Resources/Sprites/loading.png:
+    newFile: null
+    oldFile: !uuid 'c8391f195e7a5db9fb541e9f80a0372c4ebeb6d7'
+gitCommitId: !uuid 'ac2347e4fde7417b788c5171c3d2f4b628b6ec59'
+renames:
+  /UnityClient/Assets/Resources/Sprites/loading.jpg: /UnityClient/Assets/Resources/Sprites/loading.png
+revisionId: 888
