@@ -2,25 +2,16 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'd737cc1b98c4e30913a8fc56d967f6fcab14a3e8'
-    oldFile: !uuid 'bced7a17815ddc4b12565736b9408d037e23ea28'
-  /UnityClient/Assets:
-    newFile: !uuid 'e2a95da05b41177eec1272ac8b569fbf624c539e'
-    oldFile: !uuid '99fcd9f7dcfcd9475d24d7e3ab59b8cff67644fd'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'f4464bc2ff6e848f247c24c2e517550504b06049'
-    oldFile: !uuid '08ae0d2cb495cbf57e9fc6eeccd54aecdcddf2df'
-  /UnityClient/Assets/Resources/Sprites:
-    newFile: !uuid 'd4efb4154a8e810da24ca093ef0da1f1c5afa5c0'
-    oldFile: !uuid '05acd5562645fb3fcd1de3a0bcf0762c63bd1a6e'
-  /UnityClient/Assets/Resources/Sprites/loading.jpg:
-    newFile: !uuid 'fd5d546cff0d23534f47e7e3f97c7a2cedfb01d9'
+  /工作日志:
+    newFile: !uuid '40f7b6657adc2cbda652201e95214861c74bdbf2'
+    oldFile: !uuid 'da4149f50d0c80d6fcaafa4477785d0ed5b70645'
+  /工作日志/BUG提交:
+    newFile: !uuid '7226e6e6016f84a7d1ed0e673afae4070651e594'
+    oldFile: !uuid '72fac3ae0ce0b3a9f54e990625c7dbf632f077c5'
+  /工作日志/BUG提交/BUG汇总.txt:
+    newFile: !uuid '3507e01896796125b7459afaedb2bea783d77ddd'
     oldFile: null
-  /UnityClient/Assets/Resources/Sprites/loading.png:
-    newFile: null
-    oldFile: !uuid 'c8391f195e7a5db9fb541e9f80a0372c4ebeb6d7'
-gitCommitId: !uuid 'ac2347e4fde7417b788c5171c3d2f4b628b6ec59'
-renames:
-  /UnityClient/Assets/Resources/Sprites/loading.jpg: /UnityClient/Assets/Resources/Sprites/loading.png
-revisionId: 888
+gitCommitId: !uuid 'e0b0a0ed0b5f118b84eaad8a6ad9447bf05760d9'
+renames: {
+  }
+revisionId: 889
