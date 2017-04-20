@@ -522,8 +522,9 @@ public class Skill61_3 : SkillBase
             buffer.percent = Skill61_3_Data.ins.slowPrecent;
             //buffer.SetLastTime(Skill61_3_Data.ins.lastTime);
             info.AddBuffer(buffer);
-            var b = BulletMgr.Create(this.Target, "BulletConfig", info);
             Enemy enemy = list[i] as Enemy;
+            info.AddHitTarget(enemy);
+            var b = BulletMgr.Create(this.Target, "BulletConfig", info);
             b.x = enemy.x;
             b.z = enemy.z;
             b.y = enemy.y;
@@ -560,8 +561,9 @@ public class Skill61_3 : SkillBase
             info.AddBuffer(buffer);
             info.scale_x = Skill61_3_Data.ins.scale_x;
             info.scale_y = Skill61_3_Data.ins.scale_y;
-            var b = BulletMgr.Create(this.Target, "BulletConfig", info);
             Enemy enemy = list[i] as Enemy;
+            info.AddHitTarget(enemy);
+            var b = BulletMgr.Create(this.Target, "BulletConfig", info);
             b.x = enemy.x;
             b.z = enemy.z;
             b.y = enemy.y;
@@ -597,8 +599,10 @@ public class Skill61_3 : SkillBase
             info.AddBuffer(buffer);
             info.scale_x = Skill61_3_Data.ins.scale_x;
             info.scale_y = Skill61_3_Data.ins.scale_y;
-            var b = BulletMgr.Create(this.Target, "BulletConfig", info);
             Enemy enemy = list[i] as Enemy;
+            info.AddHitTarget(enemy);
+            var b = BulletMgr.Create(this.Target, "BulletConfig", info);
+  
             b.x = enemy.x;
             b.z = enemy.z;
             b.y = enemy.y;
