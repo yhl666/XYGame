@@ -279,7 +279,7 @@ public sealed class DirInput : Model
 
         do
         {
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE
 
 
             if (Input.GetButton("Fire1") && isTouch == false && move == false)
@@ -304,7 +304,6 @@ public sealed class DirInput : Model
                     this.OnTouchMoved(GetCurrentMousePositionX(), GetCurrentMousePositionY());
                 }
             }
-
 
 #endif
 
@@ -349,5 +348,5 @@ public sealed class DirInput : Model
         return Input.mousePosition.y;/// /(Screen.height / 640f)/2f;
     }
     public bool _enable = false;
-    private bool move = false;
+    public bool move = false;
 }

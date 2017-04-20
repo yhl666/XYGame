@@ -1526,10 +1526,9 @@ public class UI_dirInput : ViewUI
 
         Hero self = HeroMgr.ins.self;
         if (self == null) return;
-        if (self.isDie)
+        if (self.isDie || PublicData.ins.battle_result != BattleResult.UnKnown)
         {//死亡后不显示摇杆
             this.ui.SetActive(false);
-
         }
         else
         {
@@ -1550,7 +1549,16 @@ public class UI_dirInput : ViewUI
         }
         //  if (model._enable)
         {
-
+            if (model.move)
+            {
+                img_bg.color = new Color(1f, 1f, 1f, 0.78f);
+                img_center.color = new Color(1f, 1f, 1f, 0.78f);       
+            }
+            else
+            {
+                img_bg.color = new Color(1f, 1f, 1f, 0.176f);
+                img_center.color = new Color(1f, 1f, 1f, 0.176f);
+            }
             //比例变换
             float factor_x = 1f / (Screen.width / 1136f);
             float factor_y = 1f / (Screen.height / 640f);
