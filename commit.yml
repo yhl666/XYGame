@@ -2,13 +2,25 @@
 branches: {
   }
 fileChange:
-  /策划文档:
-    newFile: !uuid '0af77e517fb1ef9d02c78963e00bc632c419b836'
-    oldFile: !uuid 'd2fffe91d96b03d2445deb17ac01161a1f2cdae4'
-  /策划文档/胜利失败.docx:
-    newFile: !uuid '3b36497b62b56086a9b2250465e536ffc0b44679'
-    oldFile: !uuid '6782118d9569ac87b8730cea4471594cc065dac2'
-gitCommitId: !uuid 'b2a1ab09789a906015f353b7b9e821ea8081c515'
+  /UnityClient:
+    newFile: !uuid '0323c3cec0dcd5c8877d425e37441d5504b6de44'
+    oldFile: !uuid 'cfc176e55c1ae359e7f25f7a30b36865df4dce80'
+  /UnityClient/Assets:
+    newFile: !uuid '2fe976062c4980c36df5e0a502eca39ef80d5d48'
+    oldFile: !uuid '31244e22a5c0b6de5ca9ef45468e17768e6f0dde'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid '83ad65b269f1ad0dd61c665a8a5be571c9f0bc7a'
+    oldFile: !uuid '9b1dfd22bcc043e1aae75d5a72b85a9dc09b81a9'
+  /UnityClient/Assets/Resources/Sprites:
+    newFile: !uuid 'b7808a28b43aa18c434277ae04e751b74c6c53af'
+    oldFile: !uuid 'b4845b87d201bac23f2899b879ecca43bfe2ecc8'
+  /UnityClient/Assets/Resources/Sprites/logo2.png:
+    newFile: !uuid 'a2b95e24bd09080230167cbfc29b9005749659a7'
+    oldFile: null
+  /UnityClient/Assets/Resources/Sprites/logo3.png:
+    newFile: !uuid '22467450187f8f100c08bc551ba225dc34e99af3'
+    oldFile: null
+gitCommitId: !uuid '59612a0dae5b2cb0622ffa34097af3feb08fcd40'
 renames: {
   }
-revisionId: 893
+revisionId: 894
