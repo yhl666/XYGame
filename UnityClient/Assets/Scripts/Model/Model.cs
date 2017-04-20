@@ -113,7 +113,7 @@ public sealed class DirInput : Model
 
     void OnTouchBegan(float x, float y)
     {
-     ///   this.SetPosition(pos_began);
+        ///   this.SetPosition(pos_began);
     }
 
     void SetPosition(Vector2 pos)
@@ -147,7 +147,7 @@ public sealed class DirInput : Model
 
     void OnTouchEnded(float x, float y)
     {
-        this.move=false;
+        this.move = false;
         this._enable = false;
         //  dir = -1;
         //    SetPosition(pos_began);
@@ -279,40 +279,63 @@ public sealed class DirInput : Model
 
         do
         {
-            if (Input.GetButton("Fire1") && isTouch == false && move ==false)
+#if UNITY_EDITOR
+
+
+            if (Input.GetButton("Fire1") && isTouch == false && move == false)
             {
                 float x = GetCurrentMousePositionX(), y = GetCurrentMousePositionY();
-                if (x < Screen.width / 2)
-                {//屏幕左边才生效
-                    // pos_began.y =( Input.mousePosition.y+42) / Screen.height * 10.0f;
-                    //   pos_began.x = (Input.mousePosition.x+43 )/ Screen.width * 21.0f;
-
-                    //   pos_began = new Vector3(x - Screen.width / 2.0f, y - Screen.height / 2.0f, 0.0f);
-
-                    pos_began = new Vector2(x, y);
-
-                    isTouch = true;
-                    this.OnTouchBegan(x, y);
-                }
+                pos_began = new Vector2(x, y);
+                isTouch = true;
+                this.OnTouchBegan(x, y);
             }
-            if (Input.GetButton("Fire1") == false && isTouch == true )
+            if (Input.GetButton("Fire1") == false && isTouch == true)
             {
                 if (isTouch == true)
                 {
                     this.OnTouchEnded(GetCurrentMousePositionX(), GetCurrentMousePositionY());
-
                     isTouch = false;
                 }
             }
-
             if (isTouch == true)
             {
-                if (GetCurrentMousePositionX() > Screen.width / 2) break;
                 if (GetCurrentMousePositionX() != pos_began.x && GetCurrentMousePositionY() != pos_began.y)
                 {
                     this.OnTouchMoved(GetCurrentMousePositionX(), GetCurrentMousePositionY());
                 }
             }
+
+
+#endif
+
+            if (Input.touchCount <= 0)
+            {
+                return;
+            }
+            Touch touch = Input.touches[0];
+
+            if (touch.phase == TouchPhase.Began && isTouch == false && move == false)
+            {
+                pos_began = new Vector2(touch.position.x, touch.position.y);
+                isTouch = true;
+                this.OnTouchBegan(touch.position.x, touch.position.y);
+            }
+            if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && isTouch == true)
+            {
+                if (isTouch == true)
+                {
+                    this.OnTouchEnded(touch.position.x, touch.position.y);
+                    isTouch = false;
+                }
+            }
+            if (isTouch == true)
+            {
+                if (touch.position.x != pos_began.x && touch.position.y != pos_began.y)
+                {
+                    this.OnTouchMoved(touch.position.x, touch.position.y);
+                }
+            }
+
 
         } while (false);
 
@@ -326,5 +349,5 @@ public sealed class DirInput : Model
         return Input.mousePosition.y;/// /(Screen.height / 640f)/2f;
     }
     public bool _enable = false;
-    private bool move=false;
+    private bool move = false;
 }
