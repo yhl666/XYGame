@@ -3,27 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'cf053dd0c049108b20a442374af3c33c4669ef72'
-    oldFile: !uuid '01850d1cc75dc3d48b3b6751d128465655549b3f'
+    newFile: !uuid 'e1b2fbeb80c1812604d07fb31c9a4ec31b87d1f0'
+    oldFile: !uuid 'cf053dd0c049108b20a442374af3c33c4669ef72'
   /UnityClient/Assets:
-    newFile: !uuid 'c2dbf41c157487af1352489932439ed40ed8237c'
-    oldFile: !uuid '1f321470effe2362071cf15115103dab745c9899'
+    newFile: !uuid '69e05d7eb31b0cdb0158bd6539a6997e8dec3af7'
+    oldFile: !uuid 'c2dbf41c157487af1352489932439ed40ed8237c'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '7091e555c375b0343f894f875b2931380a29e8ea'
-    oldFile: !uuid '3c0c376adfc1739b3eef57c1a7ac51a082fd551a'
+    newFile: !uuid '20b513dfc8a69b73f58c06c02b3bbdc8e287b1d8'
+    oldFile: !uuid '7091e555c375b0343f894f875b2931380a29e8ea'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '168758ad06f7a1890f7f702654fcb050b9a05580'
-    oldFile: !uuid '4e9664bc8616234dc35bfeb2ada4cbc003f894e2'
+    newFile: !uuid '831bbed590f834bce5ca00e52dbcadc0e8d4dbcc'
+    oldFile: !uuid '168758ad06f7a1890f7f702654fcb050b9a05580'
   /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '10fc6cecc16218f906fa188eed700db1d53e6437'
-    oldFile: !uuid '317b21acc3cebb135163ef4779de44f1fc9b8d9b'
-  /UnityClient/Assets/Resources/Prefabs/ui/Public.prefab:
-    newFile: !uuid '06226d0fad435d6abae6b0999beedd670e88fcac'
-    oldFile: !uuid '3f2223e687e1ec286ebfa3666a69399059b30273'
-  /UnityClient/Assets/Resources/Prefabs/ui/Public.prefab.meta:
-    newFile: !uuid '63710c5e00f8865dc71daae789173f72e549e3ab'
-    oldFile: !uuid '56e759ec36bf2bf7a20740668c5b81776ea4d3c6'
-gitCommitId: !uuid '4a8c591976a117f672ec8fe56e8ac4025f0ff6fa'
+    newFile: !uuid '81f2fa059b4d1bcd9275672134fe476a7645e038'
+    oldFile: !uuid '10fc6cecc16218f906fa188eed700db1d53e6437'
+  /UnityClient/Assets/Resources/Prefabs/ui/Town.prefab:
+    newFile: null
+    oldFile: !uuid 'b1d570a9aa52da85d06010b10ab87aa3592338d1'
+  /UnityClient/Assets/Resources/Prefabs/ui/Town.prefab.meta:
+    newFile: null
+    oldFile: !uuid '4baa2dda032e2a82517a70634121148c5ac39c96'
+gitCommitId: !uuid 'a4c044ed44e82d70b7bff4f74f97fc308cfe5972'
 renames: {
   }
-revisionId: 897
+revisionId: 898
