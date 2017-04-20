@@ -3,27 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'efef9ed1d94673c9b04cdc320eb834e832e0ce90'
-    oldFile: !uuid 'e6ac5f1e1d19735ab24c74f07bd8e63c783b7fe7'
+    newFile: !uuid 'd387d84ba1c272e3ecb2febe65234adf98fb0bc8'
+    oldFile: !uuid 'efef9ed1d94673c9b04cdc320eb834e832e0ce90'
   /UnityClient/Assets:
-    newFile: !uuid 'a57e0bd90c7d23ea05e6b729a8cf60400d2f5c80'
-    oldFile: !uuid '4b98f3ee869b138883f8a3f8523ed2025c96b7d8'
+    newFile: !uuid '497ce1144b68299abbad0bec4c619b5c43dbaa3f'
+    oldFile: !uuid 'a57e0bd90c7d23ea05e6b729a8cf60400d2f5c80'
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'd7794136bd27a830714b41d6a6740a0b34771419'
-    oldFile: !uuid '1d961c52492586838dfb774a9836d13ad452ea4e'
+    newFile: !uuid '793beb75fc62875e9ba0a6a00e05b35149d89b97'
+    oldFile: !uuid 'd7794136bd27a830714b41d6a6740a0b34771419'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '22d062eeb8b64fbf5e382cdbf195ec6af6d2e2ab'
-    oldFile: !uuid '831bbed590f834bce5ca00e52dbcadc0e8d4dbcc'
+    newFile: !uuid 'df499a7db554c7a2c9d30c80250300bd66e90b29'
+    oldFile: !uuid '22d062eeb8b64fbf5e382cdbf195ec6af6d2e2ab'
   /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '1e160e29ca408b9d317b363d4b7b80bfeab1ee07'
-    oldFile: !uuid '81f2fa059b4d1bcd9275672134fe476a7645e038'
+    newFile: !uuid '06223d44bb8953735a98facafc66d91ced2d6c29'
+    oldFile: !uuid '1e160e29ca408b9d317b363d4b7b80bfeab1ee07'
   /UnityClient/Assets/Resources/Prefabs/ui/UI_Town.prefab:
-    newFile: !uuid 'bc35c1c7befc955e4c8d8009ffb5525f345695c2'
-    oldFile: null
-  /UnityClient/Assets/Resources/Prefabs/ui/UI_Town.prefab.meta:
-    newFile: !uuid 'a9995348215648efbf069312920f078e7d27970d'
-    oldFile: null
-gitCommitId: !uuid '052dc97527766eeb9c69b9aab19dc4c3e6df1257'
+    newFile: !uuid '7f819c00df3ffff399e0269cb838d2db15acc724'
+    oldFile: !uuid 'bc35c1c7befc955e4c8d8009ffb5525f345695c2'
+gitCommitId: !uuid '5cb8fbe78e9d17864e5792f8f4ed43c06d44412a'
 renames: {
   }
-revisionId: 902
+revisionId: 903
