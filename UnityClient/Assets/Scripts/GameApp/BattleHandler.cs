@@ -90,6 +90,10 @@ sealed class BattleKeyboardInputHandler
         {
             PublicData.ins.IS_s1 = 5;
         }
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            Camera.main.GetComponent<CameraFollow>().ShowBossDie();
+        }
 
     }
 }
@@ -105,6 +109,7 @@ class BattleHandlerBase : GAObject
     {
 
     }
+    bool has_overe = false;
     public virtual void UpdateMSAfter()
     {
         /*  if (HeroMgr.ins.self.current_hp <= 0)
@@ -133,6 +138,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
     public override bool Init()
     {
         base.Init(); AudioMgr.ins.PostEvent(AudioEvents.Events.BATTLE_BG, true);
+        PublicData.ins.battle_result = BattleResult.UnKnown;
         EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
 
@@ -397,6 +403,23 @@ public sealed class BattleSyncHandler
         app.Send(dd.toUploadJson());
         //   Debug.Log("upload " + dd.toUploadJson());
     }
+    private void Do()
+    {
+        TimerQueue.ins.AddTimer(Config.fps_delay, () =>
+        {
+            this.AddRecvMsg("no:1,fps:" + (current_fps + 1).ToString() + ",+");
+            Do();
+        });
+
+
+    }
+    private void DO2()
+    {
+        Camera.main.GetComponent<CameraFollow>().ShowBossDie();
+
+
+
+    }
     public void ProcessWithCustomData(TranslateDataPack decode)
     {
         string cmd = decode.customs[0] as string;
@@ -427,7 +450,10 @@ public sealed class BattleSyncHandler
 
         else if (cmd == "Over")
         {//游戏结束
-            app.SetGameOver();
+         //   app.SetGameOver();
+            app.CalculateBattleResult();
+            this.Do();
+            this.DO2();
         }
         else if (cmd == "ReConnect")
         {//重新连接

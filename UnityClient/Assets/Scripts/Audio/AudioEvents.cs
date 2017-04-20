@@ -34,6 +34,8 @@ public class AudioEvents
         // HERO_SKILL22,
         HERO_SKILL23,
         HERO_LEVELUP,
+        BATTLE_WIN,
+        BATTLE_LOSE,
         MAX,
     }
 
@@ -58,6 +60,8 @@ public class AudioEvents
                            "effect/skill21",
                            "effect/skill23",
                            "effect/levelup",
+             "win",
+             "lose",
           
                           "","" };
         for (int i = (int)Events.MIN; i <= (int)Events.MAX; i++)

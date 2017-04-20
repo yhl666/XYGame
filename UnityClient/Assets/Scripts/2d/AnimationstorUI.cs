@@ -5,11 +5,9 @@
  */
 using UnityEngine;
 using System.Collections;
-
-public class AnimationstorTest : MonoBehaviour
+using UnityEngine.UI;
+public class AnimationstorUI : MonoBehaviour
 {
-
-
     [SerializeField]
     public string file;
 
@@ -19,7 +17,7 @@ public class AnimationstorTest : MonoBehaviour
     public Animations ani = null;
     void Awake()
     {
-      //  Utils.SetTargetFPS(40);
+        //  Utils.SetTargetFPS(40);
         this.Init();
     }
     float time = 0f;
@@ -37,7 +35,7 @@ public class AnimationstorTest : MonoBehaviour
         {
             ani.UpdateMS();
             time = 0f;
-            if(  ani.IsDone())
+            if (ani.IsDone())
             {
                 GameObject.Destroy(this.gameObject);
             }
@@ -66,13 +64,18 @@ public class AnimationstorTest : MonoBehaviour
             ani.Run();
         }
         ani.SetLoop(0xffffff);
-        ani.target_2d = this.GetComponent<SpriteRenderer>();
+        ani.target_ui = this.GetComponent<Image>();
+        Image img = this.GetComponent<Image>();
+
+  /*      img.gameObject.transform.localScale = new Vector3(img.gameObject.transform.localScale.x * 1.6f, img.gameObject.transform.localScale.y, img.gameObject.transform.localScale.z);//解除分辨率适配下的大小
+
+        */
         ani.perFrame = FrameDelay;
-        var redderer = ani.target_2d.GetComponent<Renderer>();
+      /*  var redderer = ani.target_2d.GetComponent<Renderer>();
         if (redderer != null)
         {
             redderer.sortingOrder = 2000;
-        }
+        }*/
         return true;
     }
     public static Animationstor Create(string file)

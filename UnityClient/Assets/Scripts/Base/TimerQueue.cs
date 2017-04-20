@@ -7,7 +7,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public sealed class TimerQueue :Singleton<TimerQueue>
+public sealed class TimerQueue : Singleton<TimerQueue>
 {
     /// <summary>
     ///  添加一个帧同步定时器
@@ -64,10 +64,13 @@ public sealed class TimerQueue :Singleton<TimerQueue>
     }
     private void Tick(ref List<TimerBase> list)
     {
-        foreach (TimerBase timer in list)
+        int list_count = list.Count;
+        for (int i = 0; i < list_count; i++)
         {
+            TimerBase timer = list[i] as TimerBase;
             timer.Tick();
         }
+
         for (int i = 0; i < list.Count; )
         {
             TimerBase b = list[i] as TimerBase;

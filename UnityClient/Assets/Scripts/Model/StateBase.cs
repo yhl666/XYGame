@@ -665,7 +665,7 @@ public class HurtState : StateBase
                 {
                     AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_HURT, 1, false);
                 }
-             //  this.Target.eventDispatcher.PostEvent (Events.ID_SPINE_COMPLETE);
+                //  this.Target.eventDispatcher.PostEvent (Events.ID_SPINE_COMPLETE);
 
             }
         }
@@ -703,6 +703,20 @@ public class DieState : StateBase
             Target.isDie = true;
             Target.bufferMgr.ClearClearAble();//清除所有Buffer
             EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
+
+            if (Target.IsHero)
+            {
+                if (PublicData.ins.left_revive_times <= 0 && PublicData.ins.battle_result == BattleResult.UnKnown)
+                {
+                    AppMgr.GetCurrentApp<BattleApp>().AddSendMsg("cmd:over");
+                    Target.ani_force = "hurt";
+                    Target.is_spine_loop = false;
+                    Target.isDie = false;
+                    return;
+                }
+                PublicData.ins.left_revive_times--;
+            }
+
             if (Target != HeroMgr.ins.self as Entity && (Target as Enemy) == null)
             {
                 EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + Target.name + "死亡");
@@ -721,7 +735,7 @@ public class DieState : StateBase
     {
 
         this.Enable = true;
-    ///    this.stack.AddLocalEventListener("SpineComplete");
+        ///    this.stack.AddLocalEventListener("SpineComplete");
     }
     public override void OnEvent(string type, object userData)
     {
@@ -732,6 +746,73 @@ public class DieState : StateBase
                 EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
             }
         }
+    }
+    public override void OnExit()
+    {
+
+    }
+
+}
+
+
+public class DieStateBoss : DieState
+{
+    public override StateBase GetState<T>()
+    {
+        if (typeof(T) == typeof(DieState))
+        {
+            return this;
+        }
+        return null;
+    }
+    public override string GetName() { return "DieState"; }
+    public DieStateBoss()
+    {
+
+    }
+    public override void UpdateMS()
+    {
+        if (Target.current_hp <= 0)
+        {
+
+            Target.machine.PauseAllStack();
+            this.Resume();
+            Target.ani_force = "hurt";
+            Target.is_spine_loop = true;
+            //  this.Enable = false;
+            //   Target.isDie = true;
+            // Target.bufferMgr.ClearClearAble();//清除所有Buffer
+            //   EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
+            /*  Debug.LogError("dieeeeeeeee");
+              Target.machine.Pause();
+              Target.isHurt = true;*/
+            if (PublicData.ins.battle_result == BattleResult.UnKnown)
+            {
+                AppMgr.GetCurrentApp<BattleApp>().AddSendMsg("cmd:over");
+
+                //Boss死亡
+                ArrayList list = HeroMgr.ins.GetHeros(true);
+                foreach(Hero h in list)
+                {
+                    h.AddBuffer<BufferGod>().SetLastTime(60f);
+                }
+            }
+        }
+    }
+    public override void OnPause()
+    {
+
+    }
+    public override void OnResume()
+    {
+
+    }
+    public override void OnEnter()
+    {
+        this.Enable = true;
+    }
+    public override void OnEvent(string type, object userData)
+    {
     }
     public override void OnExit()
     {
@@ -828,8 +909,8 @@ public class AttackState_1 : StateBase
     }
     public override void UpdateMSIdle()
     {
-      //  Target.isAttacking = false;
-        cd_attack--; 
+        //  Target.isAttacking = false;
+        cd_attack--;
     }
     public override void OnEvent(string type, object userData)
     {
@@ -846,7 +927,7 @@ public class AttackState_1 : StateBase
 
     public override void OnEvent(int type, object userData)
     {
-    
+
         if (type == Events.ID_BTN_ATTACK && this.Enable == false)
         {
             if (Target.isHurt) return;
@@ -872,14 +953,14 @@ public class AttackState_1 : StateBase
         {
             Target.isAttacking = false;
             this.Enable = false;
- 
-        //    Debug.Log(" 连招  1111 完成  ");
+
+            //    Debug.Log(" 连招  1111 完成  ");
 
             if (Target.atk_level > 1)
             {//下段招数
                 this.stack.PushSingleState(StateBase.Create<AttackState_2>(Target));
             }
-  
+
 
         }
         else if (this.Enable == true && Events.ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE == type)
@@ -931,7 +1012,7 @@ public class AttackState_2 : StateBase
     private bool isLaunch = false;
     public AttackState_2()
     {
-      //  Debug.Log(" 连招  222 待命");
+        //  Debug.Log(" 连招  222 待命");
     }
     private void CheckForTimeOut()
     {
@@ -970,7 +1051,7 @@ public class AttackState_2 : StateBase
     {
         if (Target.isHurt) return;
 
-        if (type == Events.ID_BTN_ATTACK && this.Enable==false)
+        if (type == Events.ID_BTN_ATTACK && this.Enable == false)
         {
             if (isLaunch) return;
             isLaunch = true;
@@ -992,7 +1073,7 @@ public class AttackState_2 : StateBase
         }
         else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
-          ///  Debug.Log("连招   222 完成");
+            ///  Debug.Log("连招   222 完成");
 
             Target.isAttacking = false;
             this.Enable = false;
@@ -1059,7 +1140,7 @@ public class AttackState_3 : StateBase
     int tick = 0;
     public AttackState_3()
     {
-     ///   Debug.Log("连招   3333 待命");
+        ///   Debug.Log("连招   3333 待命");
 
     }
     private void CheckForTimeOut()
@@ -1071,7 +1152,7 @@ public class AttackState_3 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-         //   Debug.Log("连招   333333 超时");
+            //   Debug.Log("连招   333333 超时");
         }
     }
     public override void UpdateMS()
@@ -1101,7 +1182,7 @@ public class AttackState_3 : StateBase
         {
             Target.isAttacking = false;
             this.Enable = false;
-         ///   Debug.Log("连招   33333 完成");
+            ///   Debug.Log("连招   33333 完成");
             this.stack.PopSingleState();
 
         }
@@ -1252,11 +1333,11 @@ public class SkillState : StateBase
         {
             s.UpdateMS();
         }
-        if( (Target as Entity)==HeroMgr.ins.self)
+        if ((Target as Entity) == HeroMgr.ins.self)
         {
-            SendCDInfomationToUI();    
+            SendCDInfomationToUI();
         }
-        
+
     }
     public override void OnEvent(string type, object userData)
     {
@@ -1270,7 +1351,7 @@ public class SkillState : StateBase
         }
     }
 
-  
+
 
     public void PushLevelUp(int idx)
     {
@@ -1303,8 +1384,8 @@ public class SkillState : StateBase
         //    //Debug.LogError("收到升级消息");
         //    //int idx = (int)userData;
         //    //
-            
-            
+
+
         //}
     }
     public void PushOnInterrupted(SkillBase who)
@@ -1430,7 +1511,7 @@ public class SkillState : StateBase
         {
             return false;
         }
-        
+
     }
     private SkillBase Find(ref ArrayList list, string name)
     {
@@ -1446,7 +1527,7 @@ public class SkillState : StateBase
 
     private void SendCDInfomationToUI()
     {
-       
+
         for (int i = 0; i < 3; i++)
         {
             if (((skill_stacks[i] as SkillStack).TopSkill()) != null)
@@ -1454,10 +1535,10 @@ public class SkillState : StateBase
                 Counter counter = (skill_stacks[i] as SkillStack).TopSkill().GetCd();
                 int level = (skill_stacks[i] as SkillStack).TopSkill().level;
                 EventDispatcher.ins.PostEvent(Event[i], counter);
-                EventDispatcher.ins.PostEvent(Event[i+3], level);
+                EventDispatcher.ins.PostEvent(Event[i + 3], level);
             }
         }
-        
+
     }
     ArrayList skill_stacks1 = new ArrayList();
     ArrayList skill_stacks2 = new ArrayList();

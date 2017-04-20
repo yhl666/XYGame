@@ -158,7 +158,7 @@ public sealed class BattleApp : AppBase
         while ((line = sr.ReadLine()) != null)
         {
             string str = line.ToString();
-         //   Debug.Log("Read From File:      " + str);
+            //   Debug.Log("Read From File:      " + str);
             this.AddRecvMsg(str.Substring(0, str.Length - 1));
         }
     }
@@ -240,6 +240,18 @@ public sealed class BattleApp : AppBase
         AutoReleasePool.ins.Clear(); // 没帧数结束 清理一次， 逻辑帧 Process内部已处理
     }
 
+    public void CalculateBattleResult()
+    {//计算战斗结果
+        EnemyBoss boss = EnemyMgr.ins.GetEnemy<EnemyBoss>();
+        if (boss != null && boss.current_hp <= 0)
+        {//boss 死亡
+            PublicData.ins.battle_result = BattleResult.Win;
+        }
+        else
+        {
+            PublicData.ins.battle_result = BattleResult.Lose;
+        }
+    }
     private void ProcessWithGameOver()
     {
         if (this.socket != null)
@@ -315,8 +327,7 @@ public sealed class BattleApp : AppBase
         }
         else
         {
-            ///  EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
-
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
         }
 
     }
@@ -434,6 +445,7 @@ public sealed class BattleApp : AppBase
         ModelMgr.DestroyInstance();
         EventDispatcher.DestroyInstance();
         AutoReleasePool.DestroyInstance();
+        AudioMgr.DestroyInstance();
         if (this.socket != null)
         {
             //   EventDispatcher.ins.RemoveEventListener(this, Event.ID_NET_DISCONNECT);

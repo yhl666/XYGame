@@ -395,7 +395,7 @@ public class BattleHero : Hero
                 this.AddBuffer(b);
                 return;
             }
-            this.machine.Pause();
+         //   this.machine.Pause();
 
             ///   EventDispatcher.ins.PostEvent(Events.ID_DIE, this);
 

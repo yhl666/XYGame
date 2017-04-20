@@ -839,6 +839,59 @@ public class Enemy3 : Enemy
 /// </summary>
 public class EnemyBoss : Enemy
 {
+   public  bool enable_ai=true;
+    public override void InitStateMachine()
+    {
+        //init state machine
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<DieStateBoss>(this));
+        }
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<AttackState_1>(this));
+        }
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<RunXZState>(this));
+
+        }
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<JumpState>(this));
+        }
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<FallState>(this));
+        }
+
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<StandState>(this));
+
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<HurtState>(this));
+        }
+        {
+            StateStack s = StateStack.Create();
+            this.machine.AddParallelState(s);
+            s.PushSingleState(StateBase.Create<SkillState>(this));
+        }
+    }
+    // override 
     public override void InitInfo()
     {
         this.prefabsName = "Prefabs/Hero2";
@@ -886,6 +939,7 @@ public class EnemyBoss : Enemy
 
     public override void AI_UpdateMSWithAI()
     {
+        if (enable_ai == false) return;
         if (target == null)
         {
             this.AI_SearchNearestTarget(HeroMgr.ins.GetHeros(), false);
@@ -916,6 +970,7 @@ public class EnemyBoss : Enemy
     }
     public override void UpdateMS()
     {
+ 
         if (levels.Count <= 0)
         {
             if (SkillBoss_3_Data.ins.call_times.Length > has_call.Length)

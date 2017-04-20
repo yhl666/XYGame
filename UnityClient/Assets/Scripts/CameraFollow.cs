@@ -64,7 +64,7 @@ public class CameraFollow : MonoBehaviour
         if (y < y_min) y = y_min;
         if (y > y_max) y = y_max;
 
-        float delta =  WIDTH / 100.0f / 8.0f;//推动滚动 的宽度值
+        float delta = WIDTH / 100.0f / 8.0f;//推动滚动 的宽度值
         if (Mathf.Abs(this.transform.position.x - x) > delta)
         {
             if (this.transform.position.x < x)
@@ -111,18 +111,24 @@ public class CameraFollow : MonoBehaviour
          , bg.transform.position.z);
     }
 
+
+    private void SharpX()
+    {
+
+    }
     /// <summary>
     /// 开始Hero特写
     /// </summary>
     public void ShowHeroFinal()
     {
+        is_skill = true;
         _enable = false;
-      ///  obj_bg.SetActive(false);
-    ///   obj_bg_static.SetActive(false);
+        ///  obj_bg.SetActive(false);
+        ///   obj_bg_static.SetActive(false);
         delta = 1.0f;
         Hero self = HeroMgr.ins.self;
         pos_pre = this.transform.position;
-        this.transform.position = new Vector3(self.x, self.GetReal25DY()+2.0f, this.transform.position.z);
+        this.transform.position = new Vector3(self.x, self.GetReal25DY() + 2.0f, this.transform.position.z);
         UIBattleRoot.ins.Hide();
 
         FadeOut.Create(obj_bg_static.GetComponent<SpriteRenderer>(), 1.0f);
@@ -130,27 +136,214 @@ public class CameraFollow : MonoBehaviour
     }
     public void HideHeroFinal()
     {
+        is_skill = false;
         _enable = true;
         UIBattleRoot.ins.Show();
         this.transform.position = pos_pre;
-      //  obj_bg.SetActive(true);
-      //  obj_bg_static.SetActive(true);
+        //  obj_bg.SetActive(true);
+        //  obj_bg_static.SetActive(true);
         this.GetComponent<Camera>().orthographicSize = orthographicSize;
         FadeIn.Create(obj_bg_static.GetComponent<SpriteRenderer>(), 0f);
         FadeIn.Create(obj_bg.GetComponent<SpriteRenderer>(), 0f);
+    }
+
+    public void ShowBossDie()
+    {
+        _enable = false;
+        delta = 1.0f;
+        UIBattleRoot.ins.Hide();
+        TimerQueue.ins.AddTimer(0.025f, () =>
+           {
+               delta -= 0.01f;
+               this.GetComponent<Camera>().orthographicSize = orthographicSize * delta;
+           }, 30);
+
+        if (PublicData.ins.battle_result == BattleResult.Win)
+        {
+            EnemyBoss boss = EnemyMgr.ins.GetEnemy<EnemyBoss>();
+            boss.machine.Pause();
+            boss.enable_ai = false;
+            boss.isHurt = true;
+            boss.is_spine_loop = true;
+            Config.fps_delay = 0.1f;
+            ///    Utils.SetTargetFPS(10);
+            // transform.localPosition = new Vector3(23f, transform.localPosition.y, transform.localPosition.z);
+            float x = transform.localPosition.x;
+            Hero self = HeroMgr.ins.self;
+            //  self.x = 23f;
+            float selfx = self.x;//23f;
+            //   MoveTo.Create(this.gameObject, 0.5f / 23f * Mathf.Abs(selfx - boss.x), boss.x, transform.localPosition.y).OnComptele = () =>
+            if (Mathf.Abs(selfx - boss.x) > 5f)
+            {//距离大于5 才会滚动
+                MoveTo.Create(this.gameObject, 0.5f / 23f * Mathf.Abs(selfx - boss.x), boss.x, transform.localPosition.y).OnComptele = () =>
+                {
+                    //  HeroMgr.ins.self.ani_force = "6230_0";
+                    //   HeroMgr.ins.self.is_spine_loop = true;
+
+                    CallFunc.Create(this.gameObject, 1f, null
+                        ).OnComptele = () =>
+                        {
+                            TimerQueue.ins.AddTimer(0.025f, () =>
+                            {
+                                delta += 0.01f;
+                                this.GetComponent<Camera>().orthographicSize = orthographicSize * delta;
+                            }, 30);
+                            //恢复正常
+                            Config.fps_delay = 0.01f;
+                            MoveTo.Create(this.gameObject, 0.5f / 23f * Mathf.Abs(selfx - boss.x), x, transform.localPosition.y).OnComptele = () =>
+                            {//滚回视角
+
+
+                                CallFunc.Create(this.gameObject, 2, null
+                         ).OnComptele = () =>
+                         {//2秒后 执行正常结束游戏逻辑
+                             UIBattleRoot.ins.Show();
+
+                             AppMgr.GetCurrentApp<BattleApp>().SetGameOver();
+                         };
+                            };
+                        };
+                };
+            }
+            else
+            {//不滚动视角
+                CallFunc.Create(this.gameObject, 1, null
+                    ).OnComptele = () =>
+                    {
+                        //   HeroMgr.ins.self.ani_force = "6230_0";
+                        //  HeroMgr.ins.self.is_spine_loop = true;
+
+                        //恢复正常
+                        Config.fps_delay = 0.01f;
+                        CallFunc.Create(this.gameObject, 1f, null
+        ).OnComptele = () =>
+        {
+            TimerQueue.ins.AddTimer(0.025f, () =>
+            {
+                delta += 0.01f;
+                this.GetComponent<Camera>().orthographicSize = orthographicSize * delta;
+            }, 30);
+
+        };
+                        CallFunc.Create(this.gameObject, 2, null
+                 ).OnComptele = () =>
+                 {//2秒后 执行正常结束游戏逻辑
+                     AppMgr.GetCurrentApp<BattleApp>().SetGameOver();
+                     UIBattleRoot.ins.Show();
+
+                 };
+                    };
+            }
+        }
+        else if (PublicData.ins.battle_result == BattleResult.Lose)
+        {
+            Hero boss = null;// EnemyMgr.ins.GetEnemy<EnemyBoss>();
+
+            Config.fps_delay = 0.1f;
+
+            float x = transform.localPosition.x;
+            Hero self = HeroMgr.ins.self;
+            foreach (Hero h in HeroMgr.ins.GetHeros(true))
+            {
+                if (h.current_hp <= 0)
+                {
+                    boss = h;
+                }
+            }
+            //  self.x = 23f;
+            float selfx = self.x;//23f;
+            if (Mathf.Abs(selfx - boss.x) > 5f)
+            {//距离大于5 才会滚动
+                MoveTo.Create(this.gameObject, 0.5f / 23f * Mathf.Abs(selfx - boss.x), boss.x, transform.localPosition.y).OnComptele = () =>
+                {
+                    CallFunc.Create(this.gameObject, 2, null
+                        ).OnComptele = () =>
+                        {
+                            TimerQueue.ins.AddTimer(0.025f, () =>
+                            {
+                                delta += 0.01f;
+                                this.GetComponent<Camera>().orthographicSize = orthographicSize * delta;
+                            }, 30);
+                            //恢复正常
+                            Config.fps_delay = 0.01f;
+                            MoveTo.Create(this.gameObject, 0.5f / 23f * Mathf.Abs(selfx - boss.x), x, transform.localPosition.y).OnComptele = () =>
+                            {//滚回视角
+                                CallFunc.Create(this.gameObject, 1, null
+                         ).OnComptele = () =>
+                         {//2秒后 执行正常结束游戏逻辑
+
+                             AppMgr.GetCurrentApp<BattleApp>().SetGameOver();
+                             UIBattleRoot.ins.Show();
+
+                         };
+                            };
+                        };
+                };
+            }
+            else
+            {//不滚动视角
+                CallFunc.Create(this.gameObject, 2, null
+                    ).OnComptele = () =>
+                    {
+                        //恢复正常  View 也是视图也是2秒 后隐藏
+                        Config.fps_delay = 0.01f;
+                        TimerQueue.ins.AddTimer(0.025f, () =>
+                        {
+                            delta += 0.01f;
+                            this.GetComponent<Camera>().orthographicSize = orthographicSize * delta;
+                        }, 30);
+                        CallFunc.Create(this.gameObject, 1, null
+                 ).OnComptele = () =>
+                 {//2秒后 执行正常结束游戏逻辑
+                     AppMgr.GetCurrentApp<BattleApp>().SetGameOver();
+                     UIBattleRoot.ins.Show();
+
+                 };
+                    };
+            }
+
+
+
+
+
+        }
+        /*  MoveTo.Create(this.gameObject, 0.0001f, 23, transform.localPosition.y).OnComptele = () =>
+           {
+               MoveTo.Create(this.gameObject, 0.5f, x, transform.localPosition.y).OnComptele = () =>
+               {
+                   CallFunc.Create(this.gameObject, 1, null
+                       ).OnComptele = () =>
+                   {
+                       //   boss.SetInValid();
+                       //恢复正常
+                       Config.fps_delay = 0.01f;
+                       CallFunc.Create(this.gameObject, 2, null
+                ).OnComptele = () =>
+                {//2秒后 执行正常结束游戏逻辑
+
+                    AppMgr.GetCurrentApp<BattleApp>().SetGameOver();
+                };
+
+
+                   };
+               };
+           };
+          */
     }
 
     void Update()
     {
         if (_enable == false)
         {
-            if (this.GetComponent<Camera>().orthographicSize > 2.0f)
+            if (is_skill && this.GetComponent<Camera>().orthographicSize > 2.0f)
             {
                 delta -= 0.01f;
-                this.GetComponent<Camera>().orthographicSize =  orthographicSize*delta ;
+                this.GetComponent<Camera>().orthographicSize = orthographicSize * delta;
             }
         }
     }
+    bool is_skill = false;
+
     float delta = 1.0f;
     Vector3 pos_pre;
     GameObject obj_bg = null;

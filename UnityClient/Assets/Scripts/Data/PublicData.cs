@@ -8,7 +8,13 @@ using System.Collections;
 using GameBox.Service.GiantLightFramework;
 using GameBox.Framework;
 using GameBox.Service.ByteStorage;
+public enum BattleResult
+{
+    UnKnown,
+    Win,
+    Lose,
 
+}
 public class PublicData : object
 {
     public static PublicData ins
@@ -18,7 +24,7 @@ public class PublicData : object
             return GetInstance();
         }
     }
-
+    public BattleResult battle_result = BattleResult.UnKnown;
     private static PublicData _ins = null;
 
     public static PublicData GetInstance()
@@ -29,6 +35,7 @@ public class PublicData : object
         }
         return _ins;
     }
+    public int left_revive_times = 5;//剩余复活次数
     public static void DestroyInstance()
     {
         _ins = null;
@@ -36,8 +43,8 @@ public class PublicData : object
 
     private PublicData()
     {
-        if(Config.SERVER_IP == "127.0.0.1")
-       {
+        if (Config.SERVER_IP == "127.0.0.1")
+        {
             //PVE 副本测试修改
             //测试技能 buffer 等 1个玩家打，对应战斗服BattleServerPVETEST.exe
             //不需要测试的话直接屏蔽该构造器
@@ -49,7 +56,7 @@ public class PublicData : object
             self_user.no = 1;
             user_pvp_other.no = 2;
         }
-        
+
 
         {
 
@@ -94,14 +101,14 @@ public class PublicData : object
     public bool IS_right = false;//right
     public bool IS_jump = false;//jump
     public bool IS_atk = false;//atk
-    public int IS_s1 = 0;//skill 1
     public bool IS_stand = false;//stand
+    public int IS_s1 = 0;//skill 1
     public int IS_revive_point = 0;
     public FrameCustomsOpt IS_opt = FrameCustomsOpt.UnKnown; // 该数据不会上传
 
 
     public IGiantGame game = null;
-
+    
 
     public string client_server_room_info = "";
     public bool is_client_server = false;

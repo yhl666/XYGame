@@ -307,6 +307,7 @@ public sealed class DirInput : Model
 
             if (isTouch == true)
             {
+                if (GetCurrentMousePositionX() > Screen.width / 2) break;
                 if (GetCurrentMousePositionX() != pos_began.x && GetCurrentMousePositionY() != pos_began.y)
                 {
                     this.OnTouchMoved(GetCurrentMousePositionX(), GetCurrentMousePositionY());

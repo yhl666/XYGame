@@ -174,12 +174,24 @@ public class ViewEntity : View
 
         if (type == Events.ID_DIE)
         {
-            this.obj.SetActive(false);
+            if (PublicData.ins.left_revive_times > 0)
+            {
+                this.obj.SetActive(false);
+            }
+            else
+            {
+                CallFunc.Create(this.obj, 2, () =>
+                    {
+                        this.obj.SetActive(false);
+
+                    });
+            }
         }
         else if (type == Events.ID_REVIVE)
         {
             this.obj.SetActive(true);
         }
+
     }
     private Transform shadow = null;
     public override void UpdateMS()
@@ -190,14 +202,14 @@ public class ViewEntity : View
             return;
         }
 
-        if(m.IsType<BattleHero>())
+        if (m.IsType<BattleHero>())
         {
             if (shadow == null)
             {
                 shadow = obj.transform.FindChild("shadow").transform;
-              shadow.parent = null;
+                shadow.parent = null;
             }
-         shadow.position = new Vector3(m.x, m.z +m.y*0.05f, shadow.position.z);
+            shadow.position = new Vector3(m.x, m.z + m.y * 0.05f, shadow.position.z);
         }
         this.obj.name = m.no.ToString();
         if (Config.VIEW_MODE == ViewMode.M25D)
@@ -400,7 +412,7 @@ public class ViewEnemy : View
         {
             name = m.ani_stand;
         }
-
+        spine.loop = m.is_spine_loop;
         spine.AnimationName = name;
 
         if (m.delta_hp != 0)
@@ -471,7 +483,7 @@ public class ViewBuffer : View
         ani.ani.UpdateMS();
 
         //  ani.gameObject.transform.position = new Vector3(m.x, m.y, ani.gameObject.transform.position.z);
-        ani.gameObject.transform.position = new Vector3(m.target.x +  m.delta_xy.x, m.target.GetReal25DY() + m.delta_xy.y, ani.gameObject.transform.position.z);
+        ani.gameObject.transform.position = new Vector3(m.target.x + m.delta_xy.x, m.target.GetReal25DY() + m.delta_xy.y, ani.gameObject.transform.position.z);
 
     }
     private GameObject view_bullet;

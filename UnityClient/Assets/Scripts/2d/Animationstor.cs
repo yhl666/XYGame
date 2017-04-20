@@ -45,10 +45,10 @@ public class Animationstor : MonoBehaviour
 
         }
 
-        ani.target = this.GetComponent<SpriteRenderer>();
+        ani.target_2d = this.GetComponent<SpriteRenderer>();
         ani.perFrame = FrameDelay;
 
-        var redderer = ani.target.GetComponent<Renderer>();
+        var redderer = ani.target_2d.GetComponent<Renderer>();
         if (redderer != null)
         {
             redderer.sortingOrder = 2000;

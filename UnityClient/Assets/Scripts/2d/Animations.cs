@@ -24,7 +24,30 @@ public sealed class Animations : GAObject
         ret.name = name;
         return ret;
     }
-    public SpriteRenderer target = null;
+    public void SetTarget(SpriteRenderer sp)
+    {
+        this.target_2d = sp;
+    }
+    public void SetTarget(UnityEngine.UI.Image img)
+    {
+        this.target_ui = img;
+    }
+    private void SetSprite(Sprite sp)
+    {
+        if(target_ui!=null)
+        {
+            target_ui.sprite = sp;
+        }
+        if(target_2d!= null)
+        {
+            target_2d.sprite = sp;
+        }
+    }
+    public SpriteRenderer target_2d = null;
+    public UnityEngine.UI.Image target_ui = null;
+
+  //  public SpriteRenderer target = null;
+
     public int current = 0;
     public int perFrame = 3;
     public int index = 0;
@@ -62,8 +85,7 @@ public sealed class Animations : GAObject
         if (current >= perFrame)
         {
             SpriteFrame frame = (frames[index++] as SpriteFrame);
-
-            target.sprite = frame.sprite;
+            this.SetSprite(frame.sprite);
             current = 0;
         }
     }
@@ -141,14 +163,14 @@ public sealed class Animations : GAObject
         }
 
         ret.frames = frames;
-        ret.target = target;
+        ret.target_2d = target;
         return ret;
     }
 
     public static Animations Create(SpriteRenderer target = null)
     {
         Animations ret = new Animations();
-        ret.target = target;
+        ret.target_2d = target;
         return ret;
     }
 

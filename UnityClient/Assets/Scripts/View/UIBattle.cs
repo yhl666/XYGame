@@ -205,6 +205,10 @@ public sealed class UI_joystick : ViewUI
          {
              this.btn.gameObject.SetActive(true);
          }*/
+
+
+
+
     }
     public override bool Init()
     {
@@ -274,7 +278,6 @@ public sealed class UI_joystick : ViewUI
 
             PublicData.ins.IS_stand = true;
         };
-
         return true;
     }
 
@@ -303,14 +306,14 @@ public sealed class UI_skills : ViewUI
     {
         if (type == Events.ID_SKILL_LEVEL_IS_UP)
         {
-            
+
             ArrayList list = (userData as ArrayList);
 
             for (int i = 0; i < list.Count; i++)
             {
                 if ((bool)list[i] == true)
                 {
-                    ShowButtonByNumber(i+1);
+                    ShowButtonByNumber(i + 1);
                 }
             }
         }
@@ -391,10 +394,10 @@ public sealed class UI_skills : ViewUI
         }
         if (type == Events.ID_SKILL1_LEVEL_INFOMATION)
         {
-            
-            int level = (int)(userData );
-            skill1_level.text ="LV:" +  level.ToString();
-            
+
+            int level = (int)(userData);
+            skill1_level.text = "LV:" + level.ToString();
+
         }
         if (type == Events.ID_SKILL2_LEVEL_INFOMATION)
         {
@@ -405,15 +408,15 @@ public sealed class UI_skills : ViewUI
         {
             int level = (int)(userData);
             skill3_level.text = "LV:" + level.ToString();
-            if (level==3)
+            if (level == 3)
             {
-            //    Debug.LogError(level);    
+                //    Debug.LogError(level);    
             }
-            
+
         }
         if (type == Events.ID_CHANGE_SKILL_ICON)
         {
-            this.btn_skill1.GetComponent<Image>().sprite=SkillImagePath.ins.skill1;
+            this.btn_skill1.GetComponent<Image>().sprite = SkillImagePath.ins.skill1;
             this.btn_skill2.GetComponent<Image>().sprite = SkillImagePath.ins.skill2;
             this.btn_skill3.GetComponent<Image>().sprite = SkillImagePath.ins.skill3;
         }
@@ -539,14 +542,14 @@ public sealed class UI_skills : ViewUI
             HideAllLevelUpButton();
             PublicData.ins.IS_opt = FrameCustomsOpt.level_up3;
 
- 
+
         });
         this.btn_skill4_levelup.onClick.AddListener(() =>
         {
             PublicData.ins.IS_opt = FrameCustomsOpt.level_up4;
             HideAllLevelUpButton();
         });
-        
+
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL_LEVEL_IS_UP);
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL1_COOL_INFOMATION);
         EventDispatcher.ins.AddEventListener(this, Events.ID_SKILL2_COOL_INFOMATION);
@@ -603,7 +606,7 @@ public sealed class UI_heroInfo : ViewUI
             if (m == null) return;
 
         }
-        txt_info1.text = m.no + " LV:" + (m.level+1);
+        txt_info1.text = m.no + " LV:" + (m.level + 1);
         txt_exp1.text = m.current_exp + "/" + m.exp;
         txt_hp1.text = m.current_hp + "/" + m.hp;
         //  txt_mp1.text = m.current_mp + "/" + m.mp;
@@ -635,7 +638,7 @@ public sealed class UI_heroInfo : ViewUI
         if (m2 != null)
         {
 
-            txt_info2.text = m2.no + " LV:" + (m2.level+1);
+            txt_info2.text = m2.no + " LV:" + (m2.level + 1);
             txt_exp2.text = m2.current_exp + "/" + m2.exp;
             txt_hp2.text = m2.current_hp + "/" + m2.hp;
             //  txt_mp2.text = m2.current_mp + "/" + m2.mp;
@@ -783,7 +786,7 @@ public sealed class UI_fpsms : ViewUI
         _fps += 1.0f / Time.deltaTime;
         if (counter >= 10)
         {
-            txt.text = string.Format(DATA.UI_FPSMS, (_fps / 10.0f).ToString("0"), +PublicData.GetInstance().ms);
+            txt.text = "剩余可死亡次数:" + PublicData.ins.left_revive_times + "     " + string.Format(DATA.UI_FPSMS, (_fps / 10.0f).ToString("0"), +PublicData.GetInstance().ms);
             _fps = 0.0f;
             counter = 0;
         }
@@ -861,11 +864,115 @@ public sealed class UI_pvpresult : ViewUI
     {
 
     }
+    int index_ani = 0;
+    GameObject animation = null;
+    bool has_run = false;
+    private void RunAnimationNext()
+    {
+        if (index_ani >= 5)
+        {
+            this.RunOtherWin();
+            return;
+        }
+        string[] plists = { "hd/enemies/enemy_518/bullet/enemy_518_bul_518023/enemy_518_bul_518023.plist",
+                              "hd/enemies/enemy_518/bullet/enemy_518_bul_518024/enemy_518_bul_518024.plist",
+                              "hd/enemies/enemy_518/bullet/enemy_518_bul_518024/enemy_518_bul_518024.plist",
+                              "hd/enemies/enemy_518/bullet/enemy_518_bul_518023/enemy_518_bul_518023.plist",
+                              "hd/enemies/enemy_518/bullet/enemy_518_bul_518023/enemy_518_bul_518023.plist","","",""};
+
+        float[] posx = { Screen.width * 0.3f, Screen.width * 0.7f, Screen.width * 0.8f, Screen.width * 0.4f, Screen.width * 0.5f, };
+        float[] posy = { Screen.height * 0.3f, Screen.height * 0.7f, Screen.height * 0.2f, Screen.height * 0.6f, Screen.height * 0.5f, };
+
+        animation = PrefabsMgr.Load("Prefabs/AnimationsUI");
+        animation.transform.parent = this.panel_effects.transform;
+        animation.GetComponent<AnimationstorUI>().file = plists[index_ani];
+        var ani = animation.GetComponent<AnimationstorUI>();
+        ani.FrameDelay = 2;
+        ani.Init();
+        ani.ani.Run();
+
+        ani.ani.SetLoop(1);
+        //   animation.GetComponent<RectTransform>().sizeDelta = new Vector2(100f, 200f);
+        animation.transform.position = new Vector3(posx[index_ani], posy[index_ani], 0);
+
+        animation.transform.localScale = new Vector3(5f, 5f, 5f);
+        if (index_ani < 5)
+        {
+            CallFunc.Create(panel, 0.5f, () =>
+                {
+                    //  GameObject.Destroy(animation);
+                    this.RunAnimationNext();
+                });
+        }
+        else
+        {
+
+        }
+        index_ani++;
+    }
+    bool has_move = false;
+    private void RunOtherWin()
+    {
+        if (has_move) return;
+        has_move = true;
+        GameObject obj_title = panel_win.transform.FindChild("img_title").gameObject;
+        GameObject obj_hero = panel_win.transform.FindChild("img_hero").gameObject;
+        FadeIn.Create(obj_hero, 1f);
+        ScaleTo.Create(obj_title, 0.05f, 0.7f, 0.7f).OnComptele = () =>
+        {
+            ScaleTo.Create(obj_title, 0.01f, 0.9f, 0.9f).OnComptele = () =>
+            {
+                ScaleTo.Create(obj_title, 0.01f, 1.2f, 1.2f).OnComptele = () =>
+                {
+                    ScaleTo.Create(obj_title, 0.03f, 1f, 1f).OnComptele = () =>
+                    {
+
+                    };
+                };
+            };
+        };
+    }
+
+    private void RunOtherLose()
+    {
+        if (has_move) return;
+        has_move = true;
+        GameObject obj_title = panel_lose.transform.FindChild("img_title").gameObject;
+        GameObject obj_hero = panel_lose.transform.FindChild("img_hero").gameObject;
+        FadeIn.Create(obj_hero, 1f);
+        ScaleTo.Create(obj_title, 0.05f, 0.7f, 0.7f).OnComptele = () =>
+        {
+            ScaleTo.Create(obj_title, 0.01f, 0.9f, 0.9f).OnComptele = () =>
+            {
+                ScaleTo.Create(obj_title, 0.01f, 1.2f, 1.2f).OnComptele = () =>
+                {
+                    ScaleTo.Create(obj_title, 0.03f, 1f, 1f).OnComptele = () =>
+                    {
+
+                    };
+                };
+            };
+        };
+    }
     public override void OnEvent(int type, object userData)
     {
         if (type == Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW)
         {
             this.panel.SetActive(true);
+
+            if (PublicData.ins.battle_result == BattleResult.Win)
+            {
+                panel_win.SetActive(true);
+                panel_effects.SetActive(true);
+                RunAnimationNext();
+                AudioMgr.ins.PostEvent(AudioEvents.Events.BATTLE_WIN,  false);
+            }
+            else if (PublicData.ins.battle_result == BattleResult.Lose)
+            {
+                AudioMgr.ins.PostEvent(AudioEvents.Events.BATTLE_LOSE, false);
+                panel_lose.SetActive(true);
+                this.RunOtherLose();
+            }
         }
 
         else if (type == Events.ID_BATTLE_PVP_RETULT)
@@ -888,6 +995,9 @@ public sealed class UI_pvpresult : ViewUI
         this.btn_return = panel.transform.FindChild("btn_return").GetComponent<Button>();
         this.btn_video = panel.transform.FindChild("btn_video").GetComponent<Button>();
         this.txt_result = panel.transform.FindChild("txt_result").GetComponent<Text>();
+        this.panel_win = panel.transform.FindChild("panel_win").gameObject;
+        this.panel_lose = panel.transform.FindChild("panel_lose").gameObject;
+        this.panel_effects = panel.transform.FindChild("panel_effects").gameObject;
 
         this.btn_return.onClick.AddListener(() =>
          {
@@ -918,14 +1028,26 @@ public sealed class UI_pvpresult : ViewUI
         this.panel.SetActive(false);
         this.btn_video.gameObject.SetActive(false);
         this.btn_return.gameObject.SetActive(false);
-        this.txt_result.text = "等待服务器响应...";
+        this.txt_result.text = "";//"等待服务器响应...";
+
+        panel_lose.SetActive(false);
+        panel_win.SetActive(false);
+        panel_effects.SetActive(false);
+
         return true;
     }
+
+    GameObject ani_1;
+
+
 
     GameObject panel = null;
     Button btn_return = null;
     Button btn_video = null;
     Text txt_result = null;
+    GameObject panel_effects;
+    GameObject panel_win;
+    GameObject panel_lose;
 }
 
 public sealed class UI_buffers : ViewUI
@@ -1266,7 +1388,7 @@ public sealed class UI_die : ViewUI
         ///  if (PublicData.ins.is_pve) return;
         if (type == Events.ID_DIE)
         {
-            if (userData as Hero != HeroMgr.ins.self)
+            if (userData as Hero != HeroMgr.ins.self || PublicData.ins.left_revive_times <= 0)
             {
                 return;
             }
@@ -1355,12 +1477,18 @@ public sealed class UI_die : ViewUI
 
 public class UI_dirInput : ViewUI
 {
-    public override void OnEvent(string type, object userData)
+    bool over = false;
+    public override void OnEvent(int type, object userData)
     {
-
+        if (type == Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW)
+        {
+            ui.SetActive(false);
+            over = true;
+        }
     }
     public override void Update()
     {
+        if (over) return;
         base.Update();
         //  this.ui.SetActive(_enable);
 
@@ -1427,6 +1555,8 @@ public class UI_dirInput : ViewUI
         this.img_bg = this.ui.transform.FindChild("DirectionInput/bg").GetComponent<Image>();
         this.img_arrow = this.ui.transform.FindChild("DirectionInput/bg/arrow").GetComponent<Image>();
         this.img_center = this.ui.transform.FindChild("DirectionInput/center").GetComponent<Image>();
+
+        EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
 
         // EventDispatcher.ins.AddEventListener(this, "ok");
         return true;
