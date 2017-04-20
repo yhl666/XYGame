@@ -3,27 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '32317214851c9f6cd73c531393dae8f5b5eaeb01'
-    oldFile: !uuid '25e1b0d0719b66ec614aa70e24f4297d210fedd5'
+    newFile: !uuid 'c2dba9478a9070bbb40826bc620eb9593d4c4282'
+    oldFile: !uuid '32317214851c9f6cd73c531393dae8f5b5eaeb01'
   /UnityClient/Assets:
-    newFile: !uuid '460e425b2d973f19ef25401ffbbc1a5d43f605d7'
-    oldFile: !uuid 'd43d9ab0e580c3e1dbc2aba31fa167c9e2b37ef4'
+    newFile: !uuid 'e58f02a88f49d323955073e7d385f30f1ad41f43'
+    oldFile: !uuid '460e425b2d973f19ef25401ffbbc1a5d43f605d7'
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'e2d16ee3dfb75eb7e7c7fae9dea840a8209bd670'
-    oldFile: !uuid 'e1c04a04aa64dfb2b18a05934148d0aa0a453c74'
+    newFile: !uuid '8526d883d1c0487ef8b693a941b52a76ce810f15'
+    oldFile: !uuid 'e2d16ee3dfb75eb7e7c7fae9dea840a8209bd670'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '7c0f7def8db6a50404cf1db305f80a112d0d1d6f'
-    oldFile: !uuid 'f44a154b5052f2dc57dee8362294cfc7c2f1a5f9'
+    newFile: !uuid '9755bc300d8daf802383721e42a0f6eb8ff3addf'
+    oldFile: !uuid '7c0f7def8db6a50404cf1db305f80a112d0d1d6f'
   /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'f3c15bd260d6aa7148f54c68d6dfa19cc6ffc3d8'
-    oldFile: !uuid '8f3afe22ecf4ceb8ac7fa61766f38d02574fd86e'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_skill.prefab:
-    newFile: !uuid '3191b7b48991ad617da2eb4e56bfb29e0c98cf82'
-    oldFile: !uuid '808b55a27d79dbe860729f5a7a20d0405f92e1bb'
-  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_skill.prefab.meta:
-    newFile: !uuid 'd9e39abb7c5707c453f11055cf0c57c3c8452361'
-    oldFile: !uuid '3f4c2ef3b4e25f4ea6998502e05353543f460125'
-gitCommitId: !uuid 'c0e0514ea0875ca09f67ce571a8d46b7544698e9'
+    newFile: !uuid '82f908234d0d5609f2d01061c4b9b9053984cb60'
+    oldFile: !uuid 'f3c15bd260d6aa7148f54c68d6dfa19cc6ffc3d8'
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_tower.prefab:
+    newFile: !uuid 'cabed4680218ba08526babe9ca74a09b4abd7b95'
+    oldFile: !uuid 'f3b8749f66e1d99a06aa710f313fba186c4556f8'
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_tower.prefab.meta:
+    newFile: !uuid 'c5ea42b699f6e9653395e7dd5e25cc0f9f12a680'
+    oldFile: !uuid '8b6538d374197ae6140ae4beec2f97b00394831f'
+gitCommitId: !uuid '64c67ff7404b72a04a03b6247b37fabdde08b1ef'
 renames: {
   }
-revisionId: 881
+revisionId: 882
