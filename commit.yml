@@ -3,27 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'a58cbe806327bff4f2727c4d1b29036c4ef71de3'
-    oldFile: !uuid 'd737cc1b98c4e30913a8fc56d967f6fcab14a3e8'
+    newFile: !uuid 'b7a31d569eec92e2aaaa9659555e1086b770036b'
+    oldFile: !uuid 'a58cbe806327bff4f2727c4d1b29036c4ef71de3'
   /UnityClient/Assets:
-    newFile: !uuid 'b9e349ab50ef8318831b09ade66de23f21aff2e1'
-    oldFile: !uuid 'e2a95da05b41177eec1272ac8b569fbf624c539e'
+    newFile: !uuid '64b828a685bed1dd62bc215993214a3ed6e7469a'
+    oldFile: !uuid 'b9e349ab50ef8318831b09ade66de23f21aff2e1'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '4f85f6dc661125c78ffdb5fa1cdcf917f9b3953d'
-    oldFile: !uuid 'f4464bc2ff6e848f247c24c2e517550504b06049'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'fd0af33dc1fb6d8db92963193f3629aea2890aef'
-    oldFile: !uuid '51e0bb2ff0fec05b9053f5329f4e7d121e45a854'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid 'a23fbab6bc766f2d56e012973e2454854cbc0cb4'
-    oldFile: !uuid 'd62eb8a5fb41fc61c55aa52d9666ef637ac0f358'
-  /UnityClient/Assets/Resources/Prefabs/data/HpPacks:
-    newFile: !uuid '0d4039b868a2dd8ab14dee730a7f65de6bc7cfe7'
-    oldFile: !uuid '763178c594a14193e61bc738d9c5eb283241062a'
-  /UnityClient/Assets/Resources/Prefabs/data/HpPacks/HpPack1.prefab:
-    newFile: !uuid '60c43359edf690334c5b3a4b10bc847b0a69aa48'
-    oldFile: !uuid '6a7409959be284051d83b12c9c822d45f0d581e5'
-gitCommitId: !uuid '2ab42fdfed60a4a0a493b300567d9b379b74352e'
+    newFile: !uuid 'bed9cb266e4a6930b885dd556fcc3f7e2ddc21da'
+    oldFile: !uuid '4f85f6dc661125c78ffdb5fa1cdcf917f9b3953d'
+  /UnityClient/Assets/Resources/Sprites:
+    newFile: !uuid 'd196dc0fc33620dcac3d39e368cee142c71c2022'
+    oldFile: !uuid 'd4efb4154a8e810da24ca093ef0da1f1c5afa5c0'
+  /UnityClient/Assets/Resources/Sprites/logo.png:
+    newFile: !uuid '5a1dfa5564a6f1ad667abf26d52f75f47e5166ff'
+    oldFile: null
+gitCommitId: !uuid 'ef844696e0209fe4b3734e412d68d7cd14417398'
 renames: {
   }
-revisionId: 890
+revisionId: 891
