@@ -3,24 +3,42 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'bbc1be32f917665689be7b7f5575a2e27e371b7b'
-    oldFile: !uuid '5c96369de14fbee8b848676005211a783af21d74'
+    newFile: !uuid '90c557c72d4bc1038a42221883fcf7f8c32f40da'
+    oldFile: !uuid 'bbc1be32f917665689be7b7f5575a2e27e371b7b'
   /UnityClient/Assets:
-    newFile: !uuid '7e2561e56736911bb8de929cc23473d51bd077b8'
-    oldFile: !uuid '4f45619c01d85c10d2e60ab20134e457b93a8406'
+    newFile: !uuid '8e4c232c2e587ce11c90a67be17b0303cad9b068'
+    oldFile: !uuid '7e2561e56736911bb8de929cc23473d51bd077b8'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '6ccb1879403b805ce47adfd80c85c83f88a75988'
-    oldFile: !uuid '40cf619c9a2569d1179b710ac332bb6b78ee54e3'
+    newFile: !uuid '082d033aad376db2bbb53c4c9a9c51889ad01b2b'
+    oldFile: !uuid '6ccb1879403b805ce47adfd80c85c83f88a75988'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '293ec4835567914be5dac66e674ae490833fe0ef'
-    oldFile: !uuid '83ae31a5ada59e4cb49c6b8dbe5f62b3612d78c8'
-  /UnityClient/Assets/Resources/Prefabs/data:
-    newFile: !uuid 'd62eb8a5fb41fc61c55aa52d9666ef637ac0f358'
-    oldFile: !uuid '002545cc77a64b7c8d6b4dd9de41ce8a1497a78b'
-  /UnityClient/Assets/Resources/Prefabs/data/技能属性形态1.prefab:
-    newFile: !uuid '41c59d9712922db3d284712d02fe1f9b3d40c33a'
-    oldFile: !uuid 'f2f1b6ae3e8c6fa34556c54e0cc9d3b35ba6f107'
-gitCommitId: !uuid '7c5cc21b3f239f26f7815552dbef11293c568e9f'
+    newFile: !uuid '145f057fb41dd75dde77b22bc0ae4f2d8afca4e5'
+    oldFile: !uuid '293ec4835567914be5dac66e674ae490833fe0ef'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid '7ba1eac253188b533f17a802d545b5a639cb1c63'
+    oldFile: !uuid '82f908234d0d5609f2d01061c4b9b9053984cb60'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
+    newFile: !uuid '15c4e6a0aa558e7b8762e83447d63c3c4edf2473'
+    oldFile: !uuid '30d8167615a206cc4dc87437f6060223a1ed7af5'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_joystick.prefab:
+    newFile: !uuid 'cdd27bc4d889fe6dec1d28fdc2f24a1e890bf165'
+    oldFile: !uuid 'ebd7191e8db361185c70548d93ea605620118b70'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_joystick.prefab.meta:
+    newFile: !uuid 'f3ce1d77ea6303cd2e8bf2c7d2fd44da9b40d9ee'
+    oldFile: !uuid '61de87a9763131b95244fe625236de373c8c863e'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab:
+    newFile: !uuid 'd2bc85f12067b2e3a8774bef34840d8dfe8d045b'
+    oldFile: !uuid '6ce94fa6b90abebf097f4772a7c8acd3723933b1'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_skill.prefab.meta:
+    newFile: !uuid '0577cae5c75a19b070a331792d1cc452ecf521a3'
+    oldFile: !uuid '7fb68ccf41228f51aad944343f62879889ed8883'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_tower.prefab:
+    newFile: !uuid '23a320d259464a6879ae7bdb4ee60acd807fc572'
+    oldFile: !uuid 'af6a5276941e4d79c9b4d690a06e0ca39b2032c1'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_tower.prefab.meta:
+    newFile: !uuid 'd27fc7e132a68183ebb49ea653f29758944cde4d'
+    oldFile: !uuid 'f11663ff28010be99f7e7ed03b9857f7ac28685a'
+gitCommitId: !uuid '1bf81783ba115ed5ee5d759de5eeafdd21f27e36'
 renames: {
   }
-revisionId: 884
+revisionId: 885
