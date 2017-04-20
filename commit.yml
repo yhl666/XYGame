@@ -3,24 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'eb5a82550b2b95e2ee692c35e928bed003aa3be1'
-    oldFile: !uuid '6f3630d3acbee9368072c642a3e171a7553fc998'
+    newFile: !uuid '74895c3c7c0dd1a22f6c80059db6e4a7fd5670a7'
+    oldFile: !uuid 'eb5a82550b2b95e2ee692c35e928bed003aa3be1'
   /UnityClient/Assets:
-    newFile: !uuid '568ba0c129172f6fca8b1f1ae716ec2387a926e5'
-    oldFile: !uuid 'f6264cb5cb1fd343f011394a6d8c74086be0d6ae'
+    newFile: !uuid 'b66166e67622f555fcf1b7d88e9e625647a1c7b4'
+    oldFile: !uuid '568ba0c129172f6fca8b1f1ae716ec2387a926e5'
   /UnityClient/Assets/Resources:
-    newFile: !uuid '0c7008a50304b39cdf2fd3d447285bc150079fd3'
-    oldFile: !uuid '0130c5cdb759cfcc7d7272185555aa39b7111c7f'
+    newFile: !uuid '9214d240f588ad6a1ccc18cb43c63f6239ff7bea'
+    oldFile: !uuid '0c7008a50304b39cdf2fd3d447285bc150079fd3'
   /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'a1496d984d9cd14f9ea727d66bc5879a560f389a'
-    oldFile: !uuid 'df499a7db554c7a2c9d30c80250300bd66e90b29'
+    newFile: !uuid 'ed86473af4582f43f8a6f92e55cacebcf62b2cd8'
+    oldFile: !uuid 'a1496d984d9cd14f9ea727d66bc5879a560f389a'
   /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'a4e450ba29b12b7a6abc0cd17a72df62fc2cb065'
-    oldFile: !uuid '06223d44bb8953735a98facafc66d91ced2d6c29'
+    newFile: !uuid '3771ab90b2d71b8254ce67c52e8287b91d43b741'
+    oldFile: !uuid 'a4e450ba29b12b7a6abc0cd17a72df62fc2cb065'
   /UnityClient/Assets/Resources/Prefabs/ui/UI_Town.prefab:
-    newFile: !uuid '57cadd9aad3da676f0c9b5660627aa5f53a81bb9'
-    oldFile: !uuid '7f819c00df3ffff399e0269cb838d2db15acc724'
-gitCommitId: !uuid '051ce8114840cbb34bf73fb56e5975826becb897'
+    newFile: !uuid '0e5fff2ce72227925c5a0a186ec443dbdf5143d3'
+    oldFile: !uuid '57cadd9aad3da676f0c9b5660627aa5f53a81bb9'
+gitCommitId: !uuid '3f2b99a7b0758b9d57937612dd02889ec501d7fa'
 renames: {
   }
-revisionId: 905
+revisionId: 906
