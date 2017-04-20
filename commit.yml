@@ -3,30 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '4f3ca7f637cf6308ca0b784aa0a64fae8def266e'
-    oldFile: !uuid '90c557c72d4bc1038a42221883fcf7f8c32f40da'
+    newFile: !uuid 'bced7a17815ddc4b12565736b9408d037e23ea28'
+    oldFile: !uuid '4f3ca7f637cf6308ca0b784aa0a64fae8def266e'
   /UnityClient/Assets:
-    newFile: !uuid '926371639d5765a405621d71f59b28a7fbce9b81'
-    oldFile: !uuid '8e4c232c2e587ce11c90a67be17b0303cad9b068'
+    newFile: !uuid '99fcd9f7dcfcd9475d24d7e3ab59b8cff67644fd'
+    oldFile: !uuid '926371639d5765a405621d71f59b28a7fbce9b81'
   /UnityClient/Assets/Resources:
-    newFile: !uuid 'b8f4fa0d06523bdfb9e8d44369d2f53c0a5cc827'
-    oldFile: !uuid '082d033aad376db2bbb53c4c9a9c51889ad01b2b'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid '51e0bb2ff0fec05b9053f5329f4e7d121e45a854'
-    oldFile: !uuid '145f057fb41dd75dde77b22bc0ae4f2d8afca4e5'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid 'eab4ddc8faa9ed709b20c0e072b6c404faa65802'
-    oldFile: !uuid '7ba1eac253188b533f17a802d545b5a639cb1c63'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid 'f0a54a686639a87aea56783dc0aea8eb1e51fbe6'
-    oldFile: !uuid '15c4e6a0aa558e7b8762e83447d63c3c4edf2473'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_boss.prefab:
-    newFile: !uuid 'a735ca1e16f7e212d9958b82fd809ee7a171b975'
-    oldFile: !uuid 'e9902933ff4829f2727b89d32e9c892791cec4dd'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_boss.prefab.meta:
-    newFile: !uuid '9439afa9f93aa4c6f24cbef510d3f2bac7f09a0e'
-    oldFile: !uuid '65f2fc7c755eeb026109e9a2bdde2a415d9fb584'
-gitCommitId: !uuid '432aa895dc2de090b9b56a766dda001276c03165'
+    newFile: !uuid '08ae0d2cb495cbf57e9fc6eeccd54aecdcddf2df'
+    oldFile: !uuid 'b8f4fa0d06523bdfb9e8d44369d2f53c0a5cc827'
+  /UnityClient/Assets/Resources/Sprites:
+    newFile: !uuid '05acd5562645fb3fcd1de3a0bcf0762c63bd1a6e'
+    oldFile: !uuid 'cb694c3572217367292e71eadffef87bc0ed5524'
+  /UnityClient/Assets/Resources/Sprites/loading.png:
+    newFile: !uuid 'c8391f195e7a5db9fb541e9f80a0372c4ebeb6d7'
+    oldFile: null
+gitCommitId: !uuid '694573cda7b0a8d1d466e3f22aa0ba15f886385b'
 renames: {
   }
-revisionId: 886
+revisionId: 887
