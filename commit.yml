@@ -3,21 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '25e1b0d0719b66ec614aa70e24f4297d210fedd5'
-    oldFile: !uuid '6e2096c41eb90562cb0084f0f6f24315f30d8958'
+    newFile: !uuid '32317214851c9f6cd73c531393dae8f5b5eaeb01'
+    oldFile: !uuid '25e1b0d0719b66ec614aa70e24f4297d210fedd5'
   /UnityClient/Assets:
-    newFile: !uuid 'd43d9ab0e580c3e1dbc2aba31fa167c9e2b37ef4'
-    oldFile: !uuid 'c95121b389fe3f437ff941413751b4c7e1e108c3'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '6f5c2d8bbe338ee66b5b7c8f9c187497862897ca'
-    oldFile: !uuid '7296d5fe3ccfd50d4549326625bd6bf6b41bd549'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '1b08b2f1ecd8cf9b6af9b4a03e5bd9438a00358a'
-    oldFile: !uuid 'fc472677829e9ab1cf110a8365f35a73798b85e4'
-  /UnityClient/Assets/Scripts/Model/SkillCoco.cs:
-    newFile: !uuid '0b05ddcfe8f008f6b5ffe51a2c735770ec823272'
-    oldFile: !uuid 'aaf61aaa704a141ca2d424544b1f29100ae7e4e9'
-gitCommitId: !uuid '4407aa594ace2c5468f277c873a15346e66ecc6c'
+    newFile: !uuid '460e425b2d973f19ef25401ffbbc1a5d43f605d7'
+    oldFile: !uuid 'd43d9ab0e580c3e1dbc2aba31fa167c9e2b37ef4'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'e2d16ee3dfb75eb7e7c7fae9dea840a8209bd670'
+    oldFile: !uuid 'e1c04a04aa64dfb2b18a05934148d0aa0a453c74'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid '7c0f7def8db6a50404cf1db305f80a112d0d1d6f'
+    oldFile: !uuid 'f44a154b5052f2dc57dee8362294cfc7c2f1a5f9'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid 'f3c15bd260d6aa7148f54c68d6dfa19cc6ffc3d8'
+    oldFile: !uuid '8f3afe22ecf4ceb8ac7fa61766f38d02574fd86e'
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_skill.prefab:
+    newFile: !uuid '3191b7b48991ad617da2eb4e56bfb29e0c98cf82'
+    oldFile: !uuid '808b55a27d79dbe860729f5a7a20d0405f92e1bb'
+  /UnityClient/Assets/Resources/Prefabs/ui/ui_panel_skill.prefab.meta:
+    newFile: !uuid 'd9e39abb7c5707c453f11055cf0c57c3c8452361'
+    oldFile: !uuid '3f4c2ef3b4e25f4ea6998502e05353543f460125'
+gitCommitId: !uuid 'c0e0514ea0875ca09f67ce571a8d46b7544698e9'
 renames: {
   }
-revisionId: 880
+revisionId: 881
