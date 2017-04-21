@@ -696,30 +696,27 @@ public class DieState : StateBase
     }
     public override void UpdateMS()
     {
-
         if (Target.current_hp <= 0)
         {
             this.Enable = false;
             Target.isDie = true;
             Target.bufferMgr.ClearClearAble();//清除所有Buffer
             EventDispatcher.ins.PostEvent(Events.ID_DIE, Target);
-
             if (Target.IsHero)
             {
-                if (PublicData.ins.left_revive_times <= 0 && PublicData.ins.battle_result == BattleResult.UnKnown)
+                Target.ani_force = "hurt";
+                Target.is_spine_loop = false;
+                if (Target == HeroMgr.ins.self && PublicData.ins.left_revive_times <= 0)
                 {
-                    AppMgr.GetCurrentApp<BattleApp>().AddSendMsg("cmd:over");
-                    Target.ani_force = "hurt";
-                    Target.is_spine_loop = false;
-                    Target.isDie = false;
-                    return;
+                    if (HeroMgr.ins.GetHeros().Count > 0)
+                    {
+                        EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "复活次数为0,无法复活,观看其它玩家战斗吧!");
+                    }
                 }
-                PublicData.ins.left_revive_times--;
-            }
-
-            if (Target != HeroMgr.ins.self as Entity && (Target as Enemy) == null)
-            {
-                EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + Target.name + "死亡");
+                if (Target != HeroMgr.ins.self)
+                {
+                    EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + Target.name + "死亡");
+                }
             }
         }
     }
@@ -792,7 +789,7 @@ public class DieStateBoss : DieState
 
                 //Boss死亡
                 ArrayList list = HeroMgr.ins.GetHeros(true);
-                foreach(Hero h in list)
+                foreach (Hero h in list)
                 {
                     h.AddBuffer<BufferGod>().SetLastTime(60f);
                 }
@@ -954,7 +951,7 @@ public class AttackState_1 : StateBase
             Target.isAttacking = false;
             this.Enable = false;
 
-           //   Debug.Log(" 连招  1111 完成  ");
+            //   Debug.Log(" 连招  1111 完成  ");
 
             if (Target.atk_level > 1)
             {//下段招数
@@ -1014,7 +1011,7 @@ public class AttackState_2 : StateBase
     private bool isLaunch = false;
     public AttackState_2()
     {
-       //   Debug.Log(" 连招  222 待命");
+        //   Debug.Log(" 连招  222 待命");
     }
     private void CheckForTimeOut()
     {
@@ -1025,7 +1022,7 @@ public class AttackState_2 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-          //    Debug.Log("连招   222222222 超时");
+            //    Debug.Log("连招   222222222 超时");
         }
     }
     public override void UpdateMS()
@@ -1051,7 +1048,7 @@ public class AttackState_2 : StateBase
 
     public override void OnEvent(int type, object userData)
     {
-   
+
         if (type == Events.ID_BTN_ATTACK && this.Enable == false)
         {
             if (Target.isHurt) return;
@@ -1075,7 +1072,7 @@ public class AttackState_2 : StateBase
         }
         else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
-         //  Debug.Log("连招   222 完成");
+            //  Debug.Log("连招   222 完成");
 
             Target.isAttacking = false;
             this.Enable = false;
@@ -1146,7 +1143,7 @@ public class AttackState_3 : StateBase
     int tick = 0;
     public AttackState_3()
     {
-      //   Debug.Log("连招   3333 待命");
+        //   Debug.Log("连招   3333 待命");
 
     }
     private void CheckForTimeOut()
@@ -1158,7 +1155,7 @@ public class AttackState_3 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-         //  Debug.Log("连招   333333 超时");
+            //  Debug.Log("连招   333333 超时");
         }
     }
     public override void UpdateMS()
@@ -1188,7 +1185,7 @@ public class AttackState_3 : StateBase
         {
             Target.isAttacking = false;
             this.Enable = false;
-        //     Debug.Log("连招   33333 完成");
+            //     Debug.Log("连招   33333 完成");
             this.stack.PopSingleState();
 
         }

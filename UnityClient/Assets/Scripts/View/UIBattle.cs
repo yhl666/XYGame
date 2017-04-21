@@ -597,6 +597,7 @@ public sealed class UI_skills : ViewUI
 public sealed class UI_heroInfo : ViewUI
 {
     bool has_vibrate = false;
+    Color color_gray = new Color(55f / 255f, 55f / 255f, 55f / 255f, 1f);
     float current_a = 0f;
     float current = 1f;
     public override void UpdateMS()
@@ -609,7 +610,7 @@ public sealed class UI_heroInfo : ViewUI
             if (m == null) return;
         }
 
-        if (m.current_hp <= m.hp * 0.3f)
+        if (m.current_hp <= m.hp * 0.3f && m.isDie == false)
         {
             img_bleed.gameObject.SetActive(true);
             if (has_vibrate == false)
@@ -634,6 +635,14 @@ public sealed class UI_heroInfo : ViewUI
         {
             has_vibrate = false;
             img_bleed.gameObject.SetActive(false);
+        }
+        if (m.isDie || m.current_hp <= 0)
+        {
+            this.img_icon1.color = Color.gray;
+        }
+        else
+        {
+            this.img_icon1.color = Color.white;
         }
         txt_info1.text = m.no + " LV:" + (m.level + 1);
         txt_exp1.text = m.current_exp + "/" + m.exp;
@@ -666,7 +675,14 @@ public sealed class UI_heroInfo : ViewUI
 
         if (m2 != null)
         {
-
+            if (m2.isDie || m.current_hp <= 0)
+            {
+                this.img_icon2.color = Color.gray;
+            }
+            else
+            {
+                this.img_icon2.color = Color.white;
+            }
             txt_info2.text = m2.no + " LV:" + (m2.level + 1);
             txt_exp2.text = m2.current_exp + "/" + m2.exp;
             txt_hp2.text = m2.current_hp + "/" + m2.hp;
@@ -703,6 +719,7 @@ public sealed class UI_heroInfo : ViewUI
         this.img_hp1 = panel1.transform.FindChild("hero_img_hp").GetComponent<Image>();
         //  this.img_mp1 = panel1.transform.FindChild("hero_img_mp").GetComponent<Image>();
         this.img_exp1 = panel1.transform.FindChild("hero_img_exp").GetComponent<Image>();
+        this.img_icon1 = panel2.transform.FindChild("hero_img_icon").GetComponent<Image>();
 
         this.txt_hp1 = panel1.transform.FindChild("hero_txt_hp").GetComponent<Text>();
         // this.txt_mp1 = panel1.transform.FindChild("hero_txt_mp").GetComponent<Text>();
@@ -714,6 +731,7 @@ public sealed class UI_heroInfo : ViewUI
         this.img_hp2 = panel2.transform.FindChild("hero_img_hp").GetComponent<Image>();
         //  this.img_mp2 = panel2.transform.FindChild("hero_img_mp").GetComponent<Image>();
         this.img_exp2 = panel2.transform.FindChild("hero_img_exp").GetComponent<Image>();
+        this.img_icon2 = panel2.transform.FindChild("hero_img_icon").GetComponent<Image>();
 
         this.txt_hp2 = panel2.transform.FindChild("hero_txt_hp").GetComponent<Text>();
         //  this.txt_mp2 = panel2.transform.FindChild("hero_txt_mp").GetComponent<Text>();
@@ -1199,7 +1217,7 @@ public class BattleFlyTextInfo : GAObject
     public Type type = Type.UP_DOWN;
 
     //----------const
-    public static Color COLOR_HP_REDUCE = new Color(214f / 255.0f, 229f/255f, 32f/255f, 1.0f);
+    public static Color COLOR_HP_REDUCE = new Color(214f / 255.0f, 229f / 255f, 32f / 255f, 1.0f);
     public static Color COLOR_HP_ADD = new Color(0.0f, 1.0f, 149.0f / 255.0f, 1.0f);
 
     public enum Type
@@ -1552,7 +1570,7 @@ public class UI_dirInput : ViewUI
             if (model.move)
             {
                 img_bg.color = new Color(1f, 1f, 1f, 0.78f);
-                img_center.color = new Color(1f, 1f, 1f, 0.78f);       
+                img_center.color = new Color(1f, 1f, 1f, 0.78f);
             }
             else
             {

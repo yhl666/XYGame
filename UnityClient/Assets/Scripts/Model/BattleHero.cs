@@ -388,13 +388,13 @@ public class BattleHero : Hero
     {
         if (this.isDie)
         {
-            if (enable_pvp_ai)
+          /*  if (enable_pvp_ai)
             {
                 BufferRevive b = new BufferRevive();
                 b.point_index = 1;
                 this.AddBuffer(b);
                 return;
-            }
+            }*/
          //   this.machine.Pause();
 
             ///   EventDispatcher.ins.PostEvent(Events.ID_DIE, this);
@@ -520,12 +520,35 @@ public class BattleHero : Hero
 
 
     }
-    Hero target = null;
+    Entity target = null;
 
     private int cd_atk = 0;
     public override void AI_UpdateMSWithAI()
     {
         if (false == enable_pvp_ai) return;
+
+        if(isDie)
+        {
+
+            if (PublicData.ins.left_revive_times <= 0 )//&& PublicData.ins.battle_result == BattleResult.UnKnown)
+            {
+                //  AppMgr.GetCurrentApp<BattleApp>().AddSendMsg("cmd:over");
+               ani_force = "hurt";
+               is_spine_loop = false;
+               isDie = true;
+
+
+                return;
+            }
+
+
+            BufferRevive b = new BufferRevive();
+            b.point_index =1;
+            AddBuffer(b);
+            isDie = false;
+            PublicData.ins.left_revive_times--;
+
+        }
         cd_atk--;
 
         //如果目标非法，那么寻找另外一个目标
@@ -551,10 +574,10 @@ public class BattleHero : Hero
     }
     public virtual void AI_SearchNewTarget()
     {
-        ArrayList heros = HeroMgr.ins.GetHeros();
+        ArrayList heros = EnemyMgr.ins.GetEnemys();// HeroMgr.ins.GetHeros();
         float minDis = 9999.0f;
 
-        foreach (Hero h in heros)
+        foreach (Entity h in heros)
         {//找出一个最近的玩家 作为锁定目标
             if (h == this) continue;
             float dis = h.ClaculateDistance(x, y);
@@ -567,20 +590,8 @@ public class BattleHero : Hero
     }
 
     public virtual void AI_MoveToTarget()
-    {/*
-        if (this.x < target.x)
-        {
-            //玩家在右方
-            right = true;
-        }
-        else
-        {
-            //玩家在左方 
-            left = true;
-        }
-
- */
-        dir = (int)Utils.GetAngle(this.pos, target.pos);
+    { 
+      //  dir = (int)Utils.GetAngle(this.pos, target.pos);
 
     }
     public virtual void AI_AttackTarget()
@@ -601,6 +612,7 @@ public class BattleHero : Hero
             //  atk = true;
             ///   s1 = 4;
             cd_atk = 80;// 2S
+            atk = true;
         }
         else
         {

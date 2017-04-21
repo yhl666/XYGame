@@ -15,15 +15,15 @@ public class Buffer : Model
         ret.enable_time = enable_time;
         ret.brief = brief;
         ret.name = name;
-        ret.icon =icon;
-        ret.plist=plist;
-        ret.has_view=has_view;
-        ret.scale=scale;
-        ret.MAX_TICK=MAX_TICK;
-        ret.isOnlyOne=isOnlyOne;
-        ret.clearAble=clearAble;
-       
-        return  ret as T;
+        ret.icon = icon;
+        ret.plist = plist;
+        ret.has_view = has_view;
+        ret.scale = scale;
+        ret.MAX_TICK = MAX_TICK;
+        ret.isOnlyOne = isOnlyOne;
+        ret.clearAble = clearAble;
+
+        return ret as T;
     }
     //----for ui
     public bool show_ui = false;
@@ -36,7 +36,7 @@ public class Buffer : Model
     public string plist = "";
     public bool has_view = false;
     public float scale = 0.7f;
-    public Vector2 delta_xy = new Vector2(0,0.7f);
+    public Vector2 delta_xy = new Vector2(0, 0.7f);
     public Counter GetCounter()
     {
         return tick;
@@ -369,7 +369,7 @@ public class BufferEquipTest2 : Buffer
             if (random.Next(0, 100) < 10)
             {
                 tick.Reset();
-                this.left_hp = target.hp/3;
+                this.left_hp = target.hp / 3;
                 this.show_ui = true;
                 ///    Debug.Log("触发了护体效果吸收" + left_hp + "伤害  Hero剩余血量" + owner.current_hp);
 
@@ -759,7 +759,8 @@ public class BufferRevive : Buffer
         ArrayList points = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetCustomObjects<TerrainObjectRevivePoint>();
 
         TerrainObjectRevivePoint p = points[point_index - 1] as TerrainObjectRevivePoint;
-
+        target.ani_force = "";
+        target.is_spine_loop = true;
         target.x = p.x;
         target.SetRealY(0);
         target.z = p.y;
@@ -767,7 +768,7 @@ public class BufferRevive : Buffer
         EventDispatcher.ins.PostEvent(Events.ID_REVIVE, target);
         this.SetInValid();
         EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + target.no + "已复活");
-       
+
         //添加一个3秒无敌 buffer
         Buffer b = target.AddBuffer<BufferGod>();//无敌
         b.SetLastTime(3f);
@@ -1191,7 +1192,7 @@ public class BufferLevelUpView : Buffer
     }
     public override void OnEnter()
     {
-     
+
     }
     public override void OnExit()
     {
@@ -1207,7 +1208,7 @@ public class BufferLevelUpView : Buffer
         delta_xy = new Vector2(0, -0.5f);
         ///      plist = "hd/buff/buff_200564/buff_200564.plist";
         ///      
-        if ((target.machine.GetState<SkillState>() as SkillState).GetSkillGroupIndex() ==1)
+        if ((target.machine.GetState<SkillState>() as SkillState).GetSkillGroupIndex() == 1)
         {//技能组1
             plist = "hd/roles/equip_effects/eq_eff_dragon_rise_2/eq_eff_dragon_rise_2.plist";
         }

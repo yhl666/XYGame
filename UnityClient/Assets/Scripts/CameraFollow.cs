@@ -21,16 +21,31 @@ public class CameraFollow : MonoBehaviour
         obj_bg_static = GameObject.Find("bg_static");
         obj_bg = GameObject.Find("Terrain/bg");
     }
+    bool is_other = false;
+    Entity last_trace = null;
     void LateUpdate()
     {
         if (_enable == false) return;
         if (AppMgr.GetCurrentApp() == null) return;
         Hero hero = HeroMgr.ins.GetSelfHero();
         if (hero == null) return;
+        if (hero.isDie && PublicData.ins.left_revive_times <= 0)
+        {//自身角色死亡 开始 查看其它玩家视角
+            ArrayList list = HeroMgr.ins.GetHeros();
+            if (list.Count <= 0)
+            {
+
+            }
+            else
+            {
+                hero = list[0] as Hero;
+                is_other = true;
+            }
+        }
+        last_trace = hero;
 
         GameObject obj = GameObject.Find(hero.no.ToString());
         if (obj == null) return;
-
 
         //design  camera 's width and height  not  Screen wieth and height
         float WIDTH = 1136.0f;// Screen.width;
@@ -169,7 +184,7 @@ public class CameraFollow : MonoBehaviour
             ///    Utils.SetTargetFPS(10);
             // transform.localPosition = new Vector3(23f, transform.localPosition.y, transform.localPosition.z);
             float x = transform.localPosition.x;
-            Hero self = HeroMgr.ins.self;
+            Hero self = last_trace as Hero;
             //  self.x = 23f;
             float selfx = self.x;//23f;
             //   MoveTo.Create(this.gameObject, 0.5f / 23f * Mathf.Abs(selfx - boss.x), boss.x, transform.localPosition.y).OnComptele = () =>
@@ -237,51 +252,15 @@ public class CameraFollow : MonoBehaviour
         }
         else if (PublicData.ins.battle_result == BattleResult.Lose)
         {
-            Hero boss = null;// EnemyMgr.ins.GetEnemy<EnemyBoss>();
-
+     
             Config.fps_delay = 0.1f;
 
             float x = transform.localPosition.x;
-            Hero self = HeroMgr.ins.self;
-            foreach (Hero h in HeroMgr.ins.GetHeros(true))
-            {
-                if (h.current_hp <= 0)
-                {
-                    boss = h;
-                }
-            }
+            Hero self = last_trace as Hero;
             //  self.x = 23f;
             float selfx = self.x;//23f;
-            if (Mathf.Abs(selfx - boss.x) > 5f)
-            {//距离大于5 才会滚动
-                MoveTo.Create(this.gameObject, 0.5f / 23f * Mathf.Abs(selfx - boss.x), boss.x, transform.localPosition.y).OnComptele = () =>
-                {
-                    CallFunc.Create(this.gameObject, 2, null
-                        ).OnComptele = () =>
-                        {
-                            TimerQueue.ins.AddTimer(0.025f, () =>
-                            {
-                                delta += 0.01f;
-                                this.GetComponent<Camera>().orthographicSize = orthographicSize * delta;
-                            }, 30);
-                            //恢复正常
-                            Config.fps_delay = 0.01f;
-                            MoveTo.Create(this.gameObject, 0.5f / 23f * Mathf.Abs(selfx - boss.x), x, transform.localPosition.y).OnComptele = () =>
-                            {//滚回视角
-                                CallFunc.Create(this.gameObject, 1, null
-                         ).OnComptele = () =>
-                         {//2秒后 执行正常结束游戏逻辑
 
-                             AppMgr.GetCurrentApp<BattleApp>().SetGameOver();
-                             UIBattleRoot.ins.Show();
-
-                         };
-                            };
-                        };
-                };
-            }
-            else
-            {//不滚动视角
+            //不滚动视角
                 CallFunc.Create(this.gameObject, 2, null
                     ).OnComptele = () =>
                     {
@@ -300,10 +279,6 @@ public class CameraFollow : MonoBehaviour
 
                  };
                     };
-            }
-
-
-
 
 
         }

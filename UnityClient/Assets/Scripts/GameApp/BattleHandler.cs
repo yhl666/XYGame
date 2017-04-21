@@ -90,7 +90,7 @@ sealed class BattleKeyboardInputHandler
         {
             PublicData.ins.IS_s1 = 5;
         }
-        if(Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Camera.main.GetComponent<CameraFollow>().ShowBossDie();
         }
@@ -134,6 +134,14 @@ sealed class BattlePVEHandler : BattleHandlerBase
     public override void UpdateMS()
     {
 
+        ArrayList list = HeroMgr.ins.GetHeros();
+        if (list.Count <= 0)
+        {
+            // all has die
+            AppMgr.GetCurrentApp<BattleApp>().AddSendMsg("cmd:over");
+
+        }
+
     }
     public override bool Init()
     {
@@ -168,6 +176,9 @@ sealed class BattlePVEHandler : BattleHandlerBase
         //  HeroMgr.ins.self.z = 3f;
         //    HeroMgr.ins.self.x = 8f;
 
+     /*  Hero h1 = HeroMgr.Create<BattleHero>();
+        h1.no = 5;
+        h1.SetPVPAIEnable(true);*/
         //默认位置为出生点
         ArrayList points = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetCustomObjects<TerrainObjectRevivePoint>();
 
@@ -195,7 +206,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
             }
             foreach (Hero hero in HeroMgr.ins.GetHeros())
             {
-                if (hero==HeroMgr.ins.self&&hero.s1==5)
+                if (hero == HeroMgr.ins.self && hero.s1 == 5)
                 {
                     EventDispatcher.ins.PostEvent(Events.ID_CHANGE_SKILL_ICON);
                 }
@@ -450,7 +461,7 @@ public sealed class BattleSyncHandler
 
         else if (cmd == "Over")
         {//游戏结束
-         //   app.SetGameOver();
+            //   app.SetGameOver();
             app.CalculateBattleResult();
             this.Do();
             this.DO2();
@@ -701,7 +712,7 @@ public sealed class BattleSyncHandler
         this.current_fps++;
 
         this.battleHandler.UpdateMSBefore();
-
+        this.battleHandler.UpdateMS();
         foreach (FrameData f in data)
         {
             if (f.no == 0) continue;
@@ -738,9 +749,17 @@ public sealed class BattleSyncHandler
             }
             if (f.revive != 0)
             {
-                BufferRevive b = new BufferRevive();
-                b.point_index = f.revive;
-                hero.AddBuffer(b);
+
+                if (PublicData.ins.left_revive_times <= 0)//&& PublicData.ins.battle_result == BattleResult.UnKnown)
+                {
+                }
+                else
+                {
+                    PublicData.ins.left_revive_times--;
+                    BufferRevive b = new BufferRevive();
+                    b.point_index = f.revive;
+                    hero.AddBuffer(b);
+                }
             }
             if (f.opt > 0)
             {//收到了自定义2数据 
