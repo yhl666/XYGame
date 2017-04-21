@@ -3,21 +3,27 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '7dc067d89b9e970f7846cd13e16fb2b7296fbfe0'
-    oldFile: !uuid 'f36ee491693c8ef594c4f304ca114b35512c8d16'
+    newFile: !uuid 'ab2d450d27fb02f6007076d3788596860e08221f'
+    oldFile: !uuid '7dc067d89b9e970f7846cd13e16fb2b7296fbfe0'
   /UnityClient/Assets:
-    newFile: !uuid 'aca264464c450137f788ca728f9bca82e71251cb'
-    oldFile: !uuid 'a9ad166ddcac156d928f398ab57f0c72a35a970f'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'd65eb64c56a3d961fb862657e0d92d0b3f5469e7'
-    oldFile: !uuid '30c093a69b6ba15e9e192f99f7796e5188ed92e3'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '0ef95a9d1a12dc8fcff1533914aa03ee12dabf66'
-    oldFile: !uuid '1428905f159b901f23676b7c0aea8c08f5ca9b08'
-  /UnityClient/Assets/Scripts/Model/StateBase.cs:
-    newFile: !uuid '63d02118934dccb60426ba4f5291d4ae73e209a9'
-    oldFile: !uuid 'ff4fbade353e99300b55c6a5673762548fcf5bd9'
-gitCommitId: !uuid 'efc4b2b933b780b9b780084b9635bcdee0ec200e'
+    newFile: !uuid 'b6d88ed03766e1f920e824014e1c85d09e46a181'
+    oldFile: !uuid 'aca264464c450137f788ca728f9bca82e71251cb'
+  /UnityClient/Assets/Resources:
+    newFile: !uuid 'eabc1dbab05b8173aa4e83b6388a39a934d008b9'
+    oldFile: !uuid '3cfd85ca0273b540c8e6cd722e33c75aaa307562'
+  /UnityClient/Assets/Resources/Prefabs:
+    newFile: !uuid 'deb1f55b060502e71f6abe3417a8909c8fb3372a'
+    oldFile: !uuid '3139b6146b0d7a85c9fd371da06349af3cd0ea7b'
+  /UnityClient/Assets/Resources/Prefabs/ui:
+    newFile: !uuid '4e2bd887aaae3b2d79c41aaf2a3c0b578fccabd8'
+    oldFile: !uuid '3ca6b868e279387f167f466b55e5d274eda3074b'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
+    newFile: !uuid 'b96d38340e758fd4b6704c64c473f0c89d431f62'
+    oldFile: !uuid '770dd09fa397fdf167f38a23e56cc95cd3de2897'
+  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_hero_info.prefab:
+    newFile: !uuid '4bdd45d1400d172f578cd36e6a25499087acaf3f'
+    oldFile: !uuid '585de5a63250aa0ded0f8b44eb1b8e78befe748e'
+gitCommitId: !uuid '4ff415db2f9ae236c4c358cce462e550cf0cfba1'
 renames: {
   }
-revisionId: 914
+revisionId: 915
