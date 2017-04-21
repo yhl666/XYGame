@@ -954,14 +954,12 @@ public class AttackState_1 : StateBase
             Target.isAttacking = false;
             this.Enable = false;
 
-            //    Debug.Log(" 连招  1111 完成  ");
+           //   Debug.Log(" 连招  1111 完成  ");
 
             if (Target.atk_level > 1)
             {//下段招数
                 this.stack.PushSingleState(StateBase.Create<AttackState_2>(Target));
             }
-
-
         }
         else if (this.Enable == true && Events.ID_BATTLE_PUSH_ONINTERRUPT_ATTACKSTATE == type)
         {//请求打断
@@ -969,6 +967,10 @@ public class AttackState_1 : StateBase
             if (skill.Target != this.Target) return;
             Target.isAttacking = false;
             this.Enable = false;
+            if (Target.atk_level > 1)
+            {//下段招数
+                this.stack.PushSingleState(StateBase.Create<AttackState_2>(Target));
+            }
         }
     }
 
@@ -1012,7 +1014,7 @@ public class AttackState_2 : StateBase
     private bool isLaunch = false;
     public AttackState_2()
     {
-        //  Debug.Log(" 连招  222 待命");
+       //   Debug.Log(" 连招  222 待命");
     }
     private void CheckForTimeOut()
     {
@@ -1023,7 +1025,7 @@ public class AttackState_2 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-            //   Debug.Log("连招   222222222 超时");
+          //    Debug.Log("连招   222222222 超时");
         }
     }
     public override void UpdateMS()
@@ -1073,7 +1075,7 @@ public class AttackState_2 : StateBase
         }
         else if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
-            ///  Debug.Log("连招   222 完成");
+         //  Debug.Log("连招   222 完成");
 
             Target.isAttacking = false;
             this.Enable = false;
@@ -1091,6 +1093,10 @@ public class AttackState_2 : StateBase
             Target.isAttacking = false;
             this.Enable = false;
             this.stack.PopSingleState();
+            if (Target.atk_level > 2)
+            {//下段招数
+                this.stack.PushSingleState(StateBase.Create<AttackState_3>(Target));
+            }
         }
     }
 
@@ -1140,7 +1146,7 @@ public class AttackState_3 : StateBase
     int tick = 0;
     public AttackState_3()
     {
-        ///   Debug.Log("连招   3333 待命");
+      //   Debug.Log("连招   3333 待命");
 
     }
     private void CheckForTimeOut()
@@ -1152,7 +1158,7 @@ public class AttackState_3 : StateBase
             tick = 0;
             this.Enable = false;
             this.stack.PopSingleState();
-            //   Debug.Log("连招   333333 超时");
+         //  Debug.Log("连招   333333 超时");
         }
     }
     public override void UpdateMS()
@@ -1182,7 +1188,7 @@ public class AttackState_3 : StateBase
         {
             Target.isAttacking = false;
             this.Enable = false;
-            ///   Debug.Log("连招   33333 完成");
+        //     Debug.Log("连招   33333 完成");
             this.stack.PopSingleState();
 
         }
