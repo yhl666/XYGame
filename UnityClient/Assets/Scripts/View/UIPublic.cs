@@ -30,10 +30,7 @@ public sealed class UIPublicRoot : ViewUI
                 this._ui_child.Add(ViewUI.Create<UI_wait>(this));
                 this._ui_child.Add(ViewUI.Create<UI_pushmsg>(this));
                 this._ui_child.Add(ViewUI.Create<UI_globaldialog>(this));
-                if (Config.DEBUG_EnableDebugWindow)
-                {
-                    this._ui_child.Add(ViewUI.Create<UI_console>(this));
-                }
+                this._ui_child.Add(ViewUI.Create<UI_console>(this));
                 return DATA.EMPTY_STRING;
             }));
         return true;
@@ -504,6 +501,11 @@ public sealed class UI_console : ViewUI
     {
         base.Init();
         this._ui = GameObject.Find("ui_panel_console");
+        if(Config.DEBUG_EnableDebugWindow==false)
+        {
+            this._ui.SetActive(false);
+            return true;
+        }
         this.panel = this._ui.transform.FindChild("ui_panel").gameObject;
         this.content = this.panel.transform.FindChild("scrollview/Viewport/Content").gameObject;
 
