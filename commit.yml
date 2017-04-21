@@ -3,27 +3,24 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'ab2d450d27fb02f6007076d3788596860e08221f'
-    oldFile: !uuid '7dc067d89b9e970f7846cd13e16fb2b7296fbfe0'
+    newFile: !uuid 'eee03f21d397d6345367e8ea480ff1dbe09816d7'
+    oldFile: !uuid 'ab2d450d27fb02f6007076d3788596860e08221f'
   /UnityClient/Assets:
-    newFile: !uuid 'b6d88ed03766e1f920e824014e1c85d09e46a181'
-    oldFile: !uuid 'aca264464c450137f788ca728f9bca82e71251cb'
-  /UnityClient/Assets/Resources:
-    newFile: !uuid 'eabc1dbab05b8173aa4e83b6388a39a934d008b9'
-    oldFile: !uuid '3cfd85ca0273b540c8e6cd722e33c75aaa307562'
-  /UnityClient/Assets/Resources/Prefabs:
-    newFile: !uuid 'deb1f55b060502e71f6abe3417a8909c8fb3372a'
-    oldFile: !uuid '3139b6146b0d7a85c9fd371da06349af3cd0ea7b'
-  /UnityClient/Assets/Resources/Prefabs/ui:
-    newFile: !uuid '4e2bd887aaae3b2d79c41aaf2a3c0b578fccabd8'
-    oldFile: !uuid '3ca6b868e279387f167f466b55e5d274eda3074b'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d:
-    newFile: !uuid 'b96d38340e758fd4b6704c64c473f0c89d431f62'
-    oldFile: !uuid '770dd09fa397fdf167f38a23e56cc95cd3de2897'
-  /UnityClient/Assets/Resources/Prefabs/ui/battlepve25d/ui_panel_hero_info.prefab:
-    newFile: !uuid '4bdd45d1400d172f578cd36e6a25499087acaf3f'
-    oldFile: !uuid '585de5a63250aa0ded0f8b44eb1b8e78befe748e'
-gitCommitId: !uuid '4ff415db2f9ae236c4c358cce462e550cf0cfba1'
+    newFile: !uuid 'eccda8067ab565a2583b6f29252b759ecfd4bcf3'
+    oldFile: !uuid 'b6d88ed03766e1f920e824014e1c85d09e46a181'
+  /UnityClient/Assets/Logic:
+    newFile: !uuid '41814f9e5b3e9486e6a619c4ff7588b38957e3da'
+    oldFile: !uuid '9d4fd86ee73db738a660b661bc7a48b45150a8f1'
+  /UnityClient/Assets/Logic/Scripts:
+    newFile: !uuid 'b42834f2d2ee600b66ee4c5e652b47d6366de22a'
+    oldFile: !uuid '4934880af7952d09a4f1882036b19388030235b0'
+  /UnityClient/Assets/Logic/Scripts/Model:
+    newFile: !uuid '17ac1590edaf946be58a45c8a3f0eb480d1a7cc8'
+    oldFile: !uuid 'ac8a9569fe043baae8801f69c2391c1b2a1f1e90'
+  /UnityClient/Assets/Logic/Scripts/Model/EquipMgr.cs:
+    newFile: !uuid '05ab3f641fe86d85e59714a70157bd7eb0bb15c8'
+    oldFile: !uuid 'bc4c694432daf88bbbf4b7c429b7794da4ed7a8b'
+gitCommitId: !uuid 'c627bf0d14fdad372a958c34390d1ef6648b13fe'
 renames: {
   }
-revisionId: 915
+revisionId: 916
