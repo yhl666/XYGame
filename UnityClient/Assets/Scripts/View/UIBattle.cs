@@ -1199,7 +1199,7 @@ public class BattleFlyTextInfo : GAObject
     public Type type = Type.UP_DOWN;
 
     //----------const
-    public static Color COLOR_HP_REDUCE = new Color(178.0f / 255.0f, 0, 1.0f, 1.0f);
+    public static Color COLOR_HP_REDUCE = new Color(214f / 255.0f, 229f/255f, 32f/255f, 1.0f);
     public static Color COLOR_HP_ADD = new Color(0.0f, 1.0f, 149.0f / 255.0f, 1.0f);
 
     public enum Type

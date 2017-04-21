@@ -1913,7 +1913,7 @@ public class Skill62_1_v2 : SkillBase
         cd.SetMax(Skill62_1_Data.Get(level).cd);
         tick.SetMax(Skill62_1_Data.Get(level).last_time);
         tick_cancel.SetMax(Skill62_1_Data.Get(level).cancel);
-        AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_SKILL21,1);
+        AudioMgr.ins.PostEvent(AudioEvents.Events.HERO_SKILL21, 1);
         cd.Reset();
         tick_cancel.Reset();
         this.PauseAll();
@@ -2275,7 +2275,7 @@ public class Skill62_2_v2 : SkillBase
         {
             this.Shoot();
             tick.Reset();
-        }    
+        }
     }
     public override void UpdateMSIdle()
     {
@@ -2339,7 +2339,7 @@ public class Skill62_2_v2 : SkillBase
     {
         base.Init();
         cd.SetMax(Skill62_2_Data.Get(level).cd);
-    ///    cd.TickMax();
+        ///    cd.TickMax();
         tick.Reset();
         return true;
     }
@@ -3016,6 +3016,7 @@ public class SkillBoss_1 : SkillBase
         cd.Reset();
         atk_times = 0;
         will_run = false;
+        wait_for_next_atk = false;
         this.PauseAll();
         distance = SkillBoss_1_Data.ins.distance;
         b = null;
@@ -3043,7 +3044,7 @@ public class SkillBoss_1 : SkillBase
         this.Enable = true;
 
         pos = target.target.pos;
-
+        pos.y = 0f;
         if (target.ClaculateDistance(target.target) < distance)
         { // 目标在攻击范围内
             this.Shoot();
@@ -3070,7 +3071,7 @@ public class SkillBoss_1 : SkillBase
             if (target.ClaculateDistance(pos) < distance)
             { // 到达目标点
 
-                if (target.target != null && target.ClaculateDistance(target.target) < distance)
+                if (target.target != null && target.ClaculateDistance(new Vector3(target.target.x, 0f, target.target.z)) < distance)
                 { // 还在范围内
 
                     this.Shoot();
@@ -3081,6 +3082,7 @@ public class SkillBoss_1 : SkillBase
                 }
                 target.ani_force = "";
                 will_run = false;
+                return;
             }
             else
             {
@@ -3193,7 +3195,10 @@ public class SkillBoss_1 : SkillBase
         this.Enable = false;
         Target.isAttacking = false;
         tick.Reset();
+        wait_for_next_atk = false;
+        atk_times = 0;
         Target.is_spine_loop = true;
+        will_run = false;
         RunXZState state = this.Target.machine.GetState<RunXZState>() as RunXZState;
         state.DisableWhenAttak();
         this.ResumeAll();
@@ -3346,7 +3351,7 @@ public class SkillBoss_2 : SkillBase
     private void Shoot()
     {
         // tick.Reset();
-        if(target.target== null)
+        if (target.target == null)
         {///目标死亡
             return;
         }

@@ -839,7 +839,7 @@ public class Enemy3 : Enemy
 /// </summary>
 public class EnemyBoss : Enemy
 {
-   public  bool enable_ai=true;
+    public bool enable_ai = true;
     public override void InitStateMachine()
     {
         //init state machine
@@ -900,8 +900,8 @@ public class EnemyBoss : Enemy
         ani_run = "run";
         ani_die = "";
         ani_stand = "rest";
-       // ani_atk1 = "218010";
-     //   ani_atk1 = "218010";
+        // ani_atk1 = "218010";
+        //   ani_atk1 = "218010";
         attackingAnimationName = ani_atk1;
         atk_level = 1;
         bulleClassName_atk1 = "BulletConfig";//普通攻击 1段  的子弹名字
@@ -932,7 +932,7 @@ public class EnemyBoss : Enemy
         this.skill3 = skill.GetSkill<SkillBoss_3>();
         ai_fsm_machine.Pause();
         hp = 3000;
-        AudioMgr.ins.PostEvent(AudioEvents.Events.BATTLE_BOSS_BG,true);
+        AudioMgr.ins.PostEvent(AudioEvents.Events.BATTLE_BOSS_BG, true);
         current_hp = hp;
         return true;
     }
@@ -946,7 +946,7 @@ public class EnemyBoss : Enemy
         }
         ai_fsm_machine.UpdateMS();
         base.AI_UpdateMSWithAI();
-
+        if (isAttacking) return;
         if (isAttacking == false)
         {
             run_random = true;
@@ -958,7 +958,6 @@ public class EnemyBoss : Enemy
         if (run_random)
         {
             dir = dir_random;
-
         }
         if (tick_run_random.Tick() == false)
         {
@@ -970,7 +969,7 @@ public class EnemyBoss : Enemy
     }
     public override void UpdateMS()
     {
- 
+
         if (levels.Count <= 0)
         {
             if (SkillBoss_3_Data.ins.call_times.Length > has_call.Length)
@@ -992,69 +991,8 @@ public class EnemyBoss : Enemy
     {//释放技能1
         //         s1 = 1;
         //        return;
-        /*  s1 = 3;
-          return;
-          if (skill1.cd.IsMax())
-          {
-              s1 = 1;
-          }
-          else if (skill1.cd.IsMax())
-          {
-              s1 = 2;
-          }
-          else if (skill1.cd.IsMax())
-          {
-              s1 = 3;
-          }
-          else
-          {
-
-          }*/
-
-
-
-        /*  if (skill3.cd.IsMax())
-          {
-              s1 = 3;
-          }
-          else */
-        /*     if (skill2.cd.IsMax())
-             {
-                 s1 = 2;
-             }
-             else if (skill1.cd.IsMax())
-             {
-                 s1 = 1;
-             }
-
-             if (has3 == false && current_hp < hp * 0.3f)
-             {
-                 s1 = 3;
-                 has3 = true;
-             }
-             if (has2 == false && current_hp < hp * 0.5f && current_hp > hp * 0.3f)
-             {
-                 s1 = 3;
-                 has2 = true;
-             }
-             if (has1 == false && current_hp < hp * 0.7f && current_hp > hp * 0.5f)
-             {
-                 s1 = 3;
-                 has1 = true;
-             }
-
-
-
-             if (s1 == 3)
-             {
-                 skill1.OnInterrupted(new SkillBase());
-                 skill2.OnInterrupted(new SkillBase());
-             }*/
-
-
-
-
-        if (skill3.cd.IsMax() && levels.Count>0)
+        if (isAttacking) return;
+        if (skill3.cd.IsMax() && levels.Count > 0 && isAttacking == false)
         {
             int last = (int)levels[0];
             for (int i = 1; i < levels.Count; i++)
@@ -1077,19 +1015,18 @@ public class EnemyBoss : Enemy
                 last = (int)levels[i];
             }
         }
-        if (skill2.cd.IsMax())
+        if (skill2.cd.IsMax() && isAttacking == false)
         {
             s1 = 2;
             run_random = false;
         }
-        else if (skill1.cd.IsMax())
+        else if (skill1.cd.IsMax() && isAttacking == false)
         {
             s1 = 1;
             run_random = false;
         }
         else
         {//所有技能为冷却完毕
-
             run_random = true;
         }
 
