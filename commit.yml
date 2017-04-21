@@ -3,24 +3,21 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid 'eee03f21d397d6345367e8ea480ff1dbe09816d7'
-    oldFile: !uuid 'ab2d450d27fb02f6007076d3788596860e08221f'
+    newFile: !uuid 'e038edd870905175a706702361904838c8db9198'
+    oldFile: !uuid 'eee03f21d397d6345367e8ea480ff1dbe09816d7'
   /UnityClient/Assets:
-    newFile: !uuid 'eccda8067ab565a2583b6f29252b759ecfd4bcf3'
-    oldFile: !uuid 'b6d88ed03766e1f920e824014e1c85d09e46a181'
-  /UnityClient/Assets/Logic:
-    newFile: !uuid '41814f9e5b3e9486e6a619c4ff7588b38957e3da'
-    oldFile: !uuid '9d4fd86ee73db738a660b661bc7a48b45150a8f1'
-  /UnityClient/Assets/Logic/Scripts:
-    newFile: !uuid 'b42834f2d2ee600b66ee4c5e652b47d6366de22a'
-    oldFile: !uuid '4934880af7952d09a4f1882036b19388030235b0'
-  /UnityClient/Assets/Logic/Scripts/Model:
-    newFile: !uuid '17ac1590edaf946be58a45c8a3f0eb480d1a7cc8'
-    oldFile: !uuid 'ac8a9569fe043baae8801f69c2391c1b2a1f1e90'
-  /UnityClient/Assets/Logic/Scripts/Model/EquipMgr.cs:
-    newFile: !uuid '05ab3f641fe86d85e59714a70157bd7eb0bb15c8'
-    oldFile: !uuid 'bc4c694432daf88bbbf4b7c429b7794da4ed7a8b'
-gitCommitId: !uuid 'c627bf0d14fdad372a958c34390d1ef6648b13fe'
+    newFile: !uuid '2caa534617b5980140c10411aba385f1b5d68f16'
+    oldFile: !uuid 'eccda8067ab565a2583b6f29252b759ecfd4bcf3'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '832a9d4c008f76cf86e0eb6f7e2ec4667dcc3e45'
+    oldFile: !uuid 'd65eb64c56a3d961fb862657e0d92d0b3f5469e7'
+  /UnityClient/Assets/Scripts/View:
+    newFile: !uuid 'd3ec79117c05458cf8349c3b2e9e2404743e1b10'
+    oldFile: !uuid '362c8174c8ca6943f30110f7648ee47073009dd0'
+  /UnityClient/Assets/Scripts/View/UIPublic.cs:
+    newFile: !uuid '1b7582c3182f845f5b98c42aca3adf9ba4264488'
+    oldFile: !uuid 'd17db4f4fbb4676a81a2c10500c01c7295653de6'
+gitCommitId: !uuid 'c9253a9b89d5bfd8375c361f19baae96b9feace9'
 renames: {
   }
-revisionId: 916
+revisionId: 917
