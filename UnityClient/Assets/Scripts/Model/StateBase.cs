@@ -1049,10 +1049,10 @@ public class AttackState_2 : StateBase
 
     public override void OnEvent(int type, object userData)
     {
-        if (Target.isHurt) return;
-
+   
         if (type == Events.ID_BTN_ATTACK && this.Enable == false)
         {
+            if (Target.isHurt) return;
             if (isLaunch) return;
             isLaunch = true;
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_ATTACK, this.Target);
@@ -1177,7 +1177,7 @@ public class AttackState_3 : StateBase
     }
     public override void OnEvent(int type, object userData)
     {
-        if (Target.isHurt) return;
+
         if ((this.Enable == true && Events.ID_SPINE_COMPLETE == type) || (tick_cancel.IsMax() && this.Enable == true && type == Events.ID_BTN_ATTACK))
         {
             Target.isAttacking = false;
@@ -1188,6 +1188,7 @@ public class AttackState_3 : StateBase
         }
         else if (type == Events.ID_BTN_ATTACK && checkForTimeOut && this.Enable == false)
         {
+            if (Target.isHurt) return;
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_ENTITY_BEFORE_ATTACK, this.Target);
 
             Target.attackingAnimationName = this.GetAnimationName();
