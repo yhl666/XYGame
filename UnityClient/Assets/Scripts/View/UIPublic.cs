@@ -229,6 +229,7 @@ public sealed class UI_pushmsg : ViewUI
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_PUBLIC_PUSH_MSG);
         this.img_bg.SetActive(false);
+        this.img_bg.transform.localScale = new Vector3(1f, 1f, 1f);
         return true;
     }
 
@@ -407,6 +408,7 @@ public sealed class UI_globaldialog : ViewUI
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_PUBLIC_GLOBALDIALOG_SHOW);
         this.panel.SetActive(false);
+        this.panel.transform.localScale = new Vector3(1f, 1f, 1f);
         return true;
     }
 
@@ -538,6 +540,7 @@ public sealed class UI_console : ViewUI
         {
             this.HideConsole();
         });
+        this._ui.transform.localScale = new Vector3(1f, 1f, 1f);
         this.HideConsole();
         return true;
     }
