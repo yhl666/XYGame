@@ -682,7 +682,7 @@ public sealed class UI_heroInfo : ViewUI
 
         if (m2 != null)
         {
-            if (m2.isDie || m.current_hp <= 0)
+            if (m2.isDie || m2.current_hp <= 0)
             {
                 this.img_icon2.color = Color.gray;
             }
