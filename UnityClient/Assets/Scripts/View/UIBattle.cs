@@ -603,7 +603,14 @@ public sealed class UI_heroInfo : ViewUI
     public override void UpdateMS()
     {
         base.UpdateMS();
-
+        if (PublicData.ins.left_revive_times <= 0)
+        {
+            txt_left_revive.text = "生命 x" + PublicData.ins.left_revive_times;
+        }
+        else
+        {
+            txt_left_revive.text = "生命 x" + PublicData.ins.left_revive_times;
+        }
         if (m == null)
         {
             this.m = HeroMgr.ins.GetSelfHero();
@@ -658,7 +665,7 @@ public sealed class UI_heroInfo : ViewUI
         {
             if (m2 != null) return;
 
-            ArrayList heros = HeroMgr.ins.GetHeros();
+            ArrayList heros = HeroMgr.ins.GetHeros(true);
             if (heros.Count == 1) return;
 
             foreach (Hero hero in heros)
@@ -714,12 +721,14 @@ public sealed class UI_heroInfo : ViewUI
         panel1 = GameObject.Find("panel_hero");
         panel2 = GameObject.Find("panel_hero2");
         img_bleed = GameObject.Find("ui_panel_hero_info/bleed").GetComponent<Image>();
+        txt_left_revive = GameObject.Find("ui_panel_hero_info/left_revive_times").GetComponent<Text>();
+
         img_bleed.transform.localScale = new Vector3(1f, 1f, 1f);
         // init member
         this.img_hp1 = panel1.transform.FindChild("hero_img_hp").GetComponent<Image>();
         //  this.img_mp1 = panel1.transform.FindChild("hero_img_mp").GetComponent<Image>();
         this.img_exp1 = panel1.transform.FindChild("hero_img_exp").GetComponent<Image>();
-        this.img_icon1 = panel2.transform.FindChild("hero_img_icon").GetComponent<Image>();
+        this.img_icon1 = panel1.transform.FindChild("hero_img_icon").GetComponent<Image>();
 
         this.txt_hp1 = panel1.transform.FindChild("hero_txt_hp").GetComponent<Text>();
         // this.txt_mp1 = panel1.transform.FindChild("hero_txt_mp").GetComponent<Text>();
@@ -796,6 +805,7 @@ public sealed class UI_heroInfo : ViewUI
 
     GameObject parent;// parent is ui_panel_hero_info
     Image img_bleed;
+    Text txt_left_revive;
 }
 
 public sealed class UI_xy : ViewUI
@@ -835,7 +845,7 @@ public sealed class UI_fpsms : ViewUI
         _fps += 1.0f / Time.deltaTime;
         if (counter >= 10)
         {
-            txt.text = "剩余可死亡次数:" + PublicData.ins.left_revive_times + "     " + string.Format(DATA.UI_FPSMS, (_fps / 10.0f).ToString("0"), +PublicData.GetInstance().ms);
+            txt.text = string.Format(DATA.UI_FPSMS, (_fps / 10.0f).ToString("0"), +PublicData.GetInstance().ms);
             _fps = 0.0f;
             counter = 0;
         }
@@ -1426,7 +1436,7 @@ public sealed class UI_combo : ViewUI
 
 public sealed class UI_die : ViewUI
 {
-    private bool isDie = false;
+    private bool has_revive = false;
     Counter tick = Counter.Create(120); // 30  s
     public override void Update()
     {
@@ -1441,9 +1451,9 @@ public sealed class UI_die : ViewUI
             {
                 return;
             }
+            has_revive = false;
             this.panel.SetActive(true);
             txt_info.text = "角色已死亡，复活倒计时";
-            isDie = true;
             tick.Reset();
         }
     }
@@ -1458,7 +1468,11 @@ public sealed class UI_die : ViewUI
             txt_info.text = "角色已死亡，复活剩余时间:" + time.ToString() + " 秒";
             return;
         }
-        OnClick(1);
+        if (has_revive == false)
+        {
+            OnClick(1);
+            has_revive = true;
+        }
         return;
         txt_info.text = "请选择复活点，复活角色";
 
@@ -1508,7 +1522,7 @@ public sealed class UI_die : ViewUI
         if (tick.IsMax())
         {
             ///执行复活动作
-            ///      Debug.Log("POINT " + index);
+      //   Debug.Log("POINT " + index);
             this.panel.SetActive(false);
             PublicData.ins.IS_revive_point = index;
         }
