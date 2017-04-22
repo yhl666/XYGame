@@ -313,7 +313,7 @@ public sealed class BattleApp : AppBase
                 upload += ",h2:" + HeroMgr.ins.self.current_hp.ToString() + ",";
 
             }
-
+   
             ///发起验证
             RpcClient.ins.SendRequest("services.battle", "request_verify", upload, (string msg) =>
                 {

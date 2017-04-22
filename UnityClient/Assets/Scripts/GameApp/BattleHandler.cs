@@ -149,7 +149,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
         PublicData.ins.battle_result = BattleResult.UnKnown;
         EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
-        PublicData.ins.left_revive_times = 1;
+        PublicData.ins.left_revive_times = 5;
         {
             ArrayList lis = BuildingMgr.ins.GetBuildings<DefendTower>();
             foreach (DefendTower t in lis)
@@ -316,7 +316,7 @@ public sealed class BattleSyncHandler
             i++;
             ///  Thread.Sleep(40);
 
-            if (i > 2) break;//连续计算80帧强制刷新UI
+            if (i > 80) break;//连续计算80帧强制刷新UI
             _need_send = true;
             //     if (_recvQueue.Count() % 50 == 0) return;
             string xx = _recvQueue.Dequeue() as string;
@@ -418,7 +418,13 @@ public sealed class BattleSyncHandler
     {
         TimerQueue.ins.AddTimer(Config.fps_delay, () =>
         {
-            this.AddRecvMsg("no:+" + HeroMgr.ins.self.no.ToString() + ",fps:" + (current_fps + 1).ToString() + ",+");
+            ArrayList hero = HeroMgr.ins.GetHeros(true);
+            string str = "";
+            foreach (Hero h in hero)
+            {
+                str += "no:" + h.no + ",fps:" + (current_fps + 1).ToString() + ",+";
+            }
+            this.AddRecvMsg(str);
             Do();
         });
 
@@ -463,6 +469,11 @@ public sealed class BattleSyncHandler
         {//游戏结束
             //   app.SetGameOver();
             app.CalculateBattleResult();
+            /*if(PublicData.ins.is_client_server)
+            {
+                app.SetGameOver();
+                return;
+            }*/
             this.Do();
             this.DO2();
         }
