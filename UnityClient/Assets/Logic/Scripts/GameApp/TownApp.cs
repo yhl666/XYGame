@@ -46,44 +46,10 @@ public class TownApp : AppBase
 
             this.worldMap = ModelMgr.Create<LogicWorldMap>();
 
-            string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(500).ToString();
-
-
             if (PublicData.GetInstance().self_user == null)
             {
-                //test case   --------------------------------------
-                string str = "account:1,pwd:1,";
-
-
-                RpcClient.ins.SendRequest("services.login", "login", str, (string ree) =>
-                {
-                    HashTable kv = Json.Decode(ree);
-                    Debug.Log("login " + ree);
-
-                    if (kv["ret"] == "ok")
-                    {
-                        DAO.User user = DAO.User.Create(kv);
-                        PublicData.GetInstance().self_user = user;
-
-
-                        RpcClient.ins.SendRequest("services.room", "enter_room", user.ToJson(), (string msg) =>
-                        {
-                            if (msg == "")
-                            {
-                                Debug.Log("enter error");
-                            }
-                            else
-                            {
-                                EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
-
-                            }
-                        });
-
-                    }
-
-                });
+                this.Login();
             }
-
             else
             {
                 //test case   -------------end-------------------------
@@ -107,6 +73,52 @@ public class TownApp : AppBase
             }
             return "本地资源加载完成，连接服务器...";
         }));
+
+    }
+
+    bool Connect = false;
+
+    private void Login()
+    {
+        string seed = (new System.Random(Convert.ToInt32((DateTime.Now - new DateTime(1970, 1, 1, 8, 0, 0)).TotalSeconds))).Next(500).ToString();
+
+
+        //test case   --------------------------------------
+        string str = "account:1,pwd:1,";
+
+
+        RpcClient.ins.SendRequest("services.login", "login", str, (string ree) =>
+        {
+            HashTable kv = Json.Decode(ree);
+            Debug.Log("login " + ree);
+            if (ree == "timeout" || ree == "")
+            {
+                this.Login();
+            }
+            else if (kv["ret"] == "ok")
+            {
+                DAO.User user = DAO.User.Create(kv);
+                PublicData.GetInstance().self_user = user;
+
+                RpcClient.ins.SendRequest("services.room", "enter_room", user.ToJson(), (string msg) =>
+                {
+                    if (msg == "")
+                    {
+                        Debug.Log("enter error");
+                    }
+                    else
+                    {
+                        EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
+
+                    }
+                }, true);
+            }
+            else
+            {
+                this.Login();
+            }
+
+        });
 
     }
     public override bool Init()
@@ -134,7 +146,7 @@ public class TownApp : AppBase
             this.InitCustomAsync();
             return DATA.ADD_STRING + "  加载主场景资源";
         }));
- 
+
         //init all robot
         int robot_count = UnityEngine.Random.Range(5, 10);
         for (int i = 1; i <= robot_count; i++)
@@ -152,7 +164,7 @@ public class TownApp : AppBase
                  return "";
              }));
          }*/
- 
+
         return true;
     }
     public override void OnEnter()

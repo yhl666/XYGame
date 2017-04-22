@@ -6,36 +6,28 @@
 
 using UnityEngine;
 using System.Collections;
-using GameBox.Service.GiantLightFramework;
-using GameBox.Framework;
 using System;
 using System.Collections.Generic;
 
-public class LogicScene : GiantLightSceneExtension
+public class LogicScene : GAObject
 {
-    public override void Enter(IGiantGame game)
+    public override void OnEnter()
     {
-        base.Enter(game);
         Utils.SetTargetFPS(0xffffff);
         AppMgr.ins.OnEnter();
         AppMgr.ins.LoadApp<TownApp>();
     }
 
-    public override void Update(float delta)
+    public override void Update()
     {
-        base.Update(delta);
-       /// AppMgr.ins.Update();
+        AppMgr.ins.Update();
         AppMgr.ins.UpdateMS();
     }
 
-
-    public override void Exit(IGiantGame game)
+    public override void OnExit()
     {
-        base.Exit(game);
         AppMgr.ins.OnExit();
     }
-
-
 
 }
 

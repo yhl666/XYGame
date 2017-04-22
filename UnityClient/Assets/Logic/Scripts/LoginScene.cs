@@ -11,31 +11,24 @@ using GameBox.Framework;
 using System;
 using System.Collections.Generic;
 
-public class LoginScene : GiantLightSceneExtension
+public class LoginScene : GAObject
 {
-    public override void Enter(IGiantGame game)
+    public override void OnEnter()
     {
-        base.Enter(game);
-        Utils.SetTargetFPS(0xffffff);
+        Utils.SetTargetFPS(60);
         AppMgr.ins.OnEnter();
         AppMgr.ins.LoadApp<LoginApp>();
     }
 
-    public override void Update(float delta)
+    public override void Update()
     {
-        base.Update(delta);
         AppMgr.ins.Update();
         AppMgr.ins.UpdateMS();
     }
 
-
-    public override void Exit(IGiantGame game)
+    public override void OnExit()
     {
-        base.Exit(game);
         AppMgr.ins.OnExit();
     }
-
-
-
 }
 

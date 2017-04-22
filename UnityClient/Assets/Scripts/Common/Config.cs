@@ -24,9 +24,17 @@ public class Config : object
 {
 
   public static string SERVER_IP = "127.0.0.1";
- // public static string SERVER_IP = "115.159.203.16";
+   //  public static string SERVER_IP = "115.159.203.16";
+  //  public static string SERVER_IP = "192.168.93.39";
+  
+    public static string LOGIC_SERVER_IP = "127.0.0.1";
+   // public static string LOGIC_SERVER_IP = "115.159.203.16";
 
+
+
+    public const int LOGIC_SERVER_PORT = 8002;
     public const int SERVER_PORT = 8111;
+
 
     public static float fps_delay = 0.025f;
     public const int MAX_NETSOCKET_BUFFER_SIZE = 500;
@@ -47,5 +55,5 @@ public class Config : object
     public static bool DEBUG_EnableDebugWindow = true;//开启界面日志输出
     public static bool DEBUG_EnableAutoClean = true;//开启自动清理 ，主要用于Console性能优化
     public static int DEBUG_MaxCount = 100; //开启自动清理后，最大日志保留条数
-    public static bool DEBUG_EnableAutoShowStackTrace=true;//自动显示 调用栈; 当Error 或者Exception时候
+    public static bool DEBUG_EnableAutoShowStackTrace = true;//自动显示 调用栈; 当Error 或者Exception时候
 };

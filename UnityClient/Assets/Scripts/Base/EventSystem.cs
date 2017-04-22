@@ -15,7 +15,6 @@ public sealed class EventSystem : MonoBehaviour
     void Awake()
     {
         ins = this;
-
     }
     void OnDestroy()
     {
@@ -32,12 +31,12 @@ public sealed class EventSystem : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
-
+        RpcClient.GetInstance();
     }
     // Update is called once per frame
     void Update()
     {
+        RpcClient.ins.Update();
         EventDispatcher.ins.Update();
         for (int i = 0; i < list_update.Count; i++)
         {

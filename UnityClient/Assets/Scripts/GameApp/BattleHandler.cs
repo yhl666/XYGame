@@ -135,7 +135,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
     {
 
         ArrayList list = HeroMgr.ins.GetHeros();
-        if (list.Count <= 0 && PublicData.ins.left_revive_times<=0)
+        if (list.Count <= 0 && PublicData.ins.left_revive_times <= 0)
         {
             // all has die
             AppMgr.GetCurrentApp<BattleApp>().AddSendMsg("cmd:over");
@@ -149,7 +149,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
         PublicData.ins.battle_result = BattleResult.UnKnown;
         EventDispatcher.ins.PostEvent(Events.ID_LOADING_HIDE);
         PublicData.ins.battle_random_seed = int.Parse(PublicData.ins.pvp_room_no);
-
+        PublicData.ins.left_revive_times = 1;
         {
             ArrayList lis = BuildingMgr.ins.GetBuildings<DefendTower>();
             foreach (DefendTower t in lis)
@@ -176,9 +176,9 @@ sealed class BattlePVEHandler : BattleHandlerBase
         //  HeroMgr.ins.self.z = 3f;
         //    HeroMgr.ins.self.x = 8f;
 
-     /*  Hero h1 = HeroMgr.Create<BattleHero>();
-        h1.no = 5;
-        h1.SetPVPAIEnable(true);*/
+        /*  Hero h1 = HeroMgr.Create<BattleHero>();
+           h1.no = 5;
+           h1.SetPVPAIEnable(true);*/
         //默认位置为出生点
         ArrayList points = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetCustomObjects<TerrainObjectRevivePoint>();
 
@@ -418,7 +418,7 @@ public sealed class BattleSyncHandler
     {
         TimerQueue.ins.AddTimer(Config.fps_delay, () =>
         {
-            this.AddRecvMsg("no:1,fps:" + (current_fps + 1).ToString() + ",+");
+            this.AddRecvMsg("no:+" + HeroMgr.ins.self.no.ToString() + ",fps:" + (current_fps + 1).ToString() + ",+");
             Do();
         });
 

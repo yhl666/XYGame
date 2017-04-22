@@ -24,6 +24,8 @@ using GameBox.Service.GiantLightServer;
 /// 游戏本身层次服装
 /// RpcMgr是对GameBox的封装
 /// </summary>
+/// 
+/*
 public class RpcClient
 {
     public static RpcClient ins
@@ -48,6 +50,64 @@ public class RpcClient
     {
         _ins =  null;
     }
+
+
+   
+    private IGiantLightServer server;
+}
+
+*/
+
+
+
+
+
+public class RpcClient : SingletonGAObject<RpcClient>, IGiantLightClient
+{
+    public string ip = Config.LOGIC_SERVER_IP;
+    public int port = Config.LOGIC_SERVER_PORT;
+    public override bool Init()
+    {
+        return true;
+    }
+    public bool IsConnected()
+    {
+        if (server == null)
+        {
+            return false;
+        }
+        return server.Connected;
+    }
+
+    public bool IsReady()
+    {
+        return server != null;
+    }
+
+    public void LazyInit()
+    {
+        server = ServiceCenter.GetService<IGiantLightServer>();
+    }
+    public void Connect(string ip, int port)
+    {
+        server.Connect(ip, port, this);
+        this.ip = ip;
+        this.port = port;
+    }
+    public void ReConnect()
+    {
+        if (this.IsConnected()) return;
+        server.Connect(ip, port, this);
+    }
+    public void Disconnect()
+    {
+        if (server != null)
+        {
+            server.Disconnect();
+        }
+
+    }
+
 
 
     /// <summary>
@@ -99,15 +159,43 @@ public class RpcClient
         SendRequest(service, method, kv_json, (string msg) => { });
     }
 
+    /*public bool SendResponse(uint id, byte[] content)
+    {
+        //发送RPC响应
+        server.SendResponse(id, content);
+        return true;
+    }*/
     public void SendResponse(uint id, string kv_json)
     {
-
         var t = new rpc.EnterRoomMsg();//protobuf
         t.peer_name = kv_json;
-
         //发送RPC响应
-        inner.RpcMgr.ins.SendResponse(id, ByteConverter.ProtoBufToBytes(t));
+        server.SendResponse(id, ByteConverter.ProtoBufToBytes(t));
     }
-    private IGiantLightServer server;
-}
+    //-----inner function
 
+    public bool PushResponse(uint id, byte[] content)
+    {
+        return inner.RpcMgr.ins.PushResponse(id, content);
+    }
+    public bool PushRequest(uint id, string service, string method, byte[] content)
+    {
+        return inner.RpcMgr.ins.PushRequest(id, service, method, content);
+    }
+
+    public void SendRequest(uint id, string service, string method, byte[] content)
+    {
+        server.SendRequest(id, service, method, content);
+    }
+    public void SendResponse(uint id, byte[] content)
+    {
+        server.SendResponse(id, content);
+    }
+
+    public override void Update()
+    {
+        inner.RpcMgr.ins.Tick();
+    }
+
+    private IGiantLightServer server = null;
+}

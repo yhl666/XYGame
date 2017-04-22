@@ -138,7 +138,7 @@ public class GiantLightSceneExtension : GiantLightScene
 public class RpcService : GAObject
 {
     public virtual string GetServiceName() { return ""; }
-    public void _Inner_Invoke__(uint id, string method,string msg )
+    public void _Inner_Invoke__(uint id, string method, string msg)
     {
         if ("_Inner_Invoke__" == method) return;
         if ("GetServiceName" == method) return;
@@ -149,12 +149,12 @@ public class RpcService : GAObject
             t.peer_name = kv_json;
             inner.RpcMgr.ins.SendResponse(id, ByteConverter.ProtoBufToBytes(t));
         });
- 
+
         VoidFuncRpc func = null;
         if (methods.Contains(method))
         {
             func = methods[method] as VoidFuncRpc;
-          ///  Debug.Log("call func in cache");
+            ///  Debug.Log("call func in cache");
 
         }
         else
@@ -168,7 +168,7 @@ public class RpcService : GAObject
                 RpcClient.ins.SendResponse(id, "");
                 return;
             }
-       
+
             func = (string msgg, VoidFuncString cbb) =>
             {
                 object[] _params = new object[2];
@@ -178,7 +178,7 @@ public class RpcService : GAObject
             };
             methods.Add(method, func);
 
-         ///   Debug.Log("call func in new");
+            ///   Debug.Log("call func in new");
         }
         func(msg, cb);
     }
@@ -205,8 +205,8 @@ namespace inner
         public string service;
         public byte[] content = null;
 
-        private uint TIMEOUT_TICK = (uint)(3.0f * (1.0f / Time.deltaTime));//超时的帧数 3秒超时
-        private uint _tick = 0;
+        private float TIMEOUT_TICK = 3.0f;//超时的帧数 3秒超时
+        private float _tick = 0;
         private Func<ResponseWrapper, bool> cb;
         public bool isInVoke = false;
 
@@ -229,7 +229,7 @@ namespace inner
         public void Tick()
         {//check for time out 
             if (this.isInVoke) return;
-            ++_tick;
+            _tick += Time.deltaTime;
             if (_tick > TIMEOUT_TICK)
             {
                 this.InVoke(null);
@@ -271,7 +271,7 @@ namespace inner
     /// @brief  接管GiantLightScene的PushRequest 和 PushResponse
     /// 所有RPC 注册 请求 都用该类 提供的接口
     /// </summary>
-    public class RpcMgr :Singleton<RpcMgr>
+    public class RpcMgr : Singleton<RpcMgr>
     {
 
         /// <summary>
@@ -297,23 +297,22 @@ namespace inner
         /// </summary>
         public void Tick()
         {
-            foreach (RequestWrapper request in requests)
+            for (int i = 0; i<requests.Count;i++ )
             {
-                request.Tick();
+                (requests[i] as RequestWrapper).Tick();
             }
-
-            //clear 
-            for (int i = 0; i < requests.Count; )
-            {
-                if ((requests[i] as RequestWrapper).isInVoke)
+                //clear 
+                for (int i = 0; i < requests.Count; )
                 {
-                    requests.Remove(requests[i]);
+                    if ((requests[i] as RequestWrapper).isInVoke)
+                    {
+                        requests.Remove(requests[i]);
+                    }
+                    else
+                    {
+                        ++i;
+                    }
                 }
-                else
-                {
-                    ++i;
-                }
-            }
         }
         /// <summary>
         /// 接管代码， 在GiantLightScene里面转发到该函数，其他时刻请勿调用
@@ -332,7 +331,7 @@ namespace inner
                 }
             }
             Debug.LogWarning("Unknown response id:" + id);
-            return false;
+            return true;
         }
         /// <summary>
         /// 接管代码， 在GiantLightScene里面转发到该函数，其他时刻请勿调用
@@ -366,7 +365,7 @@ namespace inner
             }
 
             string msg = ByteConverter.BytesToProtoBuf<rpc.EnterRoomMsg>(content, 0, content.Length).peer_name;
-      
+
             Debug.LogWarning("[Server Rpc Call]:" + service + "." + method + " params----" + msg);
             rpc._Inner_Invoke__(id, method, msg);
             return true;
@@ -380,7 +379,7 @@ namespace inner
         public void SendResponse(uint id, byte[] content)
         {
 
-            scene.SendResponse(id, content);
+            RpcClient.ins .SendResponse(id, content);
         }
         /// <summary>
         /// 发送RPC请求接口
@@ -391,10 +390,10 @@ namespace inner
         /// <param name="cb"> 回调，参数是ResponseWrapper 该请求响应后会自动调用回调</param>
         public void SendRequest(string service, string method, byte[] content, Func<ResponseWrapper, bool> cb)
         {
-     
+
             var wrapper = new RequestWrapper(service, method, content, cb);
             requests.Add(wrapper);
-            scene.SendRequest(wrapper.id, service, method, content);
+            RpcClient.ins .SendRequest(wrapper.id, service, method, content);
         }
 
         /// <summary>
@@ -403,18 +402,16 @@ namespace inner
         /// <param name="scene"></param>
         public void OnChangeScene(GiantLightScene scene)
         {
-            this.scene = scene;
+       
         }
         public void Remove(RequestWrapper wrapper)
         {
             this.requests.Remove(wrapper);
         }
-     
+
         Hashtable services = new Hashtable();
 
         List<RequestWrapper> requests = new List<RequestWrapper>();
-
-        private GiantLightScene scene = null;
 
     }
 }

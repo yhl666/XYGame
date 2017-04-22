@@ -165,7 +165,7 @@ public class LoginApp : AppBase
     {
         EventDispatcher.DestroyInstance();
         AppMgr.ins.Dispose();
-        ModelMgr.ins.Dispose();
+      //  ModelMgr.ins.Dispose();
         ViewMgr.ins.Dispose();
 
         //  PublicData.GetInstance().game.Terminate();
@@ -197,7 +197,7 @@ public class LoginApp : AppBase
     {
         AutoReleasePool.ins.Clear();
 
-        ModelMgr.ins.UpdateMS();
+      //  ModelMgr.ins.UpdateMS();
         ViewMgr.ins.Update();
         ViewMgr.ins.UpdateMS();
 

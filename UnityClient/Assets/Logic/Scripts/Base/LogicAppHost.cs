@@ -8,31 +8,72 @@ using System.Collections;
 using GameBox.Service.GiantLightFramework;
 using GameBox.Framework;
 using GameBox.Service.ByteStorage;
- 
-
+using GameBox.Service.GiantLightServer;
+using System;
 
 public class LogicAppHost : MonoBehaviour
 {
+    LogicScene scene = null;
+    void Awake()
+    {
 
-    // Use this for initialization
+    }
     void Start()
     {
-        new ServiceTask("com.giant.service.giantlightframework").Start().Continue(task =>
+     
+        if (RpcClient.ins.IsConnected() == false && RpcClient.ins.IsReady()==false)
         {
-            this.game = task.Result as IGiantGame;
-
-            this.game.GotoScene(new LogicScene());
-            return null;
-
-        });
-
+            this.enabled = false;
+            new ServiceTask("com.giant.service.giantlightserver").Start().Continue(task1 =>
+            {
+                RpcClient.ins.LazyInit();
+                scene = new LogicScene();
+                scene.Init();
+                scene.OnEnter();
+                this.enabled = true;
+                RpcClient.ins.ReConnect();
+                return null;
+            });
+        }
+        else
+        {
+            RpcClient.ins.LazyInit();
+            scene = new LogicScene();
+            scene.Init();
+            scene.OnEnter();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        if (RpcClient.ins.IsConnected() == false)
+        {
+            if (has_intime == false)
+            {
+                has_intime = true;
+                StartCoroutine(TryReConnect());
+            }
+        }
+        if (scene != null)
+        {
+            scene.Update();
+        }
+    }
+    void OnDestroy()
+    {
+        if (scene != null)
+        {
+            scene.OnExit();
+            scene.Dispose();
+        }
     }
 
-    private IGiantGame game = null;
+    IEnumerator TryReConnect()
+    {
+        yield return new WaitForSeconds(3);
+        RpcClient.ins.ReConnect();
+        has_intime = false;
+    }
+    bool has_intime = false;
 }
+

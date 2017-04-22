@@ -768,7 +768,6 @@ public class BufferRevive : Buffer
         EventDispatcher.ins.PostEvent(Events.ID_REVIVE, target);
         this.SetInValid();
         EventDispatcher.ins.PostEvent(Events.ID_PUBLIC_PUSH_MSG, "玩家 " + target.no + "已复活");
-
         //添加一个3秒无敌 buffer
         Buffer b = target.AddBuffer<BufferGod>();//无敌
         b.SetLastTime(3f);
@@ -780,12 +779,17 @@ public class BufferRevive : Buffer
     public override bool Init()
     {
         base.Init();
+        this.isOnlyOne = true;
         return true;
     }
 
     public override void OnEvent(int type, object userData)
     {
 
+    }
+    public override void OnMerge(Buffer other)
+    {
+       
     }
     public override void OnExit()
     {
