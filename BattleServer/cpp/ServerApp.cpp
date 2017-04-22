@@ -1167,7 +1167,7 @@ void   ServerAppBattle::RoomThreadFunc(void *arg1)
 	perFrame.QuadPart = (LONGLONG)(1.0 / 40.0 * nFreq.QuadPart);//25MS
 
 
-
+	Utils::log("Ready For Waitting all Clients");
 	room->Lock();
 	room->BroadcastCustomData("cmd:Ready:1:2");
 	while (true)
@@ -1190,7 +1190,7 @@ void   ServerAppBattle::RoomThreadFunc(void *arg1)
 		}
 	}
 	room->UnLock();
-
+	Utils::log("Start to Run Game");
 	QueryPerformanceCounter(&nLast);
 	while (true)
 	{
