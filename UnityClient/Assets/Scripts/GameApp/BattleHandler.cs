@@ -135,7 +135,7 @@ sealed class BattlePVEHandler : BattleHandlerBase
     {
 
         ArrayList list = HeroMgr.ins.GetHeros();
-        if (list.Count <= 0)
+        if (list.Count <= 0 && PublicData.ins.left_revive_times<=0)
         {
             // all has die
             AppMgr.GetCurrentApp<BattleApp>().AddSendMsg("cmd:over");
