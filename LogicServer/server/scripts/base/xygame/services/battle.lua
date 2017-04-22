@@ -169,7 +169,7 @@ function t.request_verify(ctx, msg, cb)
                 if string.find(msg2, "h1") == nil or string.find(msg2, "h2") == nil then
                     -- 暂时做一个简单的判断处理没有血量的情况
                     -- 如果是一号玩家
-                    local msg_to_write = msg2 .. "h1:" .. tbl["h1"] .. "," .. "h2:" .. tbl["h2"] .. ",";
+                    local msg_to_write = msg2 ..  "mode:" .. mode ..",h1:" .. tbl["h1"] .. "," .. "h2:" .. tbl["h2"] .. ",";
                     remote.request("services.battle_pvp", "request_verify_write", msg_to_write, function(msg4)
                         -- 讲血量写入数据库
 
@@ -188,6 +188,7 @@ function t.request_verify(ctx, msg, cb)
 
                     -- 如果是二号玩家
                     cb("ret:ok,");
+             
                     if msg == msg2 then
                         -- 二号发过来的结果数据和数据库中取得一致则
 
