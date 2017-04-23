@@ -78,7 +78,7 @@ end
 
 function t.new_position(ctx, msg, cb)
     cb("");
-    room_notify_other(ctx, "Room", "NewPosition", msg);
+   -- room_notify_other(ctx, "Room", "NewPosition", msg);
 end
  
 function t.enter_room(ctx, msg, cb)
