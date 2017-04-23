@@ -498,6 +498,17 @@ public sealed class BattleSyncHandler
             h2.name = name;
 
         }
+        else if (cmd == "new_self")
+        {//新玩家
+            int no = int.Parse(decode.customs[1] as string);
+            if (no != HeroMgr.ins.me_no) return;
+
+            Hero h2 = HeroMgr.Create<BattleHero>();
+            h2.team = 0xfff;
+            h2.no = no;
+            h2.name = "单人模式";
+            HeroMgr.ins.self = h2;
+        }
         else if (cmd == "new_pvp_friend_ai")
         {//pvp 好友 离线模式 模式 新玩家
 

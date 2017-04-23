@@ -114,7 +114,7 @@ public class PublicData : object
     public bool is_client_server = false;
     public string client_server_result = "";
 
-
+    public BattleAppMode battleapp_mode = BattleAppMode.UnKnown;
 
     // -------------------------------------------------------------pvp
     public DAO.User user_pvp_other = null;

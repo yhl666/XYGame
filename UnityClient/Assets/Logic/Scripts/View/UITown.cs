@@ -1367,6 +1367,7 @@ public sealed class UI_townteamapp : UICellApp
         this.btn_search = panel.transform.FindChild("panel_pve/btn_search").GetComponent<Button>();
         this.btn_join = panel.transform.FindChild("panel_pve/btn_join").GetComponent<Button>();
         this.btn_random = panel.transform.FindChild("panel_pve/btn_random").GetComponent<Button>();
+        this.btn_single = panel.transform.FindChild("panel_pve/btn_single").GetComponent<Button>();
 
         this.players.Add(panel.transform.FindChild("panel_info/panel_player1").gameObject);
         this.players.Add(panel.transform.FindChild("panel_info/panel_player2").gameObject);
@@ -1418,6 +1419,10 @@ public sealed class UI_townteamapp : UICellApp
         this.btn_create.onClick.AddListener(() =>
         {
             EventDispatcher.ins.PostEvent(Events.ID_TOWN_TEAM_BTN_MAIN_CREATE, this);
+        });
+        this.btn_single.onClick.AddListener(() =>
+        {
+            EventDispatcher.ins.PostEvent(Events.ID_TOWN_TEAM_BTN_MAIN_SINGLE, this);
         });
         this.btn_join.onClick.AddListener(() =>
         {
@@ -1665,6 +1670,7 @@ public sealed class UI_townteamapp : UICellApp
     Button btn_close1;
     Button btn_create;
     Button btn_random;
+    Button btn_single;
     Button btn_join;
     Button btn_search;
 

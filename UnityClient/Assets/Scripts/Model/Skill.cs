@@ -2514,7 +2514,7 @@ public class Skill62_3_v2 : SkillBase
                 info.collider_size = Skill62_3_Data.Get(level).hit_rect;
                 info.collider_type = ColliderType.Box;
                 info.number = 1;
-                info.isHitDestory = true;
+               // info.isHitDestory = true;
                 info.validTimes = 1;
             }
             else if (level >= 2)
@@ -2951,7 +2951,7 @@ public class SkillForceCancel : SkillBase
         Target.isAttacking = false;
         Target.AddBuffer<BufferForceCancel>();
         this.Enable = true;
-
+    //    EventDispatcher.ins.PostEvent(Events.ID_CHANGE_SKILL_ICON);
     }
     public override void UpdateMS()
     {

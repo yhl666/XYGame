@@ -331,6 +331,7 @@ public class TownTeamApp : CellApp
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_TEAM_BTN_MAIN_JOIN); //  主界面 加入
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_TEAM_BTN_MAIN_RANDOM); //  主界面 随机
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_TEAM_BTN_MAIN_SEARCH); //  主界面 搜索
+        EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_TEAM_BTN_MAIN_SINGLE); //  主界面 单人模式
 
 
         EventDispatcher.ins.AddEventListener(this, Events.ID_TOWN_TEAM_RPC_ENTERTEAM); //  rpc 进入房间
@@ -512,6 +513,20 @@ public class TownTeamApp : CellApp
                 });
             }
 
+        }
+        else if (type == Events.ID_TOWN_TEAM_BTN_MAIN_SINGLE)
+        {// 单人模式  
+
+            //code copy from TownPVPApp
+
+            PublicData.ins.battle_mode = "pve";
+            PublicData.ins.is_pve = true;
+
+            PublicData.ins.battleapp_mode = BattleAppMode.PVE_Single;
+            PublicData.ins.is_pvp_friend = false;
+            AppMgr.GetCurrentApp<TownApp>().Dispose();
+
+            SceneMgr.Load("BattlePVE25D");//BattlePVE
         }
         else if (type == Events.ID_TOWN_TEAM_BTN_CLOSE)
         {//离开队伍

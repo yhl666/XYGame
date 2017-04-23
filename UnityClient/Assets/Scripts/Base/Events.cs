@@ -162,6 +162,7 @@ public sealed class Events : object
     public const int ID_TOWN_TEAM_BTN_MAIN_JOIN = 326; //组队主界面 加入
     public const int ID_TOWN_TEAM_BTN_MAIN_SEARCH = 328;//组队主界面 搜索
     public const int ID_TOWN_TEAM_BTN_MAIN_RANDOM = 329; // 组队主界面 随机
+    public const int ID_TOWN_TEAM_BTN_MAIN_SINGLE = 337; // 组队主界面 单人模式
 
     public const int ID_TOWN_TEAM_RPC_ENTERTEAM = 330;//进入队伍RPC 消息 参数是 HashTable
     public const int ID_TOWN_TEAM_RPC_LEAVETEAM = 331;//进入队伍RPC 消息 参数是 HashTable

@@ -8,6 +8,13 @@ using System.Collections;
 using System;
 using System.Threading;
 
+public enum BattleAppMode
+{
+    UnKnown,
+    PVE_Single, //pve  单人离线模式 
+    PVE_2,//pve 双人开黑模式
+
+}
 public sealed class BattleApp : AppBase
 {
     private BattleKeyboardInputHandler inputHandler = null;
@@ -253,6 +260,12 @@ public sealed class BattleApp : AppBase
         {
             socket = new SockClientWithVideoMode();
         }
+        else if (PublicData.ins.battleapp_mode == BattleAppMode.PVE_Single)
+        {
+            socket = new SockClientWithPVE_Single();
+            socket.Startup();
+            return;
+        }
         else
         {
             socket = new SocketClient();
@@ -274,9 +287,15 @@ public sealed class BattleApp : AppBase
 
         if (!isReConnect)
         {
+         /* if (PublicData.ins.battleapp_mode == BattleAppMode.PVE_Single)
+            {
+                this.socket.AddSendMsg("cmd:new_pvp_friend:" + PublicData.ins.self_user.no.ToString() + ":" + PublicData.ins.pvp_room_no + ":" + PublicData.ins.pvp_room_max);
+                return;
+            }*/
             if (PublicData.ins.is_pve)
             {
                 ////  this.AddSendMsg("cmd:pve");
+    
             }
             if (PublicData.ins.is_pvp_friend)
             {
@@ -401,6 +420,7 @@ public sealed class BattleApp : AppBase
         else
         {
             EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_WAITFOR_RESULT_SHOW);
+            EventDispatcher.ins.PostEvent(Events.ID_BATTLE_PVP_RETULT, "ret:ok,msg:will_not_verify,");
         }
 
     }
@@ -512,6 +532,7 @@ public sealed class BattleApp : AppBase
         }
         PublicData.ins.is_pvp_friend_ai = false;
         PublicData.ins.is_pvp_friend = false;
+        PublicData.ins.battleapp_mode = BattleAppMode.UnKnown;
         ///   PublicData.ins.isVideoMode = false;
 
         ViewMgr.DestroyInstance();
