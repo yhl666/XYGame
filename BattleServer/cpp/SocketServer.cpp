@@ -61,7 +61,10 @@ bool   SocketServer::Init()
 	server_ipaddr.sin_port = htons(Config::SERVER_PORT);
 
 	server_ipaddr.sin_addr.s_addr = htonl(0);
-
+		//inet_addr( "192.168.1.200");
+	;
+	// htonl("192.168.1.200");
+	 
 	sock = ::socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 	::bind(sock, (sockaddr *)&server_ipaddr, length);
