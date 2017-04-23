@@ -60,8 +60,8 @@ bool   SocketServer::Init()
 	server_ipaddr.sin_family = AF_INET;
 	server_ipaddr.sin_port = htons(Config::SERVER_PORT);
 
-	//server_ipaddr.sin_addr.s_addr = htonl(0);
-	 server_ipaddr.sin_addr.s_addr = inet_addr("192.168.1.200");
+	server_ipaddr.sin_addr.s_addr = htonl(0);
+	// server_ipaddr.sin_addr.s_addr = inet_addr("192.168.1.200");
 	;
 	// htonl("192.168.1.200");
 
