@@ -2,34 +2,22 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid '7fd2460a8d92f5b5a51c6fc8a791b4e389775e9d'
-    oldFile: !uuid '7a659516fd43967f96e7a695a9d62b47dac0640c'
-  /UnityClient/Assets:
-    newFile: !uuid '4d35bb2b33a345fcdbd7c6db6d8aab26a86cdf85'
-    oldFile: !uuid '310d4046023fd63bc3d1d7ae419c666dd1e1b28a'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid 'e8b0493c032f924b574fc09f6b051335524f961b'
-    oldFile: !uuid '4eae4e9ffc8a5286a356d1f62ea9e38eee7c8772'
-  /UnityClient/Assets/Scripts/Common:
-    newFile: !uuid '37bd785ceb9584ad8baa4fceb026407cad9c35df'
-    oldFile: !uuid '984d132c0eeadcf77f8a6f59862d945bf117f931'
-  /UnityClient/Assets/Scripts/Common/Config.cs:
-    newFile: !uuid '75edc9dde3ad7b09e446035cff161e9b3352db19'
-    oldFile: !uuid '3c43de4b12c89068b2e3935774dbb27143c23a8b'
-  /UnityClient/Assets/Scripts/Data:
-    newFile: !uuid '76479723914c616a05877862f6890c477515b8d4'
-    oldFile: !uuid '0a4f47d8eade9e60313802a0dfb863739c851eef'
-  /UnityClient/Assets/Scripts/Data/PublicData.cs:
-    newFile: !uuid 'e77b5bb7b232ae3931737783d53994deea39429e'
-    oldFile: !uuid 'ee50868e2d0d814c19558f3b1002c6c56f6b0684'
-  /UnityClient/Assets/Scripts/View:
-    newFile: !uuid 'c6f0845f807ecc4cdfaa3ab81020a01af15ad6b7'
-    oldFile: !uuid '3510bc719d3b777d3d5da345f1dab396c84f0e8a'
-  /UnityClient/Assets/Scripts/View/UIBattle.cs:
-    newFile: !uuid '24312fd8a8dd232a4a3bae09e03bfed8d7caae64'
-    oldFile: !uuid '08422fe5b23400a7f845e8321c3f64babca4dc5e'
-gitCommitId: !uuid '17515c70ffc6958218a90bfc5def1f05ef2c590f'
+  /BattleServer:
+    newFile: !uuid '21779675914034b7b89b7d4ff339c6f7066291d1'
+    oldFile: !uuid '038b9e98e2d21924d553ab22b0e04ea34c1748f4'
+  /BattleServer/cpp:
+    newFile: !uuid '9cc3e4e2e6335778f67a945be34d2a21fe5d5590'
+    oldFile: !uuid '3453b8565c056e486daf807ebe7c92700fa2a7fe'
+  /BattleServer/cpp/Room.cpp:
+    newFile: !uuid '085d00913c3e1aebb47400382c2ec19c4f12a39d'
+    oldFile: !uuid 'bcb821c9f9d377fe171eb689eb88c2537c516035'
+  /BattleServer/cpp/ServerApp.cpp:
+    newFile: !uuid 'e14c78af5a7342dcd93e121aa066959ec637255c'
+    oldFile: !uuid '7160f13dcc83eabb7fd0b01e6631858a7bb61516'
+  /BattleServer/cpp/SocketServer.cpp:
+    newFile: !uuid 'c879cb4f203b9e108a30fe3f15c734aec2912e8c'
+    oldFile: !uuid '6ae5424cacb4d962fd2dbf5eeebaa47b10ea55f2'
+gitCommitId: !uuid 'e778007807a842cf2c3b10d2b25244455d2f6dbb'
 renames: {
   }
-revisionId: 936
+revisionId: 937
