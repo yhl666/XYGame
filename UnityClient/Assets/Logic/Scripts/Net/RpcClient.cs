@@ -64,8 +64,8 @@ public class RpcClient
 
 public class RpcClient : SingletonGAObject<RpcClient>, IGiantLightClient
 {
-    public string ip = Config.LOGIC_SERVER_IP;
-    public int port = Config.LOGIC_SERVER_PORT;
+  //  public string ip = Config.LOGIC_SERVER_IP;
+   // public int port = Config.LOGIC_SERVER_PORT;
     public override bool Init()
     {
         return true;
@@ -91,13 +91,13 @@ public class RpcClient : SingletonGAObject<RpcClient>, IGiantLightClient
     public void Connect(string ip, int port)
     {
         server.Connect(ip, port, this);
-        this.ip = ip;
-        this.port = port;
+       // this.ip = ip;
+     //   this.port = port;
     }
     public void ReConnect()
     {
-        if (this.IsConnected()) return;
-        server.Connect(ip, port, this);
+      //  if (this.IsConnected()) return;
+        server.Connect(Config.LOGIC_SERVER_IP, Config.LOGIC_SERVER_PORT, this);
     }
     public void Disconnect()
     {

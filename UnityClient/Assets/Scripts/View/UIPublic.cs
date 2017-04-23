@@ -481,6 +481,15 @@ public sealed class UI_console : ViewUI
 
     public override void Update()
     {
+        if (Config.DEBUG_LoadDebugWindow == false) return;
+        if (Config.DEBUG_EnableDebugWindow)
+        {
+            this._ui.SetActive(true);
+        }
+        else
+        {
+            this._ui.SetActive(false);
+        }
     }
     public override void OnDispose()
     {
@@ -503,7 +512,7 @@ public sealed class UI_console : ViewUI
     {
         base.Init();
         this._ui = GameObject.Find("ui_panel_console");
-        if(Config.DEBUG_EnableDebugWindow==false)
+        if(Config.DEBUG_LoadDebugWindow==false)
         {
             this._ui.SetActive(false);
             return true;
@@ -546,8 +555,11 @@ public sealed class UI_console : ViewUI
     }
     void PushLog(string what, string stackTrace, LogType type)
     {
-        ++current_index;
-        this.SyncOne(DebugInfo.Create(what, type, stackTrace, current_index));
+        if (Config.DEBUG_EnableDebugWindow)
+        {
+            ++current_index;
+            this.SyncOne(DebugInfo.Create(what, type, stackTrace, current_index));
+        }
     }
     int current_debuginfo_index = 0;
 

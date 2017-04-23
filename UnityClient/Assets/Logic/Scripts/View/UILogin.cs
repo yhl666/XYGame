@@ -88,10 +88,29 @@ public sealed class UI_login : ViewUI
         txt_btn_ok.text = "确定";
         input_name.SetActive(true);
     }
+    private void SyncServer()
+    {
+        RpcClient.ins.Disconnect();
+        RpcClient.ins.ReConnect();
+        txt_server.text =
+             "战斗服务器IP:" + Config.LOGIC_SERVER_IP + ":" + Config.LOGIC_SERVER_PORT + "   " +
+            "逻辑服务器IP:" + Config.SERVER_IP + ":" + Config.SERVER_PORT;
+    }
     private void HidePanel()
     {
         this.PopOut(this.panel);
         img_half.gameObject.SetActive(false);
+    }
+    private void SyncConsole()
+    {
+        if (Config.DEBUG_EnableDebugWindow)
+        {
+            this.txt_console.text = "关闭Console";
+        }
+        else
+        {
+            this.txt_console.text = "开启Console";
+        }
     }
     public override bool Init()
     {
@@ -104,17 +123,44 @@ public sealed class UI_login : ViewUI
         this.txt_account = GameObject.Find("txt_account").GetComponent<Text>();
         this.txt_name = GameObject.Find("txt_name").GetComponent<Text>();
         this.txt_pwd = GameObject.Find("txt_pwd").GetComponent<Text>();
+
         this.panel = GameObject.Find("ui_panel_login");
-        this.input_name  = GameObject.Find("input_name");
+        this.input_name = GameObject.Find("input_name");
+        this.txt_console = GameObject.Find("txt_console").GetComponent<Text>();
 
         this.btn_login = GameObject.Find("btn_login").GetComponent<Button>();
         this.btn_register = GameObject.Find("btn_register").GetComponent<Button>();
         this.btn_close = GameObject.Find("btn_close").GetComponent<Button>();
         this.btn_close1 = GameObject.Find("btn_close1").GetComponent<Button>();
         this.btn_ok = GameObject.Find("btn_ok").GetComponent<Button>();
+        this.btn_remote = GameObject.Find("btn_remote").GetComponent<Button>();
+        this.btn_local = GameObject.Find("btn_local").GetComponent<Button>();
+        this.btn_console = GameObject.Find("btn_console").GetComponent<Button>();
+        if (Config.DEBUG_LoadDebugWindow == false)
+        {
+            this.btn_console.gameObject.SetActive(false);
+        }
 
- 
-
+        this.btn_console.onClick.AddListener(delegate()
+        {
+            Config.DEBUG_EnableDebugWindow = !Config.DEBUG_EnableDebugWindow;
+            this.SyncConsole();
+        });
+        this.SyncConsole();
+        this.txt_server = GameObject.Find("txt_ip").GetComponent<Text>();
+        this.SyncServer();
+        this.btn_local.onClick.AddListener(delegate()
+        {
+            Config.SERVER_IP = "127.0.0.1";
+            Config.LOGIC_SERVER_IP = "127.0.0.1";
+            this.SyncServer();
+        });
+        this.btn_remote.onClick.AddListener(delegate()
+         {
+             Config.SERVER_IP = "115.159.203.16";
+             Config.LOGIC_SERVER_IP = "115.159.203.16";
+             this.SyncServer();
+         });
         this.btn_login.onClick.AddListener(delegate()
         {
             this.state = LoginState.Login;
@@ -137,7 +183,6 @@ public sealed class UI_login : ViewUI
         });
         this.btn_ok.onClick.AddListener(delegate()
         {
-
             LoginInfo info = new LoginInfo();
 
             info.name = txt_name.text;
@@ -232,7 +277,8 @@ public sealed class UI_login : ViewUI
     Text txt_name;
     Text txt_pwd;
     Text txt_account;
-
+    Text txt_server;
+    Text txt_console;
 
     Button btn_register;
     Button btn_login;
@@ -244,6 +290,9 @@ public sealed class UI_login : ViewUI
     GameObject input_name;
     GameObject panel;
 
+    Button btn_remote;
+    Button btn_local;
+    Button btn_console;
 }
 
 

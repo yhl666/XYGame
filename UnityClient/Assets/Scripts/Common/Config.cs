@@ -25,17 +25,23 @@ public class Config : object
 
 #if UNITY_IOS || UNITY_ANDROID
 
-     public static string SERVER_IP = "192.168.1.200";
-    public static string LOGIC_SERVER_IP = "192.168.1.200";
+    // public static string SERVER_IP = "192.168.1.200";
+   // public static string LOGIC_SERVER_IP = "192.168.1.200";
+
+      public static string SERVER_IP = "115.159.203.16";
+    //  public static string SERVER_IP = "192.168.93.39";
+
+     public static string LOGIC_SERVER_IP = "115.159.203.16";
+    //  public static string LOGIC_SERVER_IP = "192.168.93.39";
 
 #else
 
-    public static string SERVER_IP = "127.0.0.1";
-    //  public static string SERVER_IP = "115.159.203.16";
+     public static string SERVER_IP = "127.0.0.1";
+  //    public static string SERVER_IP = "115.159.203.16";
     //  public static string SERVER_IP = "192.168.93.39";
 
     public static string LOGIC_SERVER_IP = "127.0.0.1";
-    // public static string LOGIC_SERVER_IP = "115.159.203.16";
+   //  public static string LOGIC_SERVER_IP = "115.159.203.16";
     //  public static string LOGIC_SERVER_IP = "192.168.93.39";
 
 #endif
@@ -61,6 +67,7 @@ public class Config : object
     public static float SCREEN_SCALE_Y = Screen.height / 640f;
 
     //------日志UI 调试信息 设置
+    public static bool DEBUG_LoadDebugWindow = true;//是否加载 控制台代码和资源
     public static bool DEBUG_EnableDebugWindow = false;//开启界面日志输出
     public static bool DEBUG_EnableAutoClean = true;//开启自动清理 ，主要用于Console性能优化
     public static int DEBUG_MaxCount = 100; //开启自动清理后，最大日志保留条数
