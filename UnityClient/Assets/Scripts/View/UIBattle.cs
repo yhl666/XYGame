@@ -1042,7 +1042,7 @@ public sealed class UI_pvpresult : ViewUI
             this.btn_return.gameObject.SetActive(true);
 
             HashTable kv = Json.Decode(res);
-            this.txt_result.text = kv["msg"];
+            this.txt_result.text = "";// kv["msg"];
         }
     }
     public override bool Init()
