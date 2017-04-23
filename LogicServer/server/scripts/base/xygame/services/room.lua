@@ -91,7 +91,7 @@ function t.enter_room(ctx, msg, cb)
 
         -- 响应成功后 添加到table里面
 
-        room_notify_all("Room", "EnterRoom", msg);
+     --   room_notify_all("Room", "EnterRoom", msg);
 
         local user1 = user.create();
 
