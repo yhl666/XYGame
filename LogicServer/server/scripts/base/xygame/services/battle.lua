@@ -169,7 +169,7 @@ function t.request_verify(ctx, msg, cb)
                 if string.find(msg2, "h1") == nil or string.find(msg2, "h2") == nil then
                     -- 暂时做一个简单的判断处理没有血量的情况
                     -- 如果是一号玩家
-                    local msg_to_write = msg2 ..  "mode:" .. mode ..",h1:" .. tbl["h1"] .. "," .. "h2:" .. tbl["h2"] .. ",";
+                    local msg_to_write = msg2 .. "mode:" .. mode .. ",h1:" .. tbl["h1"] .. "," .. "h2:" .. tbl["h2"] .. ",";
                     remote.request("services.battle_pvp", "request_verify_write", msg_to_write, function(msg4)
                         -- 讲血量写入数据库
 
@@ -188,10 +188,18 @@ function t.request_verify(ctx, msg, cb)
 
                     -- 如果是二号玩家
                     cb("ret:ok,");
-             
+
+
+                    remote.request_client(ctx, "BattlePVP", "PushResult", "ret:ok,msg:verifyOk,", function(msg6)
+                        -- Friend?
+                    end );
+
+                    remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:ok,msg:verifyOk,", function(msg6)
+                        -- Friend?
+                    end );
                     if msg == msg2 then
                         -- 二号发过来的结果数据和数据库中取得一致则
-
+                        --[[
                         -- 发给客户服务器发送房间信息
                         local room_info = "pvproom_id:" .. pvproom_id .. "," .. "p1:" .. p1 .. "," .. "p2:" .. p2 .. "," .. "mode:" .. mode .. ",";
 
@@ -228,7 +236,7 @@ function t.request_verify(ctx, msg, cb)
                         remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
                             -- Friend?
                         end );
-
+                        ]]
                     end
 
                 end
@@ -241,7 +249,7 @@ function t.request_verify(ctx, msg, cb)
 end
 
 
-local function notify_client(queue,user, msg, no)
+local function notify_client(queue, user, msg, no)
 
     remote.request_client(user.ctx, "TownBattlePVP", "PushResult", msg, function(msg3)
         if msg3 == "timeout" then
@@ -271,7 +279,7 @@ function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
     local kv = json.decode(msg);
     local no = kv["no"];
     local mode = kv["mode"];
- 
+
     local queue;
     if mode == "pvp" then
         queue = global_random_queue_pvp;
@@ -331,8 +339,8 @@ function t.request_pvp_ramdon_enter_queue_v2(ctx, msg, cb)
                 queue:push(no2); return;
             end
 
-            notify_client(queue,user1, msg5 .. user2.user:to_json(), no1);
-            notify_client(queue,user2, msg5 .. user1.user:to_json(), no2);
+            notify_client(queue, user1, msg5 .. user2.user:to_json(), no1);
+            notify_client(queue, user2, msg5 .. user1.user:to_json(), no2);
 
 
         end );
@@ -377,7 +385,7 @@ function t.request_pvp_ramdon_leave_queue_v2(ctx, msg, cb)
         queue = global_random_queue_pve;
     end
     local size = queue:size();
- 
+
     for i = 0, size do
 
         local noo = queue:front();
