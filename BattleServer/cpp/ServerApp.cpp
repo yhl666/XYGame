@@ -1179,8 +1179,8 @@ void   ServerAppBattle::RoomThreadFunc(void *arg1)
 		{
 			Sleep(100);
 			room->UnLock();
-			//room->Release();
-		//	Memory::PrintTrace();
+			room->Release();
+			//	Memory::PrintTrace();
 			return;
 		}
 
@@ -1207,9 +1207,9 @@ void   ServerAppBattle::RoomThreadFunc(void *arg1)
 			{
 				Sleep(100);
 				room->UnLock();
-			//	room->Release();
+				room->Release();
 
-			//	Memory::PrintTrace();
+				//	Memory::PrintTrace();
 				return;
 			}
 			//check new player
