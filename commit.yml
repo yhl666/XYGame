@@ -2,28 +2,22 @@
 branches: {
   }
 fileChange:
-  /LogicServer:
-    newFile: !uuid '525690570d26fdb6d1f2aa81d168325674a97f7f'
-    oldFile: !uuid '598c17a50b00ec26b7edc763b60a4bfa78c507d0'
-  /LogicServer/server:
-    newFile: !uuid '81638c61eea3c638a67f05ebdaa22e93f14a04d5'
-    oldFile: !uuid 'b27d3dfa4cb145893a2c2d2a697d7da46b0ee853'
-  /LogicServer/server/scripts:
-    newFile: !uuid '2a49ccd2e8ec72c63ec230732b57549d53625f4f'
-    oldFile: !uuid 'b91af9d2388b2d9921a9181ef6d44f15722ee83a'
-  /LogicServer/server/scripts/base:
-    newFile: !uuid 'f1531909381aed6f12b245a0d918df310c892eaa'
-    oldFile: !uuid '03db9bc263a93f2a0389beb0179cfd0043137b80'
-  /LogicServer/server/scripts/base/xygame:
-    newFile: !uuid 'd090a76267ec86c10f9fbcfb17e1e916587a9b5e'
-    oldFile: !uuid 'b17ad94993ab000f92911876e20d7b36bebd02e2'
-  /LogicServer/server/scripts/base/xygame/services:
-    newFile: !uuid '4c357be2615c942ad8510b42f051c51d8b9850e0'
-    oldFile: !uuid '47e50286d10c2c1795bd92004ed3da39060e769d'
-  /LogicServer/server/scripts/base/xygame/services/battle.lua:
-    newFile: !uuid 'c38adae778206a2031c006d1cea9d9c4bf50509a'
-    oldFile: !uuid 'f70a857bdb142ee8c29bb0e6a5ba31596099efcb'
-gitCommitId: !uuid '45b3f48941d2358cabc024c0affd9d81849f9826'
+  /BattleServer:
+    newFile: !uuid '5f0654407cfa264a3ea67de8a2f0678758bd50b0'
+    oldFile: !uuid 'fef4aa34757225d48c932b04b094acd51a7bd380'
+  /BattleServer/Release:
+    newFile: !uuid '1019eb997a655c59ffa4cb235f0ae9839d669c96'
+    oldFile: !uuid '83454fe97957d24284a4ab91bd3d3d7ba5bd1f60'
+  /BattleServer/Release/BattleServer.exe:
+    newFile: !uuid '68eaa6c7fbda6e8e20ec33139148da58116ea6af'
+    oldFile: !uuid 'c7264a7595b241d00ad3a17eeb0e70595205c7a6'
+  /BattleServer/cpp:
+    newFile: !uuid '9ddee0b5665645fa6ed57e878bac0efecfd4a395'
+    oldFile: !uuid 'aef53071a97f237f4ce791c7455d79dfabce8ab2'
+  /BattleServer/cpp/SocketServer.cpp:
+    newFile: !uuid 'de8e5e6aaf14a9b2cb161f70c1df28e9a36c719d'
+    oldFile: !uuid '3d5ebb1adf132bb012d6681d38954cb2c924e7c3'
+gitCommitId: !uuid '0787643deaa8e7e10f5b3f47483e144aba898fa4'
 renames: {
   }
-revisionId: 940
+revisionId: 941
