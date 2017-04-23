@@ -1522,7 +1522,7 @@ public sealed class UI_die : ViewUI
         if (tick.IsMax())
         {
             ///执行复活动作
-      //   Debug.Log("POINT " + index);
+            //   Debug.Log("POINT " + index);
             this.panel.SetActive(false);
             PublicData.ins.IS_revive_point = index;
         }
@@ -1654,11 +1654,51 @@ public sealed class UI_smallmap : ViewUI
     {
         base.Update();
         //更新enemy 信息
-        this.Sync(ref list_ememy, EnemyMgr.ins.GetEnemys(), template_enemy);
+        this.Sync(ref list_ememy, EnemyMgr.ins.GetEnemys(true), template_enemy);
         //更新hero 信息
-        this.Sync(ref list_hero, HeroMgr.ins.GetHeros(), template_hero2);
+        this.Sync(ref list_hero, HeroMgr.ins.GetHeros(), template_hero6);
         //更新building 信息
         this.Sync(ref list_building, BuildingMgr.ins.GetBuildings(), template_building);
+
+        if (list_hppack.Count <= 0)
+        {
+            list_hppack_obj = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetCustomObjects<TerrainObjectHpPack>();
+            if (list_hppack_obj.Count > 0)
+            {   //更新hp packs 信息
+                this.SyncCustoms(ref list_hppack, list_hppack_obj, template_hppack);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < list_hppack_obj.Count; i++)
+            {
+                TerrainObjectHpPack hp = list_hppack_obj[i] as TerrainObjectHpPack;
+                GameObject obj = list_hppack[i] as GameObject;
+                if (obj == null) break;
+                if (hp.available)
+                {
+                    obj.SetActive(true);
+                }
+                else
+                {
+                    obj.SetActive(false);
+                }
+            }
+        }
+        if (boss == null)
+        {
+            boss = EnemyMgr.ins.GetEnemy<EnemyBoss>();
+            //wait for next frame to sync
+            // if (boss == null)
+            {
+                //  return;
+            }
+        }
+        else
+        {
+            this.SyncOne(template_boss, boss);
+        }
+
     }
     /// <summary>
     /// 
@@ -1668,8 +1708,10 @@ public sealed class UI_smallmap : ViewUI
     /// <param name="template">模板</param>
     private void Sync(ref ArrayList list, ArrayList objs, GameObject template)
     {
-        Terrain terrain = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetTerrain();
-
+        if (this.terrain == null)
+        {
+            terrain = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetTerrain();
+        }
         //更新 信息
         if (objs.Count > list.Count)//扩容
         {
@@ -1682,6 +1724,7 @@ public sealed class UI_smallmap : ViewUI
         for (i = 0; i < objs.Count; i++) // 更新
         {
             Entity e = objs[i] as Entity;
+            if (e.IsEnemyBoss) continue;
             GameObject obj = list[i] as GameObject;
             obj.SetActive(true);
             this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.z / terrain.limit_z_up);
@@ -1692,6 +1735,51 @@ public sealed class UI_smallmap : ViewUI
             obj.SetActive(false);
         }
     }
+    private void SyncOne(GameObject obj, Entity e)
+    {
+        if (this.terrain == null)
+        {
+            terrain = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetTerrain();
+        }
+        obj.SetActive(true);
+        this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), e.z / terrain.limit_z_up);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="list">缓存数组</param>
+    /// <param name="objs">Entity 源信息数组</param>
+    /// <param name="template">模板</param>
+    private void SyncCustoms(ref ArrayList list, ArrayList objs, GameObject template)
+    {
+        if (this.terrain == null)
+        {
+            terrain = AppMgr.GetCurrentApp<BattleApp>().GetCurrentWorldMap().GetTerrain();
+        }
+        //更新 信息
+        if (objs.Count > list.Count)//扩容
+        {
+            for (int ii = list.Count; ii < objs.Count; ii++)
+            {
+                list.Add(GameObject.Instantiate(template, template.transform.parent));
+            }
+        }
+        int i = 0;
+        for (i = 0; i < objs.Count; i++) // 更新
+        {
+            CustomObject e = objs[i] as CustomObject;
+            GameObject obj = list[i] as GameObject;
+            obj.SetActive(true);
+            this.SetPosition(obj, e.x / (terrain.limit_x_right - terrain.limit_x_left), (e.y-0.5f) / terrain.limit_z_up);
+        }
+        for (; i < list.Count; i++) // 隐藏多余的缓存图块
+        {
+            GameObject obj = list[i] as GameObject;
+            obj.SetActive(false);
+        }
+    }
+
     private void SetPosition(GameObject obj, float x_ratio, float y_ratio)
     {   //小地图背景 大小是 200*100
 
@@ -1712,8 +1800,8 @@ public sealed class UI_smallmap : ViewUI
 
         this._ui = GameObject.Find("UI_Battle/ui_panel_smallmap");
         this.img_bg = _ui.transform.FindChild("bg").GetComponent<Image>();
-        this.template_hero2 = _ui.transform.FindChild("hero2_template").gameObject;
-        this.template_hero2.SetActive(false);
+        this.template_hero6 = _ui.transform.FindChild("hero2_template").gameObject;
+        this.template_hero6.SetActive(false);
 
         this.template_enemy = _ui.transform.FindChild("enemy_template").gameObject;
         this.template_enemy.SetActive(false);
@@ -1721,18 +1809,30 @@ public sealed class UI_smallmap : ViewUI
         this.template_building = _ui.transform.FindChild("building_template").gameObject;
         this.template_building.SetActive(false);
 
+        this.template_boss = _ui.transform.FindChild("boss_template").gameObject;
+        this.template_boss.SetActive(false);
+
+        this.template_hppack = _ui.transform.FindChild("hppack_template").gameObject;
+        this.template_hppack.SetActive(false);
+
         return true;
     }
 
     ArrayList list_ememy = new ArrayList();
     ArrayList list_hero = new ArrayList();
     ArrayList list_building = new ArrayList();
+    ArrayList list_hppack = new ArrayList();
 
-    GameObject template_hero2 = null;
+    GameObject template_hero6 = null;
     GameObject template_enemy = null;
     GameObject template_building = null;
+    GameObject template_boss = null;
+    GameObject template_hppack = null;
 
+    EnemyBoss boss = null;
     Image img_bg = null;
+    Terrain terrain = null;
+    ArrayList list_hppack_obj = new ArrayList();
 }
 
 

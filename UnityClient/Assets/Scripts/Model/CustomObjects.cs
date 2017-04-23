@@ -39,12 +39,15 @@ public class TerrainObjectHpPack : CustomObject
 {
     public float distance = 0.5f;
     private float hp_percent = 0.0f;
+    public bool available = false;
     public override void UpdateMS()
     {
         if (Enable == false && tick.Tick())
         {//wait for sync
+            available = false;
             return;
         }
+        available = true;
         this.view.SetActive(true);
         this.Enable = true;
         ArrayList heros = HeroMgr.ins.GetHeros();
@@ -60,6 +63,7 @@ public class TerrainObjectHpPack : CustomObject
                 hero.current_hp += delta;
                 //Debug.LogError("Terrain 血包 回血 " + delta);
                 this.view.SetActive(false);
+                available = false;
                 return;
             }
         }
@@ -74,6 +78,7 @@ public class TerrainObjectHpPack : CustomObject
             this.hp_percent = data.hp_percent;
             this.x = data.gameObject.transform.position.x;
             this.y = data.gameObject.transform.position.y;
+            this.z = this.y;
             this.name = "TerrainObjectHpPack";
             this.distance = data.distance;
             this.tick.SetMax((int)(data.cd_time * (float)Utils.fps));

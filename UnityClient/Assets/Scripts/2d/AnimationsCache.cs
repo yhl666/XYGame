@@ -11,7 +11,7 @@ using System.Collections.Generic;
 /// <summary>
 ///  animation cache 
 /// </summary>
-public sealed class AnimationsCache:Singleton<AnimationsCache>
+public sealed class AnimationsCache : Singleton<AnimationsCache>
 {
     public Animations AddAnimatons(string name, Animations ani)
     {
@@ -37,10 +37,16 @@ public sealed class AnimationsCache:Singleton<AnimationsCache>
     ///  add animations with plist file 
     /// </summary>
     /// <param name="plist"></param>
-    public void AddAnimationsWithFile(string plist)
+    public Animations AddAnimationsWithFile(string plist)
     {
-        // parse plist file
+        string name = Utils.GetFileName(plist);
 
+        var ani =GetAnimations(name);
+        if (ani == null)
+        {
+            ani =AddAnimatons(name, Animations.CreateWithFile(plist));
+        }
+        return ani;
     }
 
     public void Clear()

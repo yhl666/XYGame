@@ -100,7 +100,13 @@ sealed class PlistDictionary : Dictionary<string, object>
     public void LoadWithFile(string plist)
     {
         this.plist = plist;
-        string str = Resources.Load(plist).ToString();
+        UnityEngine.Object obj = Resources.Load(plist);
+        if(obj == null)
+        {
+            Debug.LogError("Can not load file " + plist);
+            return;
+        }
+        string str =obj.ToString();
         //remove header
         int i = str.IndexOf("<!DOCTYPE");
         if (i != -1)

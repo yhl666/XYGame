@@ -23,13 +23,21 @@ public enum ViewMode
 public class Config : object
 {
 
-  public static string SERVER_IP = "127.0.0.1";
-   //  public static string SERVER_IP = "115.159.203.16";
-  //  public static string SERVER_IP = "192.168.93.39";
-  
-    public static string LOGIC_SERVER_IP = "127.0.0.1";
-   // public static string LOGIC_SERVER_IP = "115.159.203.16";
+#if UNITY_IOS || UNITY_ANDROID
 
+     public static string SERVER_IP = "192.168.1.200";
+    public static string LOGIC_SERVER_IP = "192.168.1.200";
+
+#else
+
+    public static string SERVER_IP = "127.0.0.1";
+    //  public static string SERVER_IP = "115.159.203.16";
+    //  public static string SERVER_IP = "192.168.93.39";
+
+    public static string LOGIC_SERVER_IP = "127.0.0.1";
+    // public static string LOGIC_SERVER_IP = "115.159.203.16";
+
+#endif
 
 
     public const int LOGIC_SERVER_PORT = 8002;

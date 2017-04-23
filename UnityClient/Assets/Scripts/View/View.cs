@@ -51,7 +51,7 @@ public class ViewBullet : View
     {
         base.Init();
         m = model as Bullet;
-        view_bullet = PrefabsMgr.Load("Prefabs/Animations");
+        view_bullet = PrefabsCache.ins.GetPrefabs("Prefabs/Animations");// PrefabsMgr.Load("Prefabs/Animations");
         view_bullet.GetComponent<Animationstor>().file = m.plist;
         ani = view_bullet.GetComponent<Animationstor>();
         ani.Init();
@@ -126,7 +126,7 @@ public class ViewEntity : View
         base.Init();
         this.m = model as Entity;
 
-        this.obj = PrefabsMgr.Load(m.prefabsName);
+        this.obj = PrefabsCache.ins.GetPrefabs(m.prefabsName);// PrefabsMgr.Load(m.prefabsName);
         this.spine = obj.GetComponent<SkeletonAnimation>();
         spine.initialSkinName = m.skin;
         spine.skeleton.SetSkin(m.skin);
@@ -309,7 +309,7 @@ public class ViewEnemy : View
         base.Init();
         this.m = model as Enemy;
 
-        this.obj = PrefabsMgr.Load(m.prefabsName);
+        this.obj = PrefabsCache.ins.GetPrefabs(m.prefabsName); ;// PrefabsMgr.Load(m.prefabsName);
         this.spine = obj.GetComponent<SkeletonAnimation>();
         spine.initialSkinName = m.skin;
         spine.skeleton.SetSkin(m.skin);
@@ -454,7 +454,7 @@ public class ViewBuffer : View
     {
         base.Init();
         m = model as Buffer;
-        view_bullet = PrefabsMgr.Load("Prefabs/Animations");
+        view_bullet = PrefabsCache.ins.GetPrefabs("Prefabs/Animations"); //PrefabsMgr.Load("Prefabs/Animations");
         view_bullet.GetComponent<Animationstor>().file = m.plist;
         ani = view_bullet.GetComponent<Animationstor>();
 
@@ -505,7 +505,7 @@ public class ViewBuilding : View
         base.Init();
         this.m = model as Building;
 
-        this.obj = PrefabsMgr.Load(m.prefabsName);
+        this.obj = PrefabsCache.ins.GetPrefabs(m.prefabsName);// PrefabsMgr.Load(m.prefabsName);
         this.spine = obj.GetComponent<SkeletonAnimation>();
         spine.initialSkinName = m.skin;
         spine.skeleton.SetSkin(m.skin);

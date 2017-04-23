@@ -10,12 +10,9 @@ using System.Threading;
 
 public sealed class BattleApp : AppBase
 {
-
     private BattleKeyboardInputHandler inputHandler = null;
 
     BattleSyncHandler syncHandler = null;
-
-
     public override string GetAppName()
     {
         return "BattleApp";
@@ -47,9 +44,11 @@ public sealed class BattleApp : AppBase
             return "本地资源加载完成，初始化网络资源";
         }));
 
+        this.DoPreLoadAction();
         EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
         {
             //   Thread.Sleep(1000);
+            AnimationsCache.PrintCacheStatus();
             AppMgr.GetCurrentApp<BattleApp>().InitNet(false);
             return "初始化网络资源，等待服务器响应";
         }));
@@ -60,6 +59,80 @@ public sealed class BattleApp : AppBase
         ///   EventDispatcher.ins.AddEventListener(this, Events.ID_EXIT);
         return true;
 
+    }
+    private void DoPreLoadAction()
+    {
+        string[] list_plist =
+    {
+        "hd/roles/role_6/bullet/role_6_bul_6241/role_6_bul_6241.plist",
+      "hd/roles/role_6/bullet/role_6_bul_6143/role_6_bul_6143.plist",
+      "hd/roles/role_6/bullet/role_6_bul_6122/role_6_bul_6122.plist",
+      "hd/magic_weapons/bullet/bul_5000141/bul_5000141.plist",
+      "hd/roles/role_5/bullet/role_5_bul_5246/role_5_bul_5246.plist",
+      "hd/roles/equip_effects/eq_eff_dragon_rise_1/eq_eff_dragon_rise_1.plist",
+      "hd/roles/equip_effects/eq_eff_dragon_rise_2/eq_eff_dragon_rise_2.plist",
+      "hd/enemies/enemy_374/bullet/enemy_374_bul_374001/enemy_374_bul_374001.plist",
+      "hd/buff/buff_200564/buff_200564.plist",
+      "hd/magic_weapons/bullet/bul_5000131/bul_5000131.plist",
+      "hd/enemies/enemy_526/bullet/enemy_526_bul_526011/enemy_526_bul_526011.plist",
+      "hd/roles/role_4/bullet/role_4_bul_4241/role_4_bul_4241.plist",
+      "hd/roles/role_4/bullet/role_4_bul_4211/role_4_bul_4211.plist",
+      "hd/roles/role_5/bullet/role_5_bul_5246/role_5_bul_5246.plist",
+      "hd/enemies/enemy_311/bullet/enemy_311_bul_311031/enemy_311_bul_311031.plist",
+      "hd/magic_weapons/bullet/bul_5000171/bul_5000171.plist"
+    };
+
+        //pre load plist animations
+        for (int i = 0; i < list_plist.Length; i++)
+        {
+            int ii = i;
+            EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+            {
+                AnimationsCache.ins.AddAnimationsWithFile(list_plist[ii]);
+                return DATA.ADD_STRING + " 加载资源:" + Utils.GetFileName(list_plist[ii]);
+            }));
+        }
+
+        string[] list_png = 
+        {
+        "hd/interface/items/503119.png",
+        "hd/interface/items/503079.png",
+        "hd/interface/items/503063.png"   
+        };
+        // pre load png
+        for (int i = 0; i < list_png.Length; i++)
+        {
+            int ii = i;
+            EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+            {
+                SpriteFrameCache.ins.AddSpriteFrameWithPng(list_png[ii]);
+                return DATA.ADD_STRING + " 加载资源:" + Utils.GetFileName(list_png[ii]);
+            }));
+        }
+
+
+      /*  //暂时只会enemy hero 做预加载
+        string[] list_prefabs =
+        {
+            "Prefabs/Hero2",
+            "Spine/Customs/213/213",
+            "Spine/Customs/217/217",
+            "Spine/Customs/424/424",
+            "Spine/Customs/306/306",
+            "Spine/Customs/444/444",
+             "Prefabs/Hero2"
+        };
+
+        // pre load prefabs
+        for (int i = 0; i < list_prefabs.Length; i++)
+        {
+            int ii = i;
+            EventDispatcher.ins.PostEvent(Events.ID_ADD_ASYNC, new Func<string>(() =>
+            {
+                PrefabsCache.ins.AddPrefabsWithFile(list_prefabs[ii]);
+                return DATA.ADD_STRING + " 加载资源:" + list_prefabs[ii];
+            }));
+        }*/
     }
     public bool isStart = false;
 
@@ -313,7 +386,7 @@ public sealed class BattleApp : AppBase
                 upload += ",h2:" + HeroMgr.ins.self.current_hp.ToString() + ",";
 
             }
-   
+
             ///发起验证
             RpcClient.ins.SendRequest("services.battle", "request_verify", upload, (string msg) =>
                 {
