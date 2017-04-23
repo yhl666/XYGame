@@ -188,7 +188,7 @@ function t.request_verify(ctx, msg, cb)
 
                     -- 如果是二号玩家
                     cb("ret:ok,");
-
+                    --demo  展示 暂时关闭 数据校验
 
                     remote.request_client(ctx, "BattlePVP", "PushResult", "ret:ok,msg:verifyOk,", function(msg6)
                         -- Friend?
