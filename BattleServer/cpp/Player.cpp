@@ -178,6 +178,11 @@ void  Player::OnRecvMessage(SocketClient *client, string what)
 void   Player::OnRecvEmptyMessage(SocketClient *client)
 {
 	FrameData *frame = FrameData::CreateEmpty();
+	if (this->GetMaxFrameCount() > 0)
+	{//预测为上个操作的dir
+		FrameData* last_frame = GetFrameDataByFps(current_fps);
+		frame->dir = last_frame->dir;
+	}
 	frame->fps = current_fps + 1;
 	frame->no = this->no;
 	this->AddFrameData(frame);

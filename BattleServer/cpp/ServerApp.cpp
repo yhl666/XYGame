@@ -989,7 +989,7 @@ void   ServerAppBattlePVE::RoomThreadFunc(void *arg1)
 
 
 	QueryPerformanceCounter(&nLast);
-	room->Lock();
+/*	room->Lock();
 	room->BroadcastCustomData("cmd:Ready");
 	while (true)
 	{//等待所有客户端准备完毕 再开始
@@ -1001,7 +1001,7 @@ void   ServerAppBattlePVE::RoomThreadFunc(void *arg1)
 	}
 	room->UnLock();
 	cout << "Ready" << endl;
-
+	*/
 
 	while (true)
 	{
