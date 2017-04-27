@@ -2,19 +2,22 @@
 branches: {
   }
 fileChange:
-  /BattleServer:
-    newFile: !uuid '713040ba2f4d5e7d6b92f69185f7a10ab2cd7679'
-    oldFile: !uuid '5f0654407cfa264a3ea67de8a2f0678758bd50b0'
-  /BattleServer/cpp:
-    newFile: !uuid 'bd737df7102e43a8889b2d1da80defa30be05759'
-    oldFile: !uuid '9ddee0b5665645fa6ed57e878bac0efecfd4a395'
-  /BattleServer/cpp/Player.cpp:
-    newFile: !uuid 'a1337bb69806011ffb93a11159bad56bcde172a4'
-    oldFile: !uuid '9d7df759d72e06982395ca1f247d9a75825630df'
-  /BattleServer/cpp/ServerApp.cpp:
-    newFile: !uuid 'dade6aab6aa12bfeccad1f9208b5540c443f00a9'
-    oldFile: !uuid '4694307a01692c8c3edddc330f055589f46fe0a3'
-gitCommitId: !uuid '29f5dac669344812cb77a3c79949f14b40e19284'
+  /UnityClient:
+    newFile: !uuid 'd883e79e0df6c7996ff1f64083365b7f56de7ac3'
+    oldFile: !uuid 'fdc7955a13294bc7d08d92d1e66955bcabb21932'
+  /UnityClient/Assets:
+    newFile: !uuid '775351aa25d5fffa446bcb8fc8863bfe40fe9ac4'
+    oldFile: !uuid '9b7882cdb4a300b23dc6c30efcf5f5e79ab1f322'
+  /UnityClient/Assets/Scripts:
+    newFile: !uuid '2d79b3a23dde5a10d1974928b8c22420b33aabbf'
+    oldFile: !uuid 'ba64c51a8c556ab7e63c29c6b932d89b8b3efa64'
+  /UnityClient/Assets/Scripts/Common:
+    newFile: !uuid '7b7b17233751dd566006099478d0f00da3b934f6'
+    oldFile: !uuid 'a07639078173ed3e56addc3ab41e0e86e4ca634e'
+  /UnityClient/Assets/Scripts/Common/Config.cs:
+    newFile: !uuid '660a3cd5119f47d6e55bfbbf55f6fa85ae6bc0d1'
+    oldFile: !uuid '664f66370354dae3b89aacbeea1be2f4c068f2b3'
+gitCommitId: !uuid 'c7868157361461cd65fa87b164ac11183c2f968f'
 renames: {
   }
-revisionId: 947
+revisionId: 948
