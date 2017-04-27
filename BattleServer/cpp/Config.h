@@ -8,7 +8,7 @@ public:
 	static int   MAX_BUFFERS11;	//socket 一次通信 最大缓冲大小
 	static int  GAME_OVER_FRAME_COUNT;	//大于多少帧时 游戏结束  5分钟
 	static int ROOM_UNABLE_FRAME_COUNT;	//大于多少帧时 房间不允许玩家加入  1分钟
-
+	static int GAME_FPS;//游戏帧数
 	static bool InitWithFile(std::string file);
 };
 

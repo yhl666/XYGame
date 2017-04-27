@@ -8,7 +8,7 @@ int Config::SERVER_PORT=0; // 服务器端口
 int Config::MAX_BUFFERS11=4096;	//socket 一次通信 最大缓冲大小
 int Config::GAME_OVER_FRAME_COUNT=10;	//大于多少帧时 游戏结束  5分钟
 int Config::ROOM_UNABLE_FRAME_COUNT=1;	//大于多少帧时 房间不允许玩家加入  1分钟
-
+int Config::GAME_FPS = 40;
 
 bool Config::InitWithFile(std::string file)
 {
@@ -57,7 +57,10 @@ bool Config::InitWithFile(std::string file)
 		{
 			ROOM_UNABLE_FRAME_COUNT = Utils::stoi(value);
 		}
-
+		else if (line == "GAME_FPS")
+		{
+			GAME_FPS = Utils::stoi(value);
+		}
 	}
 
 	f.close();

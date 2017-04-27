@@ -982,7 +982,7 @@ void   ServerAppBattlePVE::RoomThreadFunc(void *arg1)
 	LARGE_INTEGER perFrame;
 
 	QueryPerformanceFrequency(&nFreq);
-	perFrame.QuadPart = (LONGLONG)(1.0 / 40.0 * nFreq.QuadPart);//25MS
+	perFrame.QuadPart = (LONGLONG)(1.0 / Config::GAME_FPS * nFreq.QuadPart);//25MS
 
 
 	QueryPerformanceCounter(&nLast);
@@ -1164,7 +1164,7 @@ void   ServerAppBattle::RoomThreadFunc(void *arg1)
 	LARGE_INTEGER perFrame;
 
 	QueryPerformanceFrequency(&nFreq);
-	perFrame.QuadPart = (LONGLONG)(1.0 / 40.0 * nFreq.QuadPart);//25MS
+	perFrame.QuadPart = (LONGLONG)(1.0 / Config::GAME_FPS  * nFreq.QuadPart);//25MS
 
 
 	Utils::log("Ready For Waitting all Clients");
