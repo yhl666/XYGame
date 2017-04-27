@@ -37,7 +37,7 @@ public class Config : object
 #else
 
      public static string SERVER_IP = "127.0.0.1";
-  //    public static string SERVER_IP = "115.159.203.16";
+ // public static string SERVER_IP = "115.159.203.16";
     //  public static string SERVER_IP = "192.168.93.39";
 
     public static string LOGIC_SERVER_IP = "127.0.0.1";
@@ -66,6 +66,10 @@ public class Config : object
     public static float SCREEN_SCALE_X = Screen.width / 1136f; // 实际分辨率缩放比例
     public static float SCREEN_SCALE_Y = Screen.height / 640f;
 
+    //-------网络优化设置
+    public const bool NETWORK_SYNC_OPTIMA_ENABLE=true;//开启网络流量优化，减少网络同步次数
+    public const int NETWORK_SYNC_OPTIMA_FPS = 20;//网络同步频率  逻辑帧数是固定40帧
+   
     //------日志UI 调试信息 设置
     public static bool DEBUG_LoadDebugWindow = true;//是否加载 控制台代码和资源
     public static bool DEBUG_EnableDebugWindow = false;//开启界面日志输出
