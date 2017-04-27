@@ -110,7 +110,7 @@ public class SocketClient : object
         {
             while (_sendQueue.Empty() == false)
             {
-                Thread.Sleep(12);
+                Thread.Sleep(1);
 
                 string msg = (string)_sendQueue.Dequeue() + "^";
 
@@ -141,7 +141,7 @@ public class SocketClient : object
 
         while (true)
         {
-            Thread.Sleep(12);
+            Thread.Sleep(1);
 
 
             byte[] buffer = new byte[Config.MAX_NETSOCKET_BUFFER_SIZE];
@@ -222,7 +222,7 @@ public class SocketClient : object
 
                     // 25 is fixed tick
                     TimeSpan ts = DateTime.Now - lastTime;
-                    delay = ts.TotalMilliseconds / 10.0f - 25.0f;
+                    delay = ts.TotalMilliseconds / 10.0f;// -25.0f;
                     lastTime = DateTime.Now;
                     if (delay < 0) delay = 0;
                     PublicData.GetInstance().ms = (int)delay;

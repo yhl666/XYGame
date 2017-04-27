@@ -78,7 +78,7 @@ public sealed class FrameData : object
             if (s1 != 0) s += "s1:" + s1.ToString() + ",";
             if (stand != 0) s += "stand:" + stand.ToString() + ",";
             if (revive != 0) s += "revive:" + revive.ToString() + ",";
-            if (opt > 0) s += "opt:" + opt.ToString() + ",";
+            if (opt >= 0) s += "opt:" + opt.ToString() + ",";
 
         }
         else
