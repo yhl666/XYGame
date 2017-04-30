@@ -43,7 +43,7 @@ public class PublicData : object
 
     private PublicData()
     {
-       /* if (Config.SERVER_IP == "127.0.0.1")
+      //  if (Config.SERVER_IP == "127.0.0.1")
         {
             //PVE 副本测试修改
             //测试技能 buffer 等 1个玩家打，对应战斗服BattleServerPVETEST.exe
@@ -55,7 +55,7 @@ public class PublicData : object
             battle_mode = "pve";
             self_user.no = 1;
             user_pvp_other.no = 2;
-        }*/
+        }
 
 
         {
