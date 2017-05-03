@@ -70,8 +70,15 @@ public class Enemy : Entity
             dir = dir1;
         }
     }
+
     public virtual void AI_UpdateMSWithAI()
     {
+
+
+        bt_root.Visit(this);
+
+
+        return;
         /*//如果目标非法，那么寻找另外一个目标
         if (target == null || target.IsInValid())
         {
@@ -296,6 +303,8 @@ public class Enemy : Entity
         }
     }
     // override 
+    private BehaviorTree.NodeBase bt_root = null;
+
     public override bool Init()
     {
         base.Init();
@@ -313,7 +322,30 @@ public class Enemy : Entity
         this.eventDispatcher.AddEventListener(this, Events.ID_LAUNCH_SKILL1);
         EventDispatcher.ins.AddEventListener(this, Events.ID_DIE);
         this.eventDispatcher.AddEventListener(this, "SpineComplete");
+
+
+        this.InitWithBehaviorTree();
         return true;
+    }
+    private void InitWithBehaviorTree()
+    {
+
+        bt_root =new BehaviorTree.Parallel();
+ 
+        {
+            //攻击目标节点
+
+          var  bt_target =new BehaviorTree.Sequence();
+        }
+        {
+            //移动节点
+        }
+        {
+            //  BehaviorTree.ActionBase;
+            //攻击节点
+            //    bt_atk = 
+
+        }
     }
     public override void OnEvent(string type, object userData)
     {
@@ -516,11 +548,11 @@ public class Enemy1 : Enemy
         return true;
     }
 
-    public override void AI_UpdateMSWithAI()
+  /*  public override void AI_UpdateMSWithAI()
     {
         ai_fsm_machine.UpdateMS();
         base.AI_UpdateMSWithAI();
-    }
+    }*/
     public override void UpdateMS()
     {
         base.UpdateMS();

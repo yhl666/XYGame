@@ -1,21 +1,22 @@
 ﻿/*
 * Author:  caoshanshan
 * Email:   me@dreamyouxi.com
-using Behavior Tree to peocess  AI not FSM
+using Behavior Tree to peocess  AI
  */
 using UnityEngine;
 using System.Collections;
 
 namespace BehaviorTree
 {
-    public enum ActionNodeState
-    {//行为节点状态
-        Running,//运行中，该状态下父节点会直接运行该节点逻辑， 
-        Looping,//循环，因为行为节点都是条件导出， 该状态会 重新 执行该层级的 比如用于持续条件评定，
-        Complete,//完成， 父节点可进入下个环节
-        //  Failure,//执行失败，父节点进入下个环节
-        UnKnown,//默认状态，什么都不知道
-    }
+    //----------------行为树框架
+    /* public enum ActionNodeState
+     {//行为节点状态
+         Running,//运行中，该状态下父节点会直接运行该节点逻辑， 
+         Looping,//循环，因为行为节点都是条件导出， 该状态会 重新 执行该层级的 比如用于持续条件评定，
+         Complete,//完成， 父节点可进入下个环节
+         //  Failure,//执行失败，父节点进入下个环节
+         UnKnown,//默认状态，什么都不知道
+     }*/
     public enum NodeType
     {
         Condition,//条件节点
@@ -27,9 +28,9 @@ namespace BehaviorTree
 
         UnKnown,
     }
-    public class NodeBase// : Model
-    {// s所有节点 基类
-     /*   public override void OnEnter()
+    public class NodeBase : Model // Model for 事件系统 和 生命周期管理协议
+    {// 所有节点 基类
+        public override void OnEnter()
         {
 
         }
@@ -37,14 +38,12 @@ namespace BehaviorTree
         {
 
         }
-        public override void UpdateMS()
+        public override void OnEvent(int type, object userData)
         {
 
         }
-        public override void Update()
-        {
-
-        }*/
+        public sealed override void UpdateMS() { }
+        public sealed override void Update() { }
 
         public void AddChild(NodeBase node)
         {
@@ -60,18 +59,11 @@ namespace BehaviorTree
             node.parent = null;
             children.Remove(node);
         }
-
-        public virtual bool Visit(Entity target, ref ActionNodeState state)
-        { // 行为节点需要携带 状态参数 返回给父类 
-            return false;
-        }
         public virtual bool Visit(Entity target)
         {//条件节点不需要 携带参数，
             return false;
         }
-        //    public bool IsLeaf = false;//叶子节点
         public NodeBase parent = null;//父节点
-        // public NodeState state = NodeState.Ready;
         protected ArrayList children = new ArrayList();
 
         //----------helper function
@@ -88,21 +80,8 @@ namespace BehaviorTree
         {
             return type;
         }
-        public void Reset()
-        {
-
-        }
-        public void BlockingTo(NodeBase node = null)
-        {// 阻塞在目标node
-            if(node == null)
-            {//默认切换到root
-                
-            }
-            // TODO
-
-        }
         protected NodeType type = NodeType.UnKnown;
-
+        protected Entity _host = null;
     }
 
 
@@ -138,88 +117,34 @@ namespace BehaviorTree
         {
             this.type = NodeType.Selector;
         }
-        private void ProcessActionNodeState(ActionNodeState state, NodeBase node)
-        {
-            if (state == ActionNodeState.UnKnown)
-            {
-                last_state = ActionNodeState.UnKnown;
-                last_node = null;
-            }
-            else if (state == ActionNodeState.Looping)
-            {
-                last_state = ActionNodeState.Looping;
-                last_node = this;
-                this.BlockingTo(this);
-            }
-            else if (state == ActionNodeState.Running)
-            {
-                last_state = ActionNodeState.Running;
-                last_node = node;
-                this.BlockingTo(node);
-            }
-            else if (state == ActionNodeState.Complete)
-            {
-                last_state = ActionNodeState.UnKnown;
-                last_node = null;
-            }
-            else
-            {
-                last_state = ActionNodeState.UnKnown;
-                last_node = null;
-            }
-        }
-        ActionNodeState last_state = ActionNodeState.UnKnown;
-        NodeBase last_node = null;
         public override bool Visit(Entity target)
         {//从子节点选择一个 执行
-            ActionNodeState state = ActionNodeState.UnKnown;
-           /* if (last_state == ActionNodeState.Running && last_node!=null)
-            { // 上次状态为
-                last_node.Visit(target, ref state);
-                this.ProcessActionNodeState(state, last_node);
-                return true;
-            }
-            last_state = ActionNodeState.UnKnown;*/
-
-
-
-
-
             foreach (NodeBase node in children)
             {
                 NodeType child_type = node.GetNodeType();
-                bool ret = false;
                 if (child_type == NodeType.Condition)
                 {//子节点是条件节点， 条件评定
-                    return false;// 理论上，选择节点中不存在 条件节点
+                    return false;// 选择节点中不应该存在 条件节点
                 }
-                else if (child_type == NodeType.Selector)
-                {//子节点也是选择节点
-                    ret = node.Visit(target);
-                    if (ret)//成功表示 选择节点找到了目标不用继续遍历， 失败表示选择节点未选择到一个合适的 继续遍历
+                else
+                {//选择一个节点即可
+                    if (node.Visit(target))
                     {
                         return true;
                     }
                 }
-                else if (child_type == NodeType.Action)
-                {
-                    ret = node.Visit(target, ref state);
-                    this.ProcessActionNodeState(state, node);
-                    if (ret)
-                    {
-                        return true;
-                    }
-                }
-
             }
             return false;
         }
     }
     public class Sequence : ControllBase
     {//序列节点
+        public Sequence()
+        {
+            this.type = NodeType.Sequence;
+        }
         public override bool Visit(Entity target)
-        {//顺序执行 子节点  有一个返回false 即 终止 遍历 返回false，
-            //所有子节点返回true 才返回true
+        {//从子节点选择一个 执行 都返回false 才返回false 否则返回true
             foreach (NodeBase node in children)
             {
                 if (node.Visit(target) == false)
@@ -231,52 +156,170 @@ namespace BehaviorTree
         }
     }
     public class Parallel : ControllBase
-    {//并行节点
-
-
+    {//并行节点 所有节点都返回true 才返回true 
+        public Parallel()
+        {
+            this.type = NodeType.Parallel;
+        }
+        public override bool Visit(Entity target)
+        {//从子节点选择一个 执行 都返回false 才返回false 否则返回true
+            if (children.Count <= 0) return false;
+            bool ret = true;
+            foreach (NodeBase node in children)
+            {
+                if (node.Visit(target) == false)
+                {
+                    ret = false;
+                }
+            }
+            return ret;
+        }
     }
 
+    //--------------------------------------------------游戏逻辑实际的 Condition 和 Action
 
-
-
-
-
-
-
-    public class TreeController
-    {//行为树控制器 负责整个树的 生命周期
-
-
-        public NodeBase root;// 根
-        public NodeBase current_node = null; // 当前执行的节点
-    }
     public class Condition_HasHeroInAtkRange : ConditionBase
     {//仇恨范围内是否有英雄
-
-
+        public override bool Visit(Entity target)
+        {
+            Enemy host = target as Enemy;
+            if (host == null) return false;
+            ArrayList list = HeroMgr.ins.GetHeros();
+            foreach (Hero h in list)
+            {
+                if (host.target_distance > h.ClaculateDistance(host))
+                {//范围内 有玩家
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+    public class Condition_HasTargetInAtkRange : ConditionBase
+    {//目标是否在攻击范围内
+        public override bool Visit(Entity target)
+        {
+            Enemy host = target as Enemy;
+            if (host == null) return false;
+            if (host.target == null) return false;
+            if (host.atk_range > host.target.ClaculateDistance(host))
+            {//范围内 
+                return true;
+            }
+            return false;
+        }
     }
     public class Condition_HasTowerExists : ConditionBase
     {//是否存在塔
-
+        public override bool Visit(Entity target)
+        {
+            if (BuildingMgr.ins.GetBuildings<Tower>().Count > 0) return true;
+            return false;
+        }
     }
 
     public class Condition_HasHitTower : ConditionBase
     {//是否第一次攻击到塔
+        public override bool Visit(Entity target)
+        {
 
+
+            return false;
+        }
 
     }
+ 
     public class Condition_HasHitByHero : ConditionBase
     {//是否被玩家攻击
-
+        bool ret = false;
+        Entity hit_target = null;//被攻击的目标
+        public override bool Visit(Entity target)
+        {
+            if (ret)
+            {
+                ret = false;
+                return true;
+            }
+            return false;
+        }
+        public override void OnEvent(int type, object userData)
+        {
+            if (this.IsInValid()) return;
+            if (type == Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED)
+            {
+                AttackInfo info = userData as AttackInfo;
+                Enemy host = _host as Enemy;
+                if (host == null) return;
+                if (info.target as Enemy != host) return;
+                //自己被命中
+                if (info.ownner.IsMaxTarget() == false)
+                {
+                    host.target = info.ownner;
+                    ret = true;
+                    host.SetTag("BT_HitHero", info.ownner); // 信息 写入黑板
+                }
+            }
+        }
+        public override void OnEnter()
+        {
+            EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+        }
+        public override void OnExit()
+        {
+            EventDispatcher.ins.RemoveEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
+        }
     }
 
     public class Condition_HasTargetDie : ConditionBase
     {//目标是否死亡
-
+        public override bool Visit(Entity target)
+        {
+            Enemy host = target as Enemy;
+            if (host == null) return true;
+            if (host.target == null) return true;
+            if (host.target.isDie) return true;
+            return false;
+        }
     }
 
+    public class Action_MoveToTarget : ActionBase
+    {
+        public override bool Visit(Entity target)
+        {
+            Enemy host = target as Enemy;
 
+            if (host == null) return false;
+            if (host.target == null) return false;
+            if (host.target.isDie) return false;
 
+            host.dir = (int)Utils.GetAngle(host.pos, host.target.pos);//委托给Run状态去做
+            return true;
+        }
+    }
+    public class Action_AttackTarget:ActionBase
+    {
+        public override bool Visit(Entity target)
+        {
+            target.atk = true;
+            return true;
+        }
+    }
+
+    public class Action_SetTarget : ActionBase
+    {
+        public override bool Visit(Entity target)
+        {
+            Enemy host = target as Enemy;
+            var obj = host.GetTagPairOnce("BT_HitHero");
+            if (obj == null)
+            {
+                host.target = null;
+                return false;
+            }
+            host.target = host.GetTagPairOnce("BT_HitHero").value as Entity;
+            return true;
+        }
+    }
 
 
 

@@ -179,12 +179,32 @@ public class Entity : Model
     /// 不去重 ，谨慎使用
     /// </summary>
     /// <param name="tag"></param>
-    public void AddTag(string tag, object userData = null)
+    public void AddTag(string tag, object userData = null , bool remove_same = false)
     {
+        if(remove_same)
+        {
+            this.RemoveTag(tag);
+        }
         Pair<string, object> obj = new Pair<string, object>();
         obj.key = tag;
         obj.value = userData;
         tags.Add(obj);
+    }
+    public void SetTag(string tag, object userData = null)
+    {
+        /* Pair<string, object> obj = this.GetTagPair(tag);
+         if (obj == null) return;
+         obj.value = userData;*/
+        /*  foreach (Pair<string, object> str in tags)
+   {
+       if (str.key == tag)
+       {
+           str.value = userData;
+           return;
+       }
+   }*/
+        this.RemoveTag(tag);
+        this.AddTag(tag, userData);
     }
     /// <summary>
     /// 是否拥有，通过tag ， 逻辑 来自定义标示
@@ -211,6 +231,18 @@ public class Entity : Model
         foreach (Pair<string, object> str in tags)
         {
             if (str.key == tag) return str;
+        }
+        return null;
+    }
+    public Pair<string, object> GetTagPairOnce(string tag)
+    {
+        foreach (Pair<string, object> str in tags)
+        {
+            if (str.key == tag)
+            {
+                this.tags.Remove(str);
+                return str;
+            }
         }
         return null;
     }

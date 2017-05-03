@@ -22,7 +22,7 @@ public class Model : GAObject
         return true;
     }
     public Model() { }
-    public bool visible = true;
+  //  public bool visible = true;
     ///  public View view = null;
 
 }
