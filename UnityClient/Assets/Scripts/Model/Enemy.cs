@@ -70,14 +70,39 @@ public class Enemy : Entity
             dir = dir1;
         }
     }
+    private void InitBehaviorTree()
+    {
+        bt_root = new BehaviorTree.Parallel();
 
+        {
+            var bt_target = new BehaviorTree.Sequence();
+            bt_target.AddChild(new BehaviorTree.Condition.NotTargetOrDie());
+            bt_target.AddChild(new BehaviorTree.Action.SearchNearestTarget());
+            bt_root.AddChild(bt_target);
+        }
+        {
+            var bt_selector = new BehaviorTree.Selector();
+            var bt_sequence1 = new BehaviorTree.Sequence();
+            var bt_sequence2 = new BehaviorTree.Sequence();
+            bt_selector.AddChild(bt_sequence1);
+            bt_selector.AddChild(bt_sequence2);
+
+            bt_sequence1.AddChild(new BehaviorTree.Condition.TargetHasNotInAtkRange());
+            bt_sequence1.AddChild(new BehaviorTree.Action.MoveToTarget());
+
+            bt_sequence2.AddChild(new BehaviorTree.Condition.IsCDMax());
+            bt_sequence2.AddChild(new BehaviorTree.Action.AttackTarget());
+            bt_root.AddChild(bt_selector);
+        }
+
+    }
     public virtual void AI_UpdateMSWithAI()
     {
 
 
         bt_root.Visit(this);
 
-
+ 
         return;
         /*//如果目标非法，那么寻找另外一个目标
         if (target == null || target.IsInValid())
@@ -324,29 +349,10 @@ public class Enemy : Entity
         this.eventDispatcher.AddEventListener(this, "SpineComplete");
 
 
-        this.InitWithBehaviorTree();
+        this.InitBehaviorTree();
         return true;
     }
-    private void InitWithBehaviorTree()
-    {
-
-        bt_root =new BehaviorTree.Parallel();
  
-        {
-            //攻击目标节点
-
-          var  bt_target =new BehaviorTree.Sequence();
-        }
-        {
-            //移动节点
-        }
-        {
-            //  BehaviorTree.ActionBase;
-            //攻击节点
-            //    bt_atk = 
-
-        }
-    }
     public override void OnEvent(string type, object userData)
     {
         if ("SpineComplete" == type)
@@ -548,15 +554,15 @@ public class Enemy1 : Enemy
         return true;
     }
 
-  /*  public override void AI_UpdateMSWithAI()
-    {
-        ai_fsm_machine.UpdateMS();
-        base.AI_UpdateMSWithAI();
-    }*/
-    public override void UpdateMS()
+    /*  public override void AI_UpdateMSWithAI()
+      {
+          ai_fsm_machine.UpdateMS();
+          base.AI_UpdateMSWithAI();
+      }*/
+  /*  public override void UpdateMS()
     {
         base.UpdateMS();
-    }
+    }*/
 
 }
 

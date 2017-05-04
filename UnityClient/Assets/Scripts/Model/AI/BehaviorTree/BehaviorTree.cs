@@ -2,13 +2,14 @@
 * Author:  caoshanshan
 * Email:   me@dreamyouxi.com
 using Behavior Tree to peocess  AI
+ * 行为树框架
  */
 using UnityEngine;
 using System.Collections;
 
 namespace BehaviorTree
 {
-    //----------------行为树框架
+    //----------------行为树框架部分
     /* public enum ActionNodeState
      {//行为节点状态
          Running,//运行中，该状态下父节点会直接运行该节点逻辑， 
@@ -84,8 +85,6 @@ namespace BehaviorTree
         protected Entity _host = null;
     }
 
-
-
     public class ActionBase : NodeBase
     {//行为节点基类
         public ActionBase()
@@ -100,11 +99,6 @@ namespace BehaviorTree
             this.type = NodeType.Condition;
         }
     }
-
-
-
-
-
 
     //-----------------------------------------------------------------控制节点
     public class ControllBase : NodeBase
@@ -144,7 +138,7 @@ namespace BehaviorTree
             this.type = NodeType.Sequence;
         }
         public override bool Visit(Entity target)
-        {//从子节点选择一个 执行 都返回false 才返回false 否则返回true
+        {//一个返回false 即 返回false
             foreach (NodeBase node in children)
             {
                 if (node.Visit(target) == false)
@@ -175,152 +169,4 @@ namespace BehaviorTree
             return ret;
         }
     }
-
-    //--------------------------------------------------游戏逻辑实际的 Condition 和 Action
-
-    public class Condition_HasHeroInAtkRange : ConditionBase
-    {//仇恨范围内是否有英雄
-        public override bool Visit(Entity target)
-        {
-            Enemy host = target as Enemy;
-            if (host == null) return false;
-            ArrayList list = HeroMgr.ins.GetHeros();
-            foreach (Hero h in list)
-            {
-                if (host.target_distance > h.ClaculateDistance(host))
-                {//范围内 有玩家
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-    public class Condition_HasTargetInAtkRange : ConditionBase
-    {//目标是否在攻击范围内
-        public override bool Visit(Entity target)
-        {
-            Enemy host = target as Enemy;
-            if (host == null) return false;
-            if (host.target == null) return false;
-            if (host.atk_range > host.target.ClaculateDistance(host))
-            {//范围内 
-                return true;
-            }
-            return false;
-        }
-    }
-    public class Condition_HasTowerExists : ConditionBase
-    {//是否存在塔
-        public override bool Visit(Entity target)
-        {
-            if (BuildingMgr.ins.GetBuildings<Tower>().Count > 0) return true;
-            return false;
-        }
-    }
-
-    public class Condition_HasHitTower : ConditionBase
-    {//是否第一次攻击到塔
-        public override bool Visit(Entity target)
-        {
-
-
-            return false;
-        }
-
-    }
- 
-    public class Condition_HasHitByHero : ConditionBase
-    {//是否被玩家攻击
-        bool ret = false;
-        Entity hit_target = null;//被攻击的目标
-        public override bool Visit(Entity target)
-        {
-            if (ret)
-            {
-                ret = false;
-                return true;
-            }
-            return false;
-        }
-        public override void OnEvent(int type, object userData)
-        {
-            if (this.IsInValid()) return;
-            if (type == Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED)
-            {
-                AttackInfo info = userData as AttackInfo;
-                Enemy host = _host as Enemy;
-                if (host == null) return;
-                if (info.target as Enemy != host) return;
-                //自己被命中
-                if (info.ownner.IsMaxTarget() == false)
-                {
-                    host.target = info.ownner;
-                    ret = true;
-                    host.SetTag("BT_HitHero", info.ownner); // 信息 写入黑板
-                }
-            }
-        }
-        public override void OnEnter()
-        {
-            EventDispatcher.ins.AddEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
-        }
-        public override void OnExit()
-        {
-            EventDispatcher.ins.RemoveEventListener(this, Events.ID_BATTLE_ENTITY_BEFORE_TAKEATTACKED);
-        }
-    }
-
-    public class Condition_HasTargetDie : ConditionBase
-    {//目标是否死亡
-        public override bool Visit(Entity target)
-        {
-            Enemy host = target as Enemy;
-            if (host == null) return true;
-            if (host.target == null) return true;
-            if (host.target.isDie) return true;
-            return false;
-        }
-    }
-
-    public class Action_MoveToTarget : ActionBase
-    {
-        public override bool Visit(Entity target)
-        {
-            Enemy host = target as Enemy;
-
-            if (host == null) return false;
-            if (host.target == null) return false;
-            if (host.target.isDie) return false;
-
-            host.dir = (int)Utils.GetAngle(host.pos, host.target.pos);//委托给Run状态去做
-            return true;
-        }
-    }
-    public class Action_AttackTarget:ActionBase
-    {
-        public override bool Visit(Entity target)
-        {
-            target.atk = true;
-            return true;
-        }
-    }
-
-    public class Action_SetTarget : ActionBase
-    {
-        public override bool Visit(Entity target)
-        {
-            Enemy host = target as Enemy;
-            var obj = host.GetTagPairOnce("BT_HitHero");
-            if (obj == null)
-            {
-                host.target = null;
-                return false;
-            }
-            host.target = host.GetTagPairOnce("BT_HitHero").value as Entity;
-            return true;
-        }
-    }
-
-
-
 }
