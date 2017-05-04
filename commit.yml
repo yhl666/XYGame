@@ -3,39 +3,54 @@ branches: {
   }
 fileChange:
   /UnityClient:
-    newFile: !uuid '2847c0ac5878090d1b117cf3df790e10ba05e766'
-    oldFile: !uuid '539f3272379c509021706e35ed44d6f999a3838a'
+    newFile: !uuid '01e98eb423a2dc1d236d86630d3faf776b1fec49'
+    oldFile: !uuid '2847c0ac5878090d1b117cf3df790e10ba05e766'
   /UnityClient/Assets:
-    newFile: !uuid '660f1b8169bda57881dbe081d202f58642ce5cb0'
-    oldFile: !uuid '8912ef455b5b2b6442225d0e845c93c4f70bcd6b'
+    newFile: !uuid '31560eb97500bec66a4f16ed002467134aec5d1f'
+    oldFile: !uuid '660f1b8169bda57881dbe081d202f58642ce5cb0'
   /UnityClient/Assets/Scripts:
-    newFile: !uuid '4ec5c2e15773673408331c481babbbd1f73e92fb'
-    oldFile: !uuid '384e411de77065b8674af7eec021d292ff00fcfb'
+    newFile: !uuid 'bad790f337acb4e5614d7d58c813cfa71a0ebf7a'
+    oldFile: !uuid '4ec5c2e15773673408331c481babbbd1f73e92fb'
   /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '1e0ec15d78d5c18678c9259f5c8eaccd447be262'
-    oldFile: !uuid 'dc9f4f95fb87c79ad0dee03ef4f0d80d3d53883b'
+    newFile: !uuid '5986f8c9688790fbe1995a2f3a6e1fe313f94222'
+    oldFile: !uuid '1e0ec15d78d5c18678c9259f5c8eaccd447be262'
   /UnityClient/Assets/Scripts/Model/AI:
-    newFile: !uuid '8cc405ed923d12672203f014758e662775948dd6'
-    oldFile: !uuid '60f3086a590c7106325f10fa846ba82e6b6160c2'
+    newFile: !uuid 'c510a151e00eb8598f4c4ba54764f647d8b9d9a1'
+    oldFile: !uuid '8cc405ed923d12672203f014758e662775948dd6'
   /UnityClient/Assets/Scripts/Model/AI/BehaviorTree:
-    newFile: !uuid '2135b8349092285b99882b153c6f5f2bebeaab4d'
-    oldFile: !uuid 'd918e89984a28a7cb8d46b7180cb1f6946df35b8'
+    newFile: !uuid '4995f97a458353e7695f4090f5179319af1fd0af'
+    oldFile: !uuid '2135b8349092285b99882b153c6f5f2bebeaab4d'
+  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/Actions.cs:
+    newFile: !uuid 'a683169ddda9d02843d6ac90d1d179b5f35aee8b'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/Actions.cs.meta:
+    newFile: !uuid 'db42931b79fd1d93a95b1c47dfd0e9276cf7c060'
+    oldFile: null
   /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/BehaviorTree.cs:
-    newFile: !uuid 'a281b86f087cbed0958735e7c53e488a9c1bf21b'
-    oldFile: !uuid '426a5fd6655f549923e5a7cae56bacacd55c8412'
+    newFile: !uuid '7ba7c7ca472fa5388d29c76e84fc6f05d9955447'
+    oldFile: !uuid 'a281b86f087cbed0958735e7c53e488a9c1bf21b'
+  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/Conditions.cs:
+    newFile: !uuid 'e9876304d7910b4c4966d00f39cbddbc1ff4d67f'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/Conditions.cs.meta:
+    newFile: !uuid '43599539f086f8f49dfeb794d5a134a59f3237ef'
+    oldFile: null
   /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/行为树.xmind:
-    newFile: !uuid '1776f7c3eeb2438e1c92b5bb8f9961e97ccda230'
+    newFile: !uuid '59b59f7d3fb8130fda02dfdecc170b62565cffcb'
+    oldFile: !uuid '1776f7c3eeb2438e1c92b5bb8f9961e97ccda230'
+  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/行为树.xmind.meta:
+    newFile: !uuid '12d13602da4b991a5af757d298fd83d0ea99005d'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/行为树V1.xmind:
+    newFile: !uuid 'f749ac69f32334917d579490c0104a8044fa9d4c'
+    oldFile: null
+  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/行为树V1.xmind.meta:
+    newFile: !uuid 'b188bf41316c12835f2e826979b2e8cd6f990153'
     oldFile: null
   /UnityClient/Assets/Scripts/Model/Enemy.cs:
-    newFile: !uuid '66355844995dae399c5cf4e449960abfd749bd01'
-    oldFile: !uuid '2b67a33139bd2ea8fb0d8935bc7f50a0ae84c504'
-  /UnityClient/Assets/Scripts/Model/Entity.cs:
-    newFile: !uuid '3ffa5c3ed7bfc18301b2cb84a9f1fb4aa3fa2bb3'
-    oldFile: !uuid 'dd3b3b40ec1215b1696841e0480a0bdf9e5e6b05'
-  /UnityClient/Assets/Scripts/Model/Model.cs:
-    newFile: !uuid 'c9aefaf8107b9ace01a25ee699f8b8c4664e9ed9'
-    oldFile: !uuid 'ce3856fbc983f06cf11c073ad82687da684a6261'
-gitCommitId: !uuid 'aeee0db20b2b9708a3d970e2676cb18320860e9c'
+    newFile: !uuid '0aaa356e39ed038c93ab985b44b752f4f7f3a99a'
+    oldFile: !uuid '66355844995dae399c5cf4e449960abfd749bd01'
+gitCommitId: !uuid '1919e5b8d1243d05f4d775cb63bea11161138eab'
 renames: {
   }
-revisionId: 954
+revisionId: 955
