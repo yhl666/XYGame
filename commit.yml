@@ -3,12 +3,12 @@ branches: {
   }
 fileChange:
   /设计文档:
-    newFile: !uuid 'f79182fa53a7de2455c9f909cc737067da6e8d8c'
-    oldFile: !uuid '091ded7d198454b8a8300584fb172ece33d1811e'
-  /设计文档/行为树.png:
-    newFile: !uuid '5e623a1d7ea53d776f23b76037b4b981f2b38a67'
-    oldFile: null
-gitCommitId: !uuid '479010f20ef56b92d77246031ee2d5fbe85c8ec1'
+    newFile: !uuid '863f70fb04dd8dc68befa9630395fea2ca789299'
+    oldFile: !uuid 'f79182fa53a7de2455c9f909cc737067da6e8d8c'
+  /设计文档/行为树V2.xmind:
+    newFile: !uuid '2de51eed5a707bd4dc778b5d04050575fafc196b'
+    oldFile: !uuid '15719bd7379dca409a79d0224554c547b8eea1a3'
+gitCommitId: !uuid 'd8e680c28214887b43247d0390650924eb85f999'
 renames: {
   }
-revisionId: 959
+revisionId: 960
