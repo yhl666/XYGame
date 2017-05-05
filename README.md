@@ -44,7 +44,7 @@
 <br>4.添加对来自cocos2dx 的帧动画 plist png等文件的处理（包括像素切图详见2D文件夹），实现一行代码播放帧动画
 <br>5.添加对2D动画的支持，比如ScaleTo动画等，详见游戏中各种UI的动画
 <br>6.添加对Lua实现部分逻辑的支持详见class LuaBuffer 还可以用可配置化的逻辑比如class BulletConfig(出于性能考虑暂不大面积使用lua)
-<br>7.实现混合状态机详见StateMachine.cs和StateBase.cs
+<br>7.实现混合状态机详见StateMachine.cs和StateBase.cs,实现技能,连招打断等
 <br>8.添加对地图地形的可视化编辑 详见 Terrain.cs 和 WorldMap.cs 战斗场景结构
 <br>9.AsyncQueue 异步任务队列，文件和FileCache
 <br>10.添加行为树，FSM 等实现的AI
