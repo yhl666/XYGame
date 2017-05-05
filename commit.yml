@@ -2,52 +2,13 @@
 branches: {
   }
 fileChange:
-  /UnityClient:
-    newFile: !uuid 'c498e7686bd21fa245c4bdb38e40361b9a42d6bb'
-    oldFile: !uuid '01e98eb423a2dc1d236d86630d3faf776b1fec49'
-  /UnityClient/Assets:
-    newFile: !uuid 'a9ffd59efc4ede7d93f23a21946499a82892f82a'
-    oldFile: !uuid '31560eb97500bec66a4f16ed002467134aec5d1f'
-  /UnityClient/Assets/Scripts:
-    newFile: !uuid '151c4188c7ac9632aef859744ea9d438c96861b0'
-    oldFile: !uuid 'bad790f337acb4e5614d7d58c813cfa71a0ebf7a'
-  /UnityClient/Assets/Scripts/Model:
-    newFile: !uuid '853ebdf269d912efb34a7596bcb5a64fe2a0132e'
-    oldFile: !uuid '5986f8c9688790fbe1995a2f3a6e1fe313f94222'
-  /UnityClient/Assets/Scripts/Model/AI:
-    newFile: !uuid '2fe5cfe6d5fdcc011d1c3def151a1ad2a31ed74d'
-    oldFile: !uuid 'c510a151e00eb8598f4c4ba54764f647d8b9d9a1'
-  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree:
-    newFile: !uuid 'dfa5238c012b1221943056e2e558d18c86c29111'
-    oldFile: !uuid '4995f97a458353e7695f4090f5179319af1fd0af'
-  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/Actions.cs:
-    newFile: !uuid '804330a6ab68ed350716d8c952fe56c86b2c098c'
-    oldFile: !uuid 'a683169ddda9d02843d6ac90d1d179b5f35aee8b'
-  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/BehaviorTree.cs:
-    newFile: !uuid 'a41c40678485fc64f39a2f333cefe84a13014c93'
-    oldFile: !uuid '7ba7c7ca472fa5388d29c76e84fc6f05d9955447'
-  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/Conditions.cs:
-    newFile: !uuid '08ae53dd71a430ec4228165f1511f1f848e23a1c'
-    oldFile: !uuid 'e9876304d7910b4c4966d00f39cbddbc1ff4d67f'
-  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/行为树.xmind:
-    newFile: null
-    oldFile: !uuid '59b59f7d3fb8130fda02dfdecc170b62565cffcb'
-  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/行为树V2.xmind:
+  /设计文档:
+    newFile: !uuid '091ded7d198454b8a8300584fb172ece33d1811e'
+    oldFile: !uuid '50433c4a9e7e5211c1766418cd3b74fbcf744035'
+  /设计文档/行为树V2.xmind:
     newFile: !uuid '15719bd7379dca409a79d0224554c547b8eea1a3'
     oldFile: null
-  /UnityClient/Assets/Scripts/Model/AI/BehaviorTree/行为树V2.xmind.meta:
-    newFile: !uuid '37d596808ea56052fe32d599ecfd2e32d9b704db'
-    oldFile: null
-  /UnityClient/Assets/Scripts/Model/AI/FSM:
-    newFile: !uuid '3177c705a510a0371de8d1e2eee5ac18bf3a06ad'
-    oldFile: !uuid '73df4982f8208ccf4b26b6e4d1f33b612029eb4e'
-  /UnityClient/Assets/Scripts/Model/AI/FSM/AIEnemy.cs:
-    newFile: !uuid '947cfe530ea2d067aa25c52b24720c57a306cfbb'
-    oldFile: !uuid '0fe2ce6b407f2aac4100c39f078cdff8fee06b79'
-  /UnityClient/Assets/Scripts/Model/Enemy.cs:
-    newFile: !uuid '1cbc552397bbd99e723c268b561bb4bd53743df7'
-    oldFile: !uuid '0aaa356e39ed038c93ab985b44b752f4f7f3a99a'
-gitCommitId: !uuid 'c88cb4cd7a8e0d37a374f98cb761d69e1b1520e2'
+gitCommitId: !uuid 'a7d4346c2a72191ca97864f5d0b7179773ea5db9'
 renames: {
   }
-revisionId: 956
+revisionId: 957
