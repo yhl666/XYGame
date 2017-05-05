@@ -6,7 +6,7 @@ using FSM to peocess lite AI
 using UnityEngine;
 using System.Collections;
 
-namespace AIEnemy
+namespace FSM
 {
     public class FSMBase : GAObject
     {

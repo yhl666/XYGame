@@ -53,11 +53,13 @@ namespace BehaviorTree
                 return;
             }
             node.parent = this;
+            node.OnEnter();
             children.Add(node);
         }
         public void RemoveChild(NodeBase node)
         {
             node.parent = null;
+            node.OnExit();
             children.Remove(node);
         }
         public virtual bool Visit(Entity target)

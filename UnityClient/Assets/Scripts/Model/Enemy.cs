@@ -6,12 +6,13 @@
 using UnityEngine;
 using System.Collections;
 using System.Runtime.CompilerServices;
-using AIEnemy;
+using FSM;
 
 public enum AIEnemyType
 {
     FSM,//  普通仇恨机制 在AIEnemy.cs 里面 该机制只会仇恨行为
     Normal,// 该类型下 只会找当前最近的玩家攻击
+    BehaviorTree, // 行为树
     //  Boss,//boss 的AI类型
 }
 public class Enemy : Entity
@@ -23,8 +24,8 @@ public class Enemy : Entity
     public float target_distance = 4f;//仇恨范围
     public Counter cd = Counter.Create(80);
     public FSMMachine ai_fsm_machine = null;
-
-    private bool IsHeroRandomAtk()
+    public bool is_hit_tower = false;//是否攻击了塔
+    public bool IsHeroRandomAtk(float factor = 1.0f)
     {//随机化 攻击行为，减弱 攻击强度
         int number = target.GetTargetNo();
         if (number < 2)
@@ -33,21 +34,21 @@ public class Enemy : Entity
         }
         else if (number >= 3 && number <= 5)
         {
-            if (Utils.random_frameMS.Next(1, 100) == 2)
+            if (Utils.random_frameMS.Next(1, (int)(100 * factor)) == 2)
             {
                 return true;
             }
         }
         else if (number >= 5 && number <= 10)
         {
-            if (Utils.random_frameMS.Next(1, 200) == 2)
+            if (Utils.random_frameMS.Next(1, (int)(200 * factor)) == 2)
             {
                 return true;
             }
         }
         else
         {
-            if (Utils.random_frameMS.Next(1, number * 100 / 5) == 2)
+            if (Utils.random_frameMS.Next(1, number * (int)(200 * factor) / 5) == 2)
             {
                 return true;
             }
@@ -74,27 +75,117 @@ public class Enemy : Entity
     {
         bt_root = new BehaviorTree.Parallel();
 
-        {
-            var bt_target = new BehaviorTree.Sequence();
-            bt_target.AddChild(new BehaviorTree.Condition.NotTargetOrDie());
-            bt_target.AddChild(new BehaviorTree.Action.SearchNearestTarget());
-            bt_root.AddChild(bt_target);
+        /*  // 版本1
+            bt_root = new BehaviorTree.Parallel();
+ {
+             var bt_target = new BehaviorTree.Sequence();
+             bt_target.AddChild(new BehaviorTree.Condition.NotTargetOrDie());
+             bt_target.AddChild(new BehaviorTree.Action.SearchNearestTarget());
+             bt_root.AddChild(bt_target);
+         }
+         {
+             var bt_selector = new BehaviorTree.Selector();
+             var bt_sequence1 = new BehaviorTree.Sequence();
+             var bt_sequence2 = new BehaviorTree.Sequence();
+             bt_selector.AddChild(bt_sequence1);
+             bt_selector.AddChild(bt_sequence2);
+
+             bt_sequence1.AddChild(new BehaviorTree.Condition.TargetHasNotInAtkRange());
+             bt_sequence1.AddChild(new BehaviorTree.Action.MoveToTarget());
+
+             bt_sequence2.AddChild(new BehaviorTree.Condition.IsCDMax());
+             bt_sequence2.AddChild(new BehaviorTree.Action.AttackTarget());
+             bt_root.AddChild(bt_selector);
+         }
+         */
+
+
+        //版本2
+
+
+        {// 仇恨行为
+            var selector1 = new BehaviorTree.Selector();
+            bt_root.AddChild(selector1);
+
+            var sequence2 = new BehaviorTree.Sequence();
+            selector1.AddChild(sequence2);
+            sequence2.AddChild(new BehaviorTree.Condition.NotTargetOrDie());
+
+            // selector4
+            var selector4 = new BehaviorTree.Selector();
+            sequence2.AddChild(selector4);
+            var sequence7 = new BehaviorTree.Sequence();
+            selector4.AddChild(sequence7);
+            sequence7.AddChild(new BehaviorTree.Condition.HasTower());
+            sequence7.AddChild(new BehaviorTree.Action.SearchNearestTower());
+            selector4.AddChild(new BehaviorTree.Action.SearchNearestHero());
+
+            //selector3
+            var selector3 = new BehaviorTree.Selector();
+            selector1.AddChild(selector3);
+            var sequence5 = new BehaviorTree.Sequence();
+            selector3.AddChild(sequence5);
+
+            var sequence6 = new BehaviorTree.Sequence();
+            selector3.AddChild(sequence6);
+            sequence6.AddChild(new BehaviorTree.Condition.TargetIsHero());
+            sequence6.AddChild(new BehaviorTree.Action.NotHitTower());
+
+            sequence5.AddChild(new BehaviorTree.Condition.TargetIsTower());
+            var selector8 = new BehaviorTree.Selector();
+            sequence5.AddChild(selector8);
+
+            var sequence9 = new BehaviorTree.Sequence();
+            selector8.AddChild(sequence9);
+            var sequence10 = new BehaviorTree.Sequence();
+            selector8.AddChild(sequence10);
+
+            sequence9.AddChild(new BehaviorTree.Condition.HasHitTower());
+            sequence9.AddChild(new BehaviorTree.Condition.HasHitByHero());
+            sequence9.AddChild(new BehaviorTree.Action.SetTarget());
+
+            sequence10.AddChild(new BehaviorTree.Condition.HasNotHitTower());
+            sequence10.AddChild(new BehaviorTree.Condition.HasHeroInTargetRange());
+            sequence10.AddChild(new BehaviorTree.Action.SearchNearestHero());
+
         }
-        {
-            var bt_selector = new BehaviorTree.Selector();
-            var bt_sequence1 = new BehaviorTree.Sequence();
-            var bt_sequence2 = new BehaviorTree.Sequence();
-            bt_selector.AddChild(bt_sequence1);
-            bt_selector.AddChild(bt_sequence2);
 
-            bt_sequence1.AddChild(new BehaviorTree.Condition.TargetHasNotInAtkRange());
-            bt_sequence1.AddChild(new BehaviorTree.Action.MoveToTarget());
+        {// 攻击 移动行为
 
-            bt_sequence2.AddChild(new BehaviorTree.Condition.IsCDMax());
-            bt_sequence2.AddChild(new BehaviorTree.Action.AttackTarget());
-            bt_root.AddChild(bt_selector);
+            var selector1 = new BehaviorTree.Selector();
+            bt_root.AddChild(selector1);
+            var selector2 = new BehaviorTree.Selector();
+            var selector3 = new BehaviorTree.Selector();
+
+            selector1.AddChild(selector2);
+            selector1.AddChild(selector3);
+
+            //selector2
+            var sequence4 = new BehaviorTree.Sequence();
+            var sequence5 = new BehaviorTree.Sequence();
+            selector2.AddChild(sequence4);
+            selector2.AddChild(sequence5);
+            sequence4.AddChild(new BehaviorTree.Condition.HasNotTarget());
+            sequence4.AddChild(new BehaviorTree.Action.MoveRandom());
+            sequence5.AddChild(new BehaviorTree.Condition.TargetHasNotInAtkRange());
+            sequence5.AddChild(new BehaviorTree.Action.MoveToTarget());
+
+            // selector 3
+            var sequence6 = new BehaviorTree.Sequence();
+            selector3.AddChild(sequence6);
+            selector3.AddChild(new BehaviorTree.Action.MoveRandomInAtkRange());
+            sequence6.AddChild(new BehaviorTree.Condition.IsCDMax());
+            sequence6.AddChild(new BehaviorTree.Action.AttackTarget());
         }
 
+        this.bullet_atk1_info._OnTakeAttack += (Bullet bullet, object userData) =>
+       {
+           //命中后  
+           if (target != null && (userData as Entity) == target)
+           {
+               is_hit_tower = true;
+           }
+       };
     }
     public virtual void AI_UpdateMSWithAI()
     {
@@ -102,7 +193,7 @@ public class Enemy : Entity
 
         bt_root.Visit(this);
 
- 
+
         return;
         /*//如果目标非法，那么寻找另外一个目标
         if (target == null || target.IsInValid())
@@ -352,7 +443,7 @@ public class Enemy : Entity
         this.InitBehaviorTree();
         return true;
     }
- 
+
     public override void OnEvent(string type, object userData)
     {
         if ("SpineComplete" == type)
@@ -535,7 +626,7 @@ public class Enemy1 : Enemy
         info.isHitDestory = true;
         info.collider_size = new Vector3(2f, 2f, 2f);
         ///info.AddBuffer("BufferEnemyMovementAfterAtk");
-        info._OnTakeAttack = (Bullet bbbb, object user) =>
+        info._OnTakeAttack += (Bullet bbbb, object user) =>
         {
             TimerQueue.ins.AddTimerMSI(10, () =>
             {
@@ -559,10 +650,10 @@ public class Enemy1 : Enemy
           ai_fsm_machine.UpdateMS();
           base.AI_UpdateMSWithAI();
       }*/
-  /*  public override void UpdateMS()
-    {
-        base.UpdateMS();
-    }*/
+    /*  public override void UpdateMS()
+      {
+          base.UpdateMS();
+      }*/
 
 }
 
