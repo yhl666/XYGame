@@ -2,10 +2,13 @@
 branches: {
   }
 fileChange:
-  /README.md:
-    newFile: !uuid 'adbc2d94a681eb69f05b8c4329e6ac4819c9f395'
-    oldFile: !uuid '98c170efde7252c8c4903a60912b9aa4e4ff8341'
-gitCommitId: !uuid '361753db172ebb9a51cbcb4e79180a85fe87f6bb'
+  /设计文档:
+    newFile: !uuid 'f79182fa53a7de2455c9f909cc737067da6e8d8c'
+    oldFile: !uuid '091ded7d198454b8a8300584fb172ece33d1811e'
+  /设计文档/行为树.png:
+    newFile: !uuid '5e623a1d7ea53d776f23b76037b4b981f2b38a67'
+    oldFile: null
+gitCommitId: !uuid '479010f20ef56b92d77246031ee2d5fbe85c8ec1'
 renames: {
   }
-revisionId: 958
+revisionId: 959
