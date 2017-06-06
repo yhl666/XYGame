@@ -2,13 +2,28 @@
 branches: {
   }
 fileChange:
-  /redis.bat:
-    newFile: !uuid '10b14702e965b633bacda9fd3ba7c3bdf1d790e7'
-    oldFile: null
-  /rerunAll.bat:
-    newFile: !uuid 'de8031159da42852e0e63699722ac6e5df2007c6'
-    oldFile: null
-gitCommitId: !uuid '8100bdfcddd30de6586225b2d301b3c4f63ea255'
+  /BattleServer:
+    newFile: !uuid '3b0959ced6e7550b14889d57561f9c9a3f46d20d'
+    oldFile: !uuid '8b25ac9097e2d12ca618edcae67ad29a2f0aba31'
+  /BattleServer/Debug:
+    newFile: !uuid '6f2fc360d806e747761cff6c4ac3f561c540f214'
+    oldFile: !uuid '6b26b9950e6df92c06f8d8f5c5b4c618a19ac231'
+  /BattleServer/Debug/config.ini:
+    newFile: !uuid 'e98005bef23aa14b1980b5b1cfd7d9e85ce6c661'
+    oldFile: !uuid '232bc5dafdbf23668990e689e7dd9166e2189942'
+  /BattleServer/Release:
+    newFile: !uuid '85f2540bb45fbcae720521f95b13828c3b120e26'
+    oldFile: !uuid '1019eb997a655c59ffa4cb235f0ae9839d669c96'
+  /BattleServer/Release/config.ini:
+    newFile: !uuid 'e98005bef23aa14b1980b5b1cfd7d9e85ce6c661'
+    oldFile: !uuid 'aae0511cff97da269426b25567c61d4c198bd608'
+  /BattleServer/cpp:
+    newFile: !uuid '527ca21a6bfd84c2b4c6a115eadcd9a9521130cd'
+    oldFile: !uuid 'da3e12cff90b9fedd86debd941dc84827a17fdeb'
+  /BattleServer/cpp/config.ini:
+    newFile: !uuid 'e98005bef23aa14b1980b5b1cfd7d9e85ce6c661'
+    oldFile: !uuid '232bc5dafdbf23668990e689e7dd9166e2189942'
+gitCommitId: !uuid '9be0de873490d973b58710230d4082fcf1549cec'
 renames: {
   }
-revisionId: 964
+revisionId: 965
