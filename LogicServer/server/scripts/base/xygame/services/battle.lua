@@ -164,12 +164,12 @@ function t.request_verify(ctx, msg, cb)
                 remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg3)
 
                 end );
-
+                print("111111111111111");
             else
                 if string.find(msg2, "h1") == nil or string.find(msg2, "h2") == nil then
                     -- 暂时做一个简单的判断处理没有血量的情况
                     -- 如果是一号玩家
-                    local msg_to_write = msg2 .. "mode:" .. mode .. ",h1:" .. tbl["h1"] .. "," .. "h2:" .. tbl["h2"] .. ",";
+                    local msg_to_write = msg2 ..  "h1:" .. tbl["h1"] .. "," .. "h2:" .. tbl["h2"] .. ",";
                     remote.request("services.battle_pvp", "request_verify_write", msg_to_write, function(msg4)
                         -- 讲血量写入数据库
 
@@ -188,18 +188,11 @@ function t.request_verify(ctx, msg, cb)
 
                     -- 如果是二号玩家
                     cb("ret:ok,");
-                    --demo  展示 暂时关闭 数据校验
-
-                    remote.request_client(ctx, "BattlePVP", "PushResult", "ret:ok,msg:verifyOk,", function(msg6)
-                        -- Friend?
-                    end );
-
-                    remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:ok,msg:verifyOk,", function(msg6)
-                        -- Friend?
-                    end );
+                        msg = string.gsub(msg, "mode:pve,", "");
+              print(msg .. "            " .. msg2);
                     if msg == msg2 then
                         -- 二号发过来的结果数据和数据库中取得一致则
-                        --[[
+                  
                         -- 发给客户服务器发送房间信息
                         local room_info = "pvproom_id:" .. pvproom_id .. "," .. "p1:" .. p1 .. "," .. "p2:" .. p2 .. "," .. "mode:" .. mode .. ",";
 
@@ -236,7 +229,7 @@ function t.request_verify(ctx, msg, cb)
                         remote.request_client(ctx_other, "BattlePVP", "PushResult", "ret:error,msg:verifyError,", function(msg6)
                             -- Friend?
                         end );
-                        ]]
+              
                     end
 
                 end
