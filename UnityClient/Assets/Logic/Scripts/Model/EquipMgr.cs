@@ -65,8 +65,8 @@ public sealed class EquipMgr :  SingletonGAObject<EquipMgr>
         dao.mp = 10;//魔法加成
         dao.hp = 230;//气血加成
 
-     //   dao.buffers.Add("BufferEquipTest1");
-    //    dao.buffers.Add("BufferEquipTest2");
+        dao.buffers.Add("BufferEquipTest1");
+        dao.buffers.Add("BufferEquipTest2");
         return dao;
     }
 

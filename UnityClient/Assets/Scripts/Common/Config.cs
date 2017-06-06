@@ -36,8 +36,8 @@ public class Config : object
 
 #else
 
-   //  public static string SERVER_IP = "127.0.0.1";
-  public static string SERVER_IP = "115.159.203.16";
+     public static string SERVER_IP = "127.0.0.1";
+ // public static string SERVER_IP = "115.159.203.16";
     //  public static string SERVER_IP = "192.168.93.39";
 
     public static string LOGIC_SERVER_IP = "127.0.0.1";
