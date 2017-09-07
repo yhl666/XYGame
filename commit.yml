@@ -3,9 +3,9 @@ branches: {
   }
 fileChange:
   /test.cpp:
-    newFile: !uuid 'fc8ac26bdaf8ae3cbce668803e386ee77de006b1'
-    oldFile: !uuid 'f5073d886af10ff8a443626f513e5a97aacec88d'
-gitCommitId: !uuid 'e4bc1afe49c1a3f6506107557ca871429f9ecff9'
+    newFile: null
+    oldFile: !uuid 'fc8ac26bdaf8ae3cbce668803e386ee77de006b1'
+gitCommitId: !uuid 'd97f58646cdad0c40fed2867a3c92f4feb5dacc4'
 renames: {
   }
-revisionId: 969
+revisionId: 970
